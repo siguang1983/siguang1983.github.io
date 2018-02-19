@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -121,516 +121,6 @@
 </header>
 
         <div id="content" class="content">
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/22/HTML、CSS深入理解/">HTML、CSS深入理解</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/22/HTML、CSS深入理解/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-22T02:10:21.000Z" itemprop="datePublished">2016-12-22</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/HTML-CSS/">HTML+CSS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>—————– CSS —————–</p>
-<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><pre><code>内联元素与块元素的区别
-
-    内联元素: 
-
-        1、与其它内联元素都在并列同一行     
-
-        2、不能设置宽、高
-
-        3、不能设置上下外边距、内边距 margin-top、margin-bottom 和  padding-top、padding-bottom ，设置内边距也不会撑起父级高度
-
-    块元素: 
-
-        1、不指定宽度，会继承父元素的宽度，每个块元素都是独立一行
-
-        2、元素的宽高都可以设置，如果不设置宽度就为100%;
-
-
-1、display属性: 
-
-    1）inline: 内联元素        2）block: 块元素
-
-    3）inline-block: 具有block的宽高特性，又具有inline的同行元素特性
-
-    4）table-cell: 文字的垂直居中，类似表格的单元格
-
-    5）box: 弹性盒模型的过渡版本，现在用flex替换
-
-    5）flex: flex是一个弹性布局的最新版本，老版本使用的box
-
-            flex布局，子元素的float、clear、vertical-align属性将失效
-
-            主要属性有两大类: 容器属性和项目属性
-
-
-2、float 浮动
-
-    left、right 左右浮动  浮动问题: 会使父级的高度失效，使用清除浮动来解决
-
-
-3、clear 清除浮动
-
-    both: 不允许有浮动对象     left: 不允许左边有浮动        right: 不允许有右边浮动
-
-    /* 清除浮动 */
-    .ks-clear:after, .clear:after {
-        content: &apos;\20&apos;;
-        display: block;
-        height: 0;
-        clear: both;
-    }
-    .ks-clear, .clear {
-        *zoom: 1;
-    }
-
-
-4、visibility 隐藏时可以保留元素的空间, display不会保留
-
-    visible: 可视        hidden: 对象隐藏
-
-
-5、overflow 
-
-    overflow-x、overflow-y: 分别处理水平或垂直
-
-    1）hidden: 隐藏溢出的内容
-
-    2）scroll: 溢出的内容以滚动条显示
-</code></pre><h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><pre><code>1、padding: 内边距 padding不支持负值
-
-2、margin: 外边距 支持负值
-
-    margin存在的问题: 
-
-    1) 适用于block元素，不起作用的absolute、fixed、inline、table-cell元素
-
-    2) margin-top和margin-bottom 兄弟之间的会重叠
-
-        解决方法:
-            1、给当前元素加浮动 float: left
-            2、给当前元素加 
-
-    3) margin-top: 会影响到父元素（标准浏览器会影响，IE正常）
-
-        解决方法: 给父元素加一个padding、border或overflow:hidden 即上面代码里的注释部分
-
-
-3、border: 边框线
-</code></pre><h4 id="position-定位"><a href="#position-定位" class="headerlink" title="position 定位"></a>position 定位</h4><pre><code>1、absolute: 绝对定位，查找父子以上的元素是否定义了position，如果没有就以window为定位基准
-
-2、relative: 相对定位
-
-3、fixed: 始终以window为定位，固定到屏幕的某个位置，浏览器滚动也跟随
-
-4、static: 
-
-5、z-index: 层级堆叠顺序，值越高越在最上面，最小值为0，最大值为2147483647
-</code></pre><h4 id="background-背景"><a href="#background-背景" class="headerlink" title="background 背景"></a>background 背景</h4><pre><code>1、background-attachment: 背景图是随着滚动还是固定
-
-    fixed: 相对窗体固定
-
-    scroll: 背景图以元素固定，元素内容滚动时图像不会跟随滚动
-
-2、transparent: 背景透明
-
-background-color: 背景颜色 
-background-image: 背景图片
-background-repeat: 背景重复
-background-position: 背景位置
-</code></pre><h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><pre><code>1、word-spacing: 单词与单词之间的间隔
-
-2、letter-spacing: 字母与字母之间的间隔
-
-3、word-wrap: IE的私有   属性允许长单词或 URL 地址换行到下一行    @ break-word 在需要换行时才换
-
-4、word-break: 文字换行
-
-    break-all: 让英文象中文一样可以在行内做任意字间换行
-
-    keep-all: 让中文向英文的换行方式接近，只在空格或英文标点符号才换行
-
-
-5、white-space: 属性设置如何处理元素内的空白
-
-6、text-overflow: 文本的溢出隐藏  @ellipsis 用点来表示
-
-    p {width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
-
-
-7、text-indent: 文本的首行缩进
-
-8、vertical-align: 文本的对齐方式
-
-    * 只应用于inline水平以及table-cell元素  别把他放到div或p的块元素内
-
-    1、线类
-
-        baseline: 默认，元素的基线与父元素的基线对齐
-
-        top、bottom、middle: 居上、下、中
-
-    2、文本
-
-        text-top、text-bottom: 
-
-    3、上标下标类
-
-        super: 上标   sub: 下标   不过位置都不太兼容，需要重写
-
-    4、数值百分比
-
-        vertical-align: 20px;
-
-
-9、color: 文本颜色
-
-10、text-align: 文本对齐 left right center justify
-
-11、text-decoration: 文本装饰 overline 上划线  underline 下划线  line-through 从中间穿过的线
-
-12、direction: 文字方向 rtl 从右向左    ltr 从左向右
-
-13、line-height: 行高
-</code></pre><h4 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h4><pre><code>table: margin可以使用，除非设置 display: inline-table
-
-1、border-collape: 表格或单元格边框合并到一起
-
-    separate: 边框独立        collapse: 相邻合并
-
-2、border-spacing: 表格或单元格之间的距离
-
-表格单线条:
-
-    .tab { border-spacing: 0;  border-collapse: collapse;}
-    .tab td, .tab th { border-collapse: collapse; border: 1px #ccc solid; border-spacing: 0; padding: 10px 20px; }
-</code></pre><h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><pre><code>rem: 是相对于根元素(html)的font-size值为基准，em是相对父级元素变化，px是物理像素
-
-em: 相对长度
-</code></pre><h4 id="语法与规则"><a href="#语法与规则" class="headerlink" title="语法与规则"></a>语法与规则</h4><pre><code>1、!important 提升优先级
-
-2、@import url(&quot;global.css&quot;); 导入外部样式表
-
-3、@charset &apos;uft-8&apos; 编码
-</code></pre><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><pre><code>p{...} 元素选择器
-
-.className{...} 类选择器
-
-#idName{...} id选择器
-
-.user[id=&apos;username&apos;]{...} 属性选择器
-
-.claA .claB{...} 后代选择器
-
-.clsA &gt; .clsB {...} 子选择器
-
-.clsA + .clsB {...} 相邻选择器
-
-.clsA, .clsB{...} 选择器分组
-</code></pre><h4 id="伪类、伪元素"><a href="#伪类、伪元素" class="headerlink" title="伪类、伪元素"></a>伪类、伪元素</h4><pre><code>伪类 用于向某些选择器添加特殊效果
-
-    a:link: 未被访问过
-    a:visited: 已经被访问的链接
-    a:hover: 鼠标指针移动到的链接
-    a:active: 被点击的链接
-
-    :first-childe: 向元素的第一个子元素添加样式
-
-
-伪类元素 用于向某些选择器添加特殊效果
-
-    :first-letter: 设置第一个字符的样式属性  ::first-letter
-
-    :first-line: 设置第一行的样式    ::first-line
-
-    :before 和 :after: 用于在元素前和元素后配置content属性添加内容    ::before   ::after
-
-        .box::before { content: &apos;这里是在box元素之前显示&apos;}
-        .box::after { content: &apos;这里是在box元素之后显示&apos; }
-
-
-css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
-
-    : 用于css2的伪类，:: 用于css3的伪类
-</code></pre><h4 id="css基础属性"><a href="#css基础属性" class="headerlink" title="css基础属性"></a>css基础属性</h4><pre><code>字体
-
-    font-size: 字体大小
-
-    font-family: 使用的字体
-
-    font-style: 字体风格  @ italic 斜体
-
-    font-weight: 字体重量
-
-    font: 简写 
-
-        按顺序 也可以设置第六个值为line-hgith
-        font-style
-        font-variant
-        font-weight
-        font-size/line-height
-        font-family
-
-
-链接
-
-    a:link: 未被访问过
-
-    a:visited: 已经被访问的链接
-
-    a:hover: 鼠标指针移动到的链接
-
-    a:active: 被点击的链接
-
-
-列表
-
-    list-style-image: 将图像设置为列表标志
-
-    list-style-position: 标志的位置
-
-    list-style-type: 标志类型  @circle 圆  @square 方块
-
-    list-style: 简写属性
-
-
-尺寸
-
-    width、height: 宽高
-
-    max-width、max-height: 最大宽高
-
-    min-width、min-height: 最小宽高
-
-
-透明度
-
-    opacity: 0.4;
-
-    filter: alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
-</code></pre><h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><pre><code>1、body高度为100%，html继承了浏览器的高度，body继承了html的高度，这样body就为100%了
-
-    html{ height: 100%; }
-    body { height: 100%; margin: 0;}
-
-
-2、浏览器hack
-
-    .box { width: 100px\9; }
-
-    浏览器（加粗表示支持）    CSS hack
-    IE6        _background-color:#38DB24;
-    IE67    *background-color:#38DB24;
-    IE67    +background-color:#38DB24;
-    IE67    #background-color:#38DB24;
-    IE67    background-color:#38DB24 !ie;
-    IE678910    background-color:#38DB24\9;
-    IE78910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;body .ie78910-all-hack { background-color: #38DB24 }
-    IE8910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;/**/body .ie8910-all-hack { background-color: #38DB24 }
-    IE8910&amp;Opera    background-color:#38DB24\0;
-    IE910    :root .ie910-hack { background-color:#38DB24\9; }
-    IE910    background-color:#38DB24\9\0;
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    body:nth-of-type(1) .ie910-all-hack {background-color:#38DB24 ;}
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-2-hack{ background-color:#38DB24 ;} }
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-3-hack{background-color:#38DB24 ;} }
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    :root *&gt; .ie910-all-4-hack { background-color:#38DB24 }
-    IE10    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { .ie10-hack{background-color:#38DB24 ;} }
-    Firefox    @-moz-document url-prefix() { .firefox-hack{background-color:#38DB24 ;} }
-    Chrome&amp;Safari    @media screen and (-webkit-min-device-pixel-ratio:0) {.chrome-safari-hack{background-color:#38DB24 ;} }
-
-
-3、条件注释
-
-    lt : 就是Less than的简写，也就是小于的意思。
-
-    lte : 就是Less than or equal to的简写，也就是小于或等于的意思。
-
-    gt : 就是Greater than的简写，也就是大于的意思。
-
-    gte: 就是Greater than or equal to的简写，也就是大于或等于的意思。
-
-    !: 就是不等于的意思，跟javascript里的不等于判断符相同。
-
-    1、只有IE能识别
-        &lt;!--[if IE]&gt;
-            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;
-        &lt;![endif]--&gt;
-
-    2、指定版本
-        &lt;!--[if IE 8]&gt; 
-            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
-        &lt;![endif]--&gt;
-
-    3、低于指定版本才能识别
-        &lt;!--[if lt IE 7]&gt; 
-            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
-        &lt;![endif]--&gt;
-
-
-4、layout: IE的私有概念
-
-5、zoom: 用于处发layout
-
-    zoom: 1;
-</code></pre><h4 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h4><pre><code>http://alloyteam.github.io/gopng
-
-http://fis.baidu.com
-
-http://gruntjs.com
-</code></pre><p>—————– HTML —————–</p>
-<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><pre><code>1、&lt;!DOCTYPE html&gt; 声明文档解析类型，指定浏览器用哪个版本来解析页面
-
-    解析类型有两种模式:  
-
-    1、怪异模式: 浏览器使用自己的怪异模式解析渲染页面（如果不声明doctype就是怪异模式）
-
-    2、标准模式: 使用严格模式，以W3C的标准解析渲染页面
-
-    HTML 4.01 规定了三种文档类型: Strict、Transitional 以及 Frameset。
-
-
-2、&lt;html&gt; 定义文档  &lt;body&gt; &lt;head&gt; 定义文档信息
-
-3、&lt;title&gt;、&lt;style&gt;
-
-4、&lt;meta&gt;: 文档元信息
-
-5、&lt;link&gt;: 文档与外部资源
-
-6、&lt;script&gt;: 定义脚本
-
-7、&lt;div&gt;
-
-8、&lt;iframe&gt;: 内联框架
-
-9、&lt;img&gt;: 定义图像
-
-字体:
-
-10、&lt;p&gt;: 段落
-
-11、&lt;span&gt;: 文档中的节
-
-12、&lt;a&gt;: 定义锚，属性 href、title
-
-13、&lt;b&gt;: 定义粗体
-
-14、&lt;i&gt;: 斜体
-
-15、&lt;em&gt;&lt;strong&gt;: 强调内容 斜体、粗体
-
-16、&lt;u&gt;: 下划线文字
-
-17、&lt;big&gt;、&lt;small&gt; 大字体和小字体   
-
-    &lt;h2&gt;标准属性&lt;small&gt;id, class, title, style, dir, lang&lt;/small&gt;&lt;/h2&gt;
-
-18、&lt;bdo&gt; 定义字体显示的方法 
-
-    文字翻转显示 &lt;bdo dir=&quot;rtl&quot;&gt;Here is some text&lt;/bdo&gt;  
-
-19、&lt;br&gt;: 换行
-
-20、&lt;del&gt;: 被删除的文本
-
-21、&lt;hr&gt;: 定义水平线
-
-22、&lt;ins&gt;: 定义被插入文本
-
-23、&lt;sub&gt;: 下标文本
-
-24、&lt;sup&gt;: 上标文本
-
-25、&lt;var&gt;: 文本的变量部分
-
-26、&lt;code&gt;&lt;pre&gt;
-
-标题
-
-27、&lt;h1&gt;...&lt;h6&gt;    
-
-列表
-
-28、&lt;ul&gt;: 无序列表
-
-29、&lt;ol&gt;: 有序列表
-
-30、&lt;li&gt;: 列表的项目
-
-31、&lt;dl&gt;、&lt;dt&gt;、&lt;dd&gt;: 定义列表
-
-表单
-
-32、&lt;form&gt;
-
-33、&lt;fieldset&gt;、&lt;legend&gt;: 定义围绕表单中元素的边框。
-
-    &lt;fieldset&gt;
-        &lt;legend&gt;健康信息&lt;/legend&gt;
-        身高: &lt;input type=&quot;text&quot; /&gt;
-    &lt;/fieldset&gt;
-
-34、&lt;input&gt;
-
-35、&lt;label&gt;: input元素的标注
-
-36、&lt;select&gt;: 下拉菜单 &lt;option&gt;菜单内容
-
-37、&lt;button&gt;: 按钮
-
-38、&lt;textarea&gt;: 多行文本
-
-表格
-
-39、&lt;table&gt;
-
-40、&lt;tr&gt;、&lt;td&gt;: 行、列
-
-41、&lt;caption&gt;: 定义表格标题
-
-42、&lt;th&gt;: 表格头单元
-
-43、&lt;thead&gt;、&lt;tbody&gt;、&lt;tfoot&gt;: 表格头和主体
-
-窗口框架
-
-44、&lt;frame&gt;: 定义框架集窗口或框架
-
-45、&lt;frameset&gt;: 定义框架集
-
-46、&lt;object&gt;、&lt;param&gt;
-</code></pre><blockquote>
-<p>参考资料</p>
-<p><a href="http://www.css88.com/book/css/" target="_blank" rel="noopener">http://www.css88.com/book/css/</a><br><a href="http://www.w3cplus.com/" target="_blank" rel="noopener">http://www.w3cplus.com/</a></p>
-<p><a href="https://www.nihaoshijie.com.cn/index.php/page/3" target="_blank" rel="noopener">https://www.nihaoshijie.com.cn/index.php/page/3</a><br><a href="http://jixianqianduan.com/page6/" target="_blank" rel="noopener">http://jixianqianduan.com/page6/</a><br><a href="http://www.css88.com/archives/category/js-and-ria" target="_blank" rel="noopener">http://www.css88.com/archives/category/js-and-ria</a></p>
-<p><a href="http://www.w3cplus.com/solution/index/index.html" target="_blank" rel="noopener">http://www.w3cplus.com/solution/index/index.html</a><br><a href="https://github.com/csswizardry/inuit.css/tree/master/base" target="_blank" rel="noopener">https://github.com/csswizardry/inuit.css/tree/master/base</a><br><a href="https://github.com/GumbyFramework/Gumby" target="_blank" rel="noopener">https://github.com/GumbyFramework/Gumby</a><br><a href="http://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">http://www.shejidaren.com/css-written-specifications.html</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -2026,6 +1516,516 @@ http://www.alloyteam.com/2015/08/mobile-phone-location-on-the-sensor/
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2016/12/22/HTML、CSS深入理解/">HTML、CSS深入理解</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/22/HTML、CSS深入理解/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-22T02:10:21.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/HTML-CSS/">HTML+CSS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>—————– CSS —————–</p>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><pre><code>内联元素与块元素的区别
+
+    内联元素: 
+
+        1、与其它内联元素都在并列同一行     
+
+        2、不能设置宽、高
+
+        3、不能设置上下外边距、内边距 margin-top、margin-bottom 和  padding-top、padding-bottom ，设置内边距也不会撑起父级高度
+
+    块元素: 
+
+        1、不指定宽度，会继承父元素的宽度，每个块元素都是独立一行
+
+        2、元素的宽高都可以设置，如果不设置宽度就为100%;
+
+
+1、display属性: 
+
+    1）inline: 内联元素        2）block: 块元素
+
+    3）inline-block: 具有block的宽高特性，又具有inline的同行元素特性
+
+    4）table-cell: 文字的垂直居中，类似表格的单元格
+
+    5）box: 弹性盒模型的过渡版本，现在用flex替换
+
+    5）flex: flex是一个弹性布局的最新版本，老版本使用的box
+
+            flex布局，子元素的float、clear、vertical-align属性将失效
+
+            主要属性有两大类: 容器属性和项目属性
+
+
+2、float 浮动
+
+    left、right 左右浮动  浮动问题: 会使父级的高度失效，使用清除浮动来解决
+
+
+3、clear 清除浮动
+
+    both: 不允许有浮动对象     left: 不允许左边有浮动        right: 不允许有右边浮动
+
+    /* 清除浮动 */
+    .ks-clear:after, .clear:after {
+        content: &apos;\20&apos;;
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    .ks-clear, .clear {
+        *zoom: 1;
+    }
+
+
+4、visibility 隐藏时可以保留元素的空间, display不会保留
+
+    visible: 可视        hidden: 对象隐藏
+
+
+5、overflow 
+
+    overflow-x、overflow-y: 分别处理水平或垂直
+
+    1）hidden: 隐藏溢出的内容
+
+    2）scroll: 溢出的内容以滚动条显示
+</code></pre><h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><pre><code>1、padding: 内边距 padding不支持负值
+
+2、margin: 外边距 支持负值
+
+    margin存在的问题: 
+
+    1) 适用于block元素，不起作用的absolute、fixed、inline、table-cell元素
+
+    2) margin-top和margin-bottom 兄弟之间的会重叠
+
+        解决方法:
+            1、给当前元素加浮动 float: left
+            2、给当前元素加 
+
+    3) margin-top: 会影响到父元素（标准浏览器会影响，IE正常）
+
+        解决方法: 给父元素加一个padding、border或overflow:hidden 即上面代码里的注释部分
+
+
+3、border: 边框线
+</code></pre><h4 id="position-定位"><a href="#position-定位" class="headerlink" title="position 定位"></a>position 定位</h4><pre><code>1、absolute: 绝对定位，查找父子以上的元素是否定义了position，如果没有就以window为定位基准
+
+2、relative: 相对定位
+
+3、fixed: 始终以window为定位，固定到屏幕的某个位置，浏览器滚动也跟随
+
+4、static: 
+
+5、z-index: 层级堆叠顺序，值越高越在最上面，最小值为0，最大值为2147483647
+</code></pre><h4 id="background-背景"><a href="#background-背景" class="headerlink" title="background 背景"></a>background 背景</h4><pre><code>1、background-attachment: 背景图是随着滚动还是固定
+
+    fixed: 相对窗体固定
+
+    scroll: 背景图以元素固定，元素内容滚动时图像不会跟随滚动
+
+2、transparent: 背景透明
+
+background-color: 背景颜色 
+background-image: 背景图片
+background-repeat: 背景重复
+background-position: 背景位置
+</code></pre><h4 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h4><pre><code>1、word-spacing: 单词与单词之间的间隔
+
+2、letter-spacing: 字母与字母之间的间隔
+
+3、word-wrap: IE的私有   属性允许长单词或 URL 地址换行到下一行    @ break-word 在需要换行时才换
+
+4、word-break: 文字换行
+
+    break-all: 让英文象中文一样可以在行内做任意字间换行
+
+    keep-all: 让中文向英文的换行方式接近，只在空格或英文标点符号才换行
+
+
+5、white-space: 属性设置如何处理元素内的空白
+
+6、text-overflow: 文本的溢出隐藏  @ellipsis 用点来表示
+
+    p {width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+
+
+7、text-indent: 文本的首行缩进
+
+8、vertical-align: 文本的对齐方式
+
+    * 只应用于inline水平以及table-cell元素  别把他放到div或p的块元素内
+
+    1、线类
+
+        baseline: 默认，元素的基线与父元素的基线对齐
+
+        top、bottom、middle: 居上、下、中
+
+    2、文本
+
+        text-top、text-bottom: 
+
+    3、上标下标类
+
+        super: 上标   sub: 下标   不过位置都不太兼容，需要重写
+
+    4、数值百分比
+
+        vertical-align: 20px;
+
+
+9、color: 文本颜色
+
+10、text-align: 文本对齐 left right center justify
+
+11、text-decoration: 文本装饰 overline 上划线  underline 下划线  line-through 从中间穿过的线
+
+12、direction: 文字方向 rtl 从右向左    ltr 从左向右
+
+13、line-height: 行高
+</code></pre><h4 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h4><pre><code>table: margin可以使用，除非设置 display: inline-table
+
+1、border-collape: 表格或单元格边框合并到一起
+
+    separate: 边框独立        collapse: 相邻合并
+
+2、border-spacing: 表格或单元格之间的距离
+
+表格单线条:
+
+    .tab { border-spacing: 0;  border-collapse: collapse;}
+    .tab td, .tab th { border-collapse: collapse; border: 1px #ccc solid; border-spacing: 0; padding: 10px 20px; }
+</code></pre><h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><pre><code>rem: 是相对于根元素(html)的font-size值为基准，em是相对父级元素变化，px是物理像素
+
+em: 相对长度
+</code></pre><h4 id="语法与规则"><a href="#语法与规则" class="headerlink" title="语法与规则"></a>语法与规则</h4><pre><code>1、!important 提升优先级
+
+2、@import url(&quot;global.css&quot;); 导入外部样式表
+
+3、@charset &apos;uft-8&apos; 编码
+</code></pre><h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><pre><code>p{...} 元素选择器
+
+.className{...} 类选择器
+
+#idName{...} id选择器
+
+.user[id=&apos;username&apos;]{...} 属性选择器
+
+.claA .claB{...} 后代选择器
+
+.clsA &gt; .clsB {...} 子选择器
+
+.clsA + .clsB {...} 相邻选择器
+
+.clsA, .clsB{...} 选择器分组
+</code></pre><h4 id="伪类、伪元素"><a href="#伪类、伪元素" class="headerlink" title="伪类、伪元素"></a>伪类、伪元素</h4><pre><code>伪类 用于向某些选择器添加特殊效果
+
+    a:link: 未被访问过
+    a:visited: 已经被访问的链接
+    a:hover: 鼠标指针移动到的链接
+    a:active: 被点击的链接
+
+    :first-childe: 向元素的第一个子元素添加样式
+
+
+伪类元素 用于向某些选择器添加特殊效果
+
+    :first-letter: 设置第一个字符的样式属性  ::first-letter
+
+    :first-line: 设置第一行的样式    ::first-line
+
+    :before 和 :after: 用于在元素前和元素后配置content属性添加内容    ::before   ::after
+
+        .box::before { content: &apos;这里是在box元素之前显示&apos;}
+        .box::after { content: &apos;这里是在box元素之后显示&apos; }
+
+
+css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
+
+    : 用于css2的伪类，:: 用于css3的伪类
+</code></pre><h4 id="css基础属性"><a href="#css基础属性" class="headerlink" title="css基础属性"></a>css基础属性</h4><pre><code>字体
+
+    font-size: 字体大小
+
+    font-family: 使用的字体
+
+    font-style: 字体风格  @ italic 斜体
+
+    font-weight: 字体重量
+
+    font: 简写 
+
+        按顺序 也可以设置第六个值为line-hgith
+        font-style
+        font-variant
+        font-weight
+        font-size/line-height
+        font-family
+
+
+链接
+
+    a:link: 未被访问过
+
+    a:visited: 已经被访问的链接
+
+    a:hover: 鼠标指针移动到的链接
+
+    a:active: 被点击的链接
+
+
+列表
+
+    list-style-image: 将图像设置为列表标志
+
+    list-style-position: 标志的位置
+
+    list-style-type: 标志类型  @circle 圆  @square 方块
+
+    list-style: 简写属性
+
+
+尺寸
+
+    width、height: 宽高
+
+    max-width、max-height: 最大宽高
+
+    min-width、min-height: 最小宽高
+
+
+透明度
+
+    opacity: 0.4;
+
+    filter: alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+</code></pre><h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><pre><code>1、body高度为100%，html继承了浏览器的高度，body继承了html的高度，这样body就为100%了
+
+    html{ height: 100%; }
+    body { height: 100%; margin: 0;}
+
+
+2、浏览器hack
+
+    .box { width: 100px\9; }
+
+    浏览器（加粗表示支持）    CSS hack
+    IE6        _background-color:#38DB24;
+    IE67    *background-color:#38DB24;
+    IE67    +background-color:#38DB24;
+    IE67    #background-color:#38DB24;
+    IE67    background-color:#38DB24 !ie;
+    IE678910    background-color:#38DB24\9;
+    IE78910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;body .ie78910-all-hack { background-color: #38DB24 }
+    IE8910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;/**/body .ie8910-all-hack { background-color: #38DB24 }
+    IE8910&amp;Opera    background-color:#38DB24\0;
+    IE910    :root .ie910-hack { background-color:#38DB24\9; }
+    IE910    background-color:#38DB24\9\0;
+    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    body:nth-of-type(1) .ie910-all-hack {background-color:#38DB24 ;}
+    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-2-hack{ background-color:#38DB24 ;} }
+    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-3-hack{background-color:#38DB24 ;} }
+    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    :root *&gt; .ie910-all-4-hack { background-color:#38DB24 }
+    IE10    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { .ie10-hack{background-color:#38DB24 ;} }
+    Firefox    @-moz-document url-prefix() { .firefox-hack{background-color:#38DB24 ;} }
+    Chrome&amp;Safari    @media screen and (-webkit-min-device-pixel-ratio:0) {.chrome-safari-hack{background-color:#38DB24 ;} }
+
+
+3、条件注释
+
+    lt : 就是Less than的简写，也就是小于的意思。
+
+    lte : 就是Less than or equal to的简写，也就是小于或等于的意思。
+
+    gt : 就是Greater than的简写，也就是大于的意思。
+
+    gte: 就是Greater than or equal to的简写，也就是大于或等于的意思。
+
+    !: 就是不等于的意思，跟javascript里的不等于判断符相同。
+
+    1、只有IE能识别
+        &lt;!--[if IE]&gt;
+            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;
+        &lt;![endif]--&gt;
+
+    2、指定版本
+        &lt;!--[if IE 8]&gt; 
+            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+        &lt;![endif]--&gt;
+
+    3、低于指定版本才能识别
+        &lt;!--[if lt IE 7]&gt; 
+            &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;my.css&quot; /&gt;   
+        &lt;![endif]--&gt;
+
+
+4、layout: IE的私有概念
+
+5、zoom: 用于处发layout
+
+    zoom: 1;
+</code></pre><h4 id="CSS-Sprites"><a href="#CSS-Sprites" class="headerlink" title="CSS Sprites"></a>CSS Sprites</h4><pre><code>http://alloyteam.github.io/gopng
+
+http://fis.baidu.com
+
+http://gruntjs.com
+</code></pre><p>—————– HTML —————–</p>
+<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><pre><code>1、&lt;!DOCTYPE html&gt; 声明文档解析类型，指定浏览器用哪个版本来解析页面
+
+    解析类型有两种模式:  
+
+    1、怪异模式: 浏览器使用自己的怪异模式解析渲染页面（如果不声明doctype就是怪异模式）
+
+    2、标准模式: 使用严格模式，以W3C的标准解析渲染页面
+
+    HTML 4.01 规定了三种文档类型: Strict、Transitional 以及 Frameset。
+
+
+2、&lt;html&gt; 定义文档  &lt;body&gt; &lt;head&gt; 定义文档信息
+
+3、&lt;title&gt;、&lt;style&gt;
+
+4、&lt;meta&gt;: 文档元信息
+
+5、&lt;link&gt;: 文档与外部资源
+
+6、&lt;script&gt;: 定义脚本
+
+7、&lt;div&gt;
+
+8、&lt;iframe&gt;: 内联框架
+
+9、&lt;img&gt;: 定义图像
+
+字体:
+
+10、&lt;p&gt;: 段落
+
+11、&lt;span&gt;: 文档中的节
+
+12、&lt;a&gt;: 定义锚，属性 href、title
+
+13、&lt;b&gt;: 定义粗体
+
+14、&lt;i&gt;: 斜体
+
+15、&lt;em&gt;&lt;strong&gt;: 强调内容 斜体、粗体
+
+16、&lt;u&gt;: 下划线文字
+
+17、&lt;big&gt;、&lt;small&gt; 大字体和小字体   
+
+    &lt;h2&gt;标准属性&lt;small&gt;id, class, title, style, dir, lang&lt;/small&gt;&lt;/h2&gt;
+
+18、&lt;bdo&gt; 定义字体显示的方法 
+
+    文字翻转显示 &lt;bdo dir=&quot;rtl&quot;&gt;Here is some text&lt;/bdo&gt;  
+
+19、&lt;br&gt;: 换行
+
+20、&lt;del&gt;: 被删除的文本
+
+21、&lt;hr&gt;: 定义水平线
+
+22、&lt;ins&gt;: 定义被插入文本
+
+23、&lt;sub&gt;: 下标文本
+
+24、&lt;sup&gt;: 上标文本
+
+25、&lt;var&gt;: 文本的变量部分
+
+26、&lt;code&gt;&lt;pre&gt;
+
+标题
+
+27、&lt;h1&gt;...&lt;h6&gt;    
+
+列表
+
+28、&lt;ul&gt;: 无序列表
+
+29、&lt;ol&gt;: 有序列表
+
+30、&lt;li&gt;: 列表的项目
+
+31、&lt;dl&gt;、&lt;dt&gt;、&lt;dd&gt;: 定义列表
+
+表单
+
+32、&lt;form&gt;
+
+33、&lt;fieldset&gt;、&lt;legend&gt;: 定义围绕表单中元素的边框。
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;健康信息&lt;/legend&gt;
+        身高: &lt;input type=&quot;text&quot; /&gt;
+    &lt;/fieldset&gt;
+
+34、&lt;input&gt;
+
+35、&lt;label&gt;: input元素的标注
+
+36、&lt;select&gt;: 下拉菜单 &lt;option&gt;菜单内容
+
+37、&lt;button&gt;: 按钮
+
+38、&lt;textarea&gt;: 多行文本
+
+表格
+
+39、&lt;table&gt;
+
+40、&lt;tr&gt;、&lt;td&gt;: 行、列
+
+41、&lt;caption&gt;: 定义表格标题
+
+42、&lt;th&gt;: 表格头单元
+
+43、&lt;thead&gt;、&lt;tbody&gt;、&lt;tfoot&gt;: 表格头和主体
+
+窗口框架
+
+44、&lt;frame&gt;: 定义框架集窗口或框架
+
+45、&lt;frameset&gt;: 定义框架集
+
+46、&lt;object&gt;、&lt;param&gt;
+</code></pre><blockquote>
+<p>参考资料</p>
+<p><a href="http://www.css88.com/book/css/" target="_blank" rel="noopener">http://www.css88.com/book/css/</a><br><a href="http://www.w3cplus.com/" target="_blank" rel="noopener">http://www.w3cplus.com/</a></p>
+<p><a href="https://www.nihaoshijie.com.cn/index.php/page/3" target="_blank" rel="noopener">https://www.nihaoshijie.com.cn/index.php/page/3</a><br><a href="http://jixianqianduan.com/page6/" target="_blank" rel="noopener">http://jixianqianduan.com/page6/</a><br><a href="http://www.css88.com/archives/category/js-and-ria" target="_blank" rel="noopener">http://www.css88.com/archives/category/js-and-ria</a></p>
+<p><a href="http://www.w3cplus.com/solution/index/index.html" target="_blank" rel="noopener">http://www.w3cplus.com/solution/index/index.html</a><br><a href="https://github.com/csswizardry/inuit.css/tree/master/base" target="_blank" rel="noopener">https://github.com/csswizardry/inuit.css/tree/master/base</a><br><a href="https://github.com/GumbyFramework/Gumby" target="_blank" rel="noopener">https://github.com/GumbyFramework/Gumby</a><br><a href="http://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">http://www.shejidaren.com/css-written-specifications.html</a></p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2016/12/22/移动端的那些积累/">移动端的那些积累</a>
         </h1>
         
@@ -2776,449 +2776,6 @@ function yaoAfter(){
 3、sublime的px转rem的插件   https://github.com/flashlizi/cssrem
 </code></pre><p>| <a href="http://www.uigreat.com/page/guifan" target="_blank" rel="noopener">http://www.uigreat.com/page/guifan</a>            // 移动端屏幕尺寸集合<br>| <a href="http://cubic-bezier.com/#.55,.01,.38,.99" target="_blank" rel="noopener">http://cubic-bezier.com/#.55,.01,.38,.99</a>         // 调节css3动画效果并导出代码<br>| <a href="https://segmentfault.com/a/1190000007075834" target="_blank" rel="noopener">https://segmentfault.com/a/1190000007075834</a>   // Retina屏<br>| <a href="http://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;mid=404009356&amp;idx=1&amp;sn=e3218b95b78a5f043e7b0e3df49703d3&amp;scene=4#wechat_redirect" target="_blank" rel="noopener">http://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;mid=404009356&amp;idx=1&amp;sn=e3218b95b78a5f043e7b0e3df49703d3&amp;scene=4#wechat_redirect</a><br>| <a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="noopener">http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html</a><br>| <a href="http://www.alloyteam.com/2016/03/mobile-web-adaptation-tool-rem/#prettyPhoto" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/mobile-web-adaptation-tool-rem/#prettyPhoto</a>  rem</p>
 
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/19/BOM/">BOM</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/19/BOM/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h4><pre><code>BOM   浏览器对象模型    B - Browser    O - Object     M - Model
-
-BOM包含: history、location、navigator、screen 对象
-</code></pre><h4 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h4><pre><code>1、hash: 返回hash值
-
-    https://xxx.com/#sdfsdf       // &apos;#sdfsdf&apos;
-
-2、host: 返回主机地址  &apos;xxx.com&apos;
-
-3、hostname: 返回主机名  &apos;xxx.com&apos;
-
-4、href: 整个url地址  &quot;https://xxx.com/search?q=BOM&quot;
-
-5、origin: 起源  &apos;https://xxx.com&apos;
-
-6、pathName: 路由名
-
-    &quot;https://xxx.com/search?q=BOM&quot;   &apos;/search&apos;
-
-7、port: 端口
-
-8、protocol: 协议  &apos;https&apos;
-
-9、search: 参数 &apos;?q=BOM&apos;
-
-10、reload(): 刷新浏览器
-
-    location.reload(); // 重新加载（有可能从缓存中加载）
-    location.reload(true); // 重新加载（从服务器重新加载）
-</code></pre><h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><pre><code>1、width、height: 整天个屏幕的宽、高
-
-2、avaiWidth、avaiHeight: 返回显示屏幕的宽、高 除dock和系统上面的菜单栏
-
-3、pixelDepth: 返回显示屏幕的颜色分辨率
-
-4、updateInteval: 设置或返回屏幕刷新率
-</code></pre><h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><pre><code>1、length: 历史记录的个数
-
-2、go(): 指定跳转的历史、-1后退一页，1前进一页
-
-3、back()、forward(): 后退和前进一页
-</code></pre><h4 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h4><pre><code>1、appCodeName: 浏览器代码名 &apos;Mozilla&apos;
-
-2、appName: 浏览器名称    &apos;Netscape&apos;
-
-3、appVersion: 浏览器版本  &apos;5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36&apos;
-
-4、browserLanguage: 浏览器语言
-
-5、cookieEnabled: 是否启用了cookie 返回Boolean
-
-    如果浏览器关闭cookie，当获取cookie时， document.cookie 返回的是空字符串
-
-6、cpuClass: 返回浏览器系统的cpu等级
-
-8、onLine: 是否处于脱机模式，Boolean
-
-9、platform: 浏览器的操作平台
-
-10、systemLanguage: 系统语言
-
-11、userAgent: 客户机发送服务器的 user-agent 头部的值
-
-12、userLanguage: 返回 OS 的自然语言设置
-
-
-** 检测插件  ie无效
-function hasPlugin(name){
-    name = name.toLowerCase();
-    for (var i = 0; i &lt; navigator.plugins.length; i ++){
-        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1){
-            return true;
-        }
-    }
-    return false;
-}
-
-** 检测Flash
-function hasPlugin(name){
-    name = name.toLowerCase();
-    for (var i = 0; i &lt; navigator.plugins.length; i ++){
-        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1){
-            return true;
-        }
-    }
-    return false;
-}
-
-function hasIEPlugin(name){
-    try{
-        new ActiveXObject(name);
-        return true;
-    }catch(ex){
-        return false;
-    }
-}
-
-function hasFlash(){
-    var result = hasPlugin(&quot;Flash&quot;);
-    if (!result){
-        result = hasIEPlugin(&quot;ShockwaveFlash.ShockwaveFlash&quot;);
-    }
-    return result;
-}
-
-console.log(hasFlash()) //true
-</code></pre><h4 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h4><pre><code>1、window.open(url, target, param): 打开一个新窗口
-
-2、window.close(): 关闭一个窗口
-
-3、setInterval()、clearInterval()
-
-4、setTimeout()、clearTimeout()
-
-5、screenLeft、screenTop: 浏览器当前窗口居屏幕的左、上角的位置  
-
-    兼容:
-    screenLeft || screenX
-    screenTop || screenY
-
-6、innerWidth、innerHeight: 浏览器可视区的宽高、包括滚动条
-
-    let winHeight = window.innerHeight;
-
-7、moveTo(x, y): 移动到屏幕左上角的位置
-
-8、moveBy(0, 100): 向下移动100像素
-
-9、resizeTo(x,y)、resizeBy(w, h)
-</code></pre><h4 id="offset-页面元素偏移量"><a href="#offset-页面元素偏移量" class="headerlink" title="offset 页面元素偏移量"></a>offset 页面元素偏移量</h4><pre><code>1、offsetWidth、offsetHeight: 获取当前元素宽高，相当于 width + padding + border
-
-2、offsetLeft、offsetTop: 获取元素到父级元素定位的左、上偏移，如果父级不是定位就以body元素为定位
-
-3、offsetParent: 获取最近一个带有定位的父级元素
-
-4、clientWidth、clientHeight: 元素本身的宽高、不包括padding和border
-
-    兼容
-    document.documentElement.clientWidth || document.body。clientWidth
-    document.documentElement.clientHeight || document.body。clientHeight
-</code></pre><h4 id="scroll-滚动类"><a href="#scroll-滚动类" class="headerlink" title="scroll 滚动类"></a>scroll 滚动类</h4><pre><code>窗口滚动条或带滚动条元素
-
-1、scrollWidth、scrollheight: 对象内部实际内容的宽、高
-
-2、scrollTop、scrollLeft: 被卷部分的顶部和左侧部分
-
-    只挂载到了Element元素中，window和document下都没有
-
-    let topValue = document.documentElement.scrollTop || document.body.scrollTop;       // 获取整个页面巻上去的高度和兼容方法
-
-    let topValue = document.querySelector(&apos;#sider&apos;).scrollTop;      // 针对某个元素
-
-
-3、onscroll: 侦听滚动条事件
-</code></pre><h4 id="client-鼠标所在的可视区坐标"><a href="#client-鼠标所在的可视区坐标" class="headerlink" title="client 鼠标所在的可视区坐标"></a>client 鼠标所在的可视区坐标</h4><pre><code>1、clientX、clientY: 获取鼠标可视区的位置  clientX = width + padding
-
-2、clientLeft、clientTop: 获取鼠标在可视区域的位置
-
-3、pageX、pageY: 获取鼠标在页面中的位置， pageX = clientX + 页面滚动出的距离
-
-node.onclick = function(evt){
-    let evt = evt || window.evnet;
-    console.log(evt.pageX, evt.pageY);
-    console.log(evt.pageX, evt.pageY);
-}
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、target: 点击的目标阶段事件，ie8之前使用srcElement
-
-    var oT = evt.target || srcElement; console.log(oT);     // &lt;p&gt;xxxx&lt;/p&gt;
-
-2、currentTarget: 事件流的捕获，目标及冒泡阶段
-
-3、addEventListener()、attachEvent(): 注册事件
-
-    addEventListener(&apos;click&apos;, fn, false);
-</code></pre>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/19/正则表达式/">正则表达式</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/19/正则表达式/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="特殊字符和转义序列"><a href="#特殊字符和转义序列" class="headerlink" title="特殊字符和转义序列"></a>特殊字符和转义序列</h4><pre><code>1、[...] 位于括号内的任意字符            
-
-    /[abcde]/.test(&apos;aboot&apos;);     // 只要含有任意一个字符返回 true
-
-    /a[bo]t/.test(&apos;abot&apos;);        // false 中间只能含有其中一个字符，匹配&apos;abt&apos;或&apos;aot&apos;
-
-2、[^...] 不在括号中之中的任意字符
-
-    /a[^bo]t/.test(&apos;ast&apos;);        // true a|t之间不含有b、o期中一个字符
-
-*3、. 除了换行和Unicode行止符之外的任意字符
-
-    /a.t/.test(&apos;a*t&apos;);        // true , &apos;a\nt&apos;换行false，使用 \.来进行转义
-
-4、\w 任何ASCII字符,等于[a-zA-Z0-9_]
-
-    /\w/.test(&apos;think&apos;);        // true, 不含有其它字符
-
-5、\W 任何非ASCII字符单字字符，等于[^a-zA-Z0-9_]
-
-    /\w/.test(&apos;think&apos;);        // false, 至少需要有一个特殊字符
-
-6、\s 任何空格
-
-    /\s/.test(&apos;I think&apos;);    // true
-
-7、\S 不包含空格
-
-    /\s/.test(&apos;I think&apos;);    // false, 非空格为true
-
-8、\d 任何数字，等于[0-9]
-
-9、\D 除了数字之外的任意字符
-
-* 10、\b 独立部分 
-
-* 11、\B 独立部分 
-</code></pre><h4 id="指定匹配的位置"><a href="#指定匹配的位置" class="headerlink" title="指定匹配的位置"></a>指定匹配的位置</h4><pre><code>1、^ 匹配字符串的开头
-
-    /^ab/.test(&apos;absolute&apos;);        // true 以ab开头
-
-2、$ 匹配字符串的结尾
-
-    /te$/.test(&apos;absolute&apos;);        // true 以te结尾
-
-* 3、? ! 一个反前向声明者，含义与反前向声明相反
-</code></pre><h4 id="选择、分组和引用"><a href="#选择、分组和引用" class="headerlink" title="选择、分组和引用"></a>选择、分组和引用</h4><pre><code>1、| 用于分隔选择的字符，相当于或
-
-    /oa|on|op/.test(&apos;option&apos;);    // true，只要带有oa、on、op都匹配
-
-2、(...) 分组，相当于并且
-
-    /(\d+&amp;)([a-zA-Z]+%)/.test(&apos;1234&amp;abcde%&apos;);        // true, 必须包含数据+&amp;，并且还包含英文字母+%
-
-* 3、(?...) 只组合，把项组合到一个单元，但不记忆与该组匹配的字符
-
-    (?:):
-
-    (?!):
-
-    (?&lt;=):
-
-    (?&lt;!):
-</code></pre><h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><pre><code>1、{ } 匹配一个字符的重复  **** 注意{3,10} 逗号后不能有空格, 如{3, 10}        
-
-    /^\d{1,3}$/: 最少2个数字，最多4个数字
-
-    /^\d{4,}$/: 最少有4个数字
-
-    /^\d{4}$/: 只能有4个数字
-
-2、* 表示0次或多次重复,等价于{0, }    /^\d*$/
-
-3、？最少0次, 最多1次重复，等价于{0,1}   
-
-4、+ 表示最少出现1次，等价于{1,}
-
-5、\1、\2 重复的子项
-
-    var reg = /(a)(b)(c)\1/;
-    var str = &quot;abca&quot;;
-
-    // 返回 true： \1是重复第一个子项(a)，相当于/(a)(b)(c)(a)/.     \2就是第二项(b)
-    console.log(reg.test(str));
-</code></pre><h4 id="修饰符，高级匹配"><a href="#修饰符，高级匹配" class="headerlink" title="修饰符，高级匹配"></a>修饰符，高级匹配</h4><pre><code>1、g 匹配的是全局，检索字符串的所有匹配
-
-    如果不加g只匹配第一个后就退出
-
-    let reg = /你妈的|去你妈|傻逼/g;
-    let content = &apos;你妈的房子傻逼是用来住的你妈的不是用来炒的去你妈的吧&apos;;
-    content = content.replace(reg, &apos;***&apos;);
-    console.log(content)            // ***房子***是用来住的***不是用来炒的***的吧
-
-2、i 匹配忽略大小写
-
-    /java/i.test(&apos;JavdaScript&apos;);        // true
-
-3、m 进行多行匹配
-</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>1、match(reg) 将匹配结果返回一个数组
-
-    var arr = &apos;123kasdo34kk234k234234k&apos;.match(/\d+/g);        // 如果不加g，只返回第一个
-    console.log(arr);        // [&quot;123&quot;, &quot;34&quot;, &quot;234&quot;, &quot;234234&quot;]
-
-2、test() 如果没有匹配返回false否则返回true
-
-3、search(reg) 查找并返回所在的位置，如果没有匹配的返回-1
-
-    var result = &apos;房地产行业究竟是白银时代还是钻石时代&apos;.search(/钻石/); 
-    console.log(result);        // 返回 8
-
-4、content.replace(reg, str) 用于执行检索和替换操作
-
-5、exec() [ɪɡ&apos;zek] 如果找到返回一个数组并存放匹配的结果，如果没有找到返回null
-
-    var result = /白银|钻石/g.exec(&apos;房地产行业究竟是白银时代还是钻石时代&apos;); 
-    console.log(result);        // [&apos;&apos;]
-</code></pre><h4 id="整理经验"><a href="#整理经验" class="headerlink" title="整理经验"></a>整理经验</h4><pre><code>1、如果检查全部需要前后加匹配
-
-    /\d+/  只对字符中存在数字就匹配
-
-    /^\d+$/  对字符中全部为数字的进行匹配
-
-
-2、test()、exec()是对每一个字符串进行匹配，如果为true就不会往下执行，并返回true
-
-    例如: 匹配字符中不能带有.字符
-    /[^\.]/.test(&apos;123123.&apos;);    // 返回true，因为第一个字符就不是.返回true不在往下执行
-
-    /[\.]/.test(&apos;23412.34&apos;);    // 如果存在就返回true
-    或者
-    /^[^\.]$/g.test(&apos;asdfa.sdf&apos;) // 返回true
-
-3、| 或符号只能用到()中，不能在[]中使用
-</code></pre><h4 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h4><pre><code>1、密码强度
-
-    // 弱密码 - 纯数字、纯字母或纯特殊字符
-    /^(?:\d+|[a-zA-Z]+|[!@#$%^&amp;*]+)$/
-
-    // 中密码 - 字母+数字，字母+特殊字符，数字+特殊字符
-    /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&amp;*]+$)[a-zA-Z\d!@#$%^&amp;*]+$/
-
-    // 强密码 - 必须有数字、小写字母、大写字母和特殊字符
-    /^(?=.*((?=[!@#$%^&amp;*_]+)[^A-Za-z0-9]))(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,16}$/
-
-
-2、手机号码验证
-
-    /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139|186|185|170|156|155|130|131|132|189|180|170|153|133)(\d){8}$/.test(&apos;13012345678&apos;)
-
-    移动号段: /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139)(\d){8}$/;     
-
-    联通号段: /^(186|185|170|156|155|130|131|132)(\d){8}$/
-
-    电信号段: /^(189|180|170|153|133)(\d){8}$/
-
-
-3、验证Email - /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-
-4、验证中文 - /^[\u4e00-\u9fa5]+$/
-
-5、域名验证 - /^(http(s)?:\/\/)(www)?\.\w+\.(com|cn|net|org)$/
-
-6、手机号前带86或是+86 - /^((\+86)|(86))?(13)\d{9}$/
-
-7、电话号码与手机号码同时验证 - /(^(\d{3,4}-)?\d{7,8})$|(13[0-9]{9})/
-
-8、验证IP地址 - /^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/;    //  匹配0-255, 匹配&apos;255.255.255.255&apos;
-
-9、邮政编码 - /[1-9]{1}(\d+){5}/
-
-10、身份证号码 - /\d{18}|\d{15}/
-
-11、双字节字符串(汉字) - /[^\x00-\xff]*/
-
-12、去除两端空格 - /^\s*|\s*$/
-
-数字正则
-
-    /^\d+$/ - 非负整数（正整数 + 0)
-
-    /^[1-9](\d)+$/ - 正整数(不可以以0开头)  
-
-    /^-(\d)+$/ - 非正整数（负整数 + 0） 
-
-    /^-[1-9]?(\d){0,}$/ - 负整数(-12345), 不可以-012312
-
-    /^[1-9]?(\d)+\.(\d)+$/ - 浮点数   
-
-    ^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$    //正浮点数   
-    ^((-\\d+(　　//非正浮点数（负浮点数 + 0）   
-    ^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$  //负浮点数  
-
-    /^[A-Za-z]+$/ - 由26个英文字母组成的字符串   
-
-    /^[A-Z]+$/ - 由26个英文字母的大写组成的字符串   
-
-    /^[a-z]+$/ - 由26个英文字母的小写组成的字符串  
-
-    /^[A-Za-z0-9]+$/ - 由数字和26个英文字母组成的字符串   
-
-    /^\w+$/ - 由数字、26个英文字母或者下划线组成的字符串
-</code></pre>
         
     </section>
 </article>
@@ -4231,11 +3788,11 @@ js中事件模型来替代传统的发布订阅模式
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/19/DOM/">DOM</a>
+            <a href="/2016/12/19/正则表达式/">正则表达式</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/19/DOM/">
+            <a class="article-date" href="/2016/12/19/正则表达式/">
     
     <i class="icon-calendar"></i>
     
@@ -4254,286 +3811,207 @@ js中事件模型来替代传统的发布订阅模式
     
     <section class="article-body markdown-body">
         
-        <h4 id="DOM介绍"><a href="#DOM介绍" class="headerlink" title="DOM介绍"></a>DOM介绍</h4><pre><code>DOM 文档对象模型     D - Document      O - Object      M - Model
-</code></pre><h4 id="Node-对象属性"><a href="#Node-对象属性" class="headerlink" title="Node 对象属性"></a>Node 对象属性</h4><pre><code>1、nodeType: 节点类型
+        <h4 id="特殊字符和转义序列"><a href="#特殊字符和转义序列" class="headerlink" title="特殊字符和转义序列"></a>特殊字符和转义序列</h4><pre><code>1、[...] 位于括号内的任意字符            
 
-    e.target.nodeType 来获取节点的类别
+    /[abcde]/.test(&apos;aboot&apos;);     // 只要含有任意一个字符返回 true
 
-    1、Element 1
+    /a[bo]t/.test(&apos;abot&apos;);        // false 中间只能含有其中一个字符，匹配&apos;abt&apos;或&apos;aot&apos;
 
-    2、Attr  2
+2、[^...] 不在括号中之中的任意字符
 
-    3、Text  3
+    /a[^bo]t/.test(&apos;ast&apos;);        // true a|t之间不含有b、o期中一个字符
 
-    4、注释  8
+*3、. 除了换行和Unicode行止符之外的任意字符
 
-    5、Document 9
+    /a.t/.test(&apos;a*t&apos;);        // true , &apos;a\nt&apos;换行false，使用 \.来进行转义
 
+4、\w 任何ASCII字符,等于[a-zA-Z0-9_]
 
-2、nodeName: 节点名称   返回的是大写 &apos;DIV&apos;
+    /\w/.test(&apos;think&apos;);        // true, 不含有其它字符
 
-3、nodeValue: 节点的类型
+5、\W 任何非ASCII字符单字字符，等于[^a-zA-Z0-9_]
 
-    元素节点的 nodeValue 是 undefined 或 null
-    文本节点的 nodeValue 是文本本身
-    属性节点的 nodeValue 是属性值
+    /\w/.test(&apos;think&apos;);        // false, 至少需要有一个特殊字符
 
-    &lt;p&gt;dfsdfsdf&lt;/p&gt;
+6、\s 任何空格
 
-    let oP = document.querySelector(&apos;p&apos;);   
-    // 这里注意oP是元素如果直接写成oP.nodeValue返回是null，写成oP下的第一个节点才找到文本元素
-    oP.firstChild.nodeValue;            
+    /\s/.test(&apos;I think&apos;);    // true
 
-4、parentNode: 返回当前节点的父节点   e.target.parentNode.nodeName
+7、\S 不包含空格
 
-    document.querySelector(&apos;ul&apos;).parentNode     // &lt;div class=&quot;box&quot;&gt;...&lt;/box&gt;
+    /\s/.test(&apos;I think&apos;);    // false, 非空格为true
 
-5、childNodes、children: 返回所有子节点元素，不包括孙节点
+8、\d 任何数字，等于[0-9]
 
-    &lt;ul id=&quot;list&quot;&gt;
-        &lt;li&gt;111&lt;/li&gt;
-        &lt;li&gt;222&lt;/li&gt;
-        &lt;li&gt;
-            &lt;ul&gt;
-                &lt;li&gt;333&lt;/li&gt;
-                &lt;li&gt;444&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/li&gt;
-    &lt;/ul&gt;
+9、\D 除了数字之外的任意字符
 
-    let oList = document.querySelector(&quot;#list&quot;);
-    let lis = oList.children;
-    for(let i=0; i&lt;lis.length; i++){
-        console.log(lis[i].nodeName);   // output LI LI LI
-    }
+* 10、\b 独立部分 
 
-    ** childeNodes与children区别 ** 
+* 11、\B 独立部分 
+</code></pre><h4 id="指定匹配的位置"><a href="#指定匹配的位置" class="headerlink" title="指定匹配的位置"></a>指定匹配的位置</h4><pre><code>1、^ 匹配字符串的开头
 
-        childeNodes: 包括空行的文本节点, 如果是空行的节点返回是一个text节点
-        children: 不包括空行之类的节点
+    /^ab/.test(&apos;absolute&apos;);        // true 以ab开头
 
-6、hasChildNodes(): 判断是否有子节点，返回Booleanw值
+2、$ 匹配字符串的结尾
 
-7、firstChild、lastChild: 返回子节点的第一个节点、最后一个节点
+    /te$/.test(&apos;absolute&apos;);        // true 以te结尾
 
-    firstChild 相当于 children[0]
+* 3、? ! 一个反前向声明者，含义与反前向声明相反
+</code></pre><h4 id="选择、分组和引用"><a href="#选择、分组和引用" class="headerlink" title="选择、分组和引用"></a>选择、分组和引用</h4><pre><code>1、| 用于分隔选择的字符，相当于或
 
-    lastChilde 相当于 children[node.children.length-1]
+    /oa|on|op/.test(&apos;option&apos;);    // true，只要带有oa、on、op都匹配
 
-    &lt;div id=&quot;car&quot;&gt;&lt;p&gt;aaa&lt;/p&gt;&lt;div&gt;bbb&lt;/div&gt;&lt;span&gt;ccc&lt;/span&gt;&lt;/div&gt;
+2、(...) 分组，相当于并且
 
-    let oCars = document.querySelector(&quot;#car&quot;);
-    console.log(oCars.firstNode, oCars.lastNode);   //&lt;p&gt;aaa&lt;/p&gt; 、 &lt;span&gt;ccc&lt;/span&gt;
+    /(\d+&amp;)([a-zA-Z]+%)/.test(&apos;1234&amp;abcde%&apos;);        // true, 必须包含数据+&amp;，并且还包含英文字母+%
 
-8、previousSibling、nextSibling: 当前节点的前一个节点、后一个节点
+* 3、(?...) 只组合，把项组合到一个单元，但不记忆与该组匹配的字符
 
-    注意: 如果是空行返回的是 text
+    (?:):
 
-9、innerHTML: 获取或修改HTML元素内容
+    (?!):
 
-    Element.innerHTML = &apos;&lt;div&gt;xxxxx&lt;div&gt;&apos;;
+    (?&lt;=):
 
-10、innerText: 获取或修改的是除去html的文本
+    (?&lt;!):
+</code></pre><h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><pre><code>1、{ } 匹配一个字符的重复  **** 注意{3,10} 逗号后不能有空格, 如{3, 10}        
 
-11、outerHTML、outerText: 与innerHTML、innerText相当，不同的是它包含当前节点元素，inner只包含子节点元素
+    /^\d{1,3}$/: 最少2个数字，最多4个数字
 
-12、offsetParent: 获取当前元素定位的父元素  找到基于设置position的父元素
+    /^\d{4,}$/: 最少有4个数字
 
-     document.querySelector(&apos;ul&apos;).offsetParent
-</code></pre><h4 id="Node-对象的方法"><a href="#Node-对象的方法" class="headerlink" title="Node 对象的方法"></a>Node 对象的方法</h4><pre><code>一、节点操作方法
+    /^\d{4}$/: 只能有4个数字
 
-    1、getElementById(): 获取指定ID的元素
+2、* 表示0次或多次重复,等价于{0, }    /^\d*$/
 
-    2、getElementsByTagName(): 获取指定标签名称的所有元素
+3、？最少0次, 最多1次重复，等价于{0,1}   
 
-    3、getElementsByClassName(): 获取指定类名的元素
+4、+ 表示最少出现1次，等价于{1,}
 
-    4、appendChild(): 追加子节点  注意这里插入的是一个节点，而不是HTML的字符串 parent.appendChild(children);
+5、\1、\2 重复的子项
 
-    5、removeChild(): 删除子节点，不能删除孙子节点    (removeNode 只支持IE)
+    var reg = /(a)(b)(c)\1/;
+    var str = &quot;abca&quot;;
 
-        删除节点 并返回删除的节点
-        let oSubCar = document.querSelector(&apos;#subCar&apos;);
-        document.querySelector(&apos;body&apos;).removeChild(oSubCar);        // &lt;div id=&quot;subCar&quot;&gt;...&lt;/div&gt;
+    // 返回 true： \1是重复第一个子项(a)，相当于/(a)(b)(c)(a)/.     \2就是第二项(b)
+    console.log(reg.test(str));
+</code></pre><h4 id="修饰符，高级匹配"><a href="#修饰符，高级匹配" class="headerlink" title="修饰符，高级匹配"></a>修饰符，高级匹配</h4><pre><code>1、g 匹配的是全局，检索字符串的所有匹配
 
-    6、cloneNode(Boolean): 复制节点  如果参数为true复制指定节点下包括所有子节点，如果不写只复制当前节点不手包子节点
+    如果不加g只匹配第一个后就退出
 
-        &lt;div class=&quot;car&quot;&gt;
-            &lt;ul id=&quot;box&quot;&gt;
-                &lt;li&gt;aaa&lt;/li&gt;
-                &lt;li&gt;bbb&lt;/li&gt;
-                &lt;li&gt;ccc&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;subCar&quot;&gt;&lt;/div&gt;
+    let reg = /你妈的|去你妈|傻逼/g;
+    let content = &apos;你妈的房子傻逼是用来住的你妈的不是用来炒的去你妈的吧&apos;;
+    content = content.replace(reg, &apos;***&apos;);
+    console.log(content)            // ***房子***是用来住的***不是用来炒的***的吧
 
-        &lt;script&gt;
-            // 将id=box所有的节点插入到id=subCar中
-            let boxList = document.querySelector(&apos;#box&apos;).cloneNode(true);
-            var oSubCar = document.querySelector(&apos;#subCar&apos;);
-            oSubCar.appendChild(boxList);
-        &lt;/script&gt;
+2、i 匹配忽略大小写
 
-    7、hasAttributes(): 判断当前节点是否拥有属性
+    /java/i.test(&apos;JavdaScript&apos;);        // true
 
-        &lt;div id=&quot;miniCar&quot;&gt;&lt;/div&gt;
-        &lt;div&gt;swsss&lt;/div&gt;
+3、m 进行多行匹配
+</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>1、match(reg) 将匹配结果返回一个数组
 
-        let isAttribute = document.getElementsByTagName(&apos;div&apos;)[1].hasAttributes();
-        console.log(isAttribute);   // false
+    var arr = &apos;123kasdo34kk234k234234k&apos;.match(/\d+/g);        // 如果不加g，只返回第一个
+    console.log(arr);        // [&quot;123&quot;, &quot;34&quot;, &quot;234&quot;, &quot;234234&quot;]
 
-    8、hasChildNodes(): 判断当前节点是否拥有子节点
+2、test() 如果没有匹配返回false否则返回true
 
-    9、insertBefore(newitem, ex): 在指定节点之前插入
+3、search(reg) 查找并返回所在的位置，如果没有匹配的返回-1
 
-        insertAfter(): 这个需要自己来写没有这个方法
+    var result = &apos;房地产行业究竟是白银时代还是钻石时代&apos;.search(/钻石/); 
+    console.log(result);        // 返回 8
 
-        let oMain = document.querySelector(&apos;#main&apos;);
-        let oP = document.querySelector(&apos;p&apos;);
-        let oUl = document.querySelector(&apos;.uls&apos;).cloneNode(true);
-        oMain.insertBefore(oUl, oP);    将ul元素内所有节点复制并插入到oP元素之前
+4、content.replace(reg, str) 用于执行检索和替换操作
 
-    10、replaceChild(newNode, oldNode): 替换节点
+5、exec() [ɪɡ&apos;zek] 如果找到返回一个数组并存放匹配的结果，如果没有找到返回null
 
-        document.querySelector(&apos;body&apos;).replaceChild(oMiniCar, oSubCar)
+    var result = /白银|钻石/g.exec(&apos;房地产行业究竟是白银时代还是钻石时代&apos;); 
+    console.log(result);        // [&apos;&apos;]
+</code></pre><h4 id="整理经验"><a href="#整理经验" class="headerlink" title="整理经验"></a>整理经验</h4><pre><code>1、如果检查全部需要前后加匹配
 
+    /\d+/  只对字符中存在数字就匹配
 
-二、创建元素方法
+    /^\d+$/  对字符中全部为数字的进行匹配
 
-    1、createAttribute(): 创建属性节点
 
-    2、createElement(): 创建元素节点
+2、test()、exec()是对每一个字符串进行匹配，如果为true就不会往下执行，并返回true
 
-    3、createTextNode(): 创建文本节点
+    例如: 匹配字符中不能带有.字符
+    /[^\.]/.test(&apos;123123.&apos;);    // 返回true，因为第一个字符就不是.返回true不在往下执行
 
+    /[\.]/.test(&apos;23412.34&apos;);    // 如果存在就返回true
+    或者
+    /^[^\.]$/g.test(&apos;asdfa.sdf&apos;) // 返回true
 
-三、操作属性方法
+3、| 或符号只能用到()中，不能在[]中使用
+</code></pre><h4 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h4><pre><code>1、密码强度
 
-    1、getAttribute(): 获取属性值
+    // 弱密码 - 纯数字、纯字母或纯特殊字符
+    /^(?:\d+|[a-zA-Z]+|[!@#$%^&amp;*]+)$/
 
-    2、setAttribute(): 设置属性值
-</code></pre><h4 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h4><pre><code>1、style：获取或设置style值   Element.style.color = &apos;blue&apos; 
+    // 中密码 - 字母+数字，字母+特殊字符，数字+特殊字符
+    /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&amp;*]+$)[a-zA-Z\d!@#$%^&amp;*]+$/
 
-2、currentStyle、getCurrentStyle()获取样式中每个属性的值
+    // 强密码 - 必须有数字、小写字母、大写字母和特殊字符
+    /^(?=.*((?=[!@#$%^&amp;*_]+)[^A-Za-z0-9]))(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,16}$/
 
-    var oBox = document.querySelector(&apos;#box&apos;);
-    var getStyle = function(obj, attr){
-        return window.getComputedStyle ? window.getComputedStyle(obj, null)[attr] : obj.currentStyle[attr];
-    }
 
-    var attrTxt = getStyle(oBox, &apos;width&apos;);          // &apos;100px&apos;;
+2、手机号码验证
 
-    注意: (1)中style只能获取元素中的内联样式，而currentStyle、getCurrentStyle()无论是内联样式还是在class中都可以找到
+    /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139|186|185|170|156|155|130|131|132|189|180|170|153|133)(\d){8}$/.test(&apos;13012345678&apos;)
 
-3、getComputedStyle(元素， 伪类): 获取指定元素值，currentStyle（ie独有） 
+    移动号段: /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139)(\d){8}$/;     
 
-    &lt;script&gt;
-        function getStyle(element, attr) {
-            if(window.getComputedStyle) {
-                return window.getComputedStyle(element, null)[attr];
-            } else {
-                return element.currentStyle[attr];
-            }
-        }
+    联通号段: /^(186|185|170|156|155|130|131|132)(\d){8}$/
 
-        // 获取class=position-node元素上的position值
-        var dom = document.querySelector(&quot;.position-node&quot;);
-        var style = getStyle(dom);
-        console.log(style.position);    // 返回relative
-    &lt;/script&gt;
+    电信号段: /^(189|180|170|153|133)(\d){8}$/
 
 
-    *** element.getComputedStyle与element.style的区别
+3、验证Email - /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
 
-    element.getComputedStyle: 只读
-    element.style: 可读写
+4、验证中文 - /^[\u4e00-\u9fa5]+$/
 
-4、className: 获取或设置元素的类名  Element.addClass = &apos;classname&apos;
-</code></pre><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><pre><code>1、write(): 向输出流写文本或html
+5、域名验证 - /^(http(s)?:\/\/)(www)?\.\w+\.(com|cn|net|org)$/
 
-2、document.title: 返回标题
+6、手机号前带86或是+86 - /^((\+86)|(86))?(13)\d{9}$/
 
-4、&quot;javascript:&quot; : 伪协议 来调用javascript http协议(http://)，FTP协议(ftp://)
+7、电话号码与手机号码同时验证 - /(^(\d{3,4}-)?\d{7,8})$|(13[0-9]{9})/
 
-5、对象检测: 可以测试浏览器是否支持当前对象
+8、验证IP地址 - /^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/;    //  匹配0-255, 匹配&apos;255.255.255.255&apos;
 
-    if(document.getElementById){ ...}
-</code></pre><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><pre><code>1、createDocumentFragment: 创建文档碎片
+9、邮政编码 - /[1-9]{1}(\d+){5}/
 
-    Example: 创建节点并插入到body中，如果不使用文档碎片，每次都需要重新插入一次
+10、身份证号码 - /\d{18}|\d{15}/
 
-    var oFragment = document.createDocumentFragment();
-    for(var i = 0 ; i &lt; 10; i ++) {
-        var p = document.createElement(&quot;p&quot;);
-        var oTxt = document.createTextNode(&quot;段落&quot; + i);
-        p.appendChild(oTxt);
-        oFragment.appendChild(p);
-    }
-    document.body.appendChild(oFragment);
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、表单事件：
+11、双字节字符串(汉字) - /[^\x00-\xff]*/
 
-    submit事件
+12、去除两端空格 - /^\s*|\s*$/
 
-    reset事件
+数字正则
 
-    click事件
+    /^\d+$/ - 非负整数（正整数 + 0)
 
-    change事件
+    /^[1-9](\d)+$/ - 正整数(不可以以0开头)  
 
-    focus事件（不冒泡） （IE和ES5支持冒泡的focusin）
+    /^-(\d)+$/ - 非正整数（负整数 + 0） 
 
-    blur事件（不冒泡） （IE和ES5支持冒泡的focusout）
+    /^-[1-9]?(\d){0,}$/ - 负整数(-12345), 不可以-012312
 
-    input事件（ES5 textinput提供更方便的获取输入文字的方案）
+    /^[1-9]?(\d)+\.(\d)+$/ - 浮点数   
 
+    ^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$    //正浮点数   
+    ^((-\\d+(　　//非正浮点数（负浮点数 + 0）   
+    ^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$  //负浮点数  
 
-2、Window事件
+    /^[A-Za-z]+$/ - 由26个英文字母组成的字符串   
 
-    load: 资源全部加载完成后触发事件（图片、css、js）
+    /^[A-Z]+$/ - 由26个英文字母的大写组成的字符串   
 
-    DOMContentLoaded事件: Document对象构建完后就开始调用此事件
+    /^[a-z]+$/ - 由26个英文字母的小写组成的字符串  
 
-    readyStatechage事件:
+    /^[A-Za-z0-9]+$/ - 由数字和26个英文字母组成的字符串   
 
-    unload事件: 关闭borwser的时候触发
-
-    beforeunload事件
-
-    resize: 浏览器窗口发生改变触发
-
-    scroll: 滚动条有变化时触发
-
-
-3、鼠标事件
-
-    click: 点击事件
-
-    dbclick：双击事件
-
-    mouseover: 鼠标移入事件（冒泡）
-
-    mouseout: 鼠标移出事件（冒泡）
-
-    mousedown: 鼠标按下事件
-
-    mouseup: 鼠标放开事件
-
-    contextmenu: 上下文本菜单事件
-
-    mouseenter: 事件（不冒泡）
-
-    mouseleave: 事件（不冒泡）
-
-    mousewheel: 事件（FF DOMMouseScroll事件、DOM3 wheel事件）
-
-
-4、键盘事件
-
-    keydown事件
-
-    keyup事件
-
-    keypress事件
+    /^\w+$/ - 由数字、26个英文字母或者下划线组成的字符串
 </code></pre>
         
     </section>
@@ -5889,15 +5367,15 @@ var od = new Date(&apos;2017-04-27 18:40:00&apos;);   // 指定时间 返回当�
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/07/JS作用域和整理经验/">JS作用域和整理经验</a>
+            <a href="/2016/12/19/DOM/">DOM</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/JS作用域和整理经验/">
+            <a class="article-date" href="/2016/12/19/DOM/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
 </a>
 
             
@@ -5912,398 +5390,627 @@ var od = new Date(&apos;2017-04-27 18:40:00&apos;);   // 指定时间 返回当�
     
     <section class="article-body markdown-body">
         
-        <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>一、示例
+        <h4 id="DOM介绍"><a href="#DOM介绍" class="headerlink" title="DOM介绍"></a>DOM介绍</h4><pre><code>DOM 文档对象模型     D - Document      O - Object      M - Model
+</code></pre><h4 id="Node-对象属性"><a href="#Node-对象属性" class="headerlink" title="Node 对象属性"></a>Node 对象属性</h4><pre><code>1、nodeType: 节点类型
 
-    console.log(str);        // 输出undefined  因为读取的是解析器预先存储的str，还没有被赋值
-    var str = 1;         
+    e.target.nodeType 来获取节点的类别
+
+    1、Element 1
+
+    2、Attr  2
+
+    3、Text  3
+
+    4、注释  8
+
+    5、Document 9
 
 
-二、示例2
+2、nodeName: 节点名称   返回的是大写 &apos;DIV&apos;
 
-    alert(a);        // 弹出的是function a(){ alert(&quot;2&quot;)}
-    var a = 1;
-    function a(){
-        alert(&quot;2&quot;)
+3、nodeValue: 节点的类型
+
+    元素节点的 nodeValue 是 undefined 或 null
+    文本节点的 nodeValue 是文本本身
+    属性节点的 nodeValue 是属性值
+
+    &lt;p&gt;dfsdfsdf&lt;/p&gt;
+
+    let oP = document.querySelector(&apos;p&apos;);   
+    // 这里注意oP是元素如果直接写成oP.nodeValue返回是null，写成oP下的第一个节点才找到文本元素
+    oP.firstChild.nodeValue;            
+
+4、parentNode: 返回当前节点的父节点   e.target.parentNode.nodeName
+
+    document.querySelector(&apos;ul&apos;).parentNode     // &lt;div class=&quot;box&quot;&gt;...&lt;/box&gt;
+
+5、childNodes、children: 返回所有子节点元素，不包括孙节点
+
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;111&lt;/li&gt;
+        &lt;li&gt;222&lt;/li&gt;
+        &lt;li&gt;
+            &lt;ul&gt;
+                &lt;li&gt;333&lt;/li&gt;
+                &lt;li&gt;444&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    let oList = document.querySelector(&quot;#list&quot;);
+    let lis = oList.children;
+    for(let i=0; i&lt;lis.length; i++){
+        console.log(lis[i].nodeName);   // output LI LI LI
     }
 
-    预解析会保存a = undefinded，和 a = function a(){alert(&quot;2&quot;)}，
-    因为函数与变量重名，函数后最执行所以保留函数，结果输出的就是函数
+    ** childeNodes与children区别 ** 
+
+        childeNodes: 包括空行的文本节点, 如果是空行的节点返回是一个text节点
+        children: 不包括空行之类的节点
+
+6、hasChildNodes(): 判断是否有子节点，返回Booleanw值
+
+7、firstChild、lastChild: 返回子节点的第一个节点、最后一个节点
+
+    firstChild 相当于 children[0]
+
+    lastChilde 相当于 children[node.children.length-1]
+
+    &lt;div id=&quot;car&quot;&gt;&lt;p&gt;aaa&lt;/p&gt;&lt;div&gt;bbb&lt;/div&gt;&lt;span&gt;ccc&lt;/span&gt;&lt;/div&gt;
+
+    let oCars = document.querySelector(&quot;#car&quot;);
+    console.log(oCars.firstNode, oCars.lastNode);   //&lt;p&gt;aaa&lt;/p&gt; 、 &lt;span&gt;ccc&lt;/span&gt;
+
+8、previousSibling、nextSibling: 当前节点的前一个节点、后一个节点
+
+    注意: 如果是空行返回的是 text
+
+9、innerHTML: 获取或修改HTML元素内容
+
+    Element.innerHTML = &apos;&lt;div&gt;xxxxx&lt;div&gt;&apos;;
+
+10、innerText: 获取或修改的是除去html的文本
+
+11、outerHTML、outerText: 与innerHTML、innerText相当，不同的是它包含当前节点元素，inner只包含子节点元素
+
+12、offsetParent: 获取当前元素定位的父元素  找到基于设置position的父元素
+
+     document.querySelector(&apos;ul&apos;).offsetParent
+</code></pre><h4 id="Node-对象的方法"><a href="#Node-对象的方法" class="headerlink" title="Node 对象的方法"></a>Node 对象的方法</h4><pre><code>一、节点操作方法
+
+    1、getElementById(): 获取指定ID的元素
+
+    2、getElementsByTagName(): 获取指定标签名称的所有元素
+
+    3、getElementsByClassName(): 获取指定类名的元素
+
+    4、appendChild(): 追加子节点  注意这里插入的是一个节点，而不是HTML的字符串 parent.appendChild(children);
+
+    5、removeChild(): 删除子节点，不能删除孙子节点    (removeNode 只支持IE)
+
+        删除节点 并返回删除的节点
+        let oSubCar = document.querSelector(&apos;#subCar&apos;);
+        document.querySelector(&apos;body&apos;).removeChild(oSubCar);        // &lt;div id=&quot;subCar&quot;&gt;...&lt;/div&gt;
+
+    6、cloneNode(Boolean): 复制节点  如果参数为true复制指定节点下包括所有子节点，如果不写只复制当前节点不手包子节点
+
+        &lt;div class=&quot;car&quot;&gt;
+            &lt;ul id=&quot;box&quot;&gt;
+                &lt;li&gt;aaa&lt;/li&gt;
+                &lt;li&gt;bbb&lt;/li&gt;
+                &lt;li&gt;ccc&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;subCar&quot;&gt;&lt;/div&gt;
+
+        &lt;script&gt;
+            // 将id=box所有的节点插入到id=subCar中
+            let boxList = document.querySelector(&apos;#box&apos;).cloneNode(true);
+            var oSubCar = document.querySelector(&apos;#subCar&apos;);
+            oSubCar.appendChild(boxList);
+        &lt;/script&gt;
+
+    7、hasAttributes(): 判断当前节点是否拥有属性
+
+        &lt;div id=&quot;miniCar&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;swsss&lt;/div&gt;
+
+        let isAttribute = document.getElementsByTagName(&apos;div&apos;)[1].hasAttributes();
+        console.log(isAttribute);   // false
+
+    8、hasChildNodes(): 判断当前节点是否拥有子节点
+
+    9、insertBefore(newitem, ex): 在指定节点之前插入
+
+        insertAfter(): 这个需要自己来写没有这个方法
+
+        let oMain = document.querySelector(&apos;#main&apos;);
+        let oP = document.querySelector(&apos;p&apos;);
+        let oUl = document.querySelector(&apos;.uls&apos;).cloneNode(true);
+        oMain.insertBefore(oUl, oP);    将ul元素内所有节点复制并插入到oP元素之前
+
+    10、replaceChild(newNode, oldNode): 替换节点
+
+        document.querySelector(&apos;body&apos;).replaceChild(oMiniCar, oSubCar)
 
 
-三、示例3
+二、创建元素方法
 
-    var a = 1;
-    function a(){
-        alert(&quot;2&quot;);
+    1、createAttribute(): 创建属性节点
+
+    2、createElement(): 创建元素节点
+
+    3、createTextNode(): 创建文本节点
+
+
+三、操作属性方法
+
+    1、getAttribute(): 获取属性值
+
+    2、setAttribute(): 设置属性值
+</code></pre><h4 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h4><pre><code>1、style：获取或设置style值   Element.style.color = &apos;blue&apos; 
+
+2、currentStyle、getCurrentStyle()获取样式中每个属性的值
+
+    var oBox = document.querySelector(&apos;#box&apos;);
+    var getStyle = function(obj, attr){
+        return window.getComputedStyle ? window.getComputedStyle(obj, null)[attr] : obj.currentStyle[attr];
     }
 
-    // 报错，因为a被定义成变量，typeof a 返回的是number，如果 var a;不能定义值那么a()是成功的
-    a();
+    var attrTxt = getStyle(oBox, &apos;width&apos;);          // &apos;100px&apos;;
 
+    注意: (1)中style只能获取元素中的内联样式，而currentStyle、getCurrentStyle()无论是内联样式还是在class中都可以找到
 
-四、示例4
-
-    var a = 1;
-    function fn1(){
-        alert(a);
-        // 注意这里因为是使用var声明所以执行数预解析器才会把它单独存储起来，
-        // 如果将var去掉，a=2改成了赋值这样会改变外部的a的值，下面输出的就是1，2
-        var a = 2;
-    }
-
-    fn1();                        // undefined
-    console.log(a);        // 1
-
-
-五、示例5
-
-    function foo(){
-        return fn1;
-
-        function fn1(){};
-        var fn1 = 10;
-    }
-
-    var f = foo();
-
-    // 输出 function fn1(){};    因为调用foo函数时，return  fn1因为变量还未定义所以 直接调用的函数
-    alert(f);                
-
-
-六、示例6
-
-    var  myname = &quot;global&quot;; // 全局变量
-    function func() {
-
-        // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined
-        alert(myname);                 
-        var myname = &quot;local&quot;;
-        alert(myname);                 // &quot;local&quot;
-    }
-    func();
-
-
-七、示例7
+3、getComputedStyle(元素， 伪类): 获取指定元素值，currentStyle（ie独有） 
 
     &lt;script&gt;
-        window.name = &apos;globalName&apos;;
-
-        var getName = function(){
-            return this.name;
-        }
-
-        getName();         // &apos;globalName&apos;
-    &lt;/script&gt;
-
-
-八、示例8
-
-    &lt;script&gt;
-        window.id = &apos;window&apos;;
-
-        document.getElementById(&apos;divA&apos;).onclick = function(){
-            alert(this.id);
-
-            var callback = function(){
-                return this.id;        // divA
+        function getStyle(element, attr) {
+            if(window.getComputedStyle) {
+                return window.getComputedStyle(element, null)[attr];
+            } else {
+                return element.currentStyle[attr];
             }
-            callback();            // window
         }
+
+        // 获取class=position-node元素上的position值
+        var dom = document.querySelector(&quot;.position-node&quot;);
+        var style = getStyle(dom);
+        console.log(style.position);    // 返回relative
     &lt;/script&gt;
 
 
- 九、示例9
+    *** element.getComputedStyle与element.style的区别
 
-    1、Example
-        var getName;
-        console.log(getName)    // undefined
+    element.getComputedStyle: 只读
+    element.style: 可读写
 
-        getName()                // Uncaught TypeError: getName is not a function
+4、className: 获取或设置元素的类名  Element.addClass = &apos;classname&apos;
+</code></pre><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><pre><code>1、write(): 向输出流写文本或html
 
-        var getName = function() {
-            console.log(&apos;wscat&apos;)
-        }
+2、document.title: 返回标题
 
-    2、Example
-        var getName;
-        console.log(getName)    // function getName() {console.log(&apos;oaoafly&apos;)}
+4、&quot;javascript:&quot; : 伪协议 来调用javascript http协议(http://)，FTP协议(ftp://)
 
-        getName()                // oaoafly
+5、对象检测: 可以测试浏览器是否支持当前对象
 
-        function getName() {
-            console.log(&apos;oaoafly&apos;)
-        }
+    if(document.getElementById){ ...}
+</code></pre><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><pre><code>1、createDocumentFragment: 创建文档碎片
 
+    Example: 创建节点并插入到body中，如果不使用文档碎片，每次都需要重新插入一次
 
-十、bind()
+    var oFragment = document.createDocumentFragment();
+    for(var i = 0 ; i &lt; 10; i ++) {
+        var p = document.createElement(&quot;p&quot;);
+        var oTxt = document.createTextNode(&quot;段落&quot; + i);
+        p.appendChild(oTxt);
+        oFragment.appendChild(p);
+    }
+    document.body.appendChild(oFragment);
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、表单事件：
 
-    &lt;script&gt;
-        window.id = &apos;window&apos;;
+    submit事件
 
-        document.getElementById(&apos;divA&apos;).onclick = function(){
-            alert(this.id);
+    reset事件
 
-            var obj = {
-                id: &apos;objId&apos;,
-                callback: function(){
-                    return this.id;         // &apos;divA&apos;
-                }.bind(window)                // 通过bind来将callback内的this指向window
-            }
+    click事件
 
-            console.log(obj.callback());    // &apos;window&apos;
-        }
-    &lt;/script&gt;
+    change事件
 
+    focus事件（不冒泡） （IE和ES5支持冒泡的focusin）
 
-十一、严格模式下的this
+    blur事件（不冒泡） （IE和ES5支持冒泡的focusout）
 
-    &lt;script&gt;
-        &apos;use strict&apos;
-
-        function fun(){
-            alert(this);        // 返回 &apos;undefined&apos;, strict模式下this不会指向全局
-        }
-
-        fun();
-    &lt;/script&gt;
+    input事件（ES5 textinput提供更方便的获取输入文字的方案）
 
 
-十二、箭头函数下的this指向
+2、Window事件
 
-    // 箭头函数没有this
-    const Template = {
-        test(){
-            console.log(this);        // this指向Template
+    load: 资源全部加载完成后触发事件（图片、css、js）
 
-            document.querySelector(&quot;#showThis&quot;).onclick = () =&gt;{
-                // 如果非箭头函数this应该指向 #showThis
-                // 这里箭头函数不是指向调用者，所以指向了 Template
-                console.log(this);    
-            }
+    DOMContentLoaded事件: Document对象构建完后就开始调用此事件
+
+    readyStatechage事件:
+
+    unload事件: 关闭borwser的时候触发
+
+    beforeunload事件
+
+    resize: 浏览器窗口发生改变触发
+
+    scroll: 滚动条有变化时触发
+
+
+3、鼠标事件
+
+    click: 点击事件
+
+    dbclick：双击事件
+
+    mouseover: 鼠标移入事件（冒泡）
+
+    mouseout: 鼠标移出事件（冒泡）
+
+    mousedown: 鼠标按下事件
+
+    mouseup: 鼠标放开事件
+
+    contextmenu: 上下文本菜单事件
+
+    mouseenter: 事件（不冒泡）
+
+    mouseleave: 事件（不冒泡）
+
+    mousewheel: 事件（FF DOMMouseScroll事件、DOM3 wheel事件）
+
+
+4、键盘事件
+
+    keydown事件
+
+    keyup事件
+
+    keypress事件
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/19/BOM/">BOM</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/19/BOM/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h4><pre><code>BOM   浏览器对象模型    B - Browser    O - Object     M - Model
+
+BOM包含: history、location、navigator、screen 对象
+</code></pre><h4 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h4><pre><code>1、hash: 返回hash值
+
+    https://xxx.com/#sdfsdf       // &apos;#sdfsdf&apos;
+
+2、host: 返回主机地址  &apos;xxx.com&apos;
+
+3、hostname: 返回主机名  &apos;xxx.com&apos;
+
+4、href: 整个url地址  &quot;https://xxx.com/search?q=BOM&quot;
+
+5、origin: 起源  &apos;https://xxx.com&apos;
+
+6、pathName: 路由名
+
+    &quot;https://xxx.com/search?q=BOM&quot;   &apos;/search&apos;
+
+7、port: 端口
+
+8、protocol: 协议  &apos;https&apos;
+
+9、search: 参数 &apos;?q=BOM&apos;
+
+10、reload(): 刷新浏览器
+
+    location.reload(); // 重新加载（有可能从缓存中加载）
+    location.reload(true); // 重新加载（从服务器重新加载）
+</code></pre><h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><pre><code>1、width、height: 整天个屏幕的宽、高
+
+2、avaiWidth、avaiHeight: 返回显示屏幕的宽、高 除dock和系统上面的菜单栏
+
+3、pixelDepth: 返回显示屏幕的颜色分辨率
+
+4、updateInteval: 设置或返回屏幕刷新率
+</code></pre><h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><pre><code>1、length: 历史记录的个数
+
+2、go(): 指定跳转的历史、-1后退一页，1前进一页
+
+3、back()、forward(): 后退和前进一页
+</code></pre><h4 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h4><pre><code>1、appCodeName: 浏览器代码名 &apos;Mozilla&apos;
+
+2、appName: 浏览器名称    &apos;Netscape&apos;
+
+3、appVersion: 浏览器版本  &apos;5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36&apos;
+
+4、browserLanguage: 浏览器语言
+
+5、cookieEnabled: 是否启用了cookie 返回Boolean
+
+    如果浏览器关闭cookie，当获取cookie时， document.cookie 返回的是空字符串
+
+6、cpuClass: 返回浏览器系统的cpu等级
+
+8、onLine: 是否处于脱机模式，Boolean
+
+9、platform: 浏览器的操作平台
+
+10、systemLanguage: 系统语言
+
+11、userAgent: 客户机发送服务器的 user-agent 头部的值
+
+12、userLanguage: 返回 OS 的自然语言设置
+
+
+** 检测插件  ie无效
+function hasPlugin(name){
+    name = name.toLowerCase();
+    for (var i = 0; i &lt; navigator.plugins.length; i ++){
+        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1){
+            return true;
         }
     }
-
-    Template.test();
-</code></pre><h3 id="JS作用域和常用方法"><a href="#JS作用域和常用方法" class="headerlink" title="JS作用域和常用方法"></a>JS作用域和常用方法</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code>1、函数本身是对象也是构造函数
-
-2、直接挂载到函数下的叫对象的属性和方法
-
-    function Foo(){};  
-
-    Foo.username = &apos;111&apos;;     // 注意这里Foo的属性不能为name因为被name被函数的名所占用
-    Foo.getName = function(){ console.log(this.username) };
-
-    // 调用
-    Foo.getName();        // 111
-
-
-3、写到构造函数内部的叫构造函数的属性和方法
-
-    function Foo() {
-        this.username = &apos;111&apos;
-    }
-
-    Foo.username = &apos;222&apos;;
-
-    // 调用
-    console.log(new Foo().username);    // 111
-
-
-&lt;script&gt;
-    function Foo() {
-        getName = function() {
-            console.log(this);
-            console.log(1);
-        }
-
-        console.log(this);
-        return this;
-    }
-    Foo.getName = function() { // 这里只是Foo对象的方法，而不是构造函数的方法，
-        console.log(2);
-    }
-
-    // Foo.prototype.getName = function() {
-    //     console.log(3);
-    // }
-
-    var getName = function() {
-        console.log(4)
-    }
-
-    function getName() {
-        console.log(5)
-    }
-
-
-    Foo.getName(); // 2    Foo.getName=function(){}  是存到Foo下的方法，Foo.getName()可以取到
-
-    getName(); // 4     如果一个作用域下有var的变量名与函数名相当，var的作用域提升高于function
-
-    Foo().getName(); // 1    因为Foo()被调用，定义中加了return this，Foo指向的是window全局，getName没有var升明，所以为全局，所以相当于window.getName()，Foo中如果不加return this那么就会报错，因为Foo没有链式调用，所以this断了
-
-    getName(); // 1   因为上面已经将Foo内的getName()提升成全局，所以会赋盖掉var getName、function getName定义的全局方法
-
-    // var ofo = new Foo;
-    // ofo.getName();   // 3
-
-
-
-    // Foo既是一个对象也是一个构造函数
-
-    new Foo.getName(); // 2    先执行Foo.getName()，因为&quot;.&quot;运算符优先于new运算符，所以这时候Foo只是一个对象并不是构造函数的实例，所以会调用对象下的方法
-
-    new Foo().getName(); // 3     先执行new Foo()构造函数，然后在构造函数下去找getName方法，Foo构造函数方法没有getName()所以到prototype下去找
-
-    new new Foo().getName(); // 3   与上面相同
-&lt;/script&gt;
-</code></pre><h4 id="将对象拷贝并不引用指针"><a href="#将对象拷贝并不引用指针" class="headerlink" title="将对象拷贝并不引用指针"></a>将对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
-
-另一种方法是使用Object.assign()
-
-let objA = {
-    name: &apos;siguang&apos;,
-    age: 30
+    return false;
 }
-let objB = Object.assign({}, objA);
-objB.name = &apos;lulu&apos;;         // lulu
-console.log(objA.name);     // siguang
-</code></pre><h4 id="对象的深拷贝和浅拷贝"><a href="#对象的深拷贝和浅拷贝" class="headerlink" title="对象的深拷贝和浅拷贝"></a>对象的深拷贝和浅拷贝</h4><pre><code>浅拷贝就是还存在对象的引用关系，深拷贝就是两个对象之间没有引用关系
 
-一、浅拷贝
-
-    const a = {t: 1, p: &apos;gg&apos;};
-    const b = a;
-    b.t = 3;
-    console.log(a);     // {t: 3, p: &apos;gg&apos;}
-    console.log(b);     // {t: 3, p: &apos;gg&apos;}
-
-二 、深拷贝
-
-    1、Object.assign()
-
-        assign()方法是将两个对象合并，并返回一个新对象
-
-        const c = {t: 1, p: &apos;gg&apos;};
-        const d = Object.assign({}, c);
-        d.t = 3;
-        console.log(c);     // {t: 1, p: &apos;gg&apos;}
-        console.log(d);     // {t: 3, p: &apos;gg&apos;}
-
-    2、Object.create()
-
-        将拷贝的内容入到prototype下，对象和数组都适用
-
-        对象:
-
-            var oA = {
-                name: &apos;sg&apos;,
-                age: 33
-            }
-            var oB = {};
-            oB = Object.create(oA);
-
-            oB.eat = &apos;bread&apos;;
-
-        数组:
-
-            var oA = [1,2]
-            var oB = [];
-            oB = Object.create(oA);
-
-            oB.push(3);            // oB.length;   3
-
-
-    3、jQuery.extend()
-
-        let oa = {a: 1, b: 2}; let ob = {};  
-        $.extend(ob, oa); 
-        ob.b = 3; 
-        console.log(oa, ob);        // oa: {a: 1, b: 2}、 ob: {a: 1, b: 3}
-</code></pre><h4 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h4><pre><code>一、concat()方法
-
-    var arrA = [1,2,3];
-    var arrB = arrA.concat();
-    arrB.push(5,6,7);
-    console.log(arrA);  // [1,2,3]
-    console.log(arrB);  // [1,2,3,5,6,7]
-
-二、slice()方法
-
-    var arrA = [1,2,3];
-    var arrB = arrA.slice();
-    arrB.push(5,6,7);
-    console.log(arrA);  // [1,2,3]
-    console.log(arrB);  // [1,2,3,5,6,7]
-
-两种方法都是回返一个不带指向的新数组
-</code></pre><h4 id="对象处理"><a href="#对象处理" class="headerlink" title="对象处理"></a>对象处理</h4><pre><code>一、查看是否是一个空对象
-
-    // 使用keys来查看对象中所有的kyes并返回一个数组，如果数组为度为0则对象为空
-    var obj = {}; 
-    var Len = Object.keys(obj);         
-    console.log(Len.length);
-
-二、查看对象中属性是否存在
-
-    var obj = {
-        a: 1,
-        b: 2
-    }
-    console.log(obj.c);        // undefined
-</code></pre><h4 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h4><pre><code>一、数据去重
-
-    1、普通方法
-
-        function clearRepeat(arr){
-            var newArr = [], obj = {};
-            for(var i=0; i&lt;arr.length; i++){
-                if(!obj[arr[i]]){
-                    obj[arr[i]] = &apos;&apos;;        // 对象属性相同会直接覆盖
-                    newArr.push(key);        
-                }
-            }
-            return newArr;
+** 检测Flash
+function hasPlugin(name){
+    name = name.toLowerCase();
+    for (var i = 0; i &lt; navigator.plugins.length; i ++){
+        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1){
+            return true;
         }
-
-        let retArray = clearRepeat([3,2,3,4,5,5,2,2,13,3]);
-
-
-    2、使用ES6的set()方法，set方法就是不允许数组内有重复的值
-
-        let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
-        console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
-        let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
-
-    http://www.jb51.net/article/46154.htm
-
-
-二、数组排序
-
-    1、使用sort方法
-
-        var arr = [6,7,5,8,4,2342342,23,234,2,34];
-        arr.sort(function(v1, v2){
-            return v1 - v2        // 正序
-        })
-        console.log(arr);
-</code></pre><h4 id="编写组件并兼容AMD、ES6写法"><a href="#编写组件并兼容AMD、ES6写法" class="headerlink" title="编写组件并兼容AMD、ES6写法"></a>编写组件并兼容AMD、ES6写法</h4><pre><code>;(function(root, factory){
-
-    // 判断使用的支持定义模块的方式
-    if(typeof define === &apos;function&apos; &amp;&amp; define.amd){
-        define(factory)
     }
-    else if(typeof exports === &apos;object&apos;){
-        module.exports = factory();
+    return false;
+}
+
+function hasIEPlugin(name){
+    try{
+        new ActiveXObject(name);
+        return true;
+    }catch(ex){
+        return false;
     }
-    else{
-        root.NProgress = factory();
+}
+
+function hasFlash(){
+    var result = hasPlugin(&quot;Flash&quot;);
+    if (!result){
+        result = hasIEPlugin(&quot;ShockwaveFlash.ShockwaveFlash&quot;);
+    }
+    return result;
+}
+
+console.log(hasFlash()) //true
+</code></pre><h4 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h4><pre><code>1、window.open(url, target, param): 打开一个新窗口
+
+2、window.close(): 关闭一个窗口
+
+3、setInterval()、clearInterval()
+
+4、setTimeout()、clearTimeout()
+
+5、screenLeft、screenTop: 浏览器当前窗口居屏幕的左、上角的位置  
+
+    兼容:
+    screenLeft || screenX
+    screenTop || screenY
+
+6、innerWidth、innerHeight: 浏览器可视区的宽高、包括滚动条
+
+    let winHeight = window.innerHeight;
+
+7、moveTo(x, y): 移动到屏幕左上角的位置
+
+8、moveBy(0, 100): 向下移动100像素
+
+9、resizeTo(x,y)、resizeBy(w, h)
+</code></pre><h4 id="offset-页面元素偏移量"><a href="#offset-页面元素偏移量" class="headerlink" title="offset 页面元素偏移量"></a>offset 页面元素偏移量</h4><pre><code>1、offsetWidth、offsetHeight: 获取当前元素宽高，相当于 width + padding + border
+
+2、offsetLeft、offsetTop: 获取元素到父级元素定位的左、上偏移，如果父级不是定位就以body元素为定位
+
+3、offsetParent: 获取最近一个带有定位的父级元素
+
+4、clientWidth、clientHeight: 元素本身的宽高、不包括padding和border
+
+    兼容
+    document.documentElement.clientWidth || document.body。clientWidth
+    document.documentElement.clientHeight || document.body。clientHeight
+</code></pre><h4 id="scroll-滚动类"><a href="#scroll-滚动类" class="headerlink" title="scroll 滚动类"></a>scroll 滚动类</h4><pre><code>窗口滚动条或带滚动条元素
+
+1、scrollWidth、scrollheight: 对象内部实际内容的宽、高
+
+2、scrollTop、scrollLeft: 被卷部分的顶部和左侧部分
+
+    只挂载到了Element元素中，window和document下都没有
+
+    let topValue = document.documentElement.scrollTop || document.body.scrollTop;       // 获取整个页面巻上去的高度和兼容方法
+
+    let topValue = document.querySelector(&apos;#sider&apos;).scrollTop;      // 针对某个元素
+
+
+3、onscroll: 侦听滚动条事件
+</code></pre><h4 id="client-鼠标所在的可视区坐标"><a href="#client-鼠标所在的可视区坐标" class="headerlink" title="client 鼠标所在的可视区坐标"></a>client 鼠标所在的可视区坐标</h4><pre><code>1、clientX、clientY: 获取鼠标可视区的位置  clientX = width + padding
+
+2、clientLeft、clientTop: 获取鼠标在可视区域的位置
+
+3、pageX、pageY: 获取鼠标在页面中的位置， pageX = clientX + 页面滚动出的距离
+
+node.onclick = function(evt){
+    let evt = evt || window.evnet;
+    console.log(evt.pageX, evt.pageY);
+    console.log(evt.pageX, evt.pageY);
+}
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、target: 点击的目标阶段事件，ie8之前使用srcElement
+
+    var oT = evt.target || srcElement; console.log(oT);     // &lt;p&gt;xxxx&lt;/p&gt;
+
+2、currentTarget: 事件流的捕获，目标及冒泡阶段
+
+3、addEventListener()、attachEvent(): 注册事件
+
+    addEventListener(&apos;click&apos;, fn, false);
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/函数式编程/">函数式编程</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/函数式编程/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/函数式编程/">函数式编程</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="纯函数式"><a href="#纯函数式" class="headerlink" title="纯函数式"></a>纯函数式</h4><pre><code>一、非纯净的
+
+    let number = 1;
+
+    const increment = () =&gt; number += 1;
+
+    increment();  // 2
+
+
+二、纯净的
+
+    const increment = n =&gt; n + 1;
+
+    increment(1);
+</code></pre><h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><pre><code>把函数当做其它函数的参数来传递
+
+let sum = (x, y) =&gt; x+y;
+
+let calculate = (fn, x, y) =&gt; fn(x,y);
+
+calculate(sum, 1, 2)
+</code></pre><h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><pre><code>柯里化就是将多参函数转换成单参函数
+
+// 一个多参函数 
+var add = (a, b) =&gt; a + b;
+add(1, 2); // =&gt; 3
+
+// 柯里化
+var add = a =&gt; b =&gt; a+b;
+add(1)(2);
+
+
+Example:
+
+    var say = function(title) {
+        return function(type){
+            return title + &quot; is &quot; + type;
+        }
     }
 
-})(this, function(){
-    console.log(`输出内容`);
-})
-</code></pre><p>| 参考<br>| <a href="https://juejin.im/entry/58db95eaac502e0058f8472e" target="_blank" rel="noopener">https://juejin.im/entry/58db95eaac502e0058f8472e</a><br>| <a href="http://www.iamaddy.net/2015/04/front-end-engineering/" target="_blank" rel="noopener">http://www.iamaddy.net/2015/04/front-end-engineering/</a>       // 前端的发展</p>
+    var sayFP = say(&quot;Functional Programming&quot;);
+    var sayOther = say(&quot;Other Programming&quot;);
+
+    sayFP(&quot;good&quot;); // =&gt; Functional Programming is good
+    sayOther(&quot;bad&quot;); // =&gt; Other Programming is good
+</code></pre><h4 id="compose-函数组合"><a href="#compose-函数组合" class="headerlink" title="compose 函数组合"></a>compose 函数组合</h4><pre><code>将多个函数组合成一个函数
+
+Example:
+
+    var compose = function(fn1, fn2) {
+        return function(arg){
+            return fn1(fn2(arg));
+        }
+    }
+
+    var a = arg =&gt; arg + &apos;a&apos;;
+    var b = arg =&gt; arg + &apos;b&apos;;
+
+    var c = compose(a, b); // 将a,b函数进行组合
+    console.log(c(&apos;c&apos;));  // =&gt; cba
+</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(type){
+    var typeName = &apos;&apos;;
+
+    switch(toString.call(type)){
+        case &apos;[object String]&apos;:
+            return &apos;string&apos;;
+            break;
+
+        case &apos;[object Number]&apos;:
+            if(type.toString().indexOf(&apos;.&apos;) != -1){
+                return &apos;float&apos;;
+            }
+            else{
+                return &apos;number&apos;;
+            }
+            break;
+
+        case &apos;[object Array]&apos;:
+            return &apos;array&apos;;
+            break;
+
+        case &apos;[object Object]&apos;:
+            return &apos;object&apos;;
+            break;
+
+        case &apos;[object Undefined]&apos;:
+            return &apos;undefined&apos;;
+            break;
+
+        case &apos;[object Null]&apos;:
+            return &apos;null&apos;;
+            break;    
+
+        default: break;
+    }
+
+    return typeName;
+}
+</code></pre><p>| <a href="http://www.alloyteam.com/2016/09/talk-about-functional-programming/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/09/talk-about-functional-programming/</a><br>| <a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html" target="_blank" rel="noopener">https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html</a></p>
 
         
     </section>
@@ -6313,7 +6020,7 @@ console.log(objA.name);     // siguang
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Vorige</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Volgende &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
 </nav>
 
 

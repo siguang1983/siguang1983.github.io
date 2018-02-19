@@ -7,7 +7,7 @@
 
     
 
-    <title>Label: EggJS | 大排档</title>
+    <title>Tag: EggJS | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -336,136 +336,6 @@
 </code></pre><p>unique</p>
 <blockquote>
 <p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
-
-$ npm i egg-validate --save  安装
-
-// {app_root}/config/plugin.js
-exports.validate = {
-    package: &apos;egg-validate&apos;,
-};
-
-// 校验规则 post
-async fromRule(){
-    const {ctx, app} = this;
-
-    // Request 参数规则
-    const paramRule = {
-        username: {type: &apos;string&apos;},
-        password: {type: &apos;string&apos;},
-        rememberMe: {type: &apos;boolean&apos;, required: false},
-    };
-    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
-
-    if(paramErrors){    // 如果为真说明校验不通过
-        ctx.body = `校验失败`;
-    }   
-    else{
-        ctx.body = `校验成功, ${ctx.request.body.username}`;
-    }
-}
-</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
-
-https://segmentfault.com/a/1190000004286562
-http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
-https://github.com/tj/ejs
-</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
-https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
-</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
-
-2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
-
-3、文件上传 - https://github.com/node-modules/formstream
-
-4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
-
-5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
-</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
-    const mongoose = app.mongoose;
-    const UserSchema = new mongoose.Schema({
-        username: { type: String },
-        passworrd: { type: String }
-    }, {collection: &apos;user&apos;});
-
-    return mongoose.model(&apos;User&apos;, UserSchema);
-}
-</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
-</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
-<p>bodyParser  中间件，egg内置，用来处里post</p>
-<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
-<blockquote>
-<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
 </blockquote>
 
         
@@ -1756,6 +1626,136 @@ egg-ua插件
     └── controller
         └── home.test.js
 </code></pre><blockquote>
+<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+
+$ npm i egg-validate --save  安装
+
+// {app_root}/config/plugin.js
+exports.validate = {
+    package: &apos;egg-validate&apos;,
+};
+
+// 校验规则 post
+async fromRule(){
+    const {ctx, app} = this;
+
+    // Request 参数规则
+    const paramRule = {
+        username: {type: &apos;string&apos;},
+        password: {type: &apos;string&apos;},
+        rememberMe: {type: &apos;boolean&apos;, required: false},
+    };
+    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    if(paramErrors){    // 如果为真说明校验不通过
+        ctx.body = `校验失败`;
+    }   
+    else{
+        ctx.body = `校验成功, ${ctx.request.body.username}`;
+    }
+}
+</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+
+https://segmentfault.com/a/1190000004286562
+http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
+https://github.com/tj/ejs
+</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
+</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传 - https://github.com/node-modules/formstream
+
+4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
+
+5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
+    const mongoose = app.mongoose;
+    const UserSchema = new mongoose.Schema({
+        username: { type: String },
+        passworrd: { type: String }
+    }, {collection: &apos;user&apos;});
+
+    return mongoose.model(&apos;User&apos;, UserSchema);
+}
+</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
+</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
+<p>bodyParser  中间件，egg内置，用来处里post</p>
+<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
+<blockquote>
 <p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
 </blockquote>
 

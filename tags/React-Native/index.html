@@ -7,7 +7,7 @@
 
     
 
-    <title>Label: React Native | 大排档</title>
+    <title>Tag: React Native | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -121,122 +121,6 @@
 </header>
 
         <div id="content" class="content">
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
-
-    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
-
-二、App图标
-
-    方法1 Xcode中配置:
-
-        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
-
-    方法2 代码中配置
-
-        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
-
-        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
-
-三、设置启动图
-
-    方法1 Xcode中配置:
-
-        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
-
-        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
-
-    方法2 代码配置
-
-        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
-
-        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
-
-
-http://www.cnblogs.com/allenxieyusheng/p/5802179.html
-http://www.jianshu.com/p/adpKye/
-https://appicontemplate.com/ios9    图标尺寸导出  
-
-转icon尺寸
-http://www.zcool.com.cn/article/ZNjE1MTI=.html
-http://makeappicon.com/
-http://blog.csdn.net/leiyu231/article/details/52830151
-</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
-
-1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
-2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
-
-http://blog.csdn.net/liyijun4114/article/details/51792179
-</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
-
-在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
-</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
-
-    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
-
-https://developer.apple.com/  苹果开发者账号申请
-
-苹果开发者平台可以进行
-
-苹果的安装包为 *.ipa 文件
-
-1、先登录Account，注册苹果开发者账号个人或企业
-
-2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
-</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
-
-    class TabPage extends Component {
-
-        _createNav(name, colorValue){
-            return (
-                &lt;View&gt;
-                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
-                &lt;/View&gt;
-            )
-        }
-
-        render(){
-            return (
-                &lt;View&gt;
-                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
-                &lt;/View&gt;
-            )
-        }
-    }
-</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
-
-        
-    </section>
-</article>
-
-
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -1311,6 +1195,122 @@ https://github.com/oblador/react-native-vector-icons#installation   图标对应
 
 import Mock from &apos;mockjs&apos;
 </code></pre><p>| 参考资料<br>| react.parts/native   // 第三方组件列表 <strong><em><br>|<br>| <a href="http://www.lcode.org/react-native/" target="_blank" rel="noopener">http://www.lcode.org/react-native/</a><br>| <a href="http://blog.csdn.net/hsbirenjie/article/category/6307126/3" target="_blank" rel="noopener">http://blog.csdn.net/hsbirenjie/article/category/6307126/3</a><br>| <a href="http://blog.csdn.net/jiangqq781931404/article/category/6055594/2" target="_blank" rel="noopener">http://blog.csdn.net/jiangqq781931404/article/category/6055594/2</a><br>| <a href="http://www.hangge.com/blog/cache/category_76_1.html" target="_blank" rel="noopener">http://www.hangge.com/blog/cache/category_76_1.html</a>       </em></strong><br>| <a href="http://blog.csdn.net/mengks1987/article/category/6850683" target="_blank" rel="noopener">http://blog.csdn.net/mengks1987/article/category/6850683</a><br>| <a href="http://blog.csdn.net/yuanguozhengjust/article/category/6058018" target="_blank" rel="noopener">http://blog.csdn.net/yuanguozhengjust/article/category/6058018</a><br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
+
+    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
+
+二、App图标
+
+    方法1 Xcode中配置:
+
+        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
+
+    方法2 代码中配置
+
+        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
+
+        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
+
+三、设置启动图
+
+    方法1 Xcode中配置:
+
+        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
+
+        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
+
+    方法2 代码配置
+
+        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
+
+        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
+
+
+http://www.cnblogs.com/allenxieyusheng/p/5802179.html
+http://www.jianshu.com/p/adpKye/
+https://appicontemplate.com/ios9    图标尺寸导出  
+
+转icon尺寸
+http://www.zcool.com.cn/article/ZNjE1MTI=.html
+http://makeappicon.com/
+http://blog.csdn.net/leiyu231/article/details/52830151
+</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
+
+1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
+2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
+
+http://blog.csdn.net/liyijun4114/article/details/51792179
+</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
+
+在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
+</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
+
+    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
+
+https://developer.apple.com/  苹果开发者账号申请
+
+苹果开发者平台可以进行
+
+苹果的安装包为 *.ipa 文件
+
+1、先登录Account，注册苹果开发者账号个人或企业
+
+2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
+</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
+
+    class TabPage extends Component {
+
+        _createNav(name, colorValue){
+            return (
+                &lt;View&gt;
+                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }
+
+        render(){
+            return (
+                &lt;View&gt;
+                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
+                &lt;/View&gt;
+            )
+        }
+    }
+</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
 
         
     </section>

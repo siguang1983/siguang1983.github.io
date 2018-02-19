@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -126,11 +126,11 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
+            <a href="/2016/12/04/Egg.js-数据库/">EggJS-数据库</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
+            <a class="article-date" href="/2016/12/04/Egg.js-数据库/">
     
     <i class="icon-calendar"></i>
     
@@ -149,21 +149,193 @@
     
     <section class="article-body markdown-body">
         
-        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
-    const mongoose = app.mongoose;
-    const UserSchema = new mongoose.Schema({
-        username: { type: String },
-        passworrd: { type: String }
-    }, {collection: &apos;user&apos;});
+        <h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><pre><code>一、安装配置
 
-    return mongoose.model(&apos;User&apos;, UserSchema);
-}
-</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
-</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
-<p>bodyParser  中间件，egg内置，用来处里post</p>
-<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
+    $ npm i --save egg-mysql
+
+    // config/plugin.js  开启插件
+    exports.mysql = {
+        enable: true,
+        package: &apos;egg-mysql&apos;,
+    };
+</code></pre><h4 id="egg-monogoose"><a href="#egg-monogoose" class="headerlink" title="egg-monogoose"></a>egg-monogoose</h4><pre><code>一、安装配置
+
+    $ npm i egg-mongoose --save
+
+    // {app_root}/config/plugin.js
+    exports.mongoose = {
+        enable: true,
+        package: &apos;egg-mongoose&apos;,
+    };
+
+    // {app_root}/config/config.default.js
+    module.exports = {
+        mongoose: {
+            url: &apos;mongodb://127.0.0.1:27017/ibg_node_core&apos;,
+            options: {
+                db: { native_parser: true },
+                server: { poolSize: 5 },
+                user: &apos;core&apos;,
+                pass: &apos;we123&apos;,
+            },
+        },
+    }
+
+
+    // 多个mongos配置
+    // {app_root}/config/config.default.js
+    exports.mongoose = {
+        url: &apos;mongodb://mongosA:27501,mongosB:27501&apos;,
+        options: {}
+    };
+
+
+    // log
+    module.exports = {
+        logger: {
+            dir: &apos;/home/admin/logs/demoapp&apos;,        // logger文件的目录
+            level: &apos;DEBUG&apos;,                         // 开deubg模式
+        },
+    };
+
+
+二、定义Schema
+
+    // app/modle/reportWarningConfig.js
+
+    module.exports = app =&gt; {
+        const mongoose = app.mongoose;
+        const ReportWarningConfigSchema = new mongoose.Schema({
+                actionCode: { type: String, unique: true, trim: true }, // 动作编码
+                interval: { type: Number, default: 1800 },  // 扫描间隔时间，单位：秒 默认 30分钟
+                emailConfig: { // 发送邮件条件
+                    appKey: { type: String, default: &apos;&apos;, trim: true },
+                    appSecret: { type: String, default: &apos;&apos;, trim: true },
+                    recipient: { type: [String] },  // 收件人
+                },
+                lastExecutedTime: { type: Date, default: Date.now },   // 最近执行时间
+            }, 
+            {
+                timestamps: true,               // 设置timestamps，多加两个字段createdTime、updatedTime，来记录插入时间和更新时间
+                collection: &apos;report_warning_config&apos;,
+            }
+        );
+
+        return mongoose.model(&apos;ReportWarningConfig&apos;, ReportWarningConfigSchema);
+    };
+
+
+三、常用语句
+
+    1、await app.model.login.find(条件): 返回的是一组数据， []
+
+    2、await app.model.login.findOne(条件): 只返回一条数据, 如果没有匹配的返回null，
+
+    3、await app.model.login.update(条件, 要更新的文档, 回调方法): 更新数据
+
+    4、let loginTask = new app.model.login({ username: &apos;siguang&apos;, password: &apos;ssssss&apos;});     
+       let doc = await loginTask.save();        // 插入数据 
+
+    5、exec(callback): 在查询、更新后会执行一个回调函数来查看是否成功执行
+
+    6、save(function(err, kitten){  }): 存储
+
+
+四、Example
+
+    1、查询
+
+        async queryMonitorTask(){
+            let monitorTaskList = await app.model.ReportWarningConfig.find();          // app.model.ReportWarningConfig 来指定用哪个文档
+            return app.renderBody({
+                statusType: app.statusType.success,
+                data: {
+                    list: monitorTaskList
+                }
+            });
+        }
+
+
+    2、更新
+
+        更新需要先将文档查回来后，在修改某一个字段，如果一直更新会覆盖
+
+        async updateMonitorTask(params){
+            let response;
+            let condition = {_id: params.id};
+            let doc = await app.model.ReportWarningConfig.findOne(condition);       // 通过id来取到当前数据
+
+            if(doc){
+                doc.interval = params.interval;
+                doc.emailConfig.recipient = params.emailRecipient;
+                doc.smsConfig.recipient = params.smsRecipient;
+
+                await doc.save();
+                response = app.renderBody({
+                    statusType: error,
+                    error: error,
+                });
+            }
+            else{
+                response = app.renderBody({
+                    statusType: app.statusType.error,
+                    error: doc,
+                });
+            }
+
+            return response;
+        }
+
+
+    3、插入数据
+
+        插入数据将使用save()
+
+         async insertMonitorTask(){
+            const {ctx, app, service} = this;
+            const {actionCode, interval, emailRecipient, smsRecipient} = ctx.request.body;
+
+            // 将要插入的数据加到model中
+            let monitorTask = new app.model.ReportWarningConfig({   // 注意这里使用new 
+                actionCode,
+                interval,
+                emailConfig: {
+                    recipient: emailRecipient
+                },
+                smsConfig: {
+                    recipient: smsRecipient
+                }
+            })
+
+            // 使用save()来插入
+            let doc = await monitorTask.save();
+
+            let response = app.renderBody({
+                statusType: app.statusType.success,
+                data: doc._id
+            });
+            ctx.body = response;
+        }
+</code></pre><h4 id="mongoose-积累"><a href="#mongoose-积累" class="headerlink" title="mongoose 积累"></a>mongoose 积累</h4><pre><code>一、查询出来的数据不能修改
+
+    async getNewsContent(params){
+        let doc = await app.model.News.findOne({_id: params.id});
+
+        // 不能直接修改doc的对象，需要通过toObject()方法来转成对象的形势
+        let newDoc = doc.toObject();
+        newDoc.createdAt = app.dateFormat(new Date(newDoc.createdAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        newDoc.updatedAt = app.dateFormat(new Date(newDoc.updatedAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        console.log(`ResponseAAA ----- ${JSON.stringify(newDoc)}`)
+
+        return {
+            data: newDoc,
+            message: &apos;获取成功&apos;,
+            status: 0
+        }
+    }
+</code></pre><p>unique</p>
 <blockquote>
-<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+<p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
 </blockquote>
 
         
@@ -975,308 +1147,6 @@ CURRENT_TIMESTAMP
 <p>使用工具</p>
 <p>Navicat</p>
 </blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-数据库/">EggJS-数据库</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-数据库/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><pre><code>一、安装配置
-
-    $ npm i --save egg-mysql
-
-    // config/plugin.js  开启插件
-    exports.mysql = {
-        enable: true,
-        package: &apos;egg-mysql&apos;,
-    };
-</code></pre><h4 id="egg-monogoose"><a href="#egg-monogoose" class="headerlink" title="egg-monogoose"></a>egg-monogoose</h4><pre><code>一、安装配置
-
-    $ npm i egg-mongoose --save
-
-    // {app_root}/config/plugin.js
-    exports.mongoose = {
-        enable: true,
-        package: &apos;egg-mongoose&apos;,
-    };
-
-    // {app_root}/config/config.default.js
-    module.exports = {
-        mongoose: {
-            url: &apos;mongodb://127.0.0.1:27017/ibg_node_core&apos;,
-            options: {
-                db: { native_parser: true },
-                server: { poolSize: 5 },
-                user: &apos;core&apos;,
-                pass: &apos;we123&apos;,
-            },
-        },
-    }
-
-
-    // 多个mongos配置
-    // {app_root}/config/config.default.js
-    exports.mongoose = {
-        url: &apos;mongodb://mongosA:27501,mongosB:27501&apos;,
-        options: {}
-    };
-
-
-    // log
-    module.exports = {
-        logger: {
-            dir: &apos;/home/admin/logs/demoapp&apos;,        // logger文件的目录
-            level: &apos;DEBUG&apos;,                         // 开deubg模式
-        },
-    };
-
-
-二、定义Schema
-
-    // app/modle/reportWarningConfig.js
-
-    module.exports = app =&gt; {
-        const mongoose = app.mongoose;
-        const ReportWarningConfigSchema = new mongoose.Schema({
-                actionCode: { type: String, unique: true, trim: true }, // 动作编码
-                interval: { type: Number, default: 1800 },  // 扫描间隔时间，单位：秒 默认 30分钟
-                emailConfig: { // 发送邮件条件
-                    appKey: { type: String, default: &apos;&apos;, trim: true },
-                    appSecret: { type: String, default: &apos;&apos;, trim: true },
-                    recipient: { type: [String] },  // 收件人
-                },
-                lastExecutedTime: { type: Date, default: Date.now },   // 最近执行时间
-            }, 
-            {
-                timestamps: true,               // 设置timestamps，多加两个字段createdTime、updatedTime，来记录插入时间和更新时间
-                collection: &apos;report_warning_config&apos;,
-            }
-        );
-
-        return mongoose.model(&apos;ReportWarningConfig&apos;, ReportWarningConfigSchema);
-    };
-
-
-三、常用语句
-
-    1、await app.model.login.find(条件): 返回的是一组数据， []
-
-    2、await app.model.login.findOne(条件): 只返回一条数据, 如果没有匹配的返回null，
-
-    3、await app.model.login.update(条件, 要更新的文档, 回调方法): 更新数据
-
-    4、let loginTask = new app.model.login({ username: &apos;siguang&apos;, password: &apos;ssssss&apos;});     
-       let doc = await loginTask.save();        // 插入数据 
-
-    5、exec(callback): 在查询、更新后会执行一个回调函数来查看是否成功执行
-
-    6、save(function(err, kitten){  }): 存储
-
-
-四、Example
-
-    1、查询
-
-        async queryMonitorTask(){
-            let monitorTaskList = await app.model.ReportWarningConfig.find();          // app.model.ReportWarningConfig 来指定用哪个文档
-            return app.renderBody({
-                statusType: app.statusType.success,
-                data: {
-                    list: monitorTaskList
-                }
-            });
-        }
-
-
-    2、更新
-
-        更新需要先将文档查回来后，在修改某一个字段，如果一直更新会覆盖
-
-        async updateMonitorTask(params){
-            let response;
-            let condition = {_id: params.id};
-            let doc = await app.model.ReportWarningConfig.findOne(condition);       // 通过id来取到当前数据
-
-            if(doc){
-                doc.interval = params.interval;
-                doc.emailConfig.recipient = params.emailRecipient;
-                doc.smsConfig.recipient = params.smsRecipient;
-
-                await doc.save();
-                response = app.renderBody({
-                    statusType: error,
-                    error: error,
-                });
-            }
-            else{
-                response = app.renderBody({
-                    statusType: app.statusType.error,
-                    error: doc,
-                });
-            }
-
-            return response;
-        }
-
-
-    3、插入数据
-
-        插入数据将使用save()
-
-         async insertMonitorTask(){
-            const {ctx, app, service} = this;
-            const {actionCode, interval, emailRecipient, smsRecipient} = ctx.request.body;
-
-            // 将要插入的数据加到model中
-            let monitorTask = new app.model.ReportWarningConfig({   // 注意这里使用new 
-                actionCode,
-                interval,
-                emailConfig: {
-                    recipient: emailRecipient
-                },
-                smsConfig: {
-                    recipient: smsRecipient
-                }
-            })
-
-            // 使用save()来插入
-            let doc = await monitorTask.save();
-
-            let response = app.renderBody({
-                statusType: app.statusType.success,
-                data: doc._id
-            });
-            ctx.body = response;
-        }
-</code></pre><h4 id="mongoose-积累"><a href="#mongoose-积累" class="headerlink" title="mongoose 积累"></a>mongoose 积累</h4><pre><code>一、查询出来的数据不能修改
-
-    async getNewsContent(params){
-        let doc = await app.model.News.findOne({_id: params.id});
-
-        // 不能直接修改doc的对象，需要通过toObject()方法来转成对象的形势
-        let newDoc = doc.toObject();
-        newDoc.createdAt = app.dateFormat(new Date(newDoc.createdAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
-        newDoc.updatedAt = app.dateFormat(new Date(newDoc.updatedAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
-        console.log(`ResponseAAA ----- ${JSON.stringify(newDoc)}`)
-
-        return {
-            data: newDoc,
-            message: &apos;获取成功&apos;,
-            status: 0
-        }
-    }
-</code></pre><p>unique</p>
-<blockquote>
-<p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
-
-$ npm i egg-validate --save  安装
-
-// {app_root}/config/plugin.js
-exports.validate = {
-    package: &apos;egg-validate&apos;,
-};
-
-// 校验规则 post
-async fromRule(){
-    const {ctx, app} = this;
-
-    // Request 参数规则
-    const paramRule = {
-        username: {type: &apos;string&apos;},
-        password: {type: &apos;string&apos;},
-        rememberMe: {type: &apos;boolean&apos;, required: false},
-    };
-    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
-
-    if(paramErrors){    // 如果为真说明校验不通过
-        ctx.body = `校验失败`;
-    }   
-    else{
-        ctx.body = `校验成功, ${ctx.request.body.username}`;
-    }
-}
-</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
-
-https://segmentfault.com/a/1190000004286562
-http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
-https://github.com/tj/ejs
-</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
-https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
-</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
-
-2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
-
-3、文件上传 - https://github.com/node-modules/formstream
-
-4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
-
-5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
-</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
 
         
     </section>
@@ -2568,6 +2438,136 @@ egg-ua插件
 </code></pre><blockquote>
 <p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
 </blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
+    const mongoose = app.mongoose;
+    const UserSchema = new mongoose.Schema({
+        username: { type: String },
+        passworrd: { type: String }
+    }, {collection: &apos;user&apos;});
+
+    return mongoose.model(&apos;User&apos;, UserSchema);
+}
+</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
+</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
+<p>bodyParser  中间件，egg内置，用来处里post</p>
+<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
+<blockquote>
+<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/EggJS/">EggJS</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+
+$ npm i egg-validate --save  安装
+
+// {app_root}/config/plugin.js
+exports.validate = {
+    package: &apos;egg-validate&apos;,
+};
+
+// 校验规则 post
+async fromRule(){
+    const {ctx, app} = this;
+
+    // Request 参数规则
+    const paramRule = {
+        username: {type: &apos;string&apos;},
+        password: {type: &apos;string&apos;},
+        rememberMe: {type: &apos;boolean&apos;, required: false},
+    };
+    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    if(paramErrors){    // 如果为真说明校验不通过
+        ctx.body = `校验失败`;
+    }   
+    else{
+        ctx.body = `校验成功, ${ctx.request.body.username}`;
+    }
+}
+</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+
+https://segmentfault.com/a/1190000004286562
+http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
+https://github.com/tj/ejs
+</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
+</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传 - https://github.com/node-modules/formstream
+
+4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
+
+5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
 
         
     </section>
@@ -5306,7 +5306,7 @@ https://github.com/vuejs/vueify
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Vorige</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Volgende &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
 </nav>
 
 

@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -121,6 +121,654 @@
 </header>
 
         <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
+
+    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
+
+二、App图标
+
+    方法1 Xcode中配置:
+
+        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
+
+    方法2 代码中配置
+
+        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
+
+        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
+
+三、设置启动图
+
+    方法1 Xcode中配置:
+
+        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
+
+        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
+
+    方法2 代码配置
+
+        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
+
+        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
+
+
+http://www.cnblogs.com/allenxieyusheng/p/5802179.html
+http://www.jianshu.com/p/adpKye/
+https://appicontemplate.com/ios9    图标尺寸导出  
+
+转icon尺寸
+http://www.zcool.com.cn/article/ZNjE1MTI=.html
+http://makeappicon.com/
+http://blog.csdn.net/leiyu231/article/details/52830151
+</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
+
+1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
+2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
+
+http://blog.csdn.net/liyijun4114/article/details/51792179
+</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
+
+在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
+</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
+
+    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
+
+https://developer.apple.com/  苹果开发者账号申请
+
+苹果开发者平台可以进行
+
+苹果的安装包为 *.ipa 文件
+
+1、先登录Account，注册苹果开发者账号个人或企业
+
+2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
+</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
+
+    class TabPage extends Component {
+
+        _createNav(name, colorValue){
+            return (
+                &lt;View&gt;
+                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }
+
+        render(){
+            return (
+                &lt;View&gt;
+                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
+                &lt;/View&gt;
+            )
+        }
+    }
+</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/金融类/">金融类</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/金融类/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/金融/">金融</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="M0、M1、M2"><a href="#M0、M1、M2" class="headerlink" title="M0、M1、M2"></a>M0、M1、M2</h2><h2 id="什么是金融、金融体系"><a href="#什么是金融、金融体系" class="headerlink" title="什么是金融、金融体系"></a>什么是金融、金融体系</h2><h2 id="赤字"><a href="#赤字" class="headerlink" title="赤字"></a>赤字</h2><h2 id="金融危机和次贷危机"><a href="#金融危机和次贷危机" class="headerlink" title="金融危机和次贷危机"></a>金融危机和次贷危机</h2><pre><code>低利率照成所有人去银行进行贷款，然后使用杠杆
+
+杠杆是用借贷来扩大交易收益的手段
+
+杠杆的操作 - 例 A用1万美元买一个箱子，在以1.1万美元卖给B，在中间赚了1千美元，这属于正常操作，
+
+        如果用杠杆就是 A有1万美元，又去借了99万美元，这样手里有100万美元，去买了100个箱子，赚取110万，还了99万借款和1万的利息，赚了9万美元
+
+次贷危机 - 通过这种杠杆会使大面积的贷款短贷导金融系统破崩溃
+</code></pre><h2 id="刚性兑付"><a href="#刚性兑付" class="headerlink" title="刚性兑付"></a>刚性兑付</h2><pre><code>就是投资、理财的项目，无论赔了赚了都有平台或银行兜底，打破刚性兑付就是将打掉这种模式，平台和银行不在兜底，赔与赚要看借款方的企业
+</code></pre><h2 id="投资类型"><a href="#投资类型" class="headerlink" title="投资类型"></a>投资类型</h2><pre><code>股票
+
+基金
+
+p2p借贷
+
+股权投资
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>只要政府低利率加上超发货币，资产一定会上涨
+</code></pre><p><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s</a><br><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s</a></p>
+<p><a href="https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV" target="_blank" rel="noopener">https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV</a>  金融学</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/JS作用域和整理经验/">JS作用域和整理经验</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/JS作用域和整理经验/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>一、示例
+
+    console.log(str);        // 输出undefined  因为读取的是解析器预先存储的str，还没有被赋值
+    var str = 1;         
+
+
+二、示例2
+
+    alert(a);        // 弹出的是function a(){ alert(&quot;2&quot;)}
+    var a = 1;
+    function a(){
+        alert(&quot;2&quot;)
+    }
+
+    预解析会保存a = undefinded，和 a = function a(){alert(&quot;2&quot;)}，
+    因为函数与变量重名，函数后最执行所以保留函数，结果输出的就是函数
+
+
+三、示例3
+
+    var a = 1;
+    function a(){
+        alert(&quot;2&quot;);
+    }
+
+    // 报错，因为a被定义成变量，typeof a 返回的是number，如果 var a;不能定义值那么a()是成功的
+    a();
+
+
+四、示例4
+
+    var a = 1;
+    function fn1(){
+        alert(a);
+        // 注意这里因为是使用var声明所以执行数预解析器才会把它单独存储起来，
+        // 如果将var去掉，a=2改成了赋值这样会改变外部的a的值，下面输出的就是1，2
+        var a = 2;
+    }
+
+    fn1();                        // undefined
+    console.log(a);        // 1
+
+
+五、示例5
+
+    function foo(){
+        return fn1;
+
+        function fn1(){};
+        var fn1 = 10;
+    }
+
+    var f = foo();
+
+    // 输出 function fn1(){};    因为调用foo函数时，return  fn1因为变量还未定义所以 直接调用的函数
+    alert(f);                
+
+
+六、示例6
+
+    var  myname = &quot;global&quot;; // 全局变量
+    function func() {
+
+        // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined
+        alert(myname);                 
+        var myname = &quot;local&quot;;
+        alert(myname);                 // &quot;local&quot;
+    }
+    func();
+
+
+七、示例7
+
+    &lt;script&gt;
+        window.name = &apos;globalName&apos;;
+
+        var getName = function(){
+            return this.name;
+        }
+
+        getName();         // &apos;globalName&apos;
+    &lt;/script&gt;
+
+
+八、示例8
+
+    &lt;script&gt;
+        window.id = &apos;window&apos;;
+
+        document.getElementById(&apos;divA&apos;).onclick = function(){
+            alert(this.id);
+
+            var callback = function(){
+                return this.id;        // divA
+            }
+            callback();            // window
+        }
+    &lt;/script&gt;
+
+
+ 九、示例9
+
+    1、Example
+        var getName;
+        console.log(getName)    // undefined
+
+        getName()                // Uncaught TypeError: getName is not a function
+
+        var getName = function() {
+            console.log(&apos;wscat&apos;)
+        }
+
+    2、Example
+        var getName;
+        console.log(getName)    // function getName() {console.log(&apos;oaoafly&apos;)}
+
+        getName()                // oaoafly
+
+        function getName() {
+            console.log(&apos;oaoafly&apos;)
+        }
+
+
+十、bind()
+
+    &lt;script&gt;
+        window.id = &apos;window&apos;;
+
+        document.getElementById(&apos;divA&apos;).onclick = function(){
+            alert(this.id);
+
+            var obj = {
+                id: &apos;objId&apos;,
+                callback: function(){
+                    return this.id;         // &apos;divA&apos;
+                }.bind(window)                // 通过bind来将callback内的this指向window
+            }
+
+            console.log(obj.callback());    // &apos;window&apos;
+        }
+    &lt;/script&gt;
+
+
+十一、严格模式下的this
+
+    &lt;script&gt;
+        &apos;use strict&apos;
+
+        function fun(){
+            alert(this);        // 返回 &apos;undefined&apos;, strict模式下this不会指向全局
+        }
+
+        fun();
+    &lt;/script&gt;
+
+
+十二、箭头函数下的this指向
+
+    // 箭头函数没有this
+    const Template = {
+        test(){
+            console.log(this);        // this指向Template
+
+            document.querySelector(&quot;#showThis&quot;).onclick = () =&gt;{
+                // 如果非箭头函数this应该指向 #showThis
+                // 这里箭头函数不是指向调用者，所以指向了 Template
+                console.log(this);    
+            }
+        }
+    }
+
+    Template.test();
+</code></pre><h3 id="JS作用域和常用方法"><a href="#JS作用域和常用方法" class="headerlink" title="JS作用域和常用方法"></a>JS作用域和常用方法</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code>1、函数本身是对象也是构造函数
+
+2、直接挂载到函数下的叫对象的属性和方法
+
+    function Foo(){};  
+
+    Foo.username = &apos;111&apos;;     // 注意这里Foo的属性不能为name因为被name被函数的名所占用
+    Foo.getName = function(){ console.log(this.username) };
+
+    // 调用
+    Foo.getName();        // 111
+
+
+3、写到构造函数内部的叫构造函数的属性和方法
+
+    function Foo() {
+        this.username = &apos;111&apos;
+    }
+
+    Foo.username = &apos;222&apos;;
+
+    // 调用
+    console.log(new Foo().username);    // 111
+
+
+&lt;script&gt;
+    function Foo() {
+        getName = function() {
+            console.log(this);
+            console.log(1);
+        }
+
+        console.log(this);
+        return this;
+    }
+    Foo.getName = function() { // 这里只是Foo对象的方法，而不是构造函数的方法，
+        console.log(2);
+    }
+
+    // Foo.prototype.getName = function() {
+    //     console.log(3);
+    // }
+
+    var getName = function() {
+        console.log(4)
+    }
+
+    function getName() {
+        console.log(5)
+    }
+
+
+    Foo.getName(); // 2    Foo.getName=function(){}  是存到Foo下的方法，Foo.getName()可以取到
+
+    getName(); // 4     如果一个作用域下有var的变量名与函数名相当，var的作用域提升高于function
+
+    Foo().getName(); // 1    因为Foo()被调用，定义中加了return this，Foo指向的是window全局，getName没有var升明，所以为全局，所以相当于window.getName()，Foo中如果不加return this那么就会报错，因为Foo没有链式调用，所以this断了
+
+    getName(); // 1   因为上面已经将Foo内的getName()提升成全局，所以会赋盖掉var getName、function getName定义的全局方法
+
+    // var ofo = new Foo;
+    // ofo.getName();   // 3
+
+
+
+    // Foo既是一个对象也是一个构造函数
+
+    new Foo.getName(); // 2    先执行Foo.getName()，因为&quot;.&quot;运算符优先于new运算符，所以这时候Foo只是一个对象并不是构造函数的实例，所以会调用对象下的方法
+
+    new Foo().getName(); // 3     先执行new Foo()构造函数，然后在构造函数下去找getName方法，Foo构造函数方法没有getName()所以到prototype下去找
+
+    new new Foo().getName(); // 3   与上面相同
+&lt;/script&gt;
+</code></pre><h4 id="将对象拷贝并不引用指针"><a href="#将对象拷贝并不引用指针" class="headerlink" title="将对象拷贝并不引用指针"></a>将对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
+
+另一种方法是使用Object.assign()
+
+let objA = {
+    name: &apos;siguang&apos;,
+    age: 30
+}
+let objB = Object.assign({}, objA);
+objB.name = &apos;lulu&apos;;         // lulu
+console.log(objA.name);     // siguang
+</code></pre><h4 id="对象的深拷贝和浅拷贝"><a href="#对象的深拷贝和浅拷贝" class="headerlink" title="对象的深拷贝和浅拷贝"></a>对象的深拷贝和浅拷贝</h4><pre><code>浅拷贝就是还存在对象的引用关系，深拷贝就是两个对象之间没有引用关系
+
+一、浅拷贝
+
+    const a = {t: 1, p: &apos;gg&apos;};
+    const b = a;
+    b.t = 3;
+    console.log(a);     // {t: 3, p: &apos;gg&apos;}
+    console.log(b);     // {t: 3, p: &apos;gg&apos;}
+
+二 、深拷贝
+
+    1、Object.assign()
+
+        assign()方法是将两个对象合并，并返回一个新对象
+
+        const c = {t: 1, p: &apos;gg&apos;};
+        const d = Object.assign({}, c);
+        d.t = 3;
+        console.log(c);     // {t: 1, p: &apos;gg&apos;}
+        console.log(d);     // {t: 3, p: &apos;gg&apos;}
+
+    2、Object.create()
+
+        将拷贝的内容入到prototype下，对象和数组都适用
+
+        对象:
+
+            var oA = {
+                name: &apos;sg&apos;,
+                age: 33
+            }
+            var oB = {};
+            oB = Object.create(oA);
+
+            oB.eat = &apos;bread&apos;;
+
+        数组:
+
+            var oA = [1,2]
+            var oB = [];
+            oB = Object.create(oA);
+
+            oB.push(3);            // oB.length;   3
+
+
+    3、jQuery.extend()
+
+        let oa = {a: 1, b: 2}; let ob = {};  
+        $.extend(ob, oa); 
+        ob.b = 3; 
+        console.log(oa, ob);        // oa: {a: 1, b: 2}、 ob: {a: 1, b: 3}
+</code></pre><h4 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h4><pre><code>一、concat()方法
+
+    var arrA = [1,2,3];
+    var arrB = arrA.concat();
+    arrB.push(5,6,7);
+    console.log(arrA);  // [1,2,3]
+    console.log(arrB);  // [1,2,3,5,6,7]
+
+二、slice()方法
+
+    var arrA = [1,2,3];
+    var arrB = arrA.slice();
+    arrB.push(5,6,7);
+    console.log(arrA);  // [1,2,3]
+    console.log(arrB);  // [1,2,3,5,6,7]
+
+两种方法都是回返一个不带指向的新数组
+</code></pre><h4 id="对象处理"><a href="#对象处理" class="headerlink" title="对象处理"></a>对象处理</h4><pre><code>一、查看是否是一个空对象
+
+    // 使用keys来查看对象中所有的kyes并返回一个数组，如果数组为度为0则对象为空
+    var obj = {}; 
+    var Len = Object.keys(obj);         
+    console.log(Len.length);
+
+二、查看对象中属性是否存在
+
+    var obj = {
+        a: 1,
+        b: 2
+    }
+    console.log(obj.c);        // undefined
+</code></pre><h4 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h4><pre><code>一、数据去重
+
+    1、普通方法
+
+        function clearRepeat(arr){
+            var newArr = [], obj = {};
+            for(var i=0; i&lt;arr.length; i++){
+                if(!obj[arr[i]]){
+                    obj[arr[i]] = &apos;&apos;;        // 对象属性相同会直接覆盖
+                    newArr.push(key);        
+                }
+            }
+            return newArr;
+        }
+
+        let retArray = clearRepeat([3,2,3,4,5,5,2,2,13,3]);
+
+
+    2、使用ES6的set()方法，set方法就是不允许数组内有重复的值
+
+        let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
+        console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
+        let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
+
+    http://www.jb51.net/article/46154.htm
+
+
+二、数组排序
+
+    1、使用sort方法
+
+        var arr = [6,7,5,8,4,2342342,23,234,2,34];
+        arr.sort(function(v1, v2){
+            return v1 - v2        // 正序
+        })
+        console.log(arr);
+</code></pre><h4 id="编写组件并兼容AMD、ES6写法"><a href="#编写组件并兼容AMD、ES6写法" class="headerlink" title="编写组件并兼容AMD、ES6写法"></a>编写组件并兼容AMD、ES6写法</h4><pre><code>;(function(root, factory){
+
+    // 判断使用的支持定义模块的方式
+    if(typeof define === &apos;function&apos; &amp;&amp; define.amd){
+        define(factory)
+    }
+    else if(typeof exports === &apos;object&apos;){
+        module.exports = factory();
+    }
+    else{
+        root.NProgress = factory();
+    }
+
+})(this, function(){
+    console.log(`输出内容`);
+})
+</code></pre><p>| 参考<br>| <a href="https://juejin.im/entry/58db95eaac502e0058f8472e" target="_blank" rel="noopener">https://juejin.im/entry/58db95eaac502e0058f8472e</a><br>| <a href="http://www.iamaddy.net/2015/04/front-end-engineering/" target="_blank" rel="noopener">http://www.iamaddy.net/2015/04/front-end-engineering/</a>       // 前端的发展</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/经济类/">经济学</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/经济类/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/经济学/">经济学</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="什么是经济"><a href="#什么是经济" class="headerlink" title="什么是经济"></a>什么是经济</h2><pre><code>经济 - 管理一个家庭的人
+
+稀缺性 - 社会资源的有限性
+
+经济学 - 研究社会如休管理自己的稀缺资源
+</code></pre><h2 id="经济学的十大原理"><a href="#经济学的十大原理" class="headerlink" title="经济学的十大原理"></a>经济学的十大原理</h2><pre><code>一、人们面临权衡取舍 - 要知道做一件事情得到了什么，又舍去了什么，什么都想要最后确什么都没有
+</code></pre><h2 id="绝对优势、比较优势"><a href="#绝对优势、比较优势" class="headerlink" title="绝对优势、比较优势"></a>绝对优势、比较优势</h2><pre><code>比较优势说明每种物品应该由生产这种物品成本较低的国家生产
+</code></pre><h2 id="进口、出口"><a href="#进口、出口" class="headerlink" title="进口、出口"></a>进口、出口</h2><pre><code>进口: 在国外生产在国内销售的物品叫进口
+
+出口: 在国内生产而在国外销售的物品称出口
+</code></pre><h2 id="成本机会"><a href="#成本机会" class="headerlink" title="成本机会"></a>成本机会</h2><h2 id="供给与需求"><a href="#供给与需求" class="headerlink" title="供给与需求"></a>供给与需求</h2><pre><code>供给量是卖者愿意并且能够出售该物品的数量
+
+供给定理是一种物品价格上升，该物品供给量增加，物品价格下降，物品供给量减少
+</code></pre><h2 id="过剩、短缺"><a href="#过剩、短缺" class="headerlink" title="过剩、短缺"></a>过剩、短缺</h2><pre><code>过剩 - 当价格下降，供给者不能卖出他们想卖的所有物品
+
+短缺 - 当前价格下，需求者不能买到他们想买的物品
+</code></pre><h2 id="市场"><a href="#市场" class="headerlink" title="市场"></a>市场</h2><pre><code>市场是由某种物品或服务的买者或卖者组成的一个群体，买者作为一个群体决定了一种产品的需求，而卖者作为一个群体决定了一个产品的代给
+</code></pre><h2 id="竞争"><a href="#竞争" class="headerlink" title="竞争"></a>竞争</h2><pre><code>竞争市场有许多买者与卖者并且每
+</code></pre>
+        
+    </section>
+</article>
+
+
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
@@ -258,11 +906,11 @@ weex流程:
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
+            <a href="/2016/12/07/Git/">Git</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
+            <a class="article-date" href="/2016/12/07/Git/">
     
     <i class="icon-calendar"></i>
     
@@ -272,7 +920,7 @@ weex流程:
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+    <a class="article-tag-link" href="/tags/Git/">Git</a>
 </div>
 
 
@@ -281,242 +929,359 @@ weex流程:
     
     <section class="article-body markdown-body">
         
-        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
+        <h4 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h4><pre><code>版本控制分为 集成式版本控制 和 分布式开发
 
-    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
+    1、集成式开发（svn）：需要一台中央服务器，客户端需要连接到中央服务器进行更新、提交代码文件等
 
-二、App图标
+    2、分布式开发（Git）：每台机器都有自己版本库不需要中央服务器
 
-    方法1 Xcode中配置:
+分布式的好处：
 
-        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
+    1、不需要连接中央服务器来提交和更新文件
 
-    方法2 代码中配置
+    2、通过不同的版本来做不同阶段开发，不同的版本文件可以随时切换回之前的版本
 
-        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
+    3、分支管理上要比svn方便很多
 
-        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
 
-三、设置启动图
+[master +0 ~0 -0 !1]: + 增加  ~修改  -删除  !有冲突
 
-    方法1 Xcode中配置:
+Git的配置文件：vi ~/.gitconfig
+</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>1、将远端的库克隆到本地:  git clone 远程代码库
 
-        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
+2、创建分支并切换到创建的新分支:  git checkout -b   新建本地分支名  origin/远端分支名
 
-        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
+3、从远端拉取拉取代码:  git pull 远端分支名
 
-    方法2 代码配置
+4、将文件添加到暂存区:  git add 文件名         git add .  添加所有工作区文件到暂存区
 
-        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
+5、提交文件:  git commit -m &apos;提交版本内容说明&apos;
 
-        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
+6、将本地代码提交到远端库:  git push origin/develop_web  本地分支名
 
+7、查看当前文件状态:  git status 
 
-http://www.cnblogs.com/allenxieyusheng/p/5802179.html
-http://www.jianshu.com/p/adpKye/
-https://appicontemplate.com/ios9    图标尺寸导出  
+8、查看当前所在的分支:  git branch
 
-转icon尺寸
-http://www.zcool.com.cn/article/ZNjE1MTI=.html
-http://makeappicon.com/
-http://blog.csdn.net/leiyu231/article/details/52830151
-</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
+9、切换分支:  git checkout
 
-1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
-2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
+10、临时保存:  git stash   git stash pop
 
-http://blog.csdn.net/liyijun4114/article/details/51792179
-</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
+11、从主分支上merge代码:  git merge origin/dev_crm2.6_base
 
-在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
-</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
+12、将本地分支提交到主分支:  pull resquest
 
-    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
+13、删除本地分支:  git branch -d dev_crm2.8_base
 
-https://developer.apple.com/  苹果开发者账号申请
+14、删除远端分支:  git push origin :PublicAdmin_V1.0.0_liusiguang        或  git branch -r -d origin/PublicAdmin_V1.0.0_liusiguang
 
-苹果开发者平台可以进行
+15、从远端单独拉取一个文件:  git checkout origin/master -- path/to/file
 
-苹果的安装包为 *.ipa 文件
+16、撤消最后一次commit提交：git reset --hard HEAD^
 
-1、先登录Account，注册苹果开发者账号个人或企业
+17、chenkout一个分支后，pull的时候想在app_master下切换，使用下面命令进行转换
 
-2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
-</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
+    git branch --set-upstream 当前分支名 远端分支名
 
-    class TabPage extends Component {
+18、git branch --track branch 名称 远端branch 建立一个 tracking 远端 branch 的 branch，这样以后 push/pull都会直接对应到该远端的branch。
+    git branch --set-upstream branch 远端branch 将一个已存在的 branch 设定成 tracking 远端的branch。
+</code></pre><h4 id="版本库介绍"><a href="#版本库介绍" class="headerlink" title="版本库介绍"></a>版本库介绍</h4><pre><code>工作区（文件）      暂存区（过度）     版本库      |       远端（服务器版本）    
 
-        _createNav(name, colorValue){
-            return (
-                &lt;View&gt;
-                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
-                &lt;/View&gt;
-            )
-        }
+1、工作区:  开发的区域
 
-        render(){
-            return (
-                &lt;View&gt;
-                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
-                &lt;/View&gt;
-            )
-        }
-    }
-</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
+2、暂存区: 将工作区的文件执行 git add &apos;文件名&apos; 命令会使文件添加到暂存区，工作区的文件如果删除了就没有了
 
-        
-    </section>
-</article>
+    git add &apos;文件名&apos;
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/NPM/">NPM 常用命令</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/NPM/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
+3、版本库: 通过commit来提交到版本库， 暂存区需要先提交到版本库才能最后提交远端
 
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/npm/">npm</a>
-</div>
+    git commit -m &apos;提交说明内容&apos;
 
+    add 和 commit 连着的写法
+    git commit -a -m &apos;提交注释&apos;        // 这样可以省略add的步骤
 
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="npm是什么"><a href="#npm是什么" class="headerlink" title="npm是什么"></a>npm是什么</h4><pre><code>资源包的管理器，安装NodeJS时会直接安装NPM
-</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>$ 下载并安装node.js也就将npm直接安装
 
-$ npm install npm@latest -g        // 更新npm
+4、提交到远端: 通过push来提交到远端
 
-$ npm i [package_name]         // 安装包，将在当前目录创建一个node_modules目录，将下载的包保存到这个目录
+    git push origin develop_web_2.5.1_siguang            // 提交到远端
+</code></pre><h4 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h4><pre><code>1、设置贡献者
 
-$ npm update     // 获取最新的包并更新
+    设置用户名:     git config  --global user.name “username”
 
-$ npm uninstall [package_name]    // 卸载包，命令是将node_modules目录将包的文件删除
+    设置Email-id:  git config  --global user.email “email”
 
-$ npm uninstall --save [package_name]    // 卸载包，将从package.json文件中删除依赖, 如果--save-dev安装就需要换成--save-dev
 
-# npm i -g [package_name]    // 全局安装包，两种安装本地和全局安装，如果遇到acces错误权限问题，需要在前面加sudo，安装在/usr/local/lib/node_modules/中
+2、设置避免PULLING提交合并:   git config --global branch.autosetuprebase always
 
-$ npm update -g [package_name]    // 更新全局包
+3、颜色高亮
 
-$ npm uninstall -g [package_name]    // 卸载全局包
-</code></pre><h4 id="package-json参数介绍"><a href="#package-json参数介绍" class="headerlink" title="package.json参数介绍"></a>package.json参数介绍</h4><pre><code>name - 包名
+    git config --global color.ui true
 
-version - 包的版本号
+    git config --global color.status auto
 
-description - 包的描述
+    git config --global color.branch auto
 
-homepage - 包的官网 url 
 
-author - 包的作者姓名
+4、设置默认编辑器:  git config --global core.editor vim        Git的使用系统默认取自VISUAL或EDITOR环境变量的编辑器
 
-contributors - 包的其他贡献者姓名
+5、设置默认的合并工具:  git config --global merge.tool vimdiff
 
-dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下
+6、查看设置命令:  git config --list
+</code></pre><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><pre><code>1、git init 库名： 创建一个git仓库 
 
-repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上
+2、git remote add origin git@xbc.me:wordpress.git:    添加远程版本库origin
 
-main - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require(&quot;express&quot;)
+3、git remote:   显示所有远端主机
 
-keywords - 关键字
-</code></pre><h4 id="npm-install-安装模块"><a href="#npm-install-安装模块" class="headerlink" title="npm install 安装模块"></a>npm install 安装模块</h4><pre><code>npm i [package_name] --save-dev
+    git remote  -v:        查看远程仓库地址
 
-1、-S, --save 安装包添加到dependencies（项目依赖)中
+    git remote show &lt;主机名&gt;:     查看远端主机的详细信息
 
-    npm i 包名 --save
+    git remote add &lt;主机名&gt; &lt;网址&gt;:    添加远程主机
 
-    当发布时可以不会将node_module目录发布出去，可以将package.json发布出去，其它项目的人，可以通过npm install 下载dependenciess中的所有包内容.
+    git remote rm &lt;主机名&gt;:    删除远端主机
 
-    例：
-        npm install gulp --save 或 npm install gulp -S
+    git remote rename &lt;原主机名&gt; &lt;新主机名&gt;:    对无端主机进行改名
 
-        &quot;dependencies&quot;: {
-            &quot;gulp&quot;: &quot;^1.0.0&quot;
-        }
+     在clone完成之后，Git 会自动为你将此远程仓库命名为origin，origin只相当于一个别名，运行git remote –v可以看到下载的版本路径。
 
-2、-D, --save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
 
-    npm install gulp --save-dev 或 npm install gulp -D
+克隆项目地址:    git clone 远程版本库地址
+</code></pre><h4 id="文件操作（查看、添加、提交、删除、恢复，撤消）"><a href="#文件操作（查看、添加、提交、删除、恢复，撤消）" class="headerlink" title="文件操作（查看、添加、提交、删除、恢复，撤消）"></a>文件操作（查看、添加、提交、删除、恢复，撤消）</h4><pre><code>查看:
 
-    &quot;devDependencies&quot;: {
-        &quot;gulp&quot;: &quot;^1.0.0&quot;
-    }
+    1、git help:  显示help的命令功能
 
+    2、git show 提交ID:  显示某次提交的内容，先通过git log来查看提交的ID
 
-3、-O, --save-optional 安装包信息将加入到optionalDependencies（可选阶段的依赖）
+        commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e         // 提交的ID
 
-    npm install gulp --save-optional 或 npm install gulp -O
+    3、git log:  显示所有的版本记录
 
-    &quot;optionalDependencies&quot;: {
-        &quot;gulp&quot;: &quot;^1.0.0&quot;
-    }
 
+添加: 添加到缓存区
 
-4、-E, --save-exact 精确安装指定模块版本
+    1、git add 文件名:  将工作文件修改提交到本地暂存区            add只是刷新了git的跟踪信息，并未发到版本库中
 
-    npm install gulp --save-exact 或 npm install gulp -E
+    2、git add --all:  将所有修改过的文件提交到暂存区
 
-    输入命令npm install gulp -ES，留意package.json 文件的 dependencies 字段，以看出版本号中的^消失了
 
-    &quot;dependencies&quot;: {
-        &quot;gulp&quot;: &quot;3.9.1&quot;
-    }
-</code></pre><h4 id="npm-i-选项–global，–save，–save-dev"><a href="#npm-i-选项–global，–save，–save-dev" class="headerlink" title="npm i 选项–global，–save，–save-dev"></a>npm i 选项–global，–save，–save-dev</h4><pre><code>-global: 简写 -g
+提交: 提交到版本库
 
--save: 简写 -S, 作用是在package.json的dependencies字段增加或修改安装包和版本号
+    1、git commit -m &apos;注释提交理由&apos;:  代码提交
 
--save-dev: 简写 -D, 是修改devDependencies, 这样就不用安装了某个包之后手动修改package.json
-</code></pre><h4 id="与-版本"><a href="#与-版本" class="headerlink" title="~ 与 ^ 版本"></a>~ 与 ^ 版本</h4><pre><code>版本分为: 主版本号、次版本号、补丁版本号
+        git commit --amend:  使用最后一次提交的注释在提交
 
-&quot;devDependencies&quot;: {
-    &quot;vue&quot;: &quot;~2.2.2&quot;,            // 匹配最近小版本，如，会匹配所有的2.2.x版本，但最高不会匹配2.3.0
-    &quot;vue-router&quot;: &quot;^2.2.0&quot;        // 最近的一个大版本，所有 2.x.x但不不包括3.0.0，相当于 2.0.0 &lt;= version &lt; 3.0.0
-}
-</code></pre><h4 id="npm-ls-查看安装的模块"><a href="#npm-ls-查看安装的模块" class="headerlink" title="npm ls 查看安装的模块"></a>npm ls 查看安装的模块</h4><pre><code>查看安装模块及依赖：npm ls -g
-</code></pre><h4 id="发布模块"><a href="#发布模块" class="headerlink" title="发布模块"></a>发布模块</h4><pre><code>使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
+    2、git push origin master:  将刚commit的版本推送到远程服务器
 
-$ npm adduser
-Username: mcmohd
-Password:
-Email: (this IS public) xxxxxx@qq.com
 
-来发布模块命令: $ npm publish
-</code></pre><h4 id="script属性"><a href="#script属性" class="headerlink" title="script属性"></a>script属性</h4><pre><code>1、npm start 启动模块
+删除：
 
-    该命令写在package.json文件scripts的start字段中，可以自定义命令来配置一个服务器环境和安装一系列的必要程序
+    1、git rm &apos;main.js&apos;:     删除暂存区的main.js文件
 
-    &quot;scripts&quot;: {
-        &quot;start&quot;: &quot;gulp -ws&quot;
-    }
+    2、git rm -f &apos;main.js&apos;:  删除工作区和暂存区的main.js文件
 
-2、npm stop 停止模块
+    3、git rm --cached &apos;main.js&apos;:  如果工作区和暂存区都有main.js，只删除暂存区文件
 
-3、npm restart 重新启动模块
-</code></pre><h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><pre><code>一、npm使用过程中遇到的 Cannot find module &apos;internal/fs&apos;，错误场景 gulp中执行任务报错，的确amd-optimize插件中的graceful-fs与gulp中graceful-fs的版本问题，
 
-    解决:
-        删除插件 npm uninstall graceful-fs
-        安装  npm i graceful-fs --save
+恢复：
 
-二、$ npm view react version    查看npm中指定包的版本号
+    如果把工作区的文件删除了，想从版本库中恢复回来的方法:
 
-三、$ npm i vue@2.0.0 --save    安装指定版本
-</code></pre><p>| 参考资料<br>| <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">https://www.npmjs.com.cn/</a><br>| <a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/master-npm/</a><br>| <a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="noopener">https://github.com/ericdum/mujiang.info/issues/6/</a><br>| <a href="http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/" target="_blank" rel="noopener">http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/</a></p>
+    1、恢复文件
+
+        先 git log 来查看commit 提交的历史版本，获取到commitId
+
+        commit d5d9357319a4ef536b30f2d906bb71700beaa899
+        Author: liusiugang &lt;liusiguang@renrendai.com&gt;
+        Date:   Thu Nov 3 15:19:00 2016 +0800
+
+            修改邻趣配送时间接口加merchantId参数+
+
+        git checkout  [commitId] [要恢复的文件名]
+
+        // 这样就将版本库中的common.coffee.js恢复到了工作区
+        git checkout d5d9357319a4ef536b30f2d906bb71700beaa899  common.coffee.js   
+
+
+    2、恢复版本
+
+        1）git reset --hard  [commitId]    恢复到指定提交的版本的内容，通过commitId来指定版本
+
+        2）git reset --hard HEAD^    恢复向后一个版本
+
+        3）git reflog    显示所有的操作记录
+
+
+撤消：
+
+    1、git reset &lt;file&gt;：    从暂存区恢复到工作文件
+
+    2、git reset --：        从暂存区恢复到工作文件
+
+    3、git reset --hard：    恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
+
+    4、git reset HEAD b：    现在你只想提交a文件，不想提交b文件，应该这样
+
+    5、git revert &lt;$id&gt;：    恢复某次提交的状态，恢复动作本身也创建了一次提交对象
+
+    6、git revert HEAD：    恢复最后一次提交的状态
+
+        git checkout -- filname  撤回远端版本或指定文件
+
+        git commit --amend    重新合并一个提交方案
+
+
+文件重命名：
+
+    1、git mv reademe.txt 新文件名
+
+
+查看当前库状态: git status
+
+    显示
+    On branch master        // master分支
+    Your branch is up-to-date with &apos;origin/master&apos;.        // 你的分支是最新的 master
+    nothing to commit, working directory clean            // 无提交，工作目录干净
+</code></pre><h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><pre><code>1、查看分支
+
+    查看本地分支:  git branch
+
+    查看远端分支:  git branch -r
+
+    查看本地和远端分支:  git branch -a
+
+    查看各分支最后提交的信息:  git branch -v
+
+
+2、创建分支 
+
+    git branch 分支名称
+
+
+3、把分支提交到远端分支
+
+    # 如果在本地创建一个分支，与团队其它人一起开发，需要将这个分支push到远端仓库，不然这个分支只是存在你本地，其它人看不到，每次commit完代码就需要提交到远端
+
+    git push origin 本地分支名
+
+    Example:
+
+        appledeMacBook-Pro:what apple$ git push origin dev_1.1_lulu           // 将dev_1.1_lulu分支提交到远端
+        Username for &apos;https://github.com&apos;: siguang1983            // 输入远程的用户名
+        Password for &apos;https://siguang1983@github.com&apos;:             // 输入远端的密码
+        Counting objects: 4, done.                                // 成功
+
+
+4、删除分支: 
+
+    git branch -d &lt;branch&gt;        删除某个分支
+
+    git branch -D &lt;branch&gt;        强制删除某个分支 (未被合并的分支被删除的时候需要强制)
+
+
+5、切换分支:
+
+    git checkout [要切换的分支]        本地切换分支
+
+    git checkout -b [新创建分支名]  [远端地址分支]            创建并且直接切换到这个新分支
+
+
+6、合并分支: git morge  分支名
+
+    git merge master develop        # 将develop分支合并到master上
+
+
+7、分支的更新与合并
+
+    # 将本地仓库更新到最新版本，直接更新自动合并冲突，如果执行fetch提示哪些冲突需要手动更新
+    git pull origin 分支名
+
+    # 执行一下合并，并且手动去去解决冲突
+    git merge [branch]
+
+    # 将这个冲突文件重新提交 
+    git add &lt;filename&gt;
+
+    # 查看一下冲突的文件
+    git diff 确定分支  目标分支
+
+    # 冲突处理完后就可以commit
+    git commit -m &apos;fix conflict&apos;
+
+
+8、删除远程版本:  git push origin :br-1.0.0
+
+9、查看分支提交的记录:  git whatchanged
+
+    commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e            // 提交的状态码
+    Author: apple &lt;apple@appledeMacBook-Pro.local&gt;            // 提交人
+    Date:   Mon May 2 17:24:16 2016 +0800                    // 日期
+
+        siguang add index.js                // 提交文件
+
+    :100644 100644 e69de29... 50b777e... M  js/index.js
+</code></pre><h4 id="拉取远端代码-和-提交远端代码"><a href="#拉取远端代码-和-提交远端代码" class="headerlink" title="拉取远端代码 和 提交远端代码"></a>拉取远端代码 和 提交远端代码</h4><pre><code>1、pull、fetch 两种都是拉取代码功能，有一些小的差别
+
+    git pull : 拉取远端代码，直接合并        // Already up-to-date. 已更新
+
+    git fetch: 拉取远端代码，并不合并，查看哪些冲突，来进行手动merge合并
+
+
+2、版本库提交到远端
+
+    git push origin/dev_crm2.9_base
+
+
+3、pull request：将代码提交到远端版本中的一个请求，在merge就可以直接合到远端仓库中
+</code></pre><h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><pre><code>拉取完代码git pull 或 git fetch 拉取远程某个分支的代码，再与本地的指定分支合并（包括fetch和merge）
+
+git pull origin/dev_crm2.5_base 
+
+git merge origin/dev_crm2.5_base
+
+    有时候pull的时候会提示：git branch --set-upstream master origin/next  
+
+    Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）
+
+    如果有冲突 常见提示：
+        Auto-merging addCacke.html            // 自动合并了这个文件
+        CONFLICT (content): Merge conflict in addCacke.html            // 有冲突在 addCacke.html文件中合并冲突
+        Automatic merge failed; fix conflicts and then commit the result.        // 自动合并失败解决冲突
+</code></pre><h4 id="查看文件之间区别-diff"><a href="#查看文件之间区别-diff" class="headerlink" title="查看文件之间区别 diff"></a>查看文件之间区别 diff</h4><pre><code>1、git diff &lt;file&gt;:        是工作区与暂存区的
+
+2、git diff &lt;$id1&gt; &lt;$id2&gt;:    比较两次提交之间的差异
+
+3、git diff &lt;branch1&gt;..&lt;branch2&gt;:    在两个分支之间比较
+
+4、git diff --staged:    比较暂存区和版本库差异
+
+5、git diff --cached:    暂存区和版本区差异
+
+6、git diff --stat:         仅仅比较统计信息
+</code></pre><h4 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h4><pre><code>1、git log:  显示提交的所有记录
+
+    commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e         // 提交的ID
+    Author: apple &lt;apple@appledeMacBook-Pro.local&gt;         // 提交用户
+    Date:   Mon May 2 17:24:16 2016 +0800                 // 提交日期
+
+        siguang add index.js            // 提交文件
+
+2、git log &lt;file&gt;:        查看该文件每次提交记录
+
+3、git log -p &lt;file&gt; :    查看每次详细修改内容的diff
+
+4、git log -p -2:        查看最近两次详细修改内容的diff
+
+5、git log --status:     查看提交统计信息
+</code></pre><h4 id="sourceTree-使用"><a href="#sourceTree-使用" class="headerlink" title="sourceTree 使用"></a>sourceTree 使用</h4><pre><code>一、设置拉取、推送默认密码
+
+    仓库 -&gt; 远程仓库 -&gt; 将路径配置成 http://用户名:密码@172.16.x.xx:7990/scm/ibg/ibg.git
+</code></pre><blockquote>
+<p>参考资料：</p>
+<p>可视化工具：SourceTree<br>远端：stash</p>
+<p><a href="http://iissnan.com/progit/" target="_blank" rel="noopener">http://iissnan.com/progit/</a><br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/</a><br><a href="http://www.yiibai.com/git/git_update_operation.html" target="_blank" rel="noopener">http://www.yiibai.com/git/git_update_operation.html</a></p>
+</blockquote>
 
         
     </section>
@@ -1142,6 +1907,160 @@ mac 打开iphone界面  iphone与mac连接，打开QuickTime，文件 -&gt; 新�
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2016/12/07/NPM/">NPM 常用命令</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/NPM/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/npm/">npm</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="npm是什么"><a href="#npm是什么" class="headerlink" title="npm是什么"></a>npm是什么</h4><pre><code>资源包的管理器，安装NodeJS时会直接安装NPM
+</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>$ 下载并安装node.js也就将npm直接安装
+
+$ npm install npm@latest -g        // 更新npm
+
+$ npm i [package_name]         // 安装包，将在当前目录创建一个node_modules目录，将下载的包保存到这个目录
+
+$ npm update     // 获取最新的包并更新
+
+$ npm uninstall [package_name]    // 卸载包，命令是将node_modules目录将包的文件删除
+
+$ npm uninstall --save [package_name]    // 卸载包，将从package.json文件中删除依赖, 如果--save-dev安装就需要换成--save-dev
+
+# npm i -g [package_name]    // 全局安装包，两种安装本地和全局安装，如果遇到acces错误权限问题，需要在前面加sudo，安装在/usr/local/lib/node_modules/中
+
+$ npm update -g [package_name]    // 更新全局包
+
+$ npm uninstall -g [package_name]    // 卸载全局包
+</code></pre><h4 id="package-json参数介绍"><a href="#package-json参数介绍" class="headerlink" title="package.json参数介绍"></a>package.json参数介绍</h4><pre><code>name - 包名
+
+version - 包的版本号
+
+description - 包的描述
+
+homepage - 包的官网 url 
+
+author - 包的作者姓名
+
+contributors - 包的其他贡献者姓名
+
+dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下
+
+repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上
+
+main - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require(&quot;express&quot;)
+
+keywords - 关键字
+</code></pre><h4 id="npm-install-安装模块"><a href="#npm-install-安装模块" class="headerlink" title="npm install 安装模块"></a>npm install 安装模块</h4><pre><code>npm i [package_name] --save-dev
+
+1、-S, --save 安装包添加到dependencies（项目依赖)中
+
+    npm i 包名 --save
+
+    当发布时可以不会将node_module目录发布出去，可以将package.json发布出去，其它项目的人，可以通过npm install 下载dependenciess中的所有包内容.
+
+    例：
+        npm install gulp --save 或 npm install gulp -S
+
+        &quot;dependencies&quot;: {
+            &quot;gulp&quot;: &quot;^1.0.0&quot;
+        }
+
+2、-D, --save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
+
+    npm install gulp --save-dev 或 npm install gulp -D
+
+    &quot;devDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^1.0.0&quot;
+    }
+
+
+3、-O, --save-optional 安装包信息将加入到optionalDependencies（可选阶段的依赖）
+
+    npm install gulp --save-optional 或 npm install gulp -O
+
+    &quot;optionalDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^1.0.0&quot;
+    }
+
+
+4、-E, --save-exact 精确安装指定模块版本
+
+    npm install gulp --save-exact 或 npm install gulp -E
+
+    输入命令npm install gulp -ES，留意package.json 文件的 dependencies 字段，以看出版本号中的^消失了
+
+    &quot;dependencies&quot;: {
+        &quot;gulp&quot;: &quot;3.9.1&quot;
+    }
+</code></pre><h4 id="npm-i-选项–global，–save，–save-dev"><a href="#npm-i-选项–global，–save，–save-dev" class="headerlink" title="npm i 选项–global，–save，–save-dev"></a>npm i 选项–global，–save，–save-dev</h4><pre><code>-global: 简写 -g
+
+-save: 简写 -S, 作用是在package.json的dependencies字段增加或修改安装包和版本号
+
+-save-dev: 简写 -D, 是修改devDependencies, 这样就不用安装了某个包之后手动修改package.json
+</code></pre><h4 id="与-版本"><a href="#与-版本" class="headerlink" title="~ 与 ^ 版本"></a>~ 与 ^ 版本</h4><pre><code>版本分为: 主版本号、次版本号、补丁版本号
+
+&quot;devDependencies&quot;: {
+    &quot;vue&quot;: &quot;~2.2.2&quot;,            // 匹配最近小版本，如，会匹配所有的2.2.x版本，但最高不会匹配2.3.0
+    &quot;vue-router&quot;: &quot;^2.2.0&quot;        // 最近的一个大版本，所有 2.x.x但不不包括3.0.0，相当于 2.0.0 &lt;= version &lt; 3.0.0
+}
+</code></pre><h4 id="npm-ls-查看安装的模块"><a href="#npm-ls-查看安装的模块" class="headerlink" title="npm ls 查看安装的模块"></a>npm ls 查看安装的模块</h4><pre><code>查看安装模块及依赖：npm ls -g
+</code></pre><h4 id="发布模块"><a href="#发布模块" class="headerlink" title="发布模块"></a>发布模块</h4><pre><code>使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
+
+$ npm adduser
+Username: mcmohd
+Password:
+Email: (this IS public) xxxxxx@qq.com
+
+来发布模块命令: $ npm publish
+</code></pre><h4 id="script属性"><a href="#script属性" class="headerlink" title="script属性"></a>script属性</h4><pre><code>1、npm start 启动模块
+
+    该命令写在package.json文件scripts的start字段中，可以自定义命令来配置一个服务器环境和安装一系列的必要程序
+
+    &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;gulp -ws&quot;
+    }
+
+2、npm stop 停止模块
+
+3、npm restart 重新启动模块
+</code></pre><h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><pre><code>一、npm使用过程中遇到的 Cannot find module &apos;internal/fs&apos;，错误场景 gulp中执行任务报错，的确amd-optimize插件中的graceful-fs与gulp中graceful-fs的版本问题，
+
+    解决:
+        删除插件 npm uninstall graceful-fs
+        安装  npm i graceful-fs --save
+
+二、$ npm view react version    查看npm中指定包的版本号
+
+三、$ npm i vue@2.0.0 --save    安装指定版本
+</code></pre><p>| 参考资料<br>| <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">https://www.npmjs.com.cn/</a><br>| <a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/master-npm/</a><br>| <a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="noopener">https://github.com/ericdum/mujiang.info/issues/6/</a><br>| <a href="http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/" target="_blank" rel="noopener">http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2016/12/07/ReactNative之基础篇/">React Native之基础篇</a>
         </h1>
         
@@ -1632,60 +2551,6 @@ http://www.jianshu.com/p/9d7dbf17daa5
 6、show Inspector 用于查看页面结构及属性
 </code></pre><p>XCode装证书<br><a href="http://www.cocoachina.com/ios/20160711/17004.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160711/17004.html</a></p>
 <p>| 相关文章<br>| <a href="https://github.com/jondot/awesome-react-native#videos" target="_blank" rel="noopener">https://github.com/jondot/awesome-react-native#videos</a><br>| <a href="http://reactnative.cn/docs/0.44/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.44/getting-started.html</a><br>| <a href="http://www.devio.org/" target="_blank" rel="noopener">http://www.devio.org/</a><br>| <a href="https://github.com/crazycodeboy/RNStudyNotes/" target="_blank" rel="noopener">https://github.com/crazycodeboy/RNStudyNotes/</a><br>| <a href="http://blog.csdn.net/quanqinyang/article/details/52215652" target="_blank" rel="noopener">http://blog.csdn.net/quanqinyang/article/details/52215652</a>   调试方法<br>| <a href="http://lib.csdn.net/base/reactnative/structure" target="_blank" rel="noopener">http://lib.csdn.net/base/reactnative/structure</a><br>| <a href="http://www.jianshu.com/p/5b185df2d11a" target="_blank" rel="noopener">http://www.jianshu.com/p/5b185df2d11a</a><br>| <a href="http://www.lcode.org/react-native/" target="_blank" rel="noopener">http://www.lcode.org/react-native/</a><br>| <a href="http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3" target="_blank" rel="noopener">http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3</a><br>| <a href="http://lib.csdn.net/article/reactnative/63268" target="_blank" rel="noopener">http://lib.csdn.net/article/reactnative/63268</a>   打包到真机<br>|<br>| 示例<br>| <a href="https://github.com/react-native-community" target="_blank" rel="noopener">https://github.com/react-native-community</a><br>| <a href="https://github.com/ljunb/react-native-iShiWuPai" target="_blank" rel="noopener">https://github.com/ljunb/react-native-iShiWuPai</a>       示例<br>| <a href="https://github.com/sunnylqm" target="_blank" rel="noopener">https://github.com/sunnylqm</a><br>| <a href="https://github.com/DoctorQ/react-native-helloworld" target="_blank" rel="noopener">https://github.com/DoctorQ/react-native-helloworld</a><br>|<br>| <a href="http://blog.csdn.net/liu__520/article/category/6460088" target="_blank" rel="noopener">http://blog.csdn.net/liu__520/article/category/6460088</a><br>| <a href="http://www.devio.org/tags/#React" target="_blank" rel="noopener">http://www.devio.org/tags/#React</a> Native<br>|</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/金融类/">金融类</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/金融类/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/金融/">金融</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="M0、M1、M2"><a href="#M0、M1、M2" class="headerlink" title="M0、M1、M2"></a>M0、M1、M2</h2><h2 id="什么是金融、金融体系"><a href="#什么是金融、金融体系" class="headerlink" title="什么是金融、金融体系"></a>什么是金融、金融体系</h2><h2 id="赤字"><a href="#赤字" class="headerlink" title="赤字"></a>赤字</h2><h2 id="金融危机和次贷危机"><a href="#金融危机和次贷危机" class="headerlink" title="金融危机和次贷危机"></a>金融危机和次贷危机</h2><pre><code>低利率照成所有人去银行进行贷款，然后使用杠杆
-
-杠杆是用借贷来扩大交易收益的手段
-
-杠杆的操作 - 例 A用1万美元买一个箱子，在以1.1万美元卖给B，在中间赚了1千美元，这属于正常操作，
-
-        如果用杠杆就是 A有1万美元，又去借了99万美元，这样手里有100万美元，去买了100个箱子，赚取110万，还了99万借款和1万的利息，赚了9万美元
-
-次贷危机 - 通过这种杠杆会使大面积的贷款短贷导金融系统破崩溃
-</code></pre><h2 id="刚性兑付"><a href="#刚性兑付" class="headerlink" title="刚性兑付"></a>刚性兑付</h2><pre><code>就是投资、理财的项目，无论赔了赚了都有平台或银行兜底，打破刚性兑付就是将打掉这种模式，平台和银行不在兜底，赔与赚要看借款方的企业
-</code></pre><h2 id="投资类型"><a href="#投资类型" class="headerlink" title="投资类型"></a>投资类型</h2><pre><code>股票
-
-基金
-
-p2p借贷
-
-股权投资
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>只要政府低利率加上超发货币，资产一定会上涨
-</code></pre><p><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s</a><br><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s</a></p>
-<p><a href="https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV" target="_blank" rel="noopener">https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV</a>  金融学</p>
 
         
     </section>
@@ -2271,582 +3136,10 @@ import Mock from &apos;mockjs&apos;
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/函数式编程/">函数式编程</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/函数式编程/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/函数式编程/">函数式编程</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="纯函数式"><a href="#纯函数式" class="headerlink" title="纯函数式"></a>纯函数式</h4><pre><code>一、非纯净的
-
-    let number = 1;
-
-    const increment = () =&gt; number += 1;
-
-    increment();  // 2
-
-
-二、纯净的
-
-    const increment = n =&gt; n + 1;
-
-    increment(1);
-</code></pre><h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><pre><code>把函数当做其它函数的参数来传递
-
-let sum = (x, y) =&gt; x+y;
-
-let calculate = (fn, x, y) =&gt; fn(x,y);
-
-calculate(sum, 1, 2)
-</code></pre><h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><pre><code>柯里化就是将多参函数转换成单参函数
-
-// 一个多参函数 
-var add = (a, b) =&gt; a + b;
-add(1, 2); // =&gt; 3
-
-// 柯里化
-var add = a =&gt; b =&gt; a+b;
-add(1)(2);
-
-
-Example:
-
-    var say = function(title) {
-        return function(type){
-            return title + &quot; is &quot; + type;
-        }
-    }
-
-    var sayFP = say(&quot;Functional Programming&quot;);
-    var sayOther = say(&quot;Other Programming&quot;);
-
-    sayFP(&quot;good&quot;); // =&gt; Functional Programming is good
-    sayOther(&quot;bad&quot;); // =&gt; Other Programming is good
-</code></pre><h4 id="compose-函数组合"><a href="#compose-函数组合" class="headerlink" title="compose 函数组合"></a>compose 函数组合</h4><pre><code>将多个函数组合成一个函数
-
-Example:
-
-    var compose = function(fn1, fn2) {
-        return function(arg){
-            return fn1(fn2(arg));
-        }
-    }
-
-    var a = arg =&gt; arg + &apos;a&apos;;
-    var b = arg =&gt; arg + &apos;b&apos;;
-
-    var c = compose(a, b); // 将a,b函数进行组合
-    console.log(c(&apos;c&apos;));  // =&gt; cba
-</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(type){
-    var typeName = &apos;&apos;;
-
-    switch(toString.call(type)){
-        case &apos;[object String]&apos;:
-            return &apos;string&apos;;
-            break;
-
-        case &apos;[object Number]&apos;:
-            if(type.toString().indexOf(&apos;.&apos;) != -1){
-                return &apos;float&apos;;
-            }
-            else{
-                return &apos;number&apos;;
-            }
-            break;
-
-        case &apos;[object Array]&apos;:
-            return &apos;array&apos;;
-            break;
-
-        case &apos;[object Object]&apos;:
-            return &apos;object&apos;;
-            break;
-
-        case &apos;[object Undefined]&apos;:
-            return &apos;undefined&apos;;
-            break;
-
-        case &apos;[object Null]&apos;:
-            return &apos;null&apos;;
-            break;    
-
-        default: break;
-    }
-
-    return typeName;
-}
-</code></pre><p>| <a href="http://www.alloyteam.com/2016/09/talk-about-functional-programming/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/09/talk-about-functional-programming/</a><br>| <a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html" target="_blank" rel="noopener">https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/Git/">Git</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/Git/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Git/">Git</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h4><pre><code>版本控制分为 集成式版本控制 和 分布式开发
-
-    1、集成式开发（svn）：需要一台中央服务器，客户端需要连接到中央服务器进行更新、提交代码文件等
-
-    2、分布式开发（Git）：每台机器都有自己版本库不需要中央服务器
-
-分布式的好处：
-
-    1、不需要连接中央服务器来提交和更新文件
-
-    2、通过不同的版本来做不同阶段开发，不同的版本文件可以随时切换回之前的版本
-
-    3、分支管理上要比svn方便很多
-
-
-[master +0 ~0 -0 !1]: + 增加  ~修改  -删除  !有冲突
-
-Git的配置文件：vi ~/.gitconfig
-</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>1、将远端的库克隆到本地:  git clone 远程代码库
-
-2、创建分支并切换到创建的新分支:  git checkout -b   新建本地分支名  origin/远端分支名
-
-3、从远端拉取拉取代码:  git pull 远端分支名
-
-4、将文件添加到暂存区:  git add 文件名         git add .  添加所有工作区文件到暂存区
-
-5、提交文件:  git commit -m &apos;提交版本内容说明&apos;
-
-6、将本地代码提交到远端库:  git push origin/develop_web  本地分支名
-
-7、查看当前文件状态:  git status 
-
-8、查看当前所在的分支:  git branch
-
-9、切换分支:  git checkout
-
-10、临时保存:  git stash   git stash pop
-
-11、从主分支上merge代码:  git merge origin/dev_crm2.6_base
-
-12、将本地分支提交到主分支:  pull resquest
-
-13、删除本地分支:  git branch -d dev_crm2.8_base
-
-14、删除远端分支:  git push origin :PublicAdmin_V1.0.0_liusiguang        或  git branch -r -d origin/PublicAdmin_V1.0.0_liusiguang
-
-15、从远端单独拉取一个文件:  git checkout origin/master -- path/to/file
-
-16、撤消最后一次commit提交：git reset --hard HEAD^
-
-17、chenkout一个分支后，pull的时候想在app_master下切换，使用下面命令进行转换
-
-    git branch --set-upstream 当前分支名 远端分支名
-
-18、git branch --track branch 名称 远端branch 建立一个 tracking 远端 branch 的 branch，这样以后 push/pull都会直接对应到该远端的branch。
-    git branch --set-upstream branch 远端branch 将一个已存在的 branch 设定成 tracking 远端的branch。
-</code></pre><h4 id="版本库介绍"><a href="#版本库介绍" class="headerlink" title="版本库介绍"></a>版本库介绍</h4><pre><code>工作区（文件）      暂存区（过度）     版本库      |       远端（服务器版本）    
-
-1、工作区:  开发的区域
-
-2、暂存区: 将工作区的文件执行 git add &apos;文件名&apos; 命令会使文件添加到暂存区，工作区的文件如果删除了就没有了
-
-    git add &apos;文件名&apos;
-
-
-3、版本库: 通过commit来提交到版本库， 暂存区需要先提交到版本库才能最后提交远端
-
-    git commit -m &apos;提交说明内容&apos;
-
-    add 和 commit 连着的写法
-    git commit -a -m &apos;提交注释&apos;        // 这样可以省略add的步骤
-
-
-4、提交到远端: 通过push来提交到远端
-
-    git push origin develop_web_2.5.1_siguang            // 提交到远端
-</code></pre><h4 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h4><pre><code>1、设置贡献者
-
-    设置用户名:     git config  --global user.name “username”
-
-    设置Email-id:  git config  --global user.email “email”
-
-
-2、设置避免PULLING提交合并:   git config --global branch.autosetuprebase always
-
-3、颜色高亮
-
-    git config --global color.ui true
-
-    git config --global color.status auto
-
-    git config --global color.branch auto
-
-
-4、设置默认编辑器:  git config --global core.editor vim        Git的使用系统默认取自VISUAL或EDITOR环境变量的编辑器
-
-5、设置默认的合并工具:  git config --global merge.tool vimdiff
-
-6、查看设置命令:  git config --list
-</code></pre><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><pre><code>1、git init 库名： 创建一个git仓库 
-
-2、git remote add origin git@xbc.me:wordpress.git:    添加远程版本库origin
-
-3、git remote:   显示所有远端主机
-
-    git remote  -v:        查看远程仓库地址
-
-    git remote show &lt;主机名&gt;:     查看远端主机的详细信息
-
-    git remote add &lt;主机名&gt; &lt;网址&gt;:    添加远程主机
-
-    git remote rm &lt;主机名&gt;:    删除远端主机
-
-    git remote rename &lt;原主机名&gt; &lt;新主机名&gt;:    对无端主机进行改名
-
-     在clone完成之后，Git 会自动为你将此远程仓库命名为origin，origin只相当于一个别名，运行git remote –v可以看到下载的版本路径。
-
-
-克隆项目地址:    git clone 远程版本库地址
-</code></pre><h4 id="文件操作（查看、添加、提交、删除、恢复，撤消）"><a href="#文件操作（查看、添加、提交、删除、恢复，撤消）" class="headerlink" title="文件操作（查看、添加、提交、删除、恢复，撤消）"></a>文件操作（查看、添加、提交、删除、恢复，撤消）</h4><pre><code>查看:
-
-    1、git help:  显示help的命令功能
-
-    2、git show 提交ID:  显示某次提交的内容，先通过git log来查看提交的ID
-
-        commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e         // 提交的ID
-
-    3、git log:  显示所有的版本记录
-
-
-添加: 添加到缓存区
-
-    1、git add 文件名:  将工作文件修改提交到本地暂存区            add只是刷新了git的跟踪信息，并未发到版本库中
-
-    2、git add --all:  将所有修改过的文件提交到暂存区
-
-
-提交: 提交到版本库
-
-    1、git commit -m &apos;注释提交理由&apos;:  代码提交
-
-        git commit --amend:  使用最后一次提交的注释在提交
-
-    2、git push origin master:  将刚commit的版本推送到远程服务器
-
-
-删除：
-
-    1、git rm &apos;main.js&apos;:     删除暂存区的main.js文件
-
-    2、git rm -f &apos;main.js&apos;:  删除工作区和暂存区的main.js文件
-
-    3、git rm --cached &apos;main.js&apos;:  如果工作区和暂存区都有main.js，只删除暂存区文件
-
-
-恢复：
-
-    如果把工作区的文件删除了，想从版本库中恢复回来的方法:
-
-    1、恢复文件
-
-        先 git log 来查看commit 提交的历史版本，获取到commitId
-
-        commit d5d9357319a4ef536b30f2d906bb71700beaa899
-        Author: liusiugang &lt;liusiguang@renrendai.com&gt;
-        Date:   Thu Nov 3 15:19:00 2016 +0800
-
-            修改邻趣配送时间接口加merchantId参数+
-
-        git checkout  [commitId] [要恢复的文件名]
-
-        // 这样就将版本库中的common.coffee.js恢复到了工作区
-        git checkout d5d9357319a4ef536b30f2d906bb71700beaa899  common.coffee.js   
-
-
-    2、恢复版本
-
-        1）git reset --hard  [commitId]    恢复到指定提交的版本的内容，通过commitId来指定版本
-
-        2）git reset --hard HEAD^    恢复向后一个版本
-
-        3）git reflog    显示所有的操作记录
-
-
-撤消：
-
-    1、git reset &lt;file&gt;：    从暂存区恢复到工作文件
-
-    2、git reset --：        从暂存区恢复到工作文件
-
-    3、git reset --hard：    恢复最近一次提交过的状态，即放弃上次提交后的所有本次修改
-
-    4、git reset HEAD b：    现在你只想提交a文件，不想提交b文件，应该这样
-
-    5、git revert &lt;$id&gt;：    恢复某次提交的状态，恢复动作本身也创建了一次提交对象
-
-    6、git revert HEAD：    恢复最后一次提交的状态
-
-        git checkout -- filname  撤回远端版本或指定文件
-
-        git commit --amend    重新合并一个提交方案
-
-
-文件重命名：
-
-    1、git mv reademe.txt 新文件名
-
-
-查看当前库状态: git status
-
-    显示
-    On branch master        // master分支
-    Your branch is up-to-date with &apos;origin/master&apos;.        // 你的分支是最新的 master
-    nothing to commit, working directory clean            // 无提交，工作目录干净
-</code></pre><h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><pre><code>1、查看分支
-
-    查看本地分支:  git branch
-
-    查看远端分支:  git branch -r
-
-    查看本地和远端分支:  git branch -a
-
-    查看各分支最后提交的信息:  git branch -v
-
-
-2、创建分支 
-
-    git branch 分支名称
-
-
-3、把分支提交到远端分支
-
-    # 如果在本地创建一个分支，与团队其它人一起开发，需要将这个分支push到远端仓库，不然这个分支只是存在你本地，其它人看不到，每次commit完代码就需要提交到远端
-
-    git push origin 本地分支名
-
-    Example:
-
-        appledeMacBook-Pro:what apple$ git push origin dev_1.1_lulu           // 将dev_1.1_lulu分支提交到远端
-        Username for &apos;https://github.com&apos;: siguang1983            // 输入远程的用户名
-        Password for &apos;https://siguang1983@github.com&apos;:             // 输入远端的密码
-        Counting objects: 4, done.                                // 成功
-
-
-4、删除分支: 
-
-    git branch -d &lt;branch&gt;        删除某个分支
-
-    git branch -D &lt;branch&gt;        强制删除某个分支 (未被合并的分支被删除的时候需要强制)
-
-
-5、切换分支:
-
-    git checkout [要切换的分支]        本地切换分支
-
-    git checkout -b [新创建分支名]  [远端地址分支]            创建并且直接切换到这个新分支
-
-
-6、合并分支: git morge  分支名
-
-    git merge master develop        # 将develop分支合并到master上
-
-
-7、分支的更新与合并
-
-    # 将本地仓库更新到最新版本，直接更新自动合并冲突，如果执行fetch提示哪些冲突需要手动更新
-    git pull origin 分支名
-
-    # 执行一下合并，并且手动去去解决冲突
-    git merge [branch]
-
-    # 将这个冲突文件重新提交 
-    git add &lt;filename&gt;
-
-    # 查看一下冲突的文件
-    git diff 确定分支  目标分支
-
-    # 冲突处理完后就可以commit
-    git commit -m &apos;fix conflict&apos;
-
-
-8、删除远程版本:  git push origin :br-1.0.0
-
-9、查看分支提交的记录:  git whatchanged
-
-    commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e            // 提交的状态码
-    Author: apple &lt;apple@appledeMacBook-Pro.local&gt;            // 提交人
-    Date:   Mon May 2 17:24:16 2016 +0800                    // 日期
-
-        siguang add index.js                // 提交文件
-
-    :100644 100644 e69de29... 50b777e... M  js/index.js
-</code></pre><h4 id="拉取远端代码-和-提交远端代码"><a href="#拉取远端代码-和-提交远端代码" class="headerlink" title="拉取远端代码 和 提交远端代码"></a>拉取远端代码 和 提交远端代码</h4><pre><code>1、pull、fetch 两种都是拉取代码功能，有一些小的差别
-
-    git pull : 拉取远端代码，直接合并        // Already up-to-date. 已更新
-
-    git fetch: 拉取远端代码，并不合并，查看哪些冲突，来进行手动merge合并
-
-
-2、版本库提交到远端
-
-    git push origin/dev_crm2.9_base
-
-
-3、pull request：将代码提交到远端版本中的一个请求，在merge就可以直接合到远端仓库中
-</code></pre><h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4><pre><code>拉取完代码git pull 或 git fetch 拉取远程某个分支的代码，再与本地的指定分支合并（包括fetch和merge）
-
-git pull origin/dev_crm2.5_base 
-
-git merge origin/dev_crm2.5_base
-
-    有时候pull的时候会提示：git branch --set-upstream master origin/next  
-
-    Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）
-
-    如果有冲突 常见提示：
-        Auto-merging addCacke.html            // 自动合并了这个文件
-        CONFLICT (content): Merge conflict in addCacke.html            // 有冲突在 addCacke.html文件中合并冲突
-        Automatic merge failed; fix conflicts and then commit the result.        // 自动合并失败解决冲突
-</code></pre><h4 id="查看文件之间区别-diff"><a href="#查看文件之间区别-diff" class="headerlink" title="查看文件之间区别 diff"></a>查看文件之间区别 diff</h4><pre><code>1、git diff &lt;file&gt;:        是工作区与暂存区的
-
-2、git diff &lt;$id1&gt; &lt;$id2&gt;:    比较两次提交之间的差异
-
-3、git diff &lt;branch1&gt;..&lt;branch2&gt;:    在两个分支之间比较
-
-4、git diff --staged:    比较暂存区和版本库差异
-
-5、git diff --cached:    暂存区和版本区差异
-
-6、git diff --stat:         仅仅比较统计信息
-</code></pre><h4 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h4><pre><code>1、git log:  显示提交的所有记录
-
-    commit 1bf1682120ac9fa622b04a77781f5999e0aabd9e         // 提交的ID
-    Author: apple &lt;apple@appledeMacBook-Pro.local&gt;         // 提交用户
-    Date:   Mon May 2 17:24:16 2016 +0800                 // 提交日期
-
-        siguang add index.js            // 提交文件
-
-2、git log &lt;file&gt;:        查看该文件每次提交记录
-
-3、git log -p &lt;file&gt; :    查看每次详细修改内容的diff
-
-4、git log -p -2:        查看最近两次详细修改内容的diff
-
-5、git log --status:     查看提交统计信息
-</code></pre><h4 id="sourceTree-使用"><a href="#sourceTree-使用" class="headerlink" title="sourceTree 使用"></a>sourceTree 使用</h4><pre><code>一、设置拉取、推送默认密码
-
-    仓库 -&gt; 远程仓库 -&gt; 将路径配置成 http://用户名:密码@172.16.x.xx:7990/scm/ibg/ibg.git
-</code></pre><blockquote>
-<p>参考资料：</p>
-<p>可视化工具：SourceTree<br>远端：stash</p>
-<p><a href="http://iissnan.com/progit/" target="_blank" rel="noopener">http://iissnan.com/progit/</a><br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/</a><br><a href="http://www.yiibai.com/git/git_update_operation.html" target="_blank" rel="noopener">http://www.yiibai.com/git/git_update_operation.html</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/经济类/">经济学</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/经济类/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/经济学/">经济学</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="什么是经济"><a href="#什么是经济" class="headerlink" title="什么是经济"></a>什么是经济</h2><pre><code>经济 - 管理一个家庭的人
-
-稀缺性 - 社会资源的有限性
-
-经济学 - 研究社会如休管理自己的稀缺资源
-</code></pre><h2 id="经济学的十大原理"><a href="#经济学的十大原理" class="headerlink" title="经济学的十大原理"></a>经济学的十大原理</h2><pre><code>一、人们面临权衡取舍 - 要知道做一件事情得到了什么，又舍去了什么，什么都想要最后确什么都没有
-</code></pre><h2 id="绝对优势、比较优势"><a href="#绝对优势、比较优势" class="headerlink" title="绝对优势、比较优势"></a>绝对优势、比较优势</h2><pre><code>比较优势说明每种物品应该由生产这种物品成本较低的国家生产
-</code></pre><h2 id="进口、出口"><a href="#进口、出口" class="headerlink" title="进口、出口"></a>进口、出口</h2><pre><code>进口: 在国外生产在国内销售的物品叫进口
-
-出口: 在国内生产而在国外销售的物品称出口
-</code></pre><h2 id="成本机会"><a href="#成本机会" class="headerlink" title="成本机会"></a>成本机会</h2><h2 id="供给与需求"><a href="#供给与需求" class="headerlink" title="供给与需求"></a>供给与需求</h2><pre><code>供给量是卖者愿意并且能够出售该物品的数量
-
-供给定理是一种物品价格上升，该物品供给量增加，物品价格下降，物品供给量减少
-</code></pre><h2 id="过剩、短缺"><a href="#过剩、短缺" class="headerlink" title="过剩、短缺"></a>过剩、短缺</h2><pre><code>过剩 - 当价格下降，供给者不能卖出他们想卖的所有物品
-
-短缺 - 当前价格下，需求者不能买到他们想买的物品
-</code></pre><h2 id="市场"><a href="#市场" class="headerlink" title="市场"></a>市场</h2><pre><code>市场是由某种物品或服务的买者或卖者组成的一个群体，买者作为一个群体决定了一种产品的需求，而卖者作为一个群体决定了一个产品的代给
-</code></pre><h2 id="竞争"><a href="#竞争" class="headerlink" title="竞争"></a>竞争</h2><pre><code>竞争市场有许多买者与卖者并且每
-</code></pre>
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Vorige</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Volgende &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
 </nav>
 
 

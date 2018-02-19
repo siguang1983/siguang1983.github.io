@@ -7,7 +7,7 @@
 
     
 
-    <title>Label: Node.js | 大排档</title>
+    <title>Tag: Node.js | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -484,6 +484,93 @@ url.resolve(&apos;http://example.com/one&apos;, &apos;/two&apos;) // &apos;http:
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2017/03/01/nodeJS（之十）TCP/">nodeJS（之十）TCP</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/03/01/nodeJS（之十）TCP/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><pre><code>NodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字
+
+TPC套接字分为: 服务端和客户端
+
+    服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。
+
+1、引用TCP模块
+
+    const net = require(&apos;net&apos;);
+    const PROT = 6969;
+
+2、HTTP模块也是继承TCP模块
+</code></pre><h4 id="net-Server类"><a href="#net-Server类" class="headerlink" title="net.Server类"></a>net.Server类</h4><pre><code>1、createServer() 创建tcp服务器
+
+2、close() - 关闭
+
+3、listen() - 侦听
+
+    const HOST = &apos;127.0.0.1&apos;;
+    const PORT = 6969;
+
+    // 写法1 
+    let server = net.crateServer(function(conn){
+        ...
+    });
+    server.listen({host: HOST, port: PORT}, function(){    // 或 server.listen(PORT, HOST, function(){
+        console.log(&apos;这里是异步的&apos;);
+    });
+
+    // 写法2
+    let server = net.crateServer(function(conn){
+        ...
+    }).listen(PORT, HOST);
+
+
+4、address() - 返回绑定的IP端口等信息 {&quot;address&quot;:&quot;::&quot;,&quot;family&quot;:&quot;IPv6&quot;,&quot;port&quot;:6969}
+
+属性
+
+1、listening - server是否正在监听连接
+
+2、maxConnections - 当前server连接数过多时拒绝连接
+
+
+事件
+
+1、close - 关闭
+
+2、connection - 建立连接时触发
+
+3、error - 错误时触发
+
+4、listening - 服务被绑定后调用
+</code></pre><h4 id="net-Socket类"><a href="#net-Socket类" class="headerlink" title="net.Socket类"></a>net.Socket类</h4><h4 id="net-connect"><a href="#net-connect" class="headerlink" title="net.connect"></a>net.connect</h4>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/03/01/nodeJS（之九）Connect中间件/">nodeJS（之九）Connect中间件</a>
         </h1>
         
@@ -557,6 +644,103 @@ server.use(function(req, res){
     let ser2 = req.cookies.secret2;
 })
 </code></pre><h4 id="session-会话"><a href="#session-会话" class="headerlink" title="session 会话"></a>session 会话</h4>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/03/01/nodeJS（之一）Global全局/">nodeJS基 (之一) Global全局对象</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/03/01/nodeJS（之一）Global全局/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| <strong>filename - 前当文件名<br>| </strong>dirname - 当前所在的目录<br>| setTimeout、clearTimeout - 定时器<br>| setInterval、clearInterval - 定时器<br>| console - 打印到控制台<br>| process - 进程<br>| exports、require() - 导入、导出<br>| </p>
+<h4 id="dirname-当前的绝对路径"><a href="#dirname-当前的绝对路径" class="headerlink" title="__dirname  当前的绝对路径"></a>__dirname  当前的绝对路径</h4><h4 id="filename-当前文件名"><a href="#filename-当前文件名" class="headerlink" title="__filename  当前文件名"></a>__filename  当前文件名</h4><h4 id="exports-暴露接口"><a href="#exports-暴露接口" class="headerlink" title="exports  暴露接口"></a>exports  暴露接口</h4><h4 id="require-引入模板"><a href="#require-引入模板" class="headerlink" title="require()  引入模板"></a>require()  引入模板</h4><pre><code>1、模块分为
+
+    模块加载：require(&apos;2.js&apos;);
+
+    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
+
+    2）文件模块: 自己定义的业务模块
+
+        定义一个food.common.js
+
+        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
+
+    3）加载第三方模块
+
+        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
+
+
+2、绝对和相对路径
+
+    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
+
+    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
+
+
+2、npm 全局安装和局部安装
+
+    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
+
+    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
+
+
+require.cache
+require.resolve()
+</code></pre><h4 id="global-全局对象"><a href="#global-全局对象" class="headerlink" title="global  全局对象"></a>global  全局对象</h4><h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><pre><code>module和exports两个全局变量
+
+1）module：每个模块下都包括module对象
+
+    Module {
+        id: &apos;.&apos;,
+        exports: {},
+        parent: null,
+        filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
+        loaded: false,
+        children: [],
+        paths: [
+            &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
+            &apos;/Users/apple/siguang.liu/node_modules&apos;,
+            &apos;/Users/apple/node_modules&apos;,
+            &apos;/Users/node_modules&apos;,
+            &apos;/node_modules&apos;
+        ]
+     }
+
+ 2）exports外部接口，通过require就可以调用这个接口
+
+     其实exports就是module.exports的引用
+
+    exports.name = &apos;siguang&apos;;
+    exports.getPrivate = function(){
+        return &apos;haha&apos;;
+    }
+</code></pre><h4 id="process-进程"><a href="#process-进程" class="headerlink" title="process  进程"></a>process  进程</h4><h4 id="console-打印到控制台"><a href="#console-打印到控制台" class="headerlink" title="console 打印到控制台"></a>console 打印到控制台</h4><pre><code>log()、info()、error()、warn()、time()、timeEnd()
+</code></pre><h4 id="setImmediate-callback-…args-、clearImmediate-immediateObject"><a href="#setImmediate-callback-…args-、clearImmediate-immediateObject" class="headerlink" title="setImmediate(callback[, …args])、clearImmediate(immediateObject)"></a>setImmediate(callback[, …args])、clearImmediate(immediateObject)</h4><h4 id="setInterval-、clearInterval"><a href="#setInterval-、clearInterval" class="headerlink" title="setInterval()、clearInterval()"></a>setInterval()、clearInterval()</h4><h4 id="setTimeout-、clearTimeout"><a href="#setTimeout-、clearTimeout" class="headerlink" title="setTimeout()、clearTimeout()"></a>setTimeout()、clearTimeout()</h4>
         
     </section>
 </article>
@@ -1010,190 +1194,6 @@ Example:
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJS（之一）Global全局/">nodeJS基 (之一) Global全局对象</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJS（之一）Global全局/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| <strong>filename - 前当文件名<br>| </strong>dirname - 当前所在的目录<br>| setTimeout、clearTimeout - 定时器<br>| setInterval、clearInterval - 定时器<br>| console - 打印到控制台<br>| process - 进程<br>| exports、require() - 导入、导出<br>| </p>
-<h4 id="dirname-当前的绝对路径"><a href="#dirname-当前的绝对路径" class="headerlink" title="__dirname  当前的绝对路径"></a>__dirname  当前的绝对路径</h4><h4 id="filename-当前文件名"><a href="#filename-当前文件名" class="headerlink" title="__filename  当前文件名"></a>__filename  当前文件名</h4><h4 id="exports-暴露接口"><a href="#exports-暴露接口" class="headerlink" title="exports  暴露接口"></a>exports  暴露接口</h4><h4 id="require-引入模板"><a href="#require-引入模板" class="headerlink" title="require()  引入模板"></a>require()  引入模板</h4><pre><code>1、模块分为
-
-    模块加载：require(&apos;2.js&apos;);
-
-    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
-
-    2）文件模块: 自己定义的业务模块
-
-        定义一个food.common.js
-
-        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
-
-    3）加载第三方模块
-
-        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
-
-
-2、绝对和相对路径
-
-    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
-
-    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
-
-
-2、npm 全局安装和局部安装
-
-    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
-
-    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
-
-
-require.cache
-require.resolve()
-</code></pre><h4 id="global-全局对象"><a href="#global-全局对象" class="headerlink" title="global  全局对象"></a>global  全局对象</h4><h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><pre><code>module和exports两个全局变量
-
-1）module：每个模块下都包括module对象
-
-    Module {
-        id: &apos;.&apos;,
-        exports: {},
-        parent: null,
-        filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
-        loaded: false,
-        children: [],
-        paths: [
-            &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
-            &apos;/Users/apple/siguang.liu/node_modules&apos;,
-            &apos;/Users/apple/node_modules&apos;,
-            &apos;/Users/node_modules&apos;,
-            &apos;/node_modules&apos;
-        ]
-     }
-
- 2）exports外部接口，通过require就可以调用这个接口
-
-     其实exports就是module.exports的引用
-
-    exports.name = &apos;siguang&apos;;
-    exports.getPrivate = function(){
-        return &apos;haha&apos;;
-    }
-</code></pre><h4 id="process-进程"><a href="#process-进程" class="headerlink" title="process  进程"></a>process  进程</h4><h4 id="console-打印到控制台"><a href="#console-打印到控制台" class="headerlink" title="console 打印到控制台"></a>console 打印到控制台</h4><pre><code>log()、info()、error()、warn()、time()、timeEnd()
-</code></pre><h4 id="setImmediate-callback-…args-、clearImmediate-immediateObject"><a href="#setImmediate-callback-…args-、clearImmediate-immediateObject" class="headerlink" title="setImmediate(callback[, …args])、clearImmediate(immediateObject)"></a>setImmediate(callback[, …args])、clearImmediate(immediateObject)</h4><h4 id="setInterval-、clearInterval"><a href="#setInterval-、clearInterval" class="headerlink" title="setInterval()、clearInterval()"></a>setInterval()、clearInterval()</h4><h4 id="setTimeout-、clearTimeout"><a href="#setTimeout-、clearTimeout" class="headerlink" title="setTimeout()、clearTimeout()"></a>setTimeout()、clearTimeout()</h4>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJS（之十）TCP/">nodeJS（之十）TCP</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJS（之十）TCP/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><pre><code>NodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字
-
-TPC套接字分为: 服务端和客户端
-
-    服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。
-
-1、引用TCP模块
-
-    const net = require(&apos;net&apos;);
-    const PROT = 6969;
-
-2、HTTP模块也是继承TCP模块
-</code></pre><h4 id="net-Server类"><a href="#net-Server类" class="headerlink" title="net.Server类"></a>net.Server类</h4><pre><code>1、createServer() 创建tcp服务器
-
-2、close() - 关闭
-
-3、listen() - 侦听
-
-    const HOST = &apos;127.0.0.1&apos;;
-    const PORT = 6969;
-
-    // 写法1 
-    let server = net.crateServer(function(conn){
-        ...
-    });
-    server.listen({host: HOST, port: PORT}, function(){    // 或 server.listen(PORT, HOST, function(){
-        console.log(&apos;这里是异步的&apos;);
-    });
-
-    // 写法2
-    let server = net.crateServer(function(conn){
-        ...
-    }).listen(PORT, HOST);
-
-
-4、address() - 返回绑定的IP端口等信息 {&quot;address&quot;:&quot;::&quot;,&quot;family&quot;:&quot;IPv6&quot;,&quot;port&quot;:6969}
-
-属性
-
-1、listening - server是否正在监听连接
-
-2、maxConnections - 当前server连接数过多时拒绝连接
-
-
-事件
-
-1、close - 关闭
-
-2、connection - 建立连接时触发
-
-3、error - 错误时触发
-
-4、listening - 服务被绑定后调用
-</code></pre><h4 id="net-Socket类"><a href="#net-Socket类" class="headerlink" title="net.Socket类"></a>net.Socket类</h4><h4 id="net-connect"><a href="#net-connect" class="headerlink" title="net.connect"></a>net.connect</h4>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2017/03/01/nodeJs（之二）FileSystem/">nodeJS (之二) FileSystem</a>
         </h1>
         
@@ -1472,7 +1472,7 @@ fs.writeFile(&apos;./buffer/file/password.txt&apos;, &apos;添加新内容&apos;
 
 
 <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/Node-js/page/2/">2</a><a class="extend next" rel="next" href="/tags/Node-js/page/2/">Volgende &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/tags/Node-js/page/2/">2</a><a class="extend next" rel="next" href="/tags/Node-js/page/2/">Next &raquo;</a>
 </nav>
 
 

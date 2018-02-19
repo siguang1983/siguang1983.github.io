@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -126,11 +126,11 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJs（之二）FileSystem/">nodeJS (之二) FileSystem</a>
+            <a href="/2017/03/01/nodeJS（之九）Connect中间件/">nodeJS（之九）Connect中间件</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJs（之二）FileSystem/">
+            <a class="article-date" href="/2017/03/01/nodeJS（之九）Connect中间件/">
     
     <i class="icon-calendar"></i>
     
@@ -149,967 +149,56 @@
     
     <section class="article-body markdown-body">
         
-        <p>| open() - 打开文件<br>| close() - 关闭文件<br>| stat() - 文件信息<br>| read()、write() - 读文件数据并写入Buffer<br>| readFile()、readFileSync() - 读、写取文件，可以读图片并写出图片，但不能写流文件<br>| createReadStream()、createWriteStream() - 读/写文件流<br>| rename()、renameSync() - 修改文件或目录<br>| ftruncate() - 截断文件<br>| appendFile() - 将数据追加到文件中<br>| mkdir() - 创建/删除目录<br>| rmdir() - 删除空目录<br>| readDir()、readdirSync() - 读取目录下所有文件<br>|<br>| stat() - 文件信息<br>| utimes() - 修改文件时间<br>| watchFile() - 监视文件<br>| access() - 判断文件或目录权限<br>| link() - 硬链接<br>| unlink() - 删除文件链接<br>| symlink() - 符号链接<br>| readlink() - 读取链接源地址<br>| watchFile()、watch() - 侦听文件/文件夹内文件的变化 </p>
-<h4 id="fs-模块引用"><a href="#fs-模块引用" class="headerlink" title="fs 模块引用"></a>fs 模块引用</h4><pre><code>var fs = reuqire(&apos;fs&apos;);        // 加载文件模块
+        <h4 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h4><pre><code>Connect是HTTP服务的中间件
 
-文件系统方法有异步和同步两种
+$ 安装 npm i connect --save
 
-1、readFile()与createReadStream()区别
 
-    readFile是整个文件都读取完后在载入内存中，createReadStream()分片来读取内容块，直接读取完成，缓存与文件流的区别
-</code></pre><h3 id="一、文件操作"><a href="#一、文件操作" class="headerlink" title="一、文件操作"></a>一、文件操作</h3><h4 id="open-异步打开文件"><a href="#open-异步打开文件" class="headerlink" title="open() 异步打开文件"></a>open() 异步打开文件</h4><pre><code>open(文件路径， 打开方式（读/写），设置模式（读4/写2/执行1）, callback(err, fd文件句柄)): 异步打开文件
+// 引用模块
+var connect = require(&apos;connect&apos;);
 
-    打开方式: r 读、 w 写
+// 创建服务器
+var server = connect.createServer();
 
-opensync(): 同步打开文件
+// 处理静态文件
+server.use(connect.static(__dirname + &apos;/statice&apos;));     // connect.static 静态文件目录
 
-Example:
+// 监听
+server.listen(3000);
+</code></pre><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><pre><code>1、静态目录设置 -  server.use(connect.static(__dirname + &apos;/statice&apos;));
 
-    const fileName = path.resolve(__dirname, &apos;test.txt&apos;);
-    fs.open(fileName, &apos;r&apos;, (err, fd) =&gt; {
-        console.log(err);
-        fs.close();
+2、客户端缓存时间 -  server.use(connect.static(__dirname + &apos;/statice&apos;), {maxAge: 100000});
+
+3、静态文件以&quot;.&quot;开始都认为是隐藏文件 - server.use(connect.static(__dirname + &apos;/statice&apos;), {hidden: true});
+
+4、query中间件，解析字符串  &apos;/posts?page=5&apos;
+
+    server.use(connect.query);
+    server.use(function(req, res){
+        let page = req.query.page;
     })
-</code></pre><h4 id="close-关闭一个文件"><a href="#close-关闭一个文件" class="headerlink" title="close() 关闭一个文件"></a>close() 关闭一个文件</h4><pre><code>fs.close(fd, callback)
-</code></pre><h4 id="read-指定的文件中读取数据，并写入缓存区buffer"><a href="#read-指定的文件中读取数据，并写入缓存区buffer" class="headerlink" title="read() 指定的文件中读取数据，并写入缓存区buffer"></a>read() 指定的文件中读取数据，并写入缓存区buffer</h4><pre><code>read(fd, buffer, offset, length, position, callback): 读文件
 
-// read(路径, 指定存到的缓存区, buf的开始, buf的结束, 文件读取的起启位置, callback)
+5、logger，打印日志，四种日志格式，default/dev/short/tiny
 
-Example: 
-    var buf = new Buffer(6);
-    fs.open(path.resolve(basePath, &apos;append.txt&apos;), &apos;r&apos;, (err, fd) =&gt; {
-        if(err){
-            console.log(err);
-            return false;
+    connect.createServer(
+        connect.logger(&apos;dev&apos;),
+        function(req, res){
+            res.writeHead(200);
+            res.end(&apos;hello);
         }
+    )
 
-        fs.read(fd, buf, 0, buf.length, 3, (err, bytesRead, buffer) =&gt; {
-            var str = new Buffer(buffer);
-            console.log(str.toString())
-            console.log(&apos;bytesRead : &apos; + bytesRead);
-        })
-    })
-</code></pre><h4 id="write-指定的文件中写数据"><a href="#write-指定的文件中写数据" class="headerlink" title="write() 指定的文件中写数据"></a>write() 指定的文件中写数据</h4><pre><code>fs.write(fd, buffer, offset, length, position, callback)
-</code></pre><h4 id="readFile-读取文件"><a href="#readFile-读取文件" class="headerlink" title="readFile() 读取文件"></a>readFile() 读取文件</h4><pre><code>readFile(&apos;filename&apos;, [编码方式], callback): 读取文件(异步) , readFileSync同步读取文件
+7、body parser  文件上传
+</code></pre><h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><pre><code>使用cookieParser()
 
-缺点: readFile()是先将数据全部读入内存，文件大时候，读取效率低下，而createReadStream会把文件分割成小块，然后通过事件和来最后得到数据
+// cookie: secret1=val1; secret2=val2
 
-*注意*: 编码方式不设置返回的是Buffer, 如果设置了utf-8返回的是字符串
-
-Example:
-    fs.readFile(&apos;./nodeJS学习笔记.txt&apos;, &apos;utf-8&apos;, function(err, data){
-        if(err){
-            console.log(&apos;文件读取错误&apos;)
-        }
-        else{
-            var buf = new Buffer(data);        // 将读取到的数据转成Buffer
-            console.log(buf.toString());    // 二进制转成字符串
-        }                
-    })
-</code></pre><h4 id="writeFile-向文件写内容"><a href="#writeFile-向文件写内容" class="headerlink" title="writeFile() 向文件写内容"></a>writeFile() 向文件写内容</h4><pre><code>可以使用readFile读图片并写出图片，但不能写流文件
-
-writeFile(filename, data, [flag], callback(err)err不为真写入成功) 向文件写内容，文件不存在自动创建文件
-
-writeFileSync同步
-
-    filename: 路径加文件名, 如果文件不存在会创建一个文件**
-    data: 写入的内容可以是字符串或二进制
-    flag: 对文件怎么来操作,  &apos;w&apos; 清空后在写入  &apos;a&apos; 将新内容加到之后  {flag: &apos;w&apos;}
-    writeFileSync(&apos;文件名&apos;, &apos;内容&apos;): 同步写文件
-
-Example: 
-    var writeBuf = new Buffer(writeStr);
-
-    fs.writeFile(&apos;./buffer/file/user.txt&apos;, writeStr, {flag: &apos;a&apos;}, function(err){
-        err ? console.log(&apos;文件写入失败&apos;) : console.log(&apos;文件写入成功&apos;);
-    })
-</code></pre><h4 id="createReadStream-path-options-读取文件流"><a href="#createReadStream-path-options-读取文件流" class="headerlink" title="createReadStream(path, [options]): 读取文件流"></a>createReadStream(path, [options]): 读取文件流</h4><pre><code>fs模块允许你通过Stream来对数据进行读取操作，与readFile、writeFile不同是它对内存分配不是一次完成的.
-
-options:
-    { 
-        flags: &apos;r&apos;,            // r只读 w写
-        encoding: null,        // 字符编码 utf-8
-        fd: null,
-        mode: 0666,
-        autoClose: true,    // 读完数据是否关闭文件描述符
-        start: 0,            // 读取流的开始
-        end: 300            // 读取流的结束
-    }
-
-Example: 
-    var fs = require(&apos;fs&apos;);
-    var rs = fs.createReadStream(path.resolve(basePath, &apos;test.txt&apos;), {statr:100});
-    var str = &apos;&apos;;        // 存储读取的数据
-
-    // 读取数据
-    rs.on(&apos;data&apos;, (data)=&gt;{
-        str += data;
-    })
-
-    // 数据读取完成
-    rs.on(&apos;end&apos;, ()=&gt;{
-        console.log(&apos;读取完成&apos;)
-        console.log(str);            // 打印出读取数据
-    })
-
-    // 读取出错
-    rs.on(&apos;error&apos;, (err) =&gt; {
-        console.log(err);
-    })
-</code></pre><h4 id="createWriteStream-文件路径-options-可写数据流"><a href="#createWriteStream-文件路径-options-可写数据流" class="headerlink" title="createWriteStream(文件路径, {options}): 可写数据流"></a>createWriteStream(文件路径, {options}): 可写数据流</h4><pre><code>write(): 写入内容, 把文件内容清空后在写入
-
-end(): 关闭写入
-
-    var fs = require(&apos;fs&apos;);
-    var ws = fs.createWriteStream(&apos;./files/stream.txt&apos;);
-
-    // 写入内容
-    ws.write(&apos;内容加入到文件中&apos;, &apos;utf-8&apos;, function(){
-        console.log(arguments);
-    })
-    ws.end(function(){
-
-    })
-</code></pre><h4 id="rename-修改文件或目录名"><a href="#rename-修改文件或目录名" class="headerlink" title="rename() 修改文件或目录名"></a>rename() 修改文件或目录名</h4><pre><code>rename(oldPath, newPath, callback) 修改文件或目录名, renameSync同步
-
-Example: 
-    let oldName = path.resolve(basePath, &apos;newTest.txt&apos;);
-    let newName = path.resolve(basePath, &apos;test.txt&apos;);
-    fs.rename(oldName, newName, (err) =&gt; {
-        if(err){
-            console.log(err);
-        }
-        console.log(&apos;文件名修改成功&apos;)
-    })
-</code></pre><h4 id="ftruncate-截断文件"><a href="#ftruncate-截断文件" class="headerlink" title="ftruncate() 截断文件"></a>ftruncate() 截断文件</h4><pre><code>ftruncate(文件路径, 第几个字符截断, callback) 截断文件， ftruncateSync同步
-
-一个中文四个字节，英文两个字节
-
-Example: 
-    const basePath = __dirname;
-    fs.open(path.resolve(basePath, &apos;test.txt&apos;), &apos;r+&apos;, (err, fd)=&gt;{
-        if(err){
-            console.log(err);
-        }
-        else{
-            fs.truncate(fd, 400, (err)=&gt;{        // 截取四百个字节
-                var readNewFile = fs.readFile(fd, &apos;utf8&apos;, (err, data)=&gt;{    // 读取文件
-                    var buf = new Buffer(data);
-                    console.log(buf.toString(&apos;utf-8&apos;));        //
-                    fs.close();
-                });
-            })
-        }
-    })
-</code></pre><h4 id="appendFile-将数据追加到文件中"><a href="#appendFile-将数据追加到文件中" class="headerlink" title="appendFile(): 将数据追加到文件中"></a>appendFile(): 将数据追加到文件中</h4><pre><code>appendFile(文件名, 加入内容): 异步地追加数据到一个文件，如果文件不存在则创建文件，与writeFile()中设置flag: &apos;a&apos; 一样
-
-Example: 
-    fs.appendFile(path.resolve(basePath, &apos;append.txt&apos;), &apos;这是要加入的字符串&apos;, (err) =&gt; {
-        console.log(&apos;complate&apos;);
-    })
-</code></pre><h3 id="二、操作目录"><a href="#二、操作目录" class="headerlink" title="二、操作目录"></a>二、操作目录</h3><h4 id="mkdir-目录名-callback-err-、rmdir-创建-删除目录"><a href="#mkdir-目录名-callback-err-、rmdir-创建-删除目录" class="headerlink" title="mkdir(目录名, callback(err))、rmdir(): 创建/删除目录"></a>mkdir(目录名, callback(err))、rmdir(): 创建/删除目录</h4><pre><code>fs.mkdir(&apos;js/lib&apos;, function(err){        // 可以连续创建子目录， 先创建js，并在js目录下在创建lib目录
-    console.log(err)
+server.use(cookieParser());
+server.use(function(req, res){
+    let ser1 = req.cookies.secret1;
+    let ser2 = req.cookies.secret2;
 })
-</code></pre><h4 id="rmdir-path-callback-删除空目录"><a href="#rmdir-path-callback-删除空目录" class="headerlink" title="rmdir(path, callback): 删除空目录"></a>rmdir(path, callback): 删除空目录</h4><h4 id="readdir-path-callback-err-files-获取目录下所有文件"><a href="#readdir-path-callback-err-files-获取目录下所有文件" class="headerlink" title="readdir(path, callback(err, files)): 获取目录下所有文件"></a>readdir(path, callback(err, files)): 获取目录下所有文件</h4><pre><code>eaddirSync()同步
-
-files: 将目录下所有文件返回一个数组
-
-fs.readdir(basePath, &apos;utf-8&apos;, (err, files) =&gt; {
-    if(err){
-        console.log(&apos;文件目录获取失败&apos;, err);
-    }
-    else{
-        files.forEach(function(data){
-            var buf = new Buffer(data);
-            console.log(buf);       // 输出文件名的二进制
-        })
-    }
-})
-</code></pre><h3 id="三、文件权限"><a href="#三、文件权限" class="headerlink" title="三、文件权限"></a>三、文件权限</h3><h4 id="chown-文件所有者变更"><a href="#chown-文件所有者变更" class="headerlink" title="chown() 文件所有者变更"></a>chown() 文件所有者变更</h4><pre><code>fs.chown(文件名,uid,gid,回调函数);
-fs.fchown(文件句柄fd,uid,gid,回调函数);
-fs.lchown(链接路径,uid,gid,回调函数);    
-</code></pre><h4 id="chmod-文件权限变更"><a href="#chmod-文件权限变更" class="headerlink" title="chmod()文件权限变更"></a>chmod()文件权限变更</h4><pre><code>fs.chmod(文件名,mode,回调函数);
-fs.fchmod(文件句柄,mode,回调函数);
-fs.lchmod(链接路径,mode,回调函数);
-</code></pre><h4 id="stat-文件信息"><a href="#stat-文件信息" class="headerlink" title="stat() 文件信息"></a>stat() 文件信息</h4><pre><code>也可以判断文件是否存在
-
-fs.stat(文件路径, 回调函数(err.fs.Stats对象)); 获取文件或目录下的文件详情
-fs.fstat(文件句柄fd, 回调函数(err.fs.Stats对象)); 显示文件或文件系统状态
-fs.lstat(链接路径, 回调函数(err.fs.Stats对象)); 显示文件或文件系统状态(符号链接)
-
-stat(path, callback(err, stats)): 获取文件详情， statSync同步
-
-    fs.stat(`${dir}/img/readText.txt`, function (err, stats) {
-        console.log(stats);                    // stats类
-        console.log(stats.isFile());        // true
-    })
-
-    stats.isFile() - 是否是文件
-    stats.isDirectory() - 是否是目录
-    stats.isBlockDevice() - 是否是块设备
-    stats.isCharacterDevice() - 是否是是字符
-    stats.isSymbolicLink() (仅对 fs.lstat() 有效) - 是否是软链接
-    stats.isFIFO() - 是不是FIFO
-    stats.isSocket() - 是不是Socket
-
-
-Example: fileSystem目录下有两个文件， a.txt、main.js
-
-    fs.readdir(&apos;./fileSystem&apos;, function(err, files){
-        files.forEach(function(file){
-            console.log(file)
-            fs.stat(&apos;./fileSystem/&apos;+file, function(erro, stats){
-                console.log(&apos;是否是目录:&apos; + stats.isDirectory());
-                console.log(&apos;是否是文件:&apos; + stats.isFile());
-                console.log(stats);      // 输出所有文件的详情
-            })
-        })
-    })
-</code></pre><h4 id="utimes-修改文件时间"><a href="#utimes-修改文件时间" class="headerlink" title="utimes() 修改文件时间"></a>utimes() 修改文件时间</h4><pre><code>fs.utimes(文件路径,访问时间,新建时间,回调函数);
-fs.futimes(文件句柄,访问时间,新建时间,回调函数);      
-</code></pre><h4 id="watchFile-监视文件"><a href="#watchFile-监视文件" class="headerlink" title="watchFile()监视文件"></a>watchFile()监视文件</h4><pre><code>fs.watchFile(文件名,[options],listener_callback(当前文件的stats,改变前的stats));      
-fs.unwatchFile(文件名);
-</code></pre><h4 id="access-path-mode-callback-也是判断文件或目录的权限"><a href="#access-path-mode-callback-也是判断文件或目录的权限" class="headerlink" title="access(path, [mode], callback): 也是判断文件或目录的权限"></a>access(path, [mode], callback): 也是判断文件或目录的权限</h4><pre><code>fs.constants.F_OK - path 文件对调用进程可见。 这在确定文件是否存在时很有用，但不涉及 rwx 权限。 如果没指定 mode，则默认为该值。
-fs.constants.R_OK - path 文件可被调用进程读取。
-fs.constants.W_OK - path 文件可被调用进程写入。
-fs.constants.X_OK - path 文件可被调用进程执行。 对 Windows 系统没作用（相当于 fs.constants.F_OK）
-</code></pre><h3 id="四、链接文件操作"><a href="#四、链接文件操作" class="headerlink" title="四、链接文件操作"></a>四、链接文件操作</h3><h4 id="创建一个硬链接"><a href="#创建一个硬链接" class="headerlink" title="创建一个硬链接"></a>创建一个硬链接</h4><pre><code>fs.link(srcpath, dstpath, [callback]): 硬链接 
-
-fs.symlink(destination, path, [type], [callback]): 符号链接
-</code></pre><h4 id="读取链接指向的路径"><a href="#读取链接指向的路径" class="headerlink" title="读取链接指向的路径"></a>读取链接指向的路径</h4><pre><code>fs.readlink(path, [callback(err,linkstr)]): 读取链接源地址 
-
-fs.unlink(path,[callback]); 删除文件链接
-</code></pre><h4 id="watchFile-、watch-侦听文件-文件夹内的文件的变化"><a href="#watchFile-、watch-侦听文件-文件夹内的文件的变化" class="headerlink" title="watchFile()、watch(): 侦听文件/文件夹内的文件的变化"></a>watchFile()、watch(): 侦听文件/文件夹内的文件的变化</h4><pre><code>unwatchFile(): 停止侦听
-
-// 侦听文件
-fs.watch(&apos;./buffer/file/password.txt&apos;, {encoding: &apos;buffer&apos;}, (eventType, filename) =&gt; {
-    console.log(eventType, filename);
-    if (filename){
-        console.log(filename);
-    }
-});
-
-// 向password.txt写内容
-fs.writeFile(&apos;./buffer/file/password.txt&apos;, &apos;添加新内容&apos;, {flag: &apos;a&apos;}, function(err, data){
-    if(!err){
-        console.log(&apos;写入成功&apos;);
-    }
-})
-</code></pre>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/01/10/Less/">Less</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/01/10/Less/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-01-10T10:10:21.000Z" itemprop="datePublished">2017-01-10</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Less/">Less</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h4><pre><code>@nice: #5b83ad
-@light-blue: @nice + #111;
-
-#header {
-    background-color: @nice;
-}
-</code></pre><h4 id="二、混合"><a href="#二、混合" class="headerlink" title="二、混合"></a>二、混合</h4><pre><code>定义一个类的样式
-
-示例1：
-    .bordered {
-        border-top: 1px black solid;
-        border-bottom: 1px black solid;
-    }
-
-    加载到#menu a内
-    #menu a {
-      color: #111;
-      .bordered;
-    }
-
-    .post a {
-      color: red;
-      .bordered;
-    }
-
-
-示例2：混合带参数
-    .border-radius(@values) {
-          -webkit-border-radius: @values;
-        -moz-border-radius: @values;
-        border-radius: @values;
-    }
-
-    .box-radius{ width: @filler; heigth: 30px; border: 1px #ccc solid; .border-radius(4px) }
-
-
-示例3：
-    .a, #b {
-        color: red;
-    }
-    .mixin-class {
-        .a();
-    }
-
-    输出：
-    .a, #b {
-        color: red;
-    }
-    .mixin-class {
-        color: red;
-    }
-
-
-示例4：
-    .my-mixin {
-        color: black;
-    }
-    .my-other-mixin() {
-        background: white;
-    }
-    .class {
-        .my-mixin;
-        .my-other-mixin;
-    }
-
-    输出：
-    .my-mixin {
-        color: black;
-    }
-    .class {
-        color: black;
-        background: white;
-    }
-</code></pre><h4 id="三、嵌套"><a href="#三、嵌套" class="headerlink" title="三、嵌套"></a>三、嵌套</h4><pre><code>示例1：
-
-    #header{
-        color: black;
-
-        .navigation {
-            font-size: 12px;
-        }
-    }
-
-    output：
-
-        #header {
-            color: black;
-        }
-        #header .navigation {
-            font-size: 12px;
-    }
-
-示例2：a 的 hover
-
-    .box {
-        a {
-            color: red;
-            $:hover {
-                color: green;
-            }
-        }
-    }
-
-    output:
-    .box a { color: red; }
-    .box a:hover { color: green; }
-
-
-示例3：arguments 可以将所有参数显示到值中
-
-    .border-arg(@width, @color, @style){
-        border: @arguments;            // 这里使用@arguments就相当于 @width @color @style
-    }
-</code></pre><h4 id="四、运算"><a href="#四、运算" class="headerlink" title="四、运算"></a>四、运算</h4><pre><code>@base: 5%;
-@filler: @base * 2;
-.boxA { width: @filler; height: 20px; background-color: #c3c3c3; }
-</code></pre><h4 id="五、匹配模式"><a href="#五、匹配模式" class="headerlink" title="五、匹配模式"></a>五、匹配模式</h4><pre><code>// 设置匹配
-.trangle(top, @width, @color){
-    border-width: @width; 
-    border-color: transparent transparent @color transparent;
-    border-style: dashed dashed solid dashed
-}
-
-.trangle(left, @width, @color){
-    border-width: @width; 
-    border-color: transparent @color transparent transparent;
-    border-style: dashed dashed solid dashed
-}
-
-.trangle(right, @width, @color){
-    border-width: @width; 
-    border-color: transparent transparent transparent @color;
-    border-style: dashed dashed solid dashed
-}
-
-.trangle(bottom, @width, @color){
-    border-width: @width; 
-    border-color: @color transparent transparent transparent;
-    border-style: dashed dashed solid dashed
-}
-
-/* 匹配模式 */
-.trangleL {
-    width: 0; height: 0; overflow: hidden;
-    .trangle(right, 18px, red)        /* 这里调用的right 就是右三角 */
-}
-&lt;div class=&quot;trangleL&quot;&gt;&lt;/div&gt;
-</code></pre><h4 id="六、作用域-Scope"><a href="#六、作用域-Scope" class="headerlink" title="六、作用域 Scope"></a>六、作用域 Scope</h4><pre><code>@var: red;
-#page {
-    @var: white;
-    #header {
-        color: @var; // white
-    }
-}
-
-编译后：
-#page .header {
-    color: white;
-}
-</code></pre><h4 id="七、注释"><a href="#七、注释" class="headerlink" title="七、注释"></a>七、注释</h4><pre><code>/* */    会被编译，输出会显示注释
-//         不会被编译，输出不会显示注释
-</code></pre><h4 id="八、importe"><a href="#八、importe" class="headerlink" title="八、importe"></a>八、importe</h4><pre><code>导入less文件： @import &apos;libary&apos;;        不用加.less
-导入css文件：     @import &apos;typo.css&apos;;    
-</code></pre><h4 id="九、url"><a href="#九、url" class="headerlink" title="九、url"></a>九、url</h4><pre><code>@images: &quot;../img&quot;;
-
-// 用法
-body {
-    color: #444;
-    background: url(&quot;@{images}/white-sand.png&quot;);
-}
-</code></pre><h4 id="十、循环"><a href="#十、循环" class="headerlink" title="十、循环"></a>十、循环</h4><pre><code>.loop(@counter) when (@counter &gt; 0) {        // 循环使用 定义函数名(参数) when (条件）
-    .loop((@counter - 1));        // 每一次减1
-    width: (10px * @counter);     // code for each iteration
-}
-div {
-    .loop(3); // launch the loop
-}
-
-output:
-div {
-    width: 10px;
-    width: 20px;
-    width: 30px;
-}
-</code></pre><h4 id="十一、合并"><a href="#十一、合并" class="headerlink" title="十一、合并"></a>十一、合并</h4><pre><code>.mixin() {
-    box-shadow+: inset 0 0 10px #555;
-}
-.myclass {
-    .mixin();
-    box-shadow+: 0 0 20px black;
-}
-
-
-.myclass {
-    box-shadow: inset 0 0 10px #555, 0 0 20px black;
-}
-</code></pre><h4 id="十二、避免编译使用-“-”"><a href="#十二、避免编译使用-“-”" class="headerlink" title="十二、避免编译使用 “~”"></a>十二、避免编译使用 “~”</h4><pre><code>.text {
-    width: ~(30px + 30px);        // 这里就不会被计算，而直接输出width: 30px + 30px;
-}
-</code></pre><h4 id="十三、与构建工具结合"><a href="#十三、与构建工具结合" class="headerlink" title="十三、与构建工具结合"></a>十三、与构建工具结合</h4><pre><code>可以使用gulp 或 webpack 来进行编译
-</code></pre><blockquote>
-<p>参考资料</p>
-<p><a href="http://less.bootcss.com" target="_blank" rel="noopener">http://less.bootcss.com</a><br><a href="http://www.wtoutiao.com/p/15bzfg3.html" target="_blank" rel="noopener">http://www.wtoutiao.com/p/15bzfg3.html</a><br><a href="http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html" target="_blank" rel="noopener">http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html</a><br><a href="http://www.w3cplus.com/preprocessor/architecture-sass-project.html" target="_blank" rel="noopener">http://www.w3cplus.com/preprocessor/architecture-sass-project.html</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/01/10/nodeJS基础用法/">nodeJS基础</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/01/10/nodeJS基础用法/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-01-10T10:10:21.000Z" itemprop="datePublished">2017-01-10</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| nodeJS<br>|<br>| buffer: 处理二进制, 对字符串与二进制进行转换 (done)<br>| fs: 文件系统操作 (done)<br>| http: 处理http请求, 创建服务器, 和处理客户端与服务器之间的数据传递request、response (done)<br>| stream: 文件流<br>| path: 文件路径的处理 (done)<br>| URL: 网络地址解析 (done)<br>| querystring: URL查询字符串 (done)<br>| Cookie、Session、Token (done)<br>| event: 事件机制<br>|<br>| DNS: 域名解析<br>| net: TCP网络<br>| dgram: UDP网络<br>| crypto: 数据加密<br>| process: 进程<br>| childe_process: 子进程<br>| cluster: 集群<br>| global: 全局<br>|<br>| Express<br>| Template 模板 jade、<br>| Mysql (done)<br>| MongoDB<br>| redis<br>| RESTful 架构<br>| </p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>优点:
-    前端的局限性，可以对文件、进程、数据库等进操作，是一门纯后端
-    处理高并发  程序异步执行不会阻塞
-
-缺点: nodejs是单线程
-
-1、nodeJS安装，mac或windows系统需要到官网下载安装包，自带npm包管理器
-
-2、安装express框架：npm install -g express
-
-        $ express       // 执行命令
-
-3、更新node版本
-
-    node需要下载一个n模块，是用来专门管理nodejs的版本
-
-    1、npm install -g n             # 安装n模块
-
-    2、n stable                    # 升级到稳定版，也可以指定版本号 n v0.10.26
-
-
-4、其它命令
-
-    npm -v                  # 显示版本，检查npm 是否正确安装。
-
-    npm install express      # 安装express模块
-
-    npm install -g express  # 全局安装express模块
-
-    npm list                 # 列出已安装模块
-
-    npm show express         # 显示模块详情
-
-    npm update                # 升级当前目录下的项目的所有模块
-
-    npm update express        # 升级当前目录下的项目的指定模块
-
-    npm update -g express      # 升级全局安装的express模块
-
-    npm uninstall express      # 删除指定的模块
-</code></pre><h4 id="NPM与包"><a href="#NPM与包" class="headerlink" title="NPM与包"></a>NPM与包</h4><pre><code>NodeJS以CommonJS的包规范来制订，由包结构和包描述文件两部分组件
-
-1、包结构
-
-    npm 下载完包存储到 node_modules 目录中，包含:
-
-    1）package.json: 包描述
-
-    2）bin: 存放可执行的二进制文件
-
-    3）lib: 存储javascript代码目录
-
-    4）doc: 用于存放文档的目录
-
-    5）test: 存放单元测试用例代码
-</code></pre><h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><pre><code>Node采用了Google的V8引擎，作为javascript语言的解释器，Node是基于事件驱动和异步I/O的服务器环境
-
-1、JS与node的区别
-
-    1）JS中顶层对象是 window，nodeJS中的顶层对象是 global
-
-    2）JS中 var a = 10; window.a; 可以访问到，但在node中global.a是访问不到的，因为node有模块的概念
-
-        node中一个文件就是珍上模块，每个模块有自己的作用域
-
-2、REPL环境
-
-    在命令行输入node, 可以直接运行node命令
-</code></pre><h4 id="模块系统-require、exports"><a href="#模块系统-require、exports" class="headerlink" title="模块系统 require、exports"></a>模块系统 require、exports</h4><pre><code>1、模块分为
-
-    模块加载：require(&apos;2.js&apos;);
-
-    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
-
-    2）文件模块: 自己定义的业务模块
-
-        定义一个food.common.js
-
-        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
-
-    3）加载第三方模块
-
-        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
-
-
-2、绝对和相对路径
-
-    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
-
-    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
-
-
-2、npm 全局安装和局部安装
-
-    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
-
-    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
-
-
-3、模块化
-
-    module和exports两个全局变量
-
-    1）module：每个模块下都包括module对象
-
-        Module {
-            id: &apos;.&apos;,
-            exports: {},
-            parent: null,
-            filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
-            loaded: false,
-            children: [],
-            paths: [
-                &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
-                &apos;/Users/apple/siguang.liu/node_modules&apos;,
-                &apos;/Users/apple/node_modules&apos;,
-                &apos;/Users/node_modules&apos;,
-                &apos;/node_modules&apos;
-            ]
-         }
-
-     2）exports外部接口，通过require就可以调用这个接口
-
-         其实exports就是module.exports的引用
-
-        exports.name = &apos;siguang&apos;;
-        exports.getPrivate = function(){
-            return &apos;haha&apos;;
-        }
-</code></pre><h4 id="事件-EventEmitter"><a href="#事件-EventEmitter" class="headerlink" title="事件 EventEmitter"></a>事件 EventEmitter</h4><pre><code>var EventEmitter = require(&apos;events&apos;).EventEmitter,
-    a = new EventEmitter;
-
-a.on(&apos;event&apos;, function(){
-    console.log(&apos;event called&apos;);
-})
-a.emit(&apos;event&apos;);
-</code></pre><p>—————————- Node API 文档 —————————-</p>
-<h4 id="process-进程对象"><a href="#process-进程对象" class="headerlink" title="process 进程对象"></a>process 进程对象</h4><pre><code>1、pid：进程id，也就是进程名
-
-2、kill(pid)：杀掉进程
-
-3、nextTick(callback): 会在第一次事件环中最末尾执行，setTimeout和setImmediate属于第二事件环
-
-    console.log(&apos;开始&apos;);
-
-    setImmediate(function(){
-        console.log(&apos;setImmediate&apos;)
-    });
-
-    setTimeout(function(){
-        console.log(&apos;setTimeout&apos;);
-    }, 0);
-
-    process.nextTick(function(){
-        console.log(&apos;nextTick&apos;);
-    })
-
-    console.log(&apos;结束&apos;);
-
-
-    output:
-
-        ---------------  第一次 ----------------
-        开始
-        结束
-        nextTick
-
-        ---------------  第二次 ----------------
-        setTimeout
-        setImmediate
-</code></pre><h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><pre><code>传输控制协议TCP是一个面向连接的协议，保证两台计算机之间数据传输的可靠性和顺序
-
-它可以将数据从一台计算机完整有序的传到另一台计算机，http模块就是继承了net（TCP）模块
-
-var net = require(&apos;net&apos;);        // 引用TCP模块
-
-telnet系统嵌套的客户端，端口23, 用来连接服务器
-
-退出TCP连接 alt+[, 退出telnet quit命令
-</code></pre><h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><pre><code>基于HTTP服务器的工具, 提供新的组织代码的方式来与请求响应对象进行交互，称为中间件
-
-引用模块 var connect = require(&apos;connect&apos;);
-
-connect作用: 
-
-    1、托管静态文件
-
-    2、处理错误及不存在的url
-
-    3、处理不同类型的请求
-</code></pre><h4 id="utils-工具"><a href="#utils-工具" class="headerlink" title="utils 工具"></a>utils 工具</h4><pre><code>var utils = reuqire(&apos;utils&apos;);
-</code></pre><h4 id="Events-事件"><a href="#Events-事件" class="headerlink" title="Events 事件"></a>Events 事件</h4><pre><code>EventEmitter 类
-
-var EventEmitter = require(&apos;events&apos;);
-var emitter = new EventEmitter();
-
-1、addListener(event, listener): 创建事件，客户端通过事件来调用，而服务端通过代码来调用事件侦听
-
-       on(event, listener):
-
-       //  addListener 事件
-    var EventEmitter = require(&apos;events&apos;).EventEmitter;
-    var emitter = new EventEmitter();
-
-    emitter.addListener(&apos;some_events&apos;, function(foo, bar){
-        console.log(foo, bar);
-    })
-
-    emitter.emit(&apos;some_events&apos;, &apos;helloA&apos;, &apos;world&apos;);         // helloA world
-    emitter.emit(&apos;some_events&apos;, &apos;helloB&apos;, &apos;world&apos;);         // helloB world
-
-
-    // on 可以
-    emitter.on(&apos;message&apos;, function(mes, name, age){
-        console.log(mes +&quot; name:&quot;+ name +&quot; age:&quot;+ age);
-    })
-
-    emitter.emit(&apos;message&apos;, &apos;消息1&apos;, &apos;siguang&apos;, &apos;32&apos;);       // 消息1 name:siguang age:32
-    emitter.emit(&apos;message&apos;, &apos;消息2&apos;, &apos;lulu&apos;, &apos;30&apos;);          // 消息2 name:lulu age:30
-
-
-2、once()：只执行一次
-
-    emitter.once(&apos;onceEvent&apos;, function(age){
-        console.log(age);
-    })
-
-    emitter.emit(&apos;onceEvent&apos;, &apos;1&apos;);        // 只执行此次事件
-    emitter.emit(&apos;onceEvent&apos;, &apos;2&apos;);
-    emitter.emit(&apos;onceEvent&apos;, &apos;3&apos;);
-
-
-3、removeListener(): 删除listener
-
-4、removeAllListeners(): 删除所有
-
-5、setMaxListeners(num): 正常事件的个数为10个, 如果超出通过此方法来改变限制的个数
-
-6、setMaxListeners(): 每个emitter实例的最大监听数
-
-7、listeners(event): 返回指琮事件的数组
-
-8、emit(事件名, 参数): 执行事件
-
-9、listenerCount(emitter, event): 返回事件个数
-</code></pre><h4 id="cookie-和-Session"><a href="#cookie-和-Session" class="headerlink" title="cookie 和 Session"></a>cookie 和 Session</h4><pre><code>https://cnodejs.org/topic/55f8d70a20d84f3d377582a3
-
-1、cookie和session的区别
-
-    cookie存放在客户端 session存放到服务器上
-
-    cookie不安全，客户端可以修改, session不会被修改
-
-    session会保存在一定时间内保存在服务器端, 当访问增多, 会影响性能
-
-
-2、cookie
-
-    存储到客户端的信息
-
-3、session
-
-    # npm install express-session --save       // 安装
-
-    session原理
-
-        1）服务器端有一个对象专门存session的对象或库 如sessions={};
-
-        2）通过req.session.sign来检查是否为已登录状态
-
-        3）如果没有登录，第一次访问会生成一个sid，Date.now()+Math.random(); 将sid存储到sessions中
-
-        4）把这个sid发送到浏览器端, 通过请求头中会有一个set-cookie, 将session中存到cookie中
-
-            set-cookie:connect.sid=s%3AjDb0ns6Ekas3I7ll3tm9Bxg_wd4WjBJY.wL8VyIWdHQNFWt%2ByE%2BjAV30r4M7ZQdVIXgeKBOzx5iY; Path=/; Expires=Fri, 25 Nov 2016 03:27:38 GMT; HttpOnly
-
-            HttpOnly 不能读不能写
-
-
-    session(options): 选项内容
-
-        1）name: session名称，设置cookie中，默认为connect.sid
-
-        2）stroe: session存储方式，默认存在内存中，也可以存储到redis、mongodb
-
-        3）secret: 通过设置secret字符串，来计算hash值并放在cookie产生的signedCookie防篡改
-
-        4) cookie: 存放session id 的cookie
-
-        5) genid: 产生一个新的session_id时，所使用的函数，默认使用uid2这个npm包
-
-        6）rolling: 每个请求都重新设置一个cookie
-
-        7）resave: 即使session没有被修改也保存session值
-
-        8）saveUnintialized: 保存新创建但未修改的session
-
-
-    示例:
-
-        router.get(&apos;/&apos;, function (req, res) {
-
-            if (req.session.sign) { // 检查用户是否已经登录
-                console.log(req.session);//打印session的值
-                res.send(&apos;welecome &lt;strong&gt;&apos; + req.session.name + &apos;&lt;/strong&gt;, 欢迎你再次登录&apos;);
-            }
-            else {      // 否则展示index页面
-                req.session.sign = true;
-                req.session.name = &apos;haha&apos;;
-                res.end(&apos;欢迎登陆！&apos;);
-            }
-
-        });
-</code></pre><h4 id="webSocket"><a href="#webSocket" class="headerlink" title="webSocket"></a>webSocket</h4><pre><code>轮循: 隔多长时间ajax发一次请求, 不间隔的去发
-
-长轮循: 隔多长时间ajax发一次请求，接到结果后在发出下一次请求
-
-
-webScoket: 长连接，浏览器和服务器只需要一次握手，浏览器就和服务器形成一个快速通道，两者之间相互传送数据
-
-    1、节省资源: Header只有2 Bytes，1字节8位   1kb = 1024 bytes
-
-    2、推送消息: 不需要客户端发请求
-
-
-1、安装
-
-    # npm install ws
-
-2、socket.io库
-
-    Socket.IO是websocket库，包括客户端的js和服务器端的nodejs，目标是构建可以在不同浏览器和移动设备上使用实时应用.
-
-    # npm install socket.io
-
-
-    https://www.zhihu.com/question/20831000         // scoketIO最大连接数和并发数
-</code></pre><h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><pre><code>1、同步方法 try catch
-
-2、异步 判断回调函数error对象
-
-3、流里判断错误，监听error事件
-
-    rs.on(&apos;error&apos;, function(error){
-        console.log(error);
-    })
-</code></pre><h4 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h4><pre><code>content-type 的一些参数值: http://blog.csdn.net/blueheart20/article/details/45174399
-
-request请求头: 客户端请求服务器的请求头
-
-    1、host: 主机地址
-
-    2、connection: 客户端与服务器的连接选项
-
-    3、accept: 服务器处理内容的优先级, q是权重 0-1之间范围
-
-    4、user-agent: 用户代理，发送浏览器的硬件、系统等信息, 可以通过些选择来收集用户的pc端还是moblie端访问的多少
-
-    5、accept-encoding: 告诉服务器所支持的编码
-
-    6、accept-language: 告诉服务器所使用的语言, 用于判断中文站还是英文站
-
-
-response响应: 服务器向客户端响应
-
-    1、statusCode: 状态码
-
-    2、resonPhrase: 状态码描述
-
-    3、headers: 响应头信息
-
-        1) content-Type: 内容类型
-
-        2) location: 重定向url
-
-        3) content-disposition: 下载文件名
-
-        4) content-length: 响应内容的字节数
-
-        5) set-cookie: 写入客户端cookie
-
-        6) content-encoding: 响应内容编码
-
-        7) cache-Control: 缓存
-
-        8) Expires: 指定缓存过期时间
-
-        9) Etag: 服务器响应内容没有变化重新下载数据
-
-        10) connection: 默认keep-alive 保持连接，断开使用close
-</code></pre><blockquote>
-<p>参考资料</p>
-<p><a href="https://thinkjs.org/" target="_blank" rel="noopener">https://thinkjs.org/</a><br><a href="https://chyingp.gitbooks.io/nodejs/content/%E8%BF%9B%E9%98%B6/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%88%90datauri.html" target="_blank" rel="noopener">https://chyingp.gitbooks.io/nodejs/content/%E8%BF%9B%E9%98%B6/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%88%90datauri.html</a>    ***<br><a href="http://nodeapi.ucdok.com/api/" target="_blank" rel="noopener">http://nodeapi.ucdok.com/api/</a>                    // API中文文档<br><a href="https://github.com/wangxueliang/node-api/blob/master/doc/fs.md" target="_blank" rel="noopener">https://github.com/wangxueliang/node-api/blob/master/doc/fs.md</a>   API中文部分<br><a href="https://nodejs.xiangfa.org/documentation/" target="_blank" rel="noopener">https://nodejs.xiangfa.org/documentation/</a>        // API中文文档<br><a href="https://cnodejs.org/getstart" target="_blank" rel="noopener">https://cnodejs.org/getstart</a>                     // node入门<br><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="noopener">http://nqdeng.github.io/7-days-nodejs/</a><br><a href="http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb" target="_blank" rel="noopener">http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb</a><br><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="noopener">http://nqdeng.github.io/7-days-nodejs/</a>        // 7天会Node<br><a href="https://www.gitbook.com/@chyingp" target="_blank" rel="noopener">https://www.gitbook.com/@chyingp</a><br><a href="http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb" target="_blank" rel="noopener">http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb</a><br><a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e" target="_blank" rel="noopener">https://cnodejs.org/topic/56ef3edd532839c33a99d00e</a><br><a href="https://github.com/leizongmin/node123" target="_blank" rel="noopener">https://github.com/leizongmin/node123</a>        // 资料导航</p>
-<p>Express框架</p>
-<p><a href="http://www.expressjs.com.cn/starter/hello-world.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/starter/hello-world.html</a><br><a href="https://github.com/expressjs?page=2" target="_blank" rel="noopener">https://github.com/expressjs?page=2</a>        express下的插件<br><a href="https://github.com/nodejs" target="_blank" rel="noopener">https://github.com/nodejs</a>     nodeJS插件</p>
-</blockquote>
-<p>插件:</p>
-<p><a href="http://node.zhufengpeixun.cn/" target="_blank" rel="noopener">http://node.zhufengpeixun.cn/</a><br><a href="https://github.com/node-modules?page=1" target="_blank" rel="noopener">https://github.com/node-modules?page=1</a></p>
-<p><a href="https://github.com/keepfool/node-lessons" target="_blank" rel="noopener">https://github.com/keepfool/node-lessons</a></p>
-<p>1、cookie: <a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="noopener">https://github.com/expressjs/cookie-parser</a>    // cookie-parser  </p>
-<pre><code>http://www.cnblogs.com/coolicer/p/4191548.html
-</code></pre><p>2、express-session: session的处理</p>
-<p>3、cookie、sesssion加密的包 cookie-signature:    <a href="https://github.com/visionmedia/node-cookie-signature" target="_blank" rel="noopener">https://github.com/visionmedia/node-cookie-signature</a></p>
-<pre><code>https://segmentfault.com/q/1010000000392851
-</code></pre><p>4、token: express-jwt         <a href="https://www.npmjs.com/package/express-jwt" target="_blank" rel="noopener">https://www.npmjs.com/package/express-jwt</a></p>
-<pre><code>http://ninghao.net/blog/2834
-</code></pre><p>5、socket.io:  npm install socket.io             <a href="https://github.com/socketio/socket.io" target="_blank" rel="noopener">https://github.com/socketio/socket.io</a></p>
-<p>2、mysql: <a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">https://www.npmjs.com/package/mysql</a>         // 连接和处理mysql</p>
-<p>3、ws安装socket/IO服务包: npm install ws</p>
-<p>4、mime:  <a href="https://github.com/broofa/node-mime" target="_blank" rel="noopener">https://github.com/broofa/node-mime</a>        // 响应css、js文件的请求</p>
-<pre><code>http://blog.csdn.net/zgljl2012/article/details/44700953
-</code></pre><p>5、body-parser: <a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">https://github.com/expressjs/body-parser</a>  // json  </p>
-<pre><code>https://segmentfault.com/a/1190000003061925
-</code></pre><p>6、superagent: <a href="http://visionmedia.github.io/superagent/" target="_blank" rel="noopener">http://visionmedia.github.io/superagent/</a></p>
-<pre><code>http://www.codesec.net/view/183926.html
-</code></pre><p>7、node-images:  <a href="https://github.com/zhangyuanwei/node-images" target="_blank" rel="noopener">https://github.com/zhangyuanwei/node-images</a>     // 图片转换</p>
-<p>8、node-xlsx: <a href="https://github.com/mgcrea/node-xlsx" target="_blank" rel="noopener">https://github.com/mgcrea/node-xlsx</a>      // 处理xlsx文件</p>
-<p>9、multer: <a href="https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md" target="_blank" rel="noopener">https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md</a>    // 处理文件上传</p>
-<pre><code>req.body存储表单内容
-
-req.file存储上传控制的内容
-
-multer({dest: &apos;./public/upfile&apos;});    设置图片文件存储的路径
-
-upload.single(&apos;sendUpfile&apos;);        // 上传单个文件 file的name=&quot;sendUpfile&quot;
-</code></pre><p>11、multiparty 文件上传: <a href="https://github.com/expressjs/node-multiparty" target="_blank" rel="noopener">https://github.com/expressjs/node-multiparty</a></p>
-<p>10、formidable: <a href="https://cnodejs.org/topic/4f5c62932373009b5c0b027b" target="_blank" rel="noopener">https://cnodejs.org/topic/4f5c62932373009b5c0b027b</a> // 文件上传</p>
-<p>11、up工具用于重启服务器, 每次代码修改不需要重启服务器，通过up来完成</p>
-<pre><code>安装 sudo npm install up -g
-
-运行 到项目目录 up -watch -port 8080 server.js
-</code></pre><p>模板:</p>
-<p>1、handlebars  <a href="http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html" target="_blank" rel="noopener">http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html</a></p>
-<pre><code>http://www.ghostchina.com/introducing-the-handlebars-js-templating-engine/
-hbs:  http://www.cnblogs.com/chyingp/p/hbs-getting-started.html
-</code></pre><p>1、Jade</p>
-<p>2、ejs</p>
-<p>3、Haml</p>
-<p>4、CoffeeKup</p>
-<p>MD5 JS <a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">https://github.com/blueimp/JavaScript-MD5</a></p>
-<p>HTML5  new FormData()   <a href="http://www.cnblogs.com/lhb25/p/html5-formdata-tutorials.html" target="_blank" rel="noopener">http://www.cnblogs.com/lhb25/p/html5-formdata-tutorials.html</a></p>
-
+</code></pre><h4 id="session-会话"><a href="#session-会话" class="headerlink" title="session 会话"></a>session 会话</h4>
         
     </section>
 </article>
@@ -1640,6 +729,720 @@ p {
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2017/01/10/nodeJS基础用法/">nodeJS基础</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/01/10/nodeJS基础用法/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-01-10T10:10:21.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| nodeJS<br>|<br>| buffer: 处理二进制, 对字符串与二进制进行转换 (done)<br>| fs: 文件系统操作 (done)<br>| http: 处理http请求, 创建服务器, 和处理客户端与服务器之间的数据传递request、response (done)<br>| stream: 文件流<br>| path: 文件路径的处理 (done)<br>| URL: 网络地址解析 (done)<br>| querystring: URL查询字符串 (done)<br>| Cookie、Session、Token (done)<br>| event: 事件机制<br>|<br>| DNS: 域名解析<br>| net: TCP网络<br>| dgram: UDP网络<br>| crypto: 数据加密<br>| process: 进程<br>| childe_process: 子进程<br>| cluster: 集群<br>| global: 全局<br>|<br>| Express<br>| Template 模板 jade、<br>| Mysql (done)<br>| MongoDB<br>| redis<br>| RESTful 架构<br>| </p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>优点:
+    前端的局限性，可以对文件、进程、数据库等进操作，是一门纯后端
+    处理高并发  程序异步执行不会阻塞
+
+缺点: nodejs是单线程
+
+1、nodeJS安装，mac或windows系统需要到官网下载安装包，自带npm包管理器
+
+2、安装express框架：npm install -g express
+
+        $ express       // 执行命令
+
+3、更新node版本
+
+    node需要下载一个n模块，是用来专门管理nodejs的版本
+
+    1、npm install -g n             # 安装n模块
+
+    2、n stable                    # 升级到稳定版，也可以指定版本号 n v0.10.26
+
+
+4、其它命令
+
+    npm -v                  # 显示版本，检查npm 是否正确安装。
+
+    npm install express      # 安装express模块
+
+    npm install -g express  # 全局安装express模块
+
+    npm list                 # 列出已安装模块
+
+    npm show express         # 显示模块详情
+
+    npm update                # 升级当前目录下的项目的所有模块
+
+    npm update express        # 升级当前目录下的项目的指定模块
+
+    npm update -g express      # 升级全局安装的express模块
+
+    npm uninstall express      # 删除指定的模块
+</code></pre><h4 id="NPM与包"><a href="#NPM与包" class="headerlink" title="NPM与包"></a>NPM与包</h4><pre><code>NodeJS以CommonJS的包规范来制订，由包结构和包描述文件两部分组件
+
+1、包结构
+
+    npm 下载完包存储到 node_modules 目录中，包含:
+
+    1）package.json: 包描述
+
+    2）bin: 存放可执行的二进制文件
+
+    3）lib: 存储javascript代码目录
+
+    4）doc: 用于存放文档的目录
+
+    5）test: 存放单元测试用例代码
+</code></pre><h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><pre><code>Node采用了Google的V8引擎，作为javascript语言的解释器，Node是基于事件驱动和异步I/O的服务器环境
+
+1、JS与node的区别
+
+    1）JS中顶层对象是 window，nodeJS中的顶层对象是 global
+
+    2）JS中 var a = 10; window.a; 可以访问到，但在node中global.a是访问不到的，因为node有模块的概念
+
+        node中一个文件就是珍上模块，每个模块有自己的作用域
+
+2、REPL环境
+
+    在命令行输入node, 可以直接运行node命令
+</code></pre><h4 id="模块系统-require、exports"><a href="#模块系统-require、exports" class="headerlink" title="模块系统 require、exports"></a>模块系统 require、exports</h4><pre><code>1、模块分为
+
+    模块加载：require(&apos;2.js&apos;);
+
+    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
+
+    2）文件模块: 自己定义的业务模块
+
+        定义一个food.common.js
+
+        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
+
+    3）加载第三方模块
+
+        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
+
+
+2、绝对和相对路径
+
+    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
+
+    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
+
+
+2、npm 全局安装和局部安装
+
+    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
+
+    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
+
+
+3、模块化
+
+    module和exports两个全局变量
+
+    1）module：每个模块下都包括module对象
+
+        Module {
+            id: &apos;.&apos;,
+            exports: {},
+            parent: null,
+            filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
+            loaded: false,
+            children: [],
+            paths: [
+                &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
+                &apos;/Users/apple/siguang.liu/node_modules&apos;,
+                &apos;/Users/apple/node_modules&apos;,
+                &apos;/Users/node_modules&apos;,
+                &apos;/node_modules&apos;
+            ]
+         }
+
+     2）exports外部接口，通过require就可以调用这个接口
+
+         其实exports就是module.exports的引用
+
+        exports.name = &apos;siguang&apos;;
+        exports.getPrivate = function(){
+            return &apos;haha&apos;;
+        }
+</code></pre><h4 id="事件-EventEmitter"><a href="#事件-EventEmitter" class="headerlink" title="事件 EventEmitter"></a>事件 EventEmitter</h4><pre><code>var EventEmitter = require(&apos;events&apos;).EventEmitter,
+    a = new EventEmitter;
+
+a.on(&apos;event&apos;, function(){
+    console.log(&apos;event called&apos;);
+})
+a.emit(&apos;event&apos;);
+</code></pre><p>—————————- Node API 文档 —————————-</p>
+<h4 id="process-进程对象"><a href="#process-进程对象" class="headerlink" title="process 进程对象"></a>process 进程对象</h4><pre><code>1、pid：进程id，也就是进程名
+
+2、kill(pid)：杀掉进程
+
+3、nextTick(callback): 会在第一次事件环中最末尾执行，setTimeout和setImmediate属于第二事件环
+
+    console.log(&apos;开始&apos;);
+
+    setImmediate(function(){
+        console.log(&apos;setImmediate&apos;)
+    });
+
+    setTimeout(function(){
+        console.log(&apos;setTimeout&apos;);
+    }, 0);
+
+    process.nextTick(function(){
+        console.log(&apos;nextTick&apos;);
+    })
+
+    console.log(&apos;结束&apos;);
+
+
+    output:
+
+        ---------------  第一次 ----------------
+        开始
+        结束
+        nextTick
+
+        ---------------  第二次 ----------------
+        setTimeout
+        setImmediate
+</code></pre><h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><pre><code>传输控制协议TCP是一个面向连接的协议，保证两台计算机之间数据传输的可靠性和顺序
+
+它可以将数据从一台计算机完整有序的传到另一台计算机，http模块就是继承了net（TCP）模块
+
+var net = require(&apos;net&apos;);        // 引用TCP模块
+
+telnet系统嵌套的客户端，端口23, 用来连接服务器
+
+退出TCP连接 alt+[, 退出telnet quit命令
+</code></pre><h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><pre><code>基于HTTP服务器的工具, 提供新的组织代码的方式来与请求响应对象进行交互，称为中间件
+
+引用模块 var connect = require(&apos;connect&apos;);
+
+connect作用: 
+
+    1、托管静态文件
+
+    2、处理错误及不存在的url
+
+    3、处理不同类型的请求
+</code></pre><h4 id="utils-工具"><a href="#utils-工具" class="headerlink" title="utils 工具"></a>utils 工具</h4><pre><code>var utils = reuqire(&apos;utils&apos;);
+</code></pre><h4 id="Events-事件"><a href="#Events-事件" class="headerlink" title="Events 事件"></a>Events 事件</h4><pre><code>EventEmitter 类
+
+var EventEmitter = require(&apos;events&apos;);
+var emitter = new EventEmitter();
+
+1、addListener(event, listener): 创建事件，客户端通过事件来调用，而服务端通过代码来调用事件侦听
+
+       on(event, listener):
+
+       //  addListener 事件
+    var EventEmitter = require(&apos;events&apos;).EventEmitter;
+    var emitter = new EventEmitter();
+
+    emitter.addListener(&apos;some_events&apos;, function(foo, bar){
+        console.log(foo, bar);
+    })
+
+    emitter.emit(&apos;some_events&apos;, &apos;helloA&apos;, &apos;world&apos;);         // helloA world
+    emitter.emit(&apos;some_events&apos;, &apos;helloB&apos;, &apos;world&apos;);         // helloB world
+
+
+    // on 可以
+    emitter.on(&apos;message&apos;, function(mes, name, age){
+        console.log(mes +&quot; name:&quot;+ name +&quot; age:&quot;+ age);
+    })
+
+    emitter.emit(&apos;message&apos;, &apos;消息1&apos;, &apos;siguang&apos;, &apos;32&apos;);       // 消息1 name:siguang age:32
+    emitter.emit(&apos;message&apos;, &apos;消息2&apos;, &apos;lulu&apos;, &apos;30&apos;);          // 消息2 name:lulu age:30
+
+
+2、once()：只执行一次
+
+    emitter.once(&apos;onceEvent&apos;, function(age){
+        console.log(age);
+    })
+
+    emitter.emit(&apos;onceEvent&apos;, &apos;1&apos;);        // 只执行此次事件
+    emitter.emit(&apos;onceEvent&apos;, &apos;2&apos;);
+    emitter.emit(&apos;onceEvent&apos;, &apos;3&apos;);
+
+
+3、removeListener(): 删除listener
+
+4、removeAllListeners(): 删除所有
+
+5、setMaxListeners(num): 正常事件的个数为10个, 如果超出通过此方法来改变限制的个数
+
+6、setMaxListeners(): 每个emitter实例的最大监听数
+
+7、listeners(event): 返回指琮事件的数组
+
+8、emit(事件名, 参数): 执行事件
+
+9、listenerCount(emitter, event): 返回事件个数
+</code></pre><h4 id="cookie-和-Session"><a href="#cookie-和-Session" class="headerlink" title="cookie 和 Session"></a>cookie 和 Session</h4><pre><code>https://cnodejs.org/topic/55f8d70a20d84f3d377582a3
+
+1、cookie和session的区别
+
+    cookie存放在客户端 session存放到服务器上
+
+    cookie不安全，客户端可以修改, session不会被修改
+
+    session会保存在一定时间内保存在服务器端, 当访问增多, 会影响性能
+
+
+2、cookie
+
+    存储到客户端的信息
+
+3、session
+
+    # npm install express-session --save       // 安装
+
+    session原理
+
+        1）服务器端有一个对象专门存session的对象或库 如sessions={};
+
+        2）通过req.session.sign来检查是否为已登录状态
+
+        3）如果没有登录，第一次访问会生成一个sid，Date.now()+Math.random(); 将sid存储到sessions中
+
+        4）把这个sid发送到浏览器端, 通过请求头中会有一个set-cookie, 将session中存到cookie中
+
+            set-cookie:connect.sid=s%3AjDb0ns6Ekas3I7ll3tm9Bxg_wd4WjBJY.wL8VyIWdHQNFWt%2ByE%2BjAV30r4M7ZQdVIXgeKBOzx5iY; Path=/; Expires=Fri, 25 Nov 2016 03:27:38 GMT; HttpOnly
+
+            HttpOnly 不能读不能写
+
+
+    session(options): 选项内容
+
+        1）name: session名称，设置cookie中，默认为connect.sid
+
+        2）stroe: session存储方式，默认存在内存中，也可以存储到redis、mongodb
+
+        3）secret: 通过设置secret字符串，来计算hash值并放在cookie产生的signedCookie防篡改
+
+        4) cookie: 存放session id 的cookie
+
+        5) genid: 产生一个新的session_id时，所使用的函数，默认使用uid2这个npm包
+
+        6）rolling: 每个请求都重新设置一个cookie
+
+        7）resave: 即使session没有被修改也保存session值
+
+        8）saveUnintialized: 保存新创建但未修改的session
+
+
+    示例:
+
+        router.get(&apos;/&apos;, function (req, res) {
+
+            if (req.session.sign) { // 检查用户是否已经登录
+                console.log(req.session);//打印session的值
+                res.send(&apos;welecome &lt;strong&gt;&apos; + req.session.name + &apos;&lt;/strong&gt;, 欢迎你再次登录&apos;);
+            }
+            else {      // 否则展示index页面
+                req.session.sign = true;
+                req.session.name = &apos;haha&apos;;
+                res.end(&apos;欢迎登陆！&apos;);
+            }
+
+        });
+</code></pre><h4 id="webSocket"><a href="#webSocket" class="headerlink" title="webSocket"></a>webSocket</h4><pre><code>轮循: 隔多长时间ajax发一次请求, 不间隔的去发
+
+长轮循: 隔多长时间ajax发一次请求，接到结果后在发出下一次请求
+
+
+webScoket: 长连接，浏览器和服务器只需要一次握手，浏览器就和服务器形成一个快速通道，两者之间相互传送数据
+
+    1、节省资源: Header只有2 Bytes，1字节8位   1kb = 1024 bytes
+
+    2、推送消息: 不需要客户端发请求
+
+
+1、安装
+
+    # npm install ws
+
+2、socket.io库
+
+    Socket.IO是websocket库，包括客户端的js和服务器端的nodejs，目标是构建可以在不同浏览器和移动设备上使用实时应用.
+
+    # npm install socket.io
+
+
+    https://www.zhihu.com/question/20831000         // scoketIO最大连接数和并发数
+</code></pre><h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><pre><code>1、同步方法 try catch
+
+2、异步 判断回调函数error对象
+
+3、流里判断错误，监听error事件
+
+    rs.on(&apos;error&apos;, function(error){
+        console.log(error);
+    })
+</code></pre><h4 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h4><pre><code>content-type 的一些参数值: http://blog.csdn.net/blueheart20/article/details/45174399
+
+request请求头: 客户端请求服务器的请求头
+
+    1、host: 主机地址
+
+    2、connection: 客户端与服务器的连接选项
+
+    3、accept: 服务器处理内容的优先级, q是权重 0-1之间范围
+
+    4、user-agent: 用户代理，发送浏览器的硬件、系统等信息, 可以通过些选择来收集用户的pc端还是moblie端访问的多少
+
+    5、accept-encoding: 告诉服务器所支持的编码
+
+    6、accept-language: 告诉服务器所使用的语言, 用于判断中文站还是英文站
+
+
+response响应: 服务器向客户端响应
+
+    1、statusCode: 状态码
+
+    2、resonPhrase: 状态码描述
+
+    3、headers: 响应头信息
+
+        1) content-Type: 内容类型
+
+        2) location: 重定向url
+
+        3) content-disposition: 下载文件名
+
+        4) content-length: 响应内容的字节数
+
+        5) set-cookie: 写入客户端cookie
+
+        6) content-encoding: 响应内容编码
+
+        7) cache-Control: 缓存
+
+        8) Expires: 指定缓存过期时间
+
+        9) Etag: 服务器响应内容没有变化重新下载数据
+
+        10) connection: 默认keep-alive 保持连接，断开使用close
+</code></pre><blockquote>
+<p>参考资料</p>
+<p><a href="https://thinkjs.org/" target="_blank" rel="noopener">https://thinkjs.org/</a><br><a href="https://chyingp.gitbooks.io/nodejs/content/%E8%BF%9B%E9%98%B6/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%88%90datauri.html" target="_blank" rel="noopener">https://chyingp.gitbooks.io/nodejs/content/%E8%BF%9B%E9%98%B6/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%88%90datauri.html</a>    ***<br><a href="http://nodeapi.ucdok.com/api/" target="_blank" rel="noopener">http://nodeapi.ucdok.com/api/</a>                    // API中文文档<br><a href="https://github.com/wangxueliang/node-api/blob/master/doc/fs.md" target="_blank" rel="noopener">https://github.com/wangxueliang/node-api/blob/master/doc/fs.md</a>   API中文部分<br><a href="https://nodejs.xiangfa.org/documentation/" target="_blank" rel="noopener">https://nodejs.xiangfa.org/documentation/</a>        // API中文文档<br><a href="https://cnodejs.org/getstart" target="_blank" rel="noopener">https://cnodejs.org/getstart</a>                     // node入门<br><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="noopener">http://nqdeng.github.io/7-days-nodejs/</a><br><a href="http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb" target="_blank" rel="noopener">http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb</a><br><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="noopener">http://nqdeng.github.io/7-days-nodejs/</a>        // 7天会Node<br><a href="https://www.gitbook.com/@chyingp" target="_blank" rel="noopener">https://www.gitbook.com/@chyingp</a><br><a href="http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb" target="_blank" rel="noopener">http://cnodejs.org/topic/581b0c4ebb9452c9052e7acb</a><br><a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e" target="_blank" rel="noopener">https://cnodejs.org/topic/56ef3edd532839c33a99d00e</a><br><a href="https://github.com/leizongmin/node123" target="_blank" rel="noopener">https://github.com/leizongmin/node123</a>        // 资料导航</p>
+<p>Express框架</p>
+<p><a href="http://www.expressjs.com.cn/starter/hello-world.html" target="_blank" rel="noopener">http://www.expressjs.com.cn/starter/hello-world.html</a><br><a href="https://github.com/expressjs?page=2" target="_blank" rel="noopener">https://github.com/expressjs?page=2</a>        express下的插件<br><a href="https://github.com/nodejs" target="_blank" rel="noopener">https://github.com/nodejs</a>     nodeJS插件</p>
+</blockquote>
+<p>插件:</p>
+<p><a href="http://node.zhufengpeixun.cn/" target="_blank" rel="noopener">http://node.zhufengpeixun.cn/</a><br><a href="https://github.com/node-modules?page=1" target="_blank" rel="noopener">https://github.com/node-modules?page=1</a></p>
+<p><a href="https://github.com/keepfool/node-lessons" target="_blank" rel="noopener">https://github.com/keepfool/node-lessons</a></p>
+<p>1、cookie: <a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="noopener">https://github.com/expressjs/cookie-parser</a>    // cookie-parser  </p>
+<pre><code>http://www.cnblogs.com/coolicer/p/4191548.html
+</code></pre><p>2、express-session: session的处理</p>
+<p>3、cookie、sesssion加密的包 cookie-signature:    <a href="https://github.com/visionmedia/node-cookie-signature" target="_blank" rel="noopener">https://github.com/visionmedia/node-cookie-signature</a></p>
+<pre><code>https://segmentfault.com/q/1010000000392851
+</code></pre><p>4、token: express-jwt         <a href="https://www.npmjs.com/package/express-jwt" target="_blank" rel="noopener">https://www.npmjs.com/package/express-jwt</a></p>
+<pre><code>http://ninghao.net/blog/2834
+</code></pre><p>5、socket.io:  npm install socket.io             <a href="https://github.com/socketio/socket.io" target="_blank" rel="noopener">https://github.com/socketio/socket.io</a></p>
+<p>2、mysql: <a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">https://www.npmjs.com/package/mysql</a>         // 连接和处理mysql</p>
+<p>3、ws安装socket/IO服务包: npm install ws</p>
+<p>4、mime:  <a href="https://github.com/broofa/node-mime" target="_blank" rel="noopener">https://github.com/broofa/node-mime</a>        // 响应css、js文件的请求</p>
+<pre><code>http://blog.csdn.net/zgljl2012/article/details/44700953
+</code></pre><p>5、body-parser: <a href="https://github.com/expressjs/body-parser" target="_blank" rel="noopener">https://github.com/expressjs/body-parser</a>  // json  </p>
+<pre><code>https://segmentfault.com/a/1190000003061925
+</code></pre><p>6、superagent: <a href="http://visionmedia.github.io/superagent/" target="_blank" rel="noopener">http://visionmedia.github.io/superagent/</a></p>
+<pre><code>http://www.codesec.net/view/183926.html
+</code></pre><p>7、node-images:  <a href="https://github.com/zhangyuanwei/node-images" target="_blank" rel="noopener">https://github.com/zhangyuanwei/node-images</a>     // 图片转换</p>
+<p>8、node-xlsx: <a href="https://github.com/mgcrea/node-xlsx" target="_blank" rel="noopener">https://github.com/mgcrea/node-xlsx</a>      // 处理xlsx文件</p>
+<p>9、multer: <a href="https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md" target="_blank" rel="noopener">https://github.com/expressjs/multer/blob/master/doc/README-zh-cn.md</a>    // 处理文件上传</p>
+<pre><code>req.body存储表单内容
+
+req.file存储上传控制的内容
+
+multer({dest: &apos;./public/upfile&apos;});    设置图片文件存储的路径
+
+upload.single(&apos;sendUpfile&apos;);        // 上传单个文件 file的name=&quot;sendUpfile&quot;
+</code></pre><p>11、multiparty 文件上传: <a href="https://github.com/expressjs/node-multiparty" target="_blank" rel="noopener">https://github.com/expressjs/node-multiparty</a></p>
+<p>10、formidable: <a href="https://cnodejs.org/topic/4f5c62932373009b5c0b027b" target="_blank" rel="noopener">https://cnodejs.org/topic/4f5c62932373009b5c0b027b</a> // 文件上传</p>
+<p>11、up工具用于重启服务器, 每次代码修改不需要重启服务器，通过up来完成</p>
+<pre><code>安装 sudo npm install up -g
+
+运行 到项目目录 up -watch -port 8080 server.js
+</code></pre><p>模板:</p>
+<p>1、handlebars  <a href="http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html" target="_blank" rel="noopener">http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html</a></p>
+<pre><code>http://www.ghostchina.com/introducing-the-handlebars-js-templating-engine/
+hbs:  http://www.cnblogs.com/chyingp/p/hbs-getting-started.html
+</code></pre><p>1、Jade</p>
+<p>2、ejs</p>
+<p>3、Haml</p>
+<p>4、CoffeeKup</p>
+<p>MD5 JS <a href="https://github.com/blueimp/JavaScript-MD5" target="_blank" rel="noopener">https://github.com/blueimp/JavaScript-MD5</a></p>
+<p>HTML5  new FormData()   <a href="http://www.cnblogs.com/lhb25/p/html5-formdata-tutorials.html" target="_blank" rel="noopener">http://www.cnblogs.com/lhb25/p/html5-formdata-tutorials.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/01/10/Less/">Less</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/01/10/Less/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-01-10T10:10:21.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Less/">Less</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h4><pre><code>@nice: #5b83ad
+@light-blue: @nice + #111;
+
+#header {
+    background-color: @nice;
+}
+</code></pre><h4 id="二、混合"><a href="#二、混合" class="headerlink" title="二、混合"></a>二、混合</h4><pre><code>定义一个类的样式
+
+示例1：
+    .bordered {
+        border-top: 1px black solid;
+        border-bottom: 1px black solid;
+    }
+
+    加载到#menu a内
+    #menu a {
+      color: #111;
+      .bordered;
+    }
+
+    .post a {
+      color: red;
+      .bordered;
+    }
+
+
+示例2：混合带参数
+    .border-radius(@values) {
+          -webkit-border-radius: @values;
+        -moz-border-radius: @values;
+        border-radius: @values;
+    }
+
+    .box-radius{ width: @filler; heigth: 30px; border: 1px #ccc solid; .border-radius(4px) }
+
+
+示例3：
+    .a, #b {
+        color: red;
+    }
+    .mixin-class {
+        .a();
+    }
+
+    输出：
+    .a, #b {
+        color: red;
+    }
+    .mixin-class {
+        color: red;
+    }
+
+
+示例4：
+    .my-mixin {
+        color: black;
+    }
+    .my-other-mixin() {
+        background: white;
+    }
+    .class {
+        .my-mixin;
+        .my-other-mixin;
+    }
+
+    输出：
+    .my-mixin {
+        color: black;
+    }
+    .class {
+        color: black;
+        background: white;
+    }
+</code></pre><h4 id="三、嵌套"><a href="#三、嵌套" class="headerlink" title="三、嵌套"></a>三、嵌套</h4><pre><code>示例1：
+
+    #header{
+        color: black;
+
+        .navigation {
+            font-size: 12px;
+        }
+    }
+
+    output：
+
+        #header {
+            color: black;
+        }
+        #header .navigation {
+            font-size: 12px;
+    }
+
+示例2：a 的 hover
+
+    .box {
+        a {
+            color: red;
+            $:hover {
+                color: green;
+            }
+        }
+    }
+
+    output:
+    .box a { color: red; }
+    .box a:hover { color: green; }
+
+
+示例3：arguments 可以将所有参数显示到值中
+
+    .border-arg(@width, @color, @style){
+        border: @arguments;            // 这里使用@arguments就相当于 @width @color @style
+    }
+</code></pre><h4 id="四、运算"><a href="#四、运算" class="headerlink" title="四、运算"></a>四、运算</h4><pre><code>@base: 5%;
+@filler: @base * 2;
+.boxA { width: @filler; height: 20px; background-color: #c3c3c3; }
+</code></pre><h4 id="五、匹配模式"><a href="#五、匹配模式" class="headerlink" title="五、匹配模式"></a>五、匹配模式</h4><pre><code>// 设置匹配
+.trangle(top, @width, @color){
+    border-width: @width; 
+    border-color: transparent transparent @color transparent;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(left, @width, @color){
+    border-width: @width; 
+    border-color: transparent @color transparent transparent;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(right, @width, @color){
+    border-width: @width; 
+    border-color: transparent transparent transparent @color;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(bottom, @width, @color){
+    border-width: @width; 
+    border-color: @color transparent transparent transparent;
+    border-style: dashed dashed solid dashed
+}
+
+/* 匹配模式 */
+.trangleL {
+    width: 0; height: 0; overflow: hidden;
+    .trangle(right, 18px, red)        /* 这里调用的right 就是右三角 */
+}
+&lt;div class=&quot;trangleL&quot;&gt;&lt;/div&gt;
+</code></pre><h4 id="六、作用域-Scope"><a href="#六、作用域-Scope" class="headerlink" title="六、作用域 Scope"></a>六、作用域 Scope</h4><pre><code>@var: red;
+#page {
+    @var: white;
+    #header {
+        color: @var; // white
+    }
+}
+
+编译后：
+#page .header {
+    color: white;
+}
+</code></pre><h4 id="七、注释"><a href="#七、注释" class="headerlink" title="七、注释"></a>七、注释</h4><pre><code>/* */    会被编译，输出会显示注释
+//         不会被编译，输出不会显示注释
+</code></pre><h4 id="八、importe"><a href="#八、importe" class="headerlink" title="八、importe"></a>八、importe</h4><pre><code>导入less文件： @import &apos;libary&apos;;        不用加.less
+导入css文件：     @import &apos;typo.css&apos;;    
+</code></pre><h4 id="九、url"><a href="#九、url" class="headerlink" title="九、url"></a>九、url</h4><pre><code>@images: &quot;../img&quot;;
+
+// 用法
+body {
+    color: #444;
+    background: url(&quot;@{images}/white-sand.png&quot;);
+}
+</code></pre><h4 id="十、循环"><a href="#十、循环" class="headerlink" title="十、循环"></a>十、循环</h4><pre><code>.loop(@counter) when (@counter &gt; 0) {        // 循环使用 定义函数名(参数) when (条件）
+    .loop((@counter - 1));        // 每一次减1
+    width: (10px * @counter);     // code for each iteration
+}
+div {
+    .loop(3); // launch the loop
+}
+
+output:
+div {
+    width: 10px;
+    width: 20px;
+    width: 30px;
+}
+</code></pre><h4 id="十一、合并"><a href="#十一、合并" class="headerlink" title="十一、合并"></a>十一、合并</h4><pre><code>.mixin() {
+    box-shadow+: inset 0 0 10px #555;
+}
+.myclass {
+    .mixin();
+    box-shadow+: 0 0 20px black;
+}
+
+
+.myclass {
+    box-shadow: inset 0 0 10px #555, 0 0 20px black;
+}
+</code></pre><h4 id="十二、避免编译使用-“-”"><a href="#十二、避免编译使用-“-”" class="headerlink" title="十二、避免编译使用 “~”"></a>十二、避免编译使用 “~”</h4><pre><code>.text {
+    width: ~(30px + 30px);        // 这里就不会被计算，而直接输出width: 30px + 30px;
+}
+</code></pre><h4 id="十三、与构建工具结合"><a href="#十三、与构建工具结合" class="headerlink" title="十三、与构建工具结合"></a>十三、与构建工具结合</h4><pre><code>可以使用gulp 或 webpack 来进行编译
+</code></pre><blockquote>
+<p>参考资料</p>
+<p><a href="http://less.bootcss.com" target="_blank" rel="noopener">http://less.bootcss.com</a><br><a href="http://www.wtoutiao.com/p/15bzfg3.html" target="_blank" rel="noopener">http://www.wtoutiao.com/p/15bzfg3.html</a><br><a href="http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html" target="_blank" rel="noopener">http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html</a><br><a href="http://www.w3cplus.com/preprocessor/architecture-sass-project.html" target="_blank" rel="noopener">http://www.w3cplus.com/preprocessor/architecture-sass-project.html</a></p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2016/12/26/handlebars模板/">Hanlebars.js 模板引擎</a>
         </h1>
         
@@ -1948,6 +1751,870 @@ p {
         }
     });
 </code></pre><p>| 参考资料<br>| <a href="http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html" target="_blank" rel="noopener">http://www.cnblogs.com/iyangyuan/archive/2013/12/12/3471227.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/24/React(之三)Redux/">React（之三）Redux</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/24/React(之三)Redux/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-24T03:06:16.000Z" itemprop="datePublished">2016-12-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React/">React</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| createStroe() - 创建一个store<br>| getState() -  获取state值<br>| dispatch() -  执行action<br>| action  要执行的事件<br>| subscribe() - 侦听state的变化<br>| reducer 用来改变state的值，结合了action的动作来分别处理<br>| combineReducers - 将多个reducer合到一起赋给createStroe()<br>|<br>| React-redux - 让react与redux结合<br>| provider - 将redux的Store传到内部的其它组件，内部都可以对state更新<br>| connect - react与redux连接<br>|<br>| applyMiddleware() - 加载中间件<br>| bindActionCreators() - 直接调用dispatch(action)()<br>| compose</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>Facebook官方提出了Flux思想管理数据流，同时也给出了自己的实现方案Flux来管理React应用
+
+实现Flux思想的类库 Redux、Flux、reflux
+
+$ npm i --save redux        // 安装redux
+
+$ npm i react-redux --save    // redux与react结合
+
+$ npm i redux-devtools --save        // 查看调试
+
+$ npm i redux-thunk --save
+
+$ npm i redux-logger --save
+
+$ import { createStore } from &apos;redux&apos;;    // 引用redux
+
+一、Redux流程:
+
+    1、view直接触发dispatch
+
+    2、dispatch将action发送到reducer中后，根节点上会更新props，改变全局view
+
+    3、redux将view和store的绑定从手动编码中提取出来，放在了统一规范放在了自己的体系中    
+</code></pre><h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><pre><code>Store 保存数据的容器， createStroe(reducer, applyMiddleware)
+
+import { createStore } from &apos;redux&apos;;
+import counter from &apos;./reducers&apos;        // 获取定义的reducer
+
+let stroe = createStroe(counter);    // 使用createStore(reducer, initialState初始化state, 中间件传入)来创建一个数据仓库
+store.dispatch();
+
+方法:
+
+    1、store.getState(): 获取State值
+
+    2、store.dispatch(action): 将一个 action 对象发送给 reducer
+
+    3、store.subscribe(listener)，用来订阅状态的变化
+</code></pre><h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><pre><code>state用于存储数据，state是只读的，改变需要触发action
+
+state树就是一个对象，所有的reducer的都会加到state中，取state值，store.getState().
+</code></pre><h4 id="dispatch-触发action的变化"><a href="#dispatch-触发action的变化" class="headerlink" title="dispatch() 触发action的变化"></a>dispatch() 触发action的变化</h4><pre><code>store.dispatch(actionJson);
+</code></pre><h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><pre><code>定义Action指令并不能直接改变state，action必须是json
+
+Action函数和Action不相同
+
+{
+    type: &apos;ADD_TODO&apos;,
+    text: &apos;hhh&apos;
+}
+
+function addTodo(text) {
+    return {
+        type: ADD_TODO,
+        text
+    }
+}
+通过 store.dispatch(action): 来派发到reducer中来改变state的值
+</code></pre><h4 id="Reducer-rɪ’dju-sə-瑞丢ser"><a href="#Reducer-rɪ’dju-sə-瑞丢ser" class="headerlink" title="Reducer [rɪ’dju:sə][瑞丢ser]"></a>Reducer [rɪ’dju:sə][瑞丢ser]</h4><pre><code>接收一个action值，根据定义的action名对应处理state，并改变state值
+
+let comput = (state=0, action) =&gt; {
+    switch(action.type){
+        case &apos;add&apos;:
+            return state + 1;
+            break;
+
+        case &apos;sub&apos;:
+            return state - 1;
+            break;
+
+        default: break;
+    }
+}
+
+let store = createStore(comput);
+store.dispatch({type: add});
+</code></pre><h4 id="combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个"><a href="#combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个" class="headerlink" title="combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个"></a>combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个</h4><pre><code>import {combineReducers} from &quot;redux&quot;; 
+import chatIndex from &quot;./Chat&quot;;
+
+export default combineReducers({
+    chatIndex,
+});
+</code></pre><h4 id="subscribe-səbˈskraɪb-订阅-监听器"><a href="#subscribe-səbˈskraɪb-订阅-监听器" class="headerlink" title="subscribe()[səbˈskraɪb]订阅  监听器"></a>subscribe()[səbˈskraɪb]订阅  监听器</h4><pre><code>添加一个变化的监听器，每当dispatch action的时候就会执行
+
+// App组件
+class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            num: 0
+        }
+    }
+
+    componentDidMount() {
+        store.subscribe(this.handleChange.bind(this));
+    }
+
+    handleChange(){
+        this.setState({num: store.getState()})
+    }
+
+    addClick(){
+        store.dispatch({type: &apos;add&apos;});
+    }
+
+    subClick(){
+        store.dispatch({type: &apos;sub&apos;});
+    }
+
+    showState(){
+        debugger;
+        console.log(store.getState())
+    }
+
+    render() {
+        return (
+            &lt;div className = &quot;box&quot; &gt;
+                {this.state.num}
+                &lt;input type=&quot;button&quot; onClick={this.addClick} value=&quot;+&quot; /&gt;
+                &lt;input type=&quot;button&quot; onClick={this.subClick} value=&quot;-&quot; /&gt;
+                &lt;input type=&quot;button&quot; onClick={this.showState} value=&quot;查看state&quot; /&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre><h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><pre><code>一、provider(store, children) - 将Store传到子组件中，一般用在入口文件
+
+    import React from &apos;react&apos;;
+    import ReactDOM from &apos;react-dom&apos;;
+    import {Provider} from &quot;react-redux&quot;;
+    import Store from &quot;src/store&quot;;
+    import App from &apos;src/components/app&apos;;
+    import Chat from &apos;src/pages/Chat/Index&apos;;
+
+    ReactDOM.render(
+        &lt;Provider store={Store}&gt;
+            &lt;App&gt;
+                &lt;Chat /&gt;
+            &lt;/App&gt;
+        &lt;/Provider&gt;,
+        document.getElementById(&apos;app&apos;)
+    );
+
+    如果使用路由
+    &lt;Provider store={store}&gt;
+        &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
+            &lt;Route path=&apos;/&apos; component={Index}&gt;
+                &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
+            &lt;/Route&gt;
+        &lt;/Router&gt;
+    &lt;/Provider&gt;
+
+
+二、connect(mapStateToProps, mapDispatchToProps) - 连接react组件与redux store
+
+    1、mapStateToProps - 把状态绑定到组件的props中
+
+    2、mapDispatchToProps - 相当于用store.dispatch(actionType) 来发出操作指令，来改变state值
+
+
+example
+
+// app.jsx
+&lt;Provider store={store}&gt;
+    &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
+        &lt;Route path=&apos;/&apos; component={Index}&gt;
+            &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
+        &lt;/Route&gt;
+    &lt;/Router&gt;
+&lt;/Provider&gt;
+
+// Index.jsx
+import React, { Component } from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+import { bindActionCreators } from &quot;redux&quot;;
+import { connect } from &quot;react-redux&quot;;
+import actions from &quot;src/actions&quot;;
+
+class wechat extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    componentDidMount(){
+        let { ACTIONS } = this.props;
+        ACTIONS.chat_init();
+    }
+
+    render(
+        // ...
+    )
+}
+
+let mapStateToProps=(state)=&gt;{
+    let {sessions,user} = state.chatIndex;
+    return {
+        _sessions:sessions,
+        _user:user
+    };
+}; 
+
+let mapDispatchToProps=(dispatch)=&gt;{
+    return {
+        ACTIONS:bindActionCreators(actions,dispatch)
+    };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(wechat);
+</code></pre><h4 id="bindActionCreators"><a href="#bindActionCreators" class="headerlink" title="bindActionCreators()"></a>bindActionCreators()</h4><pre><code>是通过dispatch将action包裹起来，这样可以通过bindActionCreators创建的方法，直接调用dispatch(action)(隐式调用）
+
+import * as oldActionCreator from &apos;./action.js&apos;
+
+let newAction = bindActionCreators(oldActionCreator,dispatch)
+</code></pre><h4 id="redux-thunk-中间件"><a href="#redux-thunk-中间件" class="headerlink" title="redux-thunk 中间件"></a>redux-thunk 中间件</h4><pre><code>可以action创建子函数先不返回active对象，
+
+http://blog.csdn.net/kuangshp128/article/details/67632683
+</code></pre><h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><pre><code>两种方法 1、下载redux-devtools包      2、chrome or Firfix 下载 Redux DevTools插件
+
+1、使用Redux DevTools插件 代码中需要加配置
+
+    https://github.com/zalmoxisus/redux-devtools-extension
+
+    /* eslint-disable no-underscore-dangle */        // +
+    let store = createStore(
+        comput,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__()        // +
+    )
+    /* eslint-enable */                                // +
+
+
+2、redux-devtool 包的使用 https://github.com/gaearon/redux-devtools
+</code></pre><h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><pre><code>|- src
+|-- reduxs     // redux
+|------ actions
+|------ reducers
+|-- router    // 路由
+|-- util    // 工具
+</code></pre><p>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a><br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/24/React(之二)组件类/">React（之二）组件</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/24/React(之二)组件类/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-24T03:06:16.000Z" itemprop="datePublished">2016-12-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React/">React</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| Router、Route<br>| Link、Links  router的导航组件，用来切换路由<br>| browserHistory、hashHistory<br>| activeStyle、activeClassName  路由设置样式<br>| IndexRoute<br>| component、components<br>| query<br>| params 变量<br>| Redirect<br>| setRouteLeaveHook</p>
+<h4 id="react-router安装"><a href="#react-router安装" class="headerlink" title="react-router安装"></a>react-router安装</h4><pre><code>$ npm install react-router history --save        // 安装
+
+import React, { Component } from &apos;react&apos;;
+import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+</code></pre><h4 id="Router和Route"><a href="#Router和Route" class="headerlink" title="Router和Route"></a>Router和Route</h4><pre><code>Router是一个容器，路由要通过Route组件定义
+
+import { Router, Route, hashHistory } from &apos;react-router&apos;;
+render((
+    &lt;Router history={hashHistory}&gt;
+        &lt;Route path=&quot;/&quot; component={App}/&gt;
+    &lt;/Router&gt;
+), document.getElementById(&apos;app&apos;));
+</code></pre><h4 id="browserHistory-和-hashHistory"><a href="#browserHistory-和-hashHistory" class="headerlink" title="browserHistory 和 hashHistory"></a>browserHistory 和 hashHistory</h4><pre><code>import React, { Component } from &apos;react&apos;;
+import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
+
+class App extends Component {
+    render() {
+        return (
+            &lt;Router history={browserHistory}&gt;            // 这里要加
+                &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+            &lt;/Router&gt;
+        );
+    }
+}
+
+二者区别:
+
+    hashHistory: 带有&apos;#/&apos; http://localhost:5001/#/About
+
+    browserHistory: 不会带有&apos;#/&apos; http://localhost:5001/List   生产环境使用  --history-api-fallback
+
+    注意:
+
+    使用browserHistory，正常点击路由切换没有问题，但是重新刷新URL就会报找不到路由，
+    需要在webpack-dev-server启动的时候需要加上参数--history-api-fallback。
+
+    或者在webpack.config.js配置中 
+
+        devServer: {
+            port: 5000,                 // 端口
+            contentBase: &apos;build&apos;,       // 内容目录
+            hot: true,                    // 热刷新
+            inline: true,
+            historyApiFallBack: true,   // react路由历史管理使用
+        }
+</code></pre><h4 id="Link、Links、IndexLink"><a href="#Link、Links、IndexLink" class="headerlink" title="Link、Links、IndexLink"></a>Link、Links、IndexLink</h4><pre><code>是router的导航组件，用来切换路由
+
+1、Example:
+
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+
+    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+
+    // 相当于一个导航将Link包装成一个
+    const Links = () =&gt;
+        &lt;nav&gt;
+            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+            &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+        &lt;/nav&gt;
+
+    class App extends Component {
+        render() {
+            return (
+                &lt;Router history={hashHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+
+    export default App;
+
+2、IndexLink
+
+    如果是根路由&quot;/&quot;，不要使用link组件，需要使用IndexLink，因为如果是根路由activeStyle和activeClassName都会失效
+</code></pre><h4 id="子路由、IndexRoute-路由初始的默认"><a href="#子路由、IndexRoute-路由初始的默认" class="headerlink" title="子路由、IndexRoute 路由初始的默认"></a>子路由、IndexRoute 路由初始的默认</h4><pre><code>一、子路由的显示
+
+    在加载子路由的组件中的位置使用 {this.props.children}, 如果子路由没有设置IndexRoute默认路由 this.props.children返回undefined
+
+    let IndexPage = funciton(){
+        return (
+            &lt;div&gt;
+                &lt;div className=&quot;side&quot;&gt;&lt;/side&gt;
+                &lt;div className=&quot;content&quot;&gt;
+                    {this.props.children}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+
+    home页面加载显示子路由方式:
+
+        vue使用的是&lt;router-view&gt;&lt;/router-view&gt;显示
+
+        react 显示子路由  {this.props.children}
+
+
+二、IndexRouter
+
+    import { Router, Route, browserHistory, Link, IndexRoute } from &apos;react-router&apos;;
+    class RouterConfig extends Component {
+        render() {
+            return (
+                &lt;Router history={browserHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home}&gt;            // localhost:8080/        调用的是Home
+                        &lt;IndexRoute component={About} /&gt;         // 子路由，默认路由
+                        &lt;Route path=&quot;contact&quot; component={Contact} /&gt;
+                    &lt;/Route&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+    export defualt RouterConfig;
+</code></pre><h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><pre><code>一、路由变量
+
+    定义变量: &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
+
+    获取变量: props.params 来获取
+
+    &lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
+    &lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
+    &lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
+
+    Example:
+
+        import React, { Component } from &apos;react&apos;;
+        import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
+
+        class Message extends Component {
+            constructor(props){
+                super();
+                debugger
+                console.log(props);
+            }
+
+            render(props){
+                return (
+                    &lt;div&gt;
+                        // 这里this.props.params.msg 接收的是to的名字
+
+                        &lt;h1&gt;{this.props.params.msg || &apos;hello&apos;}&lt;/h1&gt;
+                        &lt;Links /&gt;
+                    &lt;/div&gt;
+                )
+            }
+        }
+
+        const Links = () =&gt;
+            &lt;nav&gt;
+                &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
+                &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;
+                &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;
+            &lt;/nav&gt;
+
+        class ParamsRoute extends Component {
+            render() {
+                return (
+                    &lt;Router history={hashHistory}&gt;
+                        &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
+                    &lt;/Router&gt;
+                );
+            }
+        }
+        export default ParamsRoute;
+
+
+二、query: 获取URL中的参数
+
+    1、获取参数
+
+        http://localhost:8080/#/?message=ssssss
+
+        const Page = (props) =&gt;
+            &lt;div&gt;
+                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
+            &lt;/div&gt;
+
+
+    2、请求时带参数
+
+        const Page = (props) =&gt;
+            &lt;div&gt;
+                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;
+            &lt;/div&gt;
+
+        const Links = () =&gt;
+            &lt;nav&gt;
+                &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
+            &lt;/nav&gt;
+
+
+    Example:
+
+        import React, {Component} from &apos;react&apos;
+        import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
+
+        class Page extends Component {
+            constructor(props){
+                super();
+                console.log(props);
+            }
+            render(){
+                return (
+                    &lt;div&gt;
+                        &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
+                    &lt;/div&gt;
+                )
+            }
+        }
+
+        class QueryRoute extends Component {
+            render() {
+                return (
+                    &lt;Router history={browserHistory}&gt;
+                        &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
+                    &lt;/Router&gt;
+                );
+            }
+        }
+        export default QueryRoute;
+</code></pre><h4 id="路由钩子"><a href="#路由钩子" class="headerlink" title="路由钩子"></a>路由钩子</h4><pre><code>return false  可以取消此次跳转
+
+方法一、onEnter、onLeave事件绑定到Route上
+
+    const backLogin = (nextState, replace) =&gt; {
+        console.log(nextState)
+        debugger;
+    }
+
+    class App extends Component {
+        render() {
+            return (
+                &lt;Router history={hashHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                    &lt;Route path=&quot;/contact&quot; component={Contact} onEnter={backLogin} /&gt;
+                    &lt;Route path=&quot;*&quot; onEnter={backLogin} /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+
+
+方法二、setRouteLeaveHook(单条路由， 要处理的函数) 路由钩子，切换路由时操作，可以用于对登录判断进行操作
+
+    import React, { Component, PropTypes } from &apos;react&apos;;
+    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+
+    class Home extends Component {
+        componentWillMount(){
+
+            console.log(this.context);
+
+            this.context.router.setRouteLeaveHook(
+                this.props.route,
+                this.routerWillLeave
+            )
+        }
+
+        routerWillLeave( nextLocation ){
+            alert(`页面即将从Home切换到${nextLocation.pathname}`);
+        }
+
+        render(){
+            return &lt;div&gt;
+                &lt;h1&gt;Home&lt;/h1&gt;
+                &lt;Links /&gt;
+            &lt;/div&gt;
+        }
+    }
+
+    Home.contextTypes = {
+        router: PropTypes.object.isRequired
+    };
+    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const Links = () =&gt; {
+        &lt;nav&gt;
+            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+        &lt;/nav&gt;
+    }
+
+    class SetRouteLeaveHookDemo extends Component {
+        render() {
+            return (
+                &lt;Router history={hashHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+    export default SetRouteLeaveHookDemo;    
+</code></pre><h4 id="Redirect重定向"><a href="#Redirect重定向" class="headerlink" title="Redirect重定向:"></a>Redirect重定向:</h4><pre><code>如果一个路由不存在就通过设置Redirect来跳转到指定的路由，用于404的跳转 定义&lt;Redirect from=&quot;/contact&quot; to=&quot;/contact-us&quot; /&gt;
+
+一、Redirect
+
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, browserHistory, Link, Redirect } from &apos;react-router&apos;;
+
+    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const Links = () =&gt; {
+        &lt;nav&gt;
+            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+        &lt;/nav&gt;
+    }
+
+    class RedirectRoute extends Component {
+        render() {
+            return (
+                &lt;Router history={browserHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Redirect from=&quot;*&quot; to=&quot;/&quot; /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+    export default RedirectRoute;
+
+
+2、IndexRedirect: 用于访问根路由重定向到某个子路由 ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
+
+    &lt;Route path=&quot;/&quot; component={App}&gt;
+        ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
+        &lt;Route path=&quot;welcome&quot; component={Welcome} /&gt;
+        &lt;Route path=&quot;about&quot; component={About} /&gt;
+    &lt;/Route&gt;
+</code></pre><h4 id="js跳转路由"><a href="#js跳转路由" class="headerlink" title="js跳转路由"></a>js跳转路由</h4><pre><code>方法一、browserHistory.push(要路转路由)
+
+方法二、context对象
+
+    export default React.createClass({
+
+        // ask for `router` from context
+        contextTypes: {
+            router: React.PropTypes.object
+        },
+
+        handleSubmit(event) {
+            // ...
+            this.context.router.push(path)
+        }
+    })
+</code></pre><h4 id="activeStyle-activeClassName"><a href="#activeStyle-activeClassName" class="headerlink" title="activeStyle, activeClassName"></a>activeStyle, activeClassName</h4><pre><code>当前路由被点击处于触发显示状态的时候，使用activeStyle来设置颜色，atciveClassName来设置class的名
+
+import React, { Component } from &apos;react&apos;;
+import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
+
+const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+
+const Links = () =&gt;
+    &lt;nav&gt;
+        &lt;Link activeStyle={{color: 'red'}} to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+        &lt;Link activeStyle={{color: 'red'}} to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+        &lt;Link activeStyle={{color: 'red'}} to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+    &lt;/nav&gt;
+
+// className的写法 &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+
+class App extends Component {
+    render() {
+        return (
+            &lt;Router history={browserHistory}&gt;
+                &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+            &lt;/Router&gt;
+        );
+    }
+}
+
+export default App;
+</code></pre><h4 id="component、components"><a href="#component、components" class="headerlink" title="component、components"></a>component、components</h4><pre><code>component来指定一个路由对应加载的组件
+
+// 可以加载两个组件，并要指定组件中对应
+&lt;Route Componets={{ header: AppHeader, body: AppBody }}&gt;
+
+import React, { Component } from &apos;react&apos;;
+import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
+
+const HomeHeader = () =&gt; &lt;h1&gt;HomeHeader&lt;/h1&gt;
+const HomeBody = () =&gt; &lt;h1&gt;HomeBody&lt;/h1&gt;
+const AboutHeader = () =&gt; &lt;h1&gt;AboutHeader&lt;/h1&gt;
+const AboutBody = () =&gt; &lt;h1&gt;AboutBody&lt;/h1&gt;
+
+const Container = (props) =&gt;
+    &lt;div&gt;
+        {props.header}
+        {props.body}
+        &lt;Links /&gt;
+    &lt;/div&gt;
+
+const Links = () =&gt;
+    &lt;nav&gt;
+        &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
+        &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+    &lt;/nav&gt;
+
+class App extends Component {
+    render() {
+        return (
+            &lt;Router history={hashHistory}&gt;
+                &lt;Route path=&quot;/&quot; component={Container}&gt;
+                    &lt;IndexRoute components={{ header:HomeHeader, body:HomeBody }} /&gt;
+                    &lt;Route path=&quot;about&quot; components={{ header:AboutHeader, body:AboutBody }} /&gt;
+                &lt;/Route&gt;
+            &lt;/Router&gt;
+        );
+    }
+}
+
+export default App;
+</code></pre><h4 id="react-router-redux路由"><a href="#react-router-redux路由" class="headerlink" title="react-router-redux路由"></a>react-router-redux路由</h4><pre><code>保持路由与应用状态（state）同步
+
+$ npm install --save react-router-redux        // 安装
+
+原理：允许使用react router库中的api，使用redux一样去管理应用状态state
+
+https://www.jianshu.com/p/bccca5bb6338
+http://blog.csdn.net/isaisai/article/details/78086913
+https://segmentfault.com/a/1190000007862103
+</code></pre><h4 id="dva-react-Ant-蚂蚁金服脚手架"><a href="#dva-react-Ant-蚂蚁金服脚手架" class="headerlink" title="dva + react + Ant 蚂蚁金服脚手架"></a>dva + react + Ant 蚂蚁金服脚手架</h4><pre><code>单独加载ant UI框架，也可以使用dva-cli蚂蚁提供的脚手架，支持IE9及以上版本
+
+一、单独添加ant  
+
+    $ cnpm i antd --save
+
+    import &apos;antd/dist/antd.css&apos;;         // 引入样式
+    import { DatePicker } from &apos;antd&apos;;    // 这种方法的引用必须要添加babel-plugin-import的按需加载组件
+    ReactDOM.render(&lt;DatePicker /&gt;, mountNode);            
+
+二、按需加载插件 babel-plugin-import
+
+    $ cnpm i babel-plugin-import --save
+
+    .babelrc添加参数:
+    {
+        &quot;plugins&quot;: [
+            [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }] // `style: true` 会加载 less 文件
+        ]
+    }
+
+三、dva-cli安装
+
+    $ cnpm i dva-cli    
+
+    $ dva new [项目名] &amp;&amp; cd [项目名]        // 创建项目
+
+    $ cnpm install antd babel-plugin-import --save        // 安装 ant 和 babel插件（用来按需加载 antd 的脚本和样式的）
+
+        .webpackrc文件加参数
+        {
+            &quot;extraBabelPlugins&quot;: [
+                [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }]
+            ]  
+        }
+
+四、运行
+
+    $ npm start         // 生产环境运行
+
+    $ npm run build        // 打包项目，发布线上环境在Dist目录下生成静态文件，js、css压缩
+
+五、redux的使用
+
+    有两个目录，models和components, model来定义state和action的，components来编写组件
+
+    dva提供conect方法，将model和component串联起来
+
+    import { connect } from &apos;dva&apos;;
+
+    const Products = ({ dispatch, products }) =&gt; { ... }
+    export default connect(({ products }) =&gt; ({
+        products,
+    }))(Products);
+
+六、配置
+
+    1、 .roadhogrc.mock.js  用于mock数据的配置
+
+        export default {
+            // 支持值为 Object 和 Array
+            &apos;GET /api/users&apos;: { users: [1,2] },
+
+            // GET POST 可省略
+            &apos;/api/users/1&apos;: { id: 1 },
+
+            // 支持自定义函数，API 参考 express@4
+            &apos;POST /api/users/create&apos;: (req, res) =&gt; { res.end(&apos;OK&apos;); },
+        };
+
+    2、.webpackrc  
+
+        {
+            &quot;extraBabelPlugins&quot;: [
+                [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }]
+            ],
+            &quot;entry&quot;: &quot;src/index.js&quot;,        // 可以配置webpack的选项，参数见面下roadhog的文档连接
+            &quot;proxy&quot;: {                        // 设置代理
+                &quot;/api&quot;: {
+                    &quot;target&quot;: &quot;http://jsonplaceholder.typicode.com/&quot;,
+                    &quot;changeOrigin&quot;: true,
+                    &quot;pathRewrite&quot;: { &quot;^/api&quot; : &quot;&quot; }
+                }
+            }
+        }
+
+    3、设置端口
+
+        默认是8000，可以在package.json中设置
+        &quot;scripts&quot;: {
+               &quot;start&quot;: &quot;PORT=3000 roadhog server&quot;,        // windowns设置 set PORT=3000&amp;&amp;roadhog dev
+        }
+
+    4、public目录会在build的copy到dist目录下，存放一些静态文件
+
+https://github.com/sorrycc/blog/issues/18            // dva
+https://github.com/sorrycc/roadhog/blob/master/README_zh-cn.md    // roadhog
+
+
+七、fatch请求
+
+    dva-cli中utils目录中request.js中定义了一个通过fatch来发ajax请求的方法
+
+    业务中调用:
+    function IndexPage() {
+        var getUser = () =&gt; {
+            Request(&apos;/api/posts&apos;, {method: &apos;GET&apos;})
+            .then((data)=&gt;{
+                debugger;
+            })
+        }
+        getUser()
+
+        return (
+            &lt;div className={styles.normal}&gt;
+                ...
+            &lt;/div&gt;
+        );
+    }
+    exports default IndexPage;
+</code></pre><h4 id="ant内还介绍了另一个脚手架-create-react-app"><a href="#ant内还介绍了另一个脚手架-create-react-app" class="headerlink" title="ant内还介绍了另一个脚手架 create-react-app"></a>ant内还介绍了另一个脚手架 create-react-app</h4><pre><code>https://ant.design/docs/react/use-with-create-react-app-cn
+</code></pre><p>| <a href="http://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">http://react-guide.github.io/react-router-cn/</a>             React-router 中文网<br>| <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">https://github.com/reactjs/react-router-redux</a><br>| <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu</a><br>| <a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">https://github.com/react-guide/react-router-cn</a><br>| <a href="https://github.com/ReactTraining/react-router/tree/master/examples" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router/tree/master/examples</a></p>
 
         
     </section>
@@ -2894,594 +3561,6 @@ React.createClass({
     $ npm install css3transform-react
     http://www.alloyteam.com/2016/12/react-animations-difficult-to-write-try-react-transformjs/
 </code></pre><p>| 参考资料<br>| <a href="https://doc.react-china.org/docs/hello-world.html" target="_blank" rel="noopener">https://doc.react-china.org/docs/hello-world.html</a>            中文官网<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>            // 全家桶<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>|<br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>   babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/24/React(之二)组件类/">React（之二）组件</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/24/React(之二)组件类/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-24T03:06:16.000Z" itemprop="datePublished">2016-12-24</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React/">React</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| Router、Route<br>| Link、Links  router的导航组件，用来切换路由<br>| browserHistory、hashHistory<br>| activeStyle、activeClassName  路由设置样式<br>| IndexRoute<br>| component、components<br>| query<br>| params 变量<br>| Redirect<br>| setRouteLeaveHook</p>
-<h4 id="react-router安装"><a href="#react-router安装" class="headerlink" title="react-router安装"></a>react-router安装</h4><pre><code>$ npm install react-router history --save        // 安装
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
-</code></pre><h4 id="Router和Route"><a href="#Router和Route" class="headerlink" title="Router和Route"></a>Router和Route</h4><pre><code>Router是一个容器，路由要通过Route组件定义
-
-import { Router, Route, hashHistory } from &apos;react-router&apos;;
-render((
-    &lt;Router history={hashHistory}&gt;
-        &lt;Route path=&quot;/&quot; component={App}/&gt;
-    &lt;/Router&gt;
-), document.getElementById(&apos;app&apos;));
-</code></pre><h4 id="browserHistory-和-hashHistory"><a href="#browserHistory-和-hashHistory" class="headerlink" title="browserHistory 和 hashHistory"></a>browserHistory 和 hashHistory</h4><pre><code>import React, { Component } from &apos;react&apos;;
-import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={browserHistory}&gt;            // 这里要加
-                &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-            &lt;/Router&gt;
-        );
-    }
-}
-
-二者区别:
-
-    hashHistory: 带有&apos;#/&apos; http://localhost:5001/#/About
-
-    browserHistory: 不会带有&apos;#/&apos; http://localhost:5001/List   生产环境使用  --history-api-fallback
-
-    注意:
-
-    使用browserHistory，正常点击路由切换没有问题，但是重新刷新URL就会报找不到路由，
-    需要在webpack-dev-server启动的时候需要加上参数--history-api-fallback。
-
-    或者在webpack.config.js配置中 
-
-        devServer: {
-            port: 5000,                 // 端口
-            contentBase: &apos;build&apos;,       // 内容目录
-            hot: true,                    // 热刷新
-            inline: true,
-            historyApiFallBack: true,   // react路由历史管理使用
-        }
-</code></pre><h4 id="Link、Links、IndexLink"><a href="#Link、Links、IndexLink" class="headerlink" title="Link、Links、IndexLink"></a>Link、Links、IndexLink</h4><pre><code>是router的导航组件，用来切换路由
-
-1、Example:
-
-    import React, { Component } from &apos;react&apos;;
-    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
-
-    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-
-    // 相当于一个导航将Link包装成一个
-    const Links = () =&gt;
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-            &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-        &lt;/nav&gt;
-
-    class App extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-
-    export default App;
-
-2、IndexLink
-
-    如果是根路由&quot;/&quot;，不要使用link组件，需要使用IndexLink，因为如果是根路由activeStyle和activeClassName都会失效
-</code></pre><h4 id="子路由、IndexRoute-路由初始的默认"><a href="#子路由、IndexRoute-路由初始的默认" class="headerlink" title="子路由、IndexRoute 路由初始的默认"></a>子路由、IndexRoute 路由初始的默认</h4><pre><code>一、子路由的显示
-
-    在加载子路由的组件中的位置使用 {this.props.children}, 如果子路由没有设置IndexRoute默认路由 this.props.children返回undefined
-
-    let IndexPage = funciton(){
-        return (
-            &lt;div&gt;
-                &lt;div className=&quot;side&quot;&gt;&lt;/side&gt;
-                &lt;div className=&quot;content&quot;&gt;
-                    {this.props.children}
-                &lt;/div&gt;
-            &lt;/div&gt;
-        )
-    }
-
-    home页面加载显示子路由方式:
-
-        vue使用的是&lt;router-view&gt;&lt;/router-view&gt;显示
-
-        react 显示子路由  {this.props.children}
-
-
-二、IndexRouter
-
-    import { Router, Route, browserHistory, Link, IndexRoute } from &apos;react-router&apos;;
-    class RouterConfig extends Component {
-        render() {
-            return (
-                &lt;Router history={browserHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home}&gt;            // localhost:8080/        调用的是Home
-                        &lt;IndexRoute component={About} /&gt;         // 子路由，默认路由
-                        &lt;Route path=&quot;contact&quot; component={Contact} /&gt;
-                    &lt;/Route&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-    export defualt RouterConfig;
-</code></pre><h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><pre><code>一、路由变量
-
-    定义变量: &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
-
-    获取变量: props.params 来获取
-
-    &lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
-    &lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
-    &lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
-
-    Example:
-
-        import React, { Component } from &apos;react&apos;;
-        import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
-
-        class Message extends Component {
-            constructor(props){
-                super();
-                debugger
-                console.log(props);
-            }
-
-            render(props){
-                return (
-                    &lt;div&gt;
-                        // 这里this.props.params.msg 接收的是to的名字
-
-                        &lt;h1&gt;{this.props.params.msg || &apos;hello&apos;}&lt;/h1&gt;
-                        &lt;Links /&gt;
-                    &lt;/div&gt;
-                )
-            }
-        }
-
-        const Links = () =&gt;
-            &lt;nav&gt;
-                &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
-                &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;
-                &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;
-            &lt;/nav&gt;
-
-        class ParamsRoute extends Component {
-            render() {
-                return (
-                    &lt;Router history={hashHistory}&gt;
-                        &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
-                    &lt;/Router&gt;
-                );
-            }
-        }
-        export default ParamsRoute;
-
-
-二、query: 获取URL中的参数
-
-    1、获取参数
-
-        http://localhost:8080/#/?message=ssssss
-
-        const Page = (props) =&gt;
-            &lt;div&gt;
-                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
-            &lt;/div&gt;
-
-
-    2、请求时带参数
-
-        const Page = (props) =&gt;
-            &lt;div&gt;
-                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;
-            &lt;/div&gt;
-
-        const Links = () =&gt;
-            &lt;nav&gt;
-                &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
-            &lt;/nav&gt;
-
-
-    Example:
-
-        import React, {Component} from &apos;react&apos;
-        import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
-
-        class Page extends Component {
-            constructor(props){
-                super();
-                console.log(props);
-            }
-            render(){
-                return (
-                    &lt;div&gt;
-                        &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
-                    &lt;/div&gt;
-                )
-            }
-        }
-
-        class QueryRoute extends Component {
-            render() {
-                return (
-                    &lt;Router history={browserHistory}&gt;
-                        &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
-                    &lt;/Router&gt;
-                );
-            }
-        }
-        export default QueryRoute;
-</code></pre><h4 id="路由钩子"><a href="#路由钩子" class="headerlink" title="路由钩子"></a>路由钩子</h4><pre><code>return false  可以取消此次跳转
-
-方法一、onEnter、onLeave事件绑定到Route上
-
-    const backLogin = (nextState, replace) =&gt; {
-        console.log(nextState)
-        debugger;
-    }
-
-    class App extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} onEnter={backLogin} /&gt;
-                    &lt;Route path=&quot;*&quot; onEnter={backLogin} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-
-
-方法二、setRouteLeaveHook(单条路由， 要处理的函数) 路由钩子，切换路由时操作，可以用于对登录判断进行操作
-
-    import React, { Component, PropTypes } from &apos;react&apos;;
-    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
-
-    class Home extends Component {
-        componentWillMount(){
-
-            console.log(this.context);
-
-            this.context.router.setRouteLeaveHook(
-                this.props.route,
-                this.routerWillLeave
-            )
-        }
-
-        routerWillLeave( nextLocation ){
-            alert(`页面即将从Home切换到${nextLocation.pathname}`);
-        }
-
-        render(){
-            return &lt;div&gt;
-                &lt;h1&gt;Home&lt;/h1&gt;
-                &lt;Links /&gt;
-            &lt;/div&gt;
-        }
-    }
-
-    Home.contextTypes = {
-        router: PropTypes.object.isRequired
-    };
-    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Links = () =&gt; {
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-        &lt;/nav&gt;
-    }
-
-    class SetRouteLeaveHookDemo extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-    export default SetRouteLeaveHookDemo;    
-</code></pre><h4 id="Redirect重定向"><a href="#Redirect重定向" class="headerlink" title="Redirect重定向:"></a>Redirect重定向:</h4><pre><code>如果一个路由不存在就通过设置Redirect来跳转到指定的路由，用于404的跳转 定义&lt;Redirect from=&quot;/contact&quot; to=&quot;/contact-us&quot; /&gt;
-
-一、Redirect
-
-    import React, { Component } from &apos;react&apos;;
-    import { Router, Route, browserHistory, Link, Redirect } from &apos;react-router&apos;;
-
-    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Links = () =&gt; {
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-        &lt;/nav&gt;
-    }
-
-    class RedirectRoute extends Component {
-        render() {
-            return (
-                &lt;Router history={browserHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Redirect from=&quot;*&quot; to=&quot;/&quot; /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-    export default RedirectRoute;
-
-
-2、IndexRedirect: 用于访问根路由重定向到某个子路由 ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
-
-    &lt;Route path=&quot;/&quot; component={App}&gt;
-        ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
-        &lt;Route path=&quot;welcome&quot; component={Welcome} /&gt;
-        &lt;Route path=&quot;about&quot; component={About} /&gt;
-    &lt;/Route&gt;
-</code></pre><h4 id="js跳转路由"><a href="#js跳转路由" class="headerlink" title="js跳转路由"></a>js跳转路由</h4><pre><code>方法一、browserHistory.push(要路转路由)
-
-方法二、context对象
-
-    export default React.createClass({
-
-        // ask for `router` from context
-        contextTypes: {
-            router: React.PropTypes.object
-        },
-
-        handleSubmit(event) {
-            // ...
-            this.context.router.push(path)
-        }
-    })
-</code></pre><h4 id="activeStyle-activeClassName"><a href="#activeStyle-activeClassName" class="headerlink" title="activeStyle, activeClassName"></a>activeStyle, activeClassName</h4><pre><code>当前路由被点击处于触发显示状态的时候，使用activeStyle来设置颜色，atciveClassName来设置class的名
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
-
-const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-
-const Links = () =&gt;
-    &lt;nav&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-    &lt;/nav&gt;
-
-// className的写法 &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={browserHistory}&gt;
-                &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-            &lt;/Router&gt;
-        );
-    }
-}
-
-export default App;
-</code></pre><h4 id="component、components"><a href="#component、components" class="headerlink" title="component、components"></a>component、components</h4><pre><code>component来指定一个路由对应加载的组件
-
-// 可以加载两个组件，并要指定组件中对应
-&lt;Route Componets={{ header: AppHeader, body: AppBody }}&gt;
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
-
-const HomeHeader = () =&gt; &lt;h1&gt;HomeHeader&lt;/h1&gt;
-const HomeBody = () =&gt; &lt;h1&gt;HomeBody&lt;/h1&gt;
-const AboutHeader = () =&gt; &lt;h1&gt;AboutHeader&lt;/h1&gt;
-const AboutBody = () =&gt; &lt;h1&gt;AboutBody&lt;/h1&gt;
-
-const Container = (props) =&gt;
-    &lt;div&gt;
-        {props.header}
-        {props.body}
-        &lt;Links /&gt;
-    &lt;/div&gt;
-
-const Links = () =&gt;
-    &lt;nav&gt;
-        &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
-        &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-    &lt;/nav&gt;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={hashHistory}&gt;
-                &lt;Route path=&quot;/&quot; component={Container}&gt;
-                    &lt;IndexRoute components={{ header:HomeHeader, body:HomeBody }} /&gt;
-                    &lt;Route path=&quot;about&quot; components={{ header:AboutHeader, body:AboutBody }} /&gt;
-                &lt;/Route&gt;
-            &lt;/Router&gt;
-        );
-    }
-}
-
-export default App;
-</code></pre><h4 id="react-router-redux路由"><a href="#react-router-redux路由" class="headerlink" title="react-router-redux路由"></a>react-router-redux路由</h4><pre><code>保持路由与应用状态（state）同步
-
-$ npm install --save react-router-redux        // 安装
-
-原理：允许使用react router库中的api，使用redux一样去管理应用状态state
-
-https://www.jianshu.com/p/bccca5bb6338
-http://blog.csdn.net/isaisai/article/details/78086913
-https://segmentfault.com/a/1190000007862103
-</code></pre><h4 id="dva-react-Ant-蚂蚁金服脚手架"><a href="#dva-react-Ant-蚂蚁金服脚手架" class="headerlink" title="dva + react + Ant 蚂蚁金服脚手架"></a>dva + react + Ant 蚂蚁金服脚手架</h4><pre><code>单独加载ant UI框架，也可以使用dva-cli蚂蚁提供的脚手架，支持IE9及以上版本
-
-一、单独添加ant  
-
-    $ cnpm i antd --save
-
-    import &apos;antd/dist/antd.css&apos;;         // 引入样式
-    import { DatePicker } from &apos;antd&apos;;    // 这种方法的引用必须要添加babel-plugin-import的按需加载组件
-    ReactDOM.render(&lt;DatePicker /&gt;, mountNode);            
-
-二、按需加载插件 babel-plugin-import
-
-    $ cnpm i babel-plugin-import --save
-
-    .babelrc添加参数:
-    {
-        &quot;plugins&quot;: [
-            [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }] // `style: true` 会加载 less 文件
-        ]
-    }
-
-三、dva-cli安装
-
-    $ cnpm i dva-cli    
-
-    $ dva new [项目名] &amp;&amp; cd [项目名]        // 创建项目
-
-    $ cnpm install antd babel-plugin-import --save        // 安装 ant 和 babel插件（用来按需加载 antd 的脚本和样式的）
-
-        .webpackrc文件加参数
-        {
-            &quot;extraBabelPlugins&quot;: [
-                [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }]
-            ]  
-        }
-
-四、运行
-
-    $ npm start         // 生产环境运行
-
-    $ npm run build        // 打包项目，发布线上环境在Dist目录下生成静态文件，js、css压缩
-
-五、redux的使用
-
-    有两个目录，models和components, model来定义state和action的，components来编写组件
-
-    dva提供conect方法，将model和component串联起来
-
-    import { connect } from &apos;dva&apos;;
-
-    const Products = ({ dispatch, products }) =&gt; { ... }
-    export default connect(({ products }) =&gt; ({
-        products,
-    }))(Products);
-
-六、配置
-
-    1、 .roadhogrc.mock.js  用于mock数据的配置
-
-        export default {
-            // 支持值为 Object 和 Array
-            &apos;GET /api/users&apos;: { users: [1,2] },
-
-            // GET POST 可省略
-            &apos;/api/users/1&apos;: { id: 1 },
-
-            // 支持自定义函数，API 参考 express@4
-            &apos;POST /api/users/create&apos;: (req, res) =&gt; { res.end(&apos;OK&apos;); },
-        };
-
-    2、.webpackrc  
-
-        {
-            &quot;extraBabelPlugins&quot;: [
-                [&quot;import&quot;, { &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; }]
-            ],
-            &quot;entry&quot;: &quot;src/index.js&quot;,        // 可以配置webpack的选项，参数见面下roadhog的文档连接
-            &quot;proxy&quot;: {                        // 设置代理
-                &quot;/api&quot;: {
-                    &quot;target&quot;: &quot;http://jsonplaceholder.typicode.com/&quot;,
-                    &quot;changeOrigin&quot;: true,
-                    &quot;pathRewrite&quot;: { &quot;^/api&quot; : &quot;&quot; }
-                }
-            }
-        }
-
-    3、设置端口
-
-        默认是8000，可以在package.json中设置
-        &quot;scripts&quot;: {
-               &quot;start&quot;: &quot;PORT=3000 roadhog server&quot;,        // windowns设置 set PORT=3000&amp;&amp;roadhog dev
-        }
-
-    4、public目录会在build的copy到dist目录下，存放一些静态文件
-
-https://github.com/sorrycc/blog/issues/18            // dva
-https://github.com/sorrycc/roadhog/blob/master/README_zh-cn.md    // roadhog
-
-
-七、fatch请求
-
-    dva-cli中utils目录中request.js中定义了一个通过fatch来发ajax请求的方法
-
-    业务中调用:
-    function IndexPage() {
-        var getUser = () =&gt; {
-            Request(&apos;/api/posts&apos;, {method: &apos;GET&apos;})
-            .then((data)=&gt;{
-                debugger;
-            })
-        }
-        getUser()
-
-        return (
-            &lt;div className={styles.normal}&gt;
-                ...
-            &lt;/div&gt;
-        );
-    }
-    exports default IndexPage;
-</code></pre><h4 id="ant内还介绍了另一个脚手架-create-react-app"><a href="#ant内还介绍了另一个脚手架-create-react-app" class="headerlink" title="ant内还介绍了另一个脚手架 create-react-app"></a>ant内还介绍了另一个脚手架 create-react-app</h4><pre><code>https://ant.design/docs/react/use-with-create-react-app-cn
-</code></pre><p>| <a href="http://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">http://react-guide.github.io/react-router-cn/</a>             React-router 中文网<br>| <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">https://github.com/reactjs/react-router-redux</a><br>| <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu</a><br>| <a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">https://github.com/react-guide/react-router-cn</a><br>| <a href="https://github.com/ReactTraining/react-router/tree/master/examples" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router/tree/master/examples</a></p>
 
         
     </section>
@@ -4764,282 +4843,6 @@ Example:
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/24/React(之三)Redux/">React（之三）Redux</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/24/React(之三)Redux/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-24T03:06:16.000Z" itemprop="datePublished">2016-12-24</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React/">React</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| createStroe() - 创建一个store<br>| getState() -  获取state值<br>| dispatch() -  执行action<br>| action  要执行的事件<br>| subscribe() - 侦听state的变化<br>| reducer 用来改变state的值，结合了action的动作来分别处理<br>| combineReducers - 将多个reducer合到一起赋给createStroe()<br>|<br>| React-redux - 让react与redux结合<br>| provider - 将redux的Store传到内部的其它组件，内部都可以对state更新<br>| connect - react与redux连接<br>|<br>| applyMiddleware() - 加载中间件<br>| bindActionCreators() - 直接调用dispatch(action)()<br>| compose</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>Facebook官方提出了Flux思想管理数据流，同时也给出了自己的实现方案Flux来管理React应用
-
-实现Flux思想的类库 Redux、Flux、reflux
-
-$ npm i --save redux        // 安装redux
-
-$ npm i react-redux --save    // redux与react结合
-
-$ npm i redux-devtools --save        // 查看调试
-
-$ npm i redux-thunk --save
-
-$ npm i redux-logger --save
-
-$ import { createStore } from &apos;redux&apos;;    // 引用redux
-
-一、Redux流程:
-
-    1、view直接触发dispatch
-
-    2、dispatch将action发送到reducer中后，根节点上会更新props，改变全局view
-
-    3、redux将view和store的绑定从手动编码中提取出来，放在了统一规范放在了自己的体系中    
-</code></pre><h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><pre><code>Store 保存数据的容器， createStroe(reducer, applyMiddleware)
-
-import { createStore } from &apos;redux&apos;;
-import counter from &apos;./reducers&apos;        // 获取定义的reducer
-
-let stroe = createStroe(counter);    // 使用createStore(reducer, initialState初始化state, 中间件传入)来创建一个数据仓库
-store.dispatch();
-
-方法:
-
-    1、store.getState(): 获取State值
-
-    2、store.dispatch(action): 将一个 action 对象发送给 reducer
-
-    3、store.subscribe(listener)，用来订阅状态的变化
-</code></pre><h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><pre><code>state用于存储数据，state是只读的，改变需要触发action
-
-state树就是一个对象，所有的reducer的都会加到state中，取state值，store.getState().
-</code></pre><h4 id="dispatch-触发action的变化"><a href="#dispatch-触发action的变化" class="headerlink" title="dispatch() 触发action的变化"></a>dispatch() 触发action的变化</h4><pre><code>store.dispatch(actionJson);
-</code></pre><h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><pre><code>定义Action指令并不能直接改变state，action必须是json
-
-Action函数和Action不相同
-
-{
-    type: &apos;ADD_TODO&apos;,
-    text: &apos;hhh&apos;
-}
-
-function addTodo(text) {
-    return {
-        type: ADD_TODO,
-        text
-    }
-}
-通过 store.dispatch(action): 来派发到reducer中来改变state的值
-</code></pre><h4 id="Reducer-rɪ’dju-sə-瑞丢ser"><a href="#Reducer-rɪ’dju-sə-瑞丢ser" class="headerlink" title="Reducer [rɪ’dju:sə][瑞丢ser]"></a>Reducer [rɪ’dju:sə][瑞丢ser]</h4><pre><code>接收一个action值，根据定义的action名对应处理state，并改变state值
-
-let comput = (state=0, action) =&gt; {
-    switch(action.type){
-        case &apos;add&apos;:
-            return state + 1;
-            break;
-
-        case &apos;sub&apos;:
-            return state - 1;
-            break;
-
-        default: break;
-    }
-}
-
-let store = createStore(comput);
-store.dispatch({type: add});
-</code></pre><h4 id="combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个"><a href="#combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个" class="headerlink" title="combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个"></a>combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个</h4><pre><code>import {combineReducers} from &quot;redux&quot;; 
-import chatIndex from &quot;./Chat&quot;;
-
-export default combineReducers({
-    chatIndex,
-});
-</code></pre><h4 id="subscribe-səbˈskraɪb-订阅-监听器"><a href="#subscribe-səbˈskraɪb-订阅-监听器" class="headerlink" title="subscribe()[səbˈskraɪb]订阅  监听器"></a>subscribe()[səbˈskraɪb]订阅  监听器</h4><pre><code>添加一个变化的监听器，每当dispatch action的时候就会执行
-
-// App组件
-class App extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            num: 0
-        }
-    }
-
-    componentDidMount() {
-        store.subscribe(this.handleChange.bind(this));
-    }
-
-    handleChange(){
-        this.setState({num: store.getState()})
-    }
-
-    addClick(){
-        store.dispatch({type: &apos;add&apos;});
-    }
-
-    subClick(){
-        store.dispatch({type: &apos;sub&apos;});
-    }
-
-    showState(){
-        debugger;
-        console.log(store.getState())
-    }
-
-    render() {
-        return (
-            &lt;div className = &quot;box&quot; &gt;
-                {this.state.num}
-                &lt;input type=&quot;button&quot; onClick={this.addClick} value=&quot;+&quot; /&gt;
-                &lt;input type=&quot;button&quot; onClick={this.subClick} value=&quot;-&quot; /&gt;
-                &lt;input type=&quot;button&quot; onClick={this.showState} value=&quot;查看state&quot; /&gt;
-            &lt;/div&gt;
-        )
-    }
-}
-</code></pre><h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><pre><code>一、provider(store, children) - 将Store传到子组件中，一般用在入口文件
-
-    import React from &apos;react&apos;;
-    import ReactDOM from &apos;react-dom&apos;;
-    import {Provider} from &quot;react-redux&quot;;
-    import Store from &quot;src/store&quot;;
-    import App from &apos;src/components/app&apos;;
-    import Chat from &apos;src/pages/Chat/Index&apos;;
-
-    ReactDOM.render(
-        &lt;Provider store={Store}&gt;
-            &lt;App&gt;
-                &lt;Chat /&gt;
-            &lt;/App&gt;
-        &lt;/Provider&gt;,
-        document.getElementById(&apos;app&apos;)
-    );
-
-    如果使用路由
-    &lt;Provider store={store}&gt;
-        &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
-            &lt;Route path=&apos;/&apos; component={Index}&gt;
-                &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
-            &lt;/Route&gt;
-        &lt;/Router&gt;
-    &lt;/Provider&gt;
-
-
-二、connect(mapStateToProps, mapDispatchToProps) - 连接react组件与redux store
-
-    1、mapStateToProps - 把状态绑定到组件的props中
-
-    2、mapDispatchToProps - 相当于用store.dispatch(actionType) 来发出操作指令，来改变state值
-
-
-example
-
-// app.jsx
-&lt;Provider store={store}&gt;
-    &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
-        &lt;Route path=&apos;/&apos; component={Index}&gt;
-            &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
-        &lt;/Route&gt;
-    &lt;/Router&gt;
-&lt;/Provider&gt;
-
-// Index.jsx
-import React, { Component } from &apos;react&apos;;
-import ReactDOM from &apos;react-dom&apos;;
-import { bindActionCreators } from &quot;redux&quot;;
-import { connect } from &quot;react-redux&quot;;
-import actions from &quot;src/actions&quot;;
-
-class wechat extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    componentDidMount(){
-        let { ACTIONS } = this.props;
-        ACTIONS.chat_init();
-    }
-
-    render(
-        // ...
-    )
-}
-
-let mapStateToProps=(state)=&gt;{
-    let {sessions,user} = state.chatIndex;
-    return {
-        _sessions:sessions,
-        _user:user
-    };
-}; 
-
-let mapDispatchToProps=(dispatch)=&gt;{
-    return {
-        ACTIONS:bindActionCreators(actions,dispatch)
-    };
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(wechat);
-</code></pre><h4 id="bindActionCreators"><a href="#bindActionCreators" class="headerlink" title="bindActionCreators()"></a>bindActionCreators()</h4><pre><code>是通过dispatch将action包裹起来，这样可以通过bindActionCreators创建的方法，直接调用dispatch(action)(隐式调用）
-
-import * as oldActionCreator from &apos;./action.js&apos;
-
-let newAction = bindActionCreators(oldActionCreator,dispatch)
-</code></pre><h4 id="redux-thunk-中间件"><a href="#redux-thunk-中间件" class="headerlink" title="redux-thunk 中间件"></a>redux-thunk 中间件</h4><pre><code>可以action创建子函数先不返回active对象，
-
-http://blog.csdn.net/kuangshp128/article/details/67632683
-</code></pre><h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><pre><code>两种方法 1、下载redux-devtools包      2、chrome or Firfix 下载 Redux DevTools插件
-
-1、使用Redux DevTools插件 代码中需要加配置
-
-    https://github.com/zalmoxisus/redux-devtools-extension
-
-    /* eslint-disable no-underscore-dangle */        // +
-    let store = createStore(
-        comput,
-        window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__()        // +
-    )
-    /* eslint-enable */                                // +
-
-
-2、redux-devtool 包的使用 https://github.com/gaearon/redux-devtools
-</code></pre><h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><pre><code>|- src
-|-- reduxs     // redux
-|------ actions
-|------ reducers
-|-- router    // 路由
-|-- util    // 工具
-</code></pre><p>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a><br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2016/12/22/babel/">Babel</a>
         </h1>
         
@@ -5325,7 +5128,7 @@ Stage 4：
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Vorige</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Volgende &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
 </nav>
 
 
