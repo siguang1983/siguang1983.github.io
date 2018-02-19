@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>函数式编程 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="纯函数式一、非纯净的      let number = 1;      const increment = () =&amp;gt; number += 1;      increment();  // 2   二、纯净的      const increment = n =&amp;gt; n + 1;      increment(1); 高阶函数把函数当做其它函数的参数来传递  let sum = (x,">
+<meta name="keywords" content="函数式编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数式编程">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/07/函数式编程/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="纯函数式一、非纯净的      let number = 1;      const increment = () =&amp;gt; number += 1;      increment();  // 2   二、纯净的      const increment = n =&amp;gt; n + 1;      increment(1); 高阶函数把函数当做其它函数的参数来传递  let sum = (x,">
+<meta property="og:updated_time" content="2017-11-30T02:51:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="函数式编程">
+<meta name="twitter:description" content="纯函数式一、非纯净的      let number = 1;      const increment = () =&amp;gt; number += 1;      increment();  // 2   二、纯净的      const increment = n =&amp;gt; n + 1;      increment(1); 高阶函数把函数当做其它函数的参数来传递  let sum = (x,">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,161 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-函数式编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/07/函数式编程/" class="article-date">
+  <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      函数式编程
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="纯函数式"><a href="#纯函数式" class="headerlink" title="纯函数式"></a>纯函数式</h4><pre><code>一、非纯净的
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    let number = 1;
+
+    const increment = () =&gt; number += 1;
+
+    increment();  // 2
+
+
+二、纯净的
+
+    const increment = n =&gt; n + 1;
+
+    increment(1);
+</code></pre><h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><pre><code>把函数当做其它函数的参数来传递
+
+let sum = (x, y) =&gt; x+y;
+
+let calculate = (fn, x, y) =&gt; fn(x,y);
+
+calculate(sum, 1, 2)
+</code></pre><h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><pre><code>柯里化就是将多参函数转换成单参函数
+
+// 一个多参函数 
+var add = (a, b) =&gt; a + b;
+add(1, 2); // =&gt; 3
+
+// 柯里化
+var add = a =&gt; b =&gt; a+b;
+add(1)(2);
+
+
+Example:
+
+    var say = function(title) {
+        return function(type){
+            return title + &quot; is &quot; + type;
+        }
+    }
+
+    var sayFP = say(&quot;Functional Programming&quot;);
+    var sayOther = say(&quot;Other Programming&quot;);
+
+    sayFP(&quot;good&quot;); // =&gt; Functional Programming is good
+    sayOther(&quot;bad&quot;); // =&gt; Other Programming is good
+</code></pre><h4 id="compose-函数组合"><a href="#compose-函数组合" class="headerlink" title="compose 函数组合"></a>compose 函数组合</h4><pre><code>将多个函数组合成一个函数
+
+Example:
+
+    var compose = function(fn1, fn2) {
+        return function(arg){
+            return fn1(fn2(arg));
+        }
+    }
+
+    var a = arg =&gt; arg + &apos;a&apos;;
+    var b = arg =&gt; arg + &apos;b&apos;;
+
+    var c = compose(a, b); // 将a,b函数进行组合
+    console.log(c(&apos;c&apos;));  // =&gt; cba
+</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(type){
+    var typeName = &apos;&apos;;
+
+    switch(toString.call(type)){
+        case &apos;[object String]&apos;:
+            return &apos;string&apos;;
+            break;
+
+        case &apos;[object Number]&apos;:
+            if(type.toString().indexOf(&apos;.&apos;) != -1){
+                return &apos;float&apos;;
+            }
+            else{
+                return &apos;number&apos;;
+            }
+            break;
+
+        case &apos;[object Array]&apos;:
+            return &apos;array&apos;;
+            break;
+
+        case &apos;[object Object]&apos;:
+            return &apos;object&apos;;
+            break;
+
+        case &apos;[object Undefined]&apos;:
+            return &apos;undefined&apos;;
+            break;
+
+        case &apos;[object Null]&apos;:
+            return &apos;null&apos;;
+            break;    
+
+        default: break;
+    }
+
+    return typeName;
+}
+</code></pre><p>| <a href="http://www.alloyteam.com/2016/09/talk-about-functional-programming/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/09/talk-about-functional-programming/</a><br>| <a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html" target="_blank" rel="noopener">https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html</a></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/07/函数式编程/" data-id="cjdu4wpxw0030chwreeqe3dd2" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/07/ReactNative之组件篇/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React Native之组件篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/07/Git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>numjucks模板 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="numjucksnumjucks可以用任意扩展名来命名模板名文件，推荐使用&amp;apos;.njk&amp;apos;  $ npm install nunjucks  require(&amp;apos;nunjucks&amp;apos;); 变量{{ usernmae }}    {{ foo.bar }} 过滤器{{ foo | title }}    {{ foo | join(&apos;,&apos;) }} 模板继承定义一个&amp;q">
+<meta name="keywords" content="模板引擎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="numjucks模板">
+<meta property="og:url" content="http://siguang1983.github.io/2017/09/20/numjucks模板/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="numjucksnumjucks可以用任意扩展名来命名模板名文件，推荐使用&amp;apos;.njk&amp;apos;  $ npm install nunjucks  require(&amp;apos;nunjucks&amp;apos;); 变量{{ usernmae }}    {{ foo.bar }} 过滤器{{ foo | title }}    {{ foo | join(&apos;,&apos;) }} 模板继承定义一个&amp;q">
+<meta property="og:updated_time" content="2017-10-17T08:52:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="numjucks模板">
+<meta name="twitter:description" content="numjucksnumjucks可以用任意扩展名来命名模板名文件，推荐使用&amp;apos;.njk&amp;apos;  $ npm install nunjucks  require(&amp;apos;nunjucks&amp;apos;); 变量{{ usernmae }}    {{ foo.bar }} 过滤器{{ foo | title }}    {{ foo | join(&apos;,&apos;) }} 模板继承定义一个&amp;q">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,177 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-numjucks模板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/20/numjucks模板/" class="article-date">
+  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">2017-09-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      numjucks模板
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="numjucks"><a href="#numjucks" class="headerlink" title="numjucks"></a>numjucks</h4><pre><code>numjucks可以用任意扩展名来命名模板名文件，推荐使用&apos;.njk&apos;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+$ npm install nunjucks
+
+require(&apos;nunjucks&apos;);
+</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>{{ usernmae }}    {{ foo.bar }}
+</code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>{{ foo | title }}    {{ foo | join(',') }}
+</code></pre><h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><pre><code>定义一个&quot;block&quot;，子模板可以覆盖它
+
+一、Example
+
+    A.html
+
+        {% block header %}{% endblock %}
+
+			<div>
+				aaaa
+			</div>
+
+		B.html
+
+			{% extends 'A.html' %}
+
+			{% block header %}
+				<div>
+					<ul>
+						<li>aaaa</li>
+						<li>bbbb</li>
+						<li>cccc</li>
+					</ul>
+				</div>
+			{% endblock %}
+
+二、super()
+</code></pre><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><pre><code>{% if num > 20 %}
+		<div>
+			大于20显示些内容
+		</div>
+	{% endif %}
+
+
+{% if num > 20 %}
+		<span>大于20</span>
+	{% elif num < 6 %}
+		<span>小于6</span>
+	{% else %}
+		<span>其它</span>
+	{% endif %}
+</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>一、遍历数组
+
+    var items = [{ title: &quot;foo&quot;, id: 1 }, { title: &quot;bar&quot;, id: 2}];
+
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for item in items %}
+				<li> {{item.title}} </li>
+			{% endfor %}
+    &lt;/ul&gt;
+
+二、遍历对象
+
+    var food = {
+        &apos;ketchup&apos;: &apos;5 tbsp&apos;,
+        &apos;mustard&apos;: &apos;1 tbsp&apos;,
+        &apos;pickle&apos;: &apos;0 tbsp&apos;
+    };
+
+    &lt;div&gt;
+        {% for key, value in food %}
+				<p>{{key}} - {{value}}</p>
+			{% endfor %}
+    &lt;/div&gt;
+</code></pre><h4 id="set-设置和修改变量"><a href="#set-设置和修改变量" class="headerlink" title="set 设置和修改变量"></a>set 设置和修改变量</h4><pre><code>let username = &apos;siguang&apos;;
+
+{{ username }}            // siguang
+{% set username = 'lulu' %}
+{{ username }}            // lulu
+</code></pre><h4 id="extends-指定模板继承"><a href="#extends-指定模板继承" class="headerlink" title="extends 指定模板继承"></a>extends 指定模板继承</h4><pre><code>{% extends 'A.html' %}
+
+{% block header %}
+		<div>
+			<ul>
+				<li>aaaa</li>
+				<li>bbbb</li>
+				<li>cccc</li>
+			</ul>
+		</div>
+	{% endblock %}
+</code></pre><h4 id="block-区块"><a href="#block-区块" class="headerlink" title="block 区块"></a>block 区块</h4><pre><code>{% block css %}
+		<link rel="stylesheet" href="app.css">
+	{% endblock %}
+</code></pre><h4 id="include-可以引用的模板"><a href="#include-可以引用的模板" class="headerlink" title="include 可以引用的模板"></a>include 可以引用的模板</h4><pre><code>{% include "item.html" %}
+</code></pre><h4 id="import-加载不同的模板"><a href="#import-加载不同的模板" class="headerlink" title="import 加载不同的模板"></a>import 加载不同的模板</h4><h4 id="filter-区块中内容调用过滤器"><a href="#filter-区块中内容调用过滤器" class="headerlink" title="filter 区块中内容调用过滤器"></a>filter 区块中内容调用过滤器</h4><pre><code>{% filter replace("force", "forth") %}
+		may the force be with you
+	{% endfilter %}
+</code></pre><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><h4 id="去除前后空格"><a href="#去除前后空格" class="headerlink" title="去除前后空格"></a>去除前后空格</h4><pre><code>var str = &apos; sssfsdfs &apos;;
+
+{% -%}
+</code></pre><h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><pre><code>表达式 String、Number、Array、Dicts、Boolean
+
+运算符 +、-、/、//、%、*、**
+
+比较 ==、===、!=、!==、&gt;、&gt;=、&lt;、&lt;=
+
+逻辑 and、or、not   {% if users and showUsers %} ... {% endif %}
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>传入一个函数，在这里可以执行 {{ foo(1,2,3) }}
+</code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>{{ /bar$/g }}
+
+g: 应用到全局
+i: 不区分大小写
+m: 多行模式
+y: 粘性支持（sticky
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://mozilla.github.io/nunjucks/cn/templating.html" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/cn/templating.html</a></p>
+</blockquote>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/09/20/numjucks模板/" data-id="cjdu4wpxu002wchwrpuosnsoh" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板引擎/">模板引擎</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/23/微信小程序、公众号开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          微信小程序、公众号开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/20/Jade模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Jade 模板</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>EggJS-数据库 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="Mysql一、安装配置      $ npm i --save egg-mysql      // config/plugin.js  开启插件     exports.mysql = {         enable: true,         package: &amp;apos;egg-mysql&amp;apos;,     }; egg-monogoose一、安装配置      $ npm i egg">
+<meta name="keywords" content="EggJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EggJS-数据库">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/04/Egg.js-数据库/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="Mysql一、安装配置      $ npm i --save egg-mysql      // config/plugin.js  开启插件     exports.mysql = {         enable: true,         package: &amp;apos;egg-mysql&amp;apos;,     }; egg-monogoose一、安装配置      $ npm i egg">
+<meta property="og:updated_time" content="2018-02-19T10:26:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="EggJS-数据库">
+<meta name="twitter:description" content="Mysql一、安装配置      $ npm i --save egg-mysql      // config/plugin.js  开启插件     exports.mysql = {         enable: true,         package: &amp;apos;egg-mysql&amp;apos;,     }; egg-monogoose一、安装配置      $ npm i egg">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,250 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-Egg.js-数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js-数据库/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      EggJS-数据库
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><pre><code>一、安装配置
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    $ npm i --save egg-mysql
+
+    // config/plugin.js  开启插件
+    exports.mysql = {
+        enable: true,
+        package: &apos;egg-mysql&apos;,
+    };
+</code></pre><h4 id="egg-monogoose"><a href="#egg-monogoose" class="headerlink" title="egg-monogoose"></a>egg-monogoose</h4><pre><code>一、安装配置
+
+    $ npm i egg-mongoose --save
+
+    // {app_root}/config/plugin.js
+    exports.mongoose = {
+        enable: true,
+        package: &apos;egg-mongoose&apos;,
+    };
+
+    // {app_root}/config/config.default.js
+    module.exports = {
+        mongoose: {
+            url: &apos;mongodb://127.0.0.1:27017/ibg_node_core&apos;,
+            options: {
+                db: { native_parser: true },
+                server: { poolSize: 5 },
+                user: &apos;core&apos;,
+                pass: &apos;we123&apos;,
+            },
+        },
+    }
+
+
+    // 多个mongos配置
+    // {app_root}/config/config.default.js
+    exports.mongoose = {
+        url: &apos;mongodb://mongosA:27501,mongosB:27501&apos;,
+        options: {}
+    };
+
+
+    // log
+    module.exports = {
+        logger: {
+            dir: &apos;/home/admin/logs/demoapp&apos;,        // logger文件的目录
+            level: &apos;DEBUG&apos;,                         // 开deubg模式
+        },
+    };
+
+
+二、定义Schema
+
+    // app/modle/reportWarningConfig.js
+
+    module.exports = app =&gt; {
+        const mongoose = app.mongoose;
+        const ReportWarningConfigSchema = new mongoose.Schema({
+                actionCode: { type: String, unique: true, trim: true }, // 动作编码
+                interval: { type: Number, default: 1800 },  // 扫描间隔时间，单位：秒 默认 30分钟
+                emailConfig: { // 发送邮件条件
+                    appKey: { type: String, default: &apos;&apos;, trim: true },
+                    appSecret: { type: String, default: &apos;&apos;, trim: true },
+                    recipient: { type: [String] },  // 收件人
+                },
+                lastExecutedTime: { type: Date, default: Date.now },   // 最近执行时间
+            }, 
+            {
+                timestamps: true,               // 设置timestamps，多加两个字段createdTime、updatedTime，来记录插入时间和更新时间
+                collection: &apos;report_warning_config&apos;,
+            }
+        );
+
+        return mongoose.model(&apos;ReportWarningConfig&apos;, ReportWarningConfigSchema);
+    };
+
+
+三、常用语句
+
+    1、await app.model.login.find(条件): 返回的是一组数据， []
+
+    2、await app.model.login.findOne(条件): 只返回一条数据, 如果没有匹配的返回null，
+
+    3、await app.model.login.update(条件, 要更新的文档, 回调方法): 更新数据
+
+    4、let loginTask = new app.model.login({ username: &apos;siguang&apos;, password: &apos;ssssss&apos;});     
+       let doc = await loginTask.save();        // 插入数据 
+
+    5、exec(callback): 在查询、更新后会执行一个回调函数来查看是否成功执行
+
+    6、save(function(err, kitten){  }): 存储
+
+
+四、Example
+
+    1、查询
+
+        async queryMonitorTask(){
+            let monitorTaskList = await app.model.ReportWarningConfig.find();          // app.model.ReportWarningConfig 来指定用哪个文档
+            return app.renderBody({
+                statusType: app.statusType.success,
+                data: {
+                    list: monitorTaskList
+                }
+            });
+        }
+
+
+    2、更新
+
+        更新需要先将文档查回来后，在修改某一个字段，如果一直更新会覆盖
+
+        async updateMonitorTask(params){
+            let response;
+            let condition = {_id: params.id};
+            let doc = await app.model.ReportWarningConfig.findOne(condition);       // 通过id来取到当前数据
+
+            if(doc){
+                doc.interval = params.interval;
+                doc.emailConfig.recipient = params.emailRecipient;
+                doc.smsConfig.recipient = params.smsRecipient;
+
+                await doc.save();
+                response = app.renderBody({
+                    statusType: error,
+                    error: error,
+                });
+            }
+            else{
+                response = app.renderBody({
+                    statusType: app.statusType.error,
+                    error: doc,
+                });
+            }
+
+            return response;
+        }
+
+
+    3、插入数据
+
+        插入数据将使用save()
+
+         async insertMonitorTask(){
+            const {ctx, app, service} = this;
+            const {actionCode, interval, emailRecipient, smsRecipient} = ctx.request.body;
+
+            // 将要插入的数据加到model中
+            let monitorTask = new app.model.ReportWarningConfig({   // 注意这里使用new 
+                actionCode,
+                interval,
+                emailConfig: {
+                    recipient: emailRecipient
+                },
+                smsConfig: {
+                    recipient: smsRecipient
+                }
+            })
+
+            // 使用save()来插入
+            let doc = await monitorTask.save();
+
+            let response = app.renderBody({
+                statusType: app.statusType.success,
+                data: doc._id
+            });
+            ctx.body = response;
+        }
+</code></pre><h4 id="mongoose-积累"><a href="#mongoose-积累" class="headerlink" title="mongoose 积累"></a>mongoose 积累</h4><pre><code>一、查询出来的数据不能修改
+
+    async getNewsContent(params){
+        let doc = await app.model.News.findOne({_id: params.id});
+
+        // 不能直接修改doc的对象，需要通过toObject()方法来转成对象的形势
+        let newDoc = doc.toObject();
+        newDoc.createdAt = app.dateFormat(new Date(newDoc.createdAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        newDoc.updatedAt = app.dateFormat(new Date(newDoc.updatedAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        console.log(`ResponseAAA ----- ${JSON.stringify(newDoc)}`)
+
+        return {
+            data: newDoc,
+            message: &apos;获取成功&apos;,
+            status: 0
+        }
+    }
+</code></pre><p>unique</p>
+<blockquote>
+<p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+</blockquote>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js-数据库/" data-id="cjdu4wpuo0004chwrvvll89qf" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/04/MySQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MySQL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/04/Egg.js-第三方插件收集/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Egg.js</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

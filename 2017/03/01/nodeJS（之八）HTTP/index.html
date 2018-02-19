@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>nodeJS（之八）HTTP | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTTP超文本传输协议let http = require(&amp;apos;http&amp;apos;);        // 导入http模块  HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。 http.server类是一个创建服务的类 ServerRequest()  方法:      1、close([callback])">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS（之八）HTTP">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/01/nodeJS（之八）HTTP/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="HTTP超文本传输协议let http = require(&amp;apos;http&amp;apos;);        // 导入http模块  HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。 http.server类是一个创建服务的类 ServerRequest()  方法:      1、close([callback])">
+<meta property="og:updated_time" content="2017-11-06T09:26:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodeJS（之八）HTTP">
+<meta name="twitter:description" content="HTTP超文本传输协议let http = require(&amp;apos;http&amp;apos;);        // 导入http模块  HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。 http.server类是一个创建服务的类 ServerRequest()  方法:      1、close([callback])">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodeJS（之八）HTTP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/nodeJS（之八）HTTP/" class="article-date">
+  <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodeJS（之八）HTTP
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="HTTP超文本传输协议"><a href="#HTTP超文本传输协议" class="headerlink" title="HTTP超文本传输协议"></a>HTTP超文本传输协议</h4><pre><code>let http = require(&apos;http&apos;);        // 导入http模块
+
+HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。
+</code></pre><h4 id="http-server类"><a href="#http-server类" class="headerlink" title="http.server类"></a>http.server类</h4><pre><code>是一个创建服务的类 ServerRequest()
+
+方法:
+
+    1、close([callback]): 停止服务器连接
+
+    2、listen(path, [callback]): 侦听, 与TCP使用方法相同
+
+属性:
+
+    1、listening: 返回是否在监听连接服务器的布尔值
+
+    2、maxHeadersCount: 限制最大的请求头数据，默认2000
+
+    3、keepAliveTimeout
+
+    3、setTimeout(msecs, callback): 为socket设置超时值，如果一个超时发生
+
+事件
+
+    1、connect - 请求时触发
+
+
+Example:
+
+    const HOST = &apos;127.0.0.1&apos;;
+    const PORT = 3000;
+
+    // 创建服务器
+    let server = http.createServer((req, res) =&gt; {
+        console.log(&apos;请求方法:&apos;, request.method);       // 请求方法
+        console.log(&apos;请求url:&apos;, request.url);          // 请求url
+        console.log(&apos;请求头:&apos;, request.headers);       // 请求头
+
+        res.writeHead(200);
+        res.end(&apos;hello world&apos;);    
+    })            
+
+    // 侦听3000端口
+    server.listen(PORT, HOST, ()=&gt; {
+        console.log(`server running at http://${hostname}:${port}`);
+    })
+</code></pre><h4 id="Request类"><a href="#Request类" class="headerlink" title="Request类"></a>Request类</h4><pre><code>url - 返回url地址
+
+method - 返回请求方法
+</code></pre><h4 id="Response类"><a href="#Response类" class="headerlink" title="Response类"></a>Response类</h4><pre><code>// 这里res返回的就是ServerResponse类
+const server = http.createServer((req, res) =&gt; { ..... });   
+
+方法:
+
+    1、addTrailers(headers)
+
+    2、end([data],[encoding],[callback]) - 告诉服务器所有响应头和主体都已被发送，等同于response.write()
+
+    3、finished: 
+
+    4、getHeader(name): 
+
+    5、headersSent: 返回消息头是否被发送，发送为true否则false
+
+    6、removeHeader(name): 移出一个头消息 response.removeHeader(&apos;Content-Encoding&apos;);
+
+    7、sendDate: 如果设置为true消息头存在日期消息头则自动生成并且响应在发送
+
+    8、setHeader(name, value): 设置头信息
+
+        response.setHeader(&apos;Content-Type&apos;, &apos;text/html&apos;);
+        response.setHeader(&apos;Set-Cookie&apos;, [&apos;type=ninja&apos;, &apos;language=javascript&apos;]);
+
+    9、setTimeout(msecs, callback): 设置 socket 的超时时间
+
+    10、statusCode: 设置向客户端响应的状态码  res.statusCode = 200;
+
+    11、statusMessage
+
+    12、write(chunk[, encoding][, callback])
+
+    13、writeContinue()
+
+    14、writeHead(statusCode[, statusMessage][, headers]): 发送一个响应头给请求
+
+        writeHead(状态码, [状态消息], {响应头信息})
+
+        Example: res.writeHead(200, { content-Type: &apos;text/html&apos;, Connection: &apos;keep-alive&apos;})
+
+    15、setEncoding(编码): 设置编码格式 res.setEncoding(&apos;utf8&apos;);
+
+
+res.connection
+
+事件:
+
+    1、close - 关闭连接，会自动调用response.end();
+
+    2、finish - 当响应已被发送时触发
+</code></pre><h4 id="http-IncomingMessage-类"><a href="#http-IncomingMessage-类" class="headerlink" title="http.IncomingMessage 类"></a>http.IncomingMessage 类</h4><pre><code>const server = http.createServer((req, res) =&gt; { ..... });  就是req返回的类
+
+1、headers: 客户端的请求头
+
+2、method: 获取请求方式
+
+3、url: 请求url
+
+4、statusCode: 状态码
+
+5、statusMessage: 状态消息
+
+6、socket: 与连接有关的 net.Socket 对象。
+
+7、destroy([error])
+
+8、httpVersion: http的版本
+
+9、rawHeaders
+
+10、rawTrailers
+
+11、setTimeout(msecs, callback)
+
+12、trailers
+</code></pre><h4 id="http-createServer-创建server服务"><a href="#http-createServer-创建server服务" class="headerlink" title="http.createServer(): 创建server服务"></a>http.createServer(): 创建server服务</h4><h4 id="http-get-options-callback-用来模拟客户端向服务器发送请求"><a href="#http-get-options-callback-用来模拟客户端向服务器发送请求" class="headerlink" title="http.get(options, [callback]): 用来模拟客户端向服务器发送请求"></a>http.get(options, [callback]): 用来模拟客户端向服务器发送请求</h4><pre><code>Example： 请求nodejs.org的index.json文件，返回json的内容
+
+const http = require(&apos;http&apos;);
+
+http.get(&apos;http://nodejs.org/dist/index.json&apos;, (res) =&gt; {
+    const statusCode = res.statusCode;
+    const contentType = res.headers[&apos;content-type&apos;];
+
+    let error;
+    if (statusCode !== 200) {
+        error = new Error(`请求失败。\n` +
+            `状态码: ${statusCode}`);
+    } else if (!/^application\/json/.test(contentType)) {
+        error = new Error(`无效的 content-type.\n` +
+            `期望 application/json 但获取的是 ${contentType}`);
+    }
+    if (error) {
+        console.log(error.message);
+        // 消耗响应数据以释放内存
+        res.resume();
+        return;
+    }
+
+    res.setEncoding(&apos;utf8&apos;);
+    let rawData = &apos;&apos;;
+    res.on(&apos;data&apos;, (chunk) =&gt; rawData += chunk);
+    res.on(&apos;end&apos;, () =&gt; {
+        try {
+            let parsedData = JSON.parse(rawData);
+            console.log(parsedData);
+        } catch (e) {
+            console.log(e.message);
+        }
+    });
+}).on(&apos;error&apos;, (e) =&gt; {
+    console.log(`错误: ${e.message}`);
+});
+</code></pre><h4 id="http-request-options-callback-模拟HTTP请求"><a href="#http-request-options-callback-模拟HTTP请求" class="headerlink" title="http.request(options, [callback]): 模拟HTTP请求"></a>http.request(options, [callback]): 模拟HTTP请求</h4><pre><code>options:
+
+    protocol &lt;String&gt; 使用的协议。默认为 &apos;http:&apos;。
+
+    host &lt;String&gt; 请求发送至的服务器的域名或 IP 地址。默认为 &apos;localhost&apos;。
+
+    hostname &lt;String&gt; host 的别名。为了支持 url.parse()，hostname 优于 host。
+
+    family &lt;Number&gt; 当解析 host 和 hostname 时使用的 IP 地址族。 有效值是 4 或 6。当未指定时，则同时使用 IP v4 和 v6。
+
+    port &lt;Number&gt; 远程服务器的端口。默认为 80。
+
+    localAddress &lt;String&gt; 要绑定到网络连接的本地接口。
+
+    socketPath &lt;String&gt; Unix 域 Socket（使用 host:port 或 socketPath 的其中之一）。
+
+    method &lt;String&gt; 一个指定 HTTP 请求方法的字符串。默认为 &apos;GET&apos;。
+
+    path &lt;String&gt; 请求的路径。默认为 &apos;/&apos;。 应包括查询字符串（如有的话）。如 &apos;/index.html?page=12&apos;。 
+    当请求的路径中包含非法字符时，会抛出异常。 目前只有空字符会被拒绝，但未来可能会变化。
+
+    headers &lt;Object&gt; 一个包含请求头的对象。
+
+    auth &lt;String&gt; 基本身份验证，如 &apos;user:password&apos; 来计算 Authorization 头。
+
+    agent &lt;http.Agent&gt; | &lt;Boolean&gt; 控制 Agent 的行为。 当使用 Agent 是，请求默认为 Connection: keep-alive。 可能的值有：
+    undefined (默认): 对该主机和端口使用 http.globalAgent。
+
+    Agent 对象：显式地使用传入的 Agent。
+
+    false: 不对连接池使用 Agent，默认请求 Connection: close。
+
+    createConnection &lt;Function&gt; 当不使用 agent 选项时，产生一个用于请求的 socket/stream 的函数。 这可以用于避免创建一个自定义的 Agent 类，只是为了覆盖默认的 createConnection 函数。详见 agent.createConnection()。
+
+    timeout &lt;Integer&gt;: 一个数值，指定 socket 超时的毫秒数。 它会在 socket 被连接时设置超时。
+
+
+Example:
+
+    var postData = querystring.stringify({
+            &apos;msg&apos; : &apos;Hello World!&apos;
+        });
+
+    var options = {
+        hostname: &apos;www.google.com&apos;,
+        port: 80,
+        path: &apos;/upload&apos;,
+        method: &apos;POST&apos;,
+        headers: {
+            &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,
+            &apos;Content-Length&apos;: Buffer.byteLength(postData)
+        }
+    };
+
+    var req = http.request(options, (res) =&gt; {
+        console.log(`STATUS: ${res.statusCode}`);
+        console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+        res.setEncoding(&apos;utf8&apos;);
+        res.on(&apos;data&apos;, (chunk) =&gt; {
+            console.log(`主体: ${chunk}`);
+        });
+        res.on(&apos;end&apos;, () =&gt; {
+            console.log(&apos;响应中已无数据。&apos;);
+        });
+    });
+
+    req.on(&apos;error&apos;, (e) =&gt; {
+        console.log(`请求遇到问题: ${e.message}`);
+    });
+
+    // 写入数据到请求主体
+    req.write(postData);
+    req.end();
+</code></pre><h4 id="http概念"><a href="#http概念" class="headerlink" title="http概念"></a>http概念</h4><pre><code>1、请求方法:
+
+    Get: 请求从服务器获取数据，没有请求体，不会影响服务器数据
+
+    Post: 从服务器获取数据，有请求体，会影响服务器端的数据
+
+    DELETE: 从服务器删除资源
+
+    HEAD: 向服务器获取响应头，不要响应体
+
+    PUT: 要新的服务器一个资源
+
+    OPTIONS: 获取服务器支持的方法
+
+
+2、文件类型 Content-type
+
+    html: text/html
+
+    ASCII文本: text/plain
+
+    jpeg图片: image/jpeg
+
+    GIF图片: image/gif
+
+    javascript: text/javascript
+
+    css: text/css
+
+    表单: application/x-www-form-urlencoded
+
+
+
+# 获取 index.html 文件内容返回给客户端
+
+    var http = require(&apos;http&apos;);
+    var fs = require(&apos;fs&apos;);
+
+    exports.createServer2 = function(){
+        var server = http.createServer(function(request, response){
+
+            var url = request.url;
+
+            // 获取 index.html 文件内容返回给客户端
+            fs.readFile(&apos;./index.html&apos;, &apos;utf-8&apos;, function(err, data){
+                console.log(err, data);
+
+                response.write(data);
+                response.end();
+            })
+        });
+
+        server.listen(8081, &apos;localhost&apos;);
+    }
+
+
+# 处理Get请求的参数
+
+    var server = http.createServer(function(request, response){
+        var oUrl = url.parse(request.url, true);
+
+        console.log(oUrl.query);        // { username: &apos;siguang&apos;, age: &apos;30&apos; }
+
+        var urlQuery = oUrl.query;
+        if(urlQuery){
+            response.write(&apos;服务器接收GET请求参数成功\n&apos;)
+            response.write(&apos;用户名:&apos;+ urlQuery.username +&apos;\n&apos;);
+            response.write(&apos;年级:&apos;+ urlQuery.age +&apos;\n&apos;);
+        }
+        else{
+            response.write(&apos;服务器接收参数失败&apos;);
+        }
+        response.end();
+    });
+
+    server.listen(8081, &apos;localhost&apos;);
+
+
+# 处理POST请求
+
+    if(urlObj.pathname == &apos;/register&apos;){           // 处理 &apos;/clock&apos; 的请求
+        var str = &apos;&apos;;
+        var userList = {};
+
+        // 通过on来侦听 data事件, data事件就是接收客户端传输过来的事件, 用可接收post的数据
+        request.on(&apos;data&apos;, function(data){
+            console.log(data.toString());          // 返回的是 Buffer
+            str += data.toString();
+        })
+
+        // 所有接收完成后处理接收数据
+        request.on(&apos;end&apos;, function(data){
+            userList = JSON.parse(str);
+
+            response.writeHead(&apos;200&apos;, {&apos;Content-Type&apos;: &apos;text/html;charset=utf-8&apos;});
+            if(userList.username == &apos;aaa&apos; &amp;&amp; userList.password == &apos;ssssss&apos;){
+                 response.end(JSON.stringify({&quot;res&quot;:true,&quot;message&quot;:&quot;注册成功&quot;}));        // 这里一定要用JSON.stringify来转成串
+            }
+            else{
+                response.end(JSON.stringify({&apos;res&apos;:false,&apos;message&apos;:&apos;注册失败&apos;}));
+            }
+            response.end();
+        })
+    }
+
+    注意：
+
+        1、客户端发送ajax请求时
+
+            如果data是字符串，接收过来就是 &apos;{&apos;username&apos;: &apos;aaa&apos;, &apos;password&apos;: &apos;ssssss&apos;}&apos; 字符串可以直接转成json,
+
+            如果data传的是一个对象，jquery会转成&quot;{&apos;username&apos;=&apos;aaa&apos;&amp;&apos;password&apos;=&apos;ssssss&apos;}&quot;, 还需要node重组
+</code></pre><h4 id="http概念-1"><a href="#http概念-1" class="headerlink" title="http概念"></a>http概念</h4><pre><code>1、up 工具 通过nodeAPI来监听文件或目录下所有文件，如果有文件改变不需要重启服务器
+
+    $ sudo npm i up -g   
+
+    运行命令: up -watch -port 8080 server.js 
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/01/nodeJS（之八）HTTP/" data-id="cjdu4wpxn002mchwrsdsvdu8r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/02/nodeJS（之七）URL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS（之七）URL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/nodeJS（之一）Global全局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS基 (之一) Global全局对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

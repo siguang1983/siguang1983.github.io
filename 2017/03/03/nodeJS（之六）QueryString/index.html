@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>nodeJS（之六）Querystring | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="parse(str, [sep], [eq], [options]) 解析url的查询字符串var param = &amp;apos;user=siguang&amp;amp;age=30&amp;apos;; qs.parse(param).user;    // &amp;apos;siguang&amp;apos; stringify(obj, [sep], [eq])  将对象转成url的参数字符串const obj = {n">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS（之六）Querystring">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/03/nodeJS（之六）QueryString/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="parse(str, [sep], [eq], [options]) 解析url的查询字符串var param = &amp;apos;user=siguang&amp;amp;age=30&amp;apos;; qs.parse(param).user;    // &amp;apos;siguang&amp;apos; stringify(obj, [sep], [eq])  将对象转成url的参数字符串const obj = {n">
+<meta property="og:updated_time" content="2017-11-06T09:26:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="nodeJS（之六）Querystring">
+<meta name="twitter:description" content="parse(str, [sep], [eq], [options]) 解析url的查询字符串var param = &amp;apos;user=siguang&amp;amp;age=30&amp;apos;; qs.parse(param).user;    // &amp;apos;siguang&amp;apos; stringify(obj, [sep], [eq])  将对象转成url的参数字符串const obj = {n">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-nodeJS（之六）QueryString" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/03/nodeJS（之六）QueryString/" class="article-date">
+  <time datetime="2017-03-03T07:54:45.000Z" itemprop="datePublished">2017-03-03</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      nodeJS（之六）Querystring
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="parse-str-sep-eq-options-解析url的查询字符串"><a href="#parse-str-sep-eq-options-解析url的查询字符串" class="headerlink" title="parse(str, [sep], [eq], [options]) 解析url的查询字符串"></a>parse(str, [sep], [eq], [options]) 解析url的查询字符串</h4><pre><code>var param = &apos;user=siguang&amp;age=30&apos;;
+qs.parse(param).user;    // &apos;siguang&apos;
+</code></pre><h4 id="stringify-obj-sep-eq-将对象转成url的参数字符串"><a href="#stringify-obj-sep-eq-将对象转成url的参数字符串" class="headerlink" title="stringify(obj, [sep], [eq])  将对象转成url的参数字符串"></a>stringify(obj, [sep], [eq])  将对象转成url的参数字符串</h4><pre><code>const obj = {name: &apos;一介布衣&apos;, url: &apos;http://yijiebuyi.com&apos;};
+const param = querystring.stringify(obj);
+console.log(param);            // name=%E4%B8%80%E4%BB%8B%E5%B8%83%E8%A1%A3&amp;url=http%3A%2F%2Fyijiebuyi.com
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+qs.stringify({foo: &apos;bar&apos;, baz: &apos;qux&apos;}, &apos;;&apos;, &apos;:&apos;)
+// 返回 &apos;foo:bar;baz:qux&apos;
+</code></pre><h4 id="escape-str-字符进行编码"><a href="#escape-str-字符进行编码" class="headerlink" title="escape(str) 字符进行编码"></a>escape(str) 字符进行编码</h4><pre><code>let url = &apos;https://github.com/siguang1983&apos;;
+console.log(qs.escape(url));        // https%3A%2F%2Fgithub.com%2Fsiguang1983
+</code></pre><h4 id="unescape-str-字符进行解码"><a href="#unescape-str-字符进行解码" class="headerlink" title="unescape(str) 字符进行解码"></a>unescape(str) 字符进行解码</h4><pre><code>let code = &apos;https%3A%2F%2Fgithub.com%2Fsiguang1983&apos;;
+console.log(qs.unescape(url));        // https://github.com/siguang1983
+</code></pre>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/03/nodeJS（之六）QueryString/" data-id="cjdu4wpxp002ochwrqcrx2l8i" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/04/nodeJS（之三）Buffer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS (之三) Buffer
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/02/nodeJS（之七）URL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS（之七）URL</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

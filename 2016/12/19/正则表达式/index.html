@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>正则表达式 | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="特殊字符和转义序列1、[...] 位于括号内的任意字符                  /[abcde]/.test(&amp;apos;aboot&amp;apos;);     // 只要含有任意一个字符返回 true      /a[bo]t/.test(&amp;apos;abot&amp;apos;);        // false 中间只能含有其中一个字符，匹配&amp;apos;abt&amp;apos;或&amp;apos;aot&amp;">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/19/正则表达式/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="特殊字符和转义序列1、[...] 位于括号内的任意字符                  /[abcde]/.test(&amp;apos;aboot&amp;apos;);     // 只要含有任意一个字符返回 true      /a[bo]t/.test(&amp;apos;abot&amp;apos;);        // false 中间只能含有其中一个字符，匹配&amp;apos;abt&amp;apos;或&amp;apos;aot&amp;">
+<meta property="og:updated_time" content="2017-11-11T04:07:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="特殊字符和转义序列1、[...] 位于括号内的任意字符                  /[abcde]/.test(&amp;apos;aboot&amp;apos;);     // 只要含有任意一个字符返回 true      /a[bo]t/.test(&amp;apos;abot&amp;apos;);        // false 中间只能含有其中一个字符，匹配&amp;apos;abt&amp;apos;或&amp;apos;aot&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/19/正则表达式/" class="article-date">
+  <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="特殊字符和转义序列"><a href="#特殊字符和转义序列" class="headerlink" title="特殊字符和转义序列"></a>特殊字符和转义序列</h4><pre><code>1、[...] 位于括号内的任意字符            
+
+    /[abcde]/.test(&apos;aboot&apos;);     // 只要含有任意一个字符返回 true
+
+    /a[bo]t/.test(&apos;abot&apos;);        // false 中间只能含有其中一个字符，匹配&apos;abt&apos;或&apos;aot&apos;
+
+2、[^...] 不在括号中之中的任意字符
+
+    /a[^bo]t/.test(&apos;ast&apos;);        // true a|t之间不含有b、o期中一个字符
+
+*3、. 除了换行和Unicode行止符之外的任意字符
+
+    /a.t/.test(&apos;a*t&apos;);        // true , &apos;a\nt&apos;换行false，使用 \.来进行转义
+
+4、\w 任何ASCII字符,等于[a-zA-Z0-9_]
+
+    /\w/.test(&apos;think&apos;);        // true, 不含有其它字符
+
+5、\W 任何非ASCII字符单字字符，等于[^a-zA-Z0-9_]
+
+    /\w/.test(&apos;think&apos;);        // false, 至少需要有一个特殊字符
+
+6、\s 任何空格
+
+    /\s/.test(&apos;I think&apos;);    // true
+
+7、\S 不包含空格
+
+    /\s/.test(&apos;I think&apos;);    // false, 非空格为true
+
+8、\d 任何数字，等于[0-9]
+
+9、\D 除了数字之外的任意字符
+
+* 10、\b 独立部分 
+
+* 11、\B 独立部分 
+</code></pre><h4 id="指定匹配的位置"><a href="#指定匹配的位置" class="headerlink" title="指定匹配的位置"></a>指定匹配的位置</h4><pre><code>1、^ 匹配字符串的开头
+
+    /^ab/.test(&apos;absolute&apos;);        // true 以ab开头
+
+2、$ 匹配字符串的结尾
+
+    /te$/.test(&apos;absolute&apos;);        // true 以te结尾
+
+* 3、? ! 一个反前向声明者，含义与反前向声明相反
+</code></pre><h4 id="选择、分组和引用"><a href="#选择、分组和引用" class="headerlink" title="选择、分组和引用"></a>选择、分组和引用</h4><pre><code>1、| 用于分隔选择的字符，相当于或
+
+    /oa|on|op/.test(&apos;option&apos;);    // true，只要带有oa、on、op都匹配
+
+2、(...) 分组，相当于并且
+
+    /(\d+&amp;)([a-zA-Z]+%)/.test(&apos;1234&amp;abcde%&apos;);        // true, 必须包含数据+&amp;，并且还包含英文字母+%
+
+* 3、(?...) 只组合，把项组合到一个单元，但不记忆与该组匹配的字符
+
+    (?:):
+
+    (?!):
+
+    (?&lt;=):
+
+    (?&lt;!):
+</code></pre><h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><pre><code>1、{ } 匹配一个字符的重复  **** 注意{3,10} 逗号后不能有空格, 如{3, 10}        
+
+    /^\d{1,3}$/: 最少2个数字，最多4个数字
+
+    /^\d{4,}$/: 最少有4个数字
+
+    /^\d{4}$/: 只能有4个数字
+
+2、* 表示0次或多次重复,等价于{0, }    /^\d*$/
+
+3、？最少0次, 最多1次重复，等价于{0,1}   
+
+4、+ 表示最少出现1次，等价于{1,}
+
+5、\1、\2 重复的子项
+
+    var reg = /(a)(b)(c)\1/;
+    var str = &quot;abca&quot;;
+
+    // 返回 true： \1是重复第一个子项(a)，相当于/(a)(b)(c)(a)/.     \2就是第二项(b)
+    console.log(reg.test(str));
+</code></pre><h4 id="修饰符，高级匹配"><a href="#修饰符，高级匹配" class="headerlink" title="修饰符，高级匹配"></a>修饰符，高级匹配</h4><pre><code>1、g 匹配的是全局，检索字符串的所有匹配
+
+    如果不加g只匹配第一个后就退出
+
+    let reg = /你妈的|去你妈|傻逼/g;
+    let content = &apos;你妈的房子傻逼是用来住的你妈的不是用来炒的去你妈的吧&apos;;
+    content = content.replace(reg, &apos;***&apos;);
+    console.log(content)            // ***房子***是用来住的***不是用来炒的***的吧
+
+2、i 匹配忽略大小写
+
+    /java/i.test(&apos;JavdaScript&apos;);        // true
+
+3、m 进行多行匹配
+</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>1、match(reg) 将匹配结果返回一个数组
+
+    var arr = &apos;123kasdo34kk234k234234k&apos;.match(/\d+/g);        // 如果不加g，只返回第一个
+    console.log(arr);        // [&quot;123&quot;, &quot;34&quot;, &quot;234&quot;, &quot;234234&quot;]
+
+2、test() 如果没有匹配返回false否则返回true
+
+3、search(reg) 查找并返回所在的位置，如果没有匹配的返回-1
+
+    var result = &apos;房地产行业究竟是白银时代还是钻石时代&apos;.search(/钻石/); 
+    console.log(result);        // 返回 8
+
+4、content.replace(reg, str) 用于执行检索和替换操作
+
+5、exec() [ɪɡ&apos;zek] 如果找到返回一个数组并存放匹配的结果，如果没有找到返回null
+
+    var result = /白银|钻石/g.exec(&apos;房地产行业究竟是白银时代还是钻石时代&apos;); 
+    console.log(result);        // [&apos;&apos;]
+</code></pre><h4 id="整理经验"><a href="#整理经验" class="headerlink" title="整理经验"></a>整理经验</h4><pre><code>1、如果检查全部需要前后加匹配
+
+    /\d+/  只对字符中存在数字就匹配
+
+    /^\d+$/  对字符中全部为数字的进行匹配
+
+
+2、test()、exec()是对每一个字符串进行匹配，如果为true就不会往下执行，并返回true
+
+    例如: 匹配字符中不能带有.字符
+    /[^\.]/.test(&apos;123123.&apos;);    // 返回true，因为第一个字符就不是.返回true不在往下执行
+
+    /[\.]/.test(&apos;23412.34&apos;);    // 如果存在就返回true
+    或者
+    /^[^\.]$/g.test(&apos;asdfa.sdf&apos;) // 返回true
+
+3、| 或符号只能用到()中，不能在[]中使用
+</code></pre><h4 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h4><pre><code>1、密码强度
+
+    // 弱密码 - 纯数字、纯字母或纯特殊字符
+    /^(?:\d+|[a-zA-Z]+|[!@#$%^&amp;*]+)$/
+
+    // 中密码 - 字母+数字，字母+特殊字符，数字+特殊字符
+    /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&amp;*]+$)[a-zA-Z\d!@#$%^&amp;*]+$/
+
+    // 强密码 - 必须有数字、小写字母、大写字母和特殊字符
+    /^(?=.*((?=[!@#$%^&amp;*_]+)[^A-Za-z0-9]))(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,16}$/
+
+
+2、手机号码验证
+
+    /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139|186|185|170|156|155|130|131|132|189|180|170|153|133)(\d){8}$/.test(&apos;13012345678&apos;)
+
+    移动号段: /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139)(\d){8}$/;     
+
+    联通号段: /^(186|185|170|156|155|130|131|132)(\d){8}$/
+
+    电信号段: /^(189|180|170|153|133)(\d){8}$/
+
+
+3、验证Email - /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+
+4、验证中文 - /^[\u4e00-\u9fa5]+$/
+
+5、域名验证 - /^(http(s)?:\/\/)(www)?\.\w+\.(com|cn|net|org)$/
+
+6、手机号前带86或是+86 - /^((\+86)|(86))?(13)\d{9}$/
+
+7、电话号码与手机号码同时验证 - /(^(\d{3,4}-)?\d{7,8})$|(13[0-9]{9})/
+
+8、验证IP地址 - /^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/;    //  匹配0-255, 匹配&apos;255.255.255.255&apos;
+
+9、邮政编码 - /[1-9]{1}(\d+){5}/
+
+10、身份证号码 - /\d{18}|\d{15}/
+
+11、双字节字符串(汉字) - /[^\x00-\xff]*/
+
+12、去除两端空格 - /^\s*|\s*$/
+
+数字正则
+
+    /^\d+$/ - 非负整数（正整数 + 0)
+
+    /^[1-9](\d)+$/ - 正整数(不可以以0开头)  
+
+    /^-(\d)+$/ - 非正整数（负整数 + 0） 
+
+    /^-[1-9]?(\d){0,}$/ - 负整数(-12345), 不可以-012312
+
+    /^[1-9]?(\d)+\.(\d)+$/ - 浮点数   
+
+    ^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$    //正浮点数   
+    ^((-\\d+(　　//非正浮点数（负浮点数 + 0）   
+    ^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$  //负浮点数  
+
+    /^[A-Za-z]+$/ - 由26个英文字母组成的字符串   
+
+    /^[A-Z]+$/ - 由26个英文字母的大写组成的字符串   
+
+    /^[a-z]+$/ - 由26个英文字母的小写组成的字符串  
+
+    /^[A-Za-z0-9]+$/ - 由数字和26个英文字母组成的字符串   
+
+    /^\w+$/ - 由数字、26个英文字母或者下划线组成的字符串
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/19/正则表达式/" data-id="cjdu4wpy4003fchwrnxmdvoxa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/19/BOM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BOM
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/19/javascript设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

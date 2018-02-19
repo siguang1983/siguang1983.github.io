@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>nodeJS（之七）URL | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="| URL 用于URL的处理和解析| const url = require(‘url’)    // 引用 href 解析后的完整url&amp;apos;http://user:pass@host.com:8080/p/a/t/h?query=string#hash&amp;apos; protocol 返回协议 ‘http’host 返回主机和端口auth 返回 URL 的用户名与密码部分hostname">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS（之七）URL">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/02/nodeJS（之七）URL/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| URL 用于URL的处理和解析| const url = require(‘url’)    // 引用 href 解析后的完整url&amp;apos;http://user:pass@host.com:8080/p/a/t/h?query=string#hash&amp;apos; protocol 返回协议 ‘http’host 返回主机和端口auth 返回 URL 的用户名与密码部分hostname">
+<meta property="og:updated_time" content="2017-11-06T09:27:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="nodeJS（之七）URL">
+<meta name="twitter:description" content="| URL 用于URL的处理和解析| const url = require(‘url’)    // 引用 href 解析后的完整url&amp;apos;http://user:pass@host.com:8080/p/a/t/h?query=string#hash&amp;apos; protocol 返回协议 ‘http’host 返回主机和端口auth 返回 URL 的用户名与密码部分hostname">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,97 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-nodeJS（之七）URL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/02/nodeJS（之七）URL/" class="article-date">
+  <time datetime="2017-03-02T10:05:25.000Z" itemprop="datePublished">2017-03-02</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      nodeJS（之七）URL
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <p>| URL 用于URL的处理和解析<br>| const url = require(‘url’)    // 引用</p>
+<h4 id="href-解析后的完整url"><a href="#href-解析后的完整url" class="headerlink" title="href 解析后的完整url"></a>href 解析后的完整url</h4><pre><code>&apos;http://user:pass@host.com:8080/p/a/t/h?query=string#hash&apos;
+</code></pre><h4 id="protocol-返回协议-‘http’"><a href="#protocol-返回协议-‘http’" class="headerlink" title="protocol 返回协议 ‘http’"></a>protocol 返回协议 ‘http’</h4><h4 id="host-返回主机和端口"><a href="#host-返回主机和端口" class="headerlink" title="host 返回主机和端口"></a>host 返回主机和端口</h4><h4 id="auth-返回-URL-的用户名与密码部分"><a href="#auth-返回-URL-的用户名与密码部分" class="headerlink" title="auth 返回 URL 的用户名与密码部分"></a>auth 返回 URL 的用户名与密码部分</h4><h4 id="hostname-主机"><a href="#hostname-主机" class="headerlink" title="hostname 主机"></a>hostname 主机</h4><h4 id="port-端口"><a href="#port-端口" class="headerlink" title="port 端口"></a>port 端口</h4><h4 id="pathname-URL的整个路径部分"><a href="#pathname-URL的整个路径部分" class="headerlink" title="pathname URL的整个路径部分"></a>pathname URL的整个路径部分</h4><h4 id="search-获取url参数-‘-query-string’-包括-号"><a href="#search-获取url参数-‘-query-string’-包括-号" class="headerlink" title="search 获取url参数 ‘?query=string’  包括?号"></a>search 获取url参数 ‘?query=string’  包括?号</h4><h4 id="path-返回url和参数不包括协议和主机-‘-p-a-t-h-query-string’"><a href="#path-返回url和参数不包括协议和主机-‘-p-a-t-h-query-string’" class="headerlink" title="path 返回url和参数不包括协议和主机 ‘/p/a/t/h?query=string’"></a>path 返回url和参数不包括协议和主机 ‘/p/a/t/h?query=string’</h4><h4 id="query-返回参数对象返回-‘query-string’-or-‘query’-‘string’"><a href="#query-返回参数对象返回-‘query-string’-or-‘query’-‘string’" class="headerlink" title="query 返回参数对象返回 ‘query=string’ or {‘query’: ‘string’}"></a>query 返回参数对象返回 ‘query=string’ or {‘query’: ‘string’}</h4><h4 id="hash-返回hash部分-‘-’"><a href="#hash-返回hash部分-‘-’" class="headerlink" title="hash 返回hash部分 ‘#’"></a>hash 返回hash部分 ‘#’</h4><h4 id="url-format-urlObject-根据对象构建一个路径"><a href="#url-format-urlObject-根据对象构建一个路径" class="headerlink" title="url.format(urlObject) 根据对象构建一个路径"></a>url.format(urlObject) 根据对象构建一个路径</h4><pre><code>var obj = { 
+    protocol: &apos;https&apos;,
+    host: &apos;www.sss.com:4000&apos;,
+    pathname: &apos;index&apos; 
+}
+url.format(obj)
+//returns &apos;https://www.sss.com:4000/index&apos;
+</code></pre><h4 id="parse-urlString-parseQueryString-slashesDenoteHost-返回url的一些信息-querystring为true使用querstring模块来解析url中的查询字符"><a href="#parse-urlString-parseQueryString-slashesDenoteHost-返回url的一些信息-querystring为true使用querstring模块来解析url中的查询字符" class="headerlink" title="parse(urlString[, parseQueryString[, slashesDenoteHost]]) 返回url的一些信息, querystring为true使用querstring模块来解析url中的查询字符"></a>parse(urlString[, parseQueryString[, slashesDenoteHost]]) 返回url的一些信息, querystring为true使用querstring模块来解析url中的查询字符</h4><pre><code>exports.createServer2 = function(){
+    var server = http.createServer(function(request, response){
+        var oUrl = url.parse(request.url);
+        console.log(&apos;路径&apos;, oUrl);               
+    });
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    server.listen(8081, &apos;localhost&apos;);
+}
+
+返回：
+{
+    protocol: null,            // 协议 http
+    slashes: null,
+    auth: null,                // 身份
+    host: null,                // 主机    
+    port: null,                // 端口
+    hostname: null,            // 主机名
+    hash: null,
+    search: null,
+    query: null,            // 查询参数或者使用querystring.parse() 返回{username:&apos;siguang&apos;};
+    pathname: &apos;/apples/&apos;,    // 路径名
+    path: &apos;/apples/&apos;,        // 路由
+    href: &apos;/apples/&apos;         // 链接
+}
+</code></pre><h4 id="resolve-from-to-两个网址拼接"><a href="#resolve-from-to-两个网址拼接" class="headerlink" title="resolve(from, to) 两个网址拼接"></a>resolve(from, to) 两个网址拼接</h4><pre><code>url.resolve(&apos;http://example.com/&apos;, &apos;/one&apos;)    // &apos;http://example.com/one&apos;
+url.resolve(&apos;http://example.com/one&apos;, &apos;/two&apos;) // &apos;http://example.com/two&apos;
+</code></pre><h4 id="slashes"><a href="#slashes" class="headerlink" title="slashes"></a>slashes</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/02/nodeJS（之七）URL/" data-id="cjdu4wpxf002cchwri5y42u91" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/03/nodeJS（之六）QueryString/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS（之六）Querystring
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/nodeJS（之八）HTTP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS（之八）HTTP</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

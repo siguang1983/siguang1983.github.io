@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>React Native之积累篇 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="IOS、Android的图标、app名称和启动图一、App名称修改      Xcode中打开项目下info.plist -&amp;gt; Bundle name 和 Bundle display name 都修改APP的名称  二、App图标      方法1 Xcode中配置:          Xcode工程目录下的Images.xcassets -&amp;gt; AppIcon中将来加载图标，分别为1">
+<meta name="keywords" content="React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native之积累篇">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/07/ReactNative之积累篇/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="IOS、Android的图标、app名称和启动图一、App名称修改      Xcode中打开项目下info.plist -&amp;gt; Bundle name 和 Bundle display name 都修改APP的名称  二、App图标      方法1 Xcode中配置:          Xcode工程目录下的Images.xcassets -&amp;gt; AppIcon中将来加载图标，分别为1">
+<meta property="og:updated_time" content="2017-08-19T09:36:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="React Native之积累篇">
+<meta name="twitter:description" content="IOS、Android的图标、app名称和启动图一、App名称修改      Xcode中打开项目下info.plist -&amp;gt; Bundle name 和 Bundle display name 都修改APP的名称  二、App图标      方法1 Xcode中配置:          Xcode工程目录下的Images.xcassets -&amp;gt; AppIcon中将来加载图标，分别为1">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,144 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-ReactNative之积累篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/07/ReactNative之积累篇/" class="article-date">
+  <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      React Native之积累篇
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
+
+二、App图标
+
+    方法1 Xcode中配置:
+
+        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
+
+    方法2 代码中配置
+
+        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
+
+        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
+
+三、设置启动图
+
+    方法1 Xcode中配置:
+
+        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
+
+        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
+
+    方法2 代码配置
+
+        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
+
+        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
+
+
+http://www.cnblogs.com/allenxieyusheng/p/5802179.html
+http://www.jianshu.com/p/adpKye/
+https://appicontemplate.com/ios9    图标尺寸导出  
+
+转icon尺寸
+http://www.zcool.com.cn/article/ZNjE1MTI=.html
+http://makeappicon.com/
+http://blog.csdn.net/leiyu231/article/details/52830151
+</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
+
+1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
+2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
+
+http://blog.csdn.net/liyijun4114/article/details/51792179
+</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
+
+在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
+</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
+
+    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
+
+https://developer.apple.com/  苹果开发者账号申请
+
+苹果开发者平台可以进行
+
+苹果的安装包为 *.ipa 文件
+
+1、先登录Account，注册苹果开发者账号个人或企业
+
+2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
+</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
+
+    class TabPage extends Component {
+
+        _createNav(name, colorValue){
+            return (
+                &lt;View&gt;
+                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }
+
+        render(){
+            return (
+                &lt;View&gt;
+                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
+                &lt;/View&gt;
+            )
+        }
+    }
+</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/07/ReactNative之积累篇/" data-id="cjdu4wpwp001ichwruslv7jdu" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native/">React Native</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/07/weex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Weex
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/07/NPM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NPM 常用命令</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

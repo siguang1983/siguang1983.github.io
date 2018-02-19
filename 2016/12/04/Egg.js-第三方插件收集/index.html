@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>Egg.js | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="| egg-validate POST参数规则校验  https://github.com/eggjs/egg-validate| egg-mongoose Mongoose        https://github.com/eggjs/egg-mongoose egg-validate验证 Request Body的参数  $ npm i egg-validate --save  安装  //">
+<meta name="keywords" content="EggJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Egg.js">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/04/Egg.js-第三方插件收集/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| egg-validate POST参数规则校验  https://github.com/eggjs/egg-validate| egg-mongoose Mongoose        https://github.com/eggjs/egg-mongoose egg-validate验证 Request Body的参数  $ npm i egg-validate --save  安装  //">
+<meta property="og:updated_time" content="2018-02-19T10:26:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="Egg.js">
+<meta name="twitter:description" content="| egg-validate POST参数规则校验  https://github.com/eggjs/egg-validate| egg-mongoose Mongoose        https://github.com/eggjs/egg-mongoose egg-validate验证 Request Body的参数  $ npm i egg-validate --save  安装  //">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,108 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-Egg.js-第三方插件收集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js-第三方插件收集/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      Egg.js
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+$ npm i egg-validate --save  安装
+
+// {app_root}/config/plugin.js
+exports.validate = {
+    package: &apos;egg-validate&apos;,
+};
+
+// 校验规则 post
+async fromRule(){
+    const {ctx, app} = this;
+
+    // Request 参数规则
+    const paramRule = {
+        username: {type: &apos;string&apos;},
+        password: {type: &apos;string&apos;},
+        rememberMe: {type: &apos;boolean&apos;, required: false},
+    };
+    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    if(paramErrors){    // 如果为真说明校验不通过
+        ctx.body = `校验失败`;
+    }   
+    else{
+        ctx.body = `校验成功, ${ctx.request.body.username}`;
+    }
+}
+</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+
+https://segmentfault.com/a/1190000004286562
+http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
+https://github.com/tj/ejs
+</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
+</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传 - https://github.com/node-modules/formstream
+
+4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
+
+5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js-第三方插件收集/" data-id="cjdu4wpv30009chwr5rxoh2dy" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/04/Egg.js-数据库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          EggJS-数据库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/04/Egg.js框架/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">EggJS基础</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

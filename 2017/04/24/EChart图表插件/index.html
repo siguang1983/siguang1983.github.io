@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EChart | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装1、npm install echarts --save  2、引入echarts的两种方式      页面直接引入文件: &amp;lt;script src=&amp;quot;echarts.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;      webpack: import echarts from &amp;apos;echarts&amp;apos;  3、页面创建DOM的容器      &amp;l">
+<meta name="keywords" content="前端插件类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EChart">
+<meta property="og:url" content="http://siguang1983.github.io/2017/04/24/EChart图表插件/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="安装1、npm install echarts --save  2、引入echarts的两种方式      页面直接引入文件: &amp;lt;script src=&amp;quot;echarts.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;      webpack: import echarts from &amp;apos;echarts&amp;apos;  3、页面创建DOM的容器      &amp;l">
+<meta property="og:updated_time" content="2017-10-23T08:04:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EChart">
+<meta name="twitter:description" content="安装1、npm install echarts --save  2、引入echarts的两种方式      页面直接引入文件: &amp;lt;script src=&amp;quot;echarts.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;      webpack: import echarts from &amp;apos;echarts&amp;apos;  3、页面创建DOM的容器      &amp;l">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-EChart图表插件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/24/EChart图表插件/" class="article-date">
+  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EChart
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、npm install echarts --save
+
+2、引入echarts的两种方式
+
+    页面直接引入文件: &lt;script src=&quot;echarts.min.js&quot;&gt;&lt;/script&gt;
+
+    webpack: import echarts from &apos;echarts&apos;
+
+3、页面创建DOM的容器
+
+    &lt;div id=&quot;main&quot; style=&quot;width: 600px;height:400px;&quot;&gt;&lt;/div&gt;        必须要一个高度值
+</code></pre><h4 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h4><pre><code>1、数据异步
+
+    将数据通过ajax异步取到后，在通过setOption()方式直接加到载插件中
+
+
+2、loading动画
+
+    showLoading()来显示、hideLoading()隐藏
+
+    Exampole
+    var myChart = echarts.init(document.getElementById(&apos;main&apos;));
+
+    myChart.showLoading();
+    $.ajax({
+        success:function(data){
+            myChart.hideLoading();
+        }
+    })
+
+
+3、数据的动态更新
+
+    只需要加单个数据，先data.push(vlaue), 在通过setOption()将数据渲染出来
+
+    var data = [];        // 存储数据 
+
+    // 创建图表将data数据加入
+    ....
+
+    // 添加数据 
+    function addData(){
+        data.push(Math.random()*100);
+    }
+
+    setInterval(function(){
+        addData();
+        myChart.setOption({
+            数据
+        })
+    },1000)
+</code></pre><h4 id="数据区缩放组件-dataZoom"><a href="#数据区缩放组件-dataZoom" class="headerlink" title="数据区缩放组件 dataZoom"></a>数据区缩放组件 dataZoom</h4><pre><code>option = {
+    xAxis: {
+        type: &apos;value&apos;
+    },
+    yAxis: {
+        type: &apos;value&apos;
+    },
+
+    dataZoom: [
+        {   // 这个dataZoom组件，默认控制x轴。
+            type: &apos;slider&apos;, // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+            start: 10,      // 左边在 10% 的位置。
+            end: 60         // 右边在 60% 的位置。
+        }
+    ],
+
+    series: [
+        {
+            type: &apos;scatter&apos;, // 这是个『散点图』
+            itemStyle: {
+                normal: {
+                    opacity: 0.8
+                }
+            },
+            symbolSize: function (val) {
+                return val[2] * 40;
+            },
+            data: [[&quot;14.616&quot;,&quot;7.241&quot;,&quot;0.896&quot;],[&quot;3.958&quot;,&quot;5.701&quot;,&quot;0.955&quot;],[&quot;2.768&quot;,&quot;8.971&quot;,&quot;0.669&quot;],[&quot;9.051&quot;,&quot;9.710&quot;,&quot;0.171&quot;],[&quot;14.046&quot;,&quot;4.182&quot;,&quot;0.536&quot;],[&quot;12.295&quot;,&quot;1.429&quot;,&quot;0.962&quot;],[&quot;4.417&quot;,&quot;8.167&quot;,&quot;0.113&quot;],[&quot;0.492&quot;,&quot;4.771&quot;,&quot;0.785&quot;],[&quot;7.632&quot;,&quot;2.605&quot;,&quot;0.645&quot;],[&quot;14.242&quot;,&quot;5.042&quot;,&quot;0.368&quot;]]
+        }
+    ]
+}
+</code></pre><h4 id="事件和行为"><a href="#事件和行为" class="headerlink" title="事件和行为"></a>事件和行为</h4><pre><code>Echarts中有两种事件，1、用户的鼠标事件   2、交互组件后触发的行为事件
+
+一、鼠标事件
+
+    鼠标事件: &apos;click&apos;、&apos;dblclick&apos;、&apos;mousedown&apos;、&apos;mousemove&apos;、&apos;mouseup&apos;、&apos;mouseover&apos;、&apos;mouseout&apos;
+
+    myChart.on(&apos;click&apos;, function(params){
+        console.log(params.name)
+    })
+
+
+二、交互组件
+
+    myChart.dispatchAction({ type: &apos;&apos; })        // 通过dispatchAction触发
+
+    1、legendselectchanged: 切换图例开关时触发
+
+    2、datazoom: 数据区域缩放触发
+
+
+二、params 对象
+
+    {
+        // 当前点击的图形元素所属的组件名称，
+        // 其值如 &apos;series&apos;、&apos;markLine&apos;、&apos;markPoint&apos;、&apos;timeLine&apos; 等。
+        componentType: string,
+
+        // 系列类型。值可能为：&apos;line&apos;、&apos;bar&apos;、&apos;pie&apos; 等。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesType: string,
+
+        // 系列在传入的 option.series 中的 index。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesIndex: number,
+
+        // 系列名称。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesName: string,
+
+        // 数据名，类目名
+        name: string,
+
+        // 数据在传入的 data 数组中的 index
+        dataIndex: number,
+
+        // 传入的原始数据项
+        data: Object,
+
+        // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+        // dataType 的值会是 &apos;node&apos; 或者 &apos;edge&apos;，表示当前点击在 node 还是 edge 上。
+        // 其他大部分图表中只有一种 data，dataType 无意义。
+        dataType: string,
+
+        // 传入的数据值
+        value: number|Array
+
+        // 数据图形的颜色。当 componentType 为 &apos;series&apos; 时有意义。
+        color: string
+    }
+</code></pre><h4 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h4><pre><code>1、title: 标题（包括主副标题、链接、样式）
+
+2、legend: 标记的区域 （对legend的显隐、宽高、位置、横纵向排列）
+
+3、grid: 图表的网格区域 （是否显示网格、位标、宽高、背景色、边线色）
+
+4、xAxis、yAxis: x、y坐标轴
+
+5、dataZoom: 数据缩放 （）
+
+6、toolTip: 提示信息，鼠标移到数据点浮现的提示信息（）
+
+7、axisPointer:
+
+8、toolBox: 工具栏 （导出图表、数据视图、动态类型切换、缩放、重置）
+
+9、series: 系列列表（来决定图表的类型、图表的数据）
+
+10、color: 图表每一项的颜色
+
+11、background: 图表背景色
+
+12、textStyle: 文本样式
+
+13、animate: 是否开启动画
+
+----- 组件 -------
+
+14、timeline: 时间轴组件
+
+15、graphic: 原生图形元素组件
+
+16、calendar: 日历坐标组件
+
+17、brush: 区域选择组件
+
+18、geo: 地理坐标系组件
+
+19、parallel: 平行坐标系
+
+20、parallelAxis: 这个组件是平行坐标系中的坐标轴
+
+21、singleAxis: 单轴。可以被应用到散点图中展现一维数据
+</code></pre><h4 id="series对象"><a href="#series对象" class="headerlink" title="series对象"></a>series对象</h4><pre><code>type: 展示图表的类型
+
+name: 名称
+
+label: 图形上文本标签的控制（show、position、offset、formatter、）
+
+    formatter可以是字符串也可以是函数 
+
+        字符串模板，模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+
+        formatter: &apos;{b}: {c}&apos;
+
+        label:{
+            normal:{
+                formatter: function(data){            // callback
+                    return data.percent + &apos;%&apos;;
+                }
+            }
+        }, 
+
+        params:
+        {
+            componentType: &apos;series&apos;,
+            // 系列类型
+            seriesType: string,
+            // 系列在传入的 option.series 中的 index
+            seriesIndex: number,
+            // 系列名称
+            seriesName: string,
+            // 数据名，类目名
+            name: string,
+            // 数据在传入的 data 数组中的 index
+            dataIndex: number,
+            // 传入的原始数据项
+            data: Object,
+            // 传入的数据值
+            value: number|Array,
+            // 数据图形的颜色
+            color: string,
+
+            // 百分比
+            percent: number,
+
+        }
+
+labelLine: 图形上图形与文本之间连接线的控制
+
+data: 数据
+
+center: 饼图中心坐标
+
+radius: 半径
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://echarts.baidu.com/echarts2/doc/doc.html#Title" target="_blank" rel="noopener">http://echarts.baidu.com/echarts2/doc/doc.html#Title</a><br><a href="http://echarts.baidu.com/gallery/editor.html" target="_blank" rel="noopener">http://echarts.baidu.com/gallery/editor.html</a>   在线编辑</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/24/EChart图表插件/" data-id="cjdu4wpur0005chwrnm0gtl8b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端插件类/">前端插件类</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/08/前端插件收集/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          收集插件和工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/06/Nginx服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nginx</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

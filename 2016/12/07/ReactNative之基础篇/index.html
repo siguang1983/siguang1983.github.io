@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>React Native之基础篇 | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React Native 介绍一、Native的类别      React Native 编译后是原生应用，v0.22.0热更新hot reloading      Hybrid  混合应用      phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题   二、实时加载（Live Reload）和热">
+<meta name="keywords" content="React Native">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native之基础篇">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/07/ReactNative之基础篇/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="React Native 介绍一、Native的类别      React Native 编译后是原生应用，v0.22.0热更新hot reloading      Hybrid  混合应用      phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题   二、实时加载（Live Reload）和热">
+<meta property="og:image" content="http://siguang1983.github.io/2016/12/07/ReactNative之基础篇/images/lifecycle.png">
+<meta property="og:updated_time" content="2017-08-19T09:36:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Native之基础篇">
+<meta name="twitter:description" content="React Native 介绍一、Native的类别      React Native 编译后是原生应用，v0.22.0热更新hot reloading      Hybrid  混合应用      phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题   二、实时加载（Live Reload）和热">
+<meta name="twitter:image" content="http://siguang1983.github.io/2016/12/07/ReactNative之基础篇/images/lifecycle.png">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ReactNative之基础篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/07/ReactNative之基础篇/" class="article-date">
+  <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React Native之基础篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="React-Native-介绍"><a href="#React-Native-介绍" class="headerlink" title="React Native 介绍"></a>React Native 介绍</h4><pre><code>一、Native的类别
+
+    React Native 编译后是原生应用，v0.22.0热更新hot reloading
+
+    Hybrid  混合应用
+
+    phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题
+
+
+二、实时加载（Live Reload）和热加载（Hot Reload）的区别
+
+    http://www.jianshu.com/p/1fa6e9c0799f
+
+    Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+
+    Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+
+三、React Native 应用部署/热更新 codePush
+
+    http://blog.csdn.net/fengyuzhengfan/article/details/52003798
+</code></pre><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、安装 XCode
+
+    $ xcode-select --install  检查xcode是否安装, 如果未安装会出现提示
+
+    android 下载 android studio  https://developer.android.google.cn/index.html
+
+
+2、安装 homebrew
+
+    用于包管理，与npm类似
+
+    $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+    $ sudo chown -R `whoami` /usr/local   解决/usr/local目录不可写的权限问题  
+
+    Homebrew将工具安装到 /usr/local/Cellar 目录中，并在 /usr/local/bin 中创建符号链接。
+
+
+3、安装 watchman 和 flow
+
+    watchman是facebook的开源项目用于监视文件并且记录文件的改动情况
+
+    flow 是js的静态类型检查器，用于找出js代码中的类型错误
+
+    $ brew install watchman
+
+    $ brew install flow
+
+
+4、安装 NodeJS
+
+5、安装 react-native 
+
+    $ npm install -g react-native-cli      // Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载
+
+6、vscode中react-native插件
+</code></pre><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><pre><code>1、创建项目
+
+    $ react-native init 项目名  // 创建项目
+
+    $ react-native run-ios     // 运行 react-native run-ios --simulator &quot;iPhone 4s&quot;  定义模拟器类型
+
+        或者在ios目录 AwesomeProject.xcodeproj  双击打开
+
+
+2、查看命令
+
+    $ react-native -h   所有命令
+
+    $ react-native -v   版本
+
+
+3、安装第三方插件
+
+    $ npm i react-native-elements lodash query-string sha1 react-native-audio react-native-video react-native-image-picker react-native-progress react-native-sk-countdown react-native-swiper react-native-barcodescanner --save
+
+
+4、link 命令
+
+    link的原因：以下组件都是原生开发，wrapper了一层js，因此需要link .a到project中
+
+    $ react-native link
+
+    或 rnpm link     需要先安装rnpm     npm install rnpm -g --save-dev
+
+
+5、模拟器调试技巧
+
+    http://blog.csdn.net/quanqinyang/article/details/52215652  
+
+    # 模拟器打开后可以通过cmd+1/2/3/4来调整窗口大小
+
+    # 模拟器在所有窗口置顶 window -&gt; stay in front
+
+    # ISO cmd + D 打开调试菜单，Android cmd + M
+
+    # comond + T  show Animate 呼出菜单cmd+D会变成慢动画
+
+
+    # Reload 重新bundle代码 cmd + R
+
+    # Debug JS Remotely   调试模式 chrome Developer Tools调试
+
+    # Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+
+    # Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+
+
+    # 警告
+
+        红错误 - console.error(&apos;&apos;)
+
+        关闭警告 - console.disableYellowBox = true;    显示警告 - console.warn(&apos;YellowBox is disabled.&apos;);
+
+    # 日志 - react-native log-ios      react-native log-android
+
+    # chrome开发工具 - debug js Remotely  可以跟进代码
+</code></pre><h4 id="react-native-目录"><a href="#react-native-目录" class="headerlink" title="react-native 目录"></a>react-native 目录</h4><pre><code>.
+├── .DS_Store
+├── .babelrc            // ES6转换的配置
+├── .buckconfig
+├── .flowconfig         // 做js代码类型检查 
+├── .watchmanconfig     // 监听文件改变watchman的配置
+├── .gitattributes
+├── .gitignore          // 对哪些文件被git忽略不显示
+├── node_modules        // 存储资源包    
+├── __tests__
+├── android             // android原生文件目录
+├── ios                 // ios的原生文件目录 运行reactNative会将文件打包到这个目录，然后xcode调用的就是这里的项目文件
+├── app.json
+├── index.android.js    // android文件入口
+├── index.ios.js        // ios文件入口
+├── package.json        // 依赖文件
+└── yarn.lock
+</code></pre><h4 id="AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口"><a href="#AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口" class="headerlink" title="AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口"></a>AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口</h4><pre><code>AppRegistry是js运行RN应用的入口，通过registerComponent()来注册方法
+
+AppRegistry.registerComponent(&apos;项目名&apos;, () =&gt; 入口组件名)  注册入口
+
+AppRegistry.runApplication 来真正运行应用
+</code></pre><h4 id="React-Native-生命周期"><a href="#React-Native-生命周期" class="headerlink" title="React Native 生命周期"></a>React Native 生命周期</h4><pre><code>第一阶段，初始化
+
+    getDefaultProps -&gt; getInitialState -&gt; componentWillMount -&gt; render -&gt; componentDidMount
+
+       获取配置参数        获取初始状态值         通知要开始渲染        渲染       告诉组件已经完成
+
+
+第二阶段，运行阶段 组件运行中
+
+    1、state变化 -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+
+       状态变化    判断组件是否要更新true/false     需要更新就触发           渲染         更新组件
+
+    2、props变化 -&gt; componentWillReceiveProps -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+
+       props变化         属性改变调用             判断组件是否要更新true/false       需要更新就触发        渲染           更新组件
+
+
+第三阶段 卸载
+
+    unmount -&gt; componentWillUnmout -&gt; 结束 
+</code></pre><p><img src="images/lifecycle.png" alt="组件生命周期"></p>
+<h4 id="props、state"><a href="#props、state" class="headerlink" title="props、state"></a>props、state</h4><pre><code>一、props属性: 父组件传值给子组件
+
+    &lt;Greeting name=&apos;Rexxar&apos; /&gt;      父组件调用子组件
+
+    &lt;Text&gt;Hello {this.props.name}!&lt;/Text&gt;   子组件接收
+
+    1、defaultProps定义默认的props
+
+        class Smiple extends Component{
+            static defaultProps = {     // 定义默认props静态属性
+                name: &apos;siguang&apos;
+            }
+
+            static propsTypes = {       // 检测props的类型
+                name: &apos;String&apos;
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        &lt;Text&gt; {this.props.name} &lt;/Text&gt;
+                    &lt;View&gt;
+                )
+            }
+        }
+
+
+二、state状态、setState()改变状态，组件中可以改变的值
+
+    export default class rrdProject extends Component {
+        constructor(props){
+            super(props);
+
+            // 定义state对象
+            this.state = { 
+                showText: &apos;&apos;
+            }
+        }
+
+        // state = {  };     // RN也支持ES7 类的静态属性写法
+
+        render() {
+            return(
+                &lt;View style={styles.container}&gt;
+                    &lt;Text&gt;这里有内容: {this.state.showText}&lt;/Text&gt;
+                &lt;/View&gt;
+            );
+        }
+    }
+</code></pre><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><pre><code>通过ref来获取真实的DOM
+
+import childComponent from &apos;./childComponent&apos;;
+
+class Simple extends Component {
+    clickChild(){
+        var size = this.refs.childRef.getSize();       // 获取childComponent组件的getSize()方法
+    }
+
+    render() {
+        return (
+            &lt;View&gt;
+                &lt;Text&gt;Simple 基本页面&lt;/Text&gt;
+                &lt;button onPress={this.clickChild} title=&quot;点击&quot; /&gt;
+
+                &lt;childComponent ref=&quot;childRef&quot; /&gt;
+            &lt;/View&gt;
+        )
+    }
+}
+</code></pre><h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><pre><code>http://blog.csdn.net/sbsujjbcy/article/details/50017029
+http://www.cnblogs.com/wonyun/p/5481134.html
+
+1、直接写样式
+
+    &lt;View style={{width: 193, height: 110}}&gt;&lt;/View&gt;     {{}} 两个括号可以直接写样式
+    &lt;View style={styles.red}&gt;&lt;/View&gt;                    {} 一个括号需要来调用样式类
+    const styles = StyleSheet.create({
+        red: {
+            color: red
+        }
+    })
+
+2、写多个样式
+
+    &lt;Text style={[styles.btn, styles.color]}&gt;立即体验&lt;/Text&gt;
+
+    // 支持表达式
+    &lt;Text style={[styles.btn, styles.color &amp;&amp; this.props.dotColor]}&gt;立即体验&lt;/Text&gt;
+
+
+2、styleSheet.create({}) 定义样式
+
+    const styles = StyleSheet.create({
+        rootView:{
+            height: &apos;100%&apos;,
+            width: &apos;100%&apos;,
+            backgroundColor: &apos;#eff0f3&apos;
+        },
+        big: {
+            color: &apos;blue&apos;,
+            fontSize: 30
+        }
+    })
+    &lt;View style={styles.rootView}&gt;      // 多个样式 style={[styles.rootView, styles.big]}
+        &lt;Text&gt;REACT NATIVE ELEMENTS&lt;/Text&gt;
+    &lt;/View&gt;
+
+
+3、颜色支持
+
+    &apos;#ccc&apos;、 &apos;rgba(0,0,0,.4)&apos;、 &apos;transparent&apos;、 &apos;red&apos;
+
+
+4、RN样式与css样式的异同
+
+    View类型div，会默认占用窗口的100%宽度
+
+    绝对定位和相对定位不需要父元素设置positioin，也没有zIndex配置
+
+    不能将RN的inline元素设置maginTop、marginBottom
+
+    样式继承只存在Text元素内的Text元素
+
+        &lt;Text style={{color:'red'}}&gt;
+             &lt;Text&gt;父：我是white还是red{&apos;\n&apos;}
+                 &lt;Text&gt;子：那我是神马颜色&lt;/Text&gt;
+             &lt;/Text&gt;
+       &lt;/Text&gt;
+</code></pre><h4 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h4><pre><code>直接给组件指定宽、高   &lt;View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} /&gt;
+http://www.devio.org/2016/08/01/Reac-Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/#和而不同
+
+一、父视图属性:
+
+    1、flexDirection(&apos;row&apos;, &apos;column&apos;,&apos;row-reverse&apos;,&apos;column-reverse&apos;)- 布局子元素的排列方向，默认是column不是row
+
+        &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;
+            &lt;View style={{flex:1, height: 50, backgroundColor: 'powderblue'}} /&gt;
+            &lt;View style={{flex:2, height: 50, backgroundColor: 'skyblue'}} /&gt;
+            &lt;View style={{flex:3, height: 50, backgroundColor: 'steelblue'}} /&gt;
+        &lt;/View&gt;
+
+        重要:  
+            &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;  
+            父组件没设置flexDirection=row，默认布局为列，子组件设置flex:1是没用的，子组件只能设置width
+            父组件设置为flexDirection=row，子组件可以设置flex:1
+
+    2、flexWrap (&apos;wrap&apos;, &apos;nowrap&apos;) - 定义子元素是否允许多行排列
+
+    3、justifyContent (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;space-between&apos;, &apos;space-around&apos;) - 定义子元素如何对齐
+
+    4、alignItems (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 定义子元素在侧轴对齐的
+
+
+    justifyContent - 子元素沿主轴的排列方式
+
+        justifyContent: flex-start、center、flex-end、space-around以及space-between
+        &lt;View style={{ flex: 1,  flexDirection: 'row' justifyContent: center}}&gt;
+
+    alignItems - 
+
+
+二、子视图属性：
+
+    1、alignSelf (&apos;auto&apos;, &apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 
+
+    2、flex - 
+</code></pre><h4 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h4><pre><code>RN里网络请求分为: Fetch、WebSocket、XMLHttpRequest
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>onPress: 点击
+
+onLongPress: 长按
+
+maximumZoomScale和minimumZoomScale: 双指缩放
+
+http://reactnative.cn/docs/0.42/panresponder.html
+</code></pre><h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><pre><code>1、LayoutAnimation 用于全局的布局动画
+
+2、Animated 用于创建更精细的交互控制的动画
+
+    Animated 封装了四个可以动画的组件: View、Text、Image和ScrollView
+
+    start/stop 方法来控制动画按顺序执行
+</code></pre><h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><pre><code>setTimeout, clearTimeout
+setInterval, clearInterval
+setImmediate, clearImmediate
+requestAnimationFrame, cancelAnimationFrame
+</code></pre><h4 id="RN与原生通信"><a href="#RN与原生通信" class="headerlink" title="RN与原生通信"></a>RN与原生通信</h4><pre><code>http://blog.csdn.net/zww1984774346/article/details/71167775
+
+rn与IOS原生通信的三部分
+
+    1、属性        2、原生模块      3、原生UI组件封装
+
+    原生要写到AppDelegate.m文件中
+
+    # 属性是最简单的跨组件通信，从原生组件传递属性到React Native 或 React Native到原生组件
+
+        原生中添加imageList:
+
+            NSArray *imageList = @[@&quot;https://facebook.github.io/react/img/logo_og.png&quot;,
+                        @&quot;https://facebook.github.io/react/img/logo_og.png&quot;];
+
+            NSDictionary *props = @{@&quot;images&quot; : imageList};
+
+            RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                        moduleName:@&quot;AwesomeProject&quot;
+                                        initialProperties:props             // 这里initialProperties:props]传递给RN
+                                        launchOptions:launchOptions];
+
+        RN中接收与props传值一样:
+
+            &lt;View&gt;
+                {
+                    this.props.images.map(function(items){
+                        return &lt;Image 
+                            source={{uri:items}} 
+                            style={{width:100,height:100}}&gt;&lt;/Image&gt; 
+                    })
+                }
+            &lt;/View&gt;
+
+
+1、RN访问OC
+
+    // 创建原生模块实例
+    var NativeModule = require(&apos;react-native&apos;).NativeModules.NativeTest;
+
+    // 调用原生的doSomething()方法
+    NativeModule.doSomething(&apos;ReactNative&apos;);
+
+
+2、OC访问RN
+
+http://www.jianshu.com/p/9d7dbf17daa5
+</code></pre><h4 id="生成测试包"><a href="#生成测试包" class="headerlink" title="生成测试包"></a>生成测试包</h4><pre><code>iOS—最全的真机测试教程   http://www.cocoachina.com/ios/20160711/17004.html
+
+团队开发的Xcode配置和生成包
+
+    xCode -&gt; Preferencse -&gt; Accounts -&gt; + 填加 选择 add apple ID 将账号和密码输入
+
+    点击工程目录 -&gt; General 
+        -&gt; Identity面板下的 Bundle Identifler 填写权限 “com.ucredit.paydayloan” 
+        -&gt; 在 Signing面板中的 Team 中选择&quot;ZhongChengXingyu of......&quot;
+
+    将手机与mac连接，将Device选择当前手机设备，点击 运行，写读取设备成功后，在运行一次这次是执行build
+</code></pre><h4 id="原生组件"><a href="#原生组件" class="headerlink" title="原生组件"></a>原生组件</h4><pre><code>两种方法加载原生组件
+
+1、react-native link 命令
+
+    不仅会将第三方模块的原生组件代码链接入 Android/IOS 中，还会将字体等文件移动相应的目录中
+
+2、通过Xcode来导入组件
+
+    http://www.cnblogs.com/shaoting/p/6148085.html
+
+3、Flow
+
+    Flow是 Facebook出品的表态类型语言，可以将RN内部也支持ES 7的类属性的写法
+
+        // 就可以不用在象ES 6将静态属性写到constructor中
+        class MyComponent extends Component {
+            constructor(props){
+                super(props);
+
+                // 私有属性
+                this.isField = 1;   
+                // state
+                this.state = {
+                    username: &apos;siguang&apos;
+                }
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        {this.username}
+                    &lt;/View&gt;
+                )
+            }
+        }
+
+        class MyComponent extends Component {
+            isField = 1;
+            state = {
+                username: &apos;siguang&apos;
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        {this.usernmae}
+                    &lt;/View&gt;
+                )
+            }
+        }
+</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><pre><code>1、Command+R  重新刷新
+
+2、Command+D  打开菜单 
+
+3、Debug JS Remotely 用chrome浏览器调试,Alt+Command+j出现浏览器debug窗口
+
+4、Disable Live Reload 时实刷新，代码修改保存后会就刷新
+
+5、show Perf Monitor 打开FPS监控器
+
+6、show Inspector 用于查看页面结构及属性
+</code></pre><p>XCode装证书<br><a href="http://www.cocoachina.com/ios/20160711/17004.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160711/17004.html</a></p>
+<p>| 相关文章<br>| <a href="https://github.com/jondot/awesome-react-native#videos" target="_blank" rel="noopener">https://github.com/jondot/awesome-react-native#videos</a><br>| <a href="http://reactnative.cn/docs/0.44/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.44/getting-started.html</a><br>| <a href="http://www.devio.org/" target="_blank" rel="noopener">http://www.devio.org/</a><br>| <a href="https://github.com/crazycodeboy/RNStudyNotes/" target="_blank" rel="noopener">https://github.com/crazycodeboy/RNStudyNotes/</a><br>| <a href="http://blog.csdn.net/quanqinyang/article/details/52215652" target="_blank" rel="noopener">http://blog.csdn.net/quanqinyang/article/details/52215652</a>   调试方法<br>| <a href="http://lib.csdn.net/base/reactnative/structure" target="_blank" rel="noopener">http://lib.csdn.net/base/reactnative/structure</a><br>| <a href="http://www.jianshu.com/p/5b185df2d11a" target="_blank" rel="noopener">http://www.jianshu.com/p/5b185df2d11a</a><br>| <a href="http://www.lcode.org/react-native/" target="_blank" rel="noopener">http://www.lcode.org/react-native/</a><br>| <a href="http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3" target="_blank" rel="noopener">http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3</a><br>| <a href="http://lib.csdn.net/article/reactnative/63268" target="_blank" rel="noopener">http://lib.csdn.net/article/reactnative/63268</a>   打包到真机<br>|<br>| 示例<br>| <a href="https://github.com/react-native-community" target="_blank" rel="noopener">https://github.com/react-native-community</a><br>| <a href="https://github.com/ljunb/react-native-iShiWuPai" target="_blank" rel="noopener">https://github.com/ljunb/react-native-iShiWuPai</a>       示例<br>| <a href="https://github.com/sunnylqm" target="_blank" rel="noopener">https://github.com/sunnylqm</a><br>| <a href="https://github.com/DoctorQ/react-native-helloworld" target="_blank" rel="noopener">https://github.com/DoctorQ/react-native-helloworld</a><br>|<br>| <a href="http://blog.csdn.net/liu__520/article/category/6460088" target="_blank" rel="noopener">http://blog.csdn.net/liu__520/article/category/6460088</a><br>| <a href="http://www.devio.org/tags/#React" target="_blank" rel="noopener">http://www.devio.org/tags/#React</a> Native<br>|</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/07/ReactNative之基础篇/" data-id="cjdu4wpws001kchwr6e3qeeua" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native/">React Native</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/07/Linux命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/07/金融类/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">金融类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

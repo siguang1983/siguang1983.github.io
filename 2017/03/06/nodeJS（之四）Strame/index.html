@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>nodeJS（之一）Stream | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="| createReadStream() - 创建可读流| createWriteStream() - 创建可写流| setEncodeing() - 设置编码|  StreamStream把较大的数据，拆分成小的部分  读取文件的两种: fs.readFile()和fs.createReadStream()  stream提供了以下四种类型的流：      var Stream = requir">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS（之一）Stream">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/06/nodeJS（之四）Strame/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| createReadStream() - 创建可读流| createWriteStream() - 创建可写流| setEncodeing() - 设置编码|  StreamStream把较大的数据，拆分成小的部分  读取文件的两种: fs.readFile()和fs.createReadStream()  stream提供了以下四种类型的流：      var Stream = requir">
+<meta property="og:updated_time" content="2017-11-06T09:27:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="nodeJS（之一）Stream">
+<meta name="twitter:description" content="| createReadStream() - 创建可读流| createWriteStream() - 创建可写流| setEncodeing() - 设置编码|  StreamStream把较大的数据，拆分成小的部分  读取文件的两种: fs.readFile()和fs.createReadStream()  stream提供了以下四种类型的流：      var Stream = requir">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,106 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-nodeJS（之四）Strame" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/06/nodeJS（之四）Strame/" class="article-date">
+  <time datetime="2017-03-06T02:43:21.000Z" itemprop="datePublished">2017-03-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      nodeJS（之一）Stream
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <p>| createReadStream() - 创建可读流<br>| createWriteStream() - 创建可写流<br>| setEncodeing() - 设置编码<br>| </p>
+<h4 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h4><pre><code>Stream把较大的数据，拆分成小的部分
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+读取文件的两种: fs.readFile()和fs.createReadStream()
+
+stream提供了以下四种类型的流：
+
+    var Stream = require(&apos;stream&apos;);
+
+    var Readable = Stream.Readable;
+    var Writable = Stream.Writable;
+    var Duplex = Stream.Duplex;
+    var Transform = Stream.Transform;
+</code></pre><h4 id="createReadStream-、createWriteStream"><a href="#createReadStream-、createWriteStream" class="headerlink" title="createReadStream()、createWriteStream()"></a>createReadStream()、createWriteStream()</h4><pre><code>// 创建一个Readable对象以读取bigFile内容
+// 如果使用fs.readFile()可以会由于文件过大而失败
+fs.createReadStream(bigFile);
+</code></pre><h4 id="setEncodeing-设置编码"><a href="#setEncodeing-设置编码" class="headerlink" title="setEncodeing() 设置编码"></a>setEncodeing() 设置编码</h4><pre><code>var readerStream = fs.createReadStream(&apos;input.txt&apos;);
+
+readerStream.setEncodeing(&apos;UTF8&apos;);
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>可读数据流的事件
+
+    readable 数据向外流时触发
+
+    data 对于那些没有显式暂停的数据流，添加data事件监听函数，会将数据流切换到流动态，尽快向外提供数据
+
+    end 读取完数据时触发。注意不能和 writeableStream.end() 混淆，writeableStream 并没有 end 事件，只有 .end() 方法
+
+    close 数据源关闭时触发
+
+    error 读取数据发生错误时触发
+
+
+可写数据流的事件
+
+    drain writable.write(chunk) 返回 false 之后，缓存全部写入完成，可以重新写入时就会触发
+
+    finish 调用 .end 方法时，所有缓存的数据释放后触发，类似于可读数据流中的 end 事件，表示写入过程结束
+
+    pipe 作为 pipe 目标时触发
+
+    unpipe 作为 unpipe 目标时触发
+
+    error 写入数据发生错误时触发
+</code></pre><p>| <a href="https://cnodejs.org/topic/570b1fa494b38dcb3c09a7f8" target="_blank" rel="noopener">https://cnodejs.org/topic/570b1fa494b38dcb3c09a7f8</a><br>| <a href="http://fe.meituan.com/stream-basics.html" target="_blank" rel="noopener">http://fe.meituan.com/stream-basics.html</a></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/06/nodeJS（之四）Strame/" data-id="cjdu4wpxr002schwrd9r3o593" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/02/mongoose/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mongoose
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/04/nodeJS（之三）Buffer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS (之三) Buffer</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

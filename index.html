@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
@@ -61,10 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-微信小程序、公众号开发" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/02/19/hello-world/" class="article-date">
-  <time datetime="2018-02-19T11:08:03.000Z" itemprop="datePublished">2018-02-19</time>
+    <a href="/2017/10/23/微信小程序、公众号开发/" class="article-date">
+  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">2017-10-23</time>
 </a>
     
   </div>
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/19/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
     </h1>
   
 
@@ -83,22 +83,3331 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h4 id="基础问题"><a href="#基础问题" class="headerlink" title="基础问题"></a>基础问题</h4><pre><code>一、appleID的获取
+
+    https://mp.weixin.qq.com/wxopen/basicprofile?action=index&amp;token=767275273&amp;lang=zh_CN
+
+    在开发设置选项 =&gt; AppID(小程序ID)
+</code></pre><h4 id="基础配置、文件类型"><a href="#基础配置、文件类型" class="headerlink" title="基础配置、文件类型"></a>基础配置、文件类型</h4><pre><code>一、文件类型
+
+    app.js 脚本文件、app.json 配置文件、app.wxml页面结构、app.wxss样式文件
+
+二、app.json配置
+
+    {
+        // 页面路径
+        &quot;pages&quot;: [
+            &quot;pages/index/index&quot;,
+            &quot;pages/logs/index&quot;
+        ],
+        // 默认页面窗口表现
+        &quot;window&quot;: {
+            &quot;navigationBarTitleText&quot;: &quot;Demo&quot;
+        },
+        // 底部tab的表现
+        &quot;tabBar&quot;: {
+            &quot;list&quot;: [{
+            &quot;pagePath&quot;: &quot;pages/index/index&quot;,
+            &quot;text&quot;: &quot;首页&quot;
+            }, {
+            &quot;pagePath&quot;: &quot;pages/logs/logs&quot;,
+            &quot;text&quot;: &quot;日志&quot;
+            }]
+        },
+        // 设置网络超时时间
+        &quot;networkTimeout&quot;: {
+            &quot;request&quot;: 10000,
+            &quot;downloadFile&quot;: 10000
+        },
+        // 是否开启debug模式
+        &quot;debug&quot;: true
+    }
+
+    https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html         // 各类别配置
+</code></pre><h4 id="App-js-主函数"><a href="#App-js-主函数" class="headerlink" title="App.js 主函数"></a>App.js 主函数</h4><pre><code>一、事件
+
+    1、onLaunch - 监听小程序初始化，初始化完成会触发onLaunch
+
+    2、onShow - 监听小程序显示，小程序启动、从后台进入前台显示，触发onShow
+
+    3、onHide - 监听小程序隐藏，从前台进入后台，会触发onHide
+
+    4、onError - 错误监听，脚本错误或api调用失败触发
+
+
+二、onLaunch和onShow的参数 
+
+    App({
+        onLaunch: function (path) {
+            console.log(path);
+        }
+    })
+
+    1、path - String    打开小程序的路径
+
+    2、query - Object 打开小程序的query
+
+    3、scene - Number 打开小程序的场景值
+
+    4、shareTicket - String    shareTicket，详见 获取更多转发信息
+
+    5、referrerInfo - Object    当场景为由从另一个小程序或公众号或App打开时，返回此字段
+
+        返回值:
+            1020    公众号 profile 页相关小程序列表    返回来源公众号 appId
+            1035    公众号自定义菜单    返回来源公众号 appId
+            1036    App 分享消息卡片    返回来源应用 appId
+            1037    小程序打开小程序    返回来源小程序 appId
+            1038    从另一个小程序返回    返回来源小程序 appId
+            1043    公众号模板消息    返回来源公众号 appId
+
+    6、referrerInfo.appId - String 来源小程序或公众号或App的 appId，详见下方说明
+
+    7、referrerInfo.extraData - Object 来源小程序传过来的数据，scene=1037或1038时支持
+
+
+三、getApp() 全局函数用来获取小程序实例
+
+    var appInstance = getApp();
+
+    app.globalData.userInfo;        // 获取当前用户信息
+</code></pre><h4 id="Page-用来注册一个页面"><a href="#Page-用来注册一个页面" class="headerlink" title="Page() 用来注册一个页面"></a>Page() 用来注册一个页面</h4><pre><code>指定页面的初始数据、生命周期、事件处理
+
+一、生命周期
+
+    onLoad: 页面加载，一个页面只会调用一次
+
+    onShow: 页面显示 
+
+    onReady: 页面初次渲染完成
+
+    onHide: 页面隐藏
+
+    onUnload: 页面卸载
+
+    /** 生命周期函数--监听页面加载 **/
+    onLoad: function (options) {
+        console.log(options);
+    },
+
+    /** 生命周期函数--监听页面初次渲染完成 **/
+    onReady: function () {
+
+    },
+
+    /** 生命周期函数--监听页面显示 **/
+    onShow: function () {
+
+    },
+
+    /** 生命周期函数--监听页面隐藏 **/
+    onHide: function () {
+
+    },
+
+    /** 生命周期函数--监听页面卸载 **/
+    onUnload: function () {
+
+    },
+
+    /** 页面相关事件处理函数--监听用户下拉动作 **/
+    onPullDownRefresh: function (e) {
+        this.setData({
+            updata: JSON.stringify(e)
+        })
+        console.log(e)
+    },
+
+    /** 页面上拉触底事件的处理函数 **/
+    onReachBottom: function (e) {
+        this.setData({
+            updata: JSON.stringify(e)
+        })
+        console.log(e)
+    },
+
+    /** 用户点击右上角分享 **/
+    onShareAppMessage: function () {
+
+    }
+
+
+二、事件方法
+
+    data - 页面初始数据, WXML中调用 {{test}}
+
+    onload - 监听页面加载
+
+    onReady - 监听页面初次渲染完成
+
+    onShow - 监听页面显示
+
+    onHide - 监听页面隐藏
+
+    onUnload - 监听页面卸载
+
+    onPullDowRefesh - 监听用户下拉动作
+
+    onReachBottom - 上拉触底事件
+
+    onShareAppMessage - 用户点击右上角转发
+
+        onShareAppMessage: function () {
+            return {
+            title: &apos;自定义转发标题&apos;,
+            path: &apos;/page/user?id=123&apos;
+            }
+        }
+
+    onPageScroll - 页面滚动触发
+
+
+三、绑定事件
+
+    &lt;view bindTap=&quot;viewTap&quot;&gt;click me&lt;/view&gt;
+
+    Page({
+        data:{
+            message: &apos;view tap&apos;
+        },
+        viewTap: () =&gt; {
+            console.log(this.message)
+        }
+    })
+
+
+四、Page.prototype.route - 获取当前页面的路径
+
+五、Page.prototype.setData() - 用于将数据从逻辑层发送到视图层，同时改变对应的this.data的值
+
+    Page({
+        data:{
+            username: &apos;siguang&apos;
+        }
+        login: ()=&gt;{
+            this.setData({
+                username: &apos;lulu&apos;
+            })
+        }
+    })
+</code></pre><h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><pre><code>所有页面的路由全部由框架管理
+
+一、页面栈
+
+    1、初始化 - 新页面入栈
+
+    2、打开新页面 - 新页面入栈。  调用 API wx.navigateTo 或使用组件 &lt;navigator open-type=&quot;navigateTo&quot;/&gt;
+
+    3、页面重定向 - 当前页面出栈，新页面入栈。  调用 API wx.redirectTo 或使用组件 &lt;navigator open-type=&quot;redirectTo&quot;/&gt;
+
+    4、页面返回 - 页面不断出栈，直到目标返回页，新页面入栈。 调用 API wx.navigateBack 或使用组件&lt;navigator open-type=&quot;navigateBack&quot;&gt;或用户按左上角返回按钮
+
+    5、Tab - 切换    页面全部出栈，只留下新的 Tab 页面。 调用 API wx.switchTab 或使用组件 &lt;navigator open-type=&quot;switchTab&quot;/&gt; 或用户切换 Tab
+
+    6、重加载 - 页面全部出栈，只留下新的页面。 调用 API wx.reLaunch 或使用组件 &lt;navigator open-type=&quot;reLaunch&quot;/&gt;
+
+    Example:
+        bindViewTap: function() {
+            wx.navigateTo({
+                url: &apos;../logs/logs&apos;
+            })
+        }
+
+二、getCurrentPages() 获取当前页面的栈的实例
+
+三、Tips
+
+    navigateTo, redirectTo 只能打开非 tabBar 页面。
+    switchTab 只能打开 tabBar 页面。
+    reLaunch 可以打开任意页面。
+</code></pre><h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><pre><code>一、全局变量和方法
+
+    全局方法通过 getApp()获取全局的应用实例
+
+    全局数据设置:
+
+        App({
+            globalData: 1
+        })
+
+
+二、模块化
+
+    1、导出
+
+        module.exports 或 exports对外暴露接口, exports是module.exports的一个引用
+
+        小程序不支持直接引入node_modules, 如果需要就将代码拷到目录中
+
+        // common.js
+        function sayHello(name){
+            console.log(`Hello ${name}`);
+        }
+
+        module.exports.sayHello = sayHello;
+
+
+    2、引用
+
+        conmmon = require(&apos;common.js&apos;);
+        Page({
+            helloMina: () =&gt;{
+                common.sayHello(&apos;mina&apos;);
+            }
+        })
+</code></pre><h4 id="视图层"><a href="#视图层" class="headerlink" title="视图层"></a>视图层</h4><pre><code>视图层WXMWXSS编写, 由组件进行展示
+
+一、WXML
+
+    1、数据绑定
+
+        普通绑定: &lt;view&gt;{{message}}&lt;/view&gt;
+
+        属性绑定: &lt;view id=&quot;item-{{id}}&quot;&gt; &lt;/view&gt;
+
+        控制属性: &lt;view wx:if=&quot;{{condition}}&quot;&gt; &lt;/view&gt;
+
+
+    2、循环渲染
+
+        // 注意这里取到当前数据要用item
+        &lt;view wx:for=&quot;{{arr}}&quot;&gt;{{item}}&lt;/view&gt;
+
+        数组下标:
+            &lt;view wx:for=&quot;{{arr}}&quot;&gt;
+                姓名:{{item.name}} 年龄:{{item.age}} 序号:{{index}}
+            &lt;/view&gt;
+
+            两者相同
+            &lt;view wx:for=&quot;{{arr}}&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;itemName&quot;&gt;
+                姓名:{{itemName.name}} 年龄:{{itemName.age}} 序号:{{idx}}
+            &lt;/view&gt;
+
+
+    3、条件渲染
+
+        &lt;view wx:if=&quot;{{view == 'webView'}}&quot;&gt;web view&lt;/view&gt;
+        &lt;view wx:elif=&quot;{{view == 'app'}}&quot;&gt;app&lt;/view&gt;
+        &lt;view wx:else=&quot;{{view == 'mina'}}&quot;&gt;mina&lt;/view&gt;
+
+        Page({
+            data: {
+                view: &apos;app&apos;
+            }
+        })
+
+
+    4、模板
+
+        name: 模板名    is: 所要调用的模板名    data: 传入的数据
+
+        &lt;template name=&quot;staffName&quot;&gt;
+            &lt;view&gt;
+                FirstName: {{firstName}}, lastName: {{lastName}}
+            &lt;/view&gt;
+        &lt;/template&gt;
+
+        &lt;template is=&quot;staffName&quot; data=&quot;{{...staffA}}&quot;&gt;&lt;/template&gt;
+        &lt;template is=&quot;staffName&quot; data=&quot;{{...staffB}}&quot;&gt;&lt;/template&gt;
+
+        Page({
+            data: {
+                staffName: {fristName: &apos;sigunag&apos;, lastName: &apos;haha&apos;},
+                staffName: {fristName: &apos;yuwan&apos;, lastName: &apos;lulu&apos;},
+            }
+        })
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>&lt;view bindtap=&quot;add&quot;&gt;{{count}}&lt;/view&gt;
+
+Page({
+    data: {
+        count: 1
+    },
+    add: (event)=&gt;{
+        this.setData({
+            count: this.data.count++
+        })
+    }
+})
+
+一、事件分类
+
+    分为冒泡事件和非冒泡事件
+
+    冒泡事件:  bindtouchstart 前面加bind
+
+        touchstart    手指触摸动作开始    
+        touchmove    手指触摸后移动    
+        touchcancel    手指触摸动作被打断，如来电提醒，弹窗    
+        touchend    手指触摸动作结束    
+        tap    手指触摸后马上离开    
+        longpress    手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发    1.5.0
+        longtap    手指触摸后，超过350ms再离开（推荐使用longpress事件代替）    
+        transitionend    会在 WXSS transition 或 wx.createAnimation 动画结束后触发    
+        animationstart    会在一个 WXSS animation 动画开始时触发    
+        animationiteration    会在一个 WXSS animation 一次迭代结束时触发    
+        animationend    会在一个 WXSS animation 动画完成时触发
+
+    事件绑定和冒泡:
+
+        bind 不会阻止冒泡事件向上冒泡，bindtap
+        catch 可以阻止冒泡事件向上冒泡。catchtap
+
+    事件捕获:
+
+        捕获阶段监听事件时，采用capture-bind、capture-catch关键字, 后者将中断捕获阶段和取消冒泡
+
+    事件对象:
+
+        baseEvent对象
+
+
+二、view、block标签
+
+    view 渲染单独一行类似块元素
+
+    block 渲染成内联元素
+</code></pre><h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><pre><code>提供两种引用方法import 和 include
+
+一、import 引用外部的&lt;template&gt;模板
+
+    &lt;!-- item.wxml --&gt;
+    &lt;template name=&quot;item&quot;&gt;
+        &lt;text&gt;{{text}}&lt;/text&gt;
+    &lt;/template&gt;
+
+    &lt;!--  index.wxml  --&gt;
+    &lt;import src=&quot;item.wxml&quot;/&gt;
+    &lt;template is=&quot;item&quot; data=&quot;{{text: 'forbar'}}&quot;/&gt;
+
+
+二、include 引用非&lt;template&gt;模板的文件，公用的头尾等
+
+    &lt;!-- index.wxml --&gt;
+    &lt;include src=&quot;header.wxml&quot;/&gt;
+    &lt;view&gt; body &lt;/view&gt;
+    &lt;include src=&quot;footer.wxml&quot;/&gt;
+
+    &lt;!-- header.wxml --&gt;
+    &lt;view&gt; header &lt;/view&gt;
+
+    &lt;!-- footer.wxml --&gt;
+    &lt;view&gt; footer &lt;/view&gt;
+</code></pre><h4 id="WXSS-样式语言"><a href="#WXSS-样式语言" class="headerlink" title="WXSS 样式语言"></a>WXSS 样式语言</h4><pre><code>尺寸单位: rex, 可以根据屏幕宽度自行自适应
+
+一、样式导入
+
+    @import &apos;common.wxss&apos;
+    .middle-p {
+        padding: 15px;
+    }
+
+二、内联样式
+    data: {
+        color: &apos;#ddd&apos;
+    }
+    &lt;view style=&quot;color: {{color}}&quot;&gt;
+
+    &lt;view class=&quot;middle-p&quot;&gt;        // 多个class使用空格分隔
+
+三、全局、局部样式
+
+    定义在app.wxss中的样式为全局
+
+    每个页的wxss为局部
+</code></pre><h4 id="WXS-脚本"><a href="#WXS-脚本" class="headerlink" title="WXS 脚本"></a>WXS 脚本</h4><pre><code>小程序自己的一套脚本语言, 可以直接编写到WXML中, 也可以单独写成一个.wxs文件
+
+一、写到wxml中
+
+    &lt;!-- index.wxml&gt;
+    &lt;wxs module=&quot;m1&quot;&gt;
+        var msg = &apos;hello world&apos;;
+        module.exports.message = msg
+    &lt;/wxs&gt;
+
+    &lt;view&gt;
+        {{m1.message}}
+    &lt;/view&gt;
+
+二、写成一个.wxs文件
+
+    // pages/comm.wxs
+    // 如果comm.wxs文件中要引用其它的wxs文件使用require,  var tool = require(&apos;./tools.wxs&apos;);
+
+    var foo = &quot;&apos;hello world&apos; from comm.wxs&quot;;
+    var bar = function(d) {
+        return d;
+    }
+    module.exports = {
+        foo: foo,
+        bar: bar
+    };
+
+    // 页面引用
+    &lt;wxs src=&quot;./../tools.wxs&quot; module=&quot;tools&quot; /&gt;
+    &lt;view&gt; {{tools.msg}} &lt;/view&gt;
+</code></pre><h4 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h4><pre><code>小程序两种启动方式:
+
+    冷启动: 用户首次打开或小程序被微信主动销毁后在次打开的情况，
+
+    热启动: 用户已经打开某个小程序，在一定时间内在次打开，此时无需重新启动，只需将后台切换到前台
+</code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><pre><code>网络请求request、文件上传下载uploadFile、webSocket都需要设置指定的服务器
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>wx.getSystemInfo 或者 wx.getSystemInfoSync 获取小程序的基本库版本
+
+wx.canIUse 判断是否可以在该基础库版本下直接使用对应的API或者组件
+</code></pre><h4 id="开发总结"><a href="#开发总结" class="headerlink" title="开发总结"></a>开发总结</h4><pre><code>1、小程序初始指定页面
+
+    app.json中, 调整pages数组的顺序, 第一个就是最先被载入
+
+    &quot;pages&quot;:[
+        &quot;pages/my/my&quot;,
+        &quot;pages/index/index&quot;,
+        &quot;pages/logs/logs&quot;    
+    ]
+
+2、当前页面使用修改标题
+
+    在当前页面下的.json文件中加入
+
+    goods-details.json
+    {
+        &quot;navigationBarTitleText&quot;: &quot;商品详情&quot;
+    }
+
+3、获取元素上的自定义属性值
+
+    1) evt.currentTarget.dataset.propertyindex;        
+
+    2) evt.detail
+
+    &lt;view bindtap=&quot;labelItemTap&quot; data-propertyindex=&quot;{{idx}}&quot;&gt;&lt;/view&gt;        // 注意这里自定义属性需要以&quot;data-&quot;开头，并且不能为大写，如果有大写取值时全部为小写
+
+    js:
+
+    labelItemTap: function(evt){
+        let val = evt.currentTarget.dataset.propertyindex;
+    }
+
+4、在app.json中配置pages的路径会自动创建目录和基本文件这里
+
+    这里注意创建js时候会将生命周期方法和上拉下拉刷新方法全部都创建好，不必重写 onPullDownRefresh()、onReachBottom();
+</code></pre><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><pre><code>如果修改 checkbox 的样式
+
+时间选择器只有时、分，没有秒
+
+slider滑动组件拖动块不能改颜色
+
+小程序下拉刷新不触发 onPullDownRefresh
+</code></pre><h4 id="小程序与RN相比"><a href="#小程序与RN相比" class="headerlink" title="小程序与RN相比"></a>小程序与RN相比</h4><pre><code>小程序布局写法简单，RN的布局比较麻烦
+
+小程序的组件简单，RN组件麻烦，并且IOS和Android兼容
+
+RN可以随意发起网络请求访问数据，小程序需要指定服务器并且需要https协议
+
+RN需要与通过Xcode来进去打包、并且需要在appStor进行发布审核
+
+RN做的app需要到商店下载使用，小程序发布后在微信就可以找到
+</code></pre><p>| <a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html" target="_blank" rel="noopener">http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html</a>        // 公众服务平台所有的sdk<br>| <a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=20171013" target="_blank" rel="noopener">https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=20171013</a>  // 小程序<br>| <a href="https://www.w3cschool.cn/weixinapp/9wou1q8j.html" target="_blank" rel="noopener">https://www.w3cschool.cn/weixinapp/9wou1q8j.html</a><br>| <a href="http://203.195.235.76/jssdk/" target="_blank" rel="noopener">http://203.195.235.76/jssdk/</a>   小程序demo<br>| <a href="https://github.com/gooking/awesome-wechat-weapp" target="_blank" rel="noopener">https://github.com/gooking/awesome-wechat-weapp</a>    微信小程序开发资源汇总</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://siguang1983.github.io/2018/02/19/hello-world/" data-id="cjdu4lobh00006qwrushj1rn7" class="article-share-link">Teilen</a>
+      <a data-url="http://siguang1983.github.io/2017/10/23/微信小程序、公众号开发/" data-id="cjdu4wpxz0038chwr55nwh2cg" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-numjucks模板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/20/numjucks模板/" class="article-date">
+  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">2017-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="numjucks"><a href="#numjucks" class="headerlink" title="numjucks"></a>numjucks</h4><pre><code>numjucks可以用任意扩展名来命名模板名文件，推荐使用&apos;.njk&apos;
+
+$ npm install nunjucks
+
+require(&apos;nunjucks&apos;);
+</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>{{ usernmae }}    {{ foo.bar }}
+</code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>{{ foo | title }}    {{ foo | join(',') }}
+</code></pre><h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><pre><code>定义一个&quot;block&quot;，子模板可以覆盖它
+
+一、Example
+
+    A.html
+
+        {% block header %}{% endblock %}
+
+			<div>
+				aaaa
+			</div>
+
+		B.html
+
+			{% extends 'A.html' %}
+
+			{% block header %}
+				<div>
+					<ul>
+						<li>aaaa</li>
+						<li>bbbb</li>
+						<li>cccc</li>
+					</ul>
+				</div>
+			{% endblock %}
+
+二、super()
+</code></pre><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><pre><code>{% if num > 20 %}
+		<div>
+			大于20显示些内容
+		</div>
+	{% endif %}
+
+
+{% if num > 20 %}
+		<span>大于20</span>
+	{% elif num < 6 %}
+		<span>小于6</span>
+	{% else %}
+		<span>其它</span>
+	{% endif %}
+</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>一、遍历数组
+
+    var items = [{ title: &quot;foo&quot;, id: 1 }, { title: &quot;bar&quot;, id: 2}];
+
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for item in items %}
+				<li> {{item.title}} </li>
+			{% endfor %}
+    &lt;/ul&gt;
+
+二、遍历对象
+
+    var food = {
+        &apos;ketchup&apos;: &apos;5 tbsp&apos;,
+        &apos;mustard&apos;: &apos;1 tbsp&apos;,
+        &apos;pickle&apos;: &apos;0 tbsp&apos;
+    };
+
+    &lt;div&gt;
+        {% for key, value in food %}
+				<p>{{key}} - {{value}}</p>
+			{% endfor %}
+    &lt;/div&gt;
+</code></pre><h4 id="set-设置和修改变量"><a href="#set-设置和修改变量" class="headerlink" title="set 设置和修改变量"></a>set 设置和修改变量</h4><pre><code>let username = &apos;siguang&apos;;
+
+{{ username }}            // siguang
+{% set username = 'lulu' %}
+{{ username }}            // lulu
+</code></pre><h4 id="extends-指定模板继承"><a href="#extends-指定模板继承" class="headerlink" title="extends 指定模板继承"></a>extends 指定模板继承</h4><pre><code>{% extends 'A.html' %}
+
+{% block header %}
+		<div>
+			<ul>
+				<li>aaaa</li>
+				<li>bbbb</li>
+				<li>cccc</li>
+			</ul>
+		</div>
+	{% endblock %}
+</code></pre><h4 id="block-区块"><a href="#block-区块" class="headerlink" title="block 区块"></a>block 区块</h4><pre><code>{% block css %}
+		<link rel="stylesheet" href="app.css">
+	{% endblock %}
+</code></pre><h4 id="include-可以引用的模板"><a href="#include-可以引用的模板" class="headerlink" title="include 可以引用的模板"></a>include 可以引用的模板</h4><pre><code>{% include "item.html" %}
+</code></pre><h4 id="import-加载不同的模板"><a href="#import-加载不同的模板" class="headerlink" title="import 加载不同的模板"></a>import 加载不同的模板</h4><h4 id="filter-区块中内容调用过滤器"><a href="#filter-区块中内容调用过滤器" class="headerlink" title="filter 区块中内容调用过滤器"></a>filter 区块中内容调用过滤器</h4><pre><code>{% filter replace("force", "forth") %}
+		may the force be with you
+	{% endfilter %}
+</code></pre><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><h4 id="去除前后空格"><a href="#去除前后空格" class="headerlink" title="去除前后空格"></a>去除前后空格</h4><pre><code>var str = &apos; sssfsdfs &apos;;
+
+{% -%}
+</code></pre><h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><pre><code>表达式 String、Number、Array、Dicts、Boolean
+
+运算符 +、-、/、//、%、*、**
+
+比较 ==、===、!=、!==、&gt;、&gt;=、&lt;、&lt;=
+
+逻辑 and、or、not   {% if users and showUsers %} ... {% endif %}
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>传入一个函数，在这里可以执行 {{ foo(1,2,3) }}
+</code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>{{ /bar$/g }}
+
+g: 应用到全局
+i: 不区分大小写
+m: 多行模式
+y: 粘性支持（sticky
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://mozilla.github.io/nunjucks/cn/templating.html" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/cn/templating.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/09/20/numjucks模板/" data-id="cjdu4wpxu002wchwrpuosnsoh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板引擎/">模板引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Jade模板" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/20/Jade模板/" class="article-date">
+  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">2017-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="jade介绍、安装"><a href="#jade介绍、安装" class="headerlink" title="jade介绍、安装"></a>jade介绍、安装</h4><pre><code>jade是前后端都可以使用的模板引擎7
+
+1、安装:
+
+    sudo npm i -g jade
+
+
+2、介绍
+
+    元素标签不需要写&lt;&gt;
+
+    子元素与父元素需要换行并tab缩进
+
+    标签与文本需要使用空格来隔开
+
+
+3、jade的缺点
+
+    1）可移植性差
+
+    2）调试困难
+
+    3）性能一般
+
+4、初始阶段开发效率，稳定性成和协作的成本
+</code></pre><h4 id="jade-头尾标签"><a href="#jade-头尾标签" class="headerlink" title="jade 头尾标签"></a>jade 头尾标签</h4><pre><code>&lt;!DOCTYPE&gt;
+html
+    head
+        title ${title}
+
+    body
+        h1 标题内容
+</code></pre><h4 id="命令行编译jade文件"><a href="#命令行编译jade文件" class="headerlink" title="命令行编译jade文件"></a>命令行编译jade文件</h4><pre><code># jade index.jade         // 会将jade文件编译成同级目录的index.html文件，并且是没有代码格式的只有一行
+
+# jade -P index.jade     // 有缩进，可读的格式
+
+# jade -P -w index.jade // 侦听jade文件有变化执行转换的命令
+
+小技巧: 在sublime中打开 index.jade 和 index.html文件, 选择view菜单 -&gt; layout/ columns2 变成两列，将index.html放到另一列中，这样每次保存就可以看到html代码
+</code></pre><h4 id="属性文本和值"><a href="#属性文本和值" class="headerlink" title="属性文本和值"></a>属性文本和值</h4><pre><code>1、class和id
+
+    div.row
+
+    div#row
+
+    div#row.column-samil    // id=&quot;row&quot; class=&quot;column-samil&quot;
+
+    div.rowA.main        // class=&quot;rowA main&quot;
+
+
+2、属性
+
+    a标签的href属性值，和自定义属性和值
+    a(href=&quot;http://haha.com&quot;,
+        title=&quot;jade&quot;,
+            data-uid=&quot;siguang&quot;)
+
+    input(name=&quot;course&quot; type=&quot;check&quot; checked)
+</code></pre><h4 id="混合的文本和标签"><a href="#混合的文本和标签" class="headerlink" title="混合的文本和标签"></a>混合的文本和标签</h4><pre><code>1、如果字符里有点进行处理
+
+    // 不会把.aa解析成 class=&quot;aa&quot; 并且换行,也能写html标签
+    div.row
+        p.
+            1.aa &lt;strong&gt;这里字体加粗&lt;/string&gt;
+            2.bb
+            3.cc 
+            4.dd
+
+    或者
+    div.row
+        p
+            | 1.aa 
+            | 2.bb
+            | 3.cc 
+            | 4.dd
+</code></pre><h4 id="注释和条件注释"><a href="#注释和条件注释" class="headerlink" title="注释和条件注释"></a>注释和条件注释</h4><pre><code>1、单行注释 //
+
+2、不可见的注释 //-
+
+3、块注释        //- 在当前节点的开头
+
+4、条件注释
+
+    &lt;!--[if IE 8]&gt;
+        &lt;html class=&apos;ie8&apos;&gt;
+    &lt;![endif]&gt;
+
+
+    &lt;/html&gt;        // 需要html
+
+
+
+div.row
+    // a(href=&quot;http://haha.com&quot;, title=&quot;siguang&quot;, data-index=&quot;1&quot;) 去主站
+
+    //- input(name=&quot;course&quot; type=&quot;check&quot; checked)
+
+div.row
+//-
+    p.
+        1.aa &lt;strong&gt;这里字体加粗&lt;/string&gt;
+        2.bb
+        3.cc 
+        4.dd
+</code></pre><h4 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h4><pre><code>声明: - var course = &apos;jade&apos;
+
+获取: #{jade}
+
+1、命令行下传值
+    jade index.jade -P -w --obj &apos;{&quot;name&quot;:&quot;siguang&quot;, age: 30}&apos;
+
+    div.row
+        div.column-12
+            姓名: #{name}
+
+        div.column-12
+            年龄: #{age}
+
+2、通过json传值
+
+    jade index.jade -P -O test.json
+
+    test.json
+    {
+        &apos;name&apos;: &apos;siguang&apos;,
+        &apos;age&apos;: 30
+    }
+</code></pre><h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><pre><code>1、将html转成字符串输出
+
+    - var data = &apos;&lt;script&gt;alert(123)&lt;/script&gt;&apos;
+
+    p #{data}
+
+
+2、非转义
+
+    - var data = &apos;&lt;script&gt;alert(123)&lt;/script&gt;&apos;
+
+    p !{data}
+</code></pre><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><pre><code>1、if...else...
+
+    - var isData = true
+    if isData
+        div 对象存在
+    else
+        对象不存在
+
+
+2、case
+
+    - var name = &apos;jade&apos;
+    case name
+        when &apos;java&apos;
+            div java
+
+        when &apos;jade&apos;
+            p hello jad
+
+
+
+3、for 或 each 循环
+
+    - var data = {&apos;name&apos;: &apos;siguang&apos;, &apos;nage&apos;: 30}
+    div.row
+        - for(var key in data)
+            div= key +&apos;=&apos;+data[key]
+
+    each()
+</code></pre><h4 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h4><pre><code>相同结构的内容可以放到mixin中，相同一个函数
+
+1、无参
+    mixin 函数名        // 声明 
+        p 这里是函数的块内容
+        p 这里是函数的块内容
+        p 这里是函数的块内容
+
+    +函数名            // 调用
+
+2、有参
+
+    mixin 函数名(参数)
+        each key in data
+            li= data[key]
+
+    +函数名({username: &apos;siguang&apos;, age: 30});
+</code></pre><h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><pre><code>代码复用
+
+定义一个html的基本结构，内容只写到body中
+
+public.jade
+
+    DOCTYPE html
+    html
+        head
+
+        body
+            block desc
+                p 内容继承
+            block content    // 这里接收内容
+
+
+main.jade
+
+    // 通过extends继承到哪个 jade文件
+    extends public
+
+    block content        // 这里写到哪里
+        div.row
+            p aaaa
+            p aaaa
+            p aaaa
+
+        div.row-b
+            p bbb
+            p bbb
+            p bbb
+</code></pre><h4 id="include-引用"><a href="#include-引用" class="headerlink" title="include 引用"></a>include 引用</h4><pre><code>引用一个jade文件
+
+DOCTYPE html
+html
+    head
+        include head
+
+    body
+        include login
+</code></pre><h4 id="jade-api"><a href="#jade-api" class="headerlink" title="jade api"></a>jade api</h4><pre><code>http的原声写法
+
+1、jade.compile(source, 传值): 返回一个函数来生成html
+
+2、jade.compileFile(path, 传值)
+
+3、jade.compileClient(source, 传值)
+
+4、jade.render(source, 传值):
+
+5、jade.renderFile(jade文件, 传值):
+
+
+compile()示例
+    var http = require(&apos;http&apos;);
+    var jade = require(&apos;jade&apos;);
+
+    var server = http.createServer(function(req, res){
+        res.writeHead(200, {&apos;ContentType&apos;: &apos;text/html&apos;});
+
+        var fn = jade.compile(&apos;div #{course}&apos;, {});
+        var html = fn({course: &apos;jade&apos;});
+
+        res.end(html);
+    })
+
+    server.listen(&apos;8081&apos;, &apos;localhost&apos;)
+
+
+render()示例
+
+    var http = require(&apos;http&apos;);
+    var jade = require(&apos;jade&apos;);
+
+    var server = http.createServer(function(req, res){
+        res.writeHead(200, {&apos;ContentType&apos;: &apos;text/html&apos;});
+        var html = jade.render(&apos;div #{course} #{name}&apos;, {course: &apos;jade&apos;, name: &apos;siguang&apos;});
+        res.end(html);
+    })
+
+    server.listen(&apos;8081&apos;, &apos;localhost&apos;)
+
+
+{pretty:true} 如果不加此属性html会是压缩模式，加上格式化的代码
+</code></pre><h4 id="将html编译成jade文件"><a href="#将html编译成jade文件" class="headerlink" title="将html编译成jade文件"></a>将html编译成jade文件</h4><pre><code>安装: sudo npm install html2jade -g
+
+生成命令: html2jade ./public/index.html &gt; index.jade
+
+在node中转换
+
+var html2jade = require(&apos;html2jade&apos;);
+
+html2jade.convertDocument(document, {}, function(err, jade){
+    console.log(&apos;反编译后的jade文件&apos;)
+})
+
+
+在线转换: http://html2jade.vida.io/
+</code></pre><p>| 参考资料<br>| <a href="http://www.cnblogs.com/fullhouse/archive/2011/07/18/2109945.html" target="_blank" rel="noopener">http://www.cnblogs.com/fullhouse/archive/2011/07/18/2109945.html</a><br>|<br>|</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/09/20/Jade模板/" data-id="cjdu4wpvv000xchwr63jvqssm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模板引擎/">模板引擎</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/01/前端算法/" class="article-date">
+  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/01/前端算法/">前端算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><pre><code>一、冒泡法
+
+    前后两个值相比
+
+    function bubble(){
+        var arr = [34,5,7,2,4,6,8];
+        var len = arr.length;
+
+        for(var i=0; i&lt;len; i++){
+            // 这里 j&lt;len-1 也可以，但j&lt;len-1-i的目换是不用在去比较之前的结果 
+            for(var j=0; j&lt;len-1-i; j++){   
+                if(arr[j] &gt; arr[j+1]){        // 从小向大, 如果从大到小改成 &lt;
+                    var temp = arr[j+1];
+                    arr[j+1] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+    console.log(bubble());
+</code></pre><p><img src="images/冒泡.gif" alt="冒泡"> </p>
+<pre><code>二、选择排序
+
+    用当前的所在的数来与之后所有的数来判断找出最小数插入
+
+    function selectionSort(){
+        var arr = [34,5,7,26,8,13];
+        var len = arr.length;
+        var minIndex, temp;
+
+        for(var i=0; i&lt;len; i++){
+            minIndex = i;               // 循环进来后先指向当前第一个要比较的数，下面循环会将比较小最值的下标赋给它
+
+            // 找出之后的最小数
+            for(var j=i+1; j&lt;len; j++){
+                if(arr[j] &lt; arr[minIndex]){     // 这里控制排序
+                    minIndex = j;
+                }
+            }
+
+            // 将最小数排到当前i的位置
+            temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        return arr;
+    }
+    console.log(selectionSort());
+</code></pre><p><img src="images/选择排序.gif" alt="选择排序"> </p>
+<pre><code>三、插入排序
+
+    将一个值与之前的值进行比较如果大于当前值就插入在当前位置
+
+    function insertionSort(){
+        var arr = [34,5,7,26,8,13];
+        var len = arr.length;
+        var preIndex, current;
+
+        for(var i=1; i&lt;len; i++){
+            preIndex = i-1;
+            current = arr[i];   // 存储当前值
+
+            while(preIndex &gt;= 0 &amp;&amp; arr[preIndex] &gt; current){
+                console.log(arr[preIndex], current);
+                arr[preIndex+1] = arr[preIndex];        // 将
+                preIndex--;
+            }
+
+            arr[preIndex+1] = current;
+        }
+
+        return arr
+    }
+
+    console.log(insertionSort());
+</code></pre><p><img src="images/插入排序.gif" alt="插入排序"> </p>
+<pre><code>快速排序 
+</code></pre><p><img src="images/选择排序.gif" alt="选择排序"><br><img src="images/选择排序.gif" alt="选择排序"> </p>
+<p>| <a href="https://wowphp.com/post/komxdx8qe862.html" target="_blank" rel="noopener">https://wowphp.com/post/komxdx8qe862.html</a>      // 排序</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/07/01/前端算法/" data-id="cjdu4wpxx0033chwr5gcp5wua" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Rap的使用和mock数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/01/Rap的使用和mock数据/" class="article-date">
+  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>/<strong><strong>**</strong></strong> Rap <strong><strong>*</strong></strong>/</p>
+<h4 id="Rap"><a href="#Rap" class="headerlink" title="Rap"></a>Rap</h4><pre><code>阿里的产品和mockjs，来模拟真实数据
+
+https://github.com/thx/RAP/wiki/user_manual_cn#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE
+</code></pre><h4 id="Rap使用"><a href="#Rap使用" class="headerlink" title="Rap使用"></a>Rap使用</h4><pre><code>一、注册和登录Rap
+
+    http://rapapi.org/
+
+二、分为团队、业务线、项目
+
+    1、查找你所在的团队
+</code></pre><p><img src="images/rap1.png" alt="查找你所在的团队"></p>
+<pre><code>2、进入你所在的团
+</code></pre><p><img src="images/rap2.jpeg" alt="查找你所在的团队"></p>
+<pre><code>3、创建业务
+</code></pre><p><img src="images/rap3.jpeg" alt="查找你所在的团队"></p>
+<pre><code>4、创建模块和使用
+</code></pre><p><img src="images/rap4.jpeg" alt="查找你所在的团队"></p>
+<pre><code>三、其它技巧
+
+    1、将一个接口的字段下所有字段copy到另一个接口
+
+        选择要copy的字段名，到另一个接口粘贴后在control+Enter，就将所有的内容全部copy过来
+</code></pre><p><img src="images/rap5.jpeg" alt="查找你所在的团队"></p>
+<pre><code>四、MOCK工具
+
+    1、使用参数的变量
+        请求字段
+            page   
+
+        响应字段
+            pageResponse 字段  @mock=${page}        // 这里最终pageResponse的显示就是Request中page的输入
+
+            或者写默认值   @mock=${page=100}    // 如果请求不写page值默认为100
+
+    2、id自动加1
+
+        变量名     备注
+        id|+1     @mock=100        // 表示id从100开始，每次加1
+
+    3、其它写法
+
+        @mock=@DATE
+
+        @mock=true
+
+        @mock=function(){return 100 + Math.random()*100}
+</code></pre><p><img src="images/rap6.png" alt="查找你所在的团队"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/07/01/Rap的使用和mock数据/" data-id="cjdu4wpwb001achwr6ecw2z8h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock数据/">mock数据</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端插件收集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/前端插件收集/" class="article-date">
+  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>/<strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong> 前端类 <strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong>/</p>
+<h4 id="JS框架"><a href="#JS框架" class="headerlink" title="JS框架"></a>JS框架</h4><pre><code>1、VueJS        2、AngularJS        3、Rreact    4、React-native         5、Weex
+
+6、jQeruy    
+
+7、underscore: http://www.css88.com/doc/underscore/
+
+8、zepto: http://www.bootcss.com/p/zeptojs/
+</code></pre><h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><pre><code>http://emojipedia.org/    小图片🐻 🍒 🥑 🐝 🤠 🚜 👨🏻 
+
+1、Bootstrap中文网：http://www.bootcss.com/       
+
+2、Bootstrap Table API:  http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/
+
+        http://www.cnblogs.com/gamehiboy/p/5176618.html
+
+3、layUI框架: http://www.layui.com/
+
+    页面中加载layui
+    &lt;script src=&quot;lib/layui.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;mian.js&quot;&gt;&lt;/script&gt;
+
+    main.js
+    layui.use([&apos;laydate&apos;], function(){         // laydate 调用日期插件
+
+          var laydate = layui.laydate;
+          var oD = document.getElementById(&quot;dateInput&quot;);
+
+          var start = {
+            elem: oD,
+            min: laydate.now(),
+            max: &apos;2099-06-16 23:59:59&apos;,
+            istoday: false,
+            choose: function(datas){
+                end.min = datas;     // 开始日选好后，重置结束日的最小日期
+                end.start = datas     // 将结束日的初始值设定为开始日
+            }
+        };
+
+        laydate(start);
+
+    });
+
+阿里移动端框架 mui: http://m.sui.taobao.org/
+
+饿了么vue ui移动框架: http://mint-ui.github.io/#!/zh-cn
+
+饿了么vue PC端框架: http://element.eleme.io/#/zh-CN/resource
+
+京东vue UI框架: https://at-ui.github.io/at-ui/#/zh
+
+iView vue UI框架: https://www.iviewui.com/docs/guide/install
+
+蚂蚁金服React ui框架https://ant.design/
+
+    react native https://github.com/ant-design/ant-design-mobile/blob/master/README.zh-CN.md
+
+                  https://mobile.ant.design/docs/react/introduce
+
+React UI: http://rsuite.github.io/#/?_k=1me3ji
+
+脚手架市场: http://scaffold.ant.design/#/
+</code></pre><h4 id="前端插件"><a href="#前端插件" class="headerlink" title="前端插件"></a>前端插件</h4><pre><code>一、日期类
+
+    1、http://momentjs.com/         日期
+
+    2、Bootstrap DataPicker:   http://www.bootcss.com/p/bootstrap-datetimepicker/
+
+    3、laydate:  http://laydate.layui.com/
+
+    4、jquery DateTimePicker:  http://www.jq22.com/jquery-info332
+
+
+二、socket: https://github.com/sockjs/sockjs-client    
+
+三、文件类
+
+    1、二进制转换库: protobuf.js  bytebuffer.js  long.js
+
+    2、前端将table导出Excel文件  http://www.jianshu.com/p/74d405940305
+
+        js-xlsx: https://github.com/SheetJS/js-xlsx      用来读取和写文件，
+
+            暴露一个XLSX全局对象
+                读取数据XLSX.reder()，读取文件XLSX.readerFile()
+                写数据 XLSX.write()，写文件XLSX.writeFile()、写流文件XLSX.stream
+                utils对象
+
+        fileSaver: https://github.com/eligrey/FileSaver.js/blob/master/FileSaver.js
+
+四、工具库
+
+    lodashjs  用于处理数组、对象等一次数据上拆分等问题
+
+        中文: http://lodashjs.com/docs/#_chunkarray-size1
+
+        https://lodash.com/docs/4.17.4
+
+
+图表类
+
+    EChart图表插件
+
+
+五、ICON库
+
+    http://www.fontawesome.com.cn/
+
+    http://www.iconfont.cn       阿里的图标收集站  使用http://mux.alimama.com/posts/964
+
+    https://at-ui.github.io/feather-font/
+
+
+六、移动开发插件
+
+    1、iScroll: http://cubiq.org/iscroll-5   http://www.360doc.com/content/14/0724/11/16276861_396699901.shtml
+
+    2、Swipper: http://www.swiper.com.cn/
+
+
+七、调试工具
+
+    1、browsersync:   http://www.browsersync.cn/            // 三端连调工具
+
+        http://www.browsersync.cn/docs/command-line/
+</code></pre><h4 id="前端模拟数据"><a href="#前端模拟数据" class="headerlink" title="前端模拟数据"></a>前端模拟数据</h4><pre><code>一、mock: http://mockjs.com/       // 生成随机数据，拦截 Ajax 请求
+
+二、Rap: http://rap.taobao.org/org/index.do   // 阿里
+
+    复制一个字段名，然后新建一个字段粘贴，在按ctrl+回车，就会将他下面所有的数据都复制过来，对于层级很复杂的比较好用
+
+三、postMan: 提交get、post请求
+
+四、线上接口数据: http://jsonplaceholder.typicode.com/
+</code></pre><h4 id="管理工具"><a href="#管理工具" class="headerlink" title="管理工具"></a>管理工具</h4><pre><code>一、Confluence 用于团的wiki，和日常工作流程
+
+二、JIRA   产品版本  产品需求 - 技术开发 - 测试
+
+三、Stash  git 仓库
+
+四、在线运行代码
+
+    https://codepen.io/pen/
+
+    https://jsfiddle.net/    
+
+    http://jsbin.com/?html,css,js,output
+
+
+五、chrome 插件
+
+    EditThisCookie   设置cookie
+
+    PostMan        post请求
+
+    AlloyDesigner 腾讯web页面与设置对比工具
+
+        http://alloyteam.github.io/AlloyDesigner/worddoc.html
+        http://www.alloyteam.com/2014/03/alloydesigner-lai-zi-xing-xing-di-web-qian-duan-kai-fa-fang-shi/
+
+        需要在服务环境下使用
+
+        $ 安装插件
+
+        $ 打开页面，启动插件下面会出现工具栏，点击视觉稿按钮选择设计图片
+</code></pre><h4 id="移动端的Sass框架"><a href="#移动端的Sass框架" class="headerlink" title="移动端的Sass框架"></a>移动端的Sass框架</h4><pre><code>yo: https://github.com/doyoe/Yo#bugs-and-feature-requests
+</code></pre><h4 id="构建工具、模块化开发框架"><a href="#构建工具、模块化开发框架" class="headerlink" title="构建工具、模块化开发框架"></a>构建工具、模块化开发框架</h4><pre><code>构建工具: webpack、gulp、grunt
+
+模块化开发: webpack（即是模块开发又是构建工具）、RequireJS    
+</code></pre><p>/<strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong> 服务端 <strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong>/</p>
+<h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><pre><code>Exporess:  http://www.expressjs.com.cn/
+
+egg阿里nodejs框架:https://eggjs.org/zh-cn/basics/middleware.html
+</code></pre><h4 id="NodeJS类"><a href="#NodeJS类" class="headerlink" title="NodeJS类"></a>NodeJS类</h4><pre><code>1、ms返回时间  https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密crypto    https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传    https://github.com/node-modules/formstream
+
+4、JSON串和对象互转  https://github.com/ljharb/qs      // 可以根据key来进行排序 
+</code></pre><h4 id="产品类"><a href="#产品类" class="headerlink" title="产品类"></a>产品类</h4><pre><code>http://www.sketchcn.com/
+
+omniGraffle
+</code></pre><p>/<strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong> 工具类 <strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong>/</p>
+<h4 id="查看chrome的DNS缓存对应表-chrome-net-internals-dns"><a href="#查看chrome的DNS缓存对应表-chrome-net-internals-dns" class="headerlink" title="查看chrome的DNS缓存对应表: chrome://net-internals#dns"></a>查看chrome的DNS缓存对应表: chrome://net-internals#dns</h4><h4 id="emmet快捷方法"><a href="#emmet快捷方法" class="headerlink" title="emmet快捷方法"></a>emmet快捷方法</h4><pre><code>http://www.w3cplus.com/tools/emmet-cheat-sheet.html
+
+http://www.iteye.com/news/27580
+</code></pre><h4 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h4><pre><code>一、webStorm
+
+    1、格式化代码: format   command + option + L
+
+    2、install plugins  安装插件
+
+        webstorm/plugins =&gt; 插入插件名，然后添加
+
+
+二、atom
+
+    用于开发reactatom-react-autocomplete 组件名及状态的自动补全 
+
+    http://blog.csdn.net/crper/article/details/52196675
+
+
+三、vs-Code
+
+    安装插件： ext install 插件名
+
+    https://marketplace.visualstudio.com/VSCode
+
+    $ js、html等格式化 - https://prettier.io/
+
+        搜索Prettier -&gt; JavaScript formatter  
+
+        执行 CMD + Shift + P -&gt; Format Document
+
+    $ Vue VSCode Snippets    快速创建vue结构  vbase &lt;- https://github.com/sdras/vue-vscode-snippets
+
+    $ vue-beautify: vue格式化
+
+    $ vetur
+
+    $ vue: 语法高亮 不安装
+
+
+    $ Babel ES6/ES7
+
+    $ Babelrc
+
+    $ Beautify - 美化格式
+
+    $ Egg.js
+
+    $ eggjs
+
+    $ ES7 React/Redux/React-Native/JS snippets
+
+    $ Guides - 代码中的对齐线
+
+    $ weex
+
+    $ html-snippets：H5 提示
+
+    $ vscode-html-css: 写class可以搜索到所有引用class的值
+
+    $ jquerysnippets: jquery提示
+
+    $ vscode-JS-CSS-HTML-formatter: html/css/js文件格式化 使用方法: ⌘ + P 输入formatter
+
+    $ path-intellisense: 路径自动提示
+
+    $ npm-intellisense: 使用require提示
+
+    $ vscode-eslint: 语法验证
+
+    $ Bootstrap: 
+
+    $ vscode-icons: 编辑器菜单中对应文件前加图标   输入icon 选择 File icon Theme
+
+        vscode-icon-theme: 
+
+    $ ReactSnippets: ReactJS  jsx文件内 输入 rcc 就可以创建一个react组件的初始代码  
+            https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
+
+
+    $ vscode-node-readme: 可以查看node reuqire中引用的node-module的包内容
+
+    $ auto-close-tag: 可以将文档未闭合标签自动加关闭   输入close tag
+
+    $ cssrem  将值转成rem 
+
+    $ px转rem插件   https://github.com/Maroon1/px2rem 
+
+
+    $ 主题类
+
+        Atom One Dark Theme
+
+        vsc-material-theme
+
+        Material Theme
+
+        切换主题  ⌘ + shift + p   =&gt;  输入 them 选择颜色主题在列表中在选择
+
+    $ guides: 高亮缩进基准线   ext install guides
+
+
+    ---------- 快捷键 ---------
+
+    1、⌘ + p 搜索插件
+
+    2、⌘ + shift + p  命令
+
+    3、⌘ + , 打开settings.json配置
+
+    4、^(control) + ` 打开vscode自带的终端
+
+    5、miniMap的配置  在settings.json中加入 &quot;editor.minimap.enabled&quot;: true  配置
+
+
+    6、|http://www.jianshu.com/p/819fc0f7f3b2  配置
+
+    7、http://www.cnblogs.com/huaxingtianxia/p/5481493.html   快捷键
+
+    8、整行粘贴 sb是⌘+D,   vscode是光标在当前行 ⌘+C, 然后在⌘+V
+
+    9、多行光标
+
+        ALT+鼠标
+
+        ALT+上下方向键
+
+        关键词被选中/高亮后，CTRL+D
+
+
+四、Sublime Text
+
+    http://blog.csdn.net/u013861109/article/details/53106074
+
+
+    1、安装package control
+
+        https://packagecontrol.io/
+
+        Control + `（mac） 或 Ctrl+～ （win） 调出console  输入下面命令，查看是否安装成功 Perferences-&gt;package settings中看到package control这一项，则安装成功
+
+        import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
+
+    2、安装编辑器主题
+
+    按下Ctrl+Shift+P，输入install，选择Package Control: Install Package，然后输入Spacegray，选择Theme: Spacegray.
+
+    在菜单栏中选择Preferences-&gt;Settings-User，复制以下代码，覆盖打开的文件内容，保存即可应用主题：    
+        {
+            &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;
+        }
+
+    3、设置代码行间距、字号
+
+        需要个性哪个就直接在preferences -&gt; settings user 中的配置添加
+        {
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;,
+            &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;font_size&quot;: &quot;16&quot;,
+            &quot;line_padding_top&quot;: 2,
+            &quot;line_padding_bottom&quot;: 2
+        }
+
+
+    4、安装常用插件
+
+        安装：command + shift + p 输入 ip 回车
+
+        卸载：command + shift + p 输入remove 回车
+
+        1) px转rem插件  https://github.com/flashlizi/cssrem
+
+        1）emmet：html、css快速编写
+
+                如果emmet插件失效：http://www.jianshu.com/p/0862e754cf15
+
+        2）syncedSideBar：侧栏与主界面的颜色相同
+
+        3）babel：ES6、JSX、React
+
+        4）AngularJS
+
+        5）jQuery：jQuery提示
+
+        6）Html5：html5捆
+
+        7）Less：一个Less语法高亮插件
+
+        8）Sass
+
+        9）JsFormat：js 格式化插件
+
+        10）SublimeLinter：行内高亮语法
+
+        11）SideBarEnhancements：一个左边栏增强
+
+        12）SublimeCodeintel：一个代码智能提示引擎
+
+        13）Alignment：Js代码对其插件
+
+        14）BracketHighlighter：代码对其线高亮
+
+        15）Git：git的支持插件
+
+        16）Prefixr：Prefixr Api支持，Prefixr是一个生成css3兼容性的api
+
+        17）LiveReload：网页浏览器页面重新加载插件
+
+        18）Tag：格式化代码排版
+
+                Mac OS X: Command-Option-Shift-F
+                Windows: Control-Alt-Shift-F
+
+
+
+        19) HTML-CSS-JS Prettify 代码格式化插件 cmd+shift+h
+
+        20）cssrem：sublime的px转rem的插件   https://github.com/flashlizi/cssrem      需要手动下载放到packages中，配置cssrem.sublime文件指定px_to_rem的值 
+
+        21）MarioRicalde-SCSS       SCSS的代码提式和高亮
+
+    react插件   http://www.jianshu.com/p/ecf6c802fdc5?open_source=weibo_search
+</code></pre><h4 id="gitBook"><a href="#gitBook" class="headerlink" title="gitBook"></a>gitBook</h4><pre><code>https://segmentfault.com/a/1190000005859901
+http://www.chengweiyang.cn/gitbook/introduction/README.html
+</code></pre><h4 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h4><pre><code>https://sspai.com/post/25137
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/05/08/前端插件收集/" data-id="cjdu4wpy1003bchwrms7elac2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-EChart图表插件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/24/EChart图表插件/" class="article-date">
+  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、npm install echarts --save
+
+2、引入echarts的两种方式
+
+    页面直接引入文件: &lt;script src=&quot;echarts.min.js&quot;&gt;&lt;/script&gt;
+
+    webpack: import echarts from &apos;echarts&apos;
+
+3、页面创建DOM的容器
+
+    &lt;div id=&quot;main&quot; style=&quot;width: 600px;height:400px;&quot;&gt;&lt;/div&gt;        必须要一个高度值
+</code></pre><h4 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h4><pre><code>1、数据异步
+
+    将数据通过ajax异步取到后，在通过setOption()方式直接加到载插件中
+
+
+2、loading动画
+
+    showLoading()来显示、hideLoading()隐藏
+
+    Exampole
+    var myChart = echarts.init(document.getElementById(&apos;main&apos;));
+
+    myChart.showLoading();
+    $.ajax({
+        success:function(data){
+            myChart.hideLoading();
+        }
+    })
+
+
+3、数据的动态更新
+
+    只需要加单个数据，先data.push(vlaue), 在通过setOption()将数据渲染出来
+
+    var data = [];        // 存储数据 
+
+    // 创建图表将data数据加入
+    ....
+
+    // 添加数据 
+    function addData(){
+        data.push(Math.random()*100);
+    }
+
+    setInterval(function(){
+        addData();
+        myChart.setOption({
+            数据
+        })
+    },1000)
+</code></pre><h4 id="数据区缩放组件-dataZoom"><a href="#数据区缩放组件-dataZoom" class="headerlink" title="数据区缩放组件 dataZoom"></a>数据区缩放组件 dataZoom</h4><pre><code>option = {
+    xAxis: {
+        type: &apos;value&apos;
+    },
+    yAxis: {
+        type: &apos;value&apos;
+    },
+
+    dataZoom: [
+        {   // 这个dataZoom组件，默认控制x轴。
+            type: &apos;slider&apos;, // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+            start: 10,      // 左边在 10% 的位置。
+            end: 60         // 右边在 60% 的位置。
+        }
+    ],
+
+    series: [
+        {
+            type: &apos;scatter&apos;, // 这是个『散点图』
+            itemStyle: {
+                normal: {
+                    opacity: 0.8
+                }
+            },
+            symbolSize: function (val) {
+                return val[2] * 40;
+            },
+            data: [[&quot;14.616&quot;,&quot;7.241&quot;,&quot;0.896&quot;],[&quot;3.958&quot;,&quot;5.701&quot;,&quot;0.955&quot;],[&quot;2.768&quot;,&quot;8.971&quot;,&quot;0.669&quot;],[&quot;9.051&quot;,&quot;9.710&quot;,&quot;0.171&quot;],[&quot;14.046&quot;,&quot;4.182&quot;,&quot;0.536&quot;],[&quot;12.295&quot;,&quot;1.429&quot;,&quot;0.962&quot;],[&quot;4.417&quot;,&quot;8.167&quot;,&quot;0.113&quot;],[&quot;0.492&quot;,&quot;4.771&quot;,&quot;0.785&quot;],[&quot;7.632&quot;,&quot;2.605&quot;,&quot;0.645&quot;],[&quot;14.242&quot;,&quot;5.042&quot;,&quot;0.368&quot;]]
+        }
+    ]
+}
+</code></pre><h4 id="事件和行为"><a href="#事件和行为" class="headerlink" title="事件和行为"></a>事件和行为</h4><pre><code>Echarts中有两种事件，1、用户的鼠标事件   2、交互组件后触发的行为事件
+
+一、鼠标事件
+
+    鼠标事件: &apos;click&apos;、&apos;dblclick&apos;、&apos;mousedown&apos;、&apos;mousemove&apos;、&apos;mouseup&apos;、&apos;mouseover&apos;、&apos;mouseout&apos;
+
+    myChart.on(&apos;click&apos;, function(params){
+        console.log(params.name)
+    })
+
+
+二、交互组件
+
+    myChart.dispatchAction({ type: &apos;&apos; })        // 通过dispatchAction触发
+
+    1、legendselectchanged: 切换图例开关时触发
+
+    2、datazoom: 数据区域缩放触发
+
+
+二、params 对象
+
+    {
+        // 当前点击的图形元素所属的组件名称，
+        // 其值如 &apos;series&apos;、&apos;markLine&apos;、&apos;markPoint&apos;、&apos;timeLine&apos; 等。
+        componentType: string,
+
+        // 系列类型。值可能为：&apos;line&apos;、&apos;bar&apos;、&apos;pie&apos; 等。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesType: string,
+
+        // 系列在传入的 option.series 中的 index。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesIndex: number,
+
+        // 系列名称。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesName: string,
+
+        // 数据名，类目名
+        name: string,
+
+        // 数据在传入的 data 数组中的 index
+        dataIndex: number,
+
+        // 传入的原始数据项
+        data: Object,
+
+        // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+        // dataType 的值会是 &apos;node&apos; 或者 &apos;edge&apos;，表示当前点击在 node 还是 edge 上。
+        // 其他大部分图表中只有一种 data，dataType 无意义。
+        dataType: string,
+
+        // 传入的数据值
+        value: number|Array
+
+        // 数据图形的颜色。当 componentType 为 &apos;series&apos; 时有意义。
+        color: string
+    }
+</code></pre><h4 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h4><pre><code>1、title: 标题（包括主副标题、链接、样式）
+
+2、legend: 标记的区域 （对legend的显隐、宽高、位置、横纵向排列）
+
+3、grid: 图表的网格区域 （是否显示网格、位标、宽高、背景色、边线色）
+
+4、xAxis、yAxis: x、y坐标轴
+
+5、dataZoom: 数据缩放 （）
+
+6、toolTip: 提示信息，鼠标移到数据点浮现的提示信息（）
+
+7、axisPointer:
+
+8、toolBox: 工具栏 （导出图表、数据视图、动态类型切换、缩放、重置）
+
+9、series: 系列列表（来决定图表的类型、图表的数据）
+
+10、color: 图表每一项的颜色
+
+11、background: 图表背景色
+
+12、textStyle: 文本样式
+
+13、animate: 是否开启动画
+
+----- 组件 -------
+
+14、timeline: 时间轴组件
+
+15、graphic: 原生图形元素组件
+
+16、calendar: 日历坐标组件
+
+17、brush: 区域选择组件
+
+18、geo: 地理坐标系组件
+
+19、parallel: 平行坐标系
+
+20、parallelAxis: 这个组件是平行坐标系中的坐标轴
+
+21、singleAxis: 单轴。可以被应用到散点图中展现一维数据
+</code></pre><h4 id="series对象"><a href="#series对象" class="headerlink" title="series对象"></a>series对象</h4><pre><code>type: 展示图表的类型
+
+name: 名称
+
+label: 图形上文本标签的控制（show、position、offset、formatter、）
+
+    formatter可以是字符串也可以是函数 
+
+        字符串模板，模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+
+        formatter: &apos;{b}: {c}&apos;
+
+        label:{
+            normal:{
+                formatter: function(data){            // callback
+                    return data.percent + &apos;%&apos;;
+                }
+            }
+        }, 
+
+        params:
+        {
+            componentType: &apos;series&apos;,
+            // 系列类型
+            seriesType: string,
+            // 系列在传入的 option.series 中的 index
+            seriesIndex: number,
+            // 系列名称
+            seriesName: string,
+            // 数据名，类目名
+            name: string,
+            // 数据在传入的 data 数组中的 index
+            dataIndex: number,
+            // 传入的原始数据项
+            data: Object,
+            // 传入的数据值
+            value: number|Array,
+            // 数据图形的颜色
+            color: string,
+
+            // 百分比
+            percent: number,
+
+        }
+
+labelLine: 图形上图形与文本之间连接线的控制
+
+data: 数据
+
+center: 饼图中心坐标
+
+radius: 半径
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://echarts.baidu.com/echarts2/doc/doc.html#Title" target="_blank" rel="noopener">http://echarts.baidu.com/echarts2/doc/doc.html#Title</a><br><a href="http://echarts.baidu.com/gallery/editor.html" target="_blank" rel="noopener">http://echarts.baidu.com/gallery/editor.html</a>   在线编辑</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/24/EChart图表插件/" data-id="cjdu4wpur0005chwrnm0gtl8b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端插件类/">前端插件类</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Nginx服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/Nginx服务器/" class="article-date">
+  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Nginx介绍"><a href="#Nginx介绍" class="headerlink" title="Nginx介绍"></a>Nginx介绍</h4><pre><code>服务器分类: Nginx、Apache、tomcat、Micorsoft Server
+
+ng是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，超越Apache的高性能和稳定性.
+</code></pre><h4 id="四层和七层负载均衡"><a href="#四层和七层负载均衡" class="headerlink" title="四层和七层负载均衡"></a>四层和七层负载均衡</h4><pre><code>负载均衡设备也被称为&quot;四到七层交换机&quot;，四层就是基于IP+端口的负载均衡，七层就是基于URL等应用信息的负载均衡.
+
+如果只做HTTP的负载均衡，用haproxy好了。性能很强。
+
+七层负载均衡优点:
+
+    1、高并发连接: 支撑5万并发连接
+
+    2、内存消耗少: 在3万并发连接，开启10个Nginx进程消耗150M内存
+
+    3、配置文件简单
+
+    4、节省带宽: 支持GZIP压缩，可以添加浏览器本地缓存的Header头，
+
+    5、稳定性高: 用于反向代理, 宕机概率小
+
+    9、支持热部署: 不间断服务进行更新
+</code></pre><h4 id="Nginx原理"><a href="#Nginx原理" class="headerlink" title="Nginx原理"></a>Nginx原理</h4><pre><code>一、七层负载均衡优势:
+
+    1、对HTTP报头检查，可以检出状态码为400、500、600的错误信息，如果有错误将连接请求重新定向到另一台服务器
+
+    2、可以根据数据类型（判断数据包是图像、压缩文件、或多媒体文件等），将数据引向内容服务器
+
+    3、根据请求类型，将普通文本、图象等静态文档，或是动态文档请求，引向相应的服务器来处理
+
+
+二、Nginx负载均衡是基于内容和应用的七层资的，Nginx抗并发强，是因为Nginx使用了非阻塞、异步传输
+
+三、模块
+
+    1、nginx负载均衡模块
+
+        配置负载均衡是ngx_http_upstream_module，这模块是默认安装
+
+    2、代理模块
+
+        Proxy为nginx的代理模块, 允许将用户的HTTP请求转发到后端服务器
+
+四、反向代理 
+
+    反向代理是指以代理服务器接受internet上的连接请求，将请求转发给内部服务器，并将从服务器得到结果返回给internet的客户端
+</code></pre><h4 id="Nginx负载均衡调试策略"><a href="#Nginx负载均衡调试策略" class="headerlink" title="Nginx负载均衡调试策略"></a>Nginx负载均衡调试策略</h4><pre><code>ng的upstream目前支付几种分配:
+
+1、轮询: 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务down掉，能自动剔除
+
+2、weight: 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况
+
+    upstream bakend { 
+        server 192.168.0.14 weight=10; 
+        server 192.168.0.15 weight=10; 
+    }
+
+3、ip_hash: 每个请求按访问ip的hash结果分配，每个访客访问一个固定的后端服务器
+
+    upstream bakend { 
+        ip_hash; 
+            server 192.168.0.14:88; 
+            server 192.168.0.15:80; 
+        }
+    }
+
+4、fair（第三方）
+
+5、url_hash（第三方）
+
+    upstream backend { 
+        server squid1:3128; 
+        server squid2:3128; 
+        hash $request_uri; 
+        hash_method crc32; 
+    }
+</code></pre><h4 id="Nginx安装和删除"><a href="#Nginx安装和删除" class="headerlink" title="Nginx安装和删除"></a>Nginx安装和删除</h4><pre><code>主要步骤: 下载包，压缩、配置编译
+
+$ https://nginx.org/en/download.html    下载一个nginx包版本
+
+$ cd /usr/local/ &amp;&amp; mkdir newNginx     // 进入到local目录并创建一个newNginx目录
+
+$ 将下载的包copy到新创建的newNginx目录, 并将包解压到当前目录   tar zxf nginx-1.12.2.tar.gz 
+
+$ cd nginx-1.12.2
+
+$ ./configure        // 验证过程
+
+$ make
+
+$ make install         // 这时候会创建一个nginx目录 /usr/local/nginx
+
+$ 将newNginx目录的文件copy到nginx目录
+
+
+1、开启服务     /usr/local/nginx/sbin/nginx/    
+
+2、重启  /usr/local/nginx/sbin/nginx/ -s reload
+
+3、快速关机     /usr/local/nginx/sbin/nginx/ -s stop
+
+4、正常关机     /usr/local/nginx/sbin/nginx/ -s quit
+
+5、ps -ef|grep nginx     // 查看ng进程
+
+6、kill -9 xxxx            // 杀进程
+
+7、nginx: [error] open() &quot;/usr/local/nginx/logs/nginx.pid&quot; failed (2: No such file or directory)
+
+    nginx.pid文件只有在启动的时候才会存，未启动执行reload会出现上面的提示
+
+8、logs日志  /usr/local/nginx/logs
+
+    access.log和error.log
+</code></pre><h4 id="Nginx配置文件"><a href="#Nginx配置文件" class="headerlink" title="Nginx配置文件"></a>Nginx配置文件</h4><pre><code>默认该配置文件被命名nginx.conf
+
+    配置server
+
+    server {
+        listen       9092;                                // 端口
+        root /Users/apple/siguang.liu/Hh/hh_h5;            // 指定根目录
+
+        location / {
+            proxy_pass  http://174.16.1.82:8080/;        // 代理到的服务器
+        }
+
+        error_page   500 502 503 504  /50x.html;        // 错误
+        location = /50x.html {
+            root   html;
+        }
+
+        location ^~ /api {
+            proxy_pass  http://172.16.1.82:8080/;        // 如果访问以&quot;/api&quot;开头的代理的服务器
+        }
+
+        location ~ \.(gif|jpg|png|js|css|html|map)$ {    // 指定静态资源
+            root /Users/apple/siguang.liu/Hh/hh_h5;
+        }
+    }
+
+    可以通过include来将另一个文件的内容引用
+
+    include servers/*.conf;
+
+
+一、所存在的目录 /usr/local/nginx/conf            // 本机mac /usr/local/openresty/nginx
+
+二、启动  sudo /usr/local/openresty/nginx/sbin/nginx      // 需要sudo管理员权限
+
+三、启动后的可以通过调用带-s参数来执行文件来控制 
+
+    $ nginx -s 命令
+
+    1、reload - 重启  sudo /usr/local/openresty/nginx/sbin/nginx -s reload
+
+    2、stop - 快速关机 sudo /usr/local/openresty/nginx/sbin/nginx -s stop
+
+    3、quit - 优雅关机 sudo /usr/local/openresty/nginx/sbin/nginx -s quit
+
+    4、reopen - 重新打开日志文件 sudo /usr/local/openresty/nginx/sbin/nginx -s reopen
+
+四、查看、杀掉进程
+
+    $ ps -ex | grep nginx
+
+    $ kill -s quit 1682
+
+五、配置文件结构
+
+    指令分为简单指令和块指令，以空格分隔，以分号(;)结束
+
+四、注释使用 #
+
+    # HTTPS server
+    #
+    # server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+    # }
+</code></pre><h4 id="Nginx配置-HTTP2-0"><a href="#Nginx配置-HTTP2-0" class="headerlink" title="Nginx配置 HTTP2.0"></a>Nginx配置 HTTP2.0</h4><pre><code>https://www.nginx.com/blog/nginx-1-9-5/
+</code></pre><p>| <a href="http://www.cnblogs.com/felixzh/category/937300.html" target="_blank" rel="noopener">http://www.cnblogs.com/felixzh/category/937300.html</a><br>| <a href="https://www.cnblogs.com/felixzh/p/6283788.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixzh/p/6283788.html</a><br>| <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html" target="_blank" rel="noopener">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/06/Nginx服务器/" data-id="cjdu4wpw40017chwr6sf1bwy6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-服务器端概念" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/服务器端概念/" class="article-date">
+  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="cookie、session、token"><a href="#cookie、session、token" class="headerlink" title="cookie、session、token"></a>cookie、session、token</h4><pre><code>一、Session
+
+    是另一种记录客户端状态的机制，cookie保存客户端，session存储在服务器上
+
+    登录成功 =&gt; 服务器存储Session =&gt; 并在客户端的cookie中也存储一个 =&gt; 之后客户端请求，服务端取到cookie的Session的值，在与服务器保存的来进行比较是否存在（这个过程是session内部的机制，程序只需要判断就行）
+
+二、cookie
+
+    存储在客户端本地，js和服务器都可以存、取、删cookie的值，cookie组成（key、value、domain、域、失效时间）
+
+三、token
+
+    token的意思是令牌，用户身份验证，最简单的token组成:uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign(签名，由token的前几位+盐以哈希算法压缩成一定长的十六进制字符串
+
+    作为身份认证 token安全性比session好，因为每个请求都有签名还能防止监听以及重放攻击，而session就必须靠链路层来保障通讯安全了。如上所说，如果你需要实现有状态的会话，仍然可以增加session来在服务器端保存一些状态
+
+http://blog.csdn.net/qq_33401924/article/details/52947514
+http://blog.csdn.net/jikeehuang/article/details/51488020
+</code></pre><h4 id="验证码的流程"><a href="#验证码的流程" class="headerlink" title="验证码的流程"></a>验证码的流程</h4><pre><code>通过插件来生成图型 =&gt; 并将图片结果存到session中，并存到用户的cookie中 =&gt; 登录时来判断session中的值与用户请求参数的值是否相同
+
+https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+
+// 生成验证码
+async captcha() {
+    const svgCaptcha = require(&apos;svg-captcha&apos;);
+    const { ctx } = this;
+    const captcha = svgCaptcha.createMathExpr({
+        size: 4,                 // 验证码长度
+        ignoreChars: &apos;0o1i&apos;,     // 验证码字符中排除 0o1i
+        noise: 3,                 // 干扰线条的数量
+        color: true,             // 验证码的字符是否有颜色，默认没有，如果设定了背景，则默认有
+        background: &apos;rgba(0,0,0,0.3)&apos;, // 验证码图片背景颜色
+    });
+    ctx.session.captcha = captcha.text;
+    ctx.type = &apos;image/svg+xml&apos;;        // 设置header的content-type
+    ctx.body = captcha.data;
+}
+
+// 用户登录
+async login() {
+    const { ctx, app, service } = this;
+
+    if (ctx.session.captcha &amp;&amp; ctx.session.captcha !== ctx.request.body.captcha) {
+    this.success({
+        data: {},
+        message: &apos;验证码错误&apos;,
+        statusType: app.statusType.otherError,
+    });
+    return;
+    }
+
+    if (
+    app.validateParams({
+        userName: { type: &apos;string&apos;, max: 100, min: 2 },
+        pwd: { type: &apos;string&apos;, min: 1 },
+    }, ctx)
+    ) {
+
+    const data = await service.auth.login(ctx.request.body);
+    this.success(data);
+    }
+}
+</code></pre><h4 id="http和https"><a href="#http和https" class="headerlink" title="http和https"></a>http和https</h4><pre><code>https://segmentfault.com/a/1190000003801450
+</code></pre><h4 id="登录流程"><a href="#登录流程" class="headerlink" title="登录流程"></a>登录流程</h4><pre><code>session或token
+
+密码加盐 MD5（username + password + salt）
+</code></pre><p>———————– 概念 ———————– </p>
+<h4 id="服务器、虚拟机"><a href="#服务器、虚拟机" class="headerlink" title="服务器、虚拟机"></a>服务器、虚拟机</h4><pre><code>服务器: 只是一个硬件虚拟服务只是系统部分
+
+虚拟机: 允许一台HTTP服务器搭建多个web建点，也就是一台服务器可以为多个用户服务，每个用户通过域名运行各自的网站，这就是利用了虚拟机（又称虚拟服务器）的功能
+</code></pre><h4 id="前后分离"><a href="#前后分离" class="headerlink" title="前后分离"></a>前后分离</h4><pre><code>前后端数据分离登录失效判断可以通过session服务端来判断 =&gt; 跳转会员管理每个页面 =&gt; 服务器端判断session是否失效 =&gt; 失效跳到登录
+
+其它页面的登录信息可以前端可以通过cookie来获取
+</code></pre><h4 id="正向代理、反向代理-Proxy"><a href="#正向代理、反向代理-Proxy" class="headerlink" title="正向代理、反向代理 Proxy"></a>正向代理、反向代理 Proxy</h4><pre><code>一、正向代理: 比如翻墙，直接访问国外网站访问不了，需要可以一个服务器来进行访问。正向代理的典型用途是为在防火墙内的局域网客户端提供访问Internet的途径。正向代理还可以使用缓冲特性减少网络使用率。
+</code></pre><p><img src="images/105641260.jpg" alt="正向代理"> </p>
+<pre><code>二、反向代理: 代理理服务器来接受网络的连接请求，然后将请求转发给内部网络的服务器 （服务方的需求，为了解决一些负载等问题）
+
+    作用: 保证内网的安全，负载均衡
+</code></pre><p><img src="images/110207878.jpg" alt="反向代理"><br><img src="images/305504-20161112125907030-1432469707.png" alt="反向代理"></p>
+<pre><code>http://www.cnblogs.com/Anker/p/6056540.html
+</code></pre><h4 id="CDN和反向代理"><a href="#CDN和反向代理" class="headerlink" title="CDN和反向代理"></a>CDN和反向代理</h4><pre><code>CDN: 部署在网络提供的机房，用户请求时可以从最近的网络提供商机房获取数据
+</code></pre><h4 id="负载的均衡"><a href="#负载的均衡" class="headerlink" title="负载的均衡"></a>负载的均衡</h4><pre><code>通过反向代理服务器来优化网站的负载
+</code></pre><p><img src="images/305504-20161112124423530-566240666.png" alt="负载的均衡"></p>
+<h4 id="集群、分布式"><a href="#集群、分布式" class="headerlink" title="集群、分布式"></a>集群、分布式</h4><h4 id="跳板机"><a href="#跳板机" class="headerlink" title="跳板机"></a>跳板机</h4><pre><code>跳板机是开发者登录到网站分配给应用服务器的唯一途径。开发者必须首先登录跳板机，再通过跳板机登录到应用服务器
+
+k踏板机属于内控堡垒机范围，用于单点登录的主机，之前是为了运维人员远程登录进行管理，会在机房部署跳板机，踏板机就是一台服务器，维护人员在维护过程先要统一登录在这台服务器上在登录到目录服务器进行维护
+</code></pre><h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><pre><code>网站缓存有两种：缓存在应用服务器上（本地缓存）和缓存在专门的分布式缓存服务器上（远端缓存）
+</code></pre><h4 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h4><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>1、通过设置服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。在被请求的Response header中加入
+
+    // 指定允许其他域名访问  
+    header(&apos;Access-Control-Allow-Origin:*&apos;);
+    // 响应类型  
+    header(&apos;Access-Control-Allow-Methods:POST&apos;);
+    // 响应头设置  
+    header(&apos;Access-Control-Allow-Headers:x-requested-with,content-type&apos;);  
+
+2、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
+
+    1) post请求跨域
+
+    2) &quot;script error&quot; 的脚本错误提示
+
+    3) canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+</code></pre><h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><pre><code>一、XSS 攻击: 对 Web 页面注入脚本，使用 JavaScript 窃取用户信息，诱导用户操作
+
+二、CSRF 攻击: 伪造用户请求向网站发起恶意请求
+
+三、钓鱼攻击: 利用网站的跳转链接或者图片制造钓鱼陷阱
+</code></pre><p>———————– 网络 ———————– </p>
+<h4 id="网关、隧道"><a href="#网关、隧道" class="headerlink" title="网关、隧道"></a>网关、隧道</h4><pre><code>网关: 转发其它服务器通信数据的服务器，接收从客户端发送来的
+
+隧道: 将客户端和服务器之间进行中转，并保持双方通信连接的应用程序
+</code></pre><h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><pre><code>域名系统（英文：Domain Name System，缩写：DNS）是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便的访问互联网。DNS 使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
+
+http://www.alloyteam.com/2015/05/dns%EF%BC%8Cnode%E4%BB%A5%E5%8F%8A%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E5%92%8C%E5%BA%94%E7%94%A8/
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/06/服务器端概念/" data-id="cjdu4wpy2003dchwrj7ucbntl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务端开发/">服务端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/02/mongoDB/" class="article-date">
+  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">2017-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| mongodb的安装和启动<br>| 创建用户权限<br>| 数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>| 库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>| 创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>| 删除行 -<br>| 插入值 - db.myColl.insert({name: ‘haha’})<br>| 更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>|         $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>| 删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>| 查询值 - db.myColl.find({})<br>|         .sort()、count()、limite()、skip()<br>|         查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>|         数组查询 $all、$size、$sclie<br>|         $where 子句<br>| 索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>|        索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>| 复制集<br>| 分片<br>| 数据均衡<br>| 性能分析</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>自动提示，按两次Tab
+
+db.getMongo() - 查看当前mongo的ip和端口
+
+启动服务 - /usr/local/Cellar/mongodb/3.4.3/bin  =&gt;  $ mongod &amp;
+
+停止服务 - 进入 use admin  =&gt; $ db.shutdownServer()
+
+查看服务进程 -  ps -rf | grep mongod   ps -rf | grep mongo    kill -9 xxxx
+
+---------------------------------------------------------------------------------------
+
+db.copyDatabase(&apos;旧数据库名&apos;, &apos;新数据库名&apos;) - Copy数据库
+
+---------------------------------------------------------------------------------------
+
+show dbs - 查询所有数据库
+
+show collections - 查询所有当前数据库下所有的数据表
+
+use myDataBase - 创建并切换库，如果没有就创建这个库，创建库时在内存中，只有对库插入集合操作才会真正存在硬盘上
+
+db - 查看当前选择的库
+
+db.dropDataBase() - 删除数据库
+
+
+db.createCollection(表名，指定大小和索引选项) - 创建集合
+
+db.myColl.drop() - 删除集合
+
+
+db.myColl.insert({_id: ObjectId(&quot;5a4b5f29cca1d978501c9c52&quot;), name: &apos;aa&apos;, age: 30}) - 插入主键不能相同
+
+db.myColl.save({_id: ObjectId(&quot;5a4b5f29cca1d978501c9c52&quot;), name: &apos;aa&apos;, age: 30}) - 插入允许主键相同的数据
+
+
+db.myColl.find(query) - 查看文档
+
+db.myColl.findOne() - 取第一条记录
+
+db.myColl.update({}) - 更新文档
+
+db.myColl.remove(query, {justOne}) - 删除一条文档
+
+db.myColl.update({name: &apos;siguang&apos;}, {$unset: {name: 1}}) - 删除一个字段
+
+
+db.myColl.ensureIndex() - 创建索引
+
+db.myColl.getIndexes() - 查看当前集合索引
+
+db.myColl.dropIndexes() - 删除索引 
+
+db.myColl.ensureIndex({id: 1}, {background: true}) - 修改索引
+
+
+db.createUser() - 创建用户角色
+</code></pre><h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h4><pre><code>一、MongoDB优点
+
+    1、无数据结构限制（没有表结构概念，每条记录可以有完全不同的结构）
+
+    2、完全的索引支持（单键索引、数组索引、全文索引、地理位置索引）
+
+    3、数据安全性和分片扩展数据规模
+
+    1、简单的单机服务    2、搭建具有冗余容错功能的复制集    3、搭建大规模数据集群        4、完成集群的自动部署
+
+    MongoDB逻辑结构是一种层次结构，文档(document)、集合(collection)、数据库(database)这三部分组成的。 
+
+
+二、数据库分类
+
+    1、SQL数据库，支持SQL语言的数据库，如 Oracle，Mysql
+
+    2、NoSQL数据库，不支持SQL语言的数据库，Redis, MongoDB
+
+
+三、mongo与sql概念
+
+    SQL术语/概念    MongoDB术语/概念    解释/说明
+
+    database        database         数据库
+    table            collection         数据库表/集合
+    row                document         数据记录行/文档
+    column            field             数据字段/域
+    index            index             索引
+    table             joins              表连接,MongoDB不支持
+    primary key        primary key         主键,MongoDB自动将_id字段设置为主键
+</code></pre><h4 id="MongoDB安装、连接、启动服务"><a href="#MongoDB安装、连接、启动服务" class="headerlink" title="MongoDB安装、连接、启动服务"></a>MongoDB安装、连接、启动服务</h4><pre><code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;    // 安装brew
+
+$ brew update                // 更新brew
+
+$ brew install mongodb         // 安装的目录 /usr/local/Cellar/mongodb/   
+
+    brew uninstall mongodb  // 卸载mongo
+
+$ brew list                    // 查看brew安装的列表中是否存在brew
+
+$ sudo mkdir -p /data/db       // 创建数据库存储目录, 这个是mongo默认找的地址，如果需要放到其它目录使用 mongod --dbpath /xxx/xxx/xx, 注意目录权限不能为root
+
+$ 连接本地和远端服务器的mongoDB
+
+    本地mongo: $ mongo localhost:27017/test -u user -p password            // 如果没有用户名和密码直接mongo
+
+    远端mongo: $ mongo 192.168.1.200:27017/test -u user -p password        // test为数据库名
+
+        mongodb://10.10.13.123:27017,10.10.13.341:27017/ibg_node_core
+
+$ 启动和关闭mongo服务
+
+    启动服务: 
+
+        $ cd /usr/local/Cellar/mongodb/3.6.1/bin        // 进入到目录
+
+        $ mongod &amp;            // &amp; 关闭终端mongod服务不会被kill掉  如果启用权限使用 mongod --auth
+
+    关闭服务:
+
+        $ use admin         // 需要先进入到admin库
+
+        $ db.shutdownServer()
+
+
+$ brew info mongodb            // 查看安装信息    mongod --config /usr/local/etc/mongod.conf
+
+    mongodb.conf内容
+
+        systemLog:        // log目录
+            destination: file
+        path: /usr/local/var/log/mongodb/mongo.log
+            logAppend: true
+        storage:        // db目录
+            dbPath: /usr/local/var/mongodb        // 数据存储的目录
+        net:
+            bindIp: 128.0.0.1
+
+    http://blog.csdn.net/sun491922556/article/details/74973191            // 3.4版本配置
+
+$ mongo --version            // 查看版本
+</code></pre><h4 id="mongo的基本数据类型"><a href="#mongo的基本数据类型" class="headerlink" title="mongo的基本数据类型"></a>mongo的基本数据类型</h4><pre><code>null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object
+</code></pre><h4 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h4><pre><code>一、查询库、查询集合
+
+    1、show dbs — 查询所有的数据库列表
+
+    2、show collections — 显示当前库下所有集合
+
+
+二、创建库和删库
+
+    1、use testDatabase — 创建一个数据库，如果库存在则使用当前库，创建时只在内存中，只有对这个库有操作后这个数据库才能真正创建
+
+    2、db - 查看当前所在的库库
+
+    3、db.dropDatabase() - 删除这个数据库
+
+        use tsetDatabase     // 先进入要操作的数据库
+        db.dropDatabase()     // 删除库
+</code></pre><h4 id="文档的创建和删除"><a href="#文档的创建和删除" class="headerlink" title="文档的创建和删除"></a>文档的创建和删除</h4><pre><code>查看常用的方法  db.myColl.help()
+
+一、建表两种方法
+
+    db.createCollection(名称, 指定有关内存大小和索引选项);    -    创建集合
+
+        options:
+            capped - Boolean    （可选）如果为true，则启用封顶集合。封顶集合是固定大小的集合，会自动覆盖最早的条目，当它达到其最大大小。如果指定true，则需要也指定尺寸参数。
+            autoIndexID - Boolean    （可选）如果为true，自动创建索引_id字段的默认值是false。
+            size - number    （可选）指定最大大小字节封顶集合。如果封顶如果是 true，那么你还需要指定这个字段。
+            max - number
+
+    db.myColl.insert({name:’hf’,age:20}) — 在mongodb中在插入数据时即创建了改表，此时创建的是名为myColl的数据表
+
+        for(i=0; i&lt;100; i++) db.myTabel.insert({&apos;age&apos;, i})        循环插入
+
+
+二、删除集合、文档
+
+    db.myColl.remove({type: &apos;马尔代夫&apos;}) - 删除myColl集合中 type=&apos;马尔代夫&apos; 这条文档
+
+    db.myColl.drop(); — 删除myColl这个集合
+</code></pre><h4 id="insert-插入文档"><a href="#insert-插入文档" class="headerlink" title="insert 插入文档"></a>insert 插入文档</h4><pre><code>1、insert() - 插入主键不能相同，自动生成_id    db.myColl.insert({name:’hahaha’, age:12});
+
+2、save() - 允许插入重复数据，直接添加一个文档
+
+    db.myColl.save({        // 直接向集合中插入文档
+        data: {},
+        message: &quot;操作成功&quot;,
+        status: 0
+    })
+
+二者的区别，insert()在主键相同时会报错，save()不会
+
+    $ db.user.find();        // { &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang&quot; }
+
+    $ db.user.insert({ &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang&quot; })        // 报错
+
+    $ db.user.save({ &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang1111111&quot; })    // 执行成功，并将username的值改了
+</code></pre><h4 id="find-文档查询"><a href="#find-文档查询" class="headerlink" title="find 文档查询"></a>find 文档查询</h4><pre><code>http://www.cnmyColls.com/egger/p/3135847.html
+
+1、findOne() - 查询第一条记录，然后闭关游标    
+
+2、find() - 返回符合条件的所有记录        db.role.find({age:30}) 返回role中age等于30的集合
+
+3、sort() - db.myColl.find().sort({age:1})      // age=1为升序，-1为降序  sort()
+
+4、count() - db.myColl.find().count();          // 返回表中记录的个数 count()        
+
+5、limit() - db.myColl.find().limit(5)          // 返回前5条数据 limit()
+
+            db.myColl.find().skip(10).limit(20);        返回11-30条数据， 用于分页
+
+6、skip() - db.myColl.find().skip(50)          // 跳过前50条数据
+
+7、pretty() - 将查询出的内容进行格式显示        
+
+8、查询条件
+
+    1）条件查询   &gt; $gt、 &gt;= $gte、 &lt; $lt、 &lt;= $lte、 != $ne
+
+        db.cars.find({carMoney: {$lt:100}})        // 查询carMoney小于100的值
+
+        db.cars.find({carMoney: {$lt:100, $gt:20}})        // 查询carMoney 大于20小于100的值
+
+    2）$and、$or、$in、$notIn
+
+        $and    db.cars.find({name: &apos;卡宴&apos;, price: 200})        // name=卡宴 并且 price=200    
+
+        $in      db.myColl.find({price: {$in: [100, 300, 500]});        // 查询出price field中为100、300、500值的字段
+
+        $or     db.cars.find({ $or: [ {id: 9}, {carType: 735}] })        // 查询出id=9 或者 carType=735
+
+                db.cars.find({ isDeleted: false, $or: [ {id: /huang/i}, {carType: 735}] });    // 查询 isDeleted等于false 并且id带有&apos;huang&apos;字符 或者 carType等于735
+
+        $not    不包括的数据
+
+9、$type 类型操作符查询
+
+    例如: 将name字段中的所有为数字的查询出来，
+
+    $ db.tourism.find({&apos;name&apos;: {$type: 1}})
+
+    对应表:
+
+        类型                    数字            备注
+
+        Double                1                数字
+        String                2     
+        Object                3     
+        Array                4     
+        Binary data            5     
+        Undefined            6               已废弃。
+        Object id            7     
+        Boolean                8     
+        Date                9     
+        Null                10
+        Regular Expression    11
+        JavaScript            13     
+        Symbol                14     
+        JavaScript (with scope)    15     
+        32-bit integer        16     
+        Timestamp            17     
+        64-bit integer        18     
+        Min key                255            Query with -1.
+        Max key                127     
+
+
+10、数组查询
+
+    1）$all - 用来查询是否包括数组里的值
+
+        // content field值为数组
+        db.myColl.find({content: {$all: [1, 8]})        返回content中包含1或8的数组
+
+
+    2）$size - 用来查询数组的长度
+
+        db.myColl.find({content: {$size: 3}});        返回content数组字段长度为3个
+
+
+    3）$slice - 控制指定字段中返回数组的个数
+
+        db.myColl.find({}, {content: {$slice: 3}} )    返回所有记录 content数组只取前三个
+
+        db.myColl.find({}, {content: {$slice: -3}} )    从后取3个
+
+        db.myColl.find({}, {content: {$slice: [1, 3]}} )    取1-3的范围
+
+
+11、$where 子句
+
+    相当于用一个js查询一部分，如果为true则返回数据，则否不返回
+
+    字符串形式
+    db.myColl.find({$where: &quot;this.title.length &gt; 23&quot;}, {title: 1})    对title field中的字符长度大于23的返回
+
+    函数形式
+    db.myColl.find({$where: function(){ return this.title.length &gt; 23 }})
+
+
+12、Example
+
+    db.myColl.find();  —  查询myColl中的所有数据， 带条件 .fin({x: 1}) x=1的记录
+
+    db.myColl.find({}, {id: &apos;&apos;, price: &apos;&apos;}) — 查询其中两个字段的值
+
+    db.myColl.find({id: 5}, {username: 1}) - 只返回id=5 的 username的字段，其余的不返回
+
+        { &quot;_id&quot; : ObjectId(&quot;58e85c84784a18c26f9a1fa5&quot;), &quot;username&quot; : &quot;siguang5&quot; }
+
+    db.myColl.find({carType: 33}, {id: &apos;&apos;, price: &apos;&apos;}) — 返回carType=33的id和price字段的值
+
+    db.myColl.update({}, {$unset:{&apos;name&apos;:&apos;&apos;}}, false, true)        // 删除一个字段
+
+    db.myColl.find({title: /美舰/}, {title: 1})    -    查找出title中带有&quot;美舰&quot;的字符，并只返回title字段
+</code></pre><h4 id="update-更新文档"><a href="#update-更新文档" class="headerlink" title="update 更新文档"></a>update 更新文档</h4><pre><code>update(更新条件, 更新的值，[如果不存在是否创建 - 默认false]，[是否更新全部 - 默认false])
+
+1、$set - 更新值
+
+    update() 第四个参数为true更所有匹配的值，false只更新一个
+
+    // 只更匹配的第一条 如果type=&apos;123&apos;不存在, 则插入一条只有name=&apos;456&apos;的数据
+    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        
+
+    // 更新全部匹配
+    db.myColl.update({name:’hf’}, {$set:{age:25}}, false, true)
+
+    // {multi:true} 更新多条
+    db.myColl.update({&apos;title&apos;:&apos;MongoDB 教程&apos;}, {$set:{&apos;title&apos;:&apos;MongoDB&apos;}}, {multi:true})
+
+    // 为集合中所有文档添加一个字段
+    db.user.update({}, {$set: {password: &apos;******&apos;}}, {multi: 1})
+
+
+2、$unset - 删除字段列
+
+    db.myColl.find({id:1})             { &quot;id&quot; : 1, &quot;content&quot; : &quot;&quot; }    注意这里要删除的字段值必须填写一个数字，可以是0、1或其它数字
+
+    db.myColl.update({id: 1}, {$unset: {content: 1}});
+    db.myColl.find({id:1})            { &quot;id&quot; : 1}     content被删除
+
+
+3、$inc - 只能对一个数字字段的值的进行累加，key不存在或者非数字都报错
+
+    db.myColl.find({id: 1});        result: { username: &apos;siguang&apos;, password: 100 }
+
+    // 如果password的值存在则 +1000
+    db.myColl.update({id: 1}, {$inc: {password: 1000}})    
+    db.myColl.find({id: 1});        result: { username: &apos;siguang&apos;, password: 1100 }
+
+
+4、$push、$pushAll - 对一个数组字段在插入值
+
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3 ] }
+
+    db.myColl.update({id: 3}, {$push: {content: 4}})
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3, 4] }
+
+
+5、$addToSet - 向一个数组中添加数据，如果数组中存在这个值则不添加，如果不存在则添到数组中
+
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3 ] }
+
+    db.myColl.update({id: 3}, {$addToSet: {content: 3}});        // 数组中存在不添加
+    db.myColl.update({id: 3}, {$addToSet: {content: 4}});        // &quot;content&quot; : [ 1, 2, 3, 4 ]
+
+
+6、$pop - 删除数组中第一个或最后一个值 
+
+    db.myColl.update({id: 3}, {$pop: {content: -1}});        // content为1 删除数组第一个值，-1删除数组最后一个值
+
+
+7、$pull、$pullAll - 删除数组中指定相同的值
+
+    db.myColl.update({id: 4}, {$set: {content: [1,2,34,4,1,2,3,1,1,6,1,34]}});    将content field为数组
+
+    db.myColl.update({id: 4}, {$pull: {contentn: 1}});
+    db.myColl.find({id: 4});        Result  {content: [2,34,4,2,3,6,34]}}  将数组中的1全部删除
+
+
+8、$rename - 对某个字段进行更名
+
+    db.myColl.update({id: 4}, {$rename: {content: &apos;title&apos;}});        // 将id=4的 content field 名更改为title
+
+
+http://chenzhou123520.iteye.com/myColl/1637629
+</code></pre><h4 id="remove-删除文档"><a href="#remove-删除文档" class="headerlink" title="remove() 删除文档"></a>remove() 删除文档</h4><pre><code>1、db.myColl.remove({name: &apos;hf&apos;}) - 删除name字段值为空的行, 此处相当于关系数据库中的 delete myColl where name = ‘hf’
+
+2、db.myColl.remove({_id: ObjectId(&quot;593526143793ca468ceb963c&quot;)}) - 通过id来删除文档
+
+3、db.myColl.remove({}) - 删除集合中所有文档
+</code></pre><h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><pre><code>索引就是用来加速查询
+
+索引的优缺点:
+
+    优点: 索引加快查询的速度
+
+    缺点: 增加磁盘空间消耗，降低写入性能
+
+一、命令
+
+    1、查看索引 - getIndexes()    db.myColl.getIndexes()
+
+    2、创建索引 - ensureIndex()    db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
+
+    3、删除索引 - dropIndexes()    db.myColl.dropIndexes()
+
+    4、修改索引 - {background: true}        db.myColl.ensureIndex({id: 1}, {background: true});
+
+
+二、ensureIndex()参数
+
+    1、background - Boolean 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 &quot;background&quot; 可选参数。 &quot;background&quot; 默认值为false。
+
+    2、unique - Boolean 建立的索引是否唯一。指定为true创建唯一索引。默认值为false.
+
+    3、name - string 索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。
+
+    4、dropDups - Boolean 在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 false.
+
+    5、sparse - Boolean 对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.
+
+    6、expireAfterSeconds - nteger    指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。
+
+    7、v - index version 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。
+
+    8、weights - document索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。
+
+    9、default_language - string 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
+
+    10、language_override - string 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
+
+
+三、索引类型
+
+    创建索引的两种不同:
+
+        非全文索引     ensureIndex({key: value}): key为字段名，值为1或-1代表索引的排序方向
+        全文索引     ensureIndex({key: &apos;text&apos;}): key为字段名，value为固定的&apos;text&apos;字符串
+
+    1、_id索引 - 是绝大多数集合默认建立的索引, 插入一条数据自动创建一个索引
+
+    2、单键索引 - 最普通的索引 与_id不同的是，单键索引不会自动创建
+
+        Example:
+
+            {x: 1, y: 2, z: 3}        // 当前表
+
+            db.myColl.ensureIndex({x: 1})        // 使用 x 作为索引
+            for(var i=0, i&lt;10; i++) db.myColl.insert({x: 2, y: i+&apos;y&apos;; z: i+&apos;z&apos;});
+            for(var i=0, i&lt;10; i++) db.myColl.insert({x: 1, y: i+&apos;y&apos;; z: i+&apos;z&apos;});        // 插入10条数据，x为1
+            db.myColl.find({x:1});            // 用索引查出数据
+
+
+    3、多键索引 - 多键索引与单键索引创建形势相同
+
+            单键索引: 值是一个单一的值，如字符串、数字或日期
+
+            多键索引: 值有多个记录，如数组
+
+            db.myColl.insert({x: [1,2,3,4,5]});
+
+
+    4、复合索引 - 查询条件不只有一个，需要建立复合索引            
+
+        db.myColl.ensureIndex({x: 1, y: 1})        // 定义复合索引
+        db.myColl.find({x:1, y: 1})        // 通过复合索引查询
+
+        设置后的索引:
+        [
+            {
+                &quot;v&quot; : 2,
+                &quot;key&quot; : {
+                    &quot;_id&quot; : 1
+                },
+                &quot;name&quot; : &quot;_id_&quot;,
+                &quot;ns&quot; : &quot;tuniu.gt&quot;
+            },
+            {
+                &quot;v&quot; : 2,
+                &quot;key&quot; : {
+                    &quot;x&quot; : 1,        // 这里
+                    &quot;y&quot; : 1
+                },
+                &quot;name&quot; : &quot;id_1_money_1&quot;,
+                &quot;ns&quot; : &quot;tuniu.gt&quot;
+            }
+        ]
+
+
+    5、过期索引 - 在一段时间后会过期的索引, expireAfterSeconds
+
+        索引过期后数据会被删除, 插入的数据会在30秒后删除, 如用户登录信息, 存储日志
+
+        db.myColl.ensureIndex({time: 1}, {expireAfterSeconds: 30})        // expireAfterSeconds 定义30秒后 time值的索引删除
+
+        db.myColl.insert({username: &apos;siguang&apos;, password: &apos;xxxx&apos;, time: new Date()});        // new Date() 当前时间, 30秒后会自动删除当前这条记录
+
+        ** 注意 当数据量不大的时候最小间隔为60秒, 就算设置30秒也会按60秒来完成 ** 
+        ** 创建time的值必须是时间类型ISODate **
+
+
+    6、全文索引
+
+        *** 注意：mongo中不支持中文的全文索引 ***
+
+        全文索引每次只能使用一个$text查询
+
+        db.myColl.ensureIndex({key: &quot;text&quot;})
+
+        db.myColl.ensureIndex({&quot;$**&quot;: &quot;text&quot;})        对所有字段作全文索引，而不是某一个字段
+
+
+        查询全文索引：
+
+            db.myTabel.find({$test: {$search: &apos;aa&apos;}})   只有值为aa时不包含其它字符时返回
+
+            db.myTabel.find({$test: {$search: &apos;aa bb cc&apos;}})   如果是 aa 或 bb 或 cc 时返回  相当于 ||
+
+            db.myTabel.find({$test: {$search: &apos;aa bb -cc&apos;}})  包含 aa 或 bb ，但不包含 cc 时返回
+
+            db.myTabel.find({$test: {$search: &apos;\&apos;aa\&apos; \&apos;bb\&apos; \&apos;cc\&apos;&apos;}})  aa bb cc 都包含  相当于 &amp;&amp;
+
+
+        相适度: $meta
+
+            {score: {$meta: &apos;textscore&apos;}}  写在查询条件后面可以返回相似度的结果，与sort一起使用可以达到实用的效果
+
+            Example:
+
+            db.app.find({$text: {$search: &apos;新京报&apos;}}, {score: {$meta: &apos;textScore&apos;}})
+
+            // db.app.find({$text: {$search: &apos;新京报&apos;}}, {score: {$meta: &apos;textScore&apos;}}).sort({scope: {$meta: &apos;textScore&apos;}})       // scope值来排序
+
+            { &quot;_id&quot; : ObjectId(&quot;58e31b4c47e9f10d47bd55ec&quot;), &quot;title&quot; : &quot;共享单车相随总理出国门&quot;, &quot;article&quot; : &quot;今年1月，摩拜单车创始人&quot;, &quot;author&quot; : &quot;新京报(北京)&quot;, &quot;dateTime&quot; : ISODate(&quot;2017-04-04T04:04:28.585Z&quot;), &quot;score&quot; : 0.75 }
+            { &quot;_id&quot; : ObjectId(&quot;58e31b4c47e9f10d47bd55ed&quot;), &quot;title&quot; : &quot;李克强赞这家企业一分钟穿越了两个时代&quot;, &quot;article&quot; : &quot;当时，来这里考察的。&quot;, &quot;author&quot; : &quot;新京报123(北京)&quot;, &quot;dateTime&quot; : ISODate(&quot;2017-04-04T04:04:28.624Z&quot;), &quot;score&quot; : 0.75 }
+
+            这里结果返回 scope 的值是就相适度的情况
+
+
+四、索引属性
+
+    1、name 为索引指定name值
+
+        例如定义一个复合索引，可以统一给他们一个名这样，在删除索引的时候也可以通过名字来删除
+
+        db.myColl.ensureIndex({id: 1, type: 1, money: 1}, {name: &apos;idx&apos;});        // 定义索引name, 如果不加mongo会自动生成一个name值 为key_1
+
+        db.myColl.dropIndexes(&apos;idx&apos;);
+
+
+    2、unique 唯一索引
+
+        唯一索引：不能在一个字段插入相同的值，如id如果有1，在插入id=1不允许
+
+        db.myColl.ensureIndex({id: 1}, {unique: true/false});        // 设置了id字段为唯一索引
+
+        db.myColl.insert({id:1, title:&apos;xxx&apos;});        如果id=1存在则不会被插入
+
+
+    3、sparse 稀疏性
+
+
+五、地理位置索引
+
+    将一些点的位置存储在mongo中，创建索引后可以按照位置来查找其点
+
+    子分类： 2d索引，用于存储和查找平面上的点        2dsphere索引，用于存储和查找球面上的点
+
+    查找方式: 查找某个点一定距离内的点（打车软件）    查找包含在某个区域内的点
+
+    1、创建 2D索引 平面地理位置索引
+
+        db.location.ensureIndex({w: &apos;2d&apos;})        // 创建索引
+
+        db.location.insert({w: [1, 1]});        // 插入经、纬度， 经度值在-180 至 180 之间， 纬度值在 -90 至 90 之间
+        db.location.insert({w: [132, 112]});
+        db.location.insert({w: [22, 14]});
+        db.location.insert({w: [165, 13]});
+
+        db.location.find({w: {$near: [1,1]}})        // $near 查找近的
+        db.location.find({w: {$near: [1,140], $maxDistance: 150}})    // 查找经度 1-150之间， 或者纬度140-150之间   $maxDistrance 最大距离
+</code></pre><h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><pre><code>aggregate() 主要用于处理数据，返回计算后的数据结果
+
+一、$group: 将集合中的文档分组，用于统计结果
+
+    1、sum - 计算个数    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$sum : &quot;$currentCount&quot;}}}])
+
+    2、avg - 计算平均值    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$avg : &quot;$currentCount&quot;}}}])
+
+    3、min - 获取集合中所有文档对应值得最小值。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$min : &quot;$currentCount&quot;}}}])
+
+    4、max - 获取集合中所有文档对应值得最大值。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$max : &quot;$currentCount&quot;}}}])
+
+    5、push - 在结果文档中插入值到一个数组中。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$push: &quot;$currentCount&quot;}}}])
+
+    6、addToSet - 在结果文档中插入值到一个数组中，但不创建副本。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$addToSet : &quot;$currentCount&quot;}}}])
+
+    7、first - 根据资源文档的排序获取第一个文档数据。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, firstDoc: {$first : &quot;$currentCount&quot;}}}])
+
+    8、last - 根据资源文档的排序获取最后一个文档数据    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, firstDoc: {$last : &quot;$currentCount&quot;}}}])
+
+    Example:
+
+        // 查出来的文档
+        db.col.find().pretty();        
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d0&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113029&quot;,
+            &quot;currentCount&quot; : 30000,
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d1&quot;),
+            &quot;dimensionType&quot; : &quot;OMG&quot;,
+            &quot;loanId&quot; : &quot;1129602&quot;,
+            &quot;currentCount&quot; : 30000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d2&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113031&quot;,
+            &quot;currentCount&quot; : 40000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d3&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113016&quot;,
+            &quot;currentCount&quot; : 40000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d4&quot;),
+            &quot;dimensionType&quot; : &quot;HSR&quot;,
+            &quot;loanId&quot; : &quot;112910&quot;,
+            &quot;currentCount&quot; : 30000
+        }
+
+        1）通过游标来计算 dimensionType计算出类别的个数
+
+            db.col.aggregate([
+                {
+                    $group:{
+                        _id: &quot;$dimensionType&quot;,
+                        count: {$sum: 1}
+                    }
+                }
+            ])        
+
+            // 结果 返回
+            { 
+                &quot;_id&quot; : &quot;HSR&quot;, 
+                &quot;count&quot; : 1.0
+            }
+            { 
+                &quot;_id&quot; : &quot;OMG&quot;, 
+                &quot;count&quot; : 1.0
+            }
+            { 
+                &quot;_id&quot; : &quot;AGE&quot;, 
+                &quot;count&quot; : 3.0
+            }
+
+        2) 通过dimensionType列 中不同类型来计算 currentCount列的总合
+
+            db.col.aggregate([
+                {
+                    $group:{
+                        _id: &quot;$dimensionType&quot;,
+                        total: {$sum: &quot;$currentCount&quot;}
+                    }
+                }
+            ])
+
+            // 返回结果
+            { 
+                &quot;_id&quot; : &quot;HSR&quot;, 
+                &quot;total&quot; : 30000.0
+            }
+            { 
+                &quot;_id&quot; : &quot;OMG&quot;, 
+                &quot;total&quot; : 30000.0
+            }
+            { 
+                &quot;_id&quot; : &quot;AGE&quot;, 
+                &quot;total&quot; : 110000.0
+            }
+
+
+二、管道符:
+
+    $project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
+
+    $match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。
+
+        db.col.aggregate([
+            {
+                $match: {
+                    currentCount: {$gt: 30000}
+                }
+            },
+            {
+                $group:{
+                    _id: &quot;$dimensionType&quot;,
+                    min: {$sum: &quot;$currentCount&quot;}
+                }
+            }
+        ])
+        先将currentCount字段大于30000的匹配出来，在通过分组取出currentCount的总和
+
+    $limit：用来限制MongoDB聚合管道返回的文档数。
+
+    $skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。
+
+    $unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
+
+    $group：将集合中的文档分组，可用于统计结果。
+
+    $sort：将输入文档排序后输出。
+
+    $geoNear：输出接近某一地理位置的有序文档。
+
+
+三、count()  返回个数
+
+    db.cars.count();        // 返回记录的个数
+
+    db.cars.count({price: 1000})    // 返回price=1000 记录的个数
+
+    db.cars.count({price: {$lt: 1000})    // 返回price &lt; 1000 记录的个数
+
+
+四、distinct()  指定某一个字段返回不重复的数据，如 age: &apos;a&apos;  age: &apos;b&apos;  age: &apos;a&apos;   
+
+    db.myColl.distinct(&quot;price&quot;);        // [&apos;a&apos;, &apos;b&apos;]    
+
+五、mapReduce(）
+</code></pre><h4 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h4><h4 id="创建用户管理"><a href="#创建用户管理" class="headerlink" title="创建用户管理"></a>创建用户管理</h4><pre><code>mongo默认是没有管理员账户，需要在admin数据库中使用db.addUser()来添加管理员账号，否则任何人都可以操作数据库，admin库中有system.user的collection这就是用户表，用来存放超级管理员
+
+用户分为两种: 一种是admin用户，另一种是在指定数据库的用户，admin用户是最高权限 
+
+1、createUser() 创建用户
+
+    $ use admin    // 先要切换到admin库
+
+    $ show users     // 显示当前库下设置的所有设置的用户权限
+
+    $ db.createUser(
+        {
+            user: &quot;root&quot;,        // 用户名
+            pwd: &quot;ssssss&quot;,        // 密码
+            roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ]
+        }
+    )
+
+    user - 段介绍： user字段，为新用户的名字；
+    pwd - 用户的密码；
+    cusomData - 为任意内容，例如可以为用户全名介绍；
+    roles - 指定用户的角色，可以用一个空数组给新用户设定空角色；可以指定内置角色和用户定义的角色。
+
+    Roles（内置角色）： 
+
+        1. 数据库用户角色：read、readWrite;      // 读、读写
+
+        2. 数据库管理角色：dbAdmin、dbOwner、userAdmin；    // 管理权限
+
+        3. 集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；
+
+        4. 备份恢复角色：backup、restore；
+
+        5. 所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase
+
+        6. 超级用户角色：root   // 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）
+
+        7. 内部角色：__system
+
+        PS：关于每个角色所拥有的操作权限可以点击上面的内置角色链接查看详情。
+
+
+2、设置完用户权限进行重启mongod服务
+
+    $ db.shtdownServer();        // 关闭mongod服务，或者kill掉
+
+    // 进入bin目录下启动mongod
+
+    $ mongod --auth                // 注意加权限就需要使用这个来启动服务,而不是单独的mongod &amp;
+
+
+3、mongo登录
+
+    $ mongo --port 27017 -u &quot;root&quot; -p &quot;ssssss&quot; --authenticationDatabase &quot;admin&quot;
+
+    $ use admin
+
+    $ db.auth(&quot;root&quot;, &quot;ssssss&quot;);        // 1表示登录成功，0表示登录失败。
+
+
+4、创建其它用户
+
+    use myCar
+    db.createUser(
+        {
+            user: &quot;car&quot;,
+            pwd: &quot;welcomeCar&quot;,
+            roles: [ 
+                { role: &quot;readWrite&quot;, db: &quot;myCar&quot; },
+                { role: &quot;dbAdmin&quot;, db: &quot;myCar&quot; },
+                { role: &quot;clusterMonitor&quot;, db:&quot;admin&quot;}
+            ]
+        }
+    )
+
+
+5、作为其它用户进行连接和验证身份
+
+    mongo --port 27017
+    use myCar
+    db.auth(&quot;car&quot;, &quot;welcomeCar&quot;)
+
+
+6、修改角色
+
+    db.grantRolesToUser(
+        &quot;sms&quot;,
+        [
+            { role: &quot;clusterMonitor&quot;, db:&quot;admin&quot;} 
+        ]
+    )
+</code></pre><h4 id="conf配置文件"><a href="#conf配置文件" class="headerlink" title=".conf配置文件"></a>.conf配置文件</h4><pre><code>systemLog:
+    destination: file
+path: /usr/local/var/log/mongodb/mongo.log
+    logAppend: true
+storage:
+    dbPath: /usr/local/var/mongodb
+net:
+    bindIp: 127.0.0.1
+security:
+    authorization:enabled      // 开启权限
+</code></pre><h4 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h4><h4 id="MongoDB导入、导出及数据库备份与恢复"><a href="#MongoDB导入、导出及数据库备份与恢复" class="headerlink" title="MongoDB导入、导出及数据库备份与恢复"></a>MongoDB导入、导出及数据库备份与恢复</h4><pre><code>1、mongoexport - 将 collection 导出成JSON或CSV格式
+
+    mongoexport  -d 库名  -c collection名   -o 输出的文件名   --type 导出的格式json/csv  -f  输出的字段，如果type是CSV需要指定字段名
+
+    Example: sudo mongoexport -d tun -c gt -o gentuanyou --type json
+
+
+2、mongoimport - 将 collection 导入到
+
+    mongoimport  -d 库名  -c colection名  --file 导入的文件名   --type 导入的格式  -f 导入的字段名  --headerline 如果导入是csv则可以使用第一行标题 
+
+
+3、mongodump - 库备份
+
+    mongodump  -h 服务器地址   -d 数据库名   -o 备份的位置
+
+    Example: mongodump -h 127.0.0.1 -d tun -o /Users/apple/siguang.liu/mongoBackup
+
+
+4、mongorestore - 数据库恢复
+
+    mongorestore  -h 服务器地址  -d 需要恢复的数据库   --dir 备份数据的位置    [--drop 恢复先删除数据，然后恢复数据]
+
+    mongorestore -h 127.0.0.1 -d tun --dir /Users/apple/siguang.liu/mongoBackup
+</code></pre><h4 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h4><pre><code>对MongoDB服务的运行情况和性能进行监控
+
+1、mongostat、mongoStop      mongostat是mongdb自带的状态检测工具, 查看mongo运行状态的程序
+
+    使用: 先到bin目录 cd /usr/local/Cellar/mongodb/3.4.3/bin                进行 mongostat目录 $ mongostat --help   来查看文档
+
+            mongostat -h 127.0.0.1:123    -u用户名 -p密码        执行侦听
+
+    日志: 
+
+        http://www.cnmyColls.com/zhuque/archive/2013/03/29/2988577.html
+
+        insert    插入数量
+        query    查询数量
+        update  更新数量
+        delete     删除数量
+        getmore 
+        command 
+        flushes    虚拟映射
+        mapped     
+        vsize   占磁盘的空间
+        res     占内存大小
+        idx miss 如果值过高，说明索引创建的有问题
+        qrw     qr 读队列，qw 写队列 性能指标的一块，如果值比较高出现性能问题
+        arw 
+        net_in 
+        net_out 
+        conn    连接mongo的数量            
+        time
+
+
+2、profile 集合介绍
+
+    db.getProfilingStatus();        // 获取
+
+
+3、日志介绍
+
+4、explain(): 
+
+    db.users.find({id: 10000}).explain(&apos;executionStats&apos;)
+
+        explain()三个参数：&apos;queryPlanner&apos;, &apos;executionStats&apos;, 和&apos;allPlansExecution&apos;
+
+    result:
+    {
+        &quot;queryPlanner&quot; : {
+            &quot;plannerVersion&quot; : 1,
+            &quot;namespace&quot; : &quot;myCar.users&quot;,
+            &quot;indexFilterSet&quot; : false,
+            &quot;parsedQuery&quot; : {
+                &quot;name&quot; : {
+                    &quot;$eq&quot; : &quot;user99989&quot;
+                }
+            },
+            &quot;winningPlan&quot; : {
+                &quot;stage&quot; : &quot;COLLSCAN&quot;,
+                &quot;filter&quot; : {
+                    &quot;name&quot; : {
+                        &quot;$eq&quot; : &quot;user99989&quot;
+                    }
+                },
+                &quot;direction&quot; : &quot;forward&quot;
+            },
+            &quot;rejectedPlans&quot; : [ ]
+        },
+        &quot;executionStats&quot; : {
+            &quot;executionSuccess&quot; : true,        // 是否成功
+            &quot;nReturned&quot; : 1,                // 返回的数量
+            &quot;executionTimeMillis&quot; : 49,        // *** 重要的执行时间   
+            &quot;totalKeysExamined&quot; : 0,
+            &quot;totalDocsExamined&quot; : 100000,    // 总共检查了多少个文档
+            &quot;executionStages&quot; : {
+                &quot;stage&quot; : &quot;COLLSCAN&quot;,
+                &quot;filter&quot; : {
+                    &quot;name&quot; : {
+                        &quot;$eq&quot; : &quot;user99989&quot;
+                    }
+                },
+                &quot;nReturned&quot; : 1,
+                &quot;executionTimeMillisEstimate&quot; : 50,
+                &quot;works&quot; : 100002,
+                &quot;advanced&quot; : 1,
+                &quot;needTime&quot; : 100000,
+                &quot;needYield&quot; : 0,
+                &quot;saveState&quot; : 783,
+                &quot;restoreState&quot; : 783,
+                &quot;isEOF&quot; : 1,
+                &quot;invalidates&quot; : 0,
+                &quot;direction&quot; : &quot;forward&quot;,
+                &quot;docsExamined&quot; : 100000
+            }
+        },
+        &quot;serverInfo&quot; : {
+            &quot;host&quot; : &quot;appledeMacBook-Pro-2.local&quot;,
+            &quot;port&quot; : 27017,
+            &quot;version&quot; : &quot;3.4.3&quot;,
+            &quot;gitVersion&quot; : &quot;f07437fb5a6cca07c10bafa78365456eb1d6d5e1&quot;
+        },
+        &quot;ok&quot; : 1
+    }
+</code></pre><h4 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h4><pre><code>Studio-3T、Robomongo
+</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>1、使用mongoShell语句来通过_id查询更新时需要加ObjectId(&quot;&quot;), 如果程序处理不需要加
+
+    db.col.update({_id: ObjectId(&quot;59acc404bef510c028190630&quot;)},{$set: {&apos;by&apos;: &apos;mongodb&apos;}})
+</code></pre><h4 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h4><pre><code>1、首次安装 创建存放数据的目录时 $ sudo mkdir -p /data/db  如果这两个文件夹的权限是root那启动mongod就会报错，需要修改一下这两个目录的权限
+
+    $ sudo chown apple:admin /data        // apple为我当前用户的名称
+
+    $ sudo chown apple:admin /data/db
+
+2、启动时如果提示 Failed to unlink socket file /tmp/mongodb-27017.sock errno:1 Operation not permitted
+
+    因为/tmp/mongodb-27017.sock这个文件没有操作权限, 是root用户启动没成功后创建了这个文件
+    需要到tmp目录下删除这个文件在重启
+
+    $ cd /tmp &amp;&amp; sodu rm -rf mongodb-27017.sock
+</code></pre><p>| 参考资料<br>|<br>| <a href="http://www.mongoing.com" target="_blank" rel="noopener">http://www.mongoing.com</a>            // 中文网站<br>| <a href="http://www.jianshu.com/p/dd0c39bf7be4" target="_blank" rel="noopener">http://www.jianshu.com/p/dd0c39bf7be4</a>                      // mongo安装<br>| <a href="http://www.runoob.com/mongodb/mongodb-objectid.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-objectid.html</a>      // 文档<br>| <a href="http://www.yiibai.com/mongodb/mongodb_drop_database.html" target="_blank" rel="noopener">http://www.yiibai.com/mongodb/mongodb_drop_database.html</a><br>| <a href="http://blog.csdn.net/jaylong35/article/details/7219410" target="_blank" rel="noopener">http://blog.csdn.net/jaylong35/article/details/7219410</a>  // 服务的开启与关闭<br>| <a href="http://blog.csdn.net/dbabruce/article/details/50963956" target="_blank" rel="noopener">http://blog.csdn.net/dbabruce/article/details/50963956</a>  // 用户权限<br>| <a href="http://www.cnblogs.com/qingtianyu2015/p/5968400.html" target="_blank" rel="noopener">http://www.cnblogs.com/qingtianyu2015/p/5968400.html</a>    // 库的导入、导出<br>| <a href="https://robomongo.org" target="_blank" rel="noopener">https://robomongo.org</a>     // mongoDB可视化工具<br>|<br>| <a href="http://blog.csdn.net/u013457382/article/category/6114612" target="_blank" rel="noopener">http://blog.csdn.net/u013457382/article/category/6114612</a><br>| <a href="http://www.cnblogs.com/zhongweiv/p/node_mongodb.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhongweiv/p/node_mongodb.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/02/mongoDB/" data-id="cjdu4wpxa0024chwr8vb6rh41" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
     </footer>
   </div>
   
@@ -108,6 +3417,11 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
@@ -116,15 +3430,10 @@
 
   
     
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -132,12 +3441,47 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/02/19/hello-world/">Hello World</a>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
           </li>
         
       </ul>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>React（之一）基础 | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="| 创建组件| render| props、propType、state、setState()、replaceState()| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)| React.Children 获取父组件传的DOM| mixin React安装react-cli 见的README.md  React包括几个概念: 1">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React（之一）基础">
+<meta property="og:url" content="http://siguang1983.github.io/2016/12/24/React(之一)基础/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| 创建组件| render| props、propType、state、setState()、replaceState()| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)| React.Children 获取父组件传的DOM| mixin React安装react-cli 见的README.md  React包括几个概念: 1">
+<meta property="og:updated_time" content="2018-02-08T05:00:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React（之一）基础">
+<meta name="twitter:description" content="| 创建组件| render| props、propType、state、setState()、replaceState()| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)| React.Children 获取父组件传的DOM| mixin React安装react-cli 见的README.md  React包括几个概念: 1">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React(之一)基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/24/React(之一)基础/" class="article-date">
+  <time datetime="2016-12-24T03:06:16.000Z" itemprop="datePublished">2016-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React（之一）基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| 创建组件<br>| render<br>| props、propType、state、setState()、replaceState()<br>| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)<br>| React.Children 获取父组件传的DOM<br>| mixin</p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><pre><code>安装react-cli 见的README.md
+
+React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定
+
+1、核心是封装组件，只关注UI，状态变更重新渲染整个组件
+
+2、JSX: HTML代码可以直接嵌到JS代码中，这就是React提出的叫JSX的语法，原来前端以表现和逻辑层分离为主，但HTML是组件的一部分所以不能分割，JSX 将动态值放到 { ... }
+
+3、单向数据绑定: 当数据更新会渲染整个app
+
+    修改DOM树、修改数据、以旧换新用户输入、异步API数据
+
+    React的渲染方式: 用户输入、从API获取数据、将数据传给顶层组件、React将每个组件渲染出来
+
+        不会象MVC一样的双向数据绑定、和数据模型的脏值检测、不会有确切的DOM操作
+
+4、虚拟DOM树: React重建一个DOM树，找到与上一个版本的DOM的差异，计算出新的DOM更新操作，从操作队列中指执行DOM更新操作
+
+    http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/      // 前沿技术解密——VirtualDOM
+
+5、工具: sublime或Atom
+
+    sublime插件安装: 
+
+    ReactJS  https://packagecontrol.io/packages/ReactJS   用来提示编码还有快捷键
+
+    babel-sublime: https://github.com/babel/babel-sublime   用来语法颜色
+
+    javascriptNext: https://github.com/Benvie/JavaScriptNext.tmLanguage 
+</code></pre><h4 id="react引用方式"><a href="#react引用方式" class="headerlink" title="react引用方式"></a>react引用方式</h4><pre><code>1、页面直接加载
+
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js&quot;&gt;&lt;/script&gt;
+
+2、ES5的写法
+
+    var React = require(&apos;react&apos;);
+    var ReactDOM = require(&apos;react-dom&apos;);
+
+    // 定义组件
+    var HelloMessage = React.createClass({
+      render: function() {
+        return &lt;div&gt; React，我们来了... &lt;/div&gt;;
+      }
+    });
+
+    // 组件渲染
+    ReactDOM.render(&lt;HelloMessage /&gt;, rootElement);
+
+3、ES6的写法
+
+    import React, { Component } from &apos;react&apos;;
+    import { render } from &apos;react-dom&apos;;
+
+    // 定义组件
+    class SimpleComponent extends Component {
+        render(){
+            return &lt;div&gt; React，我们来了... &lt;/div&gt;;
+        }
+    }
+    export default SimpleComponent;
+
+    // 组件渲染
+    render(&lt;HelloMessage /&gt;, rootElement);
+</code></pre><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><pre><code>var HelloMessage = React.createClass({
+    render: function() {
+        return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+    }
+});
+React.render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);
+
+如果不使用JSX，就需要使用createElement()来创建元素
+
+render: function() {
+    return React.createElement(&quot;div&quot;, null, &quot;Hello &quot;, this.props.name);
+}
+
+一、注释
+
+    {/* 一般注释, 用 {} 包围 */}
+
+    /* 多
+     行
+     注释 */
+
+二、根元素只能有一个
+
+     class ComponentDemo extends Component {
+        render(){
+            // 以下写法直接报错
+            return (
+                &lt;div&gt;
+                hello
+                &lt;/div&gt;
+                &lt;h1&gt; hello h1 &lt;/h1&gt;
+            );
+        }
+    }
+
+三、styles 写法
+
+    class StyleDemo extends Component {
+        render(){
+            // 在JS文件里面给组件定义样式
+            var MyComponentStyles = {
+                color: &apos;blue&apos;,
+                fontSize: &apos;28px&apos;
+            };
+
+            return (
+                &lt;div style={MyComponentStyles}&gt;
+                  可以直接这样写行内样式
+                &lt;/div&gt;
+            )
+        }
+    }
+
+四、属性名不能和 js 关键字冲突
+
+    class =&gt; className 
+
+    read =&gt; readOnly 
+
+    for =&gt; htmlfor
+
+五、JSX spread
+
+    {...spreadObj} 可以直接将spreadObj的对象传递过去
+
+    Spread Demo组件:
+
+        import React, { Component } from &apos;react&apos;;
+        import ReactDOM, { render } from &apos;react-dom&apos;
+
+        class SpreadDemo extends Component{
+            render(){
+                return &lt;div&gt;姓名: {this.props.name}  车型: {this.props.carType}&lt;/div&gt;
+            }
+        }
+        export default SpreadDemo;
+
+    main.js:
+
+        import SpreadDemo from &apos;./components/spread&apos;;
+        const spreadObj = {
+            name: &apos;siguang&apos;,
+            carType: &apos;卡宴&apos;
+        }
+        // render(&lt;SpreadDemo name={spreadObj.name} carType={spreadObj.carType} /&gt;, document.querySelector(&apos;#app&apos;));
+        render(&lt;SpreadDemo {...spreadObj} /&gt;, document.querySelector(&apos;#app&apos;));
+</code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><pre><code>创建组件: React.createClass() 或 React.Component()
+
+渲染组件: ReactDOM.render(&lt;组件名/&gt;, 放到哪个位置, 渲染完成的回调);
+
+一、组件创建三种方法
+
+    1、ES5 创建组件: 
+
+        let React = require(&apos;react&apos;);
+        let ReactDOM = require(&apos;react-dom&apos;);
+
+        let Message = React.createClass({
+            render: function(){
+                return (
+                    &lt;div&gt;
+                        &lt;ul&gt;
+                            &lt;li&gt;Hello World {this.props.personName}&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                )
+            }
+        })
+
+        module.exports = Message;        // ES5导出组件
+
+        // ReactDOM.render(
+        //        &lt;Message personName=&quot;siguang&quot; /&gt;
+        //         , document.querySelector(&apos;#app&apos;)
+        // );
+
+
+    2、ES6 创建组件方法
+
+        import React, { Component } from &apos;react&apos;;
+        import ReactDOM, { render } from &apos;react-dom&apos;;
+
+        // 所有创建的组件都继承于Component对象
+        class ShowMessage extends Component{
+            render(){
+                return &lt;div&gt;Hello name {this.props.name}&lt;/div&gt;
+            }
+        }
+
+        export default ShowMessage;        // ES6导出组件
+
+        // render(&lt;ShowMessage name=&quot;siguang.liu&quot; /&gt;, document.querySelector(&apos;#app&apos;));
+
+
+    3、函数式组件
+
+        是组件没有状态的时候（相当不需要设置state, 不能使用this、可以写成函数式
+
+        const ShowMessage = () =&gt; &lt;div&gt;Hello name haha&lt;/div&gt;
+        render(&lt;ShowMessage /&gt;, document.querySelector(&apos;#app&apos;));
+
+        可以使用props
+
+        const ShowMessage = function(props){
+            return &lt;div&gt;Hello name {props.name}&lt;/div&gt;
+        }
+
+
+二、组件的注意地方
+
+    1、组件名首字母必须大写
+
+    2、根元素的个数只能是一个
+
+        class ComponentDemo extends Component {
+            render(){
+                return (
+                    &lt;div class=&quot;boxA&quot;&gt;            {/* 根元素只能有一个 */}
+                        aaaaaaaa
+
+                        &lt;div class=&quot;boxB&quot;&gt;
+                            bbbbbb
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                )
+            }
+        }
+        export default ComponentDemo;
+
+    3、spread变量传递可以使用es6的 {...obj}
+
+        let person = &lt;Person name={window.isLoggedIn ? window.name : &apos;&apos;} /&gt;
+
+    4、获取真实的DOM节点
+
+        组件并不是真实的DOM节点，而是在内存中的一种数据结构叫虚拟DOM，如果要从组件内获取真实的DOM节点，需要用到refs属性
+</code></pre><h4 id="组件嵌套"><a href="#组件嵌套" class="headerlink" title="组件嵌套"></a>组件嵌套</h4><pre><code>childList.jsx:
+
+    import React, { Component } from &apos;react&apos;
+    import ReactDom, { render } from &apos;react-dom&apos;
+
+    class ChildrenA extends Component{
+        constructor(props){
+            super(props);
+        }
+        render(){
+            return (&lt;div&gt;
+                {/* 这里是子组件A   this.props.children获取组件的内容，相当前于vue中的solt */}
+                {
+                    React.Children.map(this.props.children, function(c){        // React.Children是获取组件中的元素
+                        return &lt;p&gt;{c}&lt;/p&gt;
+                    })
+                }
+            &lt;/div&gt;)
+        }
+    }
+
+    class ParentComponent extends Component{
+        render(){
+            return &lt;div&gt;
+                &lt;ChildrenA&gt;
+                    &lt;p&gt;福特&lt;/p&gt;
+                    &lt;p&gt;丰田&lt;/p&gt;
+                    &lt;p&gt;本田&lt;/p&gt;
+                &lt;/ChildrenA&gt;
+            &lt;/div&gt;
+        }
+    }
+    export default ParentComponent;
+
+index.js:
+
+    import React, { Component } from &apos;react&apos;
+    import ReactDom, { render } from &apos;react-dom&apos;
+    import ParentComponent from &apos;./components/ParentComponent&apos;
+
+    render(&lt;ParentComponent /&gt;, docuemnt.querySelector(&apos;#box&apos;));
+</code></pre><h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4><pre><code>React是单向数据流，数据从父组件传到子组件，子组件通过props获取数据，顶层组件改变了props，React会遍历整个组件树，重新渲染整个组件
+
+数据流包括: Props 和 State
+</code></pre><h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><pre><code>从最顶层逐级向下传递，从父组件将数据传到子组件，单向数据流
+
+{this.props.name} 读取props的值
+
+1、props API:
+
+    this.props.children
+
+    this.props.map
+
+    this.props.filter 
+
+
+2、getDefaultProps() 设置一个默认的props
+
+    ES5写法
+
+        var ComponentWithDefaultProps = React.createClass({
+            // 初始化设置props值
+            getDefaultProps: function() {
+                return {
+                    value: &apos;default value&apos;
+                };
+            }
+        });
+
+    ES6写法 
+
+        /* 通过 defaultProps 来定义 */
+        class PropsDemo extends Component {
+            render(){
+                return (
+                    &lt;div class=&quot;box&quot;&gt;
+                        name: {this.props.name}, age: {this.props.age}
+                    &lt;/div&gt;
+                )
+            }
+        }
+
+        PropsDemo.defaultProps = {
+            name: &apos;123123&apos;        // 默认一个name值，如果父组件没有传值就会取默认值
+        }
+
+
+3、propsType 校验props规则
+
+    import React, { Component, PropTypes } from &apos;react&apos;;
+
+    class PropTypesDemo extends Component {
+        render(){
+            return &lt;b&gt;{this.props.title}&lt;/b&gt;
+        }
+    }
+
+    // 静态属性定义propTypes, title只能为string
+    PropTypesDemo.propTypes = {
+        title: React.PropTypes.string.isRequired
+    }
+
+    export default PropTypesDemo;
+
+
+4、Example
+
+    PropsComponent组件:
+
+        import React, { Component } from &apos;react&apos;;
+        import ReactDOM, { render } from &apos;react-dom&apos;;
+
+        class PropsComponent extends Component {
+            render(){
+                return (
+                    &lt;div class=&quot;box&quot;&gt;
+                        name: {this.props.name}, age: {this.props.age}         {/* 这里接收props值 */}
+                    &lt;/div&gt;
+                )
+            }
+        }
+
+        // 输出组件接口
+        export default PropsComponent;
+
+
+    index.js:
+
+        import React, { Component } from &apos;react&apos;;
+        import ReactDOM, { render } from &apos;react-dom&apos;;
+        import PropsComponent from &apos;../components/props&apos;;
+
+        // 要传的值
+        let obj = {
+            name: &apos;haha&apos;,
+            age: &apos;300&apos;
+        }
+
+        // 方法1、直接传给属性
+        render(&lt;PropsComponent name={obj.name} age={obj.age} /&gt;, document.querySelector(&apos;body&apos;));
+
+        // ...obj 来对多值进行解析赋值
+        render(&lt;PropsComponent {...obj} /&gt;, document.querySelector(&apos;body&apos;));
+
+
+5、this.props.children 访问自定义子节点
+
+    // 将组件下的所有子节点通过map获取到，并重新包装
+    import React, { Component } from &apos;react&apos;;
+
+    class UseChildren extends Component {
+        render(){
+            return  &lt;ul&gt;
+                {
+                    // 会将UseChildren组件下所有的元素取出
+                    React.Children.map(this.props.children, function(c){
+                        return &lt;li&gt; {c} &lt;/li&gt;
+                    })
+                }
+            &lt;/ul&gt;
+        }
+    }
+
+    class ChildrenDemo extends Component {
+        render(){
+            return (
+                &lt;UseChildren&gt;
+                    &lt;a href=&quot;#&quot;&gt;Facebook&lt;/a&gt;
+                    &lt;a href=&quot;#&quot;&gt;Google&lt;/a&gt;
+                    &lt;a href=&quot;#&quot;&gt;Space&lt;/a&gt;
+                &lt;/UseChildren&gt;
+            )
+        }
+    }
+
+    export default ChildrenDemo;
+</code></pre><h4 id="state属性"><a href="#state属性" class="headerlink" title="state属性"></a>state属性</h4><pre><code>每一个React组件都有一个自己的state对象，与props区别在于，state只能在当前组件内部使用
+
+1、初始化state
+
+    ES5: 通过getInitialState()
+
+        var Component = React.createClass({
+            // getInitialState()方法 初始化 state值
+            getInitialState: function() {
+                return { userName: &apos;siguang&apos; };
+            },
+
+            render: function(){
+                return (
+                    &lt;div&gt; {this.state.userName} &lt;/div&gt;
+                )
+            }
+        }
+
+    ES6: 通过类的constructor()来初始化
+
+        class StateDemo extends Component {
+            constructor(){
+                super();            // 继承Component
+
+                // 这里初始化state
+                this.state = { 
+                    userName: &apos;siguang&apos; 
+                }
+            }
+
+            render(){
+                return (
+                    &lt;div&gt; {this.state.username}
+                )
+            }
+        }
+
+
+2、setState({改变的值}, 回调函数)来设置state的值, RN中是异步所以这块需要注意
+
+    // 改变已有的值
+    this.setState({username: &apos;haha&apos;})
+
+    // 替换所有值
+    this.replaceState()  
+
+
+3、获取state值 { this.state.属性名 }
+
+    改变值: this.setState()每当state更新组件就会重新渲染自己
+
+    var Component = React.createClass({
+
+        // 1 初始化 state值
+        getInitialState: function() {
+            return {userName: &apos;siguang&apos;};
+        },
+        setUserName: function(){
+            this.setState({userName: &apos;lulu&apos;});        // 2 修改state值
+        },
+        render: function(){
+            return (
+                &lt;div&gt;
+                    这里是props获取的值 {this.state.userName}    // 3 获取state的值
+                    &lt;input type=&quot;button&quot; onClick={this.setUserName.bind(this)} value=&quot;点击修改state&quot; /&gt;
+                &lt;/div&gt;
+            )
+        }
+    })
+
+
+4、state示例
+
+    class StateDemo extends Component {
+        constructor(){
+            super();
+
+            this.state = {
+                secondsElapsed: 0
+            }
+        }
+
+        tick(){
+            this.setState({ secondsElapsed: this.state.secondsElapsed + 1 });
+        }
+
+        componentDidMount(){
+            var that = this;
+            this.interval = setInterval(function(){
+                debugger;
+                that.tick();
+            }, 1000);
+        }
+
+        componentWillUnmount(){
+            clearInterval(this.interval);
+        }
+
+        render(){
+            return (
+                &lt;div&gt;目前已经计时: {this.state.secondsElapsed}秒&lt;/div&gt;
+            )
+        }
+    }
+
+    export default StateDemo;
+
+
+5、this的指向
+
+    class StateDemo extends Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                name: &apos;siguagn&apos;
+            }
+        }
+
+        // 如果onClick=&quot;this.clickSelectBtn&quot; 这么写，this指向的是p, 所以this.setState()报错
+        clickSelectBtn(){
+            this.setState({name: &apos;lulu&apos;})
+        }
+
+        render(){
+            return &lt;div&gt;
+                &lt;p&gt;{this.state.name}&lt;/p&gt;
+                &lt;p&gt;&lt;input type=&quot;button&quot; value=&quot;修改&quot; onClick=&quot;this.clickSelectBtn.bind(this)&quot;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        }
+    }
+
+    解决方法: 
+
+    1、onClick=&quot;this.clickSelectBtn.bind(this)&quot;         // bind()改变this指向
+
+    2、使用箭头函数
+
+        clickSelectBtn = (event) =&gt; {
+            this.setState({name: &apos;lulu&apos;})
+        }
+</code></pre><h4 id="react操作DOM"><a href="#react操作DOM" class="headerlink" title="react操作DOM"></a>react操作DOM</h4><pre><code>两种获取方法
+
+    1、ReactDOM.findDOMNode(this.refs.xxxx);
+
+    2、this.refs.xxx
+
+Example:
+
+    import React, { Component } from &apos;react&apos;;
+    import ReactDOM, { findDOMNode } from &apos;react-dom&apos;;
+    import $ from &apos;jquery&apos;;
+
+    class RefsDemo extends Component {
+        componentDidMount(){
+
+            // findDOMNode()来获取DOM
+            let contentA = findDOMNode(this.refs.content);
+
+            // refs直接获取
+            let contentB = this.refs.content;
+
+            // jQuery来操作DOM
+            console.log($(contentA).html());
+
+            console.log( contentA.innerHTML );
+            console.log( contentB.innerHTML );
+        }
+
+        render(){
+            return(
+                &lt;div&gt;
+                    &lt;h3&gt;React操作DOM&lt;/h3&gt;
+                    &lt;p ref=&quot;content&quot;&gt;这里是DOM元素的内容&lt;/p&gt;        // 这里定义ref访问的名
+                &lt;/div&gt;
+            )
+        }
+    }
+</code></pre><h4 id="React表单组件操作"><a href="#React表单组件操作" class="headerlink" title="React表单组件操作"></a>React表单组件操作</h4><pre><code>1、react表单组件与html的不同
+
+    1）value、checked: 属性设置值后，用户输入无效
+
+    2) textarea: 的值要设置在value属性
+
+        &lt;textarea name=&quot;description&quot; value=&quot;This is a description.&quot; /&gt;
+
+    3）select: value属性可以是数据，不建使用option的selected属性
+
+        &lt;select multiple={true} value={[&apos;B&apos;, &apos;C&apos;]}&gt;
+            &lt;option value=&quot;A&quot;&gt;Apple&lt;/option&gt;
+            &lt;option value=&quot;B&quot;&gt;Banana&lt;/option&gt;
+            &lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;
+        &lt;/select&gt;
+
+    4) input/textarea 的 onChange 用户每次输入都会触发（即使不失去焦点）
+
+    5) radio/checkbox/option 点击后触发 onChange
+</code></pre><h4 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h4><pre><code>通过mixin可以将组件间共享代码，将两个组件共同的属性、方法存储到mixin对象中
+
+mixin不支持ES6的声明组件方式
+
+ES5写法
+
+    import React from &apos;react&apos;;
+
+    // 抽取出的公用方法
+    var SetIntervalMixin = {
+        componentWillMount: function() {
+            this.intervals = [];
+        },
+        setInterval: function() {
+            this.intervals.push(setInterval.apply(null, arguments));
+        },
+        componentWillUnmount: function() {
+            this.intervals.forEach(clearInterval);
+        }
+    };
+
+    var MixinDemo = React.createClass({
+
+        // 这里加载mixin
+        mixins: [SetIntervalMixin],
+
+        getInitialState: function() {
+            return {seconds: 0};
+        },
+
+        componentDidMount: function() {
+            // Call a method on the mixin
+            this.setInterval(this.tick, 1000);
+        },
+
+        tick: function() {
+            this.setState({seconds: this.state.seconds + 1});
+        },
+
+        render: function() {
+            return (
+                &lt;p&gt;
+                    计时器已经运行了:  {this.state.seconds} 秒.
+                &lt;/p&gt;
+            );
+        }
+    });
+
+    export default MixinDemo;
+</code></pre><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><pre><code>一、创建组件时:
+
+    1、getDefaultProps - 设置默认的props
+
+    2、getInitialState() - 定义state，【因内受】
+
+    3、componentWillMount() - 组件挂载前，只调用一次，在这个函数里面调用setState，本次的render函数可以看到更新后的state，并且只渲染一次
+
+    4、render() - 创建虚拟dom，进行diff算法，更新dom树
+
+    5、componentDidMount() - 组件渲染后，可以使用refs操作获取或操作DOM节点
+
+二、更新组件时:
+
+    1、componentWillReceiveProps() - props是父组件传递给子组件的，父组件发生render的时候子组件就会调用componentWillReceiveProps(不管props有没有更新)  receive[rɪˈsiv]
+
+    2、shouldComponentUpdata(nextProps, nextState) - react性能环节，每次调用setState后都会调用shouldComponentUpdate判断是否需要重新渲染组件，前后两个props、state相同返回false阻止更新，不需要在创建新的dom树在进行diff算法，默认为true
+
+    3、componentWillUpdata(nextProps, nextState) - shouldComponentUpdata为true时调用
+
+    4、render() - 
+
+    5、componentDidUpdate() - 
+
+三、卸载组件
+
+    1、componentWillUnmount() - 卸载前调用
+
+https://www.jianshu.com/p/4784216b8194
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、react.js
+
+    React.Children: Object
+    React.Component: ReactComponent(props, context, updater)
+    React.DOM: Object
+    React.PropTypes: Object
+    React.cloneElement: (element, props, children)
+    React.createClass: (spec)
+    React.createElement: (type, props, children)
+    React.createFactory: (type)
+    React.createMixin: (mixin)
+    React.isValidElement: (object)
+
+二、Component
+
+    this.context: Object              // DOM元素的内容
+    this.props: Object              // 获取props对象
+    this.refs: Object                // 通过ref获取指定的DOM
+    this.state: Object                // 获取state对象
+    this.setState: Object            // 设置state值
+
+三、react-dom.js
+
+    ReactDOM.findDOMNode: findDOMNode(componentOrElement)         // 获取DOM
+    ReactDOM.render: ()                                    // 返回组件树
+    ReactDOM.unmountComponentAtNode: (container)
+
+四、react-dom-server.js
+
+    ReactDOMServer.renderToString
+    ReactDOMServer.renderToStaticMarkup
+</code></pre><h4 id="PropTypes验证"><a href="#PropTypes验证" class="headerlink" title="PropTypes验证"></a>PropTypes验证</h4><pre><code>React.PropTypes 提供很多验证器来验证传入数据的有效性
+
+当向 props 传入无效数据时，JavaScript 控制台会抛出警告。注意为了性能考虑，只在开发环境验证 propTypes。下面用例子来说明不同验证器的区别: 
+
+&lt;script type=&quot;text/babel&quot;&gt;
+    var data = 123;
+
+    var MyTitle = React.createClass({
+        propTypes: {
+            title: React.PropTypes.string.isRequired
+        },
+
+        render: function() {
+            return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+        }
+    });
+
+    ReactDOM.render(
+        &lt;MyTitle title={data} /&gt;,
+        document.querySelector(&apos;#app&apos;)
+    );
+&lt;/script&gt;
+
+React.createClass({
+    propTypes: {
+
+        // 可以声明 prop 为指定的 JS 基本类型。默认
+        // 情况下，这些 prop 都是可传可不传的。
+        optionalArray: React.PropTypes.array,
+        optionalBool: React.PropTypes.bool,
+        optionalFunc: React.PropTypes.func,
+        optionalNumber: React.PropTypes.number,
+        optionalObject: React.PropTypes.object,
+        optionalString: React.PropTypes.string,
+
+        // 所有可以被渲染的对象: 数字，
+        // 字符串，DOM 元素或包含这些类型的数组。
+        optionalNode: React.PropTypes.node,
+
+        // React 元素
+        optionalElement: React.PropTypes.element,
+
+        // 用 JS 的 instanceof 操作符声明 prop 为类的实例。
+        optionalMessage: React.PropTypes.instanceOf(Message),
+
+        // 用 enum 来限制 prop 只接受指定的值。
+        optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),
+
+        // 指定的多个对象类型中的一个
+        optionalUnion: React.PropTypes.oneOfType([
+            React.PropTypes.string,
+            React.PropTypes.number,
+            React.PropTypes.instanceOf(Message)
+        ]),
+
+        // 指定类型组成的数组
+        optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),
+
+        // 指定类型的属性构成的对象
+        optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),
+
+        // 特定形状参数的对象
+        optionalObjectWithShape: React.PropTypes.shape({
+            color: React.PropTypes.string,
+            fontSize: React.PropTypes.number
+        }),
+
+        // 以后任意类型加上 `isRequired` 来使 prop 不可空。
+        requiredFunc: React.PropTypes.func.isRequired,
+
+        // 不可空的任意类型
+        requiredAny: React.PropTypes.any.isRequired,
+
+        // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接
+        // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。
+        customProp: function(props, propName, componentName) {
+            if (!/matchme/.test(props[propName])) {
+                return new Error(&apos;Validation failed!&apos;);
+            }
+        }
+    }
+});
+</code></pre><h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><pre><code>1、defaultValue 与 value 的区别
+
+    &lt;input type=&quot;text&quot; Value={this.state.inputValue} /&gt;
+
+    如果使用 value来绑定state的值，输入值时不会被改变
+
+    使用 defaultValue 值会被改变
+
+    var FromApp = React.createClass({
+        getInitialState: function(){
+            return {
+                inputValue: &apos;input value&apos;
+            }
+        },
+
+        handleSubmit: function(e){
+            this.refs[&apos;goodInput&apos;]
+        },
+
+        render: function(){
+            return (
+                &lt;form onSubmit={this.handleSubmit}&gt;
+                    &lt;input type=&quot;text&quot; defaultValue={this.state.inputValue} ref=&quot;goodInput&quot; /&gt;
+                &lt;/form&gt;
+            )
+        }
+    })
+</code></pre><h4 id="React构建配置"><a href="#React构建配置" class="headerlink" title="React构建配置"></a>React构建配置</h4><pre><code>使用的JSX和ES6所以需要转换，通过webpack + babel插件
+
+1、$ npm install webpack
+
+2、安装插件
+
+    $ npm install babel --save-dev
+
+    $ npm install babel-loader --save-dev
+
+    $ npm install babel-core --save-dev
+
+    $ npm install babel-preset-es2015 --save-dev            # ES6转ES5
+
+    $ npm install babel-preset-react --save-dev            # JSX转码
+
+3、webpack.config.js
+
+    var path = require(&apos;path&apos;);
+    module.exports = {
+        entry: &apos;./src/app.js&apos;,
+        output: {
+            path: path.join(__dirname, &apos;/dist&apos;),
+            filename: &apos;app.min.js&apos;
+        },
+        resolve: {
+            extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.jsx&apos;]
+        },
+        module: {
+            loaders:  [
+                {
+                    include: /\.js?$/,
+                    exclude: /node_modules/,
+                    loader: &apos;babel&apos;,
+                    query: {
+                        presets: [&apos;react&apos;, &apos;es2015&apos;]
+                    }
+                  }
+            ]
+        }
+    }
+
+4、使用gulp来进行分别打包
+</code></pre><h4 id="Diff算法"><a href="#Diff算法" class="headerlink" title="Diff算法"></a>Diff算法</h4><pre><code>当组件更新时候，react会创建一个新的虚拟dom树并会和之前的dom树进行比较，这个过程就用到了diff算法
+</code></pre><h4 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h4><pre><code>https://github.com/enaqx/awesome-react#boilerplates
+
+1、路由 - react-router
+
+2、布局 - react-blocks     http://whoisandie.github.io/react-blocks/
+
+3、拖拽 - react-dnd        https://github.com/react-dnd/react-dnd
+
+4、代码编辑器 - react-codemirror        https://github.com/JedWatson/react-codemirror
+
+5、富文本编辑器 - react-quill react-draft-wysiwyg        https://github.com/jpuri/react-draft-wysiwyg
+
+6、拾色器 - rc-color-picker、react-color        https://github.com/react-component/color-picker        http://casesandberg.github.io/react-color/
+
+7、响应式 - react-responsive、react-media        https://github.com/contra/react-responsive        https://github.com/ReactTraining/react-media
+
+8、复制到剪贴板 - react-copy-to-clipboard       https://github.com/nkbt/react-copy-to-clipboard
+
+9、管理 document head - react-helmet          https://github.com/nfl/react-helmet
+
+10、Font Awesome 图标 - react-fa        https://github.com/andreypopp/react-fa
+
+11、二维码 -  qrcode.react         https://ant.design/docs/react/recommendation-cn
+
+12、不在使用className - styled-components     
+
+    http://www.alloyteam.com/2017/05/guide-styled-components/
+    https://github.com/styled-components/styled-components
+
+13、react写动画效果 - css3transform-react
+
+    $ npm install css3transform-react
+    http://www.alloyteam.com/2016/12/react-animations-difficult-to-write-try-react-transformjs/
+</code></pre><p>| 参考资料<br>| <a href="https://doc.react-china.org/docs/hello-world.html" target="_blank" rel="noopener">https://doc.react-china.org/docs/hello-world.html</a>            中文官网<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>            // 全家桶<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>|<br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>   babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/24/React(之一)基础/" data-id="cjdu4wpwe001echwridwo7gj5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/26/handlebars模板/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hanlebars.js 模板引擎
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/24/React(之二)组件类/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React（之二）组件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

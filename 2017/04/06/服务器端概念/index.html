@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>大型网站架构 | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cookie、session、token一、Session      是另一种记录客户端状态的机制，cookie保存客户端，session存储在服务器上      登录成功 =&amp;gt; 服务器存储Session =&amp;gt; 并在客户端的cookie中也存储一个 =&amp;gt; 之后客户端请求，服务端取到cookie的Session的值，在与服务器保存的来进行比较是否存在（这个过程是session内部的">
+<meta name="keywords" content="服务端开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大型网站架构">
+<meta property="og:url" content="http://siguang1983.github.io/2017/04/06/服务器端概念/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="cookie、session、token一、Session      是另一种记录客户端状态的机制，cookie保存客户端，session存储在服务器上      登录成功 =&amp;gt; 服务器存储Session =&amp;gt; 并在客户端的cookie中也存储一个 =&amp;gt; 之后客户端请求，服务端取到cookie的Session的值，在与服务器保存的来进行比较是否存在（这个过程是session内部的">
+<meta property="og:image" content="http://siguang1983.github.io/2017/04/06/服务器端概念/images/105641260.jpg">
+<meta property="og:image" content="http://siguang1983.github.io/2017/04/06/服务器端概念/images/110207878.jpg">
+<meta property="og:image" content="http://siguang1983.github.io/2017/04/06/服务器端概念/images/305504-20161112125907030-1432469707.png">
+<meta property="og:image" content="http://siguang1983.github.io/2017/04/06/服务器端概念/images/305504-20161112124423530-566240666.png">
+<meta property="og:updated_time" content="2017-11-26T09:28:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大型网站架构">
+<meta name="twitter:description" content="cookie、session、token一、Session      是另一种记录客户端状态的机制，cookie保存客户端，session存储在服务器上      登录成功 =&amp;gt; 服务器存储Session =&amp;gt; 并在客户端的cookie中也存储一个 =&amp;gt; 之后客户端请求，服务端取到cookie的Session的值，在与服务器保存的来进行比较是否存在（这个过程是session内部的">
+<meta name="twitter:image" content="http://siguang1983.github.io/2017/04/06/服务器端概念/images/105641260.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-服务器端概念" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/06/服务器端概念/" class="article-date">
+  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      大型网站架构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="cookie、session、token"><a href="#cookie、session、token" class="headerlink" title="cookie、session、token"></a>cookie、session、token</h4><pre><code>一、Session
+
+    是另一种记录客户端状态的机制，cookie保存客户端，session存储在服务器上
+
+    登录成功 =&gt; 服务器存储Session =&gt; 并在客户端的cookie中也存储一个 =&gt; 之后客户端请求，服务端取到cookie的Session的值，在与服务器保存的来进行比较是否存在（这个过程是session内部的机制，程序只需要判断就行）
+
+二、cookie
+
+    存储在客户端本地，js和服务器都可以存、取、删cookie的值，cookie组成（key、value、domain、域、失效时间）
+
+三、token
+
+    token的意思是令牌，用户身份验证，最简单的token组成:uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign(签名，由token的前几位+盐以哈希算法压缩成一定长的十六进制字符串
+
+    作为身份认证 token安全性比session好，因为每个请求都有签名还能防止监听以及重放攻击，而session就必须靠链路层来保障通讯安全了。如上所说，如果你需要实现有状态的会话，仍然可以增加session来在服务器端保存一些状态
+
+http://blog.csdn.net/qq_33401924/article/details/52947514
+http://blog.csdn.net/jikeehuang/article/details/51488020
+</code></pre><h4 id="验证码的流程"><a href="#验证码的流程" class="headerlink" title="验证码的流程"></a>验证码的流程</h4><pre><code>通过插件来生成图型 =&gt; 并将图片结果存到session中，并存到用户的cookie中 =&gt; 登录时来判断session中的值与用户请求参数的值是否相同
+
+https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+
+// 生成验证码
+async captcha() {
+    const svgCaptcha = require(&apos;svg-captcha&apos;);
+    const { ctx } = this;
+    const captcha = svgCaptcha.createMathExpr({
+        size: 4,                 // 验证码长度
+        ignoreChars: &apos;0o1i&apos;,     // 验证码字符中排除 0o1i
+        noise: 3,                 // 干扰线条的数量
+        color: true,             // 验证码的字符是否有颜色，默认没有，如果设定了背景，则默认有
+        background: &apos;rgba(0,0,0,0.3)&apos;, // 验证码图片背景颜色
+    });
+    ctx.session.captcha = captcha.text;
+    ctx.type = &apos;image/svg+xml&apos;;        // 设置header的content-type
+    ctx.body = captcha.data;
+}
+
+// 用户登录
+async login() {
+    const { ctx, app, service } = this;
+
+    if (ctx.session.captcha &amp;&amp; ctx.session.captcha !== ctx.request.body.captcha) {
+    this.success({
+        data: {},
+        message: &apos;验证码错误&apos;,
+        statusType: app.statusType.otherError,
+    });
+    return;
+    }
+
+    if (
+    app.validateParams({
+        userName: { type: &apos;string&apos;, max: 100, min: 2 },
+        pwd: { type: &apos;string&apos;, min: 1 },
+    }, ctx)
+    ) {
+
+    const data = await service.auth.login(ctx.request.body);
+    this.success(data);
+    }
+}
+</code></pre><h4 id="http和https"><a href="#http和https" class="headerlink" title="http和https"></a>http和https</h4><pre><code>https://segmentfault.com/a/1190000003801450
+</code></pre><h4 id="登录流程"><a href="#登录流程" class="headerlink" title="登录流程"></a>登录流程</h4><pre><code>session或token
+
+密码加盐 MD5（username + password + salt）
+</code></pre><p>———————– 概念 ———————– </p>
+<h4 id="服务器、虚拟机"><a href="#服务器、虚拟机" class="headerlink" title="服务器、虚拟机"></a>服务器、虚拟机</h4><pre><code>服务器: 只是一个硬件虚拟服务只是系统部分
+
+虚拟机: 允许一台HTTP服务器搭建多个web建点，也就是一台服务器可以为多个用户服务，每个用户通过域名运行各自的网站，这就是利用了虚拟机（又称虚拟服务器）的功能
+</code></pre><h4 id="前后分离"><a href="#前后分离" class="headerlink" title="前后分离"></a>前后分离</h4><pre><code>前后端数据分离登录失效判断可以通过session服务端来判断 =&gt; 跳转会员管理每个页面 =&gt; 服务器端判断session是否失效 =&gt; 失效跳到登录
+
+其它页面的登录信息可以前端可以通过cookie来获取
+</code></pre><h4 id="正向代理、反向代理-Proxy"><a href="#正向代理、反向代理-Proxy" class="headerlink" title="正向代理、反向代理 Proxy"></a>正向代理、反向代理 Proxy</h4><pre><code>一、正向代理: 比如翻墙，直接访问国外网站访问不了，需要可以一个服务器来进行访问。正向代理的典型用途是为在防火墙内的局域网客户端提供访问Internet的途径。正向代理还可以使用缓冲特性减少网络使用率。
+</code></pre><p><img src="images/105641260.jpg" alt="正向代理"> </p>
+<pre><code>二、反向代理: 代理理服务器来接受网络的连接请求，然后将请求转发给内部网络的服务器 （服务方的需求，为了解决一些负载等问题）
+
+    作用: 保证内网的安全，负载均衡
+</code></pre><p><img src="images/110207878.jpg" alt="反向代理"><br><img src="images/305504-20161112125907030-1432469707.png" alt="反向代理"></p>
+<pre><code>http://www.cnblogs.com/Anker/p/6056540.html
+</code></pre><h4 id="CDN和反向代理"><a href="#CDN和反向代理" class="headerlink" title="CDN和反向代理"></a>CDN和反向代理</h4><pre><code>CDN: 部署在网络提供的机房，用户请求时可以从最近的网络提供商机房获取数据
+</code></pre><h4 id="负载的均衡"><a href="#负载的均衡" class="headerlink" title="负载的均衡"></a>负载的均衡</h4><pre><code>通过反向代理服务器来优化网站的负载
+</code></pre><p><img src="images/305504-20161112124423530-566240666.png" alt="负载的均衡"></p>
+<h4 id="集群、分布式"><a href="#集群、分布式" class="headerlink" title="集群、分布式"></a>集群、分布式</h4><h4 id="跳板机"><a href="#跳板机" class="headerlink" title="跳板机"></a>跳板机</h4><pre><code>跳板机是开发者登录到网站分配给应用服务器的唯一途径。开发者必须首先登录跳板机，再通过跳板机登录到应用服务器
+
+k踏板机属于内控堡垒机范围，用于单点登录的主机，之前是为了运维人员远程登录进行管理，会在机房部署跳板机，踏板机就是一台服务器，维护人员在维护过程先要统一登录在这台服务器上在登录到目录服务器进行维护
+</code></pre><h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><pre><code>网站缓存有两种：缓存在应用服务器上（本地缓存）和缓存在专门的分布式缓存服务器上（远端缓存）
+</code></pre><h4 id="RESTful架构"><a href="#RESTful架构" class="headerlink" title="RESTful架构"></a>RESTful架构</h4><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>1、通过设置服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。在被请求的Response header中加入
+
+    // 指定允许其他域名访问  
+    header(&apos;Access-Control-Allow-Origin:*&apos;);
+    // 响应类型  
+    header(&apos;Access-Control-Allow-Methods:POST&apos;);
+    // 响应头设置  
+    header(&apos;Access-Control-Allow-Headers:x-requested-with,content-type&apos;);  
+
+2、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
+
+    1) post请求跨域
+
+    2) &quot;script error&quot; 的脚本错误提示
+
+    3) canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+</code></pre><h4 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h4><pre><code>一、XSS 攻击: 对 Web 页面注入脚本，使用 JavaScript 窃取用户信息，诱导用户操作
+
+二、CSRF 攻击: 伪造用户请求向网站发起恶意请求
+
+三、钓鱼攻击: 利用网站的跳转链接或者图片制造钓鱼陷阱
+</code></pre><p>———————– 网络 ———————– </p>
+<h4 id="网关、隧道"><a href="#网关、隧道" class="headerlink" title="网关、隧道"></a>网关、隧道</h4><pre><code>网关: 转发其它服务器通信数据的服务器，接收从客户端发送来的
+
+隧道: 将客户端和服务器之间进行中转，并保持双方通信连接的应用程序
+</code></pre><h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><pre><code>域名系统（英文：Domain Name System，缩写：DNS）是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便的访问互联网。DNS 使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
+
+http://www.alloyteam.com/2015/05/dns%EF%BC%8Cnode%E4%BB%A5%E5%8F%8A%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E5%92%8C%E5%BA%94%E7%94%A8/
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/04/06/服务器端概念/" data-id="cjdu4wpy2003dchwrj7ucbntl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务端开发/">服务端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/06/Nginx服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nginx
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/02/mongoDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MongoDB</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

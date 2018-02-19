@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>webpack | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="| webapck介绍、优点与缺点| AMD、CMD、CommonJS模式| require()、define()、export()| requires.ensure(): 用来按需加载，将文件使用时在进行加载| vendor: 将库、框架文件与业务分离分别打包| entry: 入口| output: 打包输出| loader: 加载器| reslove: 依赖文件| plugins: 插件| w">
+<meta name="keywords" content="前端构建工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="http://siguang1983.github.io/2016/11/02/webpack/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| webapck介绍、优点与缺点| AMD、CMD、CommonJS模式| require()、define()、export()| requires.ensure(): 用来按需加载，将文件使用时在进行加载| vendor: 将库、框架文件与业务分离分别打包| entry: 入口| output: 打包输出| loader: 加载器| reslove: 依赖文件| plugins: 插件| w">
+<meta property="og:updated_time" content="2017-12-02T07:55:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack">
+<meta name="twitter:description" content="| webapck介绍、优点与缺点| AMD、CMD、CommonJS模式| require()、define()、export()| requires.ensure(): 用来按需加载，将文件使用时在进行加载| vendor: 将库、框架文件与业务分离分别打包| entry: 入口| output: 打包输出| loader: 加载器| reslove: 依赖文件| plugins: 插件| w">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/02/webpack/" class="article-date">
+  <time datetime="2016-11-02T03:06:16.000Z" itemprop="datePublished">2016-11-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| webapck介绍、优点与缺点<br>| AMD、CMD、CommonJS模式<br>| require()、define()、export()<br>| requires.ensure(): 用来按需加载，将文件使用时在进行加载<br>| vendor: 将库、框架文件与业务分离分别打包<br>| entry: 入口<br>| output: 打包输出<br>| loader: 加载器<br>| reslove: 依赖文件<br>| plugins: 插件<br>| webpack-dev-server: 本地服务器，可以设置代理，用来前后端分离跨域</p>
+<h4 id="webpack介绍"><a href="#webpack介绍" class="headerlink" title="webpack介绍"></a>webpack介绍</h4><pre><code>一、webpack是模块加载 和 打包合为一体的工具，可以加载所有的资源都是模块(js,css,图片等)
+
+    1、webpack的优势: 对 CommonJS 、AMD 、ES6的语法做了兼容; 对js、css、图片等资源文件都支持打包; 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间;
+
+    2、文件配置 - 在项目的根目录创建三个或多个webpack配置文件，我们创建两个: 
+
+        webpack.dev.config.js -&gt; 开发环境中用到的配置文件
+        webpack.pub.config.js -&gt; 生产环境中用到的配置文件
+</code></pre><h4 id="webpack用法"><a href="#webpack用法" class="headerlink" title="webpack用法"></a>webpack用法</h4><pre><code>一、定义模块
+
+    define(&apos;&apos;, function(){})
+
+    require.ensure()
+
+    直接使用ES6模块语法
+
+
+二、加载模块
+
+    var cat = require(&apos;./cat.js&apos;)     // 普通加载模块 webpack默认加载
+
+    import cat form &apos;./cat&apos;            // ES6写法需要安装bable-loader
+
+
+三、导出接口  module.exports = &apos;...&apos;;
+
+    cats.js  创建一个模块
+        var cats = [&apos;dave&apos;, &apos;henry&apos;, &apos;martha&apos;];
+        module.exports = cats;
+
+    app.js 入口
+        let cats = require(&apos;./cats.js&apos;);
+        console.log(cats);
+</code></pre><h4 id="入口-Entry"><a href="#入口-Entry" class="headerlink" title="入口 Entry"></a>入口 Entry</h4><pre><code>// 单入口
+module.exports = {
+    entry: {
+        main: &apos;./src/main.js&apos;
+    }
+}
+
+// 多入口
+module.exports = {
+    entry: {
+        app: [&quot;./home.js&quot;, &quot;./events.js&quot;]
+        /* 也可以写成
+        * app: &quot;./home.js&quot;, 
+        * events: &quot;./events.js&quot;
+        */
+    }
+}
+
+// 多入口，app(应用主入口)，vendors(公共库)入口
+module.exports = {
+    entry: {
+        app: &apos;./src/main.js&apos;,
+        vendors: &apos;./src/jquery.js&apos;
+    }
+}
+</code></pre><h4 id="出口-Output"><a href="#出口-Output" class="headerlink" title="出口 Output"></a>出口 Output</h4><pre><code>一、配置 output 选项可以控制 webpack 如何向硬盘写入编译文件
+
+    1、path: 目标输出的目录，绝对路径
+
+    2、filename: 用于输出文件的文件名
+
+    3、publicPath: 指定了你在浏览器中用什么地址来引用你的静态文件，它会包括你的图片、脚本以及样式加载的地址，一般用于线上发布以及CDN部署的时候使用。
+
+        将publicPath设置成了http://rynxiao.com/assets/，其中设置到了插件的一些东西，这点下面会讲到，总之这个插件的作用是生成了上线发布时候的首页文件，其中script中引用的路径将会被替换。
+
+        html生成 &lt;script src=&quot;http://rynxiao.com/assets/main.bundle.js&quot;&lt;/script&gt;
+
+    4、chunkFilename  用于模块中采用代码分割
+
+        id: 会被对应块的id替换
+        name: 会被对应块的name替换
+        hash: 会被文件hash替换
+        chunkhash: 会被文件hash替换
+        output : {
+            path : &apos;./assets/&apos;,
+            filename : &apos;[name].[hash].bundle.js&apos;,
+            chunkFilename: &quot;chunk/[chunkhash].chunk.js&quot;
+        }
+
+    Example:
+
+        const path = require(&apos;path&apos;);
+        module.exports = {
+            output: {
+                path: path.resolve(__dirname, &apos;./dist&apos;),
+                publicPath: &apos;/dist/&apos;,
+                filename: &apos;my-first-bundle.js&apos; 
+            }
+        }
+
+
+二、多个入口的输出
+
+    写入到硬盘: ./dist/app.js, ./dist/search.js
+    {
+        entry: {
+            app: &apos;./src/app.js&apos;,
+            search: &apos;./src/search.js&apos;
+        },
+        output: {
+            filename: &apos;[name].js&apos;,
+            path: __dirname + &apos;/dist&apos;
+        }
+    }
+
+
+三、使用CDN和资源hash
+
+    output: {
+        filename: &apos;[name].js?[hash]&apos;,            // 生成后会在&lt;script&gt;引用的加入hash来
+        path: &quot;/home/proj/cdn/assets&quot;,
+        publicPath: &quot;http://cdn.example.com/assets&quot;
+    }
+</code></pre><h4 id="第三方库与业务文件处理"><a href="#第三方库与业务文件处理" class="headerlink" title="第三方库与业务文件处理"></a>第三方库与业务文件处理</h4><pre><code>业务代码和第三方代码分离，这时候会把他们都压缩到一个文件中，使这个js文件比较大，并且跳转到另一个地址也还会重新加载这些公用的文件
+
+Example: 
+
+    对引用的jquery单独提取
+
+    1、import $ from &apos;jquery&apos;;     // js中引用的jquery, 先npm i jquery下载包
+
+    2、webpack.config.js
+
+        // 入口文件
+        entry: {
+            app: path.resolve(__dirname, &apos;web/js/index.js&apos;),
+            vendor: [&apos;jquery&apos;]
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;,
+            chunkFilename: &quot;[name].min.js?[hash]&quot;
+        },
+
+        plugins: [
+            // 将在html文件中添加&lt;script&gt;引用，并生创建到指定的目录中
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,
+                filename: &apos;./web/index.html&apos;,
+                template: &apos;./web/index.html&apos;,
+                chunks: [&apos;app&apos;, &apos;vendor&apos;],            // 这里要把vendor依赖的文件加上，不然生成的html只有引用app.min.js，不会引用jquery.vendor.js
+                inject: true,
+                hash: true
+            }),
+
+            // 拆分插件
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendor&apos;,                            // 上面入口定义的节点组
+                filename: &apos;jquery.vendor.js?[hash]&apos;     //最后生成的文件名
+            }),
+        }
+</code></pre><h4 id="加载器-Loader"><a href="#加载器-Loader" class="headerlink" title="加载器 Loader"></a>加载器 Loader</h4><pre><code>将所有引用资源(.css、.html、.scss、.jpg)作为模块处理，webpack loader文件添加到依赖中，将其转换成模块.
+module: {
+    loaders: [
+        { test : /\.js\.jsx$/, loader : &apos;babel&apos; },
+    ]
+}
+</code></pre><h4 id="给文件加hash"><a href="#给文件加hash" class="headerlink" title="给文件加hash"></a>给文件加hash</h4><pre><code>只需要给output的文件的后面加上?[hash]
+
+output: {
+    path: buildPath,
+    filename: &apos;[name].js?[hash]&apos;
+}
+</code></pre><h4 id="require-ensure按需加载"><a href="#require-ensure按需加载" class="headerlink" title="require,ensure按需加载"></a>require,ensure按需加载</h4><pre><code>require()与require.ensure()加载的不同
+
+1、require(): AMD加载规范，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数
+
+2、require.ensure(): requi.ensure的依赖模块只会被先下载下来，但不会被执行，会将require.ensure()内加载的模块合成一个文件，在
+
+    如果webpack打包会将所有资源加到一个文件中，这样会使这个文件变的很大，require.ensure()来对加载的资源单独打包
+
+    require.ensure([], function(require) {
+        var dialog = require(&apos;./components/dialog&apos;);
+        // todo ...
+    });
+
+    CommonsChunkPlugin插件对指定的chunks进行公共模块的提取。我们指定好生成文件的名字，以及想抽取哪些入口js文件的公共代码，webpack就会自动帮我们合并好
+
+    webpack.config.js中配置
+
+        var chunks = Object.keys(entries);
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendors&apos;,             // 将公共模块提取，生成名为`vendors`的chunk
+                chunks: chunks,
+                minChunks: chunks.length     // 提取所有entry共同依赖的模块
+            })
+        ]
+
+http://blog.csdn.net/zhbhun/article/details/46826129
+https://segmentfault.com/a/1190000007775743
+</code></pre><h4 id="webpack安装-ES6开发"><a href="#webpack安装-ES6开发" class="headerlink" title="webpack安装 + ES6开发"></a>webpack安装 + ES6开发</h4><pre><code>1、$ npm install webpack --save        // 安装webpack, 指定版本 npm i webpack@1.2.x --save
+
+2、安装babel-loader相关插件
+
+   $ npm install babel-loader babel-core babel-preset-es2015 --save-dev
+
+3、webpack.config.js文件配置
+
+    var Webpack = require(&quot;webpack&quot;);
+    var path = require(&apos;path&apos;);
+
+    module.exports = {
+        entry: &quot;./js/main.js&quot;,
+
+        output: {
+            path: &apos;./dist/&apos;,
+            filename: &quot;[name].min.js&quot;
+        },
+
+        module: {
+            loaders: [
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: &apos;babel-loader&apos;, // &apos;babel-loader&apos; is also a valid name to reference 
+                    query: {
+                        presets: [&apos;es2015&apos;]
+                    }
+                }
+            ]
+        }
+    }
+</code></pre><h4 id="webpack-webpack-dev-server-ES6-构建单-多入口项目基础配置"><a href="#webpack-webpack-dev-server-ES6-构建单-多入口项目基础配置" class="headerlink" title="webpack + webpack-dev-server + ES6 构建单/多入口项目基础配置"></a>webpack + webpack-dev-server + ES6 构建单/多入口项目基础配置</h4><pre><code>webpack-dev-server - 可以创建一个本地服务，并能设置代理服务，并且能够实时重新加载
+
+一、创建项目目录和基础配置文件
+
+    // 创建项目目录并进行目录
+    $ mkdir webpack_base_demo &amp;&amp; cd webpack_base_demo      
+
+    // 创建文件
+    $ touch README.md  .gitignore  .babelrc  webpck-config.js
+
+    // 创建package.json
+    $ npm init                                 
+
+    // 配置.babelrc文件
+    {
+        &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;],
+        &quot;plugins&quot;: []
+    }
+
+
+二、安装webpack、webpack-dev-server
+
+    $ npm i webpack webpack-dev-server --save-dev
+
+
+三、安装插件
+
+    // 如果使用react框架来做项目，先下载包
+    $ npm i --save react react-dom
+
+    // 使用Babel-loader来解析es6和jsx
+    $ npm i babel-loader babel-core
+
+    $ npm i babel-preset-es2015 babel-preset-react babel-preset-stage-0
+
+    // jsx转换
+    $ npm i jsx-loader --save
+
+    // 解析样式文件
+    $ npm install style-loader css-loader less-loader sass-loader    
+
+
+四、其它插件
+
+    1、html-webpack-plugin 解析html模板
+
+        将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+
+        $ npm i html-webpack-plugin
+
+
+    2、extract-text-webpack-plugin 单独打包css文件
+
+        $ npm i extract-text-webpack-plugin
+
+
+    3、open-browser-webpack-plugin   自动打开浏览器
+
+        $ npm i open-browser-webpack-plugin
+
+        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+        plugin: [
+          new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
+        ]
+
+    4、webpack-spritesmith   雪碧图
+
+        $ npm i webpack-spritesmith
+
+        https://www.cnblogs.com/weiweisuo/p/6912740.html
+
+
+五、创建webpack.config.js、webpack.production.config配置文件
+
+    webpack.config.js 开发环境所用配置文件
+    webpack.pub.config.js  生产环境所用配置文件
+
+    二者区别: 
+
+        webpack.config.js 开发时使用启用server, webpack.production.config.js 打包构建时使用不需要启动server，直接将代码执行到build目录
+
+    // 创建配置文件
+    $ touch webpack.config.js webpack.production.config.js
+
+
+    /**
+     * User: siguang
+     * Date: 2016/12/28
+     * Time: 15:04
+     */
+    let webpack = require(&apos;webpack&apos;);
+    let path = require(&apos;path&apos;);
+    let HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+    // let ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;); // 单独打包CSS
+    let openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+
+    /*  文件路径配置 */
+    let basePath = __dirname;
+    let appPath = path.resolve(basePath, &apos;src&apos;);
+    let buildPath = path.resolve(basePath, &apos;build&apos;);
+
+    /* libs 目录下的库文件 */
+    let libsPath = path.resolve(basePath, &apos;src/libs&apos;);
+    let jquery = path.resolve(libsPath, &apos;jquery.min&apos;)
+
+    // webpack配置对象
+    module.exports = {
+
+        // 入口文件
+        entry: {
+            app: path.resolve(appPath, &apos;js/index.js&apos;),
+            list: path.resolve(appPath, &apos;js/list.js&apos;)
+        },
+
+        // 出口文件
+        output: {
+            path: buildPath,
+            filename: &apos;/js/[name].min.js?[hash]&apos;,
+            chunkFilename: &quot;[name].min.js?[hash]&quot;
+        },
+
+        // 加载器配置
+        module: {
+            loaders: [
+
+                // 处理require()引入的css文件，并将代码显示到页面的&lt;style|中
+                { test: /\.css$/, loader: &quot;style-loader!css-loader&quot; },
+
+                // 将jsx文件转成js文件
+                { test: /\.js$/, loader: &apos;jsx-loader?harmony&apos;},
+
+                // 将scss文件转成css文件
+                { test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;},
+
+                // ?limit=8192  limit设置小于8k的图片转成64位编码，大小8于不会被转码
+                { test: /\.(png|jpg|woff|eot|ttf|svg|gif)$/, loader: &apos;url-loader?limit=8192&apos;},
+
+                // ES6 转 ES5
+                {    
+                    test: /\.js?$/,
+                    loader: &apos;babel-loader&apos;,
+                    query: {
+                        presets: [&apos;es2015&apos;]
+                    }
+                }   
+            ]
+        },
+
+        // 插件
+        plugins: [
+
+            // 压缩打包的文件
+            // new webpack.optimize.UglifyJsPlugin({
+            //     compress: {
+            //         //supresses warnings, usually from module minification
+            //         warnings: false
+            //     }
+            // }),
+
+            // 将vendor中的库合并到一起
+            new webpack.optimize.CommonsChunkPlugin({
+                name: jquery,
+                filename: &apos;jquery.bundle.js&apos;
+            }),      
+
+            // html
+            new HtmlWebpackPlugin({
+                // 改变页面的&lt;title|标签的内容 
+                title: &apos;Hello World app&apos;,                   // 页面调用&lt;%= htmlWebpackPlugin.options.title %|
+                // 模版地址
+                template: path.resolve(appPath, &apos;index.html&apos;),
+                // 构建后的文件名和目录
+                filename: &apos;index.html&apos;,
+                //chunks这个参数告诉插件要引用entry里面的哪几个入口
+                chunks:[&apos;app&apos;,&apos;vendor&apos;],
+                //要把script插入标签里
+                inject:&apos;body&apos;
+            }),
+
+            new HtmlWebpackPlugin({
+                // 改变页面的&lt;title|标签的内容 
+                title: &apos;Hello World appList&apos;, 
+                // 模版地址
+                template: path.resolve(appPath, &apos;list.html&apos;),
+                // 构建后的文件名和目录
+                filename: &apos;list.html&apos;,
+                //chunks这个参数告诉插件要引用entry里面的哪几个入口
+                chunks:[&apos;list&apos;,&apos;vendor&apos;],
+                //要把script插入标签里
+                inject:&apos;body&apos;
+            }),
+
+            // css
+            // new ExtractTextPlugin(&quot;[name].css?[hash]&quot;),
+
+            // 热启动
+            new webpack.HotModuleReplacementPlugin(),
+
+            // 自动开启浏览器
+            new openBrowserWebpackPlugin({ url: &apos;http://localhost:5000&apos; })
+        ],
+
+        // 查找依赖
+        resolve:{
+
+            // require或alias时不需要写后缀
+            extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.css&quot;, &quot;.json&quot;],
+        },
+
+        // webpack-dev-server 配置
+        devServer: {
+            port: 5000,                 // 端口
+            contentBase: &apos;build&apos;,       // 内容目录
+            hot: true,                    // 热刷新
+            inline: true,
+            // proxy: [                 // 设置代理服务器
+            //     {
+            //         path: [&quot;/api&quot;,&quot;/user&quot;], //
+            //         target: &quot;http://10.20.1.8:3002/&quot;, // 转发的服务器地址
+            //         // rewrite: rewriteUrl(&apos;/$1\.json&apos;),
+            //         changeOrigin: true
+            //     }
+            // ]
+        }
+    }
+
+
+六、启动服务
+
+    &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;webpack-dev-server --hot --inline&quot;,
+        &quot;build&quot;: &quot;webpack --progress --profile --colors --config webpack.production.config.js&quot;
+    },
+
+    通过npm中的scripts来配置npm启动项
+
+    npm run start        // 开发环境下启动
+
+        localhost://5000             // 访问的index.html
+        localhost://5000/list.html     // 访问的list.html
+
+    npm run build         // 开发完成后上线前，将开发代码构建到build目录的生成目录
+
+
+七、 webpack-dev-server要执行参数
+
+    webpack-dev-server - 在 localhost:8080 建立一个 Web 服务器
+
+    webpack-dev-server --devtool eval - 为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号
+
+    webpack-dev-server --progress - 显示合并代码进度
+
+    webpack-dev-server --colors - 命令行中显示颜色
+
+    webpack-dev-server --content-base build  // webpack-dev-server服务会默认以当前目录伺服文件，如果设置了content-base的话，服务的根路径则为build目录
+
+    webpack-dev-server --inline  可以自动加上dev-server的管理代码，实现热更新
+
+    webpack-dev-server --hot  开启代码热替换，可以加上HotModuleReplacementPlugin
+
+    webpack-dev-server --port 3000 设置服务端口
+</code></pre><h4 id="CommonJS，AMD，CMD区别"><a href="#CommonJS，AMD，CMD区别" class="headerlink" title="CommonJS，AMD，CMD区别"></a>CommonJS，AMD，CMD区别</h4><pre><code>Commonjs是用在服务器端的，同步的，如nodejs 
+
+AMD、CMD是用在浏览器端的，异步的，如requirejs和seajs 
+
+一、模块
+
+    ES2015 - import 语句
+    CommonJS - require() 语句
+    AMD define 和 require 语句
+    css/sass/less - 文件中的 @import 语句
+
+二、CommonJS
+
+    CommonJS 是服务器端模块的规范，Node.js采用了这个规范。
+
+    一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
+
+    Example: 
+
+        // 私有变量
+        var test = 123; 
+
+        // 公有方法 
+        function foobar () { 
+            this.foo = function () { 
+                // do someing ... 
+            } 
+            this.bar = function () { 
+                //do someing ... 
+            } 
+        } 
+
+        // exports对象上的方法和变量是公有的 
+        var foobar = new foobar(); 
+        exports.foobar = foobar;         // module.exports 与 exports
+
+        // require方法默认读取js文件，所以可以省略js后缀 
+        var test = require(&apos;./boobar&apos;).foobar; 
+        test.bar(); 
+
+三、AMD
+
+    RequireJS使用的AMD模式，异步加载模块    
+
+    // 定义模块
+    define([&apos;依赖文件&apos;], function(md){
+        let person = ()=&gt;{
+            console.log(&apos;这里是模块方法&apos;)
+        }
+
+        // 模块的对外接口
+        return person;
+
+    })
+
+    // AMD规范允许输出模块兼容CommonJS规范，这时define方法如下:  
+    define(function (require, exports, module) {      
+        var reqModule = require(&quot;./someModule&quot;); 
+        requModule.test(); 
+
+        exports.asplode = function () { 
+            //someing 
+        } 
+    }); 
+
+四、CMD模式
+
+    SeaJS使用的CMD模式，CMD与AMD的区别: 
+
+        1）依赖模块AMD先执行，这样js可以方便知道依赖模块是谁，立即加载;
+
+        2）CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。
+
+    define(function (requie, exports, module) {     // 注意 requie, exports, module 参数名称不能变
+
+        //依赖可以就近书写 
+        var a = require(&apos;./a&apos;); 
+        a.test(); 
+
+        ... 
+        //软依赖 
+        if (status) { 
+
+            var b = requie(&apos;./b&apos;); 
+            b.test(); 
+        } 
+
+        // 模板对外接口中
+        exports.getApp = function(){
+            ...
+        }
+    }); 
+
+五、ES6 模块
+
+    import $ from &quot;jquery&quot;;
+    export function doStuff() {}
+    module &quot;localModule&quot; {}
+
+六、除了JS，加载其它静态文件
+
+    样式、图片、web字体、html模板，还可以加载一些预处理: coffeescript =| javascript、less =| css、jade =| 生成模板html
+    require(&apos;./style.css&apos;);
+    require(&apos;./style.less&apos;);
+    require(&apos;./template.jade&apos;);
+    require(&apos;./image.png&apos;);
+</code></pre><h4 id="webpack安装和执行命令"><a href="#webpack安装和执行命令" class="headerlink" title="webpack安装和执行命令"></a>webpack安装和执行命令</h4><pre><code>一、webpack命令参数
+
+    1、webpack            // 最基本的启动webpack命令
+
+    2、webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
+
+    3、webpack -w         // 提供watch方法，实时进行打包更新 相当于 -watch 
+
+    4、webpack -p         // 对打包后的文件进行压缩
+
+    5、webpack -d         // 提供SourceMaps，方便调试
+
+    6、webpack --colors     // 输出结果带彩色，比如: 会用红色显示耗时较长的步骤
+
+    7、webpack --profile // 输出性能数据，可以看到每一步的耗时
+
+    8、webpack --display-modules     // 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
+
+    9、webpack --progress --colors   // 展示一些进度条，同时增加颜色
+
+    10、webpack --display-error-details    // 打印出错在哪个文件和行
+
+
+二、--save-dev和--save的不同
+
+    --save-dev: 写到了 devDependencies 对象里，devDependencies是只在开发时需要依赖
+
+    --save: 写到了 dependencies 对象里是运行时被使用
+
+    1、npm install --save jquery  
+
+    2、src/app.js
+
+        import &apos;babel-polyfill&apos;;
+        import cats from &apos;./cats&apos;;
+        import $ from &apos;jquery&apos;;            
+
+        # 这里去找的就是dependencies对象内，会将jquery文件与业务打包到一起
+
+        $(&apos;&lt;h1|Cats&lt;/h1|&apos;).appendTo(&apos;body&apos;);
+        const ul = $(&apos;&lt;ul|&lt;/ul|&apos;).appendTo(&apos;body&apos;);
+        for (const cat of cats) {
+            $(&apos;&lt;li|&lt;/li|&apos;).text(cat).appendTo(ul);
+        }
+</code></pre><h4 id="插件类"><a href="#插件类" class="headerlink" title="插件类"></a>插件类</h4><pre><code>一、自动刷新
+
+    webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式。
+
+    1、iframe模式: 页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载;使用iframe模式无需额外的配置，只需在浏览器输入以下地址: http://localhost:8080/webpack-dev-server/index.html
+
+    2、inline模式: 一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面。
+
+    以下三种配置都可以实现页面的刷新效果: 
+
+        // 1.启动webpack-dev-server的时候带上inline参数
+        webpack-dev-server --inline
+
+        // 2.给HTML插入JS
+        &lt;script src=&quot;http://localhost:3000/webpack-dev-server.js&quot;|&lt;/script|
+
+        // 3.webpack配置
+        entry: [
+            &apos;webpack-dev-server/client?http://localhost:3000&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ]
+
+
+二、HotMooduleReplacementPlugin()热替换
+
+    webpac-dev-server支持模块热替换，在前端代码变动的时候无需整个刷新页面，只把变化的部分替换掉。使用HMR功能也有两种方式: 命令行方式和Node.js API。
+
+    1、cli命令行方式  webpack-dev-server --inline --hot
+
+    2、Node.js API方式
+
+        entry: [
+            &apos;webpack/hot/dev-server&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ],
+        devServer: {
+            hot: true
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin(),
+        ]
+
+
+三、html-webpack-plugin 解析html模板
+
+    插件将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+
+    $ npm i html-webpack-plugin
+
+    $ const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);            // 引用插件
+
+    1、单入口配置
+
+        // 这里省略其他配置代码
+        plugins: [
+            // 使用这个plugin，这是最简单的一个配置，更多资料可到github查看
+            new HtmlWebpackPlugin({
+                title: &apos;zhufeng-react&apos;,
+                template: &apos;./src/index.html&apos;,
+            })
+        ]
+
+    2、多入口配置
+
+        会将两个入口分别对html文件进行加载指定的入口js文件
+
+        // 入口文件
+        entry: {
+            app: &apos;./web/js/index.js&apos;,
+            list: &apos;./web/js/list.js&apos;
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;
+        },
+
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,                    // 生成html文档的标题
+                filename: &apos;./web/index.html&apos;,    // 输出文件名称
+                template: &apos;./web/index.html&apos;,    // 本地模板的位置，支持(handlebars、ejs、undersore、html)
+                chunks: [&apos;app&apos;],                // 对应的入口entry, 也可以是数组[&apos;app&apos;, &apos;list&apos;]
+                inject: true,                    // 向template中注入所有静态资源
+                hash: true                        // 为静态资源添加webpack每次编译产生的唯一hash值， &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
+            }),
+            new HtmlWebpackPlugin({
+                title: &apos;list&apos;,
+                filename: &apos;./web/list.html&apos;,
+                template: &apos;./web/list.html&apos;,
+                chunks: [&apos;list&apos;],
+                inject: true,
+                hash: true
+            })
+        ]
+
+    https://segmentfault.com/q/1010000009810148
+    https://www.cnblogs.com/wonyun/p/6030090.html
+
+
+四、extract-text-webpack-plugin 单独打包css文件
+
+    $ npm i extract-text-webpack-plugin
+
+
+五、open-browser-webpack-plugin   资源构建成功后自动打开浏览器 --- 已可以在命令中配置
+
+    1、package.json中加 --open，与使用此插件相同
+
+        &quot;scripts&quot;: {
+            &quot;start&quot;: &quot;webpack-dev-server --hot --inline --open&quot;,
+        }
+
+
+    2、$ npm install open-browser-webpack-plugin --save-dev
+
+        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+        plugin: [
+            new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
+        ]
+
+
+六、CSS Module
+
+    webpack 的 css-loader 是解决这个问题的最好办法之一。简单配置一下: 
+    module: {
+      loaders: [{
+        test: /\.css$/,
+        loaders: [
+          &apos;style-loader&apos;,
+          &apos;css-loader?modules&amp;localIdentName=[name]__[local]___[hash:base64:5]&apos;,
+          &apos;postcss-loader&apos;
+        ]
+      }]
+    },
+    postcss: [
+      require(&apos;postcss-nested&apos;)(),
+      require(&apos;cssnext&apos;)(),
+      require(&apos;autoprefixer-core&apos;)({ browsers: [&apos;last 2 versions&apos;] })
+    ]
+
+
+七、UglifyJs Plugin 压缩资源
+
+    var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+
+    plugins: [
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.MinChunkSizePlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        // 查找相等或近似的模块，避免在最终生成的文件中出现重复的模块
+        new webpack.optimize.DedupePlugin(),
+        // 按引用频度来排序 ID，以便达到减少文件大小的效果
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin({
+            minSizeReduce: 1.5,
+            moveToParents: true
+        })
+    ]
+
+
+八、clean-webpack-plugin 清除文件夹
+
+    $ npm install clean-webpack-plugin --save-dev
+
+    webpack.config.js:
+
+        const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);
+
+        plugins: [
+            new CleanWebpackPlugin([&apos;dist&apos;]),
+            new HtmlWebpackPlugin({
+                title: &apos;Output Management&apos;
+            })
+        ]
+
+
+九、暴露全局对象
+
+    如果想将report数据上报组件放到全局，有两种办法: 
+
+    方法一: 
+    在loader里使expose将report暴露到全局，然后就可以直接使用report进行上报
+    {
+        test: path.join(config.path.src, &apos;/js/common/report&apos;),
+        loader: &apos;expose?report&apos;
+    }
+
+    方法二: 
+    如果想用R直接代表report，除了要用expose loader之外，还需要用ProvidePlugin帮助，指向report，这样在代码中直接用R.tdw， R.monitor这样就可以
+    new webpack.ProvidePlugin({
+        &quot;R&quot;: &quot;report&quot;,
+    })
+</code></pre><p>| <a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="noopener">https://doc.webpack-china.org/concepts/</a>        webpack中文网<br>| <a href="http://www.css88.com/doc/webpack2/loaders/raw-loader/" target="_blank" rel="noopener">http://www.css88.com/doc/webpack2/loaders/raw-loader/</a><br>| <a href="http://liunian.github.io/webpack-doc/" target="_blank" rel="noopener">http://liunian.github.io/webpack-doc/</a><br>| <a href="http://www.imooc.com/article/10965" target="_blank" rel="noopener">http://www.imooc.com/article/10965</a><br>| <a href="https://zhuanlan.zhihu.com/FrontendMagazine?topic=%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/FrontendMagazine?topic=%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91</a><br>| <a href="http://blog.csdn.net/keliyxyz/article/details/51527476" target="_blank" rel="noopener">http://blog.csdn.net/keliyxyz/article/details/51527476</a><br>| <a href="http://cnodejs.org/topic/57528759adc77ac170409e79" target="_blank" rel="noopener">http://cnodejs.org/topic/57528759adc77ac170409e79</a><br>| <a href="http://blog.csdn.net/xiaozhuxmen/article/details/51597923" target="_blank" rel="noopener">http://blog.csdn.net/xiaozhuxmen/article/details/51597923</a><br>| <a href="http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2" target="_blank" rel="noopener">http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2</a>   // output.filename 和output.chunkFilename<br>| <a href="http://www.jianshu.com/p/8adf4c2bfa51" target="_blank" rel="noopener">http://www.jianshu.com/p/8adf4c2bfa51</a><br>| <a href="http://www.alloyteam.com/2016/02/code-split-by-routes/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/02/code-split-by-routes/</a>  按需加载<br>|<br>| 插件<br>| <a href="http://www.cnblogs.com/haogj/p/5160821.html" target="_blank" rel="noopener">http://www.cnblogs.com/haogj/p/5160821.html</a>     // html-webpack-plugin html多页面构建<br>|<br>| 热更新<br>| <a href="https://github.com/gaearon/react-hot-loader" target="_blank" rel="noopener">https://github.com/gaearon/react-hot-loader</a>    // react<br>| <a href="https://github.com/vuejs/vue-loader" target="_blank" rel="noopener">https://github.com/vuejs/vue-loader</a>            // vue</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/11/02/webpack/" data-id="cjdu4wpxx0034chwrcxhl9rwg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/11/Gulp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Gulp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/26/VueJS之-“Vuex篇“（四）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VueJS之-“Vuex篇“（四）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

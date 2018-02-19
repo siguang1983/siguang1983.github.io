@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>nodeJS基 (之一) Global全局对象 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="| filename - 前当文件名| dirname - 当前所在的目录| setTimeout、clearTimeout - 定时器| setInterval、clearInterval - 定时器| console - 打印到控制台| process - 进程| exports、require() - 导入、导出|  __dirname  当前的绝对路径__filename  当前文件名ex">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS基 (之一) Global全局对象">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/01/nodeJS（之一）Global全局/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| filename - 前当文件名| dirname - 当前所在的目录| setTimeout、clearTimeout - 定时器| setInterval、clearInterval - 定时器| console - 打印到控制台| process - 进程| exports、require() - 导入、导出|  __dirname  当前的绝对路径__filename  当前文件名ex">
+<meta property="og:updated_time" content="2017-11-06T09:27:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="nodeJS基 (之一) Global全局对象">
+<meta name="twitter:description" content="| filename - 前当文件名| dirname - 当前所在的目录| setTimeout、clearTimeout - 定时器| setInterval、clearInterval - 定时器| console - 打印到控制台| process - 进程| exports、require() - 导入、导出|  __dirname  当前的绝对路径__filename  当前文件名ex">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,125 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-nodeJS（之一）Global全局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/nodeJS（之一）Global全局/" class="article-date">
+  <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      nodeJS基 (之一) Global全局对象
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <p>| <strong>filename - 前当文件名<br>| </strong>dirname - 当前所在的目录<br>| setTimeout、clearTimeout - 定时器<br>| setInterval、clearInterval - 定时器<br>| console - 打印到控制台<br>| process - 进程<br>| exports、require() - 导入、导出<br>| </p>
+<h4 id="dirname-当前的绝对路径"><a href="#dirname-当前的绝对路径" class="headerlink" title="__dirname  当前的绝对路径"></a>__dirname  当前的绝对路径</h4><h4 id="filename-当前文件名"><a href="#filename-当前文件名" class="headerlink" title="__filename  当前文件名"></a>__filename  当前文件名</h4><h4 id="exports-暴露接口"><a href="#exports-暴露接口" class="headerlink" title="exports  暴露接口"></a>exports  暴露接口</h4><h4 id="require-引入模板"><a href="#require-引入模板" class="headerlink" title="require()  引入模板"></a>require()  引入模板</h4><pre><code>1、模块分为
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    模块加载：require(&apos;2.js&apos;);
+
+    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
+
+    2）文件模块: 自己定义的业务模块
+
+        定义一个food.common.js
+
+        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
+
+    3）加载第三方模块
+
+        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
+
+
+2、绝对和相对路径
+
+    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
+
+    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
+
+
+2、npm 全局安装和局部安装
+
+    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
+
+    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
+
+
+require.cache
+require.resolve()
+</code></pre><h4 id="global-全局对象"><a href="#global-全局对象" class="headerlink" title="global  全局对象"></a>global  全局对象</h4><h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><pre><code>module和exports两个全局变量
+
+1）module：每个模块下都包括module对象
+
+    Module {
+        id: &apos;.&apos;,
+        exports: {},
+        parent: null,
+        filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
+        loaded: false,
+        children: [],
+        paths: [
+            &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
+            &apos;/Users/apple/siguang.liu/node_modules&apos;,
+            &apos;/Users/apple/node_modules&apos;,
+            &apos;/Users/node_modules&apos;,
+            &apos;/node_modules&apos;
+        ]
+     }
+
+ 2）exports外部接口，通过require就可以调用这个接口
+
+     其实exports就是module.exports的引用
+
+    exports.name = &apos;siguang&apos;;
+    exports.getPrivate = function(){
+        return &apos;haha&apos;;
+    }
+</code></pre><h4 id="process-进程"><a href="#process-进程" class="headerlink" title="process  进程"></a>process  进程</h4><h4 id="console-打印到控制台"><a href="#console-打印到控制台" class="headerlink" title="console 打印到控制台"></a>console 打印到控制台</h4><pre><code>log()、info()、error()、warn()、time()、timeEnd()
+</code></pre><h4 id="setImmediate-callback-…args-、clearImmediate-immediateObject"><a href="#setImmediate-callback-…args-、clearImmediate-immediateObject" class="headerlink" title="setImmediate(callback[, …args])、clearImmediate(immediateObject)"></a>setImmediate(callback[, …args])、clearImmediate(immediateObject)</h4><h4 id="setInterval-、clearInterval"><a href="#setInterval-、clearInterval" class="headerlink" title="setInterval()、clearInterval()"></a>setInterval()、clearInterval()</h4><h4 id="setTimeout-、clearTimeout"><a href="#setTimeout-、clearTimeout" class="headerlink" title="setTimeout()、clearTimeout()"></a>setTimeout()、clearTimeout()</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/01/nodeJS（之一）Global全局/" data-id="cjdu4wpxd0029chwr4zg6ji11" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/nodeJS（之八）HTTP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS（之八）HTTP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/nodeJS（之九）Connect中间件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS（之九）Connect中间件</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

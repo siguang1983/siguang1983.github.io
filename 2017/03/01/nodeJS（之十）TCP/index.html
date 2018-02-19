@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>nodeJS（之十）TCP | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="TCPNodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字  TPC套接字分为: 服务端和客户端      服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。  1、引用TCP模块      const net = require(&amp;apos;net&amp;ap">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS（之十）TCP">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/01/nodeJS（之十）TCP/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="TCPNodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字  TPC套接字分为: 服务端和客户端      服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。  1、引用TCP模块      const net = require(&amp;apos;net&amp;ap">
+<meta property="og:updated_time" content="2017-11-06T09:27:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="nodeJS（之十）TCP">
+<meta name="twitter:description" content="TCPNodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字  TPC套接字分为: 服务端和客户端      服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。  1、引用TCP模块      const net = require(&amp;apos;net&amp;ap">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,115 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-nodeJS（之十）TCP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/nodeJS（之十）TCP/" class="article-date">
+  <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      nodeJS（之十）TCP
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><pre><code>NodeJS中有三种socket: 1、TCP   2、UDP   3、Unix域套接字
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+TPC套接字分为: 服务端和客户端
+
+    服务端TCP监听来自客户端的连接请求，并使用TCP连接向客户端发送数据；客户端TCP连接到服务端并与服务器交互数据。客户端与服务端之间依靠套接字进行双向通信。
+
+1、引用TCP模块
+
+    const net = require(&apos;net&apos;);
+    const PROT = 6969;
+
+2、HTTP模块也是继承TCP模块
+</code></pre><h4 id="net-Server类"><a href="#net-Server类" class="headerlink" title="net.Server类"></a>net.Server类</h4><pre><code>1、createServer() 创建tcp服务器
+
+2、close() - 关闭
+
+3、listen() - 侦听
+
+    const HOST = &apos;127.0.0.1&apos;;
+    const PORT = 6969;
+
+    // 写法1 
+    let server = net.crateServer(function(conn){
+        ...
+    });
+    server.listen({host: HOST, port: PORT}, function(){    // 或 server.listen(PORT, HOST, function(){
+        console.log(&apos;这里是异步的&apos;);
+    });
+
+    // 写法2
+    let server = net.crateServer(function(conn){
+        ...
+    }).listen(PORT, HOST);
+
+
+4、address() - 返回绑定的IP端口等信息 {&quot;address&quot;:&quot;::&quot;,&quot;family&quot;:&quot;IPv6&quot;,&quot;port&quot;:6969}
+
+属性
+
+1、listening - server是否正在监听连接
+
+2、maxConnections - 当前server连接数过多时拒绝连接
+
+
+事件
+
+1、close - 关闭
+
+2、connection - 建立连接时触发
+
+3、error - 错误时触发
+
+4、listening - 服务被绑定后调用
+</code></pre><h4 id="net-Socket类"><a href="#net-Socket类" class="headerlink" title="net.Socket类"></a>net.Socket类</h4><h4 id="net-connect"><a href="#net-connect" class="headerlink" title="net.connect"></a>net.connect</h4>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/01/nodeJS（之十）TCP/" data-id="cjdu4wpxq002qchwrhi8tbpsh" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/nodeJS（之五）Path/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS基 (之五) Path模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/nodeJs（之二）FileSystem/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS (之二) FileSystem</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

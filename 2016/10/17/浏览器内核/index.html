@@ -5,14 +5,21 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>浏览器内核 | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="URL到页面加载发生了什么1、DNS解析 - 将域名转换IP的过程  2、TCP连接 -   3、发送HTTP请求 - 请求报名和报文        常见的请求报头有: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。      报文">
+<meta name="keywords" content="浏览器内核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器内核">
+<meta property="og:url" content="http://siguang1983.github.io/2016/10/17/浏览器内核/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="URL到页面加载发生了什么1、DNS解析 - 将域名转换IP的过程  2、TCP连接 -   3、发送HTTP请求 - 请求报名和报文        常见的请求报头有: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。      报文">
+<meta property="og:image" content="http://siguang1983.github.io/2016/10/17/浏览器内核/images/jd_ip.png">
+<meta property="og:updated_time" content="2018-01-30T10:43:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="浏览器内核">
+<meta name="twitter:description" content="URL到页面加载发生了什么1、DNS解析 - 将域名转换IP的过程  2、TCP连接 -   3、发送HTTP请求 - 请求报名和报文        常见的请求报头有: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。      报文">
+<meta name="twitter:image" content="http://siguang1983.github.io/2016/10/17/浏览器内核/images/jd_ip.png">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +66,158 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-浏览器内核" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/17/浏览器内核/" class="article-date">
+  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      浏览器内核
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="URL到页面加载发生了什么"><a href="#URL到页面加载发生了什么" class="headerlink" title="URL到页面加载发生了什么"></a>URL到页面加载发生了什么</h4><pre><code>1、DNS解析 - 将域名转换IP的过程
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+2、TCP连接 - 
+
+3、发送HTTP请求 - 请求报名和报文  
+
+    常见的请求报头有: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。
+
+    报文: Content-Type: application/json。
+
+4、服务器处理请求并返回HTTP报文
+
+5、浏览器解析渲染页面
+
+6、连接结束
+
+https://segmentfault.com/a/1190000006879700
+</code></pre><h4 id="浏览器的基础结构"><a href="#浏览器的基础结构" class="headerlink" title="浏览器的基础结构"></a>浏览器的基础结构</h4><pre><code>一、浏览器基础结构主要包括如下7部分: 
+
+    1、用户界面(User Interface): 用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等
+
+    2、浏览器引擎(Browser engine): 负责控制和管理下一级的渲染引擎
+
+    3、渲染引擎(Rendering engine): 负责解析用户请求的内容(如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容)
+
+    4、网络(Networking): 负责处理网络相关的事务，如HTTP请求等
+
+    5、UI后端(UI backend): 负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口
+
+    6、JavaScript解释器(JavaScript interpreter): 负责解析和执行JavaScript代码
+
+    7、数据存储(Data storage): 负责持久存储Stroage诸如cookie和缓存等应用数据
+</code></pre><h4 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h4><pre><code>一、大致可以分为以下几类: 
+
+    1、Trident内核:  IE
+
+    2、Webkit内核: Chrome,Safari
+
+    3、Gecko内核: FireFox
+</code></pre><h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><pre><code>一、用户访问页面，浏览器需要获取用户的请求内容，主要涉及浏览器网络模块:
+
+    1、用户在地址栏输入域名, DNS根据域名查找对应的ip, 并发起请求
+
+    2、浏览器获得并解析服务器的返回内容(HTTP response)
+
+    3、浏览器加载HTML文件及文件内包含的外部引用文件及图片，多媒体等资源
+
+二、DNS预解析
+
+    浏览器DNS解析大多时候较快，且会缓存常用域名的解析值，但是如果网站涉及多域名，在对每一个域名访问时都需要先解析出IP地址，
+
+    希望在跳转或者请求其他域名资源时尽量快，则可以开启域名预解析，浏览器会在空闲时提前解析声明需要预解析的域名，如: 
+
+    &lt;link rel=&quot;dns-prefetch&quot; href=&quot;http//t1.we.com&quot;&gt;
+</code></pre><h4 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h4><pre><code>浏览器加载资源一般会并行进程同时加载，限制一般在2-6个
+</code></pre><h4 id="渲染引擎"><a href="#渲染引擎" class="headerlink" title="渲染引擎"></a>渲染引擎</h4><pre><code>一、访问一个页面执行流程
+
+    1、发起请求        2、解析HTML        3、解析样式        4、执行JavaScript        5、布局        6、绘制
+
+
+二、通过网络模块加载到HTML文件后渲染引擎渲染流程如下，这也通常被称作关键渲染路径(Critical Rendering Path):
+
+    1、构建DOM树(DOM tree): 从上到下解析HTML文档生成DOM节点树(DOM tree), 也叫内容树(content tree)
+
+    2、构建CSSOM(CSS Object Model)树: 加载解析样式生成CSSOM树
+
+    3、执行JavaScript: 加载并执行JavaScript代码(包括内联代码或外联JavaScript文件)
+
+    4、构建渲染树(render tree): 根据DOM树和CSSOM树, 生成渲染树(render tree) 渲染树: 按顺序展示在屏幕上的一系列矩形，这些矩形带有字体，颜色和尺寸等视觉属性
+
+    5、布局(layout): 根据渲染树将节点树的每一个节点布局在屏幕上的正确位置
+
+    6、绘制(painting): 遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成
+
+
+三、解析样式和脚本
+
+    1、脚本是可能存在改变DOM结构，于是浏览器以同步方式解析，加载和执行脚本，浏览器遇到script标签就选择js代码，现在HTML5提供defer和async两个属性支持延迟和异步加载JavaScript文件
+
+        &lt;script defer src=&quot;script.js&quot;&gt;
+
+    2、样式不同于脚本，浏览器对样式处理并不会阻塞文档解析，因为样式不会改变DOM结构
+
+
+四、重绘、重排
+
+    尽量减少reflow:
+
+    重排: 当页面结构发生改变，渲染树重新组装，如块级元素的（margin、padding）当前元素位置发生改变会影响下面所有元素的位置需要重排，position: absolute不会引发重排
+
+    重绘: 就是不改变页面的结构，只改变一些颜色，如(文字颜色、边框颜色)
+</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>一、访问域名
+
+    访问京东域名时，会发现有Remote Address，这里是在访问域名时并不会直接访问服务器而是在中间过了一层，目的是为当前用户找到离他最近的一台服务来进行跳转，可以让最快速度来访问
+</code></pre><p><img src="images/jd_ip.png" alt="jd_ip"> </p>
+<p>| <a href="http://blog.codingplayboy.com/2017/03/29/webpage_render/" target="_blank" rel="noopener">http://blog.codingplayboy.com/2017/03/29/webpage_render/</a><br>| <a href="https://www.webpagetest.org/" target="_blank" rel="noopener">https://www.webpagetest.org/</a>         // 网站的性能评估</p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/17/浏览器内核/" data-id="cjdu4wpy5003hchwrej95kqe9" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/22/VueJS之-基础篇（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          VueJS 之 “基础篇“（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/17/前端优化/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">前端优化</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

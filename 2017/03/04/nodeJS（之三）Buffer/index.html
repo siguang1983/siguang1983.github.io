@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>nodeJS (之三) Buffer | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="| Buffer.from() - 创建buffer  // 老方法 new Buffer(str, encode);| toString() - Buffer转字符串| length - 返回Buffer的长度| concat([buf1, buf2], 输出的长度) - 合并| slice(start, end) - 截取| copy(buffer, 开始目标位置, start, end) -">
+<meta name="keywords" content="Node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodeJS (之三) Buffer">
+<meta property="og:url" content="http://siguang1983.github.io/2017/03/04/nodeJS（之三）Buffer/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="| Buffer.from() - 创建buffer  // 老方法 new Buffer(str, encode);| toString() - Buffer转字符串| length - 返回Buffer的长度| concat([buf1, buf2], 输出的长度) - 合并| slice(start, end) - 截取| copy(buffer, 开始目标位置, start, end) -">
+<meta property="og:updated_time" content="2017-11-06T09:27:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodeJS (之三) Buffer">
+<meta name="twitter:description" content="| Buffer.from() - 创建buffer  // 老方法 new Buffer(str, encode);| toString() - Buffer转字符串| length - 返回Buffer的长度| concat([buf1, buf2], 输出的长度) - 合并| slice(start, end) - 截取| copy(buffer, 开始目标位置, start, end) -">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodeJS（之三）Buffer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/04/nodeJS（之三）Buffer/" class="article-date">
+  <time datetime="2017-03-04T10:30:21.000Z" itemprop="datePublished">2017-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodeJS (之三) Buffer
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| Buffer.from() - 创建buffer  // 老方法 new Buffer(str, encode);<br>| toString() - Buffer转字符串<br>| length - 返回Buffer的长度<br>| concat([buf1, buf2], 输出的长度) - 合并<br>| slice(start, end) - 截取<br>| copy(buffer, 开始目标位置, start, end) - 拷贝<br>| compare() - 比较两个buffer的大小<br>| fill() - 用指定的值填充Buffer<br>| indexOf(val) - 返回指定字符所在Buffer的位置<br>| lastIndexOf() - 从后向前查找<br>| includes(val, begin, uncode) - 查找是否存在<br>| keys() - 获取<br>| write() - 向指定的buffer写入内容<br>|<br>| Buffer.isBuffer(buf) - 是否是一个buffer<br>| Buffer.isEncoding(‘utf-8’) - 检测是否是一个有效的编码<br>| Buffer.byteLength - 判断字符的长度</p>
+<h4 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h4><pre><code>Buffer用于创建存放和处理二进制数据的缓存区，buffer是全局不需要require(&apos;buffer&apos;)
+
+网络上发送和接收经常是以二进制传输数据:
+
+    - 通过TCP连接发送和接收数据；
+    - 从图像或者压缩文件读取二进制数据；
+    - 从文件系统读写数据；
+    - 处理来自网络的二进制数据流
+
+
+1、字节byte: 1个字节等于8位二进制
+
+       位bit: 每位存储0或1，每8位等于一个字节，最大0-255字节
+
+       一个汉字三个字节，其它两个字节
+
+
+2、Node.js 目前支持的字符编码包括: 
+
+    &apos;ascii&apos; - 仅支持 7 位 ASCII 数据。如果设置去掉高位的话，这种编码是非常快的。
+
+    &apos;utf8&apos; - 多字节编码的 Unicode 字符。许多网页和其他文档格式都使用 UTF-8 。
+
+    &apos;utf16le&apos; - 2 或 4 个字节，小字节序编码的 Unicode 字符。支持代理对（U+10000 至 U+10FFFF）。
+
+    &apos;ucs2&apos; - &apos;utf16le&apos; 的别名。
+
+    &apos;base64&apos; - Base64 编码。当从字符串创建 Buffer 时，按照 RFC4648 第 5 章的规定，这种编码也将正确地接受“URL 与文件名安全字母表”。
+
+    &apos;latin1&apos; - 一种把 Buffer 编码成一字节编码的字符串的方式（由 IANA 定义在 RFC1345 第 63 页，用作 Latin-1 补充块与 C0/C1 控制码）。
+
+    &apos;binary&apos; - &apos;latin1&apos; 的别名。
+
+    &apos;hex&apos; - 将每个字节编码为两个十六进制字符。
+</code></pre><h4 id="new-Buffer"><a href="#new-Buffer" class="headerlink" title="new Buffer"></a>new Buffer</h4><pre><code>new Buffer(size): 创建一个Buffer对象, 并返回一个数组
+
+Buffer创建的三种类型:
+
+    1、new Buffer(2)            // 创建buffer的长度
+
+        let buf = new Buffer(2);
+        buf[1] = &apos;232&apos;;
+        buf[2] = &apos;2312&apos;;
+        buf[3] = &apos;asasdf&apos;;
+        console.log(&apos;输出buffer: &apos;, buf);        // 输出buffer:  &lt;Buffer 00 e8&gt;  只能输出两个字节
+
+    2、new Buffer(数组)            // new Buffer([1,3,5])
+
+    3、new Buffer(字符串)        // new Buffer(&apos;我&apos;)
+</code></pre><h4 id="字符串与buffer互转"><a href="#字符串与buffer互转" class="headerlink" title="字符串与buffer互转"></a>字符串与buffer互转</h4><pre><code>1、字符串转buffer
+
+    let buf = new Buffer(&apos;sss&apos;)
+    console.log(buf);            // &lt;Buffer 73 73 73&gt;
+
+
+2、toString(编码, 获取开始位置 , 获取结束位置): buffer转换成字符串
+
+    let buf = Buffer.from(&apos;sss&apos;);
+    console.log(buf);            // Buffer e7 be 8e e5 a5 bd  输出的6个字符
+    console.log(buf.length);    // 6 buffer的长度
+    console.log(&apos;输出buffer: &apos;, buf.toString(&apos;utf-8&apos;, 3, 6));    // 输出好     
+</code></pre><h4 id="length-获取长度"><a href="#length-获取长度" class="headerlink" title="length 获取长度"></a>length 获取长度</h4><pre><code>let buf = new Buffer(&apos;sssss&apos;);
+console.log(buf.length);     // 5
+</code></pre><h4 id="concat-要合并的数据集合-要输出的长度-合并"><a href="#concat-要合并的数据集合-要输出的长度-合并" class="headerlink" title="concat([ 要合并的数据集合 ], 要输出的长度):  合并"></a>concat([ 要合并的数据集合 ], 要输出的长度):  合并</h4><pre><code>let buf1 = new Buffer(&apos;忍&apos;);
+let buf2 = new Buffer(&apos;者&apos;);
+let buf3 = new Buffer(&apos;神&apos;);
+let buf4 = new Buffer(&apos;龟&apos;);
+
+let newBuf = Buffer.concat([buf1, buf2, buf3, buf4]);
+console.log(newBuf);                // 12字节
+console.log(newBuf.toString());     // 输出忍者神龟
+</code></pre><h4 id="slice-start-end-截取"><a href="#slice-start-end-截取" class="headerlink" title="slice(start, end): 截取"></a>slice(start, end): 截取</h4><pre><code>let buf = new Buffer(&apos;怎么来截取buffer中的字符&apos;);
+console.log(buf.slice(9, 15).toString());        // 返回 截取
+</code></pre><h4 id="copy-buffer-开始目标位置-start-end-拷贝"><a href="#copy-buffer-开始目标位置-start-end-拷贝" class="headerlink" title="copy(buffer, 开始目标位置, start, end): 拷贝"></a>copy(buffer, 开始目标位置, start, end): 拷贝</h4><pre><code>let buf = new Buffer(&apos;怎么来截取buffer中的字符&apos;);
+let copyBuf = new Buffer(9);
+buf.copy(copyBuf, 6, 0, 9);     // 从buf的第六个字节开始,0到9字符copy
+
+console.log(copyBuf.toString());        // 输出 来截取
+</code></pre><h4 id="Buffer-byteLength-判断字符的长度"><a href="#Buffer-byteLength-判断字符的长度" class="headerlink" title="Buffer.byteLength:  判断字符的长度"></a>Buffer.byteLength:  判断字符的长度</h4><h4 id="toString-Buffer转字符串"><a href="#toString-Buffer转字符串" class="headerlink" title="toString() Buffer转字符串"></a>toString() Buffer转字符串</h4><pre><code>toString([字符编码], [开始转换位置], [结束转换位置])
+
+let buf = new Buffer(&apos;哈哈哈&apos;);
+console.log(buf.toString(&apos;utf8&apos;));        // urt8输出为 哈哈哈
+
+可以转换成:  ascii、utf8、utf16le、ucs2、base64
+</code></pre><h4 id="compare-比较buffer"><a href="#compare-比较buffer" class="headerlink" title="compare() 比较buffer"></a>compare() 比较buffer</h4><pre><code>返回比较结果: 0 两个buffer相等， -1 前者小于后者， 1 前者大于后者
+
+const bufA = new Buffer(&apos;123345&apos;);
+const bufB = new Buffer(&apos;123345aaaaa&apos;);
+const result = bufA.compare(bufB);
+
+switch(result){
+    case -1: 
+        console.log(`bufA 小于 bufB`);
+        break;
+
+    case 0: 
+        console.log(`bufA 等于 bufB`);
+        break;
+
+    case 1: 
+        console.log(`bufA 大于 bufB`);
+        break;
+
+    default: break;
+}
+</code></pre><h4 id="fill-用指定的值来填充Buffer"><a href="#fill-用指定的值来填充Buffer" class="headerlink" title="fill() 用指定的值来填充Buffer"></a>fill() 用指定的值来填充Buffer</h4><pre><code>fill(val,[offset], [end], [encode]): 用指定的值来填充Buffer
+
+Example:
+    let buf = new Buffer(5);    
+    buf.fill(&apos;#&apos;);
+    console.log(buf);
+</code></pre><p>/<strong><strong><strong>**</strong></strong></strong> 查找与搜索  <strong><strong><strong>*</strong></strong></strong>/</p>
+<h4 id="indexOf-返回指定字符所在Buffer的位置"><a href="#indexOf-返回指定字符所在Buffer的位置" class="headerlink" title="indexOf() 返回指定字符所在Buffer的位置"></a>indexOf() 返回指定字符所在Buffer的位置</h4><pre><code>let buf = new Buffer(&apos;aabbbccc&apos;);
+console.log(buf.indexOf(&apos;b&apos;));      // 返回2 如果不存在返回-1
+</code></pre><h4 id="lastIndexOf-从尾查找所在的位置"><a href="#lastIndexOf-从尾查找所在的位置" class="headerlink" title="lastIndexOf() 从尾查找所在的位置"></a>lastIndexOf() 从尾查找所在的位置</h4><h4 id="includes-val-返回指定字符是否存在"><a href="#includes-val-返回指定字符是否存在" class="headerlink" title="includes(val) 返回指定字符是否存在"></a>includes(val) 返回指定字符是否存在</h4><pre><code>includes(搜索的值, [buf开始搜索的位置], [搜索的编码])
+
+Example:
+    let buf = new Buffer(&apos;aaabbbcccddd&apos;);
+    console.log(buf.includes(&apos;b&apos;, 2));     // true 或  false
+</code></pre><h4 id="keys-把buffer中的数组下标"><a href="#keys-把buffer中的数组下标" class="headerlink" title="keys() 把buffer中的数组下标"></a>keys() 把buffer中的数组下标</h4><pre><code>const buf = new Buffer(&apos;buffer&apos;);
+console.log(buf)
+
+for(const key of buf.keys()){
+    console.log(key);            // 0、1、2、3、4、5
+}
+</code></pre><h4 id="write-将值写入到buffer的指定位置"><a href="#write-将值写入到buffer的指定位置" class="headerlink" title="write() 将值写入到buffer的指定位置"></a>write() 将值写入到buffer的指定位置</h4><pre><code>write(string, [写入的位置], [写入的字节], [字符编码])
+</code></pre><h4 id="Buffer-isBuffer-判断是否是Buffer"><a href="#Buffer-isBuffer-判断是否是Buffer" class="headerlink" title="Buffer.isBuffer() 判断是否是Buffer"></a>Buffer.isBuffer() 判断是否是Buffer</h4><pre><code>let str = &apos;&apos;;
+let buf = new Buffer(10);
+console.log(Buffer.isBuffer(str));      // false
+console.log(Buffer.isBuffer(buf));      // true
+</code></pre><h4 id="Buffer-isEncoding-endcode-判断编码"><a href="#Buffer-isEncoding-endcode-判断编码" class="headerlink" title="Buffer.isEncoding(endcode): 判断编码"></a>Buffer.isEncoding(endcode): 判断编码</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/03/04/nodeJS（之三）Buffer/" data-id="cjdu4wpxg002echwr3gtgt5n6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/06/nodeJS（之四）Strame/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS（之一）Stream
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/03/nodeJS（之六）QueryString/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS（之六）Querystring</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

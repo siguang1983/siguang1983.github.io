@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Gulp | 大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、gulp可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理  Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快  主要作用:      1、多个js或css文件合并、压缩      2、Sass或Less的编译      3、图像的压缩      3、实时刷新页面的本地服务器 二、安装1、先安装node.js  2、# npm install -g gulp">
+<meta name="keywords" content="前端构建工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gulp">
+<meta property="og:url" content="http://siguang1983.github.io/2016/11/11/Gulp/index.html">
+<meta property="og:site_name" content="大排档">
+<meta property="og:description" content="一、gulp可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理  Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快  主要作用:      1、多个js或css文件合并、压缩      2、Sass或Less的编译      3、图像的压缩      3、实时刷新页面的本地服务器 二、安装1、先安装node.js  2、# npm install -g gulp">
+<meta property="og:updated_time" content="2017-01-11T04:36:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gulp">
+<meta name="twitter:description" content="一、gulp可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理  Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快  主要作用:      1、多个js或css文件合并、压缩      2、Sass或Less的编译      3、图像的压缩      3、实时刷新页面的本地服务器 二、安装1、先安装node.js  2、# npm install -g gulp">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Gulp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/11/Gulp/" class="article-date">
+  <time datetime="2016-11-11T10:39:38.000Z" itemprop="datePublished">2016-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gulp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、gulp"><a href="#一、gulp" class="headerlink" title="一、gulp"></a>一、gulp</h4><pre><code>可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理
+
+Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快
+
+主要作用:
+
+    1、多个js或css文件合并、压缩
+
+    2、Sass或Less的编译
+
+    3、图像的压缩
+
+    3、实时刷新页面的本地服务器
+</code></pre><h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><pre><code>1、先安装node.js
+
+2、# npm install -g gulp     通过npm 安装Gulp
+
+3、# npm init                  创建package.json 项目描述文件
+
+4、npm install gulp --save-dev           将gulp作为项目的开发依赖(只在开发时用，不会发布到线上)
+</code></pre><h4 id="三、gulp-执行命令"><a href="#三、gulp-执行命令" class="headerlink" title="三、gulp 执行命令"></a>三、gulp 执行命令</h4><pre><code>-v 或 --version 会显示全局和项目本地所安装的 gulp 版本号
+
+--gulpfile 手动指定一个 gulpfile 的路径，这在你有很多个 gulpfile 的时候很有用。这也会将 CWD 设置到该 gulpfile 所在目录
+
+--cwd dirpath 手动指定 CWD。定义 gulpfile 查找的位置，此外，所有的相应的依赖（require）会从这里开始计算相对路径
+
+-T 或 --tasks 会显示所指定 gulpfile 的 task 依赖树
+
+--tasks-simple 会以纯文本的方式显示所载入的 gulpfile 中的 task 列表
+
+--color 强制 gulp 和 gulp 插件显示颜色，即便没有颜色支持
+
+--no-color 强制不显示颜色，即便检测到有颜色支持
+
+--silent 禁止所有的 gulp 日志
+</code></pre><h4 id="四、gulp-方法"><a href="#四、gulp-方法" class="headerlink" title="四、gulp 方法"></a>四、gulp 方法</h4><pre><code>1、gulp.src(): 获取到想要处理的文件流
+
+2、gulp.pipe(): 将获取到的文件流通过pipe()导入到gulp的插件中进行处理
+
+3、gulp.dest(): 用来写文件的，插件处理完，通过dest()处理完成后把流中的内容写到指定的文件中
+
+    var gulp = require(&apos;gulp&apos;);
+    gulp.src(&apos;js/main.js&apos;)                 // 获取文件的流的api
+        .pipe(gulp.uglify())            // 文件进行压缩
+        .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));     // 写文件的api
+
+
+4、gulp.task(&apos;任务名&apos; [需要依赖的其它任务], callback): 定义任务
+
+    gulp.task(&apos;test&apos;, [&apos;styles&apos;], function() {
+        // 将你的默认的任务代码放在这
+    });
+
+    # gulp test     // 执行任务
+
+
+5、gulp.watch(&apos;要监视文件的匹配模式&apos;, [要执行的task定义的任务], callback): 监视文件的变化，变化后来执行定义的任务
+</code></pre><h4 id="五、Gulp-扩散操作"><a href="#五、Gulp-扩散操作" class="headerlink" title="五、Gulp 扩散操作"></a>五、Gulp 扩散操作</h4><pre><code>1、复制单个文件task
+
+    gulp.task(&apos;copy-html&apos;,function(){
+        return gulp.src(&apos;app/index.html&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+
+2、复制多个文件
+
+    gulp.task(&apos;copy-images&apos;,function(){
+        return gulp.src(&apos;app/imgs/**/*.{jpg,png}&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+    gulp.task(&apos;copy-other&apos;,function(){
+        return gulp.src([&apos;app/css/*.css&apos;,&apos;app/js/*.js&apos;],{base:&apos;app&apos;}).pipe(gulp.dest(&apos;dist&apos;));
+    });
+</code></pre><h4 id="六、gulp-插件"><a href="#六、gulp-插件" class="headerlink" title="六、gulp 插件"></a>六、gulp 插件</h4><pre><code>1、插件安装 npm install 插件名  --save-dev
+
+2、gulpfile.js中引用插件   
+
+    var uglify = require(&apos;gulp-uglify&apos;);
+
+
+4、gulp-load-plugins 模块化管理插件
+
+    1）一般情况下，gulpfile.js中的模块需要一个个加载。
+
+        var gulp = require(&apos;gulp&apos;),
+               jshint = require(&apos;gulp-jshint&apos;),
+            uglify = require(&apos;gulp-uglify&apos;),
+            concat = require(&apos;gulp-concat&apos;);
+
+        gulp.task(&apos;js&apos;, function () {
+               return gulp.src(&apos;js/*.js&apos;)
+                  .pipe(uglify())
+                  .pipe(concat(&apos;app.js&apos;))
+                  .pipe(gulp.dest(&apos;build&apos;));
+        });
+
+
+
+    2）gulp-load-plugins 会加载 package.json中存在下面的插件依赖：
+
+        &quot;devDependencies&quot;: {
+            &quot;gulp&quot;: &quot;^3.9.0&quot;,
+            &quot;gulp-uglify&quot;: &quot;^2.6.0&quot;,
+            &quot;gulp-concat&quot;: &quot;^2.2.0&quot;
+        }
+
+
+        var gulp = require(&apos;gulp&apos;);
+        var $ = require(&apos;gulp-load-plugins&apos;)();            // 加载gulp-load-plugins插件，并立刻运行
+
+
+        使用：$.uglify  可以省去单个引入
+
+        gulp.task(&apos;add&apos;, function(){
+            gulp.src([&apos;js/main.js&apos;])
+                .pipe($.concat)
+                .pipe($.uglify)            // $.uglify就可以调用了
+                .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
+        })
+</code></pre><h4 id="七、package-json"><a href="#七、package-json" class="headerlink" title="七、package.json:"></a>七、package.json:</h4><pre><code>npm install 插件名 --save-dev        // 安装插件下到node_modules目录下并配置到package.json中的devDependencies{}对象下
+
+{
+    &quot;name&quot;: &quot;test&quot;,                    // 项目名
+    &quot;version&quot;: &quot;1.0.0&quot;,                // 版本
+    &quot;description&quot;: &quot;This is for study gulp project !&quot;,    // 项目描述
+    &quot;homepage&quot;: &quot;https://siguang1983.github.io/&quot;,
+    &quot;main&quot;: &quot;index.js&quot;,                // 入口文件 npm start 会执行的文件
+    &quot;keywords&quot;: [                    // 在npmjs官网搜索时的关键字
+        &quot;node.js&quot;,
+        &quot;gulp&quot;
+    ],
+    &quot;scripts&quot;: {                    // 测试脚本  npm test 会执行此文件
+        &quot;test&quot;: &quot;test.js&quot;
+    },
+    &quot;repository&quot;: {                    // 模块的git仓库
+        &quot;type&quot;: &quot;git&quot;,
+        &quot;url&quot;: &quot;https://github.com/siguang1983/siguang1983.github.io.git&quot;
+    },
+    &quot;author&quot;: {                        // 作者
+        &quot;name&quot;: &quot;siguang&quot;
+    },
+    &quot;license&quot;: &quot;ISC&quot;,
+    &quot;devDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^3.9.0&quot;,
+        &quot;gulp-amd-optimizer&quot;: &quot;^0.4.0&quot;,
+        &quot;gulp-autoprefixer&quot;: &quot;^3.1.0&quot;,
+        &quot;gulp-cache&quot;: &quot;^0.4.1&quot;,
+        &quot;gulp-concat&quot;: &quot;^2.6.0&quot;,
+        &quot;gulp-htmlmin&quot;: &quot;^1.3.0&quot;,
+        &quot;gulp-imagemin&quot;: &quot;^2.4.0&quot;,
+        &quot;gulp-jshint&quot;: &quot;^2.0.0&quot;,
+        &quot;gulp-less&quot;: &quot;^3.0.5&quot;,
+        &quot;gulp-livereload&quot;: &quot;^3.8.1&quot;,
+        &quot;gulp-minify-css&quot;: &quot;^1.2.2&quot;,
+        &quot;gulp-notify&quot;: &quot;^2.2.0&quot;,
+        &quot;gulp-plumber&quot;: &quot;^1.1.0&quot;,
+        &quot;gulp-react&quot;: &quot;^3.1.0&quot;,
+        &quot;gulp-rev-append&quot;: &quot;^0.1.6&quot;,
+        &quot;gulp-rimraf&quot;: &quot;^0.2.0&quot;,
+        &quot;gulp-sass&quot;: &quot;^2.2.0&quot;,
+        &quot;gulp-uglify&quot;: &quot;^1.5.1&quot;,
+        &quot;gulp-watch&quot;: &quot;^4.3.5&quot;,
+        &quot;gulp.spritesmith&quot;: &quot;^6.2.1&quot;,
+        &quot;imagemin-pngquant&quot;: &quot;^4.2.0&quot;,
+        &quot;livereload&quot;: &quot;^0.4.0&quot;,
+        &quot;merge-stream&quot;: &quot;^1.0.0&quot;,
+        &quot;vinyl-buffer&quot;: &quot;^1.0.0&quot;
+    },
+    &quot;dependencies&quot;: {
+        &quot;gulp-header&quot;: &quot;^1.7.1&quot;
+    }
+}
+</code></pre><h4 id="八、gulpfile-js-配置文件"><a href="#八、gulpfile-js-配置文件" class="headerlink" title="八、gulpfile.js 配置文件"></a>八、gulpfile.js 配置文件</h4><pre><code>// 导入工具包 require(&apos;node_modules里对应模块&apos;)
+var gulp        = require(&apos;gulp&apos;),
+    uglify      = require(&apos;gulp-uglify&apos;),                   // 压缩js
+    concat      = require(&apos;gulp-concat&apos;),                   // 合并js
+    jshint      = require(&apos;gulp-jshint&apos;),                   // js语法检测
+    less        = require(&apos;gulp-less&apos;),                     // less编译
+    sass        = require(&apos;gulp-sass&apos;),                     // sass编译
+    cssmin      = require(&apos;gulp-minify-css&apos;),               // css压缩
+    htmlmin     = require(&apos;gulp-htmlmin&apos;),                  // html压缩
+    spritesmith = require(&apos;gulp.spritesmith&apos;),              // 雪碧图
+    imagemin    = require(&apos;gulp-imagemin&apos;),                 // 压缩图片
+    pngquant    = require(&apos;imagemin-pngquant&apos;),             // 图片的深度压缩
+    cache       = require(&apos;gulp-cache&apos;),                    // 只压缩修改的图片
+    rev         = require(&apos;gulp-rev-append&apos;),               // 加版本号，给页面文件引用的js和css资源
+    autoprefixer = require(&apos;gulp-autoprefixer&apos;),            // 自动补齐前缀，根据设置浏览器版本自动处理浏览器前缀 CSS3的前缀
+
+    react       = require(&apos;gulp-react&apos;),                    // react区分jsx文件进行转换
+    webpack     = require(&apos;gulp-webpack&apos;),                  // webpack
+    amdOptimize = require(&apos;gulp-amd-optimizer&apos;),            // requirejs 压缩
+    bf          = require(&apos;vinyl-buffer&apos;),                  // 流缓存
+    merge       = require(&apos;merge-stream&apos;),                  // 合并流
+
+    watch       = require(&apos;gulp-watch&apos;),                    // 侦听变化自动执行task
+    livereload  = require(&apos;gulp-livereload&apos;),               // 当监听文件发生变化时，浏览器自动刷新页面
+    header      = require(&apos;gulp-header&apos;),                   // 注释自定义插件
+    rimraf      = require(&apos;gulp-rimraf&apos;),                   // 清除文件
+    plumber     = require(&apos;gulp-plumber&apos;),                  // 错误提示
+    notify      = require(&apos;gulp-notify&apos;),                   // 消息提示
+    rename      = require(&apos;gulp-rename&apos;),                   // 将文件重命名
+
+    connect = require(&apos;gulp-connect&apos;),                      // gulp创建本地服务器
+    browserify = require(&apos;gulp-browserify&apos;);                //
+
+
+/**
+ * 路径变量( s =&gt; source , d =&gt; distribute , o =&gt; other project)
+ */
+var current = false,                                               //变化路径的开关,true开启,false关闭
+    o_dist = &apos;F://LQH/WORK/Anzipay-mall/oneyuan/&apos;,                 //其他项目的根目录
+    o_css = o_dist + &apos;dist/css/&apos;,                                  //其他项目下的CSS
+    o_js = o_dist + &apos;dist/js/&apos;,                                    //其他项目下的JS
+    o_img = o_dist + &apos;dist/img/&apos;,                                  //其他项目下的IMG
+    o_mod = o_dist + &apos;dist/mod/&apos;,                                  //其他目录下的模块
+    path = {
+        s_sass      : &quot;webstart/build/scss/&quot;,                      //待编译的源文件路径
+        s_css       : &quot;webstart/build/css/&quot;,
+        s_js        : &quot;webstart/build/js/&quot;,
+        s_es        : &quot;webstart/build/es6/&quot;,                       //待转换的ES6文件
+        s_img       : &quot;webstart/build/img/&quot;,                       //待压缩的图片
+        s_simg      : &quot;webstart/build/img/sprite/&quot;,                //待合并成雪碧图的文件
+        dist        : &quot;webstart/dist/&quot;,
+        d_css       : &quot;webstart/dist/css/&quot;,                        //输出的文件
+        d_img       : &apos;webstart/dist/img/&apos;,
+        d_js        : &apos;webstart/dist/js/&apos;,
+        server_root : [&quot;webstart&quot;, &quot;webstart/static&quot;],
+        o_dist      : o_dist,
+        o_css       : o_css,                                       //其他项目输出文件
+        o_js        : o_js,
+        o_img       : o_img,
+        o_mod       : o_mod,
+        selectPath  : function (current) {                         //开始替换路径
+            if (current) {
+                path.d_css       = path.o_css;
+                path.d_img       = path.o_img;
+                path.d_js        = path.o_js;
+                path.d_mod       = path.o_mod;
+                path.server_root = path.o_dist;                    //本地服务器启动根目录
+            }
+        }
+    };
+path.selectPath(current);
+
+
+//------------------------------- 任务 ------------------------------------
+
+
+/**
+ * 获取package.json配置，添加注释
+ */
+var pkg = require(&apos;./package.json&apos;);
+var banner = [&apos;/**&apos;,
+  &apos; * &lt;%= pkg.author.name %&gt; - &lt;%= pkg.author.description %&gt;&apos;,
+  &apos; * @version v&lt;%= pkg.version %&gt;&apos;,
+  &apos; */&apos;,
+  &apos;&apos;].join(&apos;\n&apos;);
+
+
+
+// 第一个参数是要执行任务名称     第二个参数是在执行前要执行的任务
+gulp.task(&apos;test&apos;, [&apos;styles&apos;], function() {
+  // 将你的默认的任务代码放在这
+});
+
+
+/************* 文件压缩任务 **************/
+// 如果需要压缩前先执行其它任务可以写到第二个参数里，这里我们先执行合并任务
+gulp.task(&apos;mainUglify&apos;, function () {
+
+    // 单文件压缩
+    gulp.src([&apos;js/main.js&apos;])
+        .pipe(uglify())
+        .pipe(header(banner, { pkg : pkg } ))       // 压缩后加注释
+        .pipe(gulp.dest(&apos;dist/js/main.min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
+});
+
+
+/************* 文件合并任务 **************/
+gulp.task(&apos;mainConcat&apos;, function () {
+    gulp.src([&apos;js/dialog.js&apos;, &apos;js/focusPic.js&apos;, &apos;js/marquee.js&apos;])        // 可以使用*.js来取所有js文件
+        .pipe(plumber({errorHandler: notify.onError(&quot;错误信息: &lt;%= error.message %&gt;&quot;)}))
+        .pipe(concat(&apos;main.concat.js&apos;))         // 合并成一个文件名为main.concat.js
+        .pipe(plumber())
+        .pipe(gulp.dest(&apos;dist/js&apos;))
+});
+
+
+/************* 文件代码检测 **************/
+gulp.task(&apos;jsLint&apos;, function () {
+    gulp.src(&apos;src/*.js&apos;)
+        .pipe(jshint())                 // 进行代码检查
+        .pipe(jshint.reporter());         // 输出检查结果
+});
+
+
+/************* Less **************/
+gulp.task(&apos;mainLess&apos;, function () {
+    gulp.src(&apos;less/page.less&apos;)
+        .pipe(less())
+        .pipe(cssmin())     // 转换完后压缩 兼容IE7及以下需设置compatibility属性 .pipe(cssmin({compatibility: &apos;ie7&apos;}))
+        .pipe(gulp.dest(&apos;dist/css/&apos;));
+});
+
+gulp.task(&apos;mainLessWatch&apos;, function () {
+    gulp.watch(&apos;less/*.less&apos;, [&apos;mainLess&apos;]);    // 当所有less文件发生改变时，调用testLess任务
+});
+
+
+/************* css压缩 **************/
+gulp.task(&apos;mainCssmin&apos;, function () {
+    gulp.src(&apos;css/*.css&apos;)
+        .pipe(cssmin())
+        .pipe(gulp.dest(&apos;dist/css&apos;));
+});
+
+
+/************* html压缩 **************/
+gulp.task(&apos;mainHtmlmin&apos;, function () {
+    var options = {
+        removeComments: true,               // 清除HTML注释
+        collapseWhitespace: true,           // 压缩HTML
+        collapseBooleanAttributes: true,    // 省略布尔属性的值 &lt;input checked=&quot;true&quot;/&gt; ==&gt; &lt;input /&gt;
+        removeEmptyAttributes: true,        // 删除所有空格作属性值 &lt;input id=&quot;&quot; /&gt; ==&gt; &lt;input /&gt;
+        removeScriptTypeAttributes: true,   // 删除&lt;script&gt;的type=&quot;text/javascript&quot;
+        removeStyleLinkTypeAttributes: true,// 删除&lt;style&gt;和&lt;link&gt;的type=&quot;text/css&quot;
+        minifyJS: true,                     // 压缩页面JS
+        minifyCSS: true                     // 压缩页面CSS
+    };
+
+    gulp.src(&apos;*.html&apos;)
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest(&apos;dist/html/&apos;));
+});
+
+
+/************* 图片压缩 **************/
+gulp.task(&apos;mainImagemin&apos;, function () {
+    gulp.src(&apos;images/*.{png,jpg,gif,ico}&apos;)
+        .pipe(imagemin({
+            optimizationLevel: 1,           // 类型：Number  默认：3  取值范围：0-7（优化等级）
+            progressive: true,              // 类型：Boolean 默认：false 无损压缩jpg图片
+            interlaced: true,               // 类型：Boolean 默认：false 隔行扫描gif进行渲染
+            multipass: true                 // 类型：Boolean 默认：false 多次优化svg直到完全优化
+        }))
+        .pipe(gulp.dest(&apos;dist/img&apos;));
+});
+
+//图片的深度压缩
+gulp.task(&apos;mainPngquantImg&apos;, function () {
+    gulp.src(&apos;images/*.{png,jpg,gif,ico}&apos;)
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],  //不要移除svg的viewbox属性
+            use: [pngquant()]                       //使用pngquant深度压缩png图片的imagemin插件
+        }))
+        .pipe(gulp.dest(&apos;dist/img&apos;));
+});
+
+
+/************* 给页面加版本号，刷缓存 **************/
+gulp.task(&apos;mainRev&apos;, function () {
+    gulp.src(&apos;*.html&apos;)   // 页面里需要加rev=@@hash
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;dist/&apos;));
+});
+
+
+/************* 浏览器版本自动处理浏览器前缀 **************/
+gulp.task(&apos;testAutoFx&apos;, function () {
+    gulp.src(&apos;css/autoprefixer.css&apos;)
+        .pipe(autoprefixer({
+            browsers: [&apos;last 2 versions&apos;, &apos;last 1 Chrome versions&apos;, &apos;last 2 Explorer versions&apos;, &apos;last 3 Safari versions&apos;, &apos;iOS 7&apos;, &apos;Firefox ESR&apos;],
+            cascade: true, //是否美化属性值 默认：true 像这样：
+            //-webkit-transform: rotate(45deg);
+            //        transform: rotate(45deg);
+            remove:true //是否去掉不必要的前缀 默认：true
+        }))
+        .pipe(rename(&apos;autoprefixer.min.css&apos;))       // 设置压缩后的文件名
+        .pipe(gulp.dest(&apos;dist/css&apos;));
+});
+
+
+/************* 侦听自动执行Task **************/
+gulp.task(&apos;mainWatch&apos;, function () {
+    return gulp.src(&apos;css/*.css&apos;)
+        .pipe(watch(&apos;css/*.css&apos;))
+        .pipe(gulp.dest(&apos;build&apos;));
+});
+
+
+/********* 当文件变化时自动刷新浏览器 **********/
+gulp.task(&apos;mainLivereload&apos;, function () {
+    return gulp.src([&apos;css/*.css&apos;, &apos;*.html&apos;])
+        .pipe(livereload());
+});
+
+
+/************* React **************/
+gulp.task(&apos;mainReact&apos;, function () {
+    return gulp.src(&apos;template.jsx&apos;)
+        .pipe(react())
+        .pipe(gulp.dest(&apos;dist&apos;));
+});
+
+
+/************* connect **************/
+gulp.task(&apos;connectDist&apos;, function () {
+    connect.server({
+        name: &apos;Dist App&apos;,    
+        root: &apos;dist&apos;,        // 服务器名
+        port: 8001,            // 服务器端口
+        livereload: true      // 启用实时刷新的功能，这里是本地服务后，如果未使用connect, 还需要livereload插件的方法
+    });
+});
+
+gulp.task(&apos;scripts&apos;, function() {
+    gulp.src([&apos;src/index.js&apos;])
+        .pipe(browserify({
+            nobuiltins: &apos;events querystring&apos;
+        }))
+        .pipe(gulp.dest(&apos;./build/js&apos;))
+});
+
+
+
+/**
+ * 配置任务
+ */
+gulp.task(&quot;default&quot;, [&apos;mainConcat&apos;, &apos;mainUglify&apos;, &apos;mainLess&apos;]);
+gulp.task(&quot;mainWatch&quot;, [&apos;mainWatch&apos;]);
+
+
+
+/**
+ * 监听任务 运行语句 gulp watch
+ */
+gulp.task(&apos;watch&apos;, function () {
+
+    // 监听sass
+    gulp.watch(path.s_sass + &apos;**/*.scss&apos;, [&apos;scss_2_css&apos;]);
+
+    // 监听css
+    gulp.watch(path.s_css + &apos;**/*.css&apos;, [&apos;cssmin&apos;]);
+
+    // 监听images
+    gulp.watch(path.s_img + &apos;*&apos;, [&apos;imagemin&apos;]);
+
+    //监听ES6 JS
+    gulp.watch(path.s_es+&apos;**/*.js&apos;,[&apos;es6_2_es5&apos;]);
+
+    // 监听js
+    gulp.watch(path.d_js + &apos;**/*.js&apos;, [&apos;uglify&apos;]);
+
+
+});
+</code></pre><blockquote>
+<p>参考资料</p>
+<p>gulp中文网 <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a><br><a href="http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7</a><br>gulp 技巧集 <a href="http://www.gulpjs.com.cn/docs/recipes/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/recipes/</a><br>gulp api <a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/api/</a><br>gulp使用指南 <a href="http://www.techug.com/gulp" target="_blank" rel="noopener">http://www.techug.com/gulp</a><br>gulp开发教程 <a href="http://www.w3ctech.com/topic/134" target="_blank" rel="noopener">http://www.w3ctech.com/topic/134</a><br>gulp-load-plugins[模块化管理插件] <a href="http://www.qianduancun.com/nodejs/33.html" target="_blank" rel="noopener">http://www.qianduancun.com/nodejs/33.html</a><br>利用 gulp 处理前端工作流程 <a href="http://segmentfault.com/a/1190000003098076#articleHeader0" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003098076#articleHeader0</a><br>前端构建工具gulpjs的使用介绍及技巧 <a href="http://www.cnblogs.com/2050/p/4198792.html" target="_blank" rel="noopener">http://www.cnblogs.com/2050/p/4198792.html</a></p>
+<p>文件流<br>nodejs中流(stream)的理解 <a href="http://segmentfault.com/a/1190000000519006" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000519006</a><br>Node.js Stream（流）的学习笔记 <a href="http://www.it165.net/pro/html/201406/15924.html" target="_blank" rel="noopener">http://www.it165.net/pro/html/201406/15924.html</a><br>Node 中的流（Stream） <a href="http://segmentfault.com/a/1190000000357044" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000357044</a></p>
+<p>Promise</p>
+<p>深入理解Promise实现细节 <a href="http://segmentfault.com/a/1190000002591145" target="_blank" rel="noopener">http://segmentfault.com/a/1190000002591145</a><br>Promise实现原理 <a href="http://www.tuicool.com/articles/fe6Jbyz" target="_blank" rel="noopener">http://www.tuicool.com/articles/fe6Jbyz</a><br>异步编程 promise模式 的简单实现 <a href="http://segmentfault.com/a/1190000003028634" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003028634</a><br><a href="http://sentsin.com/web/861.html" target="_blank" rel="noopener">http://sentsin.com/web/861.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/11/11/Gulp/" data-id="cjdu4wpva000ichwr97rrx6f0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/04/Egg.js框架/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          EggJS基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/02/webpack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

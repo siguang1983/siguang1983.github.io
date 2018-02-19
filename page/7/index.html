@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="大排档">
+<meta property="og:url" content="http://siguang1983.github.io/page/7/index.html">
+<meta property="og:site_name" content="大排档">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大排档">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-VueJS之-基础篇（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/22/VueJS之-基础篇（一）/" class="article-date">
+  <time datetime="2016-10-22T03:06:51.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/VueJS之-基础篇（一）/">VueJS 之 “基础篇“（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| style与class<br>| computed、directive、filter<br>| watch 侦听Data数据的变化<br>| 生命周期: beforeCreate、create、beforeMount、mounted、beforeUpdate、updated、destroyed<br>| this.$refs、$el、$data、$watch<br>| v-bind缩写:、v-on缩写@</p>
+<h4 id="Vue2-0"><a href="#Vue2-0" class="headerlink" title="Vue2.0"></a>Vue2.0</h4><pre><code>一、Vue的MVVM实现的原理？
+
+    ViewModel是Vue.js的核心，Vue实例是作用于某一个HTML元素上的，这个元素可以是HTML的body元素，也可以是指定了id的某个元素
+
+    DOM Listeners 和 Data Bindings看作两个工具，它们是实现双向绑定的关键。
+
+    从view层来看，ViewModel中的DOM Listeners工具会帮我们监测页面上DOM元素的变化，如果有变化，则更改Model中的数据；
+
+    从Model层来看，当我们更新Model中的数据时，Data Bindings工具会帮我们更新页面中的DOM元素。
+
+二、Vue使用
+
+    1）页面加载vue.js文件  &lt;script src=&quot;vue.js&quot;&gt;&lt;/script&gt;
+
+    2）npm下载vue包, npm install vue --save-dev
+</code></pre><h4 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h4><pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt;
+    {{ message }}
+&lt;/div&gt;
+
+new Vue({
+    el: &apos;#app&apos;,
+    data: {
+        message: &apos;hello world&apos;
+    }
+})
+</code></pre><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><pre><code>一、构造器
+
+    1、每个构造器都是通过创建一个Vue的实例启动的
+
+        var vm = new Vue({
+            // ...    
+        })
+
+    2、扩展构造器
+
+        通过扩展构造器可以创建可复用的组件构造器
+
+        var MyComponent = Vue.extend({
+            // 扩展选项
+        })
+
+
+二、生命周期
+
+    1、beforeCreate(): 实例初始化，数据观测(data observer)和事件（event/watcher）配置之前被调用
+
+    2、create(): 实例创建完后被调用，完成了数据观测(data observer)和事件（event/watcher）回调，但还挂载还没开始$el属性不可见
+
+    3、beforeMount(): 在挂载开始之前调用，render()函数被调用
+
+    4、mounted(): el被创建的vm.$el替换，挂载到实例上调用钩子
+
+    5、beforeUpdate(): 数据更新时调用，在虚拟DOM重新渲染
+
+    6、updated(): 数据更改导致虚拟DOM重新渲染
+
+    7、destroyed(): 卸载组件
+
+    &lt;script&gt;
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {
+                message: &apos;siguang&apos;
+            },
+            methods: {
+                showMessage: function(){
+                    console.log(this.message);
+                },
+                deleteVue: function(){
+                    vm.$destroy();          // 消毁Vue实例
+                }
+            },
+
+            // new Vue后执行开始
+            beforeCreate: function(){
+                console.log(&apos;beforeCreate&apos;);
+            },
+
+            // Vue实例创建被调用
+            create: function(){
+                console.log(&apos;create&apos;);
+            },
+
+
+            mounted: function(){
+                console.log(&apos;mounted&apos;);
+            },
+
+            // 数据更新后执行的回调
+            beforeUpdate: function(){    
+                console.log(&apos;beforeUpdate&apos;);     
+            },
+            updated: function(){    
+                console.log(&apos;updated&apos;);     
+            },
+
+            // 消毁时触发
+            destroyed: function(){
+                console.log(&apos;destroyed&apos;);
+            }
+
+        });
+    &lt;/script&gt;
+</code></pre><h4 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h4><pre><code>1、文本绑定:  &lt;p&gt;{{ data.name }}&lt;/p&gt;    与 &lt;p v-text=&quot;data.name&quot;&gt;&lt;/p&gt; 相同
+
+2、html绑定:  &lt;p v-html=&quot;data.strHtml&quot;&gt;&lt;/p&gt;
+
+3、绑定的值可以html中: 
+
+    &lt;div id=&quot;item-{{id}}&quot;&gt;&lt;/div&gt;
+
+    &lt;div :id=&quot;userId&quot;&gt;&lt;/div&gt;
+
+4、表达式:  {{ dat.num == 1 }}、 {{ num ? 'yes' : 'no' }}、 {{if(ok) {return message} }}
+
+5、过滤器:  {{ message | capitalize }}
+
+    连续过滤器:  {{ message | filterA | filterB }}
+</code></pre><h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><pre><code>指令: 以 v- 开头
+
+    &lt;div v-if=&quot;greeting == 1&quot;&gt;&lt;/div&gt;
+
+    带参数: &lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;
+
+1、v-if、v-else-if条件渲染: 
+
+    &lt;div v-if=&quot;type === &apos;A&apos;&quot;&gt;A&lt;/div&gt;
+    &lt;div v-else-if=&quot;type === &apos;B&apos;&quot;&gt;B&lt;/div&gt;
+    &lt;div v-else-if=&quot;type === &apos;C&apos;&quot;&gt;C&lt;/div&gt;
+    &lt;div v-else&gt;Not A/B/C&lt;/div&gt;
+
+2、v-show: 显示还是隐藏元素，用的display
+
+3、v-for: 循环数据来渲染列表
+
+    $index: 索引        $key: 
+
+    * 数组/数组对象循环: 
+
+        &lt;li v-for=&quot;item in items&quot; :key=&quot;item&quot;&gt;{{ item.message }}&lt;/li&gt;
+
+        或者:
+        &lt;li v-for=&quot;(val, index) in objList&quot; :key=&quot;index&quot;&gt;
+            {{index}}. {{key}} : {{val.type}}
+           &lt;/li&gt;
+
+    * 对象循环: index下标    key对象的key   val对象属性值
+
+        &lt;li v-for=&quot;(val, index) in objList&quot; :key=&quot;index&quot;&gt;
+            {{index}}. {{key}} : {{val.type}}
+           &lt;/li&gt;
+
+    * filterBy()、orderBy()过滤器
+
+    **** 注意在使用2.2.0以上版本时 ****
+    @key是必要属性否则就会报警告
+
+        1）&lt;el-row class=&quot;pt20 w50&quot; v-for=&quot;method in payMethods&quot; :key=&quot;method.label&quot;&gt;        // 数据
+
+        2）&lt;el-option
+                v-for=&quot;(item,index) in payMethods&quot;
+                :key=&quot;index&quot;
+                :label=&quot;item.label&quot;
+                :value=&quot;item.value&quot;&gt;
+            &lt;/el-option&gt;
+
+
+4、v-model: 绑定值，这也是MVVM的关键点
+
+    可以对文本表单、单选框 、多选框、下拉菜单进行绑定值
+
+    参数特性:
+
+        1）lazy: 不是输入时就进行同步而是在change的时候才对数据进行同步
+
+            &lt;input type=&quot;text&quot; v-model=&quot;msg&quot; lazy /&gt; {{msg}}
+
+        2）number: 将用户输入的转成Number型，如果返回NaN那就返回原值
+
+        3）debounce: 设置一个最小延时，否则如果输入是ajax请求，每次敲击都会去请求
+
+            &lt;input type=&quot;text&quot; debounce=&quot;500&quot; v-model=&quot;msg&quot;&gt;        // 按完键500毫秒后在进行
+
+    获取checkbox值:
+
+        &lt;input type=&quot;checkbox&quot; v-model=&quot;toggle&quot; v-bind:true-value=&quot;a&quot; v-bind:false-value=&quot;b&quot;&gt;
+
+        // 当选中时
+        vm.toggle === vm.a
+
+        // 当没有选中时
+        vm.toggle === vm.b
+
+
+5、v-bind: 绑定到HTML元素上，v-bind:class=&quot;active&quot;
+
+    v-bind缩写: &quot;:&quot; &lt;a :href=&apos;url&apos;&gt;&lt;/a&gt;
+
+
+6、v-on: 用于监听DOM事件 v-on:click=&quot;doSomeThing&quot;
+
+    v-on缩写: &quot;@&quot; &lt;div @click=&quot;doSomeing&quot;&gt;&lt;/div&gt;
+
+
+7、v-ref: 访问子组件
+
+    2.0后 v-el和v-ref合成了一个 ref属性，组件实例中通过 $refs 来调用 
+
+    &lt;div ref=&quot;box&quot;&gt;xxxx&lt;/div&gt;
+    &lt;el-button type=&quot;primary&quot; slot=&quot;append&quot; @click=&quot;getRefs&quot;&gt;发送&lt;/el-button&gt;
+
+    {
+        methods:{
+            getRefs(){
+                console.log(this.$refs.box.innerHTML);
+            }
+        }
+    }
+
+    如果绑定一个元素使用 :ref=&apos;item&apos;
+    &lt;p v-for=&quot;item in items&quot; :ref=&quot;item&quot;&gt;&lt;/p&gt;
+
+
+8、v-pre: 跳过这个元素和它的子元素的编译过程，这样加快了编译的速度
+
+    &lt;div v-pre&gt;{{ 这里不用框架来编译 }}&lt;/div&gt;
+
+9、v-cloak:
+
+10、v-once: 只渲染元素和组件一次，之后的渲染都会跳过次元素
+
+    &lt;span v-once&gt;xxxxx&lt;/span&gt;
+</code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>过滤器，对绑定值进行处理
+
+1、内置过滤器
+
+    1）uppercase: 字母转成大写
+
+    2）lowercase: 字母转成小写
+
+    3）capitalize: 首字母转成大写
+
+    4）filterBy: 过滤内容
+
+    5）limitBy: 过滤数据从开始到指定位置结束的内容
+
+    6）orderBy: 过滤排序
+
+    7）currency: 货币过滤
+
+    8）debounce: 延迟过滤
+
+
+2、自定义过滤器和带参数
+
+    &lt;span v-text=&quot;message | reverse &apos;addText&apos; &quot;&gt;&lt;/span&gt;
+
+    // 创建自己定义过滤器 value值 addText参数
+    Vue.filter(&apos;reverse&apos;, function(value, addText){
+        return value.split(&apos;&apos;).remove().join() + addText:
+    })
+
+
+2、双向过滤器
+
+    模型的值显示在视图之前转换它
+
+    &lt;input v-mode=&quot;money | formatMoney&quot;&gt;
+    &lt;div&gt;{{ money | formatMoney }}&lt;/div&gt;
+
+    Vue.filter(&apos;formatMoney&apos;, {
+
+        // model -&gt; vlew过程  在更新&lt;input&gt; 元素之初化值
+        read: function(val){
+            return &apos;$&apos; + val.toFixed(2);
+        },
+
+        // vlew -&gt; model过程 在写回数据之前格式化值
+        write: function(val){
+            var number = +val.replace(/[^\d.]/g, &apos;&apos;);
+            return isNaN(number) ? 0 : parseFloat(number.toFixed(2));
+        }
+    })
+
+
+3、动态参数
+
+    参数用空格格开
+
+    &lt;input type=&quot;text&quot; v-model=&quot;userInput&quot;&gt;
+    &lt;span&gt;{{msg | concat userInput}}&lt;/span&gt;
+
+    Vue.filter(&apos;concat&apos;, function (value, input) {
+        // `input` === `this.userInput`
+        return value + input;
+    })
+
+
+4、filterBy过滤器
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;div&gt;过滤数据里包含 蛋糕 字符 &lt;/div&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;user in users | filterBy &apos;蛋糕&apos; &quot;&gt;{{ user.name }}&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+
+        &lt;div style=&quot;margin-top: 30px&quot; &gt;过滤出输入的字符&lt;/div&gt;
+        &lt;input type=&quot;text&quot; name=&quot;&quot; v-model=&quot;searchKey&quot; /&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;user in users | filterBy searchKey in &apos;name&apos;&quot;&gt;{{ user.name }}&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&quot;../../js/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {
+                searchKey: &apos;&apos;,
+                users:[
+                    {
+                        name: &apos;外卖&apos;,
+                        tag: 1
+                    },
+                    {
+                        name: &apos;鲜花&apos;,
+                        tag: 5
+                    },
+                    {
+                        name: &apos;蛋糕&apos;,
+                        tag: 4
+                    },
+                    {
+                        name: &apos;水果&apos;,
+                        tag: 2
+                    },
+                    {
+                        name: &apos;茶点&apos;,
+                        tag: 3
+                    }
+                ]
+            }
+        })
+    &lt;/script&gt;
+
+5、orderBy排序
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;&quot; v-model=&quot;searchKey&quot; /&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;user in users | orderBy &apos;tag&apos;&quot;&gt;{{ user.name }}&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {
+                searchKey: &apos;&apos;,
+                users:[
+                    {
+                        name: &apos;外卖&apos;,
+                        tag: 1
+                    },
+                    {
+                        name: &apos;咖啡&apos;,
+                        tag: 5
+                    },
+                    {
+                        name: &apos;餐厅订座&apos;,
+                        tag: 4
+                    },
+                    {
+                        name: &apos;蛋糕&apos;,
+                        tag: 2
+                    },
+                    {
+                        name: &apos;票务&apos;,
+                        tag: 3
+                    }
+                ]
+            }
+        })
+    &lt;/script&gt;
+</code></pre><h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><pre><code>一、钩子函数
+
+    el：指令所绑定的元素，可以用来直接操作 DOM 。
+    binding：一个对象，包含以下属性：
+    name：指令名，不包括 v- 前缀。
+    value：指令的绑定值，例如：v-my-directive=&quot;1 + 1&quot; 中，绑定值为 2。
+    oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+    expression：字符串形式的指令表达式。例如 v-my-directive=&quot;1 + 1&quot; 中，表达式为 &quot;1 + 1&quot;。
+    arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 &quot;foo&quot;。
+    modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。
+    vnode：Vue 编译生成的虚拟节点。移步 VNode API 来了解更多详情。
+    oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。
+
+2、对象字面量
+
+    &lt;div v-demoA=&quot;{ color: &apos;white&apos;, text: &apos;hello&apos;}&quot;&gt;&lt;/div&gt;
+
+    Vue.directive(&apos;demoA&apos;, function(el, value){
+        console.log(value.color);
+        console.log(value.text);
+    })
+
+
+3、元素指令，相当于angular的E指令
+
+    Vue.elementDirective(&apos;my-directive&apos;, {
+        bind: function(){
+            // 操作this.el
+        }
+    })
+
+    &lt;my-directive&gt;&lt;/my-directive&gt;            // 不能这么写&lt;div v-my-directive&gt;&lt;/div&gt;
+
+4、高级选项
+
+    params: 自动提取绑定元素的这些特性.
+
+    &lt;div v-example a=&quot;hi&quot;&gt;&lt;/div&gt;
+    Vue.directive(&apos;example&apos;, {
+        params: [&apos;a&apos;],
+        bind: function () {
+            console.log(this.params.a);         // -&gt; &quot;hi&quot;
+        }
+    })
+</code></pre><h4 id="computed-计算属性"><a href="#computed-计算属性" class="headerlink" title="computed 计算属性"></a>computed 计算属性</h4><pre><code>计算属性就是当依赖属性发生变化时，属性的值会自动更新，相关的DOM也会同步更新
+
+二、计算属性的getter
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p&gt;user_inof={{ userInfo }}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {
+                &quot;user_name&quot;: &quot;lulu&quot;,
+                &quot;user_age&quot;: &quot;20&quot;
+            },
+            computed: {
+                // 一个计算属性getter
+                userInfo: function(){
+                    return &apos;姓名: &apos;+ this.user_name +&apos; 年龄: &apos;+ this.user_age;
+                }
+            }
+        })
+    &lt;/script&gt;
+
+
+二、计算属性的setter
+
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            &quot;user_name&quot;: &quot;lulu&quot;,
+            &quot;user_age&quot;: &quot;20&quot;
+        },
+        computed: {
+            userInfo: function(){
+                get: function(){
+                    return &apos;姓名: &apos;+ this.user_name +&apos; 年龄: &apos;+ this.user_age;
+                },
+                set: function(newValue){        // 这里当
+                    this.userInfo = newValue;
+                }
+            }
+        }
+    })
+</code></pre><h4 id="watch-侦听数据变化"><a href="#watch-侦听数据变化" class="headerlink" title="watch 侦听数据变化"></a>watch 侦听数据变化</h4><pre><code>watch 侦听data下指定数据的变化 
+
+&lt;script&gt;
+
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            message: &apos;siguang&apos;
+        },
+        methods: {
+            showMessage: function(){
+                console.log(this.message);
+            }
+        },
+        watch:{
+            message: function(newValue){
+                return newValue + 1;        // 如果message变化值加1
+            }
+        }
+    });
+
+    console.log(vm.message);        // siguang
+    vm.showMessage();
+
+    // 写在实例化下侦听数据变化
+    // vm.$watch(&apos;message&apos;, function(newVal, oldVal){
+    //    console.log(newVal, oldVal);
+    //    this.message = newVal.replace(/s|g/g, &apos;*&apos;);
+    // })
+
+&lt;/script&gt;
+</code></pre><h4 id="class和style的绑定"><a href="#class和style的绑定" class="headerlink" title="class和style的绑定"></a>class和style的绑定</h4><pre><code>1、class
+
+    // 对象
+    &lt;div :class=&quot;{ &apos;active&apos;: isActive }&quot;&gt;&lt;/div&gt;
+
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            isActive: true
+        }
+    })
+
+    // 数组
+    &lt;div :class=&quot;[activeClass, errorClass]&quot;&gt;&lt;/div&gt;        // 三元 &lt;div v-bind:class=&quot;[isActive ? activeClass : &apos;&apos;, errorClass]&quot;&gt;&lt;/div&gt;
+    data: {
+        activeClass: &apos;active&apos;,
+        errorClass: &apos;text-danger&apos;
+    }    
+
+
+2、style
+
+    &lt;div :style=&quot;[crm, hk]&quot;&gt; 或 &lt;div :style=&quot;{color: activeColor, fontSize: fontSize+&apos;px&apos;}&quot;&gt;
+
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            activeColor: &apos;red&apos;,
+            fontSize: 30,
+            crm: {
+                color: &apos;#000&apos;,
+                fontSize: &apos;16px&apos;
+            },
+            hk: {
+                color: &apos;#fff&apos;,
+                fontSize: &apos;18px&apos;
+            }
+        }
+    })
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、@click
+
+    &lt;div @click=&quot;say&quot;&gt;&lt;/div&gt;
+    &lt;div @click=&quot;say(&apos;hi&apos;)&quot;&gt;&lt;/div&gt;
+    &lt;div @click=&quot;content + 1&quot;&gt;&lt;/div&gt;
+
+
+    &lt;!-- 阻止单击事件冒泡 --&gt;
+    &lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+    &lt;!-- 提交事件不再重载页面 --&gt;
+    &lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+
+    &lt;!-- 修饰符可以串联  --&gt;
+    &lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+
+    &lt;!-- 只有修饰符 --&gt;
+    &lt;form v-on:submit.prevent&gt;&lt;/form&gt;
+
+    &lt;!-- 添加事件侦听器时使用事件捕获模式 --&gt;
+    &lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+
+    &lt;!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 --&gt;
+    &lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+
+2、按键别名
+
+    .enter、.tab、.delete (捕获 “删除” 和 “退格” 键)、.esc、.space、.up、.down、.left、.right、.ctrl、.alt、.shift、.meta
+
+3、once: 只处理一次点击  &lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+4、修饰符 &lt;input v-on:keyup.13=&quot;submit&quot;&gt;
+</code></pre><h4 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h4><pre><code>Vue在底层将模板编译成虚拟DOM渲染函数，也可以不用模板直接写render函数，可选JSX语法
+</code></pre><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><pre><code>1、v-bind 内联字符串连接
+
+    data(){
+        return {
+            addString: &apos;加入内容&apos;
+        }
+    }
+
+    1.x版本 写法  &lt;div attr=&quot;xxxx{{addString}}&quot;&gt;
+
+    2.x版本 写法  &lt;div v-bind=&quot;&apos;xxxx&apos;+ addString&quot;&gt;
+
+
+2、checkbox动态创建绑定
+
+    // v-model=&quot;item.check&quot; 绑定的值要相同
+
+    &lt;p v-for=&quot;item in checkList&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;cb&quot; v-model=&quot;item.check&quot; /&gt; {{item.name}}
+    &lt;/p&gt;
+
+    data(){
+        return{
+            checkList:[
+                {check: false, name: &apos;aa&apos;},
+                {check: false, name: &apos;bb&apos;},
+                {check: false, name: &apos;cc&apos;}
+            ]
+        }
+    }
+
+3、vue使用jxs语法
+
+    new Vue({
+        el: &apos;#demo&apos;,
+        render (h) {
+            return (    // 使用这种jsx语法
+                &lt;AnchoredHeading level={1}&gt;
+                    &lt;span&gt;Hello&lt;/span&gt; world!
+                &lt;/AnchoredHeading&gt;
+            )
+        }
+    })
+
+    需要安装插件
+
+    $ npm install babel-plugin-syntax-jsx babel-plugin-transform-vue-jsx babel-helper-vue-jsx-merge-props babel-preset-en   --save-dev
+
+    .babelrc:
+        {
+            &quot;presets&quot;: [&quot;env&quot;],
+            &quot;plugins&quot;: [&quot;transform-vue-jsx&quot;]
+        }
+
+    https://github.com/vuejs/babel-plugin-transform-vue-jsx
+
+
+4、vue键盘事件不起作用
+
+    @keyup.enter.native=&quot;login&quot;   如果不加.native是不起作用有
+</code></pre><p>| 参考资料<br>|<br>| <a href="http://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">http://www.jianshu.com/p/95b2caf7e0da</a>              // vue-cli<br>| <a href="http://cn.vuejs.org/guide/" target="_blank" rel="noopener">http://cn.vuejs.org/guide/</a>                        // Vue中文官网<br>| <a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a>                        // github<br>| <a href="http://vuefe.cn/guide/installation.html" target="_blank" rel="noopener">http://vuefe.cn/guide/installation.html</a>            // 2.0<br>| <a href="http://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://router.vuejs.org/zh-cn/</a>                    // vue-router2.0<br>| <a href="https://github.com/vuejs" target="_blank" rel="noopener">https://github.com/vuejs</a>                             // Vue组件列表<br>| <a href="http://www.cnblogs.com/dh-dh/p/5606596.html" target="_blank" rel="noopener">http://www.cnblogs.com/dh-dh/p/5606596.html</a>        // binding原理，vue的数据<br>| <a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">https://github.com/vuejs/awesome-vue#libraries--plugins</a><br>| <a href="http://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://vuex.vuejs.org/zh-cn/</a>                         // Vuex 2.0文档<br>| <a href="https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md" target="_blank" rel="noopener">https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md</a><br>| <a href="http://www.cnblogs.com/keepfool/category/845804.html" target="_blank" rel="noopener">http://www.cnblogs.com/keepfool/category/845804.html</a><br>| <a href="http://www.jianshu.com/p/f8e21d87a572" target="_blank" rel="noopener">http://www.jianshu.com/p/f8e21d87a572</a><br>| <a href="https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91</a>      // Vue代码规范</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/22/VueJS之-基础篇（一）/" data-id="cjdu4wpx7001xchwr7byhhz6b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-浏览器内核" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/17/浏览器内核/" class="article-date">
+  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/浏览器内核/">浏览器内核</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="URL到页面加载发生了什么"><a href="#URL到页面加载发生了什么" class="headerlink" title="URL到页面加载发生了什么"></a>URL到页面加载发生了什么</h4><pre><code>1、DNS解析 - 将域名转换IP的过程
+
+2、TCP连接 - 
+
+3、发送HTTP请求 - 请求报名和报文  
+
+    常见的请求报头有: Accept, Accept-Charset, Accept-Encoding, Accept-Language, Content-Type, Authorization, Cookie, User-Agent等。
+
+    报文: Content-Type: application/json。
+
+4、服务器处理请求并返回HTTP报文
+
+5、浏览器解析渲染页面
+
+6、连接结束
+
+https://segmentfault.com/a/1190000006879700
+</code></pre><h4 id="浏览器的基础结构"><a href="#浏览器的基础结构" class="headerlink" title="浏览器的基础结构"></a>浏览器的基础结构</h4><pre><code>一、浏览器基础结构主要包括如下7部分: 
+
+    1、用户界面(User Interface): 用户所看到及与之交互的功能组件，如地址栏，返回，前进按钮等
+
+    2、浏览器引擎(Browser engine): 负责控制和管理下一级的渲染引擎
+
+    3、渲染引擎(Rendering engine): 负责解析用户请求的内容(如HTML或XML，渲染引擎会解析HTML或XML，以及相关CSS，然后返回解析后的内容)
+
+    4、网络(Networking): 负责处理网络相关的事务，如HTTP请求等
+
+    5、UI后端(UI backend): 负责绘制提示框等浏览器组件，其底层使用的是操作系统的用户接口
+
+    6、JavaScript解释器(JavaScript interpreter): 负责解析和执行JavaScript代码
+
+    7、数据存储(Data storage): 负责持久存储Stroage诸如cookie和缓存等应用数据
+</code></pre><h4 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h4><pre><code>一、大致可以分为以下几类: 
+
+    1、Trident内核:  IE
+
+    2、Webkit内核: Chrome,Safari
+
+    3、Gecko内核: FireFox
+</code></pre><h4 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h4><pre><code>一、用户访问页面，浏览器需要获取用户的请求内容，主要涉及浏览器网络模块:
+
+    1、用户在地址栏输入域名, DNS根据域名查找对应的ip, 并发起请求
+
+    2、浏览器获得并解析服务器的返回内容(HTTP response)
+
+    3、浏览器加载HTML文件及文件内包含的外部引用文件及图片，多媒体等资源
+
+二、DNS预解析
+
+    浏览器DNS解析大多时候较快，且会缓存常用域名的解析值，但是如果网站涉及多域名，在对每一个域名访问时都需要先解析出IP地址，
+
+    希望在跳转或者请求其他域名资源时尽量快，则可以开启域名预解析，浏览器会在空闲时提前解析声明需要预解析的域名，如: 
+
+    &lt;link rel=&quot;dns-prefetch&quot; href=&quot;http//t1.we.com&quot;&gt;
+</code></pre><h4 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h4><pre><code>浏览器加载资源一般会并行进程同时加载，限制一般在2-6个
+</code></pre><h4 id="渲染引擎"><a href="#渲染引擎" class="headerlink" title="渲染引擎"></a>渲染引擎</h4><pre><code>一、访问一个页面执行流程
+
+    1、发起请求        2、解析HTML        3、解析样式        4、执行JavaScript        5、布局        6、绘制
+
+
+二、通过网络模块加载到HTML文件后渲染引擎渲染流程如下，这也通常被称作关键渲染路径(Critical Rendering Path):
+
+    1、构建DOM树(DOM tree): 从上到下解析HTML文档生成DOM节点树(DOM tree), 也叫内容树(content tree)
+
+    2、构建CSSOM(CSS Object Model)树: 加载解析样式生成CSSOM树
+
+    3、执行JavaScript: 加载并执行JavaScript代码(包括内联代码或外联JavaScript文件)
+
+    4、构建渲染树(render tree): 根据DOM树和CSSOM树, 生成渲染树(render tree) 渲染树: 按顺序展示在屏幕上的一系列矩形，这些矩形带有字体，颜色和尺寸等视觉属性
+
+    5、布局(layout): 根据渲染树将节点树的每一个节点布局在屏幕上的正确位置
+
+    6、绘制(painting): 遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成
+
+
+三、解析样式和脚本
+
+    1、脚本是可能存在改变DOM结构，于是浏览器以同步方式解析，加载和执行脚本，浏览器遇到script标签就选择js代码，现在HTML5提供defer和async两个属性支持延迟和异步加载JavaScript文件
+
+        &lt;script defer src=&quot;script.js&quot;&gt;
+
+    2、样式不同于脚本，浏览器对样式处理并不会阻塞文档解析，因为样式不会改变DOM结构
+
+
+四、重绘、重排
+
+    尽量减少reflow:
+
+    重排: 当页面结构发生改变，渲染树重新组装，如块级元素的（margin、padding）当前元素位置发生改变会影响下面所有元素的位置需要重排，position: absolute不会引发重排
+
+    重绘: 就是不改变页面的结构，只改变一些颜色，如(文字颜色、边框颜色)
+</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>一、访问域名
+
+    访问京东域名时，会发现有Remote Address，这里是在访问域名时并不会直接访问服务器而是在中间过了一层，目的是为当前用户找到离他最近的一台服务来进行跳转，可以让最快速度来访问
+</code></pre><p><img src="images/jd_ip.png" alt="jd_ip"> </p>
+<p>| <a href="http://blog.codingplayboy.com/2017/03/29/webpage_render/" target="_blank" rel="noopener">http://blog.codingplayboy.com/2017/03/29/webpage_render/</a><br>| <a href="https://www.webpagetest.org/" target="_blank" rel="noopener">https://www.webpagetest.org/</a>         // 网站的性能评估</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/17/浏览器内核/" data-id="cjdu4wpy5003hchwrej95kqe9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/17/前端优化/" class="article-date">
+  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/前端优化/">前端优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前端优化"><a href="#前端优化" class="headerlink" title="前端优化"></a>前端优化</h4><pre><code>1、减少HTTP请求: 合并图片(如css sprites，内置图片使用数据)、合并CSS、JS    
+
+2、CDN(内容分发网络): 尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定
+
+    通过在各地放置节点服务器，CDN可以根据用户的连接距离、负载状况、响应时间等，来为用户选择一个最近的服务器
+
+3、为文件头指定Expires或Cache-Control: 设置资源的缓存时间
+
+4、避免空的src和href: 这两个属性的标签如link，script，img，iframe等    
+
+5、Gzip压缩内容: 服务器对文件进行Gzip压缩，浏览器拿到资源对文件进行解压缩，来减少文件体积
+
+6、CSS放到顶部: 在网速慢的情况会出现，DOM加载完成，没有渲染css，加载到样式的时候才进行重新渲染样式    
+
+7、JS放到底部: 避免脚本阻塞文档的展示，document.wirte()可以阻止文档的展示
+
+8、避免使用CSS表达式: CSS表达式的计算频率会影响前端的性能    
+
+9、将CSS和JS使用外部文件引用: 减少请求数量、利用性、可被缓存，对代码的维护性
+
+10、减少DNS查询: 一个网站有多域，如图片、css、js各存在不同域，这种访问的时候就会存在多域的DNS查询
+
+    缓存常用域名的解析值，但是如果网站涉及多域名，在对每一个域名访问时都需要先解析出IP地址，可以对DNS先进行缓存 &lt;link rel=&quot;dns-prefetch&quot; href=&quot;http//t1.we.com&quot;&gt;
+
+11、对CSS和JS代码进行压缩合并: 目的是减少文件体积，gulp、webpack前端构建工具来进行压缩和合并    
+
+12、避免重定向: 对搜索引擎不友好
+
+    301: 永久重定向，访问文件A的资源的位置，服务器指向了另一个位置来找到A
+
+    302: 临时重定向，请求文件被找到了，但不在这个位置，服务器会发给浏览器所在的位置，之后浏览器会重发取到位置的请求
+
+13、移除重复的脚本: 
+
+14、配置ETags: 服务器会产成一个MD5值，当请求服务器时，服务器的ETags与客户端的值相比较，如果相同说明文件没有被修改过使用缓存文件，返回304状态码
+
+15、AJAX可缓存: jQuery有一个 cache参数，利用时间戳来绕开缓存，更精巧的实现响应可缓存与服务器数据同步更新。
+
+        post请求不能被缓存，get可以缓存
+</code></pre><h4 id="其它优化"><a href="#其它优化" class="headerlink" title="其它优化"></a>其它优化</h4><pre><code>1、延迟加载: 确定页面运行正常后，再加载脚本来实现如拖放和动画，或者是隐藏部分的内容以及折叠内容等
+
+2、预加载: 关注下无条件加载，有条件加载和有预期的加载
+
+3、减少查询DOM元素个数: 使用更适合或者在语意是更贴切的标签，要考虑大量DOM元素中循环的性能开销    
+
+4、尽量减少iframe的个数: 优点: 是脚本可以并行下载，适合加载外部广告，浏览器可以对其安全控制。  缺点: 即使内容为空，加载也需要时间，会阻止页面加载，没有语义不会被seo收录
+
+5、减少Cookie的大小: 去除不必要的coockie，使coockie体积尽量小以减少对用户响应的影响，注意在适应级别的域名上设置coockie以便使子域名不受影响，设置合理的过期时间。较早地Expire时间和不要过早去清除coockie，都会改善用户的响应时间
+
+6、使用无cookie的域: 确定对于静态内容的请求是无coockie的请求。创建一个子域名并用他来存放所有静态内容    
+
+7、用&lt;link&gt;代替@import: 在IE中，页面底部@import和使用&lt;link&gt;作用是一样的，因此最好不要使用它    
+
+8、避免使用滤镜: 完全避免使用AlphaImageLoader的最好方法就是使用PNG8格式来代替，这种格式能在IE中很好地工作。如果你确实需要使用 AlphaImageLoader，请使用下划线_filter又使之对IE7以上版本的用户无效。
+
+9、优化图像: 尝试把GIF格式转换成PNG格式，看看是否节省空间。在所有的PNG图片上运行pngcrush(或者其它PNG优化工具)    
+
+10、优化CSS Spirite: 在Spirite中水平排列你的图片，垂直排列会稍稍增加文件大小
+
+　　Spirite中把颜色较近的组合在一起可以降低颜色数，理想状况是低于256色以便适用PNG8格式
+
+　　便于移动，不要在Spirite的图像中间留有较大空隙。这虽然不大会增加文件大小但对于用户代理来说它需要更少的内存来把图片解压为像素地图。 100×100的图片为1万像素，而1000×1000就是100万像素    
+
+11、不要在HTML中缩放图像: 不要为了在HTML中设置长宽而使用比实际需要大的图片。如果你需要: 
+
+　　&lt;img width=&quot;100″ height=&quot;100″ src=&quot;mycat.jpg” alt=&quot;My Cat” /&gt;
+
+　　那么你的图片(mycat.jpg)就应该是100×100像素而不是把一个500×500像素的图片缩小使用。这里在下文有更有趣的分析
+
+12、favicon.ico 需要缓存: favicon.ico是位于服务器根目录下的一个图片文件。浏览器会对它发出请求，因此最好不要返回一 个404 Not Found的响应
+
+13、保持单个内容小于25K: 因为iPhone不能缓存大于25K的文件。注意这里指的是解压缩后的大小。由于单纯gizp压缩可能达不要求，因此精简文件就显得十分重 要
+
+14、避免页面的重排、重绘: 
+</code></pre><h4 id="页面渲染优化"><a href="#页面渲染优化" class="headerlink" title="页面渲染优化"></a>页面渲染优化</h4><pre><code>1、HTML文档结构层次尽量少，最好不深于六层
+
+2、脚本尽量后放，放在&lt;/body&gt;前即可
+
+3、少量首屏样式内联放在标签内
+
+4、样式结构层次尽量简单
+
+5、在脚本中尽量减少DOM操作，尽量缓存访问DOM的样式信息，避免过度触发回流
+
+6、减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画
+
+7、动画尽量使用在绝对定位或固定定位的元素上
+
+8、隐藏在屏幕外，或在页面滚动时，尽量停止动画
+
+9、尽量缓存DOM查找，查找器尽量简洁
+
+10、涉及多域名的网站，可以开启域名预解析
+</code></pre><h4 id="页面中图片加载的两种效果"><a href="#页面中图片加载的两种效果" class="headerlink" title="页面中图片加载的两种效果"></a>页面中图片加载的两种效果</h4><pre><code>一种是回去加载先模糊然后清晰，另一种是很清晰但逐行加载显示，原因是他们的压缩算法不同
+
+1、逐行加载
+</code></pre><p><img src="images/逐行.png" alt="逐行"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/17/前端优化/" data-id="cjdu4wpxz0036chwrb8qy7lov" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端优化/">前端优化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HTTP协议" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/17/HTTP协议/" class="article-date">
+  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/17/HTTP协议/">HTTP详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h4><pre><code>一、TCP/IP分为4个层: 应用层、传输导、网络层和数据链路层
+
+    1）应用层: 向用户提供应用服务FTP和DNS服务
+
+    2）传输层: 两台计算机之间的数据传输，两种协议TCP和UDP
+
+    3）网络层: 用来处理网络上的数据包
+
+    4）链路层: 处理连接网络的硬件部分
+
+
+二、一个http请求服务器的过程
+
+    客户端请求: HTTP -&gt; TCP -&gt; IP -&gt; 网络 
+
+    服务器接收: 网络 -&gt; IP -&gt; TCP -&gt; HTTP
+</code></pre><h4 id="IP、TCP和DNS"><a href="#IP、TCP和DNS" class="headerlink" title="IP、TCP和DNS"></a>IP、TCP和DNS</h4><pre><code>与HTTP关系的协议: 
+
+    1、IP协议: 将把各种数据包传到指定位置，两种重要的条件就是IP地址和MAC地址
+
+    2、TCP协议: 确保数据能到达目标，TCP协议采用了三次握手策略
+
+    3、DNS服务: 负责将域名转换成IP地址之间的解析服务
+</code></pre><h4 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h4><pre><code>URI: HTTP使用URI可以让客户端找到指定的资源 
+
+URL: 服务器的
+</code></pre><h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><pre><code>HTTP协议是用于客户端和服务器端之间的通信，HTTP从客户端发起请求，最后服务器端响应请求并返回
+
+一、请求方式的总类
+
+    GET: 获取资源，不返回主体部分，GET方法要求服务器将URL定位的资源放在响应报文的数据部分，回送给客户端，向服务器请求通过 URL？id=100&amp;user=&apos;siguang&apos;来传递
+
+    POST: 传输实体主体，客户端向服务器传输内容比较多时使用POST，
+
+    PUT: 传输文件，象FTP的文件上传一样
+
+    HEAD: 获取报文首部
+
+    DELETE: 删除文件，与PUT相反
+
+    OPTIONS: 用来查询针对请求资源的方法
+
+    TRACE: 追踪路径
+
+    CONNECT: 隧道协议连接代理
+
+二、持久连接节省通信量 Kepp-alive
+
+    每建立一次HTTP通信流程，建立一次TCP连接 -&gt; HTTP请求 -&gt; 服务器HTTP响应 -&gt; 断开TCP连接
+
+    持久连接也就是只要任意一端没断开，TCP连接状态就一直保持连接状态，这种好处就是减少TCP连接的重复建立和断开，增加的额外开销，减轻服务器端的负载
+
+三、HTTP报头、报文
+
+    客户端请求的HTTP报文叫请求报文，服务器端响应的叫响应报文
+
+    报文分为: 报文首部 和 报文主体
+
+四、Gzip压缩
+
+    服务器将资源用zip压缩在发送给客户端，客户端接收后在进行解压缩
+</code></pre><h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><pre><code>HTTP状态码负责表示客户端HTTP请求服务器的结果，服务器处理的是否正常，状态码类别: 
+
+1XX 接收的主求正在处理
+
+2XX 成功状态码 请求正常处理完毕
+
+    200 请求成功正常处理
+
+3XX 重定向状态码
+
+    301 永久重定向，表示资源已被分配到新的URI
+
+    302 临时重定向，与301相同但只是临时的而不是永久的
+
+    304 缓存，服务器来看你是否满足条件，在来绝定你是读本地缓存还是从服务器响应新的资源
+
+4XX 客户端错误状态码
+
+    401 页面需要证
+
+    403 服务器拒绝请求访问的资源
+
+    404 Not Found 服务器上没有请求的资源
+
+5XX 服务器本身错误
+
+    500 服务器在执行请求时错误，web应用存在bug
+
+    503 服务器处于超负载或正在停机维护，无法处理请求
+</code></pre><h4 id="缓存Cache"><a href="#缓存Cache" class="headerlink" title="缓存Cache"></a>缓存Cache</h4><pre><code>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存减少对服务器的访问
+
+一、缓存分类:          
+
+    1、缓存服务器: 客户端请求资源先到缓存服务器查看是否到期，如果还在缓存期直接返回给客户端，否则去服务器取最新的资源
+
+    2、客户端缓存: 浏览器将缓存资源存到磁盘的指定文件夹内
+
+    3、数据库缓存: 
+
+    4、CDN内容分发:
+
+    另外两种客户端缓存: LocalStorage 和 SessionStroage
+
+    LocalStorage: 在PC上的兼容性不太好，而且当网络速度快、协商缓存响应快时使用localStorage的速度比不上304并且不能缓存css文件而移动端由于网速慢，使用localStorage要快于304
+
+
+二、缓存一般是GET请求，而POST一般不缓存，客户端缓存是否需要是在服务器端代码控制，那就是响应头，响应头告诉是否缓存
+
+    注意，所有缓存如果强制刷新的话，所有的资源都会重新从服务器加载
+
+# Expires: 缓存过期时间，用来指定资源到期的时间，Expires=max-age + 请求时间，需要和Last-modified结合使用但在上面我们提到过，cache-control的优先级更高 
+
+# Cache-control: （单位 秒）指定设置缓存最大的有效时间，定义的是时间长短 
+    Cache-control:max-age=2592000  缓存有效期为30天
+    public        所有内容都将被缓存
+    private        内容只缓存到私有缓存中
+    no-cache    所有内容都不会被缓存
+    no-store    绝对禁止缓存，一看就知道如果用了这个命令当然就是不会进行缓存啦～每次请求资源都要从服务器重新获取
+    must-revalidation/proxy-revalidation    指定如果页面是过期的，则去服务器进行获取这个指令并不常用，就不做过多的讨论了
+    max-age=xxx (xxx is numeric)    缓存的内容将在 xxx 秒后失效, 并如果和Last-Modified一起使用时, 优先级较高
+
+# Last-Modified: 服务器端文件的最后修改时间，需要和cache-control共同使用，是检查服务器端资源是否更新的一种方式，当浏览器再次进行请求时，会向服务器传送If-Modified-Since报头，询问Last-Modified时间点之后资源是否被修改过如果没有修改，则返回码为304，使用缓存；如果修改过，则再次去服务器请求资源，返回码和首次请求相同为200，资源为服务器最新资源
+
+# ETag: web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定），生成算法的话，我测试etag效果的时候用的是MD5值，Apache可以配置对静态文件生成Etag
+</code></pre><h4 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h4><pre><code>HTTP协议的请求和响应报文中包含的HTTP首部
+
+一、HTTP报文首部包括
+
+    报文首部（客户端和服务器处理时需要的信息）、报文主体（资源信息）
+
+
+二、HTTP通用头 General
+
+    # Request URL: http://mjdcom/        请求的URL
+
+    # Request Method: GET                 请求类型
+
+    # Status Code: 200 OK                 请求状态码
+
+    # Remote Address: 36110181152:80    服务器地址及端口号
+
+
+三、请求头 Request Headers
+
+    # Accept: 告诉服务器文件的类型和处理的优先级，象文本 text/html、图片 images/jpeg、视频 video/mp4、二进制 application/octet-stream
+            Accept: text/html,application/xhtml+xml,application/xml;q=09,image/webp,*/*;q=08
+
+    # Accept-Charset: 优先的字符集
+
+    # Accept-Encoding: 优先的内容编码  Accept-Encoding:gzip, deflate, sdch
+
+    # Accept-Language: 优先语言  Accept-Language:zh-CN,zh;q=08
+
+    # Host: 请求的资源所在的服务器  Host:mjdcom
+
+    # Cache-Control: max-age=315360000  控制缓存的行为  no-cache、max-age、
+
+    # Connection: keep-alive  保持持久连接
+
+    # If-Match: If-xxx 条件请求，客户端的if-match值与服务器的Etag值相匹配，如果相同就返回
+
+            If-Match: &quot;57724c86-1232&quot;、 ETag: &quot;57724c86-1232&quot;
+
+    # If-None-Match: 比较实体标记（与If-Match相反），如果与Etag不同相将资源更新给客户端
+            If-None-Match:&quot;57724c86-1232&quot;
+
+    # If-Modified-Since: 比较更新时间
+
+    # If-Range: 如果If-Range与Etag相同，就作用范围请求处理
+
+    # Range: 实体字节请求范围
+
+    # Referer: http://mjdcom/ 告知服务器请求资源的原URI
+
+    # User-Agent: 将浏览器和代理用户的信息传给服务器
+            User-Agent:Mozilla/50 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/53736 (KHTML, like Gecko) Chrome/490262387 Safari/53736
+
+
+四、响应头 Response Headers
+
+    # Expires: 将失效日期告诉客户端， Expires是HTTP10的内容，如果同时 Expires 和 Cache-control:max-age 存在的话，Expires会被覆盖
+
+    # Cache-control: 缓存控制方式，服务器设置Response Header中能看到，Cache-control:max-age=3600
+
+        public        所有内容都将被缓存
+        private        内容只缓存到私有缓存中
+        no-cache    所有内容都不会被缓存
+        no-store    所有内容都不会被缓存到缓存或 Internet 临时文件中
+        must-revalidation/proxy-revalidation    如果缓存的内容失效，请求必须发送到服务器/代理以进行重新验证
+        max-age=xxx (xxx is numeric)    缓存的内容将在 xxx 秒后失效, 并如果和Last-Modified一起使用时, 优先级较高
+
+    # ETag: web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定），生成算法的话，我测试Etag效果的时候用的是MD5值，
+            Apache可以配置对静态文件生成Etag
+            ETag:&quot;57724c86-1232&quot;
+            If-None-Match:&quot;57724c86-1232&quot;
+
+    # Date: 首部字段Date表明创建HTTP报文的日期和时间    Date: Fri, 12 Aug 2016 16:25:13 GMT
+
+    # Server: apache  nginx  服务器类型
+
+    # Via: 是为了追踪客户端与服务器端之间请求和响应报文传输的路径
+            Via: http/11 BJ-Y-JCS-204 ( [cRs f ]), http/11 BJ-GWBN-1-JCS-160 ( [cRs f ])
+
+    # Accept-Ranges: 用来告诉客户端，服务器是否能处理范围请求
+            Accept-Ranges: 1000bytes， 或none
+
+    # Age: 告诉客户端，源服务器在多久前创建了响应，单位以秒
+            Age: 600
+
+    # Last-Modified: 指名了资源最终修改的时间，
+            Last-Modified:Mon, 14 Mar 2016 08:04:07 GMT
+
+
+五、实体字段  也在Response Headers中
+
+    # Content-Length: 45783        表名实体部分的大小
+
+    # Content-Type: image/jpeg  实体的文件类型
+
+    # Set-Cookie: 服务器写入客户端的Cookie
+            Set-Cookie:JAMCookie=true
+</code></pre><h4 id="web安全的HTTPS"><a href="#web安全的HTTPS" class="headerlink" title="web安全的HTTPS"></a>web安全的HTTPS</h4><pre><code>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费
+
+HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的
+
+HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443
+
+HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题    
+</code></pre><p><img src="images/HTTPQUBIE2.png" alt="HTTPS"> </p>
+<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><pre><code>页面的浏览器缓存状态是由header决定的，header参数有四种:
+
+1、Cache-Control: 
+
+    1) max-age - 指定设置缓存的最大有效时间，当浏览器向服务器发送请求后，如果还在max-age有效期里就不会在向服务器发送请求
+
+    2) public - 指定响应会被缓存，并且在多用户间共享
+
+    3) private - 响应只作为私有缓存，不能在用户间共享，如果要求http认证，响应会自动设置为private
+
+    4) no-cache - 指定不缓存响应
+
+    5) no-store - 绝对禁止缓存，每次请求资源都要从服务器获取 
+
+2、Expires - 设置缓存过期时间，用来指定资源的到期时间，是服务端的具体时间，Expires = max-age + 请求时间，需要和Last-modified结合使用
+
+3、last-modified - 服务器端文件最后修改时间，需要和cache-control共同使用，是检查服务资源是否更新的一种方式，浏览器再次请求会向服务器传送if-Modified-Since报头，询问Last-Modified时间点之后的资源是否被修改，如果没有则返回304，使用缓存，如果修改过，在去服务器请求资源返回200
+
+4、Etag - 根据实体内容生成一段hash字符串，由服务端产生，浏览器会将这字符串传回给服务器，验证资源是否已经被修改
+
+
+使用缓存流程:
+</code></pre><p><img src="images/使用缓存流程.png" alt="使用缓存流程">     </p>
+<pre><code>cache-control指令使用:
+</code></pre><p><img src="images/cache-control指令使用.png" alt="cache-control指令使用">     </p>
+<h4 id="200和304的产生"><a href="#200和304的产生" class="headerlink" title="200和304的产生"></a>200和304的产生</h4><pre><code>200 OK( from cache )不向服务器发送请求，直接使用本地缓存文件, Ctrl+F5 直接返回200
+304 Not Modified则向服务器询问，若服务器认为浏览器的缓存版本还可用，那么便会返回304, F5 返回304
+
+    200 OK( from cache ) 出现操作: 1.地址栏回车   2.页面链接跳转   3.前进、后退  
+
+    304 Not Modified 出现操作: 1.F5刷新   2.新开窗口
+</code></pre><p><img src="images/1.png" alt="缓存机制"> </p>
+<h4 id="Web的攻击技术"><a href="#Web的攻击技术" class="headerlink" title="Web的攻击技术"></a>Web的攻击技术</h4><pre><code>1、以服务器为目标的主动攻击，SQL注入攻击和OS命令注入功击
+
+2、以服务器为目标的被动攻击，设计好一个陷阱来让用户打开网站，来获取用户的登录信息
+
+3、跨站脚本攻击 XSS: 
+</code></pre><p>| 参考资料<br>| <a href="http://www.alloyteam.com/2016/03/discussion-on-web-caching/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/discussion-on-web-caching/</a><br>| <a href="http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/</a><br>| <a href="http://www.cnblogs.com/lovesong/p/5352973.html" target="_blank" rel="noopener">http://www.cnblogs.com/lovesong/p/5352973.html</a><br>| <a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank" rel="noopener">http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/17/HTTP协议/" data-id="cjdu4wpvp000schwr7ib60fhz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

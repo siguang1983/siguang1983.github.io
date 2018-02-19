@@ -5,14 +5,19 @@
   
 
   
-  <title>Archives | 大排档</title>
+  <title>Less | 大排档</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/archives/index.html">
+  <meta name="description" content="一、变量@nice: #5b83ad @light-blue: @nice + #111;  #header {     background-color: @nice; } 二、混合定义一个类的样式  示例1：     .bordered {         border-top: 1px black solid;         border-bottom: 1px black solid;">
+<meta name="keywords" content="Less">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Less">
+<meta property="og:url" content="http://siguang1983.github.io/2017/01/10/Less/index.html">
 <meta property="og:site_name" content="大排档">
+<meta property="og:description" content="一、变量@nice: #5b83ad @light-blue: @nice + #111;  #header {     background-color: @nice; } 二、混合定义一个类的样式  示例1：     .bordered {         border-top: 1px black solid;         border-bottom: 1px black solid;">
+<meta property="og:updated_time" content="2017-01-12T07:17:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
+<meta name="twitter:title" content="Less">
+<meta name="twitter:description" content="一、变量@nice: #5b83ad @light-blue: @nice + #111;  #header {     background-color: @nice; } 二、混合定义一个类的样式  示例1：     .bordered {         border-top: 1px black solid;         border-bottom: 1px black solid;">
   
     <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
   
@@ -59,216 +64,266 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/10/23/微信小程序、公众号开发/" class="archive-article-date">
-  <time datetime="2017-10-23T08:02:17.000Z" itemprop="datePublished">Oct 23</time>
+        <section id="main"><article id="post-Less" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/10/Less/" class="article-date">
+  <time datetime="2017-01-10T10:10:21.000Z" itemprop="datePublished">2017-01-10</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+    <h1 class="article-title" itemprop="name">
+      Less
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/numjucks模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/numjucks模板/">numjucks模板</a>
-    </h1>
-  
+        <h4 id="一、变量"><a href="#一、变量" class="headerlink" title="一、变量"></a>一、变量</h4><pre><code>@nice: #5b83ad
+@light-blue: @nice + #111;
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/20/Jade模板/" class="archive-article-date">
-  <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">Sep 20</time>
-</a>
+#header {
+    background-color: @nice;
+}
+</code></pre><h4 id="二、混合"><a href="#二、混合" class="headerlink" title="二、混合"></a>二、混合</h4><pre><code>定义一个类的样式
+
+示例1：
+    .bordered {
+        border-top: 1px black solid;
+        border-bottom: 1px black solid;
+    }
+
+    加载到#menu a内
+    #menu a {
+      color: #111;
+      .bordered;
+    }
+
+    .post a {
+      color: red;
+      .bordered;
+    }
+
+
+示例2：混合带参数
+    .border-radius(@values) {
+          -webkit-border-radius: @values;
+        -moz-border-radius: @values;
+        border-radius: @values;
+    }
+
+    .box-radius{ width: @filler; heigth: 30px; border: 1px #ccc solid; .border-radius(4px) }
+
+
+示例3：
+    .a, #b {
+        color: red;
+    }
+    .mixin-class {
+        .a();
+    }
+
+    输出：
+    .a, #b {
+        color: red;
+    }
+    .mixin-class {
+        color: red;
+    }
+
+
+示例4：
+    .my-mixin {
+        color: black;
+    }
+    .my-other-mixin() {
+        background: white;
+    }
+    .class {
+        .my-mixin;
+        .my-other-mixin;
+    }
+
+    输出：
+    .my-mixin {
+        color: black;
+    }
+    .class {
+        color: black;
+        background: white;
+    }
+</code></pre><h4 id="三、嵌套"><a href="#三、嵌套" class="headerlink" title="三、嵌套"></a>三、嵌套</h4><pre><code>示例1：
+
+    #header{
+        color: black;
+
+        .navigation {
+            font-size: 12px;
+        }
+    }
+
+    output：
+
+        #header {
+            color: black;
+        }
+        #header .navigation {
+            font-size: 12px;
+    }
+
+示例2：a 的 hover
+
+    .box {
+        a {
+            color: red;
+            $:hover {
+                color: green;
+            }
+        }
+    }
+
+    output:
+    .box a { color: red; }
+    .box a:hover { color: green; }
+
+
+示例3：arguments 可以将所有参数显示到值中
+
+    .border-arg(@width, @color, @style){
+        border: @arguments;            // 这里使用@arguments就相当于 @width @color @style
+    }
+</code></pre><h4 id="四、运算"><a href="#四、运算" class="headerlink" title="四、运算"></a>四、运算</h4><pre><code>@base: 5%;
+@filler: @base * 2;
+.boxA { width: @filler; height: 20px; background-color: #c3c3c3; }
+</code></pre><h4 id="五、匹配模式"><a href="#五、匹配模式" class="headerlink" title="五、匹配模式"></a>五、匹配模式</h4><pre><code>// 设置匹配
+.trangle(top, @width, @color){
+    border-width: @width; 
+    border-color: transparent transparent @color transparent;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(left, @width, @color){
+    border-width: @width; 
+    border-color: transparent @color transparent transparent;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(right, @width, @color){
+    border-width: @width; 
+    border-color: transparent transparent transparent @color;
+    border-style: dashed dashed solid dashed
+}
+
+.trangle(bottom, @width, @color){
+    border-width: @width; 
+    border-color: @color transparent transparent transparent;
+    border-style: dashed dashed solid dashed
+}
+
+/* 匹配模式 */
+.trangleL {
+    width: 0; height: 0; overflow: hidden;
+    .trangle(right, 18px, red)        /* 这里调用的right 就是右三角 */
+}
+&lt;div class=&quot;trangleL&quot;&gt;&lt;/div&gt;
+</code></pre><h4 id="六、作用域-Scope"><a href="#六、作用域-Scope" class="headerlink" title="六、作用域 Scope"></a>六、作用域 Scope</h4><pre><code>@var: red;
+#page {
+    @var: white;
+    #header {
+        color: @var; // white
+    }
+}
+
+编译后：
+#page .header {
+    color: white;
+}
+</code></pre><h4 id="七、注释"><a href="#七、注释" class="headerlink" title="七、注释"></a>七、注释</h4><pre><code>/* */    会被编译，输出会显示注释
+//         不会被编译，输出不会显示注释
+</code></pre><h4 id="八、importe"><a href="#八、importe" class="headerlink" title="八、importe"></a>八、importe</h4><pre><code>导入less文件： @import &apos;libary&apos;;        不用加.less
+导入css文件：     @import &apos;typo.css&apos;;    
+</code></pre><h4 id="九、url"><a href="#九、url" class="headerlink" title="九、url"></a>九、url</h4><pre><code>@images: &quot;../img&quot;;
+
+// 用法
+body {
+    color: #444;
+    background: url(&quot;@{images}/white-sand.png&quot;);
+}
+</code></pre><h4 id="十、循环"><a href="#十、循环" class="headerlink" title="十、循环"></a>十、循环</h4><pre><code>.loop(@counter) when (@counter &gt; 0) {        // 循环使用 定义函数名(参数) when (条件）
+    .loop((@counter - 1));        // 每一次减1
+    width: (10px * @counter);     // code for each iteration
+}
+div {
+    .loop(3); // launch the loop
+}
+
+output:
+div {
+    width: 10px;
+    width: 20px;
+    width: 30px;
+}
+</code></pre><h4 id="十一、合并"><a href="#十一、合并" class="headerlink" title="十一、合并"></a>十一、合并</h4><pre><code>.mixin() {
+    box-shadow+: inset 0 0 10px #555;
+}
+.myclass {
+    .mixin();
+    box-shadow+: 0 0 20px black;
+}
+
+
+.myclass {
+    box-shadow: inset 0 0 10px #555, 0 0 20px black;
+}
+</code></pre><h4 id="十二、避免编译使用-“-”"><a href="#十二、避免编译使用-“-”" class="headerlink" title="十二、避免编译使用 “~”"></a>十二、避免编译使用 “~”</h4><pre><code>.text {
+    width: ~(30px + 30px);        // 这里就不会被计算，而直接输出width: 30px + 30px;
+}
+</code></pre><h4 id="十三、与构建工具结合"><a href="#十三、与构建工具结合" class="headerlink" title="十三、与构建工具结合"></a>十三、与构建工具结合</h4><pre><code>可以使用gulp 或 webpack 来进行编译
+</code></pre><blockquote>
+<p>参考资料</p>
+<p><a href="http://less.bootcss.com" target="_blank" rel="noopener">http://less.bootcss.com</a><br><a href="http://www.wtoutiao.com/p/15bzfg3.html" target="_blank" rel="noopener">http://www.wtoutiao.com/p/15bzfg3.html</a><br><a href="http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html" target="_blank" rel="noopener">http://www.w3cplus.com/css/sass-vs-less-vs-stylus-a-preprocessor-shootout.html</a><br><a href="http://www.w3cplus.com/preprocessor/architecture-sass-project.html" target="_blank" rel="noopener">http://www.w3cplus.com/preprocessor/architecture-sass-project.html</a></p>
+</blockquote>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/20/Jade模板/">Jade 模板</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/前端算法/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2017/01/10/Less/" data-id="cjdu4wpvx0010chwrs33ysaaz" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/前端算法/">前端算法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/07/01/Rap的使用和mock数据/" class="archive-article-date">
-  <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">Jul 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Less/">Less</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/nodeJs（之二）FileSystem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nodeJS (之二) FileSystem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/10/nodeJS基础用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">nodeJS基础</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/05/08/前端插件收集/" class="archive-article-date">
-  <time datetime="2017-05-08T06:08:21.000Z" itemprop="datePublished">May 8</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/前端插件收集/">收集插件和工具</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/24/EChart图表插件/" class="archive-article-date">
-  <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">Apr 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/24/EChart图表插件/">EChart</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/Nginx服务器/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/Nginx服务器/">Nginx</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/06/服务器端概念/" class="archive-article-date">
-  <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/06/服务器端概念/">大型网站架构</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/04/02/mongoDB/" class="archive-article-date">
-  <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">Apr 2</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/02/mongoDB/">MongoDB</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

@@ -1,0 +1,5395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>大排档</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="大排档">
+<meta property="og:url" content="http://siguang1983.github.io/page/6/index.html">
+<meta property="og:site_name" content="大排档">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大排档">
+  
+    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">大排档</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Egg.js-问题积累" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js-问题积累/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
+    const mongoose = app.mongoose;
+    const UserSchema = new mongoose.Schema({
+        username: { type: String },
+        passworrd: { type: String }
+    }, {collection: &apos;user&apos;});
+
+    return mongoose.model(&apos;User&apos;, UserSchema);
+}
+</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
+</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
+<p>bodyParser  中间件，egg内置，用来处里post</p>
+<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
+<blockquote>
+<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js-问题积累/" data-id="cjdu4wpv6000cchwr9yzbz82h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/MySQL/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/MySQL/">MySQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>知识索引</p>
+<p>数据类型: 字符型、整型、浮点型、日期时间型<br>操作符: 算术运算符、比较运算符、逻辑运算符、位运算符<br>属性: 自动编号<br>约束: 主键、外键、表关连、索引<br>库操作: 创建库、修改库、删除库、<br>表操作: 创建表、删除表、查看表结构、查看库中所有表<br>列操作: 添加列、删除列、修改列<br>记录操作: 插入记录、更新记录（单表、多表更新）、删除记录、查询记录（多列查询、分组、指定查询范围、使用别名）<br>子查询语句、例约束、<br>运算符与函数: 字符函数、数值运算符、比较运算符、日期时间函数、信息函数、聚合函数、加密函数、自定义函数<br>存储过程: 创建（参数:IN、OUT、INOUT）、调用<br>其它概念: 存储引擎、并发控制(锁、锁颗粒)、事务、</p>
+</blockquote>
+<h3 id="一、MySQL基础"><a href="#一、MySQL基础" class="headerlink" title="一、MySQL基础"></a>一、MySQL基础</h3><pre><code>1、MySQL介绍
+
+    1）MySQL是关系型数据库
+
+    2）安装后的有4个默认库
+
+        1）information_schem: 
+
+        2) performance_schema: 
+
+        3) test: 
+
+        4) mysql:     
+
+    3）Mysql 端口号 3306
+
+    4）mac下Mysql的配置文件 /usr/local/mysql-5.6.24-osx10.9-x86_64/my.cnf
+
+
+2、MySQL 目录结构 
+
+    mysql安装后的路径 /usr/local/mysql
+
+    1）bin: 存储可执行文件
+
+    2）data: 存储数据文件
+
+    3）docs: 文档
+
+    4）include: 存储包含头文件
+
+    5）lib: 存储库文件
+
+    6）share: 错误消息和字符集文件
+
+
+3、停止和启动mysql服务
+
+    关闭mysql服务    查看进程：ps -ef|grep mysql         杀进程和子进程：sudo kill -9 239 746
+
+    启动mysql服务    sudo /usr/local/mysql-5.6.24-osx10.9-x86_64/bin/mysqld_safe
+
+    系统偏好设置 -&gt; mysql   启动
+
+
+4、登录、退出mysql
+
+    1）登录
+
+        mysql -uroot -pssssss -h127.0.0.1          
+
+        -u 用户名    -p 密码       -P 端口号       -h 数据库地址 
+
+        隐藏密码输入 mysql -uroot -h127.0.0.1 -p    回车后在输入密码
+
+
+    2）退出: exit;
+
+
+5、语法规范
+
+    1）关键字和函数名全部大写
+
+    2）数据库名称、表名称、字段字都小写
+
+    3）SQL语句必须以&quot;;&quot;分号结束
+
+        修改结束符  DELIMITER  //        以 // 为结束
+
+
+6、数据库概念
+
+    1）库: 一些关联表的集合
+
+    2）表: 行和列组成, 行一条数据
+
+    3）主键: 可以唯一标识不会有重复, 可以通过主键来查询数据
+
+    4）外键: 外键可以引用主键数据，用于关联
+
+
+7、安装mysql
+
+    1）安装 homebrew      http://brew.sh/
+
+    2）brew install mysql
+</code></pre><h3 id="二、库服务命令"><a href="#二、库服务命令" class="headerlink" title="二、库服务命令"></a>二、库服务命令</h3><pre><code>1、启动和停止MySQL服务
+
+    service stop mysql
+
+    service start mysql
+
+2、登录: mysql -uroot -p123456 -h127.0.0.1
+
+3、退出: \q 、 exit、 quit
+</code></pre><p>—————————– 语句 —————————–</p>
+<pre><code>关键字与函数名全部大写
+
+数据库名称表名字段名全部小写
+
+SQL语句必须以分号结尾
+</code></pre><h3 id="三、库操作语句"><a href="#三、库操作语句" class="headerlink" title="三、库操作语句"></a>三、库操作语句</h3><pre><code>1、创建数据库       CREATE DATABASE 库名;
+
+        创建一个指定字符集的数据库         CREATE DATABASE 库名 CHARACTER SET utf8;
+
+2、修改数据库       ALTER  DATABASE 库名 CHARACTER SET = uft-8;   // 将库编码改成utf8
+
+3、删除数据库     DROP database 库名;
+
+4、查看所有数据库     SHOW databases;
+
+5、打开数据库        USE 库名;
+
+6、查看当前所在的数据库   SELECT database();
+
+7、查看库的编码: SHOW CREATE DATABASE 库名;
+</code></pre><h3 id="四、操作表语句"><a href="#四、操作表语句" class="headerlink" title="四、操作表语句"></a>四、操作表语句</h3><pre><code>1、创建表        CREATE TABLE  表名(字段名 数据类型, 字段名 数据类型);
+
+            CREATE TABLE  表名(字段 数据类型  primary key,  username VARCHAR(20));        // 加主键 primary key 
+
+2、查看库中所有表  SHOW TABLES [db_name] [where expr];
+
+3、查看表结构    SHOW COLUMNS FROM 表名;         // 与 desc 表名;   相同
+
+4、删除表        DROP TABLE 表名;
+
+5、ALTER 列操作: 
+
+    1）添加列: ALTER TABLE 表名 ADD 列名 varchar(20);
+
+    2）删除列: ALTER TABLE 表名 DROP 列名;
+
+    3）修改列的类型信息
+
+        ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
+
+    4）重命名列
+
+        ALTER TABLE 【表名】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
+
+    5）重命名表
+
+        ALTER TABLE 【表名字】 RENAME 【表新名字】
+
+    6）删除表中主键
+
+        Alter TABLE 【表名字】 drop primary key
+
+    7）添加主键
+
+        ALTER TABLE sj_resource_charges ADD CONSTRAINT PK_SJ_RESOURCE_CHARGES PRIMARY KEY (resid,resfromid)
+
+    8）添加索引
+
+        ALTER TABLE sj_resource_charges add index INDEX_NAME (name);
+
+    9）添加唯一限制条件索引
+
+        ALTER TABLE sj_resource_charges add unique emp_name2(cardnumber);
+
+    10）删除索引
+
+        ALTER TABLE [表名] index emp_name;
+</code></pre><h3 id="五、记录操作语句"><a href="#五、记录操作语句" class="headerlink" title="五、记录操作语句"></a>五、记录操作语句</h3><pre><code>1、插入记录     
+
+    1) INFO 插入指定字段值:     INSERT INTO 表名(name, age) VALUES (name值, age值);
+
+    2) SET  插入指定字段值:     INSERT 表名 SET name=&quot;sssss&quot;, age=&quot;lll&quot;;
+
+    3）插入所有字段值:        INSERT 表名 VALUES (NULL, name值, age值)；        // 1、没有INFO  2、如果id为主键、自增涨，需要给一个默认传入NULL 或 DEFAULT
+
+    4）INSERT ... SELECT 将查询结果写入数据表
+
+        INSERT [INTO] 表名 FROM 列名   SELECT 
+
+        // 将查询出restaurant表中的type进行分组内容，插入到rest_type表中的type字段中
+
+        INSERT rest_type(type) SELECT type FROM restaurant GROUP BY type;    
+
+
+2、更新数据     
+
+    单表更新:  UPDATE 表名 SET 要更新字段名=新值, 要更新字段名=新值  WHERE  条件        // 如果省略where条件，将修改表中的所有记录
+
+    多表更新:  
+
+        UPDATE 表1  [JOIN | CROSS JOIN | INNER JOIN] 表2
+
+        表连接类型，JOIN、CROSS JOIN、INNER JOIN
+
+                   LEFT [OUTER] JOIN 左外连接
+
+                   RIGHT [OUTER] JOIN 右外连接
+
+
+3、删除记录     
+
+    单表删除:  DELETE FROM  表名 WHERE id=2
+
+    多表删除:  
+
+
+
+4、查询记录    
+
+    查询所有列: SELECT * FROM 表名;        // 查询所有列
+
+    查询多列:   SELECT username, age, sex FROM 表名;
+
+    条件查询:   SELECT * FROM 表名  WHERE  条件表达式(id&lt;100);        // 查询表中的id小于100的所有记录
+
+    查询结果分组 GROUP BY: 返回一个列中所有不相同的类别
+
+        SELECT * FROM 表名  GROUP BY  列名 [ASC | DESC];             // 分组以哪列进行返回 ASC | DESC 正、倒序
+
+                例: SELECT * FROM users GROUP BY sex;            # 返回sex列的分组内容，结果为两类: &apos;男&apos; 和 &apos;女&apos;
+
+
+    HAVING 分组条件: SELECT * FROM 表名  GROUP BY  列名  HAVING  version &lt; 100;   // 分组后进行过滤
+
+    LIMIT 指定查询范围: SELECT * FROM 表名 LIMIT  5, 10;        // 从第5条数据开始，查找出10条数据，也就是查询出第5-15条数据
+
+    AS 给予别名: 当名子太长可以定义一个名，输出的时候就是定义的名字
+
+            SELECT person AS ps, username AS un FORM users;
+
+
+    --------------- select 其它  ---------------
+
+    SELECT COUNT(*) FROM 表名 WHERE (条件)         // 返回记录的总数，如果不加条件返回整个表的总记录
+
+    SELECT AVG(price) FROM 表名;                    // AVG()来求一个字段的平均值
+
+    SELECT ROUND(AVG(price), 2) FROM 表名;        // ROUND() 对数值进行四舍五入
+
+
+小技巧:
+
+    1、SELECT * FROM users\G;        // 加\G 以网格形势展示查询，格式化了数据方便来看
+
+
+设置空值
+
+    例 UPDATE tag SET label=&apos;折&apos; WHERE label=NULL;        // 将label列中所有空值更新成&apos;折&apos;，失效不会被
+
+    MySQL: null值需要通过几种方式
+
+    1、is null、is not null: UPDATE tag SET label=&apos;折&apos; WHERE label is null;
+
+    2、ISNULL(): 与上面一样 UPDATE tag SET label=&apos;折&apos; WHERE ISNULL(label);
+</code></pre><h3 id="六、子查询语句"><a href="#六、子查询语句" class="headerlink" title="六、子查询语句"></a>六、子查询语句</h3><pre><code>子查询指嵌套在查询内部，且必须始终出现在圆括号内
+
+子查询包含关键字或条件: DISTINCT、GROUP BY、ORDER BY、LIMIT、函数等
+
+子查询外层查询可以是: SELECT、INSERT、UPDATE、SET、DO
+
+1、按返回结果集分类
+
+    http://www.cnblogs.com/herry52/p/5643986.html
+
+    分为4种：表子查询，行子查询，列子查询和标量子查询
+
+    1) 表子查询：返回的结果集是一个行的集合，N行N列（N&gt;=1）。表子查询经常用于父查询的FROM子句中。
+
+        示例: 获取编号小于10的男性球员的号码
+
+        SELECT playerno FROM (SELECT playerno, sex FROM players WHERE playerno &lt; 10) AS players10 WHERE sex=&apos;M&apos;;
+
+        分析: 
+
+        // 查询players中playerno小于10的两个字段的记录，并起别名为player10
+        SELECT playerno, sex FROM players WHERE playerno &lt; 10 AS players10;    
+
+        // 显示playerno字段内容，条件是子表中的sex=&apos;M&apos;
+        SELECT playerno FROM 查询出的内容 WHERE sex=&apos;M&apos;
+
+
+    2) 行子查询：返回的结果集是一个列的集合，一行N列（N&gt;=1）。行子查询可以用于福查询的FROM子句和WHERE子句中。
+
+        示例: players表中获取与100号球员性别相同并且居住在同一城市的球员号码。
+
+        SELECT playerno, sex, town FROM players WHERE (sex, town) = (select sex, town FROM players where playerno = 100);
+
+
+    3) 列子查询：返回的结果集是一个行的集合，N行一列（N&gt;=1）
+
+        列子查询可以使用 IN、ANY、SOME、ALL
+
+        1、修饰的比较运算符: ANY、SOME、ALL
+
+            如果子查询返回：Subquery returns more than 1 row   多于一行记录，使用上面运算符
+
+            ANY和SOME是等价的意思只符合一个就可以
+
+            ALL 需要符合全部
+
+
+        2、IN、NOT IN 子查询
+
+
+
+    4) 标量子查询：可以指定一个标量表达式的任何地方，几乎都可以使用一个标量子查询
+
+        示例: 获取和27号球员出生在同一年的球员的号码
+
+        SELECT playerno, name, birth_date FROM players WHERE YEAR(birth_date) = (SELECT YEAR(birth_date) FROM players WHERE playerno=100) AND playerno != 100;
+</code></pre><p>—————————– 运算符与函数 —————————–</p>
+<h3 id="七、字符函数"><a href="#七、字符函数" class="headerlink" title="七、字符函数"></a>七、字符函数</h3><pre><code>1、CONCAT(): 字符连接    SELECT CONCAT(&apos;user&apos;, &apos;-&apos;, &apos;name&apos;);
+
+    // 将tag表中value和label字段的值连接，并通过AS来返回一个别列名为tagName
+    SELECT CONCAT(value, &apos;_&apos;, label) AS tagName FROM tag;
+
+
+2、CONCAT_WS(): 使用指定的分隔符进行字符连接
+
+    SELECT CONCAT_WS(&apos;|&apos;, name, user, id);        以&quot;|&quot;进行分隔
+
+
+3、FORMAT(): 数据格式化
+
+    SELECT FORMAT(132.34234, 2);        // 132.34
+
+
+4、LOWER(): 将字符转成小写
+
+5、UPPER(): 将字符转成大写
+
+6、LEFT()、RIGHT(): 获取从左、右侧字符的几位
+
+    SELECT LEFT(&apos;what are you doing.&apos;, 7);         // what ar
+
+7、LENGTH(): 获取字符串长度
+
+8、LTRIM()、RTRIM()、TRIM(): 删除前空格、删除后空格、删除前后空格
+
+9、SUBSTRING(): 字符串的截取 substring();
+
+        SELECT SUBSTRING(&apos;what are you doing.&apos;, 3, 7);        // at are
+
+10、RESPLACE(): 字符替换 
+
+        SELECT REPLACE(&apos;what are you doing.&apos;, &apos; &apos;, &apos;&apos;);      // whatareyoudoing.
+
+11、LIKE(): 模式匹配
+
+        %: 为任意字符            _: 任意一个字符
+
+        ESCAPE: 使用哪个字符后的百分号
+
+        SELECT * FROM sys_user WHERE username LIKE &apos;%@renrendai.com%&apos;\G;    // sys_user表中username字段匹配出 带有@renrendai.com的字符
+
+        SELECT * FROM sys_user WHERE username LIKE &apos;%renren%%&apos; ESCAPE &apos;renren&apos;\G;    // 匹配出 renren%
+</code></pre><h3 id="八、数值运算符"><a href="#八、数值运算符" class="headerlink" title="八、数值运算符"></a>八、数值运算符</h3><pre><code>1、CEIL(): 向上取整    SELECT CEIL(4.9);        // 5     SELECT CEIL(log) FROM office;
+
+2、FLOOR(): 向下取整    SELECT FLOOR(4.2);        // 4
+
+3、DIV(): 整数除法     SELECT 20 DIV 3;        // 6
+
+4、MOD(): 取模
+
+5、POWER(): 幂运算
+
+6、ROUND(): 四舍五入        SELECT ROUND(2.3464, 2);    // 2.35
+
+7、TEUNCATE(): 数字截取
+</code></pre><h3 id="九、比较运算符"><a href="#九、比较运算符" class="headerlink" title="九、比较运算符"></a>九、比较运算符</h3><pre><code>1、[NOT] BETWEEN ... AND ... :  在不在一个范围内
+
+        // 查找出fruit表中fruit_price字段（价格）10元至30无之间的数据
+        SELECT fruit_id, fruit_desc, fruit_price FROM  fruit WHERE fruit_price BETWEEN 10 AND 30;
+
+
+2、[NOT] IN(): 在不在几个值的内
+
+        SELECT 10 IN (5, 20, 40);        // 返回0
+
+        SELECT 10 IN (2, 10, 30, 49);    // 返回1
+
+
+3、IS [NOT] NULL: 返回为空， IS NOT NULL 返回不为空
+
+    // 返回 fruit_dim_three 内容为空的值
+    SELECT fruit_product_name, fruit_price,fruit_dim_three FROM fruit WHERE fruit_dim_three IS NULL;  
+</code></pre><h3 id="十、函数"><a href="#十、函数" class="headerlink" title="十、函数"></a>十、函数</h3><pre><code>1、日期时间函数
+
+    1）NOW(): 返回一个当前日期和时间
+
+    2）CURDATE(): 当前日期
+
+    3）CURTIME(): 当前时间
+
+    4）DATE_ADD(): 在一个时间内添加多少时间
+
+            SELECT DATE_ADD(&apos;2016-12-12&apos;, INTERVAL 365 DAY);        // 返回 2017-12-12 , -365就是减365天
+
+    5）DATEDIFF(date1, date2): 两个日期的差值
+
+            SELECT DATEDIFF(&apos;2018-12-12&apos;, NOW());        // 2018-12-12与今天相差多少天
+
+    6）DATE_FORMAT(): 日期格式化
+
+            SELECT DATE_FORMAT(&apos;2016-12-10&apos;, &apos;%Y/%m/%d&apos;);        // 转换成 2016/12/10 
+
+            SELECT DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
+
+
+2、信息函数
+
+    1）CONNECTION_ID(): 连接的ID（线程的ID）
+
+    2）DATABASE(): 查看当前数据库     SELECT DATABASE();
+
+    3）LAST_INSERT_ID(): 最后插入记录
+
+    4）USER(): 当前用户
+
+    5）VERSION(): 版本信息
+
+
+3、聚合函数
+
+    1）AVG(): 平均值的计算
+
+            SELECT AVG(fruit_price) FROM fruit;        // 将水果的价格字段平均值返回
+
+    2）COUNT(): 返回条件的行数
+
+            SELECT COUNT(列名) FROM 表名;        // 返回数目(NULL 不计)
+
+            SELECT COUNT(*) FROM 表名;        // 返回所有的记录数
+
+    3）MAX(): 最大值
+
+    4）MIN(): 最小值
+
+    5）SUM(): 返回和
+
+
+4、加密函数
+
+    1）MD5(): 信息摘要算法
+
+            MD5(&apos;adf234sdf2=-a1%af123#$&apos;);        // 16f7709af2898dd3c9f116d56ea93c82
+
+    2）PASSWORD(): 密码算法
+
+            PASSWORD(&apos;adf234sdf2=-a1%af123#$&apos;);    // *6D3B0C079BFF7DAD315D9AF131F0868939A74A8D
+</code></pre><h3 id="十一、自定义函数"><a href="#十一、自定义函数" class="headerlink" title="十一、自定义函数"></a>十一、自定义函数</h3><pre><code>1、创建自定函数:
+
+    CREATE FUNCTION 函数名 RETURNS {STRING | INTERGER | REAL | DECIMAL} routine_body
+
+    创建     函数      名    返回                    类型                     函数体          
+
+
+    函数体: 由合法的SQL语句构成，可以是简单的SELECT 或 INSERT语句
+
+    示例1 无参数:
+
+        // 创建一个返回当前格式化的日期
+        CREATE FUNCTION newDate() RETURNS VARCHAR(30) 
+
+            RETURN  DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
+
+        // 调用
+        SELECT newDate();        // 2016年-12月-12日 11时:31分:55秒
+
+
+    示例2 有参数:
+
+        CREATE FUNCTION fun2(num1 SMALLINT UNSIGNED, num2 SMALLINT UNSIGNED) 
+
+            RETURNS FLOAT(10,2) UNSIGNED  
+
+            RETURN (num1+num2)/2;
+
+
+        SELECT fun2(20, 30);        // 25.00
+
+
+    示例3 返回语句
+
+        # 需要修改结束符 “;”
+
+        // 定义一个向users表中的username字段插入值
+
+        DELIMITER //;
+
+        CREATE FUNCTION addUser(username VARCHAR(20))
+
+            RETURNS INT UNSIGNED
+
+            BEGIN
+
+            INSERT users(username) VALUES(username);
+
+            RETURN LAST_INSERT_ID();
+
+            END//
+
+
+2、删除自定义函数: DROP FUNCTION 函数名;
+
+
+
+ROW_COUNT(): 用于返回被 update, insert, delete 实际修改的行数
+
+FOUND_ROWS(): 返回上一条执行语句，影响的行数
+</code></pre><p>—————————– 数据类型 —————————–</p>
+<h3 id="十二、数据类型："><a href="#十二、数据类型：" class="headerlink" title="十二、数据类型："></a>十二、数据类型：</h3><pre><code>1、int: 整型
+
+2、浮点
+
+    1）float: 单精度
+
+    2）double: 双精度浮点
+
+3、日期
+
+    1）datetime: 日期
+
+    2）timestamp: 日期
+
+    3) year、month、date
+
+4、字符型
+
+    1）char: 定长字符类型
+
+    2) varchar: 不定长字符
+
+    3) tinytext:
+
+    4) text: 
+
+    5) medinmtext:
+
+    6) longtext:
+
+    7) enum: 
+
+    8) set: 
+</code></pre><h3 id="十三、操作符"><a href="#十三、操作符" class="headerlink" title="十三、操作符"></a>十三、操作符</h3><pre><code>1、算术运算符
+
+    +     加   SET var1=2+2;       4
+    -     减   SET var2=3-2;       1
+    *     乘   SET var3=3*2;       6
+    /     除   SET var4=10/3;      3.3333
+    DIV   整除 SET var5=10 DIV 3;  3
+    %     取模 SET var6=10%3 ;     1
+
+
+2、比较运算符
+
+    &gt;            大于 1&gt;2 False
+    &lt;            小于 2&lt;1 False
+    &lt;=           小于等于 2&lt;=2 True
+    &gt;=           大于等于 3&gt;=2 True
+    BETWEEN      在两值之间 5 BETWEEN 1 AND 10 True
+    NOT BETWEEN  不在两值之间 5 NOT BETWEEN 1 AND 10 False
+    IN           在集合中 5 IN (1,2,3,4) False
+    NOT IN       不在集合中 5 NOT IN (1,2,3,4) True
+    =            等于 2=3 False
+    &lt;&gt;, !=       不等于 2&lt;&gt;3 False
+    &lt;=&gt;          严格比较两个NULL值是否相等 NULL&lt;=&gt;NULL True
+    LIKE         简单模式匹配 &quot;Guy Harrison&quot; LIKE &quot;Guy%&quot; True
+    REGEXP       正则式匹配 &quot;Guy Harrison&quot; REGEXP &quot;[Gg]reg&quot; False
+    IS NULL      为空 0 IS NULL False
+    IS NOT NULL  不为空 0 IS NOT NULL True
+
+
+3、逻辑运算符
+
+    与(AND) &amp;&amp;       或（OR）||        非（NOT）！
+
+
+4、位运算符
+
+    |   位或
+    &amp;   位与
+    &lt;&lt;  左移位
+    &gt;&gt;  右移位
+    ~   位非(单目运算，按位取反)
+</code></pre><h3 id="十四、属性"><a href="#十四、属性" class="headerlink" title="十四、属性"></a>十四、属性</h3><pre><code>1、AUTO_INCREMENT: 自动编号，必须与主键组合使用，起始值为1，每次增加1
+
+2、primary key         主键约束 每张表只能存在一个主键，主键保证记录的唯一性, 主键自动为 NOT NULL
+
+3、foreign            外键约束 保持数据的一致性, 实现一对一或一对多的关系约束
+</code></pre><h3 id="十五、约束"><a href="#十五、约束" class="headerlink" title="十五、约束"></a>十五、约束</h3><pre><code>2、PRIMARY KEY（主键约束）: 每张表只能存在一个主键，保证记录的唯一性，主键自动为NOT NULL
+
+3、UNIQUE KEY（唯一约束）: 可以保证记录的唯一性，字段可以为空值（NULL），每张数据表可以存在多个唯一约束
+
+4、DEFAULT（默认约束）: 默认值，插入记录时没有赋值，自动赋予默认值
+
+    创建表时的性别字段，有三个值1，2，3 =&gt; 男，女，不男不女  如果insert插入未写入值，默认加入3
+    sex ENUM(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;) DEFAULT &apos;3&apos;        
+
+5、FOREIGN KEY（外键约束）: 保证数据一致性和完整性，实现一对一 或 一对多关系
+
+5、NOT NULL（非空约束） 不能为空，必须写值要不报错
+
+6、NULL 可以为空
+
+
+# 约束分为表级约束 和 列级约束
+
+    约束只针对一个字段来约束，叫列级约束
+
+    约束针对两个或以上字段来约束，叫表级约束
+
+
+# 外键约束的要求
+
+    1、父表和子表必须使用相同的存储引擎，禁止使用临时表
+
+    2、数据表存储只能为InnoDB
+
+    3、外键列和参照必须有相似的数据类型，
+
+
+
+CURRENT_TIMESTAMP
+</code></pre><p>—————————– 存储过程 —————————–</p>
+<h3 id="十六、MySQL命令执行过程"><a href="#十六、MySQL命令执行过程" class="headerlink" title="十六、MySQL命令执行过程"></a>十六、MySQL命令执行过程</h3><pre><code>SQL命令 -&gt; MySQL引擎 -&gt; 语法正确 -&gt; 可识别命令 -&gt; 执行结果 -&gt; 返回客户端
+
+需要这一套流程才能跑完，如果使用存储过程会节省中间的一些步骤，可以节省性能.
+</code></pre><h3 id="十七、什么是存储过程"><a href="#十七、什么是存储过程" class="headerlink" title="十七、什么是存储过程"></a>十七、什么是存储过程</h3><pre><code>存储过程: 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理
+
+存储过程存储在数据库内，可以通过应用程序调用和输出
+
+存储过程的优点:
+
+    1、增强SQL语句的功能和灵活性
+
+    2、实现较快的执行速度
+
+        存储过程是不需要语法解析等操作，预编译，所以速度上要快
+
+    3、减少网络流量
+
+        后端应用程序与数据库通信，需要传SQL语句，如果有存储过程就直接告诉执行哪个存储过程就可以了
+</code></pre><h3 id="十八、存储过程的使用"><a href="#十八、存储过程的使用" class="headerlink" title="十八、存储过程的使用"></a>十八、存储过程的使用</h3><pre><code>1、创建存储过程
+
+    CREATE 
+
+    [DEFINER = {user | CURRENT_USER}]         // 如果省略就是默认走的当前登录客户端的用户
+
+    PROCEDURE 存储过程名(参数)
+
+
+    参数：
+
+        1) IN: 表示该参数值必须在调用存储过程时指定，这个值不能返回只能进不能出
+
+        2）OUT: 表示该参数值可以审美观点存储过程改变，并且可以返回，
+
+        3）INOUT: 表示该参数调用时指定，并且可以被改变和返回
+
+
+    过程体
+
+        1）由合法的SQL语句构成
+
+        2）可以是做任意的SQL语句
+
+        3）复合结构则使用BEGIN...END语句，与函数相同，如果执行两个或两个以上语句需要使用BEGIN...END
+
+        4）复合结构可以包含声明、循环、控制结构
+
+
+
+    示例1: 无参数
+
+        // 定义一个返回客户端信息的存储过程
+        CREATE PROCEDURE sp1() SELEECT VERSION();
+
+        // 调用存储过程
+        CALL sp1();                // 如果没有参数可以去掉小括号  CALL sp1;
+
+
+    示例2: 带参数 IN
+
+        DELIMITER //
+
+        CREATE PROCEDURE removeUserId(IN uid INT UNSIGNED)
+
+        BEGIN
+
+        DELETE FROM users WHERE id=uid;                    // 通过传入的id来删除users表中的一条记录
+
+        END //
+
+        // 调用存储过程
+        CALL removeUserId(5);    
+
+
+    示例3: OUT
+
+        DELIMITER ;;
+
+        CREATE PROCEDURE removeIdAndReturnUserCount(IN pid INT UNSIGNED, OUT userCount INT UNSIGNED)         // OUT 定义输出的变量
+
+        BEGIN 
+
+        DELETE FROM users WHERE id = pid;                      // 删除指定的记录
+
+        SELECT count(id) FROM users INTO userCount;         // 查询id字段所有的记录数，并返回userCount变量中，注意结果返回使用INTO
+
+        END;;
+
+
+        // 调用
+        CALL removeIdAndReturnUserCount(3, @count);        // 执行删除并返回记录数，存储在count变量中
+
+        SELECT @count;                // 显示变量的值
+
+
+
+2、删除存储过程: DROP PROCEDURE 存储过程名;
+</code></pre><p>—————————– 概念 —————————–</p>
+<h3 id="十九、常用概念"><a href="#十九、常用概念" class="headerlink" title="十九、常用概念"></a>十九、常用概念</h3><pre><code>1、什么是存储引擎
+
+    MySQL可以将数据以不同的技术存储在文件（内存）中，这种技术就称为存储引擎。
+
+    每种存储引擎使用不同的存储机制、索引技术、锁定水平，最终提供广泛且不同的功能。
+
+
+2、并发控制
+
+    当多个连接对记录进行修改时保证数据的一致性和完整性
+
+        例: 一个用户删除id=22的操作，另一个用户要读取id=22的操作，这样读取id=22就会报错
+
+            解决这个问题就是使用并发，当迸发读或写时系统会使用锁系统，来控制读写
+
+
+    1、锁
+
+        共享锁（读锁）: 在同一时间段内，多个用户读取同一个资源，读取过程中数据不会发生任何变化.
+
+        排他锁（写锁）: 在任何时候只能有一个用户写入资源，当进行写锁时会阻塞其它的读锁或写锁操作.
+
+
+    2、锁颗粒
+
+        表锁: 开锁最小的锁策略
+
+        行锁: 开锁最大的锁策略
+
+
+3、事务
+
+    事务的主要作用就是保证数据的完整性
+
+
+
+4、外键
+
+    保证数据一致性的策略
+
+
+
+5、索引
+
+    是对数据表中一列或多列进行排序的一种结构
+</code></pre><h3 id="二十、Navicat工具"><a href="#二十、Navicat工具" class="headerlink" title="二十、Navicat工具"></a>二十、Navicat工具</h3><pre><code>1、导入、导出表数据
+
+    1）导出，选择要导出的表右键 Dump SQL File 
+
+    2）导入，选中Table右键 import Wizard...
+</code></pre><blockquote>
+<p>使用工具</p>
+<p>Navicat</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/MySQL/" data-id="cjdu4wpw90018chwremnpvjy8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Egg.js-数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js-数据库/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/Egg.js-数据库/">EggJS-数据库</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><pre><code>一、安装配置
+
+    $ npm i --save egg-mysql
+
+    // config/plugin.js  开启插件
+    exports.mysql = {
+        enable: true,
+        package: &apos;egg-mysql&apos;,
+    };
+</code></pre><h4 id="egg-monogoose"><a href="#egg-monogoose" class="headerlink" title="egg-monogoose"></a>egg-monogoose</h4><pre><code>一、安装配置
+
+    $ npm i egg-mongoose --save
+
+    // {app_root}/config/plugin.js
+    exports.mongoose = {
+        enable: true,
+        package: &apos;egg-mongoose&apos;,
+    };
+
+    // {app_root}/config/config.default.js
+    module.exports = {
+        mongoose: {
+            url: &apos;mongodb://127.0.0.1:27017/ibg_node_core&apos;,
+            options: {
+                db: { native_parser: true },
+                server: { poolSize: 5 },
+                user: &apos;core&apos;,
+                pass: &apos;we123&apos;,
+            },
+        },
+    }
+
+
+    // 多个mongos配置
+    // {app_root}/config/config.default.js
+    exports.mongoose = {
+        url: &apos;mongodb://mongosA:27501,mongosB:27501&apos;,
+        options: {}
+    };
+
+
+    // log
+    module.exports = {
+        logger: {
+            dir: &apos;/home/admin/logs/demoapp&apos;,        // logger文件的目录
+            level: &apos;DEBUG&apos;,                         // 开deubg模式
+        },
+    };
+
+
+二、定义Schema
+
+    // app/modle/reportWarningConfig.js
+
+    module.exports = app =&gt; {
+        const mongoose = app.mongoose;
+        const ReportWarningConfigSchema = new mongoose.Schema({
+                actionCode: { type: String, unique: true, trim: true }, // 动作编码
+                interval: { type: Number, default: 1800 },  // 扫描间隔时间，单位：秒 默认 30分钟
+                emailConfig: { // 发送邮件条件
+                    appKey: { type: String, default: &apos;&apos;, trim: true },
+                    appSecret: { type: String, default: &apos;&apos;, trim: true },
+                    recipient: { type: [String] },  // 收件人
+                },
+                lastExecutedTime: { type: Date, default: Date.now },   // 最近执行时间
+            }, 
+            {
+                timestamps: true,               // 设置timestamps，多加两个字段createdTime、updatedTime，来记录插入时间和更新时间
+                collection: &apos;report_warning_config&apos;,
+            }
+        );
+
+        return mongoose.model(&apos;ReportWarningConfig&apos;, ReportWarningConfigSchema);
+    };
+
+
+三、常用语句
+
+    1、await app.model.login.find(条件): 返回的是一组数据， []
+
+    2、await app.model.login.findOne(条件): 只返回一条数据, 如果没有匹配的返回null，
+
+    3、await app.model.login.update(条件, 要更新的文档, 回调方法): 更新数据
+
+    4、let loginTask = new app.model.login({ username: &apos;siguang&apos;, password: &apos;ssssss&apos;});     
+       let doc = await loginTask.save();        // 插入数据 
+
+    5、exec(callback): 在查询、更新后会执行一个回调函数来查看是否成功执行
+
+    6、save(function(err, kitten){  }): 存储
+
+
+四、Example
+
+    1、查询
+
+        async queryMonitorTask(){
+            let monitorTaskList = await app.model.ReportWarningConfig.find();          // app.model.ReportWarningConfig 来指定用哪个文档
+            return app.renderBody({
+                statusType: app.statusType.success,
+                data: {
+                    list: monitorTaskList
+                }
+            });
+        }
+
+
+    2、更新
+
+        更新需要先将文档查回来后，在修改某一个字段，如果一直更新会覆盖
+
+        async updateMonitorTask(params){
+            let response;
+            let condition = {_id: params.id};
+            let doc = await app.model.ReportWarningConfig.findOne(condition);       // 通过id来取到当前数据
+
+            if(doc){
+                doc.interval = params.interval;
+                doc.emailConfig.recipient = params.emailRecipient;
+                doc.smsConfig.recipient = params.smsRecipient;
+
+                await doc.save();
+                response = app.renderBody({
+                    statusType: error,
+                    error: error,
+                });
+            }
+            else{
+                response = app.renderBody({
+                    statusType: app.statusType.error,
+                    error: doc,
+                });
+            }
+
+            return response;
+        }
+
+
+    3、插入数据
+
+        插入数据将使用save()
+
+         async insertMonitorTask(){
+            const {ctx, app, service} = this;
+            const {actionCode, interval, emailRecipient, smsRecipient} = ctx.request.body;
+
+            // 将要插入的数据加到model中
+            let monitorTask = new app.model.ReportWarningConfig({   // 注意这里使用new 
+                actionCode,
+                interval,
+                emailConfig: {
+                    recipient: emailRecipient
+                },
+                smsConfig: {
+                    recipient: smsRecipient
+                }
+            })
+
+            // 使用save()来插入
+            let doc = await monitorTask.save();
+
+            let response = app.renderBody({
+                statusType: app.statusType.success,
+                data: doc._id
+            });
+            ctx.body = response;
+        }
+</code></pre><h4 id="mongoose-积累"><a href="#mongoose-积累" class="headerlink" title="mongoose 积累"></a>mongoose 积累</h4><pre><code>一、查询出来的数据不能修改
+
+    async getNewsContent(params){
+        let doc = await app.model.News.findOne({_id: params.id});
+
+        // 不能直接修改doc的对象，需要通过toObject()方法来转成对象的形势
+        let newDoc = doc.toObject();
+        newDoc.createdAt = app.dateFormat(new Date(newDoc.createdAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        newDoc.updatedAt = app.dateFormat(new Date(newDoc.updatedAt).getTime(), &apos;yyyy-MM-dd hh:mm:ss&apos;)
+        console.log(`ResponseAAA ----- ${JSON.stringify(newDoc)}`)
+
+        return {
+            data: newDoc,
+            message: &apos;获取成功&apos;,
+            status: 0
+        }
+    }
+</code></pre><p>unique</p>
+<blockquote>
+<p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js-数据库/" data-id="cjdu4wpuo0004chwrvvll89qf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Egg.js-第三方插件收集" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js-第三方插件收集/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+
+$ npm i egg-validate --save  安装
+
+// {app_root}/config/plugin.js
+exports.validate = {
+    package: &apos;egg-validate&apos;,
+};
+
+// 校验规则 post
+async fromRule(){
+    const {ctx, app} = this;
+
+    // Request 参数规则
+    const paramRule = {
+        username: {type: &apos;string&apos;},
+        password: {type: &apos;string&apos;},
+        rememberMe: {type: &apos;boolean&apos;, required: false},
+    };
+    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    if(paramErrors){    // 如果为真说明校验不通过
+        ctx.body = `校验失败`;
+    }   
+    else{
+        ctx.body = `校验成功, ${ctx.request.body.username}`;
+    }
+}
+</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+
+https://segmentfault.com/a/1190000004286562
+http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
+https://github.com/tj/ejs
+</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
+</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传 - https://github.com/node-modules/formstream
+
+4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
+
+5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js-第三方插件收集/" data-id="cjdu4wpv30009chwr5rxoh2dy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Egg.js框架" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/04/Egg.js框架/" class="article-date">
+  <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/Egg.js框架/">EggJS基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| this.ctx - 当前请求的上下文 Content对象的实例ctx，Request、Response<br>| this.app - 当前应用对象Application 对象的实例<br>| this.service - 定义的Service，等价于 this.ctx.service<br>| this.config - 应用配置<br>| this.logger - 日志对象 方法debug, info, warn, error<br>| app.cache - 缓存</p>
+<h4 id="Egg介绍、安装"><a href="#Egg介绍、安装" class="headerlink" title="Egg介绍、安装"></a>Egg介绍、安装</h4><pre><code>Egg.js属于MVC类型的NodeJS框架
+
+一、下载脚手架:
+
+    $ npm i egg-init -g
+    $ egg-init egg-example --type=simple
+    $ cd egg-example
+    $ npm i
+
+二、启动项目:
+
+    $ npm run dev
+    $ open localhost:7001
+</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code>config
+    |- config.default.js        // 默认配置文件, 所有环境都会加载这个配置文件, 一般用于开发环境的默认配置文件
+    |- config.test.js           // 开发环境配置
+    |- config.prod.js           // 生产环境配置
+    |- config.unittest.js
+    |- plugin.js                // 控制插件
+    `- config.local.js
+
+一、引入插件
+
+    module.exports = {
+        mysql: {
+            enable: true,           // 开启或关闭插件
+            package: &apos;egg-mysql&apos;    // package为一个npm模块，package.json中的dependencies中，框架会在node_modules目录中找到这个插件入口
+        },
+    };
+
+    也可以指定path 来替代 package
+    const path = require(&apos;path&apos;);
+    module.exports = {
+        mysql: {
+            enable: true,
+            path: path.join(__dirname, &apos;../app/plugin/egg-mysql&apos;),
+        },
+    };
+</code></pre><h4 id="Router-路由"><a href="#Router-路由" class="headerlink" title="Router 路由"></a>Router 路由</h4><pre><code>用来接收请求URL，在交给controller处理
+
+app.get(路由名，路由URL路由，middleware(可以配置多个)，controller)
+
+一、controller的两个写法
+
+    # router
+    module.exports = app =&gt; {
+        // 1、controller目录的home.js进行处理
+        app.get(&apos;/&apos;, &apos;home&apos;);             
+
+        // 2、payTool目录、billquery.js文件、getLoanUser方法
+        app.post(&apos;/getLoanUser&apos;, &apos;payTool.billquery.getLoanUser&apos;);
+    };
+
+    # controller/home.js
+    module.exports = function* () {
+        this.body = &apos;Hello World&apos;;  // 响应给客户端
+    };
+
+    # controller/payTool/billquery.js
+    module.exports = app =&gt; {
+        class BillqueryController extends app.Controller {
+            async getLoanUser(){
+                const { ctx, app, service } = this;
+                const response = await service.payTool.billquery.getRepayPlan(ctx.request.body);
+                ctx.body = response;
+            }
+        }
+    }
+
+
+二、路由中间件 - 在访问路由之前通过中间件来对路由进行一些处理
+
+    app.get(&apos;router-name&apos;, &apos;middleware1&apos;, &apos;middleware2&apos;, &apos;controlll&apos;);
+
+    1、创建中间件 checkAuth.js  middleware
+
+        module.exports = app =&gt; {
+            return async function checkAuth(ctx, next){
+                const user = ctx.session.user;
+                console.log(`UserSession ------ ${JSON.stringify(user)}`)
+
+                if(user){
+                    console.log(`visited true`);
+                    await next();
+                }
+                else{
+                    console.log(`visited false`);
+                    ctx.body = {
+                        data:{},
+                        status: 10001,
+                        message: &apos;Session失效&apos;
+                    }
+                }
+            } 
+        }
+
+    2、路由中调用
+
+        注意如果路由中使用中间件分为全局和和单个路由第一次两种，如果配置到config.default.js中的就为全局
+
+        // 引用中间件
+        const checkAuth = app.middleware.checkAuth();
+
+        // 不需要验证
+        app.get(&apos;/&apos;, &apos;home.index&apos;);
+        app.get(&apos;/query&apos;, &apos;query.query.queryPage&apos;);
+
+        // 需要验证是否登录的
+        app.post(&apos;/web/getUserList&apos;, checkAuth, &apos;user.user.getUserList&apos;);            // 获取用户列表
+
+
+三、参数获取
+
+    1、获取url参数 ctx.query
+
+        http://127.0.0.1:7001/search?name=egg  取出name的值
+
+        // app/router.js
+        module.exports = app =&gt; {
+            app.get(&apos;/search&apos;, app.controller.search);
+        };
+
+        // app/controller/search.js
+        module.exports = function* (ctx) {
+            tx.body = `search: ${this.query.name}`;
+        };
+
+
+    2、路由参数 ctx.params
+
+        http://127.0.0.1:7001/user/123/xiaoming   取出 123、xiaoming
+
+        // app/router.js
+        module.exports = app =&gt; {
+            app.get(&apos;/user/:id/:name&apos;, app.controller.user.info);
+        };
+
+        // app/controller/user.js
+        exports.info = function* (ctx) {
+            ctx.body = `user: ${ctx.params.id}, ${ctx.params.name}`;
+        };
+
+
+四、重定向 - 当路由不存在时会走一个默认的路由
+
+    1、内部重定向
+
+        // app/router.js
+        module.exports = app =&gt; {
+            app.get(&apos;index&apos;, &apos;/home/index&apos;, &apos;home.index&apos;);
+            app.redirect(&apos;/&apos;, &apos;/home/index&apos;, 302);
+        };
+
+    2、外部重定义 controller中来执行路由的跳转 redirect
+
+        // app/router.js
+        module.exports = app =&gt; {
+            app.get(&apos;/search&apos;, &apos;search&apos;);
+        };
+
+        // app/controller/search.js
+        module.exports = function* () {
+            const type = this.query.type;
+            const q = this.query.q || &apos;nodejs&apos;;
+
+            // 这里跳转
+            ctx.redirect(&apos;/admin/home&apos;);
+        };
+
+五、多路由映射 - 将路由分类并用一个路由主文件加载其它的路由文件
+
+    // router.js 通过一个主文件将两个路由加载进来
+    module.exports = app =&gt; {
+        require(&apos;./router/news&apos;)(app);
+        require(&apos;./router/admin&apos;)(app);
+    };
+
+    // router/news.js
+    module.exports = app =&gt; {
+        app.get(&apos;/news/list&apos;, app.controller.news.list);
+        app.get(&apos;/news/detail&apos;, app.controller.news.detail);
+    };
+
+    // router/admin.js
+    module.exports = app =&gt; {
+        app.get(&apos;/admin/user&apos;, app.controller.admin.user);
+        app.get(&apos;/admin/log&apos;, app.controller.admin.log);
+    };
+
+六、路由规则
+
+    // app/router.js
+    module.exports = app =&gt; {
+        app.get(/^\/package\/([\w-.]+\/[\w-.]+)$/, app.controller.package.detail);
+    };
+</code></pre><h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><pre><code>controller继承于app.controller, 负责解析用户输入，处理后返回相应的结果, 框架推荐Controller层主要对用户请求参数进行处理（校验、转换），然后用service处理业务结果并返回
+
+用户HTTP请求（路由处理） &lt;=&gt; 校验组装（controller处理）&lt;=&gt; 业务处理（service）
+
+一、Controller的两种写法
+
+    1、函数写法
+
+        // app/controller/posts.js
+        exports.index = function* () {};
+        exports.new = function* () {};
+        exports.create = function* () {};
+
+        // router 调用
+        app.get(&apos;/index&apos;, &apos;posts/index&apos;);
+        app.get(&apos;/new&apos;, &apos;posts/new&apos;);
+        app.get(&apos;/create&apos;, &apos;posts/create&apos;);
+
+
+    2、类写法
+
+        // app/controller/post.js
+        module.exports = app =&gt; {
+            class PostController extends app.Controller {       // 定义一个PostController的类，继承了app.Controller
+                * create() {
+                    const { ctx, service } = this;
+                    const createRule = {
+                        title: { type: &apos;string&apos; },
+                        content: { type: &apos;string&apos; },
+                    };
+                    // 校验参数
+                    ctx.validate(createRule);
+                    // 组装参数
+                    const author = ctx.session.userId;
+                    const req = Object.assign(ctx.request.body, { author });
+                    // 调用 Service 进行业务处理
+                    const res = yield service.post.create(req);
+                    // 设置响应内容和响应状态码
+                    ctx.body = { id: res.id };
+                    ctx.status = 201;
+                }
+            }
+            return PostController;
+        }
+
+        // router 调用   app/router.js
+        module.exports = app =&gt; {
+            app.post(&apos;createPost&apos;, &apos;/api/posts&apos;, &apos;post.create&apos;);
+        }
+
+
+二、app.Controller下this上挂载的几个属性
+
+    1、this.ctx: 当前请求的上下文Context对象的实例
+
+    2、this.app: Application对象的实例，可以取到框架的全局对象和方法
+
+    3、this.service: 取到service下的方法
+
+    4、this.config: 获取或添加修改config的配置
+
+    5、this.logger: 日志打印
+
+
+三、获取请求
+
+    ctx.method: 请求方法
+
+    ctx.path: 请求路径
+
+    ctx.host: 请求IP
+
+    1、query 获取GET请求中传递参数
+
+        url: /posts?category=egg&amp;language=node  通过context.query拿到url的参数  
+
+        class QueryController extends app.Controller{
+            async getQuery(app){
+                const { ctx, app, service } = this;
+
+                const queryName = ctx.query;    // {category: &apos;egg&apos;, language: &apos;node&apos;}
+                ctx.body = queryName;
+            }
+        }
+
+    2、queries 能取到重复的参数key
+
+        // posts?category=egg&amp;id=1&amp;id=2&amp;id=3 参数解析成对象,id有多个
+
+        class QueryController extends app.Controller{
+            async getQuery(app){
+                const { ctx, app, service } = this;
+
+                const queryName = ctx.queries;    // {category: &apos;egg&apos;, id: [1,2,3]}
+                ctx.body = queryName;
+            }
+        }
+
+    3、params 参数   
+
+        路由: app.get(&apos;/projects/:projectId/app/:appId&apos;, &apos;app.listApp&apos;);
+
+        // 请求: GET /projects/1/app/2
+        class QueryController extends app.Controller{
+            async getParams(app){
+                const { ctx, app, service } = this;
+
+                const params = {
+                    id: ctx.params.projectId,
+                    appid: ctx.params.appId
+                };
+                ctx.body = queryName;
+            }
+        }
+
+    4、body 获取post传的数据
+
+        框架内置bodyParser中间件，挂载到 context.request.body上，来取post的内容
+
+        ctx.request.body  来获取post传过来的参数 {&quot;username&quot;:&quot;&quot;,&quot;password&quot;:&quot;1111&quot;}
+
+        exports.listPosts = function* (ctx) {
+            assert.equal(ctx.request.body.title, &apos;controller&apos;);
+            assert.equal(ctx.request.body.content, &apos;what is controller&apos;);
+        };
+
+        &lt;input type=&quot;text&quot; name=&quot;title&quot; value=&quot;&quot; /&gt;
+        &lt;input type=&quot;text&quot; name=&quot;content&quot; value=&quot;&quot; /&gt;
+
+        config.default.js设置， 默认body最大长度为100kb
+        bodyParser: {
+            jsonLimit: &apos;1mb&apos;,
+            formLimit: &apos;1mb&apos;,
+        }
+
+    5、获取上传文件
+
+        浏览器上都是通过 Multipart/form-data 格式发送文件的，框架通过内置 Multipart 插件来支持获取用户上传的文件
+
+        &lt;form method=&quot;POST&quot; action=&quot;/upload?_csrf={{ ctx.csrf | safe }}&quot; enctype=&quot;multipart/form-data&quot;&gt;
+            title: &lt;input name=&quot;title&quot; /&gt;
+            file: &lt;input name=&quot;file&quot; type=&quot;file&quot; /&gt;
+            &lt;button type=&quot;submit&quot;&gt;上传&lt;/button&gt;
+        &lt;/form&gt;
+
+        const path = require(&apos;path&apos;);
+        const sendToWormhole = require(&apos;stream-wormhole&apos;);
+
+        module.exports = function* (ctx) {
+            const stream = yield ctx.getFileStream();
+            const name = &apos;egg-multipart-test/&apos; + path.basename(stream.filename);
+            // 文件处理，上传到云存储等等
+            let result;
+            try {
+                result = yield ctx.oss.put(name, stream);
+            } catch (err) {
+                // 必须将上传的文件流消费掉，要不然浏览器响应会卡死
+                yield sendToWormhole(stream);
+                throw err;
+            }
+            ctx.body = {
+                url: result.url,
+                // 所有表单字段都能通过 `stream.fields` 获取到
+                fields: stream.fields,
+            };
+        };
+
+
+        在config/config.default.js 中配置来新增支持的文件扩展名，或者重写整个白名单
+
+        新增支持的文件扩展名
+        module.exports = {
+            multipart: {
+                fileExtensions: [ &apos;.apk&apos; ], // 增加对 .apk 扩展名的支持
+            },
+        };
+
+        覆盖整个白名单
+        module.exports = {
+            multipart: {
+                whitelist: [ &apos;.png&apos; ], // 覆盖整个白名单，只允许上传 &apos;.png&apos; 格式
+            },
+        };
+
+    6、发送HTTP响应
+
+        1）设置status
+
+            exports.create = function* (ctx) {
+                // 设置状态码为 201
+                ctx.status = 201;
+            };
+
+        2）设置body 响应给请求方
+
+            exports.show = function* (ctx) {
+                ctx.body = {
+                    name: &apos;egg&apos;,
+                    category: &apos;framework&apos;,
+                    language: &apos;Node.js&apos;,
+                };
+            };
+            exports.page = function* (ctx) {
+                ctx.body = &apos;&lt;html&gt;&lt;h1&gt;Hello&lt;/h1&gt;&lt;/html&gt;&apos;;
+            };
+</code></pre><h4 id="ctx-header-头"><a href="#ctx-header-头" class="headerlink" title="ctx.header 头"></a>ctx.header 头</h4><pre><code>获取整个 header 对象的方法: context.headers、context.header、context.request.headers、context.request.header
+
+get()方法获取请求 header 中的一个字段的值、字段不存在返回null:  context.get(name)、context.request.get(name)
+
+一、获取header
+
+    1、ctx.header 取出头信息
+
+        async from(ctx){
+            console.log(ctx.header);
+        }
+
+        返回结果
+        { 
+            host: &apos;127.0.0.1:7001&apos;,
+            connection: &apos;keep-alive&apos;,
+            &apos;content-length&apos;: &apos;21&apos;,
+            &apos;postman-token&apos;: &apos;a7e094b5-21ce-eb94-e403-3d517c832f30&apos;,
+            &apos;cache-control&apos;: &apos;no-cache&apos;,
+            origin: &apos;chrome-extension://aicmkgpgakddgnaphhhpliifpcfhicfo&apos;,
+            &apos;user-agent&apos;: &apos;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36&apos;,
+            &apos;content-type&apos;: &apos;application/json&apos;,
+            accept: &apos;*/*&apos;,
+            &apos;accept-encoding&apos;: &apos;gzip, deflate, br&apos;,
+            &apos;accept-language&apos;: &apos;zh-CN,zh;q=0.8,en;q=0.6&apos;,
+            cookie: &apos;csrfToken=RNHUjeOf0Zsl9jNl2f5BhreT&apos; 
+        }
+
+    2、ctx.protocol 协议
+
+    3、ctx.ips 返回ip 一个数组
+
+    4、ctx.ip 返回请求方的ip
+
+    5)、ctx.host
+
+
+二、设置header
+
+    context.set(key, value) 方法可以设置一个响应头，context.set(headers) 设置多个 Header。
+
+    exports.show = function* (ctx) {
+        const start = Date.now();
+        ctx.body = yield ctx.service.post.get();
+        const used = Date.now() - start;
+        // 设置一个响应头
+        ctx.set(&apos;show-response-time&apos;, userd.toString());
+    };
+</code></pre><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><pre><code>可以通过context.cookies来获取和设置cookie值
+
+一、cookie操作
+
+    获取 ctx.cookies.get(&apos;count&apos;);
+
+    设置 ctx.cookies.set(&apos;count&apos;, ++count);
+
+    删除 ctx.cookies.set(&apos;count&apos;, null);
+
+
+二、设置options
+
+    context.cookies.set(key, value, options)
+
+    1、maxAge: nunber - 在浏览器保存最长时间
+
+    2、expires: date - 设置这个键值的失效时间
+
+    3、path: string - 设置生效的URL路径
+
+    4、domain: string - 设置生效的域名
+
+    5、httpOnly: boolean - 设置是否可以被js访问
+
+    6、secure: boolean - 设置键值只在HTTPS连接上传输
+
+    7、overwrite: boolean - 设置key相当键值如何处理，true为后设置的覆盖前面设置的，false发送两个
+
+    8、sign: boolean - 对cookie是否进行签名，true防止前端对这个值进行篡改
+
+    9、encrypt: boolean - 对cookie进行加密
+
+    ctx.cookies.set(key, value, {
+        httpOnly: false,
+        sign: false,
+    });
+
+
+三、Cookie 密钥
+
+    config/config.default.js
+
+    module.exports = {
+        keys: &apos;key1,key2&apos;,
+    };
+</code></pre><h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><pre><code>context.session 来访问或者修改当前用户 Session 
+
+1、读取和设置 Session
+
+    exports.fetchPosts = function* (ctx) {
+
+        // 获取 Session 上的内容
+        const user = ctx.session.user;
+        const posts = yield ctx.service.post.fetch(userId);
+
+        // 修改 Session 的值
+        ctx.session.user = ctx.session.user ? ctx.session.user++ : 1;
+
+        ctx.body = {
+            success: true,
+            posts,
+        };
+    };
+
+
+2、删除session
+
+    exports.deleteSession = function* (ctx) {
+        ctx.session = null;
+    };
+
+
+3、设置 session配置
+
+    // config.default.js
+
+    exports.session = {
+        key: &apos;EGG_SESS&apos;,
+        maxAge: 24 * 3600 * 1000, // 1 天
+        httpOnly: true,
+        encrypt: true,
+    };
+</code></pre><h4 id="service-处理业务逻辑"><a href="#service-处理业务逻辑" class="headerlink" title="service 处理业务逻辑"></a>service 处理业务逻辑</h4><pre><code>service 需要继承于 app.Service，service在复杂业务场景下做业务逻辑封装的抽象层
+
+一、service的ctx
+
+    1、this.ctx.curl - 发起网络调用
+
+    2、this.ctx.service.otherService - 调用service
+
+    3、this.ctx.db - 发起数据库调用
+
+
+二、Example
+
+    // 调用服务 app/controller/user.js
+    module.exports = app =&gt; {
+        class User extends app.controller {
+            async addUser(){
+                let userData = {
+                    name: &apos;siguang&apos;,
+                    password: &apos;xxxxxx&apos;
+                }
+                let isAddUser = yield ctx.service.user.createUser(userData)
+                if(setUser){
+                    ctx.body = &apos;添加成功&apos;
+                }
+                ctx.body = isAddUser ? &apos;添加成功&apos; : &apos;添加失败&apos;;
+            }
+        }
+    }
+
+    // 定义一个Service app/service/user.js
+    module.exports = app =&gt; {                   // 中间件支持两个参数 options中间件配置，app当前应用Application的实例
+        class User extends app.Service {
+
+            async createUser(params){
+                const url = &apos;/account/blance/createUser&apos;;
+                let result = await this.ctx.curl(url, {
+                    method: &apos;POST&apos;,
+                    dataType: &apos;json&apos;,   // 自动解析 JSON response
+                    data: params,
+                    timeout: 15000,     // 15 秒超时
+                }
+
+                this.ctx.logger.info(&apos;响应结果：&apos;, result.data);
+                return result.data;
+            }
+        }
+        return User;
+    };
+</code></pre><h4 id="中间件-Middleware"><a href="#中间件-Middleware" class="headerlink" title="中间件 Middleware"></a>中间件 Middleware</h4><pre><code>一、config.default.js 配置全局
+
+    module.exports = {
+        // 配置需要的中间件，数组顺序即为中间件的加载顺序
+        middleware: [ &apos;gzip&apos; ],
+        // 配置 gzip 中间件的配置
+        gzip: {
+            threshold: 1024, // 小于 1k 的响应体不压缩
+        },
+    };
+
+    // 框架中默认的中间件
+    module.exports = {
+        bodyParser: {
+            jsonLimit: &apos;10mb&apos;,
+        },
+    };
+
+
+二、通用配置
+
+    enable：控制中间件是否开启。
+
+    match：设置只有符合某些规则的请求才会经过这个中间件。
+
+    ignore：设置符合某些规则的请求不经过这个中间件。
+
+    bodyParser: {
+        enable: false,
+        jsonLimit: &apos;10mb&apos;,
+    },
+
+
+三、Example: 
+
+    1、创建中间件 checkAuth.js  middleware
+
+        module.exports = app =&gt; {
+            return async function checkAuth(ctx, next){
+                const user = ctx.session.user;
+                console.log(`UserSession ------ ${JSON.stringify(user)}`)
+
+                if(user){
+                    console.log(`visited true`);
+                    await next();
+                }
+                else{
+                    console.log(`visited false`);
+                    ctx.body = {
+                        data:{},
+                        status: 10001,
+                        message: &apos;Session失效&apos;
+                    }
+                }
+            } 
+        }
+
+    2、路由中调用
+
+        注意如果路由中使用中间件分为全局和和单个路由第一次两种，如果配置到config.default.js中的就为全局
+
+        // 引用中间件
+        const checkAuth = app.middleware.checkAuth();
+
+        // 不需要验证
+        app.get(&apos;/&apos;, &apos;home.index&apos;);
+        app.get(&apos;/query&apos;, &apos;query.query.queryPage&apos;);
+
+        // 需要验证是否登录的
+        app.post(&apos;/web/getUserList&apos;, checkAuth, &apos;user.user.getUserList&apos;);            // 获取用户列表
+</code></pre><h4 id="Validate-参数校验插件"><a href="#Validate-参数校验插件" class="headerlink" title="Validate 参数校验插件"></a>Validate 参数校验插件</h4><pre><code>validate只用于post请求的参数校验，get请求取出的都是字符串
+
+一、在config/plugin.js配置中添加
+
+    exports.validate = {
+        enable: true,
+        package: &apos;egg-validate&apos;,
+    };
+
+
+二、Exmaple
+
+    async refundApply() {
+        const { ctx, app, service } = this;
+        const paramRule = {
+            partnerUserId: { type: &apos;string&apos; },
+            applyUserName: { type: &apos;string&apos; },
+            amount: { type: &apos;string&apos; }, 
+            sourceAccount: { type: &apos;string&apos; }, 
+        };
+
+        const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+        if (paramErrors) {
+            ctx.body = app.renderBody({
+                statusType: app.statusType.paramsError,
+                error: paramErrors,
+            });
+            return;
+        }
+
+        const response = await service.payTool.billquery.refundApply(ctx.request.body);
+        ctx.body = response;
+    }
+
+
+三、验证规则  
+
+    1、required - 是否当前字段必须有，required: false 可以为空
+
+    2、allowEmpty - 允许为空
+
+    2、int - 只能为整数
+
+    3、number - 可以是整数和浮点数
+
+    4、date - 日期 &apos;YYYY-MM-DD&apos;     birthoday: &apos;date&apos;
+
+    5、dateTime - 日期 YYYY-MM-DD HH:mm:ss
+
+    6、boolean - 是否是布尔值        working: &apos;boolean&apos;
+
+    7、string - 是否是字符串, 字符串的四个规则:            
+
+        allowEmpty - 允许为空字符串
+
+        format - 使用正则来验证字符串的格式
+
+        max - 字符串最大长度
+
+        min - 字符串最小长度
+
+        const rule = {
+            username: { allowEmpty: true, min: 10, max: 100, format: /^\d+$/ }
+        }
+
+    8、email - 是否是email格式
+
+    9、password - 密码验证规则 max最大、min最小、compare比较  pass: {type: password, max: 32, min: 6}
+
+    10、url - 是否是url
+
+    11、enum - 如果是枚举需要加一个规则
+
+        // operateType的值必须是values数组中的一项，values必须为数组
+        const paramRule = {
+            operateType: { type: &apos;enum&apos;, values: [&apos;REPAYMENT&apos;, &apos;CHARGE&apos;] },        
+        }
+        const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    12、object - 如果是对象，需要加一个规则 
+
+    13、array - 如果是数组，需要加一个规则
+
+        itemType 数组中每一个元素的规则 
+        rule - An object that validate the items of the array. Only work with itemType.
+        max - 数组最大长度
+        min - 数组最小长度
+
+    https://github.com/node-modules/parameter#rule
+    https://github.com/node-modules/parameter/blob/master/benchmark.js
+    https://github.com/node-modules/parameter/blob/master/example.js
+</code></pre><h4 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h4><pre><code>jsonp只能get请求
+
+// config/config.default.js  jsonp的配置
+exports.jsonp = {
+    callback: &apos;callback&apos;, // 识别 query 中的 `callback` 参数
+    limit: 100, // 函数名最长为 100 个字符
+};
+
+
+// app/router.js  路由加jsonp中间件
+module.exports = app =&gt; {
+    const jsonp = app.jsonp();
+    app.get(&apos;/api/posts/:id&apos;, jsonp, &apos;posts.show&apos;);         // 通过jsonp中间件来让路由支付一个中间件
+    app.get(&apos;/api/posts&apos;, jsonp, &apos;posts.list&apos;);
+};
+
+// app/controller/posts.js
+exports.show = function* (ctx) {
+    ctx.body = {
+        name: &apos;egg&apos;,
+        category: &apos;framework&apos;,
+        language: &apos;Node.js&apos;,
+    };
+};
+
+用户请求 /api/posts/1?callback=fn，响应为 JSONP 格式，如果用户请求 /api/posts/1
+</code></pre><h4 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h4><pre><code>Node模拟客户端请求，curl请求默认 content-type: application/x-www-form-urlencoded,
+
+app.curl(url, options) 和 app.httpclient.request(url, options) 两种方法相同
+
+一、Example:
+
+    module.exports = app =&gt; {
+        class HttpClientController extends app.Controller{
+            async getHttpClient(){
+                const {ctx, app, service} = this;
+
+                let result = await this.ctx.curl(&apos;http://goucai.diyicai.com/lottery/getissue.action?lotteryId=001&amp;issueLen=100&amp;d=1502966960306&apos;, {
+                    methods: &apos;get&apos;
+                });
+
+                let phones = [];
+                let resultObj = JSON.parse(result.data.toString());
+                resultObj.forEach((data, idx, arr)=&gt;{
+                    console.log(&apos;data------&apos;, data);
+                    phones.push(data.endTime);
+                })
+
+                ctx.body = phones.join(&apos;,&apos;)
+            }
+        }
+        return HttpClientController;
+    }
+
+
+二、config配置 // config/config.default.js
+
+    exports.httpclient = {
+        // 默认开启 http/https KeepAlive 功能
+        keepAlive: true,
+
+        // 空闲的 KeepAlive socket 最长可以存活 4 秒
+        freeSocketKeepAliveTimeout: 4000,
+
+        // 当 socket 超过 30 秒都没有任何活动，就会被当作超时处理掉
+        timeout: 30000,
+
+        // 允许创建的最大 socket 数
+        maxSockets: Infinity,
+
+        // 最大空闲 socket 数
+        maxFreeSockets: 256,
+
+        // 是否开启本地 DNS 缓存，默认关闭
+        // 一旦设置开启，则每个域名的 DNS 查询结果将在进程内缓存 10 秒
+        enableDNSCache: false,
+    };
+
+
+三、options对象
+
+    let options = {};
+    const result = yield ctx.curl(&apos;https://httpbin.org/get?foo=bar&apos;, options);
+
+    1、mothod: 请求方法
+
+    2、data: 需要发送的数据 { foo: &apos;bar&apos; }
+
+    3、dataAsQueryString: Boolean 如果为 true 即使在post情况下，也会强制将options.data以 querystringstringify处理后拼接到url的query参数上
+
+    4、content（String|Buffer）: 发送请求的正文，如果设置了此参数会忽略data参数
+
+        ctx.curl(url, {
+            method: &apos;POST&apos;,
+            // 直接发送原始 xml 数据，不需要 HttpClient 做特殊处理
+            content: &apos;&lt;xml&gt;&lt;hello&gt;world&lt;/hello&gt;&lt;/xml&gt;&apos;,
+            headers: {
+                &apos;content-type&apos;: &apos;text/html&apos;,
+            },
+        });
+
+    5、stream（ReadStream）: 发送请求正文的可读数据流
+
+        ctx.curl(url, {
+            method: &apos;POST&apos;,
+            stream: fs.createReadStream(&apos;/path/to/read&apos;),
+        });
+
+    6、writeStream: 接受响应数据的可写数据流
+
+        ctx.curl(url, {
+            writeStream: fs.createWriteStream(&apos;/path/to/store&apos;),
+        });
+
+    7、consumeWriteStream: Boolean 是否等待 writeStream 完全写完才算响应全部接收完毕，默认是 true
+
+    8、contentType: 请求数据的格式，默认undefined
+
+    9、dataType: 响应数据格式
+
+    10、headers: 自定义请求头
+
+    11、timeout: 请求超时时间 默认是 [ 5000, 5000 ]，即创建连接超时是 5 秒，接收响应超时是 5 秒。
+
+    12、agent: 
+
+    13、httpsAgent
+
+    14、auth、digestAuth
+
+    15、followRedirect：Boolean 是否自动跟进3xx的跳转响应
+
+    16、maxRedirects: number 最大自动跳转次数
+
+    17、formatRedirectUrl: 自定义实现302、301
+
+    18、beforeRequest: 请求发送前会调用beforeRequest钩子
+
+        ctx.curl(url, {
+            beforeRequest: options =&gt; {
+                // 例如我们可以设置全局请求 id，方便日志跟踪
+                options.headers[&apos;x-request-id&apos;] = uuid.v1();
+            }
+        });
+
+    19、streaming：是否直接返回响应流
+
+    20、gzip: Boolean是否开始gzip
+
+    21、timing: Boolean 是否开启请求各阶段的时间没是
+
+
+四、Get请求
+
+    1、options.method = &apos;post&apos;  设置请求参数，默认是get请求可以不用加
+
+         const result = yield ctx.curl(&apos;https://httpbin.org/get?foo=bar&apos;, {method: post});
+
+    2、status: 响应状态码
+
+    3、headers: 响应头信息 有{&apos;conent-type&apos;: &apos;text/html&apos;}
+
+    4、data: 响应body, 返回的是Buffer类型, 如果设置了options.dataType会根据参数来处理
+
+
+五、Post请求
+
+    module.exports = function* post(ctx) {
+        const result = yield ctx.curl(&apos;https://httpbin.org/post&apos;, {
+
+            // 必须指定 method
+            method: &apos;POST&apos;,
+
+            // 通过 contentType 告诉 HttpClient 以 JSON 格式发送
+            contentType: &apos;json&apos;,
+
+            // 要传的数据 
+            data: {
+                hello: &apos;world&apos;,
+                now: Date.now(),
+            },
+
+            // 明确告诉 HttpClient 以 JSON 格式处理返回的响应 body
+            dataType: &apos;json&apos;,
+        });
+        ctx.body = result.data;
+    };
+
+
+六、From表单提交
+
+    以 ontent-type: application/x-www-form-urlencoded 的格式提交请求数据
+
+    // app/controller/form.js
+    module.exports = function* form(ctx) {
+        const result = yield ctx.curl(&apos;https://httpbin.org/post&apos;, {
+            // 必须指定 method，支持 POST，PUT 和 DELETE
+            method: &apos;POST&apos;,
+            // 不需要设置 contentType，HttpClient 会默认以 application/x-www-form-urlencoded 格式发送请求
+            data: {
+                now: Date.now(),
+                foo: &apos;bar&apos;,
+            },
+            // 明确告诉 HttpClient 以 JSON 格式处理响应 body
+            dataType: &apos;json&apos;,
+        });
+
+        ctx.body = result.data.form;
+        // 响应最终会是类似以下的结果：
+        // {
+        //   &quot;foo&quot;: &quot;bar&quot;,
+        //   &quot;now&quot;: &quot;1483864184348&quot;
+        // }
+    };
+
+
+七、Multipart 方式上传
+
+    From 表单提交时包含文件的时候，需要用到 multipart/form-data 进行提交了
+
+    引用fromstream 第三方模块
+
+    // app/controller/multipart.js
+    const FormStream = require(&apos;formstream&apos;);
+    module.exports = function* multipart(ctx) {
+        const form = new FormStream();
+
+        // 设置普通的 key value
+        form.field(&apos;foo&apos;, &apos;bar&apos;);
+
+        // 上传当前文件本身用于测试
+        form.file(&apos;file&apos;, __filename);
+        const result = yield ctx.curl(&apos;https://httpbin.org/post&apos;, {
+            // 必须指定 method，支持 POST，PUT
+            method: &apos;POST&apos;,
+            // 生成符合 multipart/form-data 要求的请求 headers
+            headers: form.headers(),
+            // 以 stream 模式提交
+            stream: form,
+            // 明确告诉 HttpClient 以 JSON 格式处理响应 body
+            dataType: &apos;json&apos;,
+        });
+
+        ctx.body = result.data.files;
+        // 响应最终会是类似以下的结果：
+        // {
+        //   &quot;file&quot;: &quot;&apos;use strict&apos;;\n\nconst For....&quot;
+        // }
+    };
+
+    // 添加更多文件
+    form.file(&apos;file1&apos;, file1);
+    form.file(&apos;file2&apos;, file2);
+
+
+八、以Stream 方式上传文件
+
+    Stream 实际会以 Transfer-Encoding: chunked 传输编码格式发送
+
+    // app/controller/stream.js
+    const fs = require(&apos;fs&apos;);
+    module.exports = function* stream(ctx) {
+        // 上传当前文件本身用于测试
+        const fileStream = fs.createReadStream(__filename);
+
+        // httpbin.org 不支持 stream 模式，使用本地 stream 接口代替
+        const url = `${ctx.protocol}://${ctx.host}/stream`;
+        const result = yield ctx.curl(url, {
+            // 必须指定 method，支持 POST，PUT
+            method: &apos;POST&apos;,
+            // 以 stream 模式提交
+            stream: fileStream,
+        });
+
+        ctx.status = result.status;
+        ctx.set(result.headers);
+        ctx.body = result.data;
+        // 响应最终会是类似以下的结果：
+        // {&quot;streamSize&quot;:574}
+    };
+</code></pre><h4 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h4><pre><code>读取数据渲染模板，呈现给用户
+
+一、使用
+
+    1、$ npm i egg-view-ejs --save         // 安装
+
+    2、配置
+
+        // config/plugin.js
+        exports.nunjucks = {
+            enable: true,
+            package: &apos;egg-view-nunjucks&apos;        // 开启插件使用numjucks模板
+        };
+
+        // config/config.default.js
+        exports.view = {
+            defaultViewEngine: &apos;nunjucks&apos;,
+            mapping: {
+                &apos;.tpl&apos;: &apos;nunjucks&apos;,
+            },
+        };
+
+
+    3、render、renderString两个方法
+
+        render(fileName, locals, viewOptions): filenName: 文件路径、locals: 渲染的数据、viewOptions: 用户传入的配置
+
+    render(name, locals) 渲染模板文件, 并赋值给 ctx.body
+
+    renderView(name, locals) 渲染模板文件, 仅返回不赋值
+
+    renderString(tpl, locals) 渲染模板字符串, 仅返回不赋值
+
+
+- numjucks模板语法: http://mozilla.github.io/nunjucks/cn/templating.html  见模板md -
+</code></pre><h4 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h4><pre><code>Egg内置static插件，static默认映射到 public目录
+
+app/public
+├── css
+│   └── news.css
+└── js
+    ├── lib.js
+    └── news.js
+</code></pre><h4 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h4><pre><code>一、Application - 全局的方法和对象挂载到Application中
+
+    // extend/application.js 创建全局对象
+    module.exports = {
+        // 全局返回状态类型
+        statusType: &apos;STATUS_TYPE&apos;,
+
+        // 生成返回报文
+        renderBody(params) {
+            if (typeof params.statusType === &apos;undefined&apos;) {
+                throw new Error(&apos;statusType error&apos;);
+            }
+            const response = {
+                data: params.data || {},
+                message: params.message || this.statusMessage[params.statusType],
+                status: params.statusType,
+            };
+
+            if (params.error) response.error = params.error;
+            return response;
+        }
+    }
+
+    // 调用 controller、service都可以
+    module.exports = app =&gt; {
+        return class UserController extends app.Controller {
+            async fetch() {
+                this.ctx.body = app.cache.get(this.ctx.query.id);
+            }
+        };
+    };
+</code></pre><h4 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h4><pre><code>有些任务需要定时来完成，如定时上报，定时远程更新本地缓存，定时任务都统一存放在 app/schedule 目录下
+
+创建一个定时任务 app/schedule/update_cache.js
+
+module.exports = {
+    // 通过 schedule 属性来设置定时任务的执行间隔等配置
+    schedule: {
+        interval: &apos;1m&apos;,     // 1 分钟间隔
+        type: &apos;all&apos;,        // 指定所有的 worker 都需要执行
+    },
+
+    // task 是真正定时任务执行时被运行的函数，第一个参数是一个匿名的 Context 实例
+    * task(ctx) {
+        const res = yield ctx.curl(&apos;http://www.api.com/cache&apos;, {
+            dataType: &apos;json&apos;,
+        });
+        ctx.app.cache = res.data;
+    }
+};
+</code></pre><h4 id="框架扩展"><a href="#框架扩展" class="headerlink" title="框架扩展"></a>框架扩展</h4><pre><code>框架扩展自身功能: Application、Context、Request、Response、Helper，在这几个对象上扩展就在extend目录里创建相应的js文件，application.js
+
+    Helper用来提供一些实用的utility函数
+
+一、Application 全局应用对象扩展
+
+    访问 ctx.app,  Controller，Middleware，Helper，Service 中都可以通过 this.app 访问到 Application 对象
+
+    // app.js
+    module.exports = app =&gt; {
+        app.config
+    };
+
+    // 扩展 app.foo() 方法 app/extend/application.js
+    module.exports = {
+        foo(param) {
+            // this 就是 app 对象，在其中可以调用 app 上的其他方法，或访问属性
+        },
+    };
+
+
+二 、Context 扩展
+
+    extend/content.js
+
+    module.export = {
+        async foo(param){
+            ...
+        }
+    }
+
+    引用 await this.ctx.foo({name: &apos;siguang&apos;});
+
+
+三、Helper 用来编写一些实用函数
+
+    // app/extend/helper.js
+    const moment = require(&apos;moment&apos;);
+    exports.relativeTime = time =&gt; moment(new Date(time * 1000)).fromNow();
+
+    // 也可以在模板里面使用：
+    &lt;!-- app/views/news/list.tpl --&gt;
+    {{ helper.relativeTime(item.time) }}
+</code></pre><h4 id="启动自定义"><a href="#启动自定义" class="headerlink" title="启动自定义"></a>启动自定义</h4><pre><code>用来进行应用启动时进行初始化工作
+
+// 通过入口文件app.js
+module.exports = app =&gt; {
+    app.beforeStart(function* () {
+
+        // 应用会等待这个函数执行完成才启动
+        app.cities = yield app.curl(&apos;http://example.com/city.json&apos;, {
+            method: &apos;GET&apos;,
+            dataType: &apos;json&apos;,
+        });
+    });
+};
+</code></pre><h4 id="logger-日志"><a href="#logger-日志" class="headerlink" title="logger 日志"></a>logger 日志</h4><pre><code>this.ctx.logger.info(&apos;xxxxxx&apos;);
+
+logger.debug()、logger.info()、logger.warn()、logger.error()
+
+config.deubgger 文件配置
+
+    logger: {
+        level: &apos;DEBUG&apos;,
+        dir: &apos;../app/logger&apos;,
+    }
+</code></pre><h4 id="本地开发"><a href="#本地开发" class="headerlink" title="本地开发"></a>本地开发</h4><pre><code>egg-bin模块（用于本地开发和单元测试）
+
+package.json:
+
+   {
+       &quot;scripts&quot;: {
+           &quot;dev&quot;: &quot;egg-bin dev --port 7001&quot;
+       }
+   }
+</code></pre><h4 id="插件的开发"><a href="#插件的开发" class="headerlink" title="插件的开发"></a>插件的开发</h4><pre><code>自定义插件存储目录:  lib/plugin/...
+
+egg-ua插件
+
+1、创建package.json
+
+    {
+        &quot;eggPlugin&quot;: {
+            &quot;name&quot;: &quot;ua&quot;
+        }
+    }
+
+2、egg-ua/us.js插件文件
+
+    module.exports = {
+        get isIOS() {
+            const iosReg = /iphone|ipad|ipod/i;
+            return iosReg.test(this.get(&apos;user-agent&apos;));
+        },
+    };
+
+3、config/plugin.js   通过path来挂载插件
+
+    const path = require(&apos;path&apos;);
+    exports.ua = {
+        enable: true,
+        path: path.join(__dirname, &apos;../lib/plugin/egg-ua&apos;),
+    };
+</code></pre><h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><pre><code>├── package.json
+├── app.js (可选)            // 启动初始化
+├── agent.js (可选)
+├── app
+|   ├── router.js           // 路由规则
+│   ├── controller          // 处理用户的输入
+│   |   └── home.js
+│   ├── service (可选)       // 服务，编写业务逻辑
+│   |   └── user.js
+│   ├── middleware (可选)    // 中间件
+│   |   └── response_time.js
+│   ├── schedule (可选)      // 定时任务
+│   |   └── my_task.js
+│   ├── public (可选)        // 静态目录
+│   |   └── reset.css
+│   ├── view (可选)          // 模板
+│   |   └── home.tpl
+│   └── extend (可选)        // 框架扩展
+│       ├── helper.js (可选)
+│       ├── request.js (可选)
+│       ├── response.js (可选)
+│       ├── context.js (可选)     // ctx扩展
+│       ├── application.js (可选)     // 全局方法
+│       └── agent.js (可选)
+├── config                  // 配置
+|   ├── plugin.js
+|   ├── config.default.js
+│   ├── config.prod.js
+|   ├── config.test.js (可选)
+|   ├── config.local.js (可选)
+|   └── config.unittest.js (可选)
+└── test                    // 测试
+    ├── middleware
+    |   └── response_time.test.js
+    └── controller
+        └── home.test.js
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/12/04/Egg.js框架/" data-id="cjdu4wpvh000nchwrjdzx2uzd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EggJS/">EggJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Gulp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/11/Gulp/" class="article-date">
+  <time datetime="2016-11-11T10:39:38.000Z" itemprop="datePublished">2016-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/11/Gulp/">Gulp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、gulp"><a href="#一、gulp" class="headerlink" title="一、gulp"></a>一、gulp</h4><pre><code>可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理
+
+Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快
+
+主要作用:
+
+    1、多个js或css文件合并、压缩
+
+    2、Sass或Less的编译
+
+    3、图像的压缩
+
+    3、实时刷新页面的本地服务器
+</code></pre><h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><pre><code>1、先安装node.js
+
+2、# npm install -g gulp     通过npm 安装Gulp
+
+3、# npm init                  创建package.json 项目描述文件
+
+4、npm install gulp --save-dev           将gulp作为项目的开发依赖(只在开发时用，不会发布到线上)
+</code></pre><h4 id="三、gulp-执行命令"><a href="#三、gulp-执行命令" class="headerlink" title="三、gulp 执行命令"></a>三、gulp 执行命令</h4><pre><code>-v 或 --version 会显示全局和项目本地所安装的 gulp 版本号
+
+--gulpfile 手动指定一个 gulpfile 的路径，这在你有很多个 gulpfile 的时候很有用。这也会将 CWD 设置到该 gulpfile 所在目录
+
+--cwd dirpath 手动指定 CWD。定义 gulpfile 查找的位置，此外，所有的相应的依赖（require）会从这里开始计算相对路径
+
+-T 或 --tasks 会显示所指定 gulpfile 的 task 依赖树
+
+--tasks-simple 会以纯文本的方式显示所载入的 gulpfile 中的 task 列表
+
+--color 强制 gulp 和 gulp 插件显示颜色，即便没有颜色支持
+
+--no-color 强制不显示颜色，即便检测到有颜色支持
+
+--silent 禁止所有的 gulp 日志
+</code></pre><h4 id="四、gulp-方法"><a href="#四、gulp-方法" class="headerlink" title="四、gulp 方法"></a>四、gulp 方法</h4><pre><code>1、gulp.src(): 获取到想要处理的文件流
+
+2、gulp.pipe(): 将获取到的文件流通过pipe()导入到gulp的插件中进行处理
+
+3、gulp.dest(): 用来写文件的，插件处理完，通过dest()处理完成后把流中的内容写到指定的文件中
+
+    var gulp = require(&apos;gulp&apos;);
+    gulp.src(&apos;js/main.js&apos;)                 // 获取文件的流的api
+        .pipe(gulp.uglify())            // 文件进行压缩
+        .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));     // 写文件的api
+
+
+4、gulp.task(&apos;任务名&apos; [需要依赖的其它任务], callback): 定义任务
+
+    gulp.task(&apos;test&apos;, [&apos;styles&apos;], function() {
+        // 将你的默认的任务代码放在这
+    });
+
+    # gulp test     // 执行任务
+
+
+5、gulp.watch(&apos;要监视文件的匹配模式&apos;, [要执行的task定义的任务], callback): 监视文件的变化，变化后来执行定义的任务
+</code></pre><h4 id="五、Gulp-扩散操作"><a href="#五、Gulp-扩散操作" class="headerlink" title="五、Gulp 扩散操作"></a>五、Gulp 扩散操作</h4><pre><code>1、复制单个文件task
+
+    gulp.task(&apos;copy-html&apos;,function(){
+        return gulp.src(&apos;app/index.html&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+
+2、复制多个文件
+
+    gulp.task(&apos;copy-images&apos;,function(){
+        return gulp.src(&apos;app/imgs/**/*.{jpg,png}&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+    gulp.task(&apos;copy-other&apos;,function(){
+        return gulp.src([&apos;app/css/*.css&apos;,&apos;app/js/*.js&apos;],{base:&apos;app&apos;}).pipe(gulp.dest(&apos;dist&apos;));
+    });
+</code></pre><h4 id="六、gulp-插件"><a href="#六、gulp-插件" class="headerlink" title="六、gulp 插件"></a>六、gulp 插件</h4><pre><code>1、插件安装 npm install 插件名  --save-dev
+
+2、gulpfile.js中引用插件   
+
+    var uglify = require(&apos;gulp-uglify&apos;);
+
+
+4、gulp-load-plugins 模块化管理插件
+
+    1）一般情况下，gulpfile.js中的模块需要一个个加载。
+
+        var gulp = require(&apos;gulp&apos;),
+               jshint = require(&apos;gulp-jshint&apos;),
+            uglify = require(&apos;gulp-uglify&apos;),
+            concat = require(&apos;gulp-concat&apos;);
+
+        gulp.task(&apos;js&apos;, function () {
+               return gulp.src(&apos;js/*.js&apos;)
+                  .pipe(uglify())
+                  .pipe(concat(&apos;app.js&apos;))
+                  .pipe(gulp.dest(&apos;build&apos;));
+        });
+
+
+
+    2）gulp-load-plugins 会加载 package.json中存在下面的插件依赖：
+
+        &quot;devDependencies&quot;: {
+            &quot;gulp&quot;: &quot;^3.9.0&quot;,
+            &quot;gulp-uglify&quot;: &quot;^2.6.0&quot;,
+            &quot;gulp-concat&quot;: &quot;^2.2.0&quot;
+        }
+
+
+        var gulp = require(&apos;gulp&apos;);
+        var $ = require(&apos;gulp-load-plugins&apos;)();            // 加载gulp-load-plugins插件，并立刻运行
+
+
+        使用：$.uglify  可以省去单个引入
+
+        gulp.task(&apos;add&apos;, function(){
+            gulp.src([&apos;js/main.js&apos;])
+                .pipe($.concat)
+                .pipe($.uglify)            // $.uglify就可以调用了
+                .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
+        })
+</code></pre><h4 id="七、package-json"><a href="#七、package-json" class="headerlink" title="七、package.json:"></a>七、package.json:</h4><pre><code>npm install 插件名 --save-dev        // 安装插件下到node_modules目录下并配置到package.json中的devDependencies{}对象下
+
+{
+    &quot;name&quot;: &quot;test&quot;,                    // 项目名
+    &quot;version&quot;: &quot;1.0.0&quot;,                // 版本
+    &quot;description&quot;: &quot;This is for study gulp project !&quot;,    // 项目描述
+    &quot;homepage&quot;: &quot;https://siguang1983.github.io/&quot;,
+    &quot;main&quot;: &quot;index.js&quot;,                // 入口文件 npm start 会执行的文件
+    &quot;keywords&quot;: [                    // 在npmjs官网搜索时的关键字
+        &quot;node.js&quot;,
+        &quot;gulp&quot;
+    ],
+    &quot;scripts&quot;: {                    // 测试脚本  npm test 会执行此文件
+        &quot;test&quot;: &quot;test.js&quot;
+    },
+    &quot;repository&quot;: {                    // 模块的git仓库
+        &quot;type&quot;: &quot;git&quot;,
+        &quot;url&quot;: &quot;https://github.com/siguang1983/siguang1983.github.io.git&quot;
+    },
+    &quot;author&quot;: {                        // 作者
+        &quot;name&quot;: &quot;siguang&quot;
+    },
+    &quot;license&quot;: &quot;ISC&quot;,
+    &quot;devDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^3.9.0&quot;,
+        &quot;gulp-amd-optimizer&quot;: &quot;^0.4.0&quot;,
+        &quot;gulp-autoprefixer&quot;: &quot;^3.1.0&quot;,
+        &quot;gulp-cache&quot;: &quot;^0.4.1&quot;,
+        &quot;gulp-concat&quot;: &quot;^2.6.0&quot;,
+        &quot;gulp-htmlmin&quot;: &quot;^1.3.0&quot;,
+        &quot;gulp-imagemin&quot;: &quot;^2.4.0&quot;,
+        &quot;gulp-jshint&quot;: &quot;^2.0.0&quot;,
+        &quot;gulp-less&quot;: &quot;^3.0.5&quot;,
+        &quot;gulp-livereload&quot;: &quot;^3.8.1&quot;,
+        &quot;gulp-minify-css&quot;: &quot;^1.2.2&quot;,
+        &quot;gulp-notify&quot;: &quot;^2.2.0&quot;,
+        &quot;gulp-plumber&quot;: &quot;^1.1.0&quot;,
+        &quot;gulp-react&quot;: &quot;^3.1.0&quot;,
+        &quot;gulp-rev-append&quot;: &quot;^0.1.6&quot;,
+        &quot;gulp-rimraf&quot;: &quot;^0.2.0&quot;,
+        &quot;gulp-sass&quot;: &quot;^2.2.0&quot;,
+        &quot;gulp-uglify&quot;: &quot;^1.5.1&quot;,
+        &quot;gulp-watch&quot;: &quot;^4.3.5&quot;,
+        &quot;gulp.spritesmith&quot;: &quot;^6.2.1&quot;,
+        &quot;imagemin-pngquant&quot;: &quot;^4.2.0&quot;,
+        &quot;livereload&quot;: &quot;^0.4.0&quot;,
+        &quot;merge-stream&quot;: &quot;^1.0.0&quot;,
+        &quot;vinyl-buffer&quot;: &quot;^1.0.0&quot;
+    },
+    &quot;dependencies&quot;: {
+        &quot;gulp-header&quot;: &quot;^1.7.1&quot;
+    }
+}
+</code></pre><h4 id="八、gulpfile-js-配置文件"><a href="#八、gulpfile-js-配置文件" class="headerlink" title="八、gulpfile.js 配置文件"></a>八、gulpfile.js 配置文件</h4><pre><code>// 导入工具包 require(&apos;node_modules里对应模块&apos;)
+var gulp        = require(&apos;gulp&apos;),
+    uglify      = require(&apos;gulp-uglify&apos;),                   // 压缩js
+    concat      = require(&apos;gulp-concat&apos;),                   // 合并js
+    jshint      = require(&apos;gulp-jshint&apos;),                   // js语法检测
+    less        = require(&apos;gulp-less&apos;),                     // less编译
+    sass        = require(&apos;gulp-sass&apos;),                     // sass编译
+    cssmin      = require(&apos;gulp-minify-css&apos;),               // css压缩
+    htmlmin     = require(&apos;gulp-htmlmin&apos;),                  // html压缩
+    spritesmith = require(&apos;gulp.spritesmith&apos;),              // 雪碧图
+    imagemin    = require(&apos;gulp-imagemin&apos;),                 // 压缩图片
+    pngquant    = require(&apos;imagemin-pngquant&apos;),             // 图片的深度压缩
+    cache       = require(&apos;gulp-cache&apos;),                    // 只压缩修改的图片
+    rev         = require(&apos;gulp-rev-append&apos;),               // 加版本号，给页面文件引用的js和css资源
+    autoprefixer = require(&apos;gulp-autoprefixer&apos;),            // 自动补齐前缀，根据设置浏览器版本自动处理浏览器前缀 CSS3的前缀
+
+    react       = require(&apos;gulp-react&apos;),                    // react区分jsx文件进行转换
+    webpack     = require(&apos;gulp-webpack&apos;),                  // webpack
+    amdOptimize = require(&apos;gulp-amd-optimizer&apos;),            // requirejs 压缩
+    bf          = require(&apos;vinyl-buffer&apos;),                  // 流缓存
+    merge       = require(&apos;merge-stream&apos;),                  // 合并流
+
+    watch       = require(&apos;gulp-watch&apos;),                    // 侦听变化自动执行task
+    livereload  = require(&apos;gulp-livereload&apos;),               // 当监听文件发生变化时，浏览器自动刷新页面
+    header      = require(&apos;gulp-header&apos;),                   // 注释自定义插件
+    rimraf      = require(&apos;gulp-rimraf&apos;),                   // 清除文件
+    plumber     = require(&apos;gulp-plumber&apos;),                  // 错误提示
+    notify      = require(&apos;gulp-notify&apos;),                   // 消息提示
+    rename      = require(&apos;gulp-rename&apos;),                   // 将文件重命名
+
+    connect = require(&apos;gulp-connect&apos;),                      // gulp创建本地服务器
+    browserify = require(&apos;gulp-browserify&apos;);                //
+
+
+/**
+ * 路径变量( s =&gt; source , d =&gt; distribute , o =&gt; other project)
+ */
+var current = false,                                               //变化路径的开关,true开启,false关闭
+    o_dist = &apos;F://LQH/WORK/Anzipay-mall/oneyuan/&apos;,                 //其他项目的根目录
+    o_css = o_dist + &apos;dist/css/&apos;,                                  //其他项目下的CSS
+    o_js = o_dist + &apos;dist/js/&apos;,                                    //其他项目下的JS
+    o_img = o_dist + &apos;dist/img/&apos;,                                  //其他项目下的IMG
+    o_mod = o_dist + &apos;dist/mod/&apos;,                                  //其他目录下的模块
+    path = {
+        s_sass      : &quot;webstart/build/scss/&quot;,                      //待编译的源文件路径
+        s_css       : &quot;webstart/build/css/&quot;,
+        s_js        : &quot;webstart/build/js/&quot;,
+        s_es        : &quot;webstart/build/es6/&quot;,                       //待转换的ES6文件
+        s_img       : &quot;webstart/build/img/&quot;,                       //待压缩的图片
+        s_simg      : &quot;webstart/build/img/sprite/&quot;,                //待合并成雪碧图的文件
+        dist        : &quot;webstart/dist/&quot;,
+        d_css       : &quot;webstart/dist/css/&quot;,                        //输出的文件
+        d_img       : &apos;webstart/dist/img/&apos;,
+        d_js        : &apos;webstart/dist/js/&apos;,
+        server_root : [&quot;webstart&quot;, &quot;webstart/static&quot;],
+        o_dist      : o_dist,
+        o_css       : o_css,                                       //其他项目输出文件
+        o_js        : o_js,
+        o_img       : o_img,
+        o_mod       : o_mod,
+        selectPath  : function (current) {                         //开始替换路径
+            if (current) {
+                path.d_css       = path.o_css;
+                path.d_img       = path.o_img;
+                path.d_js        = path.o_js;
+                path.d_mod       = path.o_mod;
+                path.server_root = path.o_dist;                    //本地服务器启动根目录
+            }
+        }
+    };
+path.selectPath(current);
+
+
+//------------------------------- 任务 ------------------------------------
+
+
+/**
+ * 获取package.json配置，添加注释
+ */
+var pkg = require(&apos;./package.json&apos;);
+var banner = [&apos;/**&apos;,
+  &apos; * &lt;%= pkg.author.name %&gt; - &lt;%= pkg.author.description %&gt;&apos;,
+  &apos; * @version v&lt;%= pkg.version %&gt;&apos;,
+  &apos; */&apos;,
+  &apos;&apos;].join(&apos;\n&apos;);
+
+
+
+// 第一个参数是要执行任务名称     第二个参数是在执行前要执行的任务
+gulp.task(&apos;test&apos;, [&apos;styles&apos;], function() {
+  // 将你的默认的任务代码放在这
+});
+
+
+/************* 文件压缩任务 **************/
+// 如果需要压缩前先执行其它任务可以写到第二个参数里，这里我们先执行合并任务
+gulp.task(&apos;mainUglify&apos;, function () {
+
+    // 单文件压缩
+    gulp.src([&apos;js/main.js&apos;])
+        .pipe(uglify())
+        .pipe(header(banner, { pkg : pkg } ))       // 压缩后加注释
+        .pipe(gulp.dest(&apos;dist/js/main.min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
+});
+
+
+/************* 文件合并任务 **************/
+gulp.task(&apos;mainConcat&apos;, function () {
+    gulp.src([&apos;js/dialog.js&apos;, &apos;js/focusPic.js&apos;, &apos;js/marquee.js&apos;])        // 可以使用*.js来取所有js文件
+        .pipe(plumber({errorHandler: notify.onError(&quot;错误信息: &lt;%= error.message %&gt;&quot;)}))
+        .pipe(concat(&apos;main.concat.js&apos;))         // 合并成一个文件名为main.concat.js
+        .pipe(plumber())
+        .pipe(gulp.dest(&apos;dist/js&apos;))
+});
+
+
+/************* 文件代码检测 **************/
+gulp.task(&apos;jsLint&apos;, function () {
+    gulp.src(&apos;src/*.js&apos;)
+        .pipe(jshint())                 // 进行代码检查
+        .pipe(jshint.reporter());         // 输出检查结果
+});
+
+
+/************* Less **************/
+gulp.task(&apos;mainLess&apos;, function () {
+    gulp.src(&apos;less/page.less&apos;)
+        .pipe(less())
+        .pipe(cssmin())     // 转换完后压缩 兼容IE7及以下需设置compatibility属性 .pipe(cssmin({compatibility: &apos;ie7&apos;}))
+        .pipe(gulp.dest(&apos;dist/css/&apos;));
+});
+
+gulp.task(&apos;mainLessWatch&apos;, function () {
+    gulp.watch(&apos;less/*.less&apos;, [&apos;mainLess&apos;]);    // 当所有less文件发生改变时，调用testLess任务
+});
+
+
+/************* css压缩 **************/
+gulp.task(&apos;mainCssmin&apos;, function () {
+    gulp.src(&apos;css/*.css&apos;)
+        .pipe(cssmin())
+        .pipe(gulp.dest(&apos;dist/css&apos;));
+});
+
+
+/************* html压缩 **************/
+gulp.task(&apos;mainHtmlmin&apos;, function () {
+    var options = {
+        removeComments: true,               // 清除HTML注释
+        collapseWhitespace: true,           // 压缩HTML
+        collapseBooleanAttributes: true,    // 省略布尔属性的值 &lt;input checked=&quot;true&quot;/&gt; ==&gt; &lt;input /&gt;
+        removeEmptyAttributes: true,        // 删除所有空格作属性值 &lt;input id=&quot;&quot; /&gt; ==&gt; &lt;input /&gt;
+        removeScriptTypeAttributes: true,   // 删除&lt;script&gt;的type=&quot;text/javascript&quot;
+        removeStyleLinkTypeAttributes: true,// 删除&lt;style&gt;和&lt;link&gt;的type=&quot;text/css&quot;
+        minifyJS: true,                     // 压缩页面JS
+        minifyCSS: true                     // 压缩页面CSS
+    };
+
+    gulp.src(&apos;*.html&apos;)
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest(&apos;dist/html/&apos;));
+});
+
+
+/************* 图片压缩 **************/
+gulp.task(&apos;mainImagemin&apos;, function () {
+    gulp.src(&apos;images/*.{png,jpg,gif,ico}&apos;)
+        .pipe(imagemin({
+            optimizationLevel: 1,           // 类型：Number  默认：3  取值范围：0-7（优化等级）
+            progressive: true,              // 类型：Boolean 默认：false 无损压缩jpg图片
+            interlaced: true,               // 类型：Boolean 默认：false 隔行扫描gif进行渲染
+            multipass: true                 // 类型：Boolean 默认：false 多次优化svg直到完全优化
+        }))
+        .pipe(gulp.dest(&apos;dist/img&apos;));
+});
+
+//图片的深度压缩
+gulp.task(&apos;mainPngquantImg&apos;, function () {
+    gulp.src(&apos;images/*.{png,jpg,gif,ico}&apos;)
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],  //不要移除svg的viewbox属性
+            use: [pngquant()]                       //使用pngquant深度压缩png图片的imagemin插件
+        }))
+        .pipe(gulp.dest(&apos;dist/img&apos;));
+});
+
+
+/************* 给页面加版本号，刷缓存 **************/
+gulp.task(&apos;mainRev&apos;, function () {
+    gulp.src(&apos;*.html&apos;)   // 页面里需要加rev=@@hash
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;dist/&apos;));
+});
+
+
+/************* 浏览器版本自动处理浏览器前缀 **************/
+gulp.task(&apos;testAutoFx&apos;, function () {
+    gulp.src(&apos;css/autoprefixer.css&apos;)
+        .pipe(autoprefixer({
+            browsers: [&apos;last 2 versions&apos;, &apos;last 1 Chrome versions&apos;, &apos;last 2 Explorer versions&apos;, &apos;last 3 Safari versions&apos;, &apos;iOS 7&apos;, &apos;Firefox ESR&apos;],
+            cascade: true, //是否美化属性值 默认：true 像这样：
+            //-webkit-transform: rotate(45deg);
+            //        transform: rotate(45deg);
+            remove:true //是否去掉不必要的前缀 默认：true
+        }))
+        .pipe(rename(&apos;autoprefixer.min.css&apos;))       // 设置压缩后的文件名
+        .pipe(gulp.dest(&apos;dist/css&apos;));
+});
+
+
+/************* 侦听自动执行Task **************/
+gulp.task(&apos;mainWatch&apos;, function () {
+    return gulp.src(&apos;css/*.css&apos;)
+        .pipe(watch(&apos;css/*.css&apos;))
+        .pipe(gulp.dest(&apos;build&apos;));
+});
+
+
+/********* 当文件变化时自动刷新浏览器 **********/
+gulp.task(&apos;mainLivereload&apos;, function () {
+    return gulp.src([&apos;css/*.css&apos;, &apos;*.html&apos;])
+        .pipe(livereload());
+});
+
+
+/************* React **************/
+gulp.task(&apos;mainReact&apos;, function () {
+    return gulp.src(&apos;template.jsx&apos;)
+        .pipe(react())
+        .pipe(gulp.dest(&apos;dist&apos;));
+});
+
+
+/************* connect **************/
+gulp.task(&apos;connectDist&apos;, function () {
+    connect.server({
+        name: &apos;Dist App&apos;,    
+        root: &apos;dist&apos;,        // 服务器名
+        port: 8001,            // 服务器端口
+        livereload: true      // 启用实时刷新的功能，这里是本地服务后，如果未使用connect, 还需要livereload插件的方法
+    });
+});
+
+gulp.task(&apos;scripts&apos;, function() {
+    gulp.src([&apos;src/index.js&apos;])
+        .pipe(browserify({
+            nobuiltins: &apos;events querystring&apos;
+        }))
+        .pipe(gulp.dest(&apos;./build/js&apos;))
+});
+
+
+
+/**
+ * 配置任务
+ */
+gulp.task(&quot;default&quot;, [&apos;mainConcat&apos;, &apos;mainUglify&apos;, &apos;mainLess&apos;]);
+gulp.task(&quot;mainWatch&quot;, [&apos;mainWatch&apos;]);
+
+
+
+/**
+ * 监听任务 运行语句 gulp watch
+ */
+gulp.task(&apos;watch&apos;, function () {
+
+    // 监听sass
+    gulp.watch(path.s_sass + &apos;**/*.scss&apos;, [&apos;scss_2_css&apos;]);
+
+    // 监听css
+    gulp.watch(path.s_css + &apos;**/*.css&apos;, [&apos;cssmin&apos;]);
+
+    // 监听images
+    gulp.watch(path.s_img + &apos;*&apos;, [&apos;imagemin&apos;]);
+
+    //监听ES6 JS
+    gulp.watch(path.s_es+&apos;**/*.js&apos;,[&apos;es6_2_es5&apos;]);
+
+    // 监听js
+    gulp.watch(path.d_js + &apos;**/*.js&apos;, [&apos;uglify&apos;]);
+
+
+});
+</code></pre><blockquote>
+<p>参考资料</p>
+<p>gulp中文网 <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a><br><a href="http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7</a><br>gulp 技巧集 <a href="http://www.gulpjs.com.cn/docs/recipes/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/recipes/</a><br>gulp api <a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/api/</a><br>gulp使用指南 <a href="http://www.techug.com/gulp" target="_blank" rel="noopener">http://www.techug.com/gulp</a><br>gulp开发教程 <a href="http://www.w3ctech.com/topic/134" target="_blank" rel="noopener">http://www.w3ctech.com/topic/134</a><br>gulp-load-plugins[模块化管理插件] <a href="http://www.qianduancun.com/nodejs/33.html" target="_blank" rel="noopener">http://www.qianduancun.com/nodejs/33.html</a><br>利用 gulp 处理前端工作流程 <a href="http://segmentfault.com/a/1190000003098076#articleHeader0" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003098076#articleHeader0</a><br>前端构建工具gulpjs的使用介绍及技巧 <a href="http://www.cnblogs.com/2050/p/4198792.html" target="_blank" rel="noopener">http://www.cnblogs.com/2050/p/4198792.html</a></p>
+<p>文件流<br>nodejs中流(stream)的理解 <a href="http://segmentfault.com/a/1190000000519006" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000519006</a><br>Node.js Stream（流）的学习笔记 <a href="http://www.it165.net/pro/html/201406/15924.html" target="_blank" rel="noopener">http://www.it165.net/pro/html/201406/15924.html</a><br>Node 中的流（Stream） <a href="http://segmentfault.com/a/1190000000357044" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000357044</a></p>
+<p>Promise</p>
+<p>深入理解Promise实现细节 <a href="http://segmentfault.com/a/1190000002591145" target="_blank" rel="noopener">http://segmentfault.com/a/1190000002591145</a><br>Promise实现原理 <a href="http://www.tuicool.com/articles/fe6Jbyz" target="_blank" rel="noopener">http://www.tuicool.com/articles/fe6Jbyz</a><br>异步编程 promise模式 的简单实现 <a href="http://segmentfault.com/a/1190000003028634" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003028634</a><br><a href="http://sentsin.com/web/861.html" target="_blank" rel="noopener">http://sentsin.com/web/861.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/11/11/Gulp/" data-id="cjdu4wpva000ichwr97rrx6f0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/02/webpack/" class="article-date">
+  <time datetime="2016-11-02T03:06:16.000Z" itemprop="datePublished">2016-11-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/02/webpack/">webpack</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| webapck介绍、优点与缺点<br>| AMD、CMD、CommonJS模式<br>| require()、define()、export()<br>| requires.ensure(): 用来按需加载，将文件使用时在进行加载<br>| vendor: 将库、框架文件与业务分离分别打包<br>| entry: 入口<br>| output: 打包输出<br>| loader: 加载器<br>| reslove: 依赖文件<br>| plugins: 插件<br>| webpack-dev-server: 本地服务器，可以设置代理，用来前后端分离跨域</p>
+<h4 id="webpack介绍"><a href="#webpack介绍" class="headerlink" title="webpack介绍"></a>webpack介绍</h4><pre><code>一、webpack是模块加载 和 打包合为一体的工具，可以加载所有的资源都是模块(js,css,图片等)
+
+    1、webpack的优势: 对 CommonJS 、AMD 、ES6的语法做了兼容; 对js、css、图片等资源文件都支持打包; 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间;
+
+    2、文件配置 - 在项目的根目录创建三个或多个webpack配置文件，我们创建两个: 
+
+        webpack.dev.config.js -&gt; 开发环境中用到的配置文件
+        webpack.pub.config.js -&gt; 生产环境中用到的配置文件
+</code></pre><h4 id="webpack用法"><a href="#webpack用法" class="headerlink" title="webpack用法"></a>webpack用法</h4><pre><code>一、定义模块
+
+    define(&apos;&apos;, function(){})
+
+    require.ensure()
+
+    直接使用ES6模块语法
+
+
+二、加载模块
+
+    var cat = require(&apos;./cat.js&apos;)     // 普通加载模块 webpack默认加载
+
+    import cat form &apos;./cat&apos;            // ES6写法需要安装bable-loader
+
+
+三、导出接口  module.exports = &apos;...&apos;;
+
+    cats.js  创建一个模块
+        var cats = [&apos;dave&apos;, &apos;henry&apos;, &apos;martha&apos;];
+        module.exports = cats;
+
+    app.js 入口
+        let cats = require(&apos;./cats.js&apos;);
+        console.log(cats);
+</code></pre><h4 id="入口-Entry"><a href="#入口-Entry" class="headerlink" title="入口 Entry"></a>入口 Entry</h4><pre><code>// 单入口
+module.exports = {
+    entry: {
+        main: &apos;./src/main.js&apos;
+    }
+}
+
+// 多入口
+module.exports = {
+    entry: {
+        app: [&quot;./home.js&quot;, &quot;./events.js&quot;]
+        /* 也可以写成
+        * app: &quot;./home.js&quot;, 
+        * events: &quot;./events.js&quot;
+        */
+    }
+}
+
+// 多入口，app(应用主入口)，vendors(公共库)入口
+module.exports = {
+    entry: {
+        app: &apos;./src/main.js&apos;,
+        vendors: &apos;./src/jquery.js&apos;
+    }
+}
+</code></pre><h4 id="出口-Output"><a href="#出口-Output" class="headerlink" title="出口 Output"></a>出口 Output</h4><pre><code>一、配置 output 选项可以控制 webpack 如何向硬盘写入编译文件
+
+    1、path: 目标输出的目录，绝对路径
+
+    2、filename: 用于输出文件的文件名
+
+    3、publicPath: 指定了你在浏览器中用什么地址来引用你的静态文件，它会包括你的图片、脚本以及样式加载的地址，一般用于线上发布以及CDN部署的时候使用。
+
+        将publicPath设置成了http://rynxiao.com/assets/，其中设置到了插件的一些东西，这点下面会讲到，总之这个插件的作用是生成了上线发布时候的首页文件，其中script中引用的路径将会被替换。
+
+        html生成 &lt;script src=&quot;http://rynxiao.com/assets/main.bundle.js&quot;&lt;/script&gt;
+
+    4、chunkFilename  用于模块中采用代码分割
+
+        id: 会被对应块的id替换
+        name: 会被对应块的name替换
+        hash: 会被文件hash替换
+        chunkhash: 会被文件hash替换
+        output : {
+            path : &apos;./assets/&apos;,
+            filename : &apos;[name].[hash].bundle.js&apos;,
+            chunkFilename: &quot;chunk/[chunkhash].chunk.js&quot;
+        }
+
+    Example:
+
+        const path = require(&apos;path&apos;);
+        module.exports = {
+            output: {
+                path: path.resolve(__dirname, &apos;./dist&apos;),
+                publicPath: &apos;/dist/&apos;,
+                filename: &apos;my-first-bundle.js&apos; 
+            }
+        }
+
+
+二、多个入口的输出
+
+    写入到硬盘: ./dist/app.js, ./dist/search.js
+    {
+        entry: {
+            app: &apos;./src/app.js&apos;,
+            search: &apos;./src/search.js&apos;
+        },
+        output: {
+            filename: &apos;[name].js&apos;,
+            path: __dirname + &apos;/dist&apos;
+        }
+    }
+
+
+三、使用CDN和资源hash
+
+    output: {
+        filename: &apos;[name].js?[hash]&apos;,            // 生成后会在&lt;script&gt;引用的加入hash来
+        path: &quot;/home/proj/cdn/assets&quot;,
+        publicPath: &quot;http://cdn.example.com/assets&quot;
+    }
+</code></pre><h4 id="第三方库与业务文件处理"><a href="#第三方库与业务文件处理" class="headerlink" title="第三方库与业务文件处理"></a>第三方库与业务文件处理</h4><pre><code>业务代码和第三方代码分离，这时候会把他们都压缩到一个文件中，使这个js文件比较大，并且跳转到另一个地址也还会重新加载这些公用的文件
+
+Example: 
+
+    对引用的jquery单独提取
+
+    1、import $ from &apos;jquery&apos;;     // js中引用的jquery, 先npm i jquery下载包
+
+    2、webpack.config.js
+
+        // 入口文件
+        entry: {
+            app: path.resolve(__dirname, &apos;web/js/index.js&apos;),
+            vendor: [&apos;jquery&apos;]
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;,
+            chunkFilename: &quot;[name].min.js?[hash]&quot;
+        },
+
+        plugins: [
+            // 将在html文件中添加&lt;script&gt;引用，并生创建到指定的目录中
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,
+                filename: &apos;./web/index.html&apos;,
+                template: &apos;./web/index.html&apos;,
+                chunks: [&apos;app&apos;, &apos;vendor&apos;],            // 这里要把vendor依赖的文件加上，不然生成的html只有引用app.min.js，不会引用jquery.vendor.js
+                inject: true,
+                hash: true
+            }),
+
+            // 拆分插件
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendor&apos;,                            // 上面入口定义的节点组
+                filename: &apos;jquery.vendor.js?[hash]&apos;     //最后生成的文件名
+            }),
+        }
+</code></pre><h4 id="加载器-Loader"><a href="#加载器-Loader" class="headerlink" title="加载器 Loader"></a>加载器 Loader</h4><pre><code>将所有引用资源(.css、.html、.scss、.jpg)作为模块处理，webpack loader文件添加到依赖中，将其转换成模块.
+module: {
+    loaders: [
+        { test : /\.js\.jsx$/, loader : &apos;babel&apos; },
+    ]
+}
+</code></pre><h4 id="给文件加hash"><a href="#给文件加hash" class="headerlink" title="给文件加hash"></a>给文件加hash</h4><pre><code>只需要给output的文件的后面加上?[hash]
+
+output: {
+    path: buildPath,
+    filename: &apos;[name].js?[hash]&apos;
+}
+</code></pre><h4 id="require-ensure按需加载"><a href="#require-ensure按需加载" class="headerlink" title="require,ensure按需加载"></a>require,ensure按需加载</h4><pre><code>require()与require.ensure()加载的不同
+
+1、require(): AMD加载规范，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数
+
+2、require.ensure(): requi.ensure的依赖模块只会被先下载下来，但不会被执行，会将require.ensure()内加载的模块合成一个文件，在
+
+    如果webpack打包会将所有资源加到一个文件中，这样会使这个文件变的很大，require.ensure()来对加载的资源单独打包
+
+    require.ensure([], function(require) {
+        var dialog = require(&apos;./components/dialog&apos;);
+        // todo ...
+    });
+
+    CommonsChunkPlugin插件对指定的chunks进行公共模块的提取。我们指定好生成文件的名字，以及想抽取哪些入口js文件的公共代码，webpack就会自动帮我们合并好
+
+    webpack.config.js中配置
+
+        var chunks = Object.keys(entries);
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendors&apos;,             // 将公共模块提取，生成名为`vendors`的chunk
+                chunks: chunks,
+                minChunks: chunks.length     // 提取所有entry共同依赖的模块
+            })
+        ]
+
+http://blog.csdn.net/zhbhun/article/details/46826129
+https://segmentfault.com/a/1190000007775743
+</code></pre><h4 id="webpack安装-ES6开发"><a href="#webpack安装-ES6开发" class="headerlink" title="webpack安装 + ES6开发"></a>webpack安装 + ES6开发</h4><pre><code>1、$ npm install webpack --save        // 安装webpack, 指定版本 npm i webpack@1.2.x --save
+
+2、安装babel-loader相关插件
+
+   $ npm install babel-loader babel-core babel-preset-es2015 --save-dev
+
+3、webpack.config.js文件配置
+
+    var Webpack = require(&quot;webpack&quot;);
+    var path = require(&apos;path&apos;);
+
+    module.exports = {
+        entry: &quot;./js/main.js&quot;,
+
+        output: {
+            path: &apos;./dist/&apos;,
+            filename: &quot;[name].min.js&quot;
+        },
+
+        module: {
+            loaders: [
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: &apos;babel-loader&apos;, // &apos;babel-loader&apos; is also a valid name to reference 
+                    query: {
+                        presets: [&apos;es2015&apos;]
+                    }
+                }
+            ]
+        }
+    }
+</code></pre><h4 id="webpack-webpack-dev-server-ES6-构建单-多入口项目基础配置"><a href="#webpack-webpack-dev-server-ES6-构建单-多入口项目基础配置" class="headerlink" title="webpack + webpack-dev-server + ES6 构建单/多入口项目基础配置"></a>webpack + webpack-dev-server + ES6 构建单/多入口项目基础配置</h4><pre><code>webpack-dev-server - 可以创建一个本地服务，并能设置代理服务，并且能够实时重新加载
+
+一、创建项目目录和基础配置文件
+
+    // 创建项目目录并进行目录
+    $ mkdir webpack_base_demo &amp;&amp; cd webpack_base_demo      
+
+    // 创建文件
+    $ touch README.md  .gitignore  .babelrc  webpck-config.js
+
+    // 创建package.json
+    $ npm init                                 
+
+    // 配置.babelrc文件
+    {
+        &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;, &quot;stage-0&quot;],
+        &quot;plugins&quot;: []
+    }
+
+
+二、安装webpack、webpack-dev-server
+
+    $ npm i webpack webpack-dev-server --save-dev
+
+
+三、安装插件
+
+    // 如果使用react框架来做项目，先下载包
+    $ npm i --save react react-dom
+
+    // 使用Babel-loader来解析es6和jsx
+    $ npm i babel-loader babel-core
+
+    $ npm i babel-preset-es2015 babel-preset-react babel-preset-stage-0
+
+    // jsx转换
+    $ npm i jsx-loader --save
+
+    // 解析样式文件
+    $ npm install style-loader css-loader less-loader sass-loader    
+
+
+四、其它插件
+
+    1、html-webpack-plugin 解析html模板
+
+        将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+
+        $ npm i html-webpack-plugin
+
+
+    2、extract-text-webpack-plugin 单独打包css文件
+
+        $ npm i extract-text-webpack-plugin
+
+
+    3、open-browser-webpack-plugin   自动打开浏览器
+
+        $ npm i open-browser-webpack-plugin
+
+        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+        plugin: [
+          new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
+        ]
+
+    4、webpack-spritesmith   雪碧图
+
+        $ npm i webpack-spritesmith
+
+        https://www.cnblogs.com/weiweisuo/p/6912740.html
+
+
+五、创建webpack.config.js、webpack.production.config配置文件
+
+    webpack.config.js 开发环境所用配置文件
+    webpack.pub.config.js  生产环境所用配置文件
+
+    二者区别: 
+
+        webpack.config.js 开发时使用启用server, webpack.production.config.js 打包构建时使用不需要启动server，直接将代码执行到build目录
+
+    // 创建配置文件
+    $ touch webpack.config.js webpack.production.config.js
+
+
+    /**
+     * User: siguang
+     * Date: 2016/12/28
+     * Time: 15:04
+     */
+    let webpack = require(&apos;webpack&apos;);
+    let path = require(&apos;path&apos;);
+    let HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+    // let ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;); // 单独打包CSS
+    let openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+
+    /*  文件路径配置 */
+    let basePath = __dirname;
+    let appPath = path.resolve(basePath, &apos;src&apos;);
+    let buildPath = path.resolve(basePath, &apos;build&apos;);
+
+    /* libs 目录下的库文件 */
+    let libsPath = path.resolve(basePath, &apos;src/libs&apos;);
+    let jquery = path.resolve(libsPath, &apos;jquery.min&apos;)
+
+    // webpack配置对象
+    module.exports = {
+
+        // 入口文件
+        entry: {
+            app: path.resolve(appPath, &apos;js/index.js&apos;),
+            list: path.resolve(appPath, &apos;js/list.js&apos;)
+        },
+
+        // 出口文件
+        output: {
+            path: buildPath,
+            filename: &apos;/js/[name].min.js?[hash]&apos;,
+            chunkFilename: &quot;[name].min.js?[hash]&quot;
+        },
+
+        // 加载器配置
+        module: {
+            loaders: [
+
+                // 处理require()引入的css文件，并将代码显示到页面的&lt;style|中
+                { test: /\.css$/, loader: &quot;style-loader!css-loader&quot; },
+
+                // 将jsx文件转成js文件
+                { test: /\.js$/, loader: &apos;jsx-loader?harmony&apos;},
+
+                // 将scss文件转成css文件
+                { test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;},
+
+                // ?limit=8192  limit设置小于8k的图片转成64位编码，大小8于不会被转码
+                { test: /\.(png|jpg|woff|eot|ttf|svg|gif)$/, loader: &apos;url-loader?limit=8192&apos;},
+
+                // ES6 转 ES5
+                {    
+                    test: /\.js?$/,
+                    loader: &apos;babel-loader&apos;,
+                    query: {
+                        presets: [&apos;es2015&apos;]
+                    }
+                }   
+            ]
+        },
+
+        // 插件
+        plugins: [
+
+            // 压缩打包的文件
+            // new webpack.optimize.UglifyJsPlugin({
+            //     compress: {
+            //         //supresses warnings, usually from module minification
+            //         warnings: false
+            //     }
+            // }),
+
+            // 将vendor中的库合并到一起
+            new webpack.optimize.CommonsChunkPlugin({
+                name: jquery,
+                filename: &apos;jquery.bundle.js&apos;
+            }),      
+
+            // html
+            new HtmlWebpackPlugin({
+                // 改变页面的&lt;title|标签的内容 
+                title: &apos;Hello World app&apos;,                   // 页面调用&lt;%= htmlWebpackPlugin.options.title %|
+                // 模版地址
+                template: path.resolve(appPath, &apos;index.html&apos;),
+                // 构建后的文件名和目录
+                filename: &apos;index.html&apos;,
+                //chunks这个参数告诉插件要引用entry里面的哪几个入口
+                chunks:[&apos;app&apos;,&apos;vendor&apos;],
+                //要把script插入标签里
+                inject:&apos;body&apos;
+            }),
+
+            new HtmlWebpackPlugin({
+                // 改变页面的&lt;title|标签的内容 
+                title: &apos;Hello World appList&apos;, 
+                // 模版地址
+                template: path.resolve(appPath, &apos;list.html&apos;),
+                // 构建后的文件名和目录
+                filename: &apos;list.html&apos;,
+                //chunks这个参数告诉插件要引用entry里面的哪几个入口
+                chunks:[&apos;list&apos;,&apos;vendor&apos;],
+                //要把script插入标签里
+                inject:&apos;body&apos;
+            }),
+
+            // css
+            // new ExtractTextPlugin(&quot;[name].css?[hash]&quot;),
+
+            // 热启动
+            new webpack.HotModuleReplacementPlugin(),
+
+            // 自动开启浏览器
+            new openBrowserWebpackPlugin({ url: &apos;http://localhost:5000&apos; })
+        ],
+
+        // 查找依赖
+        resolve:{
+
+            // require或alias时不需要写后缀
+            extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.css&quot;, &quot;.json&quot;],
+        },
+
+        // webpack-dev-server 配置
+        devServer: {
+            port: 5000,                 // 端口
+            contentBase: &apos;build&apos;,       // 内容目录
+            hot: true,                    // 热刷新
+            inline: true,
+            // proxy: [                 // 设置代理服务器
+            //     {
+            //         path: [&quot;/api&quot;,&quot;/user&quot;], //
+            //         target: &quot;http://10.20.1.8:3002/&quot;, // 转发的服务器地址
+            //         // rewrite: rewriteUrl(&apos;/$1\.json&apos;),
+            //         changeOrigin: true
+            //     }
+            // ]
+        }
+    }
+
+
+六、启动服务
+
+    &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;webpack-dev-server --hot --inline&quot;,
+        &quot;build&quot;: &quot;webpack --progress --profile --colors --config webpack.production.config.js&quot;
+    },
+
+    通过npm中的scripts来配置npm启动项
+
+    npm run start        // 开发环境下启动
+
+        localhost://5000             // 访问的index.html
+        localhost://5000/list.html     // 访问的list.html
+
+    npm run build         // 开发完成后上线前，将开发代码构建到build目录的生成目录
+
+
+七、 webpack-dev-server要执行参数
+
+    webpack-dev-server - 在 localhost:8080 建立一个 Web 服务器
+
+    webpack-dev-server --devtool eval - 为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号
+
+    webpack-dev-server --progress - 显示合并代码进度
+
+    webpack-dev-server --colors - 命令行中显示颜色
+
+    webpack-dev-server --content-base build  // webpack-dev-server服务会默认以当前目录伺服文件，如果设置了content-base的话，服务的根路径则为build目录
+
+    webpack-dev-server --inline  可以自动加上dev-server的管理代码，实现热更新
+
+    webpack-dev-server --hot  开启代码热替换，可以加上HotModuleReplacementPlugin
+
+    webpack-dev-server --port 3000 设置服务端口
+</code></pre><h4 id="CommonJS，AMD，CMD区别"><a href="#CommonJS，AMD，CMD区别" class="headerlink" title="CommonJS，AMD，CMD区别"></a>CommonJS，AMD，CMD区别</h4><pre><code>Commonjs是用在服务器端的，同步的，如nodejs 
+
+AMD、CMD是用在浏览器端的，异步的，如requirejs和seajs 
+
+一、模块
+
+    ES2015 - import 语句
+    CommonJS - require() 语句
+    AMD define 和 require 语句
+    css/sass/less - 文件中的 @import 语句
+
+二、CommonJS
+
+    CommonJS 是服务器端模块的规范，Node.js采用了这个规范。
+
+    一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。
+
+    Example: 
+
+        // 私有变量
+        var test = 123; 
+
+        // 公有方法 
+        function foobar () { 
+            this.foo = function () { 
+                // do someing ... 
+            } 
+            this.bar = function () { 
+                //do someing ... 
+            } 
+        } 
+
+        // exports对象上的方法和变量是公有的 
+        var foobar = new foobar(); 
+        exports.foobar = foobar;         // module.exports 与 exports
+
+        // require方法默认读取js文件，所以可以省略js后缀 
+        var test = require(&apos;./boobar&apos;).foobar; 
+        test.bar(); 
+
+三、AMD
+
+    RequireJS使用的AMD模式，异步加载模块    
+
+    // 定义模块
+    define([&apos;依赖文件&apos;], function(md){
+        let person = ()=&gt;{
+            console.log(&apos;这里是模块方法&apos;)
+        }
+
+        // 模块的对外接口
+        return person;
+
+    })
+
+    // AMD规范允许输出模块兼容CommonJS规范，这时define方法如下:  
+    define(function (require, exports, module) {      
+        var reqModule = require(&quot;./someModule&quot;); 
+        requModule.test(); 
+
+        exports.asplode = function () { 
+            //someing 
+        } 
+    }); 
+
+四、CMD模式
+
+    SeaJS使用的CMD模式，CMD与AMD的区别: 
+
+        1）依赖模块AMD先执行，这样js可以方便知道依赖模块是谁，立即加载;
+
+        2）CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。
+
+    define(function (requie, exports, module) {     // 注意 requie, exports, module 参数名称不能变
+
+        //依赖可以就近书写 
+        var a = require(&apos;./a&apos;); 
+        a.test(); 
+
+        ... 
+        //软依赖 
+        if (status) { 
+
+            var b = requie(&apos;./b&apos;); 
+            b.test(); 
+        } 
+
+        // 模板对外接口中
+        exports.getApp = function(){
+            ...
+        }
+    }); 
+
+五、ES6 模块
+
+    import $ from &quot;jquery&quot;;
+    export function doStuff() {}
+    module &quot;localModule&quot; {}
+
+六、除了JS，加载其它静态文件
+
+    样式、图片、web字体、html模板，还可以加载一些预处理: coffeescript =| javascript、less =| css、jade =| 生成模板html
+    require(&apos;./style.css&apos;);
+    require(&apos;./style.less&apos;);
+    require(&apos;./template.jade&apos;);
+    require(&apos;./image.png&apos;);
+</code></pre><h4 id="webpack安装和执行命令"><a href="#webpack安装和执行命令" class="headerlink" title="webpack安装和执行命令"></a>webpack安装和执行命令</h4><pre><code>一、webpack命令参数
+
+    1、webpack            // 最基本的启动webpack命令
+
+    2、webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
+
+    3、webpack -w         // 提供watch方法，实时进行打包更新 相当于 -watch 
+
+    4、webpack -p         // 对打包后的文件进行压缩
+
+    5、webpack -d         // 提供SourceMaps，方便调试
+
+    6、webpack --colors     // 输出结果带彩色，比如: 会用红色显示耗时较长的步骤
+
+    7、webpack --profile // 输出性能数据，可以看到每一步的耗时
+
+    8、webpack --display-modules     // 默认情况下 node_modules 下的模块会被隐藏，加上这个参数可以显示这些被隐藏的模块
+
+    9、webpack --progress --colors   // 展示一些进度条，同时增加颜色
+
+    10、webpack --display-error-details    // 打印出错在哪个文件和行
+
+
+二、--save-dev和--save的不同
+
+    --save-dev: 写到了 devDependencies 对象里，devDependencies是只在开发时需要依赖
+
+    --save: 写到了 dependencies 对象里是运行时被使用
+
+    1、npm install --save jquery  
+
+    2、src/app.js
+
+        import &apos;babel-polyfill&apos;;
+        import cats from &apos;./cats&apos;;
+        import $ from &apos;jquery&apos;;            
+
+        # 这里去找的就是dependencies对象内，会将jquery文件与业务打包到一起
+
+        $(&apos;&lt;h1|Cats&lt;/h1|&apos;).appendTo(&apos;body&apos;);
+        const ul = $(&apos;&lt;ul|&lt;/ul|&apos;).appendTo(&apos;body&apos;);
+        for (const cat of cats) {
+            $(&apos;&lt;li|&lt;/li|&apos;).text(cat).appendTo(ul);
+        }
+</code></pre><h4 id="插件类"><a href="#插件类" class="headerlink" title="插件类"></a>插件类</h4><pre><code>一、自动刷新
+
+    webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式。
+
+    1、iframe模式: 页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载;使用iframe模式无需额外的配置，只需在浏览器输入以下地址: http://localhost:8080/webpack-dev-server/index.html
+
+    2、inline模式: 一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面。
+
+    以下三种配置都可以实现页面的刷新效果: 
+
+        // 1.启动webpack-dev-server的时候带上inline参数
+        webpack-dev-server --inline
+
+        // 2.给HTML插入JS
+        &lt;script src=&quot;http://localhost:3000/webpack-dev-server.js&quot;|&lt;/script|
+
+        // 3.webpack配置
+        entry: [
+            &apos;webpack-dev-server/client?http://localhost:3000&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ]
+
+
+二、HotMooduleReplacementPlugin()热替换
+
+    webpac-dev-server支持模块热替换，在前端代码变动的时候无需整个刷新页面，只把变化的部分替换掉。使用HMR功能也有两种方式: 命令行方式和Node.js API。
+
+    1、cli命令行方式  webpack-dev-server --inline --hot
+
+    2、Node.js API方式
+
+        entry: [
+            &apos;webpack/hot/dev-server&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ],
+        devServer: {
+            hot: true
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin(),
+        ]
+
+
+三、html-webpack-plugin 解析html模板
+
+    插件将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+
+    $ npm i html-webpack-plugin
+
+    $ const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);            // 引用插件
+
+    1、单入口配置
+
+        // 这里省略其他配置代码
+        plugins: [
+            // 使用这个plugin，这是最简单的一个配置，更多资料可到github查看
+            new HtmlWebpackPlugin({
+                title: &apos;zhufeng-react&apos;,
+                template: &apos;./src/index.html&apos;,
+            })
+        ]
+
+    2、多入口配置
+
+        会将两个入口分别对html文件进行加载指定的入口js文件
+
+        // 入口文件
+        entry: {
+            app: &apos;./web/js/index.js&apos;,
+            list: &apos;./web/js/list.js&apos;
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;
+        },
+
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,                    // 生成html文档的标题
+                filename: &apos;./web/index.html&apos;,    // 输出文件名称
+                template: &apos;./web/index.html&apos;,    // 本地模板的位置，支持(handlebars、ejs、undersore、html)
+                chunks: [&apos;app&apos;],                // 对应的入口entry, 也可以是数组[&apos;app&apos;, &apos;list&apos;]
+                inject: true,                    // 向template中注入所有静态资源
+                hash: true                        // 为静态资源添加webpack每次编译产生的唯一hash值， &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
+            }),
+            new HtmlWebpackPlugin({
+                title: &apos;list&apos;,
+                filename: &apos;./web/list.html&apos;,
+                template: &apos;./web/list.html&apos;,
+                chunks: [&apos;list&apos;],
+                inject: true,
+                hash: true
+            })
+        ]
+
+    https://segmentfault.com/q/1010000009810148
+    https://www.cnblogs.com/wonyun/p/6030090.html
+
+
+四、extract-text-webpack-plugin 单独打包css文件
+
+    $ npm i extract-text-webpack-plugin
+
+
+五、open-browser-webpack-plugin   资源构建成功后自动打开浏览器 --- 已可以在命令中配置
+
+    1、package.json中加 --open，与使用此插件相同
+
+        &quot;scripts&quot;: {
+            &quot;start&quot;: &quot;webpack-dev-server --hot --inline --open&quot;,
+        }
+
+
+    2、$ npm install open-browser-webpack-plugin --save-dev
+
+        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+        plugin: [
+            new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
+        ]
+
+
+六、CSS Module
+
+    webpack 的 css-loader 是解决这个问题的最好办法之一。简单配置一下: 
+    module: {
+      loaders: [{
+        test: /\.css$/,
+        loaders: [
+          &apos;style-loader&apos;,
+          &apos;css-loader?modules&amp;localIdentName=[name]__[local]___[hash:base64:5]&apos;,
+          &apos;postcss-loader&apos;
+        ]
+      }]
+    },
+    postcss: [
+      require(&apos;postcss-nested&apos;)(),
+      require(&apos;cssnext&apos;)(),
+      require(&apos;autoprefixer-core&apos;)({ browsers: [&apos;last 2 versions&apos;] })
+    ]
+
+
+七、UglifyJs Plugin 压缩资源
+
+    var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+
+    plugins: [
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.MinChunkSizePlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        // 查找相等或近似的模块，避免在最终生成的文件中出现重复的模块
+        new webpack.optimize.DedupePlugin(),
+        // 按引用频度来排序 ID，以便达到减少文件大小的效果
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin({
+            minSizeReduce: 1.5,
+            moveToParents: true
+        })
+    ]
+
+
+八、clean-webpack-plugin 清除文件夹
+
+    $ npm install clean-webpack-plugin --save-dev
+
+    webpack.config.js:
+
+        const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);
+
+        plugins: [
+            new CleanWebpackPlugin([&apos;dist&apos;]),
+            new HtmlWebpackPlugin({
+                title: &apos;Output Management&apos;
+            })
+        ]
+
+
+九、暴露全局对象
+
+    如果想将report数据上报组件放到全局，有两种办法: 
+
+    方法一: 
+    在loader里使expose将report暴露到全局，然后就可以直接使用report进行上报
+    {
+        test: path.join(config.path.src, &apos;/js/common/report&apos;),
+        loader: &apos;expose?report&apos;
+    }
+
+    方法二: 
+    如果想用R直接代表report，除了要用expose loader之外，还需要用ProvidePlugin帮助，指向report，这样在代码中直接用R.tdw， R.monitor这样就可以
+    new webpack.ProvidePlugin({
+        &quot;R&quot;: &quot;report&quot;,
+    })
+</code></pre><p>| <a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="noopener">https://doc.webpack-china.org/concepts/</a>        webpack中文网<br>| <a href="http://www.css88.com/doc/webpack2/loaders/raw-loader/" target="_blank" rel="noopener">http://www.css88.com/doc/webpack2/loaders/raw-loader/</a><br>| <a href="http://liunian.github.io/webpack-doc/" target="_blank" rel="noopener">http://liunian.github.io/webpack-doc/</a><br>| <a href="http://www.imooc.com/article/10965" target="_blank" rel="noopener">http://www.imooc.com/article/10965</a><br>| <a href="https://zhuanlan.zhihu.com/FrontendMagazine?topic=%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/FrontendMagazine?topic=%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91</a><br>| <a href="http://blog.csdn.net/keliyxyz/article/details/51527476" target="_blank" rel="noopener">http://blog.csdn.net/keliyxyz/article/details/51527476</a><br>| <a href="http://cnodejs.org/topic/57528759adc77ac170409e79" target="_blank" rel="noopener">http://cnodejs.org/topic/57528759adc77ac170409e79</a><br>| <a href="http://blog.csdn.net/xiaozhuxmen/article/details/51597923" target="_blank" rel="noopener">http://blog.csdn.net/xiaozhuxmen/article/details/51597923</a><br>| <a href="http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2" target="_blank" rel="noopener">http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2</a>   // output.filename 和output.chunkFilename<br>| <a href="http://www.jianshu.com/p/8adf4c2bfa51" target="_blank" rel="noopener">http://www.jianshu.com/p/8adf4c2bfa51</a><br>| <a href="http://www.alloyteam.com/2016/02/code-split-by-routes/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/02/code-split-by-routes/</a>  按需加载<br>|<br>| 插件<br>| <a href="http://www.cnblogs.com/haogj/p/5160821.html" target="_blank" rel="noopener">http://www.cnblogs.com/haogj/p/5160821.html</a>     // html-webpack-plugin html多页面构建<br>|<br>| 热更新<br>| <a href="https://github.com/gaearon/react-hot-loader" target="_blank" rel="noopener">https://github.com/gaearon/react-hot-loader</a>    // react<br>| <a href="https://github.com/vuejs/vue-loader" target="_blank" rel="noopener">https://github.com/vuejs/vue-loader</a>            // vue</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/11/02/webpack/" data-id="cjdu4wpxx0034chwrcxhl9rwg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-VueJS之-“Vuex篇“（四）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/26/VueJS之-“Vuex篇“（四）/" class="article-date">
+  <time datetime="2016-10-26T02:40:24.000Z" itemprop="datePublished">2016-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/26/VueJS之-“Vuex篇“（四）/">VueJS之-“Vuex篇“（四）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><pre><code>Vuex借鉴了Flux和Redux设计思想.
+
+优点:
+    Vue组件父子之间通过$on、$emit自定义事件来进行通信
+    Vuex可以解决同级组件之间无法传递消息
+</code></pre><h4 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h4><pre><code>Store: 定义仓库，包含state对象，组件通过getter从store读取数据，通过Getter
+
+核心模块:
+
+    1、state: 定义存储状态
+
+    2、getter: 对数据进行过滤，获取state数据，在计算属性中获取state的值
+
+    3、mutation: 更改 Vuex 的 store 中的state值的唯一方法是提交 mutation
+
+    4、action: 类似于 mutation，不同在于可以包含任意异步操作，Action通过commit()方法来调用mutation中的方法在改变来改变state的值，而不是直接改变state中的值
+
+            分发Action: store.dispatch()方法触发
+
+    5、modules: 如果应用过大，便可以使用 modules 来分割管理，不至于 store 变得非常臃肿
+
+
+模块示例详解:
+
+一、state: 
+
+    用来存储数据，如果在组件中获取state中的数据，可以通过两种方法来获取: 计算属性computed 和 Getters
+
+    在组件中显示state值可以通过computed来获取:
+
+        &lt;template&gt;
+            &lt;div class=&quot;box&quot;&gt;
+                {{getSideData}}
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        方法1: 计算属性中获取
+
+        computed: {
+            getSideData () {
+                return this.$store.state.sideData;            // 当getSideData的值改变就会显示出来
+            }
+        }
+
+
+        方法2: mapState函数获取
+
+        import { mapState } from &apos;vuex&apos;;        // 引用mapState()
+
+        export default {
+            name: &apos;side&apos;,
+            computed: {
+                ...mapState({    // 对象展开运算符
+                    getSideData: (state) =&gt; {
+                        return state.sideData
+                    }
+                })
+            }
+        }
+
+        getters.js
+            export const sideData = (state) =&gt; {
+                return state.sideData;
+            } 
+
+
+2、Getter
+
+    获取state中数据的第二种方法
+
+    getters.js中定义获取state的方法: 
+
+        export const sideData = (state) =&gt; {
+            return state.sideData;
+        }
+
+    组件中调用
+
+        1）computed方式
+
+            computed: {
+                getSideData(){
+                    return this.$store.getters.sideData;        // $store.getters下找到定义的sideDap
+                }
+            }
+
+        2）通过mapGetters获取
+
+            &lt;template&gt;
+                &lt;div&gt;{{ getSideData }}&lt;/div&gt;
+            &lt;/tempate&gt;
+
+            import { mapState, mapGetters } from &apos;vuex&apos;;
+
+            computed: {
+                ...mapGetters({
+                    getSideData: &quot;sideData&quot;            // 映射到getters.js中定义的sideData, 并将数据返回给getSideData
+                })
+            }
+
+3、Mutations
+
+    用来更改Vuex中state的数据，它是同步的
+
+    1、commit()触发Action, Action触发mutation
+
+        定义mutations 
+
+            export default {
+                changeSideData(state, sideJson){
+                    state.sideData.push(sideJson)
+                }
+            }
+
+        触发
+            methods:{
+                addSideData(){
+                    let side = {
+                        id: 1,
+                        name: this.name,
+                        introduce: this.introduce
+                    }
+                    this.$store.commit(&apos;changeSideData&apos;, side);
+                }
+            }
+
+
+    2、使用mapMutations() 来定义改变
+
+
+4、Actions
+
+    Actions提交到 Mutations中，而不能直接改变state的值
+
+    Actions可以包含异步操作，Mutations是同步的
+
+    1）Example
+
+        定义actions
+
+            export const holderSilde = ({commit}, {name, introduce}) =&gt; {    
+                // {name, introduce} 这里注意一定对象传过来，这里为解析赋值写法，函数不接收第三个参数
+                var side = {
+                    id: 1,
+                    name: name,
+                    introduce: introduce
+                }
+                commit(&apos;changeSideData&apos;, side)
+            }
+
+
+        调用 分发dispatch
+
+            methods:{
+                addSideData(){
+                    // 第二个为传过去的参数
+                    this.$store.dispatch(&apos;holderSilde&apos;, {name: this.name, introduce: this.introduce});
+                }
+            }
+
+
+5、Modules
+
+    Vuex可以将Store分割到各模块，每个模块都有自己的store、mutations、actions、getters
+
+    const moduleA = {
+        state: { ... },
+        mutations: { ... },
+        actions: { ... },
+        getters: { ... }
+    }
+
+    const moduleB = {
+        state: { ... },
+        mutations: { ... },
+        actions: { ... }
+    }
+
+    const store = new Vuex.Store({
+        modules: {
+            a: moduleA,
+            b: moduleB
+        }
+    })
+
+    store.state.a // -&gt; moduleA 的状态
+    store.state.b // -&gt; moduleB 的状态
+</code></pre><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><pre><code>1、App.vue:
+
+    &lt;template&gt;
+        &lt;div&gt;
+            &lt;Display&gt;&lt;/Display&gt;
+            &lt;Increment&gt;&lt;/Increment&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        import Display from &apos;./components/Display.vue&apos;
+        import Increment from &apos;./components/Increment.vue&apos;
+        import store from &apos;./vuex/store&apos;
+
+        export default {
+            components: {
+                Display,
+                Increment
+            },
+            store           // 在根组件加入store
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+    body {
+        font-family: Helvetica, sans-serif;
+    }
+    &lt;/style&gt;
+
+
+2、Display.vue:
+
+    &lt;template&gt;
+        &lt;div&gt;
+            &lt;h3&gt;Count is {{ counterValue }}&lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        import { getCount } from &apos;../vuex/getters&apos;
+
+        export default {
+            vuex: {
+                getters: {
+                    counterValue: getCount
+                }
+            }
+        }
+    &lt;/script&gt;
+
+
+3、Increment.vue
+
+    &lt;template&gt;
+        &lt;div&gt;
+        &lt;button @click=&quot;increment&quot;&gt;Increment +1&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        import { incrementCounter } from &apos;../vuex/action&apos;
+
+        export default {
+
+            vuex: {
+                actions: {
+                    increment: incrementCounter
+                }
+            }
+
+        }
+    &lt;/script&gt;
+
+
+4、main.js
+
+    import Vue from &apos;vue&apos; 
+    import App from &apos;./App.vue&apos;
+
+    new Vue({
+        el: &apos;body&apos;,
+        components: { 
+            App
+        }
+    })
+
+
+5、store.js
+
+    import Vue from &apos;vue&apos;
+    import Vuex from &apos;vuex&apos;
+
+    // 引用vuex
+    Vue.use(Vuex);
+
+    // 启动时的初始状态
+    const state = {
+        // 放置初始化状态
+        count: 0
+    }
+
+    const mutations = {
+        // 放置要变更的函数
+        INCREMENT(state, amount){
+            state.count = state.count + amount;
+        }
+    }
+
+    export default new Vuex.Store({
+        state,
+        mutations
+    })
+
+
+6、action.js
+
+    // action 会收到 store 作为它的第一个参数
+    // 既然我们只对事件的分发（dispatch 对象）感兴趣。（state 也可以作为可选项放入）
+    // 我们可以利用 ES6 的解构（destructuring）功能来简化对参数的导入
+    export const incrementCounter = function ({ dispatch, state }) {
+        console.log(dispatch, state)
+        dispatch(&apos;INCREMENT&apos;, 1)
+    }
+
+
+7、getter.js
+
+    // 这个 getter 函数会返回 count 的值
+    // 在 ES6 里你可以写成: 
+    // export const getCount = state =&gt; state.count
+    export function getCount(state){
+        return state.count;
+    }
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/26/VueJS之-“Vuex篇“（四）/" data-id="cjdu4wpww001ochwr83t54h1g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-VueJS之-“插件篇“（三）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/23/VueJS之-“插件篇“（三）/" class="article-date">
+  <time datetime="2016-10-23T11:19:24.000Z" itemprop="datePublished">2016-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/23/VueJS之-“插件篇“（三）/">VueJS 之 “插件篇“（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| vue-router 路由插件<br>| vue-validator 表单校验插件<br>| vue-resource ajax插件</p>
+<h4 id="外部插件的加载方式"><a href="#外部插件的加载方式" class="headerlink" title="外部插件的加载方式"></a>外部插件的加载方式</h4><pre><code>import Vue from &apos;vue&apos;;                        // 不使用ES6写法: var Vue require(&apos;vue&apos;);      由webpack来解析
+import VueValidator from &apos;vue-validator&apos;    // 引用插件
+
+// 注册插件
+Vue.use(VueValidator);
+</code></pre><h4 id="vue-cli-脚手架"><a href="#vue-cli-脚手架" class="headerlink" title="vue-cli 脚手架"></a>vue-cli 脚手架</h4><pre><code>一、下载
+
+    // 下载最新版本 2.0，一些插件未升级还不能用
+    $ npm install -g vue-cli        
+
+    // 下载之前版本 1.0或其它
+    $ vue init webpack my-project        // vue init webpack-simple#1.0 mynewproject
+
+    // 下载依赖包
+    $ cd my-project 
+    $ npm install
+
+
+二、main.js 入口文件
+
+    import Vue from &apos;vue&apos;
+    import chat from &apos;./components/chat.vue&apos;;
+
+    new Vue({
+        el: &apos;#app&apos;,
+        render: h =&gt; h(chat)         // 调用其它.vue文件必须这么写
+    })
+
+    render: h =&gt; h(chat) 相当于
+
+    render: (function (h) {  
+          return h(App);
+    });  
+
+
+三、不需要代码校验
+
+    在webpack.base.conf.js里面删掉下面:
+
+    preLoaders: [
+        {
+            test: /\.vue$/,
+            loader: &apos;eslint&apos;,
+            include: projectRoot,
+            exclude: [/node_modules/, /ignore_lib/]
+        },
+        {
+            test: /\.js$/,
+            loader: &apos;eslint&apos;,
+            include: projectRoot,
+            exclude: [/node_modules/, /ignore_lib/]
+        }
+    ]
+
+
+四、配置代理服务器进行跨域
+
+    config/index.js
+
+    proxyTable: {
+        &apos;/operate&apos;:{
+            target:&apos;http://192.168.2.155:8079&apos;,
+            changeOrigin: true,            // 只能设置changeOrigin本地会虚拟一个代理服务端，来解决跨域问题
+            pathRewrite:{
+                &apos;^/operate&apos;:&apos;/&apos;
+            }
+        }
+    }
+
+    代码里调用的url，例如 /operate/getUsername 就相当于通过代理调用到 http://192.168.2.155:8079/getUsername
+
+
+五、常用及目录命令
+
+    npm run dev  启动服务   
+
+    npm run build  将开发环境打包到一个dist目录下，用于生产环境
+
+    src: 开发环境目录    static: 静态文件目录
+</code></pre><h4 id="vue-router2-路由"><a href="#vue-router2-路由" class="headerlink" title="vue-router2 路由"></a>vue-router2 路由</h4><pre><code>一、安装调用方式
+
+    $ npm install vue-router --save
+
+    html:
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;!-- &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签 --&gt;
+            &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
+
+            &lt;!-- 加载路由视图 --&gt;
+            &lt;router-view&gt;&lt;/router-view&gt;
+        &lt;/div&gt;
+
+    js:
+        import Vue from &apos;vue&apos;
+        import VueRouter from &apos;vue-router&apos;
+        import login from &apos;./components/login&apos;
+
+        // 将路由插件加载到Vue中
+        Vue.use(VueRouter);
+
+        // 路由映射配置
+        const routes = [
+            { 
+                path: &apos;/login&apos;, 
+                component: login
+            },
+            {
+                path: &apos;/*&apos;,
+                redirect: &apos;/404&apos;        // 重定向
+            }
+        ]
+
+        // 创建路由实例
+        const router = new VueRouter({
+            routes // （缩写）相当于 routes: routes
+        })
+
+        // 创建Vue实例
+        const app = new Vue({
+            el: &apos;#app&apos;,
+            router
+        })
+
+二、路由设置
+
+    1、 {
+            path: &apos;/admin&apos;,
+            component: (resolve) =&gt; require([&apos;../views/admin.vue&apos;], resolve),
+            children: [   // 子路由
+                {
+                    path: &apos;sample&apos;,
+                    name: &apos;sample&apos;,
+                    meta: {
+                        requiresAuth: true
+                    },
+                    component: (resolve) =&gt; require([&apos;../views/contents/pay_router/sample/sampleList.vue&apos;], resolve),
+                }
+            ]
+        }
+
+    2、import main from &apos;../components/main&apos;
+
+        {
+            path: &apos;/main&apos;,
+            name: &apos;main&apos;,
+            component: main
+        }
+
+三、动态路由 - 带参数
+
+    $route.params  获取参数
+
+    const User = {
+        template: &apos;&lt;div&gt;User&lt;/div&gt;&apos;
+    }
+
+    const router = new VueRouter({
+        routes: [
+            // 动态路径参数 以冒号开头
+            { path: &apos;/user/:id&apos;, component: User }
+        ]
+    })
+
+    // 路由参数  /user/:username     匹配/user/evan    $route.params 来取参数  { username: &apos;evan&apos; }
+
+四、路由跳转
+
+    1）router.push(location): js内加路由跳转  router.push({path: &apos;/admin/&apos;})
+
+    2）router.go(n): history历史记录跳转
+
+    &lt;router-link to=&quot;home&quot;&gt;home&lt;/router-link&gt;
+
+五、&lt;router-view&gt; 渲染路由视图组件
+
+    &lt;router-view&gt;&lt;/router-view&gt;
+
+六、重命定向 redirect
+
+    {
+        path: &apos;*&apos;,
+        redirect: function () {
+            return &apos;/admin&apos;;
+        }
+    }
+
+七、History模式
+
+    export default new VueRouter({
+        mode: &apos;history&apos;,
+        routes: [...]
+    })
+
+    mode值:
+
+        hash: 使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器。
+
+        history: 依赖 HTML5 History API 和服务器配置。查看 HTML5 History 模式. （url不会带hash “#“）
+
+        abstract: 支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式
+
+
+八、router 钩子
+
+    1、beforeEach
+
+        var auth = {
+            loggedIn: function () {
+                return localStorage.getItem(KEY_OF_LOGGEDIN) === &apos;true&apos;;
+            }
+        }
+
+        // to: 要进入目录的路由对象
+        // from: 要离开的路由对象
+        // next: function, 用该方法来resolve这个钩子
+        router.beforeEach((to, from, next) =&gt; {
+            if (to.matched.some(record =&gt; record.meta.requiresAuth)) {
+                if (!auth.loggedIn()) {
+                    next({
+                        path: &apos;/login&apos;,
+                        query: {redirect: to.fullPath},
+                    });
+                } else if (auth.requiresAlterPassword()){
+                    next({
+                        path: &apos;/firstLogin&apos;
+                    });
+                } else {
+                    next();
+                }
+            } else {
+                next();
+            }
+        });
+
+
+    2、meta 定义路由的时候可以配置meta字段
+
+        可以通过它来设置不需要判断登录的路由，在beforeEach的时候进行处理
+
+        {
+            path: &apos;/firstLogin&apos;,
+            name: &apos;firstLogin&apos;,
+            meta: {
+                requiresAuth: false
+            },
+            component: (resolve) =&gt; require([&apos;../views/firstLogin.vue&apos;], resolve),
+        }
+
+九、路由对象
+
+    1、$route.path: 当前路由的路径，总是解析为绝对路径，如 &quot;/foo/bar&quot;
+
+    2、$route.params: 获取动态路由的参数
+
+    3、$route.query:  URL 查询参数, 例如，对于路径 /foo?user=1，则有 $route.query.user == 1
+
+    4、$route.hash: 路由的 hash 值 (带 #) ，如果没有 hash 值，则为空字符串。
+
+    5、$route.matched: 
+
+    6、$route.name: 路由的名称
+
+十、路由嵌套
+
+    const User = {
+      template: `
+        &lt;div class=&quot;user&quot;&gt;
+          &lt;h2&gt;User {{ $route.params.id }}&lt;/h2&gt;
+          &lt;router-view&gt;&lt;/router-view&gt;        // 这里嵌套一个路由
+        &lt;/div&gt;
+      `
+    }
+
+    const router = new VueRouter({
+        routes: [
+            { path: &apos;/user/:id&apos;, component: User,
+                children: [
+                {
+                    // 当 /user/:id/profile 匹配成功，
+                    // UserProfile 会被渲染在 User 的 &lt;router-view&gt; 中
+                    path: &apos;profile&apos;,
+                    component: UserProfile
+                },
+                {
+                    // 当 /user/:id/posts 匹配成功
+                    // UserPosts 会被渲染在 User 的 &lt;router-view&gt; 中
+                    path: &apos;posts&apos;,
+                    component: UserPosts
+                }
+                ]
+            }
+        ]
+    })
+</code></pre><h4 id="表单校验插件-vue-validator"><a href="#表单校验插件-vue-validator" class="headerlink" title="表单校验插件 vue-validator"></a>表单校验插件 vue-validator</h4><h4 id="vue-resource-ajax插件"><a href="#vue-resource-ajax插件" class="headerlink" title="vue-resource ajax插件"></a>vue-resource ajax插件</h4><pre><code>一、它提供了两种方式来处理HTTP请求: 
+
+    使用Vue.http或this.$http
+
+    使用Vue.resource或this.$resource
+
+
+二、特点: 支持拦截器
+
+    拦截器是全局的，拦截器可以在请求发送前和发送请求后做一些处理。
+
+    拦截器在一些场景下会非常有用，比如请求发送前在headers中设置access_token，或者在请求失败时，提供共通的处理方式。
+
+
+三、使用方式: 
+
+    1、拦截器  使用inteceptor
+
+    Vue.http.interceptors.push((request, next) =&gt; {
+
+        // 请求发送前的处理逻辑
+        next((response) =&gt; {
+            // 请求发送后的处理逻辑
+            // 根据请求的状态，response参数会返回给successCallback或errorCallback
+            return response
+        })
+    })
+
+
+四、请求类型
+
+    get(url, [options])
+    head(url, [options])
+    delete(url, [options])
+    jsonp(url, [options])
+    post(url, [body], [options])
+    put(url, [body], [options])
+    patch(url, [body], [options])
+
+    &lt;script&gt;
+
+        var demo = new Vue({
+            el: &apos;#app&apos;,
+            data: {
+                gridColumns: [&apos;customerId&apos;, &apos;companyName&apos;, &apos;contactName&apos;, &apos;phone&apos;],
+                gridData: [],
+                apiUrl: &apos;http://211.149.193.19:8080/api/customers&apos;
+            },
+            ready: function() {
+                this.getCustomers();
+            },
+            methods: {
+                getCustomers: function() {
+
+                    // get请求
+                    // then方法只提供了successCallback，而省略了errorCallback。
+                    // catch方法用于捕捉程序的异常，catch方法和errorCallback是不同的，errorCallback只在响应失败时调用，而catch则是在整个请求到响应过程中，只要程序出错了就会被调用。
+
+                    this.$http.get(this.apiUrl)
+                        .then((response) =&gt; {
+
+                            // Vue实例方法，设置gridData属性赋值，并触发视图更新
+                            this.$set(&apos;gridData&apos;, response.data)
+                        })
+                        .catch(function(response) {
+                            console.log(response)
+                        })
+                }
+            }
+        })
+
+    &lt;/script&gt;
+
+5、options对象
+
+    发送请求时的options选项对象包含以下属性: 
+
+    参数             类型                                描述
+    url            string            请求的URL
+
+    method        string            请求的HTTP方法，例如: &apos;GET&apos;, &apos;POST&apos;或其他HTTP方法
+
+    body        Object             FormData string    request body
+
+    params        Object            请求的URL参数对象
+
+    headers        Object            request header
+
+    timeout        number            单位为毫秒的请求超时时间 (0 表示无超时时间)
+
+    before        function(request)    请求发送前的处理函数，类似于jQuery的beforeSend函数
+
+    progress     function(event)      ProgressEvent回调处理函数
+
+    credientials    boolean          表示跨域请求时是否需要使用凭证
+
+    emulateHTTP        boolean          发送PUT, PATCH, DELETE请求时以HTTP POST的方式发送，并设置请求头的X-HTTP-Method-Override
+
+    emulateJSON        boolean          将request body以application/x-www-form-urlencoded content type发送
+</code></pre><p>| <a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://router.vuejs.org/zh-cn/</a><br>| <a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">https://vuex.vuejs.org/zh-cn/</a><br>| <a href="https://github.com/dai-siki/vue-image-crop-upload" target="_blank" rel="noopener">https://github.com/dai-siki/vue-image-crop-upload</a>   头像上传组件<br>| <a href="http://www.cnblogs.com/pandabunny/p/5417938.html" target="_blank" rel="noopener">http://www.cnblogs.com/pandabunny/p/5417938.html</a>     // vue引用jquery<br>| <a href="http://router.vuejs.org/zh-cn/installation.html" target="_blank" rel="noopener">http://router.vuejs.org/zh-cn/installation.html</a>     // 路由插件<br>| <a href="http://yuche.github.io/vue-strap/" target="_blank" rel="noopener">http://yuche.github.io/vue-strap/</a>                    // vueStrap<br>| <a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/" target="_blank" rel="noopener">http://bootstrap-table.wenzhixin.net.cn/zh-cn/</a>    // bootstrap Table<br>|<br>| <a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" rel="noopener">https://github.com/PanJiaChen/vue-element-admin</a><br>| <a href="https://github.com/opendigg/awesome-github-vue?f=tt&amp;hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">https://github.com/opendigg/awesome-github-vue?f=tt&amp;hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a>      // vue项目汇总</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/23/VueJS之-“插件篇“（三）/" data-id="cjdu4wpx3001rchwrnlvwfdcg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-VueJS之-“组件篇“（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/22/VueJS之-“组件篇“（二）/" class="article-date">
+  <time datetime="2016-10-22T06:02:01.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/22/VueJS之-“组件篇“（二）/">VueJS 之 “组件篇“（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>| 涉及知识点:<br>| 1、全局组件、局部组件<br>| 2、数据传递（props、组件通信、slot）<br>| 3、props、sync双向绑定、once单次绑定<br>| 4、组件之间通信，$dispatch() 派发事件、 $broadcast() 广播事件，事件向下传导给所有后代<br>| 4、slot 内容分发<br>| 组件是Vue的最强大功能之一，组件可以扩展html元素，封装可复用代码</p>
+<h4 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h4><pre><code>全局组件在任何组件内都可以调用，无需引用或通过component加载
+
+main.js
+
+    // 定义一个全局的组件
+    var myComponent = Vue.extend({
+        template: &apos;&lt;div&gt; 组件已经渲染出来 &lt;/div&gt;&apos;
+    })
+
+    // 全局注册
+    Vue.component(&apos;crm-component&apos;, myComponent);
+
+    new Vue({
+        ...
+    }}
+
+
+main.vue 子组件
+
+    &lt;templte&gt;
+        &lt;div class=&quot;welcome&quot;&gt;
+            &lt;h1&gt;视图列表页面&lt;/h1&gt;
+            &lt;crm-component&gt;&lt;/crm-component&gt;            &lt;!-- 直接调用 --&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+</code></pre><h4 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h4><pre><code>必须使用components对象来引用组件
+
+&lt;div id=&quot;appA&quot;&gt;
+    &lt;component-parent&gt;&lt;/component-parent&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    var vmA = new Vue({
+        el: &quot;#appA&quot;,
+        components: {        // 局部的写法
+            &apos;crm-component&apos;: {
+                 template: &apos;&lt;div&gt;这里component&lt;/div&gt;&apos;
+            }
+        }
+    })
+&lt;/script&gt;
+
+注意: &lt;component-parent&gt; 自定义元素以“-”分割
+
+    &apos;crm-component&apos;: {        // 这里定义的组件名可以是以“-”分割，也可以驼峰方式 crmComponent
+         template: &apos;&lt;div&gt;这里component&lt;/div&gt;&apos;
+    }
+</code></pre><p>————— 父与子组件之间的数据传递 —————</p>
+<h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><pre><code>父组件将数据传给子组件通过props，子组件通过自定义事件$on、$emit来挂参数传递给父组件.
+
+2.0版本之后 props为单向数据流，父组件属性变化，将传给子组件
+
+一、props字面量
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;!-- 这里的两个属性值通过props传到组件中 --&gt;
+        &lt;component-parent my-name=&quot;siguang&quot; my-age=&apos;33&apos;&gt;&lt;/component-parent&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var componentCrm = Vue.extend({
+            props: [&apos;myName&apos;, &apos;myAge&apos;],
+            template: &apos;&lt;h2&gt;{{ myName }} {{ myAge }}&lt;/h2&gt;&apos;
+        })
+
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            components: {
+                &apos;component-parent&apos;: componentCrm
+            }
+        })
+    &lt;/script&gt;
+
+    注意: my-name=&quot;siguang&quot; 自定义属性以“-”分割
+
+         props: [&apos;myName&apos;, &apos;myAge&apos;]        // props 定义的必须以驼峰形势
+
+
+二、props动态值
+
+    parent.vue:
+
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;!-- 通过父组件传到子组件中 --&gt;
+            &lt;child-component :user-name=&quot;uname&quot;&gt;&lt;/child-component&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            import childComponent from &apos;childComponent.vue&apos;;
+
+            export default{
+                data(): {
+                    return{
+                        uname: &apos;siguang&apos;
+                    }
+                },
+                components:{
+                    childComponent
+                }
+            }
+        &lt;/script&gt;
+
+
+    childComponent.vue:
+
+        &lt;div&gt;
+            {{userName}}        &lt;!-- siguang --&gt;
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            export default{
+                propos: [&apos;userName&apos;],
+                data(){
+                    return {
+
+                    }
+                }
+            }
+        &lt;/script&gt;
+
+
+三、once 将渲染的结果缓存
+
+    不过当组件中包含大量静态内容时，可以考虑使用 v-once 将渲染结果缓存起来
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;component-parent&gt;&lt;/component-parent&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+
+        var childrenComponent = Vue.extend({
+            template: &apos;&lt;div v-once&gt;&apos;+
+                &apos;&lt;h3&gt;这里是子组件的内容: {{ myMsg }}&lt;/3&gt;&apos;+
+                &apos;&lt;p&gt;这里输入不会影响父组件: &lt;input type=&quot;text&quot; v-model=&quot;myMsg&quot; /&gt;&lt;/p&gt;&apos;+
+                &apos;&lt;/div&gt;&apos;,
+            data: function(){
+                return {
+                    myMsg: &apos;&apos;
+                }
+            },
+            props: [&apos;myMsg&apos;]
+        })
+
+        var parentComponent = Vue.extend({
+            template: &apos;&lt;div v-once&gt;&apos;+
+                &apos;&lt;p&gt;&lt;input text=&quot;text&quot; v-model=&quot;msg&quot;&gt;&lt;/p&gt;&apos;+
+                &apos;&lt;p&gt;父组件的值 {{ msg }}&lt;/p&gt;&apos;+
+                &apos;&lt;/div&gt;&apos;+
+                &apos;&lt;childen-component v-bind:my-msg.once=&quot;msg&quot;&gt;&lt;/childen-component&gt;&apos;,
+            data: function(){
+                return {
+                    msg: &apos;这里值只传给子组件一次&apos;
+                }
+            },
+            components: {
+                &apos;childen-component&apos;: childrenComponent
+            }
+        })
+
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            components: {
+                &apos;component-parent&apos;: parentComponent
+            }
+        })
+    &lt;/script&gt;
+</code></pre><h4 id="组件之间通信"><a href="#组件之间通信" class="headerlink" title="组件之间通信"></a>组件之间通信</h4><pre><code>props是父向子组件传递数据，子向父组件传递可以通过自定义事件来完成，从而现实组件的数据双向绑定
+
+$on(eventName) 监听事件    、$emit(eventName) 触发事件
+
+一、子向父组件发消息
+
+    parent.vue: 
+
+        &lt;template&gt;
+            &lt;div class=&quot;login&quot;&gt;
+                &lt;div class=&quot;parent-box&quot;&gt;
+                    &lt;p&gt;显示子组件数据: {{ childrenText }}&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;children-component ref=&quot;childrenRef&quot; v-on:showChildrenVal=&quot;childrenVal&quot;&gt;&lt;/children-component&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+            import ChildrenComponent from &apos;./children.vue&apos;
+            export default{
+                data(){
+                    return {
+                        childrenText: &apos;&apos;
+                    }
+                },
+                methods:{
+                    childrenVal(val){
+                        this.childrenText = val;
+                    }
+                },
+                components:{
+                    ChildrenComponent
+                }
+            }
+        &lt;/script&gt;
+
+    children.vue:
+
+        &lt;template&gt;
+            &lt;div class=&quot;children&quot; style=&quot;padding-top: 50px; border-top: 1px #ccc solid&quot;&gt;
+                &lt;p&gt;&lt;input type=&quot;text&quot; v-model=&quot;childrenInp&quot; id=&quot;&quot;&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;input type=&quot;button&quot; @click=&quot;showChildrenVal&quot; value=&quot;提交到父组件中&quot;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+            export default{
+                data(){
+                    return {
+                        childrenInp: &apos;&apos;
+                    }
+                },
+                methods:{
+                    showChildrenVal(){
+                        this.$emit(&quot;showChildrenVal&quot;, this.childrenInp);
+                    }
+                }
+            }
+        &lt;/script&gt;
+
+
+二、父向子发消息
+
+    parent.vue:
+
+        &lt;template&gt;
+            &lt;div class=&quot;login&quot;&gt;
+                &lt;div class=&quot;parent-box&quot;&gt;
+                    &lt;p&gt;&lt;input type=&quot;text&quot; name=&quot;&quot; v-model=&quot;inputParent&quot; &gt;&lt;br&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;input type=&quot;button&quot; value=&quot;值传给父组件&quot; @click=&quot;sendChildren&quot;&gt;&lt;br&gt;&lt;/p&gt;
+                    &lt;p&gt;显示子组件数据: {{ childrenText }}&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;children-component ref=&quot;childrenRef&quot;&gt;&lt;/children-component&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+            import ChildrenComponent from &apos;./children.vue&apos;
+            export default{
+                data(){
+                    return {
+                        inputParent: &apos;&apos;,
+                        childrenText: &apos;&apos;
+                    }
+                },
+                methods:{
+                    sendChildren(){
+                        debugger;
+                        this.$refs.childrenRef.$emit(&apos;showText&apos;, this.inputParent);        // 也可以用props
+                    }
+                },
+                components:{
+                    ChildrenComponent
+                }
+            }
+        &lt;/script&gt;
+
+
+    children.vue:
+
+        &lt;template&gt;
+            &lt;div class=&quot;children&quot; style=&quot;padding-top: 50px; border-top: 1px #ccc solid&quot;&gt;
+                这里是父组件传递的值: {{transmitVal}}
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+            export default{
+                created(){
+                    this.$on(&apos;showText&apos;, function(val){
+                        this.transmitVal = val;
+                    })
+                },
+                data(){
+                    return {
+                        transmitVal: &apos;&apos;
+                    }
+                }
+            }
+        &lt;/script&gt;
+
+
+三、v-ref 直接访问到组件
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;span ref=&quot;msg&quot;&gt; hello &lt;/span&gt;
+        &lt;span ref=&quot;other-msg&quot;&gt; world &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        var vm = new Vue({
+            el: &quot;#app&quot;,
+            data: {
+                someProp: &apos;idName&apos;,
+                otherProp: &apos;prop&apos;
+            }
+        })
+
+        console.log(vm.$refs.msg.textContent);        // hello
+        console.log(vm.$refs.otherMsg.textContent);    // world
+    &lt;/script&gt;
+
+
+
+以下是1.* 版本
+1、$broadcast 广播事件 父组件发消息给所有子组件
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;component-parent&gt;&lt;/component-parent&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // 子组件接收消息
+        var childrenComponent = Vue.extend({
+            template: &apos;&lt;div style=&quot;border: 1px #42b983 solid;padding: 10px; margin-top:10px;&quot;&gt;&apos;+
+                &apos;&lt;h3&gt;显示父组件广播的消息: {{ showMessage }}&lt;/h3&gt;&lt;/div&gt;&apos;,
+            data: function(){
+                return {
+                    showMessage: &apos;&apos;
+                }
+            },
+            events: {
+                messageEvent: function(val){        // messageEvent 接收
+                    this.showMessage = val;
+                }
+            }
+        })
+
+        // 父组件广播消息
+        var parentComponent = Vue.extend({
+            template: &apos;&lt;div&gt;这里是父组件: &apos;+
+                &apos;&lt;input type=&quot;text&quot; v-model=&quot;message&quot; /&gt;&lt;input type=&quot;button&quot; @click=&quot;sendMessage&quot; value=&quot;通知&quot; /&gt;&apos;+
+                &apos;&lt;children-component&gt;&lt;/children-component&gt;&apos;+
+                &apos;&lt;/div&gt;&apos;,
+            components: {
+                &apos;children-component&apos;: childrenComponent
+            },
+            data: function(){
+                return {
+                    message: &apos;&apos;
+                }
+            },
+            methods: {
+                sendMessage: function(){
+                    this.$broadcast(&apos;messageEvent&apos;, this.message);        // 定义事件名为messageEenent， 将message值广告给所有子组件
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            components: {
+                &apos;component-parent&apos;: parentComponent
+            }
+        })
+    &lt;/script&gt;
+
+
+2、$dispatch: 派发事件 子组件向上传消息给父组件
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;component-parent&gt;&lt;/component-parent&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // 子组件 派发消息
+        var childrenComponent = Vue.extend({
+            template: &apos;&lt;div style=&quot;border: 1px #42b983 solid;padding: 10px; margin-top:10px;&quot;&gt;&apos;+
+                &apos;&lt;h3&gt;显示父组件广播的消息: {{ showMessage }}&lt;/h3&gt;&apos;+
+                &apos;&lt;input type=&quot;text&quot; v-model=&quot;showMessage&quot; /&gt;&lt;input type=&quot;button&quot; @click=&quot;sendMessage&quot; value=&quot;向父组件派发消息&quot; /&gt;&apos;+
+                &apos;&lt;/div&gt;&apos;,
+            data: function(){
+                return {
+                    showMessage: &apos;&apos;
+                }
+            },
+            methods: {
+                sendMessage: function(){
+                    this.$dispatch(&apos;messageEvent&apos;, this.showMessage);        
+                }
+            }
+        })
+
+        // 父组件
+        var parentComponent = Vue.extend({
+            template: &apos;&lt;div&gt;收到了子组件的派发消息: {{ message }}&apos;+
+                &apos;&lt;children-component&gt;&lt;/children-component&gt;&apos;+
+                &apos;&lt;/div&gt;&apos;,
+            components: {
+                &apos;children-component&apos;: childrenComponent
+            },
+            data: function(){
+                return {
+                    message: &apos;&apos;
+                }
+            },
+            events: {
+                messageEvent: function(val){
+                    this.message = val;
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            components: {
+                &apos;component-parent&apos;: parentComponent
+            }
+        })
+    &lt;/script&gt;
+</code></pre><h4 id="slot-分发内容"><a href="#slot-分发内容" class="headerlink" title="slot 分发内容"></a>slot 分发内容</h4><pre><code>parent.vue:
+
+    &lt;template&gt;
+        &lt;div class=&quot;login&quot;&gt;
+            &lt;children-component&gt;
+                &lt;h1 slot=&quot;header&quot;&gt;这里可能是一个页面标题&lt;/h1&gt;
+
+                &lt;div class=&quot;tag&quot;&gt;
+                    这里是没有定义slot名称走的默认的slot
+                    &lt;div class=&quot;tag-til&quot;&gt;标题&lt;/div&gt;
+                    &lt;div class=&quot;tag-content&quot;&gt;内容部分&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/children-component&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+children.vue:
+
+    &lt;template&gt;
+        &lt;div class=&quot;children&quot;&gt;
+            &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+
+            &lt;slot&gt;&lt;/slot&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+</code></pre><h4 id="vueify-开发外部独立"><a href="#vueify-开发外部独立" class="headerlink" title="vueify 开发外部独立"></a>vueify 开发外部独立</h4><pre><code>使用.vue格式的文件定义组件，一个.vue就是一个组件
+
+一、.vue组件包括3部分: 
+
+    &lt;style&gt;&lt;/style&gt; 定义组件样式
+
+    &lt;template&gt;&lt;/template&gt; 定义组件模板
+
+    &lt;script&gt;&lt;/script&gt; 定义组件选项，如data, methods等
+
+
+二、在定义组件的选项时，data和el选项必须使用函数
+
+    &lt;script&gt;
+        export default {
+            data(){                // 数据，相当于 data: function(){}
+                return {
+                    msg: &quot;hello Vue&quot;
+                }
+            }
+        }
+    &lt;/script&gt;
+
+Example: 
+
+    App.vue:
+        &lt;style&gt;
+            h1 { color: #cc33ff; font-size: 30px;}
+        &lt;/style&gt;
+
+        &lt;template&gt;
+            &lt;div class=&quot;box&quot;&gt;
+                &lt;h1&gt;{{message}}&lt;/h1&gt;
+                &lt;message&gt;&lt;/message&gt;
+            &lt;/div&gt;
+        &lt;/template&gt;
+
+        &lt;script&gt;
+
+            import message from &apos;./message.vue&apos;
+
+            export default {
+                data(){                // 数据
+                    return {
+                        msg: &quot;hello Vue&quot;
+                    }
+                },
+                components: {
+                    message         // 这里ES6的简写，message: message
+                },
+                methods:{
+                    showMessage(){
+                        console.log(this.msg);
+                    }
+                }
+            }
+        &lt;/script&gt;
+
+    HTML: 
+        &lt;div id=&quot;app&quot;&gt;
+        &lt;app&gt;&lt;/app&gt;
+
+    main.js:
+
+        // ES6导入模块
+        import Vue form &apos;vue&apos;
+        import App form &apos;App.vue&apos;
+
+        // 可以使用CMD模式
+        /*
+            var vue = require(&apos;vue&apos;);
+            var app = reuqire(&apos;App.vue&apos;)
+        */
+
+        new Vue({
+            el:&apos;#app&apos;,
+            components: { App }
+        })
+
+https://github.com/vuejs/vueify
+</code></pre><h4 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h4><pre><code>Vue.component(&apos;async-webpack-example&apos;, function (resolve) {
+    // 这个特殊的 require 语法告诉 webpack
+    // 自动将编译后的代码分割成不同的块，
+    // 这些块将通过 Ajax 请求自动下载。
+    require([&apos;./my-async-component&apos;], resolve)
+})
+</code></pre><h4 id="组件化的css"><a href="#组件化的css" class="headerlink" title="组件化的css"></a>组件化的css</h4><pre><code>可以通过scoped属性来控制样式是否是只在当前组件下使用
+
+&lt;style&gt;
+    /* 全局下的样式 */
+&lt;/style&gt;
+
+&lt;style scoped&gt;
+    /* 当前组件下使用的样式 */
+&lt;/style&gt;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://siguang1983.github.io/2016/10/22/VueJS之-“组件篇“（二）/" data-id="cjdu4wpx5001tchwre750weg4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/前端算法/">前端算法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 siguang(厨子)<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
