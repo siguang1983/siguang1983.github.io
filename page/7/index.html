@@ -1,88 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="UTF-8" />
 
-  
-  <title>大排档</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="大排档">
-<meta property="og:url" content="http://siguang1983.github.io/page/7/index.html">
-<meta property="og:site_name" content="大排档">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大排档">
-  
-    <link rel="alternate" href="/atom.xml" title="大排档" type="application/atom+xml">
-  
-  
+    
+
+    
+
+    <title>大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
     <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">大排档</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-VueJS之-基础篇（一）" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/22/VueJS之-基础篇（一）/" class="article-date">
-  <time datetime="2016-10-22T03:06:51.000Z" itemprop="datePublished">2016-10-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/22/VueJS之-基础篇（一）/">VueJS 之 “基础篇“（一）</a>
-    </h1>
-  
 
-      </header>
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item active">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Tags</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+
+        
+        <div class="author-meta">
+            
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="siguang" style="box-shadow: 3px 3px 4px rgba(0,0,0, .2);">
+                </a>
+            </div>
+            
+            <div class="author-name">Siguang(厨子)</div>
+            <div class="author-work">Front-end development</div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">BeiJing, China</span>
+            </div>
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-github"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-circle-more"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/10/22/VueJS之-基础篇（一）/">VueJS 之 “基础篇“（一）</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/10/22/VueJS之-基础篇（一）/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-10-22T03:06:51.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Vue/">Vue</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
         <p>| style与class<br>| computed、directive、filter<br>| watch 侦听Data数据的变化<br>| 生命周期: beforeCreate、create、beforeMount、mounted、beforeUpdate、updated、destroyed<br>| this.$refs、$el、$data、$watch<br>| v-bind缩写:、v-on缩写@</p>
 <h4 id="Vue2-0"><a href="#Vue2-0" class="headerlink" title="Vue2.0"></a>Vue2.0</h4><pre><code>一、Vue的MVVM实现的原理？
 
@@ -728,43 +794,39 @@ new Vue({
     @keyup.enter.native=&quot;login&quot;   如果不加.native是不起作用有
 </code></pre><p>| 参考资料<br>|<br>| <a href="http://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">http://www.jianshu.com/p/95b2caf7e0da</a>              // vue-cli<br>| <a href="http://cn.vuejs.org/guide/" target="_blank" rel="noopener">http://cn.vuejs.org/guide/</a>                        // Vue中文官网<br>| <a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a>                        // github<br>| <a href="http://vuefe.cn/guide/installation.html" target="_blank" rel="noopener">http://vuefe.cn/guide/installation.html</a>            // 2.0<br>| <a href="http://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://router.vuejs.org/zh-cn/</a>                    // vue-router2.0<br>| <a href="https://github.com/vuejs" target="_blank" rel="noopener">https://github.com/vuejs</a>                             // Vue组件列表<br>| <a href="http://www.cnblogs.com/dh-dh/p/5606596.html" target="_blank" rel="noopener">http://www.cnblogs.com/dh-dh/p/5606596.html</a>        // binding原理，vue的数据<br>| <a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">https://github.com/vuejs/awesome-vue#libraries--plugins</a><br>| <a href="http://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://vuex.vuejs.org/zh-cn/</a>                         // Vuex 2.0文档<br>| <a href="https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md" target="_blank" rel="noopener">https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md</a><br>| <a href="http://www.cnblogs.com/keepfool/category/845804.html" target="_blank" rel="noopener">http://www.cnblogs.com/keepfool/category/845804.html</a><br>| <a href="http://www.jianshu.com/p/f8e21d87a572" target="_blank" rel="noopener">http://www.jianshu.com/p/f8e21d87a572</a><br>| <a href="https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91</a>      // Vue代码规范</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://siguang1983.github.io/2016/10/22/VueJS之-基础篇（一）/" data-id="cjdu4wpx7001xchwr7byhhz6b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
-
-    </footer>
-  </div>
-  
+        
+    </section>
 </article>
 
 
-  
-    <article id="post-浏览器内核" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/17/浏览器内核/" class="article-date">
-  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
+    <article class="article" itemscope itemprop="blogPost">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/17/浏览器内核/">浏览器内核</a>
-    </h1>
-  
-
-      </header>
+        <h1 itemprop="name">
+            <a href="/2016/10/17/浏览器内核/">浏览器内核</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/10/17/浏览器内核/">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/浏览器内核/">浏览器内核</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
         <h4 id="URL到页面加载发生了什么"><a href="#URL到页面加载发生了什么" class="headerlink" title="URL到页面加载发生了什么"></a>URL到页面加载发生了什么</h4><pre><code>1、DNS解析 - 将域名转换IP的过程
 
 2、TCP连接 - 
@@ -862,43 +924,39 @@ https://segmentfault.com/a/1190000006879700
 </code></pre><p><img src="images/jd_ip.png" alt="jd_ip"> </p>
 <p>| <a href="http://blog.codingplayboy.com/2017/03/29/webpage_render/" target="_blank" rel="noopener">http://blog.codingplayboy.com/2017/03/29/webpage_render/</a><br>| <a href="https://www.webpagetest.org/" target="_blank" rel="noopener">https://www.webpagetest.org/</a>         // 网站的性能评估</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://siguang1983.github.io/2016/10/17/浏览器内核/" data-id="cjdu4wpy5003hchwrej95kqe9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li></ul>
-
-    </footer>
-  </div>
-  
+        
+    </section>
 </article>
 
 
-  
-    <article id="post-前端优化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/17/前端优化/" class="article-date">
-  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
+    <article class="article" itemscope itemprop="blogPost">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/17/前端优化/">前端优化</a>
-    </h1>
-  
-
-      </header>
+        <h1 itemprop="name">
+            <a href="/2016/10/17/前端优化/">前端优化</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/10/17/前端优化/">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端优化/">前端优化</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
         <h4 id="前端优化"><a href="#前端优化" class="headerlink" title="前端优化"></a>前端优化</h4><pre><code>1、减少HTTP请求: 合并图片(如css sprites，内置图片使用数据)、合并CSS、JS    
 
 2、CDN(内容分发网络): 尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定
@@ -997,43 +1055,39 @@ https://segmentfault.com/a/1190000006879700
 1、逐行加载
 </code></pre><p><img src="images/逐行.png" alt="逐行"></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://siguang1983.github.io/2016/10/17/前端优化/" data-id="cjdu4wpxz0036chwrb8qy7lov" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端优化/">前端优化</a></li></ul>
-
-    </footer>
-  </div>
-  
+        
+    </section>
 </article>
 
 
-  
-    <article id="post-HTTP协议" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/17/HTTP协议/" class="article-date">
-  <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
+    <article class="article" itemscope itemprop="blogPost">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/17/HTTP协议/">HTTP详解</a>
-    </h1>
-  
-
-      </header>
+        <h1 itemprop="name">
+            <a href="/2016/10/17/HTTP协议/">HTTP详解</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/10/17/HTTP协议/">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/HTTP详解/">HTTP详解</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
         <h4 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h4><pre><code>一、TCP/IP分为4个层: 应用层、传输导、网络层和数据链路层
 
     1）应用层: 向用户提供应用服务FTP和DNS服务
@@ -1303,128 +1357,53 @@ HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题
 3、跨站脚本攻击 XSS: 
 </code></pre><p>| 参考资料<br>| <a href="http://www.alloyteam.com/2016/03/discussion-on-web-caching/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/discussion-on-web-caching/</a><br>| <a href="http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/</a><br>| <a href="http://www.cnblogs.com/lovesong/p/5352973.html" target="_blank" rel="noopener">http://www.cnblogs.com/lovesong/p/5352973.html</a><br>| <a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank" rel="noopener">http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html</a></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://siguang1983.github.io/2016/10/17/HTTP协议/" data-id="cjdu4wpvp000schwr7ib60fhz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li></ul>
-
-    </footer>
-  </div>
-  
+        
+    </section>
 </article>
 
 
-  
 
 
-  <nav id="page-nav">
-    
+<nav class="page-nav">
     <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML+CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/EggJS/" style="font-size: 15px;">EggJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML-CSS/" style="font-size: 12.5px;">HTML+CSS</a> <a href="/tags/HTTP详解/" style="font-size: 10px;">HTTP详解</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Node-js/" style="font-size: 20px;">Node.js</a> <a href="/tags/React/" style="font-size: 12.5px;">React</a> <a href="/tags/React-Native/" style="font-size: 12.5px;">React Native</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/Weex/" style="font-size: 10px;">Weex</a> <a href="/tags/javascript/" style="font-size: 17.5px;">javascript</a> <a href="/tags/mock数据/" style="font-size: 10px;">mock数据</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端优化/" style="font-size: 10px;">前端优化</a> <a href="/tags/前端插件类/" style="font-size: 10px;">前端插件类</a> <a href="/tags/前端构建工具/" style="font-size: 12.5px;">前端构建工具</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/数据库/" style="font-size: 12.5px;">数据库</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/服务端开发/" style="font-size: 10px;">服务端开发</a> <a href="/tags/模板引擎/" style="font-size: 12.5px;">模板引擎</a> <a href="/tags/浏览器内核/" style="font-size: 10px;">浏览器内核</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/经济学/" style="font-size: 10px;">经济学</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/金融/" style="font-size: 10px;">金融</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/20/Jade模板/">Jade 模板</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/01/前端算法/">前端算法</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 siguang(厨子)<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
 </nav>
+
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
     
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
 
+            
+        });
+    </script>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
