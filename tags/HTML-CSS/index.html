@@ -322,7 +322,9 @@ background-position: 背景位置
     .tab td, .tab th { border-collapse: collapse; border: 1px #ccc solid; border-spacing: 0; padding: 10px 20px; }
 </code></pre><h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><pre><code>rem: 是相对于根元素(html)的font-size值为基准，em是相对父级元素变化，px是物理像素
 
-em: 相对长度
+vw/vh: 根据屏幕不同变化的
+
+em: 相对长度，相对于父元素
 </code></pre><h4 id="语法与规则"><a href="#语法与规则" class="headerlink" title="语法与规则"></a>语法与规则</h4><pre><code>1、!important 提升优先级
 
 2、@import url(&quot;global.css&quot;); 导入外部样式表
@@ -387,7 +389,6 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
         font-size/line-height
         font-family
 
-
 链接
 
     a:link: 未被访问过
@@ -397,7 +398,6 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
     a:hover: 鼠标指针移动到的链接
 
     a:active: 被点击的链接
-
 
 列表
 
@@ -409,7 +409,6 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
 
     list-style: 简写属性
 
-
 尺寸
 
     width、height: 宽高
@@ -417,7 +416,6 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
     max-width、max-height: 最大宽高
 
     min-width、min-height: 最小宽高
-
 
 透明度
 
@@ -428,7 +426,7 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
 
     html{ height: 100%; }
     body { height: 100%; margin: 0;}
-
+    .box { width: 100%; height: 100%; background-color: #ccc; }
 
 2、浏览器hack
 
@@ -436,24 +434,23 @@ css3规则伪类使用一个&quot;:&quot;, 伪元素使用两个&quot;::&quot;
 
     浏览器（加粗表示支持）    CSS hack
     IE6        _background-color:#38DB24;
-    IE67    *background-color:#38DB24;
-    IE67    +background-color:#38DB24;
-    IE67    #background-color:#38DB24;
-    IE67    background-color:#38DB24 !ie;
-    IE678910    background-color:#38DB24\9;
-    IE78910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;body .ie78910-all-hack { background-color: #38DB24 }
-    IE8910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;/**/body .ie8910-all-hack { background-color: #38DB24 }
-    IE8910&amp;Opera    background-color:#38DB24\0;
-    IE910    :root .ie910-hack { background-color:#38DB24\9; }
-    IE910    background-color:#38DB24\9\0;
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    body:nth-of-type(1) .ie910-all-hack {background-color:#38DB24 ;}
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-2-hack{ background-color:#38DB24 ;} }
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-3-hack{background-color:#38DB24 ;} }
-    IE910&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    :root *&gt; .ie910-all-4-hack { background-color:#38DB24 }
+    IE6、7    *background-color:#38DB24;
+    IE6、7    +background-color:#38DB24;
+    IE6、7    #background-color:#38DB24;
+    IE6、7    background-color:#38DB24 !ie;
+    IE6、7、8、9、10    background-color:#38DB24\9;
+    IE7、8、9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;body .ie78910-all-hack { background-color: #38DB24 }
+    IE8、9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari        html&gt;/**/body .ie8910-all-hack { background-color: #38DB24 }
+    IE8、9、10&amp;Opera    background-color:#38DB24\0;
+    IE9、10    :root .ie910-hack { background-color:#38DB24\9; }
+    IE9、10    background-color:#38DB24\9\0;
+    IE9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    body:nth-of-type(1) .ie910-all-hack {background-color:#38DB24 ;}
+    IE9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-2-hack{ background-color:#38DB24 ;} }
+    IE9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    @media all and (min-width: 0px) { .ie910-all-3-hack{background-color:#38DB24 ;} }
+    IE9、10&amp;Firefox&amp;Opera&amp;Chrome&amp;Safari    :root *&gt; .ie910-all-4-hack { background-color:#38DB24 }
     IE10    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { .ie10-hack{background-color:#38DB24 ;} }
     Firefox    @-moz-document url-prefix() { .firefox-hack{background-color:#38DB24 ;} }
     Chrome&amp;Safari    @media screen and (-webkit-min-device-pixel-ratio:0) {.chrome-safari-hack{background-color:#38DB24 ;} }
-
 
 3、条件注释
 
@@ -494,7 +491,7 @@ http://fis.baidu.com
 
 http://gruntjs.com
 </code></pre><p>—————– HTML —————–</p>
-<h4 id="标记"><a href="#标记" class="headerlink" title="标记"></a>标记</h4><pre><code>1、&lt;!DOCTYPE html&gt; 声明文档解析类型，指定浏览器用哪个版本来解析页面
+<h4 id="HTML标记"><a href="#HTML标记" class="headerlink" title="HTML标记"></a>HTML标记</h4><pre><code>1、&lt;!DOCTYPE html&gt; 声明文档解析类型，指定浏览器用哪个版本来解析页面
 
     解析类型有两种模式:  
 
@@ -521,7 +518,7 @@ http://gruntjs.com
 
 9、&lt;img&gt;: 定义图像
 
-字体:
+文本:
 
 10、&lt;p&gt;: 段落
 
@@ -615,7 +612,7 @@ http://gruntjs.com
 45、&lt;frameset&gt;: 定义框架集
 
 46、&lt;object&gt;、&lt;param&gt;
-</code></pre><p>| <a href="http://www.css88.com/book/css/" target="_blank" rel="noopener">http://www.css88.com/book/css/</a><br>| <a href="http://www.w3cplus.com/" target="_blank" rel="noopener">http://www.w3cplus.com/</a><br>|<br>| <a href="https://www.nihaoshijie.com.cn/index.php/page/3" target="_blank" rel="noopener">https://www.nihaoshijie.com.cn/index.php/page/3</a><br>| <a href="http://jixianqianduan.com/page6/" target="_blank" rel="noopener">http://jixianqianduan.com/page6/</a><br>| <a href="http://www.css88.com/archives/category/js-and-ria" target="_blank" rel="noopener">http://www.css88.com/archives/category/js-and-ria</a><br>|<br>| <a href="http://www.w3cplus.com/solution/index/index.html" target="_blank" rel="noopener">http://www.w3cplus.com/solution/index/index.html</a><br>| <a href="https://github.com/csswizardry/inuit.css/tree/master/base" target="_blank" rel="noopener">https://github.com/csswizardry/inuit.css/tree/master/base</a><br>| <a href="https://github.com/GumbyFramework/Gumby" target="_blank" rel="noopener">https://github.com/GumbyFramework/Gumby</a><br>| <a href="http://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">http://www.shejidaren.com/css-written-specifications.html</a></p>
+</code></pre><p>| <a href="http://www.css88.com/book/css/" target="_blank" rel="noopener">http://www.css88.com/book/css/</a><br>| <a href="http://www.w3cplus.com/" target="_blank" rel="noopener">http://www.w3cplus.com/</a><br>| <a href="https://www.nihaoshijie.com.cn/index.php/page/3" target="_blank" rel="noopener">https://www.nihaoshijie.com.cn/index.php/page/3</a><br>| <a href="http://jixianqianduan.com/page6/" target="_blank" rel="noopener">http://jixianqianduan.com/page6/</a><br>| <a href="http://www.css88.com/archives/category/js-and-ria" target="_blank" rel="noopener">http://www.css88.com/archives/category/js-and-ria</a><br>| <a href="http://www.w3cplus.com/solution/index/index.html" target="_blank" rel="noopener">http://www.w3cplus.com/solution/index/index.html</a><br>| <a href="https://github.com/csswizardry/inuit.css/tree/master/base" target="_blank" rel="noopener">https://github.com/csswizardry/inuit.css/tree/master/base</a><br>| <a href="https://github.com/GumbyFramework/Gumby" target="_blank" rel="noopener">https://github.com/GumbyFramework/Gumby</a><br>| <a href="http://www.shejidaren.com/css-written-specifications.html" target="_blank" rel="noopener">http://www.shejidaren.com/css-written-specifications.html</a></p>
 
         
     </section>
