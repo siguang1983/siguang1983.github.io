@@ -7,7 +7,7 @@
 
     
 
-    <title>Tag: Vue | 大排档</title>
+    <title>Mot-clé: Vue | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Tags</span>
+        <span class="vm">Mot-clés</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -1518,9 +1518,9 @@ https://github.com/vuejs/vueify
 
 二、Vue使用
 
-    1）页面加载vue.js文件  &lt;script src=&quot;vue.js&quot;&gt;&lt;/script&gt;
+    1、页面加载vue.js文件  &lt;script src=&quot;vue.js&quot;&gt;&lt;/script&gt;
 
-    2）npm下载vue包, npm install vue --save-dev
+    2、npm下载vue包, npm install vue --save-dev
 </code></pre><h4 id="双向绑定"><a href="#双向绑定" class="headerlink" title="双向绑定"></a>双向绑定</h4><pre><code>&lt;div id=&quot;app&quot;&gt;
     &lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt;
     {{ message }}
@@ -1610,19 +1610,19 @@ new Vue({
 
         });
     &lt;/script&gt;
-</code></pre><h4 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h4><pre><code>1、文本绑定:  &lt;p&gt;{{ data.name }}&lt;/p&gt;    与 &lt;p v-text=&quot;data.name&quot;&gt;&lt;/p&gt; 相同
+</code></pre><h4 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h4><pre><code>一、文本绑定:  &lt;p&gt;{{ data.name }}&lt;/p&gt;    与 &lt;p v-text=&quot;data.name&quot;&gt;&lt;/p&gt; 相同
 
-2、html绑定:  &lt;p v-html=&quot;data.strHtml&quot;&gt;&lt;/p&gt;
+二、html绑定:  &lt;p v-html=&quot;data.strHtml&quot;&gt;&lt;/p&gt;
 
-3、绑定的值可以html中: 
+三、绑定的值可以html中: 
 
     &lt;div id=&quot;item-{{id}}&quot;&gt;&lt;/div&gt;
 
     &lt;div :id=&quot;userId&quot;&gt;&lt;/div&gt;
 
-4、表达式:  {{ dat.num == 1 }}、 {{ num ? 'yes' : 'no' }}、 {{if(ok) {return message} }}
+四、表达式:  {{ dat.num == 1 }}、 {{ num ? 'yes' : 'no' }}、 {{if(ok) {return message} }}
 
-5、过滤器:  {{ message | capitalize }}
+五、过滤器:  {{ message | capitalize }}
 
     连续过滤器:  {{ message | filterA | filterB }}
 </code></pre><h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><pre><code>指令: 以 v- 开头
@@ -1631,16 +1631,16 @@ new Vue({
 
     带参数: &lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;
 
-1、v-if、v-else-if条件渲染: 
+一、v-if、v-else-if条件渲染: 
 
     &lt;div v-if=&quot;type === &apos;A&apos;&quot;&gt;A&lt;/div&gt;
     &lt;div v-else-if=&quot;type === &apos;B&apos;&quot;&gt;B&lt;/div&gt;
     &lt;div v-else-if=&quot;type === &apos;C&apos;&quot;&gt;C&lt;/div&gt;
     &lt;div v-else&gt;Not A/B/C&lt;/div&gt;
 
-2、v-show: 显示还是隐藏元素，用的display
+二、v-show: 显示还是隐藏元素，用的display
 
-3、v-for: 循环数据来渲染列表
+三、v-for: 循环数据来渲染列表
 
     $index: 索引        $key: 
 
@@ -1674,7 +1674,7 @@ new Vue({
             &lt;/el-option&gt;
 
 
-4、v-model: 绑定值，这也是MVVM的关键点
+四、v-model: 绑定值，这也是MVVM的关键点
 
     可以对文本表单、单选框 、多选框、下拉菜单进行绑定值
 
@@ -1701,17 +1701,17 @@ new Vue({
         vm.toggle === vm.b
 
 
-5、v-bind: 绑定到HTML元素上，v-bind:class=&quot;active&quot;
+五、v-bind: 绑定到HTML元素上，v-bind:class=&quot;active&quot;
 
     v-bind缩写: &quot;:&quot; &lt;a :href=&apos;url&apos;&gt;&lt;/a&gt;
 
 
-6、v-on: 用于监听DOM事件 v-on:click=&quot;doSomeThing&quot;
+六、v-on: 用于监听DOM事件 v-on:click=&quot;doSomeThing&quot;
 
     v-on缩写: &quot;@&quot; &lt;div @click=&quot;doSomeing&quot;&gt;&lt;/div&gt;
 
 
-7、v-ref: 访问子组件
+七、v-ref: 访问子组件
 
     2.0后 v-el和v-ref合成了一个 ref属性，组件实例中通过 $refs 来调用 
 
@@ -1730,37 +1730,37 @@ new Vue({
     &lt;p v-for=&quot;item in items&quot; :ref=&quot;item&quot;&gt;&lt;/p&gt;
 
 
-8、v-pre: 跳过这个元素和它的子元素的编译过程，这样加快了编译的速度
+八、v-pre: 跳过这个元素和它的子元素的编译过程，这样加快了编译的速度
 
     &lt;div v-pre&gt;{{ 这里不用框架来编译 }}&lt;/div&gt;
 
-9、v-cloak:
+九、v-cloak:
 
-10、v-once: 只渲染元素和组件一次，之后的渲染都会跳过次元素
+十、v-once: 只渲染元素和组件一次，之后的渲染都会跳过次元素
 
     &lt;span v-once&gt;xxxxx&lt;/span&gt;
 </code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>过滤器，对绑定值进行处理
 
-1、内置过滤器
+一、内置过滤器
 
-    1）uppercase: 字母转成大写
+    1、uppercase: 字母转成大写
 
-    2）lowercase: 字母转成小写
+    2、lowercase: 字母转成小写
 
-    3）capitalize: 首字母转成大写
+    3、capitalize: 首字母转成大写
 
-    4）filterBy: 过滤内容
+    4、filterBy: 过滤内容
 
-    5）limitBy: 过滤数据从开始到指定位置结束的内容
+    5、limitBy: 过滤数据从开始到指定位置结束的内容
 
-    6）orderBy: 过滤排序
+    6、orderBy: 过滤排序
 
-    7）currency: 货币过滤
+    7、currency: 货币过滤
 
-    8）debounce: 延迟过滤
+    8、debounce: 延迟过滤
 
 
-2、自定义过滤器和带参数
+二、自定义过滤器和带参数
 
     &lt;span v-text=&quot;message | reverse &apos;addText&apos; &quot;&gt;&lt;/span&gt;
 
@@ -1770,7 +1770,7 @@ new Vue({
     })
 
 
-2、双向过滤器
+三、双向过滤器
 
     模型的值显示在视图之前转换它
 
@@ -1792,7 +1792,7 @@ new Vue({
     })
 
 
-3、动态参数
+四、动态参数
 
     参数用空格格开
 
@@ -1805,7 +1805,7 @@ new Vue({
     })
 
 
-4、filterBy过滤器
+五、filterBy过滤器
 
     &lt;div id=&quot;app&quot;&gt;
         &lt;div&gt;过滤数据里包含 蛋糕 字符 &lt;/div&gt;
@@ -1856,7 +1856,7 @@ new Vue({
         })
     &lt;/script&gt;
 
-5、orderBy排序
+六、orderBy排序
 
     &lt;div id=&quot;app&quot;&gt;
         &lt;input type=&quot;text&quot; name=&quot;&quot; v-model=&quot;searchKey&quot; /&gt;
@@ -1910,7 +1910,7 @@ new Vue({
     vnode：Vue 编译生成的虚拟节点。移步 VNode API 来了解更多详情。
     oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。
 
-2、对象字面量
+二、对象字面量
 
     &lt;div v-demoA=&quot;{ color: &apos;white&apos;, text: &apos;hello&apos;}&quot;&gt;&lt;/div&gt;
 
@@ -1920,7 +1920,7 @@ new Vue({
     })
 
 
-3、元素指令，相当于angular的E指令
+三、元素指令，相当于angular的E指令
 
     Vue.elementDirective(&apos;my-directive&apos;, {
         bind: function(){
@@ -1930,7 +1930,7 @@ new Vue({
 
     &lt;my-directive&gt;&lt;/my-directive&gt;            // 不能这么写&lt;div v-my-directive&gt;&lt;/div&gt;
 
-4、高级选项
+四、高级选项
 
     params: 自动提取绑定元素的这些特性.
 
@@ -1943,7 +1943,7 @@ new Vue({
     })
 </code></pre><h4 id="computed-计算属性"><a href="#computed-计算属性" class="headerlink" title="computed 计算属性"></a>computed 计算属性</h4><pre><code>计算属性就是当依赖属性发生变化时，属性的值会自动更新，相关的DOM也会同步更新
 
-二、计算属性的getter
+一、计算属性的getter
 
     &lt;div id=&quot;app&quot;&gt;
         &lt;p&gt;user_inof={{ userInfo }}&lt;/p&gt;
@@ -2016,7 +2016,7 @@ new Vue({
     // })
 
 &lt;/script&gt;
-</code></pre><h4 id="class和style的绑定"><a href="#class和style的绑定" class="headerlink" title="class和style的绑定"></a>class和style的绑定</h4><pre><code>1、class
+</code></pre><h4 id="class和style的绑定"><a href="#class和style的绑定" class="headerlink" title="class和style的绑定"></a>class和style的绑定</h4><pre><code>一、class
 
     // 对象
     &lt;div :class=&quot;{ &apos;active&apos;: isActive }&quot;&gt;&lt;/div&gt;
@@ -2036,7 +2036,7 @@ new Vue({
     }    
 
 
-2、style
+二、style
 
     &lt;div :style=&quot;[crm, hk]&quot;&gt; 或 &lt;div :style=&quot;{color: activeColor, fontSize: fontSize+&apos;px&apos;}&quot;&gt;
 
@@ -2055,7 +2055,7 @@ new Vue({
             }
         }
     })
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、@click
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>一、@click
 
     &lt;div @click=&quot;say&quot;&gt;&lt;/div&gt;
     &lt;div @click=&quot;say(&apos;hi&apos;)&quot;&gt;&lt;/div&gt;
@@ -2080,15 +2080,15 @@ new Vue({
     &lt;!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 --&gt;
     &lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
 
-2、按键别名
+二、按键别名
 
     .enter、.tab、.delete (捕获 “删除” 和 “退格” 键)、.esc、.space、.up、.down、.left、.right、.ctrl、.alt、.shift、.meta
 
-3、once: 只处理一次点击  &lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
+三、once: 只处理一次点击  &lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
 
-4、修饰符 &lt;input v-on:keyup.13=&quot;submit&quot;&gt;
+四、修饰符 &lt;input v-on:keyup.13=&quot;submit&quot;&gt;
 </code></pre><h4 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h4><pre><code>Vue在底层将模板编译成虚拟DOM渲染函数，也可以不用模板直接写render函数，可选JSX语法
-</code></pre><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><pre><code>1、v-bind 内联字符串连接
+</code></pre><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><pre><code>一、v-bind 内联字符串连接
 
     data(){
         return {
@@ -2101,7 +2101,7 @@ new Vue({
     2.x版本 写法  &lt;div v-bind=&quot;&apos;xxxx&apos;+ addString&quot;&gt;
 
 
-2、checkbox动态创建绑定
+二、checkbox动态创建绑定
 
     // v-model=&quot;item.check&quot; 绑定的值要相同
 
@@ -2119,7 +2119,7 @@ new Vue({
         }
     }
 
-3、vue使用jxs语法
+三、vue使用jxs语法
 
     new Vue({
         el: &apos;#demo&apos;,
@@ -2145,10 +2145,10 @@ new Vue({
     https://github.com/vuejs/babel-plugin-transform-vue-jsx
 
 
-4、vue键盘事件不起作用
+四、vue键盘事件不起作用
 
     @keyup.enter.native=&quot;login&quot;   如果不加.native是不起作用有
-</code></pre><p>| 参考资料<br>|<br>| <a href="http://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">http://www.jianshu.com/p/95b2caf7e0da</a>              // vue-cli<br>| <a href="http://cn.vuejs.org/guide/" target="_blank" rel="noopener">http://cn.vuejs.org/guide/</a>                        // Vue中文官网<br>| <a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a>                        // github<br>| <a href="http://vuefe.cn/guide/installation.html" target="_blank" rel="noopener">http://vuefe.cn/guide/installation.html</a>            // 2.0<br>| <a href="http://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://router.vuejs.org/zh-cn/</a>                    // vue-router2.0<br>| <a href="https://github.com/vuejs" target="_blank" rel="noopener">https://github.com/vuejs</a>                             // Vue组件列表<br>| <a href="http://www.cnblogs.com/dh-dh/p/5606596.html" target="_blank" rel="noopener">http://www.cnblogs.com/dh-dh/p/5606596.html</a>        // binding原理，vue的数据<br>| <a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">https://github.com/vuejs/awesome-vue#libraries--plugins</a><br>| <a href="http://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://vuex.vuejs.org/zh-cn/</a>                         // Vuex 2.0文档<br>| <a href="https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md" target="_blank" rel="noopener">https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md</a><br>| <a href="http://www.cnblogs.com/keepfool/category/845804.html" target="_blank" rel="noopener">http://www.cnblogs.com/keepfool/category/845804.html</a><br>| <a href="http://www.jianshu.com/p/f8e21d87a572" target="_blank" rel="noopener">http://www.jianshu.com/p/f8e21d87a572</a><br>| <a href="https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91</a>      // Vue代码规范</p>
+</code></pre><p>| <a href="http://www.jianshu.com/p/95b2caf7e0da" target="_blank" rel="noopener">http://www.jianshu.com/p/95b2caf7e0da</a>              // vue-cli<br>| <a href="http://cn.vuejs.org/guide/" target="_blank" rel="noopener">http://cn.vuejs.org/guide/</a>                        // Vue中文官网<br>| <a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a>                        // github<br>| <a href="http://vuefe.cn/guide/installation.html" target="_blank" rel="noopener">http://vuefe.cn/guide/installation.html</a>            // 2.0<br>| <a href="http://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://router.vuejs.org/zh-cn/</a>                    // vue-router2.0<br>| <a href="https://github.com/vuejs" target="_blank" rel="noopener">https://github.com/vuejs</a>                             // Vue组件列表<br>| <a href="http://www.cnblogs.com/dh-dh/p/5606596.html" target="_blank" rel="noopener">http://www.cnblogs.com/dh-dh/p/5606596.html</a>        // binding原理，vue的数据<br>| <a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">https://github.com/vuejs/awesome-vue#libraries--plugins</a><br>| <a href="http://vuex.vuejs.org/zh-cn/" target="_blank" rel="noopener">http://vuex.vuejs.org/zh-cn/</a>                         // Vuex 2.0文档<br>| <a href="https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md" target="_blank" rel="noopener">https://github.com/vuejs/vuex/blob/1.0/docs/zh-cn/intro.md</a><br>| <a href="http://www.cnblogs.com/keepfool/category/845804.html" target="_blank" rel="noopener">http://www.cnblogs.com/keepfool/category/845804.html</a><br>| <a href="http://www.jianshu.com/p/f8e21d87a572" target="_blank" rel="noopener">http://www.jianshu.com/p/f8e21d87a572</a><br>| <a href="https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91" target="_blank" rel="noopener">https://github.com/pablohpsilva/vuejs-component-style-guide/blob/master/README-CN.md#%E5%9F%BA%E4%BA%8E%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91</a>      // Vue代码规范</p>
 
         
     </section>
@@ -2160,7 +2160,7 @@ new Vue({
 
 </div>
         <footer class="footer">
-    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+    Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
 </footer>
 
 <script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
