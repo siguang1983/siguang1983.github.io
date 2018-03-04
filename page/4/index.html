@@ -48,7 +48,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Mot-clés</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EggJS/">EggJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/插件/">插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
@@ -3896,7 +3896,7 @@ Example:
     f();    // 3
     f();    // 4
 &lt;/script&gt;
-</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>1、函数没有重载: 当两个函数名相同，后面的函数会覆盖掉之前的函数
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>一、函数没有重载: 当两个函数名相同，后面的函数会覆盖掉之前的函数
 
     function getUserName(){
         console.log(&apos;a&apos;);
@@ -3909,7 +3909,7 @@ Example:
     getUserName();      // &apos;b&apos;
 
 
-2、声明函数和匿名函数: 
+二、声明函数和匿名函数: 
 
     function person() {  ...  };          // 声明
     var person = function() {  ...  }     // 匿名
@@ -3929,18 +3929,18 @@ Example:
         getName();          // a
 
 
-3、函数参数
+三、函数参数
 
-    1) 形参、实参
+    1、形参、实参
 
         function add(a, b){ return a+b }    // 形参
 
         add(1,2)    // 实参
 
 
-    2) arguments数组: 函数参数的数组
+    2、arguments数组: 函数参数的数组
 
-    3) callee 函数的调用当前函数的本身，可以使用arguments.caller(), 可以用于递归
+    3、callee 函数的调用当前函数的本身，可以使用arguments.caller(), 可以用于递归
 
         function factorial(num){
             if(num &lt; 1){
@@ -3951,7 +3951,7 @@ Example:
             }
         }
 
-    4) caller 返回被调用函数的本身
+    4、caller 返回被调用函数的本身
 
         function outer() {
             inner();
@@ -3965,7 +3965,7 @@ Example:
         outer();
 </code></pre><h4 id="call-、apply"><a href="#call-、apply" class="headerlink" title="call()、apply()"></a>call()、apply()</h4><pre><code>Function.prototype.call() 和 Function.prototype.apply() 用于改变函数的this指向
 
-1、无参
+一、无参
 
     var obj1 = {
         name: &apos;siguang&apos;,
@@ -3984,7 +3984,7 @@ Example:
     var n1 = obj1.getName.call(obj2);
     console.log(n1);        // lulu
 
-2、有参
+二、有参
 
     var objA = {
         num: 10,
@@ -4093,9 +4093,9 @@ Example:
         console.log(1);
     }, 0);
     console.log(2);         // 先log出2，在log出1
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、事件机制: 事件捕获 和 事件冒泡, IE11之前没有捕获
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>一、事件机制: 事件捕获 和 事件冒泡, IE11之前没有捕获
 
-2、事件委托
+二、事件委托
 
     事件委托（也称事件代理）: 将事件绑定到父元素上，利用冒泡机制来对点击的元素进行处理
 
@@ -4116,23 +4116,23 @@ Example:
     &lt;/script&gt;
 
 
-3、自定义事件
+三、自定义事件
 
-4、onLoad与DOMContentLoaded事件的区别
+四、onLoad与DOMContentLoaded事件的区别
 
     onLoad: 是当所有资源都加载完成后在执行onLoad函数内的程序
 
     DOMContentLoaded: 是当DOM树加载完成后就执行此函数内的程序
 
 
-5、onmouseover、onmouseout与onmouseEnter、onmouseLeave
+五、onmouseover、onmouseout与onmouseEnter、onmouseLeave
 
     onmouseover、onmouseout 会冒泡
 
     onmouseEnter、onmouseLeave 不会冒泡
 
 
-6、addEventListener(事件类型, 执行函数, boolear): 第三个参数，如果是true表示在捕获取中调用事件，false冒泡时调用
+六、addEventListener(事件类型, 执行函数, boolear): 第三个参数，如果是true表示在捕获取中调用事件，false冒泡时调用
 
     这里执行的函数不会被重载
 
@@ -4145,7 +4145,7 @@ Example:
     oSendBtn.addEventListener(&apos;click&apos;, function(){
         console.log(&apos;bb&apos;);
     }, false);
-</code></pre><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>1、加载非阻塞脚本:  
+</code></pre><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>一、加载非阻塞脚本:  
 
     浏览器遇到 &lt;script&gt; 标签时，页面加载都会停下来，先执行js代码，然后在继续加载（因为不知道脚本里有没有document.wirte()
     来向页面写内容，所以会需要先执行完js文件在继续）
@@ -4153,14 +4153,14 @@ Example:
     使用动态创建DOM元素，将脚本加载放到&lt;/body&gt;之前来加载，这样不会影响页面的内容展示
 
 
-2、按需加载: 可以分图片按需加载，js文件按需加载、数据接需加载
+二、按需加载: 可以分图片按需加载，js文件按需加载、数据接需加载
 
     图片按需加载使用的lazyload
 
     JS按需加载类似模块化开发，只对依赖的文件进行加载
 
 
-3、图片预加载: 通过new Images()来创建图像对象提前将图片进行加载
+三、图片预加载: 通过new Images()来创建图像对象提前将图片进行加载
 
     function preloadImg(url) {
         var img = new Image();
@@ -4182,7 +4182,7 @@ Example:
 
 解决跨域的方法: 
 
-1、JSONP
+一、JSONP
 
     JSONP利用script标签中的src属性，src属性没有跨域限制，通过url的参数将回调函数的名称和数据请求给服务器，服务器接收到url参数进行处理，并将数据挂载到回调函数的参数并执行回调函数，客户端有与回调函数名相同，来处理这些数据
 
@@ -4195,7 +4195,7 @@ Example:
     document.body.appendChild(script);
 
 
-2、document.domain: 
+二、document.domain: 
 
     适用于主域相同子域不同，比如 www.renrendai.com 和 action.renrendai.com
 
@@ -4214,7 +4214,7 @@ Example:
        document.domain = &quot;www.we.com&quot;;       // b页面必须要设置a.html
 
 
-3、HTML5 postMessage() 处理iframe跨域问题
+三、HTML5 postMessage() 处理iframe跨域问题
 
     如果在一个主域中的a.html嵌套个 &lt;iframe src=&quot;http://www.b.com/b.html&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 
@@ -4243,7 +4243,7 @@ Example:
     传统的iframe跨域使用方法: http://www.cnblogs.com/snandy/p/3900016.html
 
 
-4、window.name + iframe
+四、window.name + iframe
 
     window.name原理是利用同一个窗口在不同页面共用一个window.name，这个需要在a.com下建立一个代理文件c.html，使同源后a.html能获取c.html的window.name.
 
@@ -4275,7 +4275,7 @@ Example:
         window.name = &quot;这是 b 页面的数据&quot;;
 
 
-5、window.location.hash + iframe
+五、window.location.hash + iframe
 
     b.html将数据以hash值的方式附加到c.html的url上，在c.html页面通过loaction.hash获取数据后传到a.html
 
@@ -4304,29 +4304,26 @@ Example:
     //c.html
     // 获取自身的hash再传到a.html的hash里，数据传输完毕
     parent.parent.location.hash = self.location.hash.substring(1);
-</code></pre><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>1、CORS概念: 是指跨域资源共享, 用于解决前端跨域问题, 使用自定义头部让浏览器与服务器进行沟通, 来进行请求成功或失败
+</code></pre><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>一、CORS概念: 是指跨域资源共享, 用于解决前端跨域问题, 使用自定义头部让浏览器与服务器进行沟通, 来进行请求成功或失败
 
     原理: 服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。
 
     *表示接受所有域名的请求。也可以指定特定的域名 Access-Control-Allow-Origin: http://www.client.com。
 
 
-2、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
+二、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
 
-    1) post请求跨域
+    1、post请求跨域
 
-    2) &quot;script error&quot; 的脚本错误提示
+    2、&quot;script error&quot; 的脚本错误提示
 
-    3) canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+    3、canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+</code></pre><p>   三、CORS缺点: </p>
+<pre><code>1、cookie不会随请求发送，也不会响应
 
+2、不能设置请求头的Content-Type字段
 
-3、CORS缺点: 
-
-    1）cookie不会随请求发送，也不会响应
-
-    2）不能设置请求头的Content-Type字段
-
-    3）不能访问响应头信息
+3、不能访问响应头信息
 </code></pre><h4 id="Promise异步编程"><a href="#Promise异步编程" class="headerlink" title="Promise异步编程"></a>Promise异步编程</h4><h4 id="同步、异步"><a href="#同步、异步" class="headerlink" title="同步、异步"></a>同步、异步</h4><pre><code>同步: 就是代码逐行执行
 
 异步: Promins、Ajax、setTimeout 来实现，执行到异步的代码时不会等待返回结果后在执行之后的代码，会直接往下执行。
@@ -4336,9 +4333,9 @@ Example:
 
 对象组件: 私有、公有属性、方法和特权方法
 
-1、constructor属性: 指向这个原型的构造函数，如果是类式继承需要修改子类的constructor的指向，如果不改子类会指向父类.
+一、constructor属性: 指向这个原型的构造函数，如果是类式继承需要修改子类的constructor的指向，如果不改子类会指向父类.
 
-2、原型和原型链: 
+二、原型和原型链: 
 
     prototype原型: 在创建函数的时候JS会为这个函数自动加上prototype属性
 
@@ -4354,13 +4351,13 @@ Example:
         console.log(f.__proto__ === F.prototype);           // true
         Object.prototype是顶级对象，所有对象都继承它
 
-3、继承
+三、继承
 
     每个对象都是由Object.prototype对象继承的
 
     继承分为: 类式继承、原型链继承、拷贝继承。
 
-    1）类式继承: 
+    1、类式继承: 
 
         function Parent(){}
         Parent.prototype.say = function(){ 
@@ -4379,7 +4376,7 @@ Example:
         Childer.prototype.getAuthor = function(){ console.log(&apos;siguang&apos;) }
 
 
-    2）原型链继承: 
+    2、原型链继承: 
 
         // 原型链式继承
         /*
@@ -4420,7 +4417,7 @@ Example:
         clonePlan.getAttackLevel();         // 4567
 
 
-    3）拷贝继承
+    3、拷贝继承
 
         function extend(parent, childer){
             for(var key in parent){
@@ -4431,7 +4428,7 @@ Example:
         extend(a.prototype, b.prototype);
 
 
-    4）Object.create()继承
+    4、Object.create()继承
 
         function Car(desc){
             this.desc = desc;
@@ -4459,7 +4456,7 @@ Example:
         console.log(oCar.getInfo());    /// color: red, desc: ccc
 
 
-4、SuperClass.prototype = {} 与 SuperClass.prototype.getName = function(){} 区别
+四、SuperClass.prototype = {} 与 SuperClass.prototype.getName = function(){} 区别
 
     一个是将对象覆盖prototype, 一个是将方法添加到prototype中
 
@@ -4580,7 +4577,7 @@ post请求包括请求头、状态行、请求主体（主体类型设置就是c
 
 Content-Type:
 
-1、application/x-www-form-urlencoded: 浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据
+一、application/x-www-form-urlencoded: 浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据
 
     jquery和ajax的默认的方式 content-type:「application/x-www-form-urlencoded;charset=utf-8」
 
@@ -4596,7 +4593,7 @@ Content-Type:
         incomeAccount: &quot;穷逼&quot;
 
 
-2、multipart/form-data: 一般用来上传文件，必须让 form 的 enctyped 等于这个值
+二、multipart/form-data: 一般用来上传文件，必须让 form 的 enctyped 等于这个值
 
     content-type: multipart/form-data
 
@@ -4617,7 +4614,7 @@ Content-Type:
         ------WebKitFormBoundaryrGKCBY7qhFd3TrwA-- 
 
 
-3、application/json: 告诉服务端消息主体是序列化后的 JSON 字符串
+三、application/json: 告诉服务端消息主体是序列化后的 JSON 字符串
 
     POST http://wwwexamplecom HTTP/11 
     Content-Type: application/json;charset=utf-8 
@@ -4637,7 +4634,7 @@ Content-Type:
         {&quot;title&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2,3]}
 
 
-4、text/xml: XML文件作为编码方式的需要用到的类型
+四、text/xml: XML文件作为编码方式的需要用到的类型
 
     POST http://wwwexamplecom HTTP/11
     Content-Type: text/xml
@@ -4645,7 +4642,7 @@ Content-Type:
     ** Request Payload
 
 
-5、HTML5中的fromData异步上传表单
+五、HTML5中的fromData异步上传表单
 
     这里注意需设置 content-type:false 和 processData: false
 
@@ -6162,13 +6159,13 @@ js中事件模型来替代传统的发布订阅模式
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Précédent</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Suivant &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
 </nav>
 
 
 </div>
         <footer class="footer">
-    Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
 </footer>
 
 <script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
