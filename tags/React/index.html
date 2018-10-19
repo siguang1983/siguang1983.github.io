@@ -168,7 +168,7 @@ export const addTodo = (text) =&gt; {
 }
 
 通过 store.dispatch(action) 来派发到reducer中, 在reducer中改变state的值
-</code></pre><h4 id="Reducer-rɪ’dju-sə-瑞丢ser"><a href="#Reducer-rɪ’dju-sə-瑞丢ser" class="headerlink" title="Reducer [rɪ’dju:sə][瑞丢ser]"></a>Reducer [rɪ’dju:sə][瑞丢ser]</h4><pre><code>接收一个action值，纯方法不能定义ajax定义时间等，需要传入一个旧的状态在返回一个新的状态给action, 根据定义的action名对应处理state，并改变state值
+</code></pre><h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h4><pre><code>接收一个action值，纯方法不能定义ajax定义时间等，需要传入一个旧的状态在返回一个新的状态给action, 根据定义的action名对应处理state，并改变state值
 
 let todo = (state, action) =&gt; {
 
@@ -479,9 +479,7 @@ http://blog.csdn.net/kuangshp128/article/details/67632683
     <section class="article-body markdown-body">
         
         <p>| 创建组件<br>| render<br>| props、propType、state、setState()、replaceState()<br>| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)<br>| React.Children 获取父组件传的DOM<br>| mixin</p>
-<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><pre><code>安装react-cli 见的README.md
-
-React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><pre><code>React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定
 
 1、核心是封装组件，只关注UI，状态变更重新渲染整个组件
 
@@ -489,11 +487,7 @@ React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单�
 
 3、单向数据绑定: 当数据更新会渲染整个app
 
-    修改DOM树、修改数据、以旧换新用户输入、异步API数据
-
-    React的渲染方式: 用户输入、从API获取数据、将数据传给顶层组件、React将每个组件渲染出来
-
-        不会象MVC一样的双向数据绑定、和数据模型的脏值检测、不会有确切的DOM操作
+    React的渲染方式: 用户输入 ~&gt; 从API获取数据 ~&gt; 将数据传给顶层组件 ~&gt; React将每个组件渲染出来, 不会象MVC一样的双向数据绑定、和数据模型的脏值检测、不会有确切的DOM操作
 
 4、虚拟DOM树: React重建一个DOM树，找到与上一个版本的DOM的差异，计算出新的DOM更新操作，从操作队列中指执行DOM更新操作
 
@@ -508,42 +502,24 @@ React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单�
     babel-sublime: https://github.com/babel/babel-sublime   用来语法颜色
 
     javascriptNext: https://github.com/Benvie/JavaScriptNext.tmLanguage 
-</code></pre><h4 id="react引用方式"><a href="#react引用方式" class="headerlink" title="react引用方式"></a>react引用方式</h4><pre><code>一、页面直接加载
 
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/react/0.14.3/react-dom.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js&quot;&gt;&lt;/script&gt;
+6、.js与.jsx没什么区别都可以babel都编译，写.jsx扩展可以清晰的看出是Jsx的语法
 
-二、ES5的写法
+7、IE浏览器要在8.0版本以上
+</code></pre><h4 id="react引用方式"><a href="#react引用方式" class="headerlink" title="react引用方式"></a>react引用方式</h4><pre><code>// Component作为所有组件的基类，提供很多组件共有的功能
+import React, { Component } from &apos;react&apos;;
+import { reactDom } from &apos;react-dom&apos;;
 
-    var React = require(&apos;react&apos;);
-    var ReactDOM = require(&apos;react-dom&apos;);
-
-    // 定义组件
-    var HelloMessage = React.createClass({
-      render: function() {
+// 定义组件
+class SimpleComponent extends Component {
+    render(){
         return &lt;div&gt; React，我们来了... &lt;/div&gt;;
-      }
-    });
-
-    // 组件渲染
-    ReactDOM.render(&lt;HelloMessage /&gt;, rootElement);
-
-三、ES6的写法
-
-    import React, { Component } from &apos;react&apos;;
-    import { render } from &apos;react-dom&apos;;
-
-    // 定义组件
-    class SimpleComponent extends Component {
-        render(){
-            return &lt;div&gt; React，我们来了... &lt;/div&gt;;
-        }
     }
-    export default SimpleComponent;
+}
+export default SimpleComponent;
 
-    // 组件渲染
-    render(&lt;HelloMessage /&gt;, rootElement);
+// 组件渲染
+reactDom.render(&lt;HelloMessage /&gt;, document.getElementById(&apos;app&apos;));
 </code></pre><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><pre><code>一、组件的生命周期三个过程
 
     1、装载过程(Mount), 把组件第一次在DOM树中渲染的过程
@@ -557,7 +533,7 @@ React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单�
 
     1、constructor - ES6每个类的构造函数，创建一个组件就会先调用对应的构造函数
 
-    2、getInitialState() - 初始化this.state，【因内受】(ES6不起作用)
+    2、getInitialState() - 初始化this.state，(ES6不起作用)
 
     3、getDefaultProps - 设置默认的props (ES6不起作用)
 
@@ -565,31 +541,29 @@ React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单�
 
     5、render() - 创建虚拟dom，进行diff算法，更新dom树，如果不需要渲染可以将render函数返回一个null或false
 
-    6、componentDidMount() - 组件渲染后，可以使用refs操作获取或操作DOM节点
+    6、componentDidMount() - 组件渲染后已经装载到DOM树中，这时候可以refs操作获取或操作DOM节点
 
 
 三、更新过程(当props或state被修改时就会引发组件的更新过程)
 
     1、componentWillReceiveProps(nextProps) - 当父组件改变了传递给子组件props的值，这时候子组件此方法会被调用 receive[rɪˈsiv]
 
-    2、shouldComponentUpdata(nextProps, nextState) - react性能环节，父组件传给子组件的props值改变，子组件中的shouldComponentUpdata()方法会先调用，前后两个props相同返回false阻止更新，不需要在创建新的dom树在进行diff算法，默认为true
+    2、shouldComponentUpdate(nextProps, nextState) - react性能环节，父组件传给子组件的props值改变，子组件中的shouldComponentUpdata()方法会先调用，前后两个props相同返回false阻止更新，不需要在创建新的dom树在进行diff算法，默认为true
 
         shouldComponentUpdate(nextProps, nextState){
             return nextProps.name === nextState.name        // 如果返回false就算父组件传递的props值改变，也不会执行render
         }
 
-    3、componentWillUpdata(nextProps, nextState) - shouldComponentUpdata为true时调用
+    3、componentWillUpdata() - 与装载过程相同 
 
-    4、render() - 
+    4、render() - 与装载过程相同
 
-    5、componentDidUpdate() - shouldComponentUpdata为true时调用
+    5、componentDidUpdate() - 与装载过程相同
 
 
 四、卸载组件
 
     1、componentWillUnmount() - 卸载前调用
-
-https://www.jianshu.com/p/4784216b8194
 </code></pre><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><pre><code>var HelloMessage = React.createClass({
     render: function() {
         return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
@@ -605,16 +579,12 @@ render: function() {
 
 一、注释
 
-    {/* 一般注释, 用 {} 包围 */}
-
-    /* 多
-     行
-     注释 */
+    {/* 这里用于单多行注释 */}
 
 
 二、根元素只能有一个
 
-     class ComponentDemo extends Component {
+    class ComponentDemo extends Component {
         render(){
             // 以下写法直接报错
             return (
@@ -629,11 +599,13 @@ render: function() {
 
 三、属性名不能和 js 关键字冲突
 
-    class =&gt; className
+    1、class =&gt; className
 
-    read =&gt; readOnly
+    2、read =&gt; readOnly
 
-    for =&gt; htmlfor
+    3、for =&gt; htmlFrom 不能直接使用for
+
+        &lt;div htmlFor=&apos;male&apos;&gt;Male&lt;/div&gt;
 
 
 四、JSX spread
@@ -663,8 +635,8 @@ render: function() {
 五、输出html
 
     const elements = &apos;&lt;p&gt;aaa&lt;/p&gt;&lt;p&gt;bbb&lt;/p&gt;&lt;p&gt;ccc&lt;/p&gt;&apos;;
-    &lt;p dangerouslySetInnerHTML={{__html: elements.join('')}}&gt;&lt;/p&gt;
-</code></pre><h4 id="class和style样式加载"><a href="#class和style样式加载" class="headerlink" title="class和style样式加载"></a>class和style样式加载</h4><pre><code>一、class
+    &lt;p dangerouslySetInnerHTML={{ __html: elements }}&gt;&lt;/p&gt;
+</code></pre><h4 id="class和style"><a href="#class和style" class="headerlink" title="class和style"></a>class和style</h4><pre><code>一、class
 
     admin.css:
         .container {.....}
@@ -709,49 +681,21 @@ render: function() {
     方法二:
         render() {
             return (
-                &lt;div style={{dipslay: flex, height: 100%}}&gt;
+                &lt;div style={{ width: '100px', float: 'left'}}&gt;       // 注意这里属性值要使用引号
                     xxxx
                 &lt;/div&gt;
             );
         }
-</code></pre><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code>一、htmlFrom 不能直接使用for
-
-    &lt;div htmlFor=&apos;male&apos;&gt;Male&lt;/div&gt;
 </code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><pre><code>创建组件: ES5写法React.createClass() 或 ES6写法React.Component()
 
 渲染组件: ReactDOM.render(&lt;组件名/&gt;, 放到哪个位置, 渲染完成的回调);
 
 一、组件创建三种方法
 
-    1、ES5 创建组件
+    1、ES6创建
 
-        let React = require(&apos;react&apos;);
-        let ReactDOM = require(&apos;react-dom&apos;);
-
-        let Message = React.createClass({
-            render: function(){
-                return (
-                    &lt;div&gt;
-                        &lt;ul&gt;
-                            &lt;li&gt;Hello World {this.props.personName}&lt;/li&gt;
-                        &lt;/ul&gt;
-                    &lt;/div&gt;
-                )
-            }
-        })
-
-        module.exports = Message;        // ES5导出组件
-
-        // ReactDOM.render(
-        //        &lt;Message personName=&quot;siguang&quot; /&gt;
-        //         , document.querySelector(&apos;#app&apos;)
-        // );
-
-
-    2、ES6 创建组件方法
-
-        import React, { Component } from &apos;react&apos;;
-        import ReactDOM, { render } from &apos;react-dom&apos;;
+        import React, { Component } from &apos;react&apos;
+        import ReactDom, { render } from &apos;react-dom&apos;
 
         // 所有创建的组件都继承于Component对象
         class ShowMessage extends Component{
@@ -766,8 +710,7 @@ render: function() {
         export default ShowMessage;        // ES6导出组件
         // render(&lt;ShowMessage name=&quot;siguang.liu&quot; /&gt;, document.querySelector(&apos;#app&apos;));
 
-
-    3、函数式组件
+    2、函数式组件
 
         是组件没有状态的时候（相当不需要设置state, 不能使用this、可以写成函数式
 
@@ -780,7 +723,7 @@ render: function() {
         }
 
 
-二、组件的注意地方
+二、组件注意的地方
 
     1、组件名首字母必须大写
 
@@ -791,7 +734,6 @@ render: function() {
                 return (
                     &lt;div class=&quot;boxA&quot;&gt;            {/* 根元素只能有一个 */}
                         aaaaaaaa
-
                         &lt;div class=&quot;boxB&quot;&gt;
                             bbbbbb
                         &lt;/div&gt;
@@ -809,9 +751,6 @@ render: function() {
 
         组件并不是真实的DOM节点，而是在内存中的一种数据结构叫虚拟DOM，如果要从组件内获取真实的DOM节点，需要用到refs属性
 </code></pre><h4 id="组件嵌套"><a href="#组件嵌套" class="headerlink" title="组件嵌套"></a>组件嵌套</h4><pre><code>childList.jsx:
-
-    import React, { Component } from &apos;react&apos;
-    import ReactDom, { render } from &apos;react-dom&apos;
 
     class ChildrenA extends Component{
         constructor(props){
@@ -844,12 +783,9 @@ render: function() {
 
 index.js:
 
-    import React, { Component } from &apos;react&apos;
-    import ReactDom, { render } from &apos;react-dom&apos;
     import ParentComponent from &apos;./components/ParentComponent&apos;
-
     render(&lt;ParentComponent /&gt;, docuemnt.querySelector(&apos;#box&apos;));
-</code></pre><h4 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h4><pre><code>一、组件之间有几个通信有几种情况:
+</code></pre><h4 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h4><pre><code>一、组件之间有几个通信有几种情况
 
     1、父组件向子组件通信
 
@@ -886,9 +822,7 @@ index.js:
     父组件向很深的几层子组件通信有两种方法: 1、props一层一层传   2、使用context对象
 
 
-五、非嵌套组件通信
-
-    使用事件订阅，下载events插件
+五、events非嵌套组件通信, 使用事件订阅
 
     $ npm i events --save
 
@@ -928,9 +862,81 @@ index.js:
             return emitter.emit(&quot;callMe&quot;, &quot;Hello&quot;);     // callMe为自定义函数，hello为发的消息参数
         }
         &lt;input type=&quot;button&quot; value=&quot;向A子组件发消息&quot; onClick={this.sendBrotherMessage.bind(this)} /&gt;
-</code></pre><h4 id="Context对象"><a href="#Context对象" class="headerlink" title="Context对象"></a>Context对象</h4><pre><code>如果一个顶层组件想将数据传给多层的组件，不需要一层一层的往下传，使用Context对象
 
-组件和所有子组件都有一个共同的this.context
+六、redux
+</code></pre><h4 id="Context对象"><a href="#Context对象" class="headerlink" title="Context对象"></a>Context对象</h4><pre><code>如果让一个父组件与孙子组件进行数据传递，可以通过props一层一层的传过去，也可以通过Context对象来跨级传递
+
+context与react版本分两种写法，以下为react v16.3版本的示例
+
+一、React.crateContext() - 创建一个Context
+
+二、初始化createContext下的方法
+
+    1、provider - 父组件中传递的值
+
+    2、consumeer - 子组件接收的值
+
+三、示例:
+
+    1、创建一个contextStor.js
+
+        import React, { Component } from &apos;react&apos;
+        // 默认主题是Light
+        export const { Provider, Consumer } = React.createContext(&quot;Light&quot;);
+
+    2、parentPage.jsx
+
+        import Ca from &apos;./cA&apos;
+        import { Provider } from &apos;./ccontextStor&apos;;
+
+        export default class ParnentPage extends Component {
+            render () {
+                return (
+                    &lt;Provider value={{contextVal: '这里是context的传递的内容'}}&gt;
+                        &lt;h1&gt;这里是Parent组件&lt;/h1&gt;
+                        &lt;Ca /&gt;
+                    &lt;/Provider&gt;
+                )
+            }
+        }
+
+    3、cA.jsx
+
+        import Cb from &apos;./cB&apos;
+
+        export default class Ca extends Component {
+            render () {
+                return (
+                    &lt;div&gt;
+                        &lt;h2&gt;这里是CA&lt;/h2&gt;
+                        &lt;Cb /&gt;
+                    &lt;/div&gt;
+                )
+            }
+        } 
+
+    4、cB.jsx
+
+        import { Consumer } from &apos;./ccontextStor&apos;;
+
+        export default class Cb extends Component {
+            render () {
+                return (
+                    &lt;div&gt;
+                        &lt;h3&gt;这里子CB&lt;/h3&gt;
+                        &lt;Consumer&gt;
+                            {
+                                context =&gt; {
+                                    return (
+                                        &lt;div&gt;{context.contextVal}&lt;/div&gt;
+                                    )
+                                }
+                            }
+                        &lt;/Consumer&gt;
+                    &lt;/div&gt;     
+                )
+            }
+        }
 </code></pre><h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4><pre><code>React是单向数据流，数据从父组件传到子组件，子组件通过props获取数据，顶层组件改变了props，React会遍历整个组件树，重新渲染整个组件
 
 数据流包括: Props 和 State
@@ -949,36 +955,27 @@ index.js:
 
 二、设置一个默认的props
 
-    ES5写法
-
-        var ComponentWithDefaultProps = React.createClass({
-            // 初始化设置props值
-            getDefaultProps: function() {
-                return {
-                    value: &apos;default value&apos;
-                };
-            }
-        });
-
-    ES6写法 
-
-        /* 通过 defaultProps 来定义 */
-        class PropsDemo extends Component {
-            render(){
-                return (
-                    &lt;div class=&quot;box&quot;&gt;
-                        name: {this.props.name}, age: {this.props.age}
-                    &lt;/div&gt;
-                )
-            }
+    /* 通过 defaultProps 来定义 */
+    class PropsDemo extends Component {
+        constructor(props) {
+    super(props);        // 调用父类，如果不写会调不到
+       }
+        render(){
+            return (
+                &lt;div class=&quot;box&quot;&gt;
+                    name: {this.props.name}, age: {this.props.age}
+                &lt;/div&gt;
+            )
         }
+    }
 
-        PropsDemo.defaultProps = {
-            name: &apos;123123&apos;        // 默认一个name值，如果父组件没有传值就会取默认值
-        }
+    // 初始化props
+    PropsDemo.defaultProps = {
+        name: &apos;123123&apos;        // 默认一个name值，如果父组件没有传值就会取默认值
+    }
 
 
-三、propsType 校验props规则
+三、propsType 校验props类型
 
     $ npm install --save prop-types
 
@@ -1002,9 +999,6 @@ index.js:
 
     PropsComponent组件:
 
-        import React, { Component } from &apos;react&apos;;
-        import ReactDOM, { render } from &apos;react-dom&apos;;
-
         class PropsComponent extends Component {
             render(){
                 return (
@@ -1020,8 +1014,6 @@ index.js:
 
     index.js:
 
-        import React, { Component } from &apos;react&apos;;
-        import ReactDOM, { render } from &apos;react-dom&apos;;
         import PropsComponent from &apos;../components/props&apos;;
 
         // 要传的值
@@ -1095,115 +1087,36 @@ index.js:
     &lt;ChildComponent propsData={this.state.username} /&gt;
 
     &lt;LikeButton wordings={{likedText: '已赞', unlikedText: '赞'}} onClick={() =&gt; console.log(&apos;Click on like button!&apos;)}/&gt;
-</code></pre><h4 id="state"><a href="#state" class="headerlink" title="state"></a>state</h4><pre><code>每一个React组件都有一个自己的state对象，与props区别在于，state只能在当前组件内部使用
+</code></pre><h4 id="state"><a href="#state" class="headerlink" title="state"></a>state</h4><pre><code>每一个React组件都有一个自己的state对象，与props区别是state只能在当前组件内部使用，props可以将数据传递给子组件
 
 一、初始化state
 
-    ES5: getInitialState() 
+    class StateDemo extends Component {
+        constructor(){
+            super();            // 继承Component
 
-        var Component = React.createClass({
-            // getInitialState()方法 初始化 state值
-            getInitialState: function() {
-                return { userName: &apos;siguang&apos; };
-            },
-
-            render: function(){
-                return (
-                    &lt;div&gt; {this.state.userName} &lt;/div&gt;
-                )
+            // 这里初始化state
+            this.state = { 
+                userName: &apos;siguang&apos; 
             }
         }
 
-    ES6: constructor()
-
-        class StateDemo extends Component {
-            constructor(){
-                super();            // 继承Component
-
-                // 这里初始化state
-                this.state = { 
-                    userName: &apos;siguang&apos; 
-                }
-            }
-
-            render(){
-                return (
-                    &lt;div&gt; {this.state.username}
-                )
-            }
-        }
-
-
-二、setState({改变的值}, 回调函数)来设置state的值, RN中是异步所以这块需要注意
-
-    // 改变已有的值
-    this.setState({username: &apos;haha&apos;})
-
-    // 替换所有值
-    this.replaceState()  
-
-
-三、获取state值 { this.state.属性名 }
-
-    改变值: this.setState()每当state更新组件就会重新渲染自己
-
-    var Component = React.createClass({
-
-        // 1 初始化 state值
-        getInitialState: function() {
-            return {userName: &apos;siguang&apos;};
-        },
         setUserName: function(){
-            this.setState({userName: &apos;lulu&apos;});        // 2 修改state值
+            this.setState({userName: &apos;lulu&apos;});        // 修改state值
         },
-        render: function(){
+
+        render(){
             return (
                 &lt;div&gt;
-                    这里是props获取的值 {this.state.userName}    // 3 获取state的值
+                    这里是props获取的值 {this.state.userName};        // 获取state的值
                     &lt;input type=&quot;button&quot; onClick={this.setUserName.bind(this)} value=&quot;点击修改state&quot; /&gt;
                 &lt;/div&gt;
             )
         }
-    })
-
-
-四、state示例
-
-    class StateDemo extends Component {
-        constructor(){
-            super();
-
-            this.state = {
-                secondsElapsed: 0
-            }
-        }
-
-        tick(){
-            this.setState({ secondsElapsed: this.state.secondsElapsed + 1 });
-        }
-
-        componentDidMount(){
-            var that = this;
-            this.interval = setInterval(function(){
-                that.tick();
-            }, 1000);
-        }
-
-        componentWillUnmount(){
-            clearInterval(this.interval);
-        }
-
-        render(){
-            return (
-                &lt;div&gt;目前已经计时: {this.state.secondsElapsed}秒&lt;/div&gt;
-            )
-        }
     }
 
-    export default StateDemo;
 
-
-五、this的指向
+二、this的指向
 
     class StateDemo extends Component{
         constructor(props){
@@ -1231,17 +1144,19 @@ index.js:
         1、使用bind() - onClick=&quot;this.clickSelectBtn.bind(this)&quot;
 
         2、使用箭头函数 - onClick={ (e)=&gt;this.clickSelectBtn(e) }
-</code></pre><h4 id="操作真实DOM"><a href="#操作真实DOM" class="headerlink" title="操作真实DOM"></a>操作真实DOM</h4><pre><code>两种获取方法
+
+        3、传参数 - &lt;button onClick={ this.cb.bind(this, &apos;将消息发给父组件&apos;) }&gt;向父组件发消息&lt;/button&gt;
+
+            cb(msg) {
+                console.log(msg)
+            }
+</code></pre><h4 id="refs操作真实DOM"><a href="#refs操作真实DOM" class="headerlink" title="refs操作真实DOM"></a>refs操作真实DOM</h4><pre><code>两种获取方法
 
     1、ReactDOM.findDOMNode(this.refs.xxxx);
 
     2、this.refs.xxx
 
 Example:
-
-    import React, { Component } from &apos;react&apos;;
-    import ReactDOM, { findDOMNode } from &apos;react-dom&apos;;
-    import $ from &apos;jquery&apos;;
 
     class RefsDemo extends Component {
         componentDidMount(){
@@ -1254,7 +1169,6 @@ Example:
 
             // jQuery来操作DOM
             console.log($(contentA).html());
-
             console.log( contentA.innerHTML );
             console.log( contentB.innerHTML );
         }
@@ -1268,25 +1182,6 @@ Example:
             )
         }
     }
-</code></pre><h4 id="React表单组件操作"><a href="#React表单组件操作" class="headerlink" title="React表单组件操作"></a>React表单组件操作</h4><pre><code>一、react表单组件与html的不同
-
-    1、value、checked: 属性设置值后，用户输入无效
-
-    2、textarea: 的值要设置在value属性
-
-        &lt;textarea name=&quot;description&quot; value=&quot;This is a description.&quot; /&gt;
-
-    3、select: value属性可以是数据，不建使用option的selected属性
-
-        &lt;select multiple={true} value={[&apos;B&apos;, &apos;C&apos;]}&gt;
-            &lt;option value=&quot;A&quot;&gt;Apple&lt;/option&gt;
-            &lt;option value=&quot;B&quot;&gt;Banana&lt;/option&gt;
-            &lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;
-        &lt;/select&gt;
-
-    4、input/textarea 的 onChange 用户每次输入都会触发（即使不失去焦点）
-
-    5、radio/checkbox/option 点击后触发 onChange
 </code></pre><h4 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h4><pre><code>通过mixin可以将组件间共享代码，将两个组件共同的属性、方法存储到mixin对象中
 
 mixin不支持ES6的声明组件方式
@@ -1373,27 +1268,49 @@ ES5写法
 
     如果使用 value来绑定state的值，输入值时不会被改变，使用 defaultValue 值会被改变
 
-    var FromApp = React.createClass({
-        getInitialState: function(){
-            return {
-                inputValue: &apos;input value&apos;
+    class App extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                username: &apos;&apos;
             }
-        },
-
-        handleSubmit: function(e){
-            this.refs[&apos;goodInput&apos;]
-        },
-
-        render: function(){
-            return (
-                &lt;form onSubmit={this.handleSubmit}&gt;
-                    &lt;input type=&quot;text&quot; defaultValue={this.state.inputValue} ref=&quot;goodInput&quot; /&gt;
-
-                    // &lt;input type=&quot;text&quot; ref={node =&gt; { goodInput = node }}&gt;  这种写法
-                &lt;/form&gt;
-            )
         }
-    })
+        handleUsername(e){
+            const val = e.target.value;
+            this.setState({username: val});
+        }
+        getName(){
+            alert(this.state.username)
+        }
+        render() {
+            return (
+                &lt;div className=&quot;App&quot;&gt;
+                    &lt;input placeholder=&quot;Basic usage&quot; defaultValue={this.state.username} onChange={this.handleUsername.bind(this)} /&gt;
+                    &lt;button type=&quot;primary&quot; onClick={this.getName.bind(this)}&gt;Primary&lt;/button&gt;
+                &lt;/div&gt;
+            );
+        }
+    }
+
+二、react表单组件与html的不同
+
+    1、value、checked: 属性设置值后，用户输入无效
+
+    2、textarea: 的值要设置在value属性
+
+        &lt;textarea name=&quot;description&quot; value=&quot;This is a description.&quot; /&gt;
+
+    3、select: value属性可以是数据，不建使用option的selected属性
+
+        &lt;select multiple={true} value={[&apos;B&apos;, &apos;C&apos;]}&gt;
+            &lt;option value=&quot;A&quot;&gt;Apple&lt;/option&gt;
+            &lt;option value=&quot;B&quot;&gt;Banana&lt;/option&gt;
+            &lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;
+        &lt;/select&gt;
+
+    4、input/textarea 的 onChange 用户每次输入都会触发（即使不失去焦点）
+
+    5、radio/checkbox/option 点击后触发 onChange
 </code></pre><h4 id="React脚手架搭建"><a href="#React脚手架搭建" class="headerlink" title="React脚手架搭建"></a>React脚手架搭建</h4><pre><code>一、可以使用官网的 create-react-app、ant或自己搭  https://github.com/facebook/create-react-app
 
 二、使用的JSX和ES6所以需要转换，使用版本:
@@ -1650,8 +1567,9 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
 
     npm i react-router --save 
     npm i redux --save 
-    npm i react-redux --save 
-</code></pre><p>| <a href="http://www.css88.com/react/docs/try-react.html" target="_blank" rel="noopener">http://www.css88.com/react/docs/try-react.html</a><br>| <a href="http://huziketang.com/books/react/" target="_blank" rel="noopener">http://huziketang.com/books/react/</a><br>| <a href="http://blog.csdn.net/liwusen/article/category/6522963" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/category/6522963</a><br>| <a href="https://doc.react-china.org/docs/hello-world.html" target="_blank" rel="noopener">https://doc.react-china.org/docs/hello-world.html</a>            中文官网<br>| <a href="http://react-china.org/" target="_blank" rel="noopener">http://react-china.org/</a>           中文社区<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>        // 全家桶<br>| <a href="http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/" target="_blank" rel="noopener">http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/</a>        // virturalDOM 虚拟DOM<br>| <a href="https://www.jianshu.com/p/fb915d9c99c4" target="_blank" rel="noopener">https://www.jianshu.com/p/fb915d9c99c4</a>          // 组件通信<br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a>        // redux-devtools<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>|<br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>   babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a><br>| <a href="https://juejin.im/post/5a84682ef265da4e83266cc4" target="_blank" rel="noopener">https://juejin.im/post/5a84682ef265da4e83266cc4</a>        // 源码解析</p>
+    npm i react-redux --save
+</code></pre><p>| <a href="https://react.docschina.org/docs/hello-world.html" target="_blank" rel="noopener">https://react.docschina.org/docs/hello-world.html</a><br>| <a href="http://www.css88.com/react/docs/try-react.html" target="_blank" rel="noopener">http://www.css88.com/react/docs/try-react.html</a><br>| <a href="https://juejin.im/post/5a9410c25188257a61325eda" target="_blank" rel="noopener">https://juejin.im/post/5a9410c25188257a61325eda</a>          // react 新老context<br>| <a href="https://www.jianshu.com/p/fb915d9c99c4" target="_blank" rel="noopener">https://www.jianshu.com/p/fb915d9c99c4</a>          // 组件通信<br>| <a href="http://huziketang.com/books/react/" target="_blank" rel="noopener">http://huziketang.com/books/react/</a><br>| <a href="http://blog.csdn.net/liwusen/article/category/6522963" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/category/6522963</a><br>| <a href="http://react-china.org/" target="_blank" rel="noopener">http://react-china.org/</a>           中文社区<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>        // 全家桶<br>| <a href="http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/" target="_blank" rel="noopener">http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/</a>        // virturalDOM 虚拟DOM<br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a>        // redux-devtools<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>   babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a><br>| <a href="https://juejin.im/post/5a84682ef265da4e83266cc4" target="_blank" rel="noopener">https://juejin.im/post/5a84682ef265da4e83266cc4</a>        // 源码解析</p>
+<p>| <a href="https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation</a>      // vscode 调试react 通过debugger for chrome</p>
 
         
     </section>
@@ -1686,8 +1604,76 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
     
     <section class="article-body markdown-body">
         
-        <p>| Router、Route<br>| Link、Links  router的导航组件，用来切换路由<br>| browserHistory、hashHistory<br>| activeStyle、activeClassName  路由设置样式<br>| IndexRoute<br>| component、components<br>| query<br>| params 变量<br>| Redirect<br>| setRouteLeaveHook</p>
-<h4 id="PropTypes验证"><a href="#PropTypes验证" class="headerlink" title="PropTypes验证"></a>PropTypes验证</h4><pre><code>React.PropTypes 提供很多验证器来验证传入数据的有效性
+        <p>| react-create-app 脚手架<br>| Router、Route<br>| Link、Links  router的导航组件，用来切换路由<br>| browserHistory、hashHistory<br>| activeStyle、activeClassName  路由设置样式<br>| IndexRoute<br>| component、components<br>| query<br>| params 变量<br>| Redirect<br>| setRouteLeaveHook</p>
+<h4 id="react-create-app-脚手架"><a href="#react-create-app-脚手架" class="headerlink" title="react-create-app 脚手架"></a>react-create-app 脚手架</h4><pre><code>$ sudo npm i create-react-app -g            // 全局安装，以后在安装就直接使用create-react-app命令来创建就可以
+
+$ create-react-app my-app            // 创建+创建项目目录名
+
+$ cd my-app
+
+$ npm run eject            // 运行, 生成本地webpack配置文件
+
+$ yarn start
+
+$ yarn start、yarn build         // 启动服务、打包
+
+$ yarn add antd        // 安装阿里ant UI框架
+
+    在index.js中引用ant公用样式
+    import &apos;antd/dist/antd.css&apos;;
+
+$ yarn add react-router-dom    // react-router是安装4.0之前版本，react-router-dom是4之后版本
+
+
+*** create-react-app 中的webpack配置在package.json中配置 ***
+
+一、create-react-app关闭eslint提醒
+
+    需要先npm run eject 生成本地webpack配置文件，在修改package.json中的配置
+
+    &quot;eslintConfig&quot;: {
+        &quot;extends&quot;: &quot;react-app&quot;,
+        &quot;rules&quot;: {
+            &quot;no-undef&quot;: &quot;off&quot;,
+            &quot;no-restricted-globals&quot;: &quot;off&quot;,
+            &quot;no-unused-vars&quot;: &quot;off&quot;
+        }
+    }
+
+二、配置反向代理
+
+    &quot;proxy&quot;: {
+        &quot;/api/*&quot;: {
+            &quot;target&quot;: &quot;http://goucai.diyicai.com&quot;,
+            &quot;pathRewrite&quot;: {
+                &quot;^/api/&quot;: &quot;/&quot;
+            },
+            &quot;changeOrigin&quot;: true,
+            &quot;secure&quot;: false
+        }
+    }
+
+三、使用.scss文件
+
+    1、$ npm install sass-loader node-sass --save-dev            // 安装包
+
+    2、在config/webpack.config.dev.js 中配置下面两项, 生产环境也需要修改webpack.config.prod.js
+
+        {
+            exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.scss/],            // 这里加添加一个/\.scss/
+            loader: require.resolve(&apos;file-loader&apos;),
+            options: {
+                name: &apos;static/media/[name].[hash:8].[ext]&apos;,
+            },
+        },
+        // 解析scss文件
+        {
+            test: /\.scss$/,
+            loaders: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;],
+        },
+
+https://github.com/facebook/create-react-app
+</code></pre><h4 id="PropTypes验证"><a href="#PropTypes验证" class="headerlink" title="PropTypes验证"></a>PropTypes验证</h4><pre><code>React.PropTypes 提供很多验证器来验证传入数据的有效性
 
 当向 props 传入无效数据时，JavaScript 控制台会抛出警告。注意为了性能考虑，只在开发环境验证 propTypes。下面用例子来说明不同验证器的区别: 
 
@@ -1705,536 +1691,89 @@ Example:
         name: PropTypes.string
     };
 
-Example:
+propTypes类型: {
 
-    &lt;script type=&quot;text/babel&quot;&gt;
-        var data = 123;
+    // 可以声明 prop 为指定的 JS 基本类型。默认
+    // 情况下，这些 prop 都是可传可不传的。
+    optionalArray: React.PropTypes.array,
+    optionalBool: React.PropTypes.bool,
+    optionalFunc: React.PropTypes.func,
+    optionalNumber: React.PropTypes.number,
+    optionalObject: React.PropTypes.object,
+    optionalString: React.PropTypes.string,
 
-        var MyTitle = React.createClass({
-            propTypes: {
-                title: React.PropTypes.string.isRequired
-            },
-            render: function() {
-                return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
-            }
-        });
+    // 所有可以被渲染的对象: 数字，
+    // 字符串，DOM 元素或包含这些类型的数组。
+    optionalNode: React.PropTypes.node,
 
-        ReactDOM.render(
-            &lt;MyTitle title={data} /&gt;,
-            document.querySelector(&apos;#app&apos;)
-        );
-    &lt;/script&gt;
+    // React 元素
+    optionalElement: React.PropTypes.element,
 
-    React.createClass({
-        propTypes: {
+    // 用 JS 的 instanceof 操作符声明 prop 为类的实例。
+    optionalMessage: React.PropTypes.instanceOf(Message),
 
-            // 可以声明 prop 为指定的 JS 基本类型。默认
-            // 情况下，这些 prop 都是可传可不传的。
-            optionalArray: React.PropTypes.array,
-            optionalBool: React.PropTypes.bool,
-            optionalFunc: React.PropTypes.func,
-            optionalNumber: React.PropTypes.number,
-            optionalObject: React.PropTypes.object,
-            optionalString: React.PropTypes.string,
+    // 用 enum 来限制 prop 只接受指定的值。
+    optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),
 
-            // 所有可以被渲染的对象: 数字，
-            // 字符串，DOM 元素或包含这些类型的数组。
-            optionalNode: React.PropTypes.node,
+    // 指定的多个对象类型中的一个
+    optionalUnion: React.PropTypes.oneOfType([
+        React.PropTypes.string,
+        React.PropTypes.number,
+        React.PropTypes.instanceOf(Message)
+    ]),
 
-            // React 元素
-            optionalElement: React.PropTypes.element,
+    // 指定类型组成的数组
+    optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),
 
-            // 用 JS 的 instanceof 操作符声明 prop 为类的实例。
-            optionalMessage: React.PropTypes.instanceOf(Message),
+    // 指定类型的属性构成的对象
+    optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),
 
-            // 用 enum 来限制 prop 只接受指定的值。
-            optionalEnum: React.PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),
+    // 特定形状参数的对象
+    optionalObjectWithShape: React.PropTypes.shape({
+        color: React.PropTypes.string,
+        fontSize: React.PropTypes.number
+    }),
 
-            // 指定的多个对象类型中的一个
-            optionalUnion: React.PropTypes.oneOfType([
-                React.PropTypes.string,
-                React.PropTypes.number,
-                React.PropTypes.instanceOf(Message)
-            ]),
+    // 以后任意类型加上 `isRequired` 来使 prop 不可空。
+    requiredFunc: React.PropTypes.func.isRequired,
 
-            // 指定类型组成的数组
-            optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),
+    // 不可空的任意类型
+    requiredAny: React.PropTypes.any.isRequired,
 
-            // 指定类型的属性构成的对象
-            optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),
-
-            // 特定形状参数的对象
-            optionalObjectWithShape: React.PropTypes.shape({
-                color: React.PropTypes.string,
-                fontSize: React.PropTypes.number
-            }),
-
-            // 以后任意类型加上 `isRequired` 来使 prop 不可空。
-            requiredFunc: React.PropTypes.func.isRequired,
-
-            // 不可空的任意类型
-            requiredAny: React.PropTypes.any.isRequired,
-
-            // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接
-            // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。
-            customProp: function(props, propName, componentName) {
-                if (!/matchme/.test(props[propName])) {
-                    return new Error(&apos;Validation failed!&apos;);
-                }
-            }
+    // 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接
+    // 使用 `console.warn` 或抛异常，因为这样 `oneOfType` 会失效。
+    customProp: function(props, propName, componentName) {
+        if (!/matchme/.test(props[propName])) {
+            return new Error(&apos;Validation failed!&apos;);
         }
-    });
-</code></pre><h4 id="react-router安装"><a href="#react-router安装" class="headerlink" title="react-router安装"></a>react-router安装</h4><pre><code>路由是保持页面与URL间的同步
-
-$ npm install react-router history --save        // 安装
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
-</code></pre><h4 id="Router和Route"><a href="#Router和Route" class="headerlink" title="Router和Route"></a>Router和Route</h4><pre><code>Router是一个容器，路由要通过Route组件定义
-
-import { Router, Route, hashHistory } from &apos;react-router&apos;;
-render((
-    &lt;Router history={hashHistory}&gt;
-        &lt;Route path=&quot;/&quot; component={App}/&gt;
-    &lt;/Router&gt;
-), document.getElementById(&apos;app&apos;));
-</code></pre><h4 id="browserHistory-和-hashHistory"><a href="#browserHistory-和-hashHistory" class="headerlink" title="browserHistory 和 hashHistory"></a>browserHistory 和 hashHistory</h4><pre><code>import React, { Component } from &apos;react&apos;;
-import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={browserHistory}&gt;            // 这里要加
-                &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-            &lt;/Router&gt;
-        );
     }
 }
+</code></pre><h4 id="react-router-4-0"><a href="#react-router-4-0" class="headerlink" title="react-router 4.0"></a>react-router 4.0</h4><pre><code>v3到v4版本的变化是静态路由到动态路由的变化
 
-二者区别:
+react-router: React Router 核心
 
-    hashHistory: 带有&apos;#/&apos; http://localhost:5001/#/About
+react-router-dom: 用于 DOM 绑定的 React Router
 
-    browserHistory: 不会带有&apos;#/&apos; http://localhost:5001/List   生产环境使用  --history-api-fallback
+react-router-native: 用于 React Native 的 React Router
 
-    注意:
+react-router-redux: React Router 和 Redux 的集成
 
-    使用browserHistory，正常点击路由切换没有问题，但是重新刷新URL就会报找不到路由，
-    需要在webpack-dev-server启动的时候需要加上参数--history-api-fallback。
+react-router-config: 静态路由配置的小助手
 
-    或者在webpack.config.js配置中 
+不同之处就是后者比前者多出了 &lt;Link&gt; &lt;BrowserRouter&gt; &lt;HashRouter&gt; 这样的 DOM 类组件, 只需引用 react-router-dom 这个包就行了。当然，如果搭配 redux ，你还需要使用 react-router-redux
 
-        devServer: {
-            port: 5000,                 // 端口
-            contentBase: &apos;build&apos;,       // 内容目录
-            hot: true,                    // 热刷新
-            inline: true,
-            historyApiFallBack: true,   // react路由历史管理使用
-        }
-</code></pre><h4 id="Link、Links、IndexLink"><a href="#Link、Links、IndexLink" class="headerlink" title="Link、Links、IndexLink"></a>Link、Links、IndexLink</h4><pre><code>是router的导航组件，用来切换路由
+一、安装
 
-一、Example
+    $ npm i react-router react-router-dom --save
 
-    import React, { Component } from &apos;react&apos;;
-    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+    import { BrowserRouter as Router, Route, Switch, Link,  Redirect, withRouter } from &apos;react-router-dom&apos;;
 
-    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-
-    // 相当于一个导航将Link包装成一个
-    const Links = () =&gt;
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-            &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-        &lt;/nav&gt;
-
-    class App extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-
-    export default App;
-
-二、IndexLink
-
-    如果是根路由&quot;/&quot;，不要使用link组件，需要使用IndexLink，因为如果是根路由activeStyle和activeClassName都会失效
-</code></pre><h4 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h4><pre><code>一、两种配置
-
-    1、直接写到Router下
-        React.render((
-            &lt;Router&gt;
-                &lt;Route path=&quot;/&quot; component={App}&gt;
-                    {/* 当url为&apos;/&apos;时 加载Dashboard组件，IndexRoute默认路由 */}
-                    &lt;IndexRoute component={Dashboard} /&gt;
-                    &lt;Route path=&quot;about&quot; component={About} /&gt;
-                    &lt;Route path=&quot;inbox&quot; component={Inbox}&gt;
-                        &lt;Route path=&quot;messages/:id&quot; component={Message} /&gt;
-                    &lt;/Route&gt;
-                &lt;/Route&gt;
-            &lt;/Router&gt;
-        ), document.body);
-
-    2、替换配置，可以写一套路由配置
-        const routerConfig = [
-            {
-                path:&apos;/&apos;,
-                component: Admin,        
-                indexRoute: {            // 子路由初始加载的组件
-                    component: Home
-                },
-                childRoutes: [            // 子路由配置
-                    { path: &apos;parentToChild&apos;, component: ParentToChild },
-
-                    // 强制“刷新”页面的 hack
-                    { path: &apos;redirect&apos;, component: Error404 },
-
-                    // 无路由匹配的情况一定要放到最后，否则会拦截所有路由
-                    { path: &apos;*&apos;, component: Error404 }
-                ]
-            }
-        ]
-
-        render(&lt;Router routes={routerConfig} history={browserHistory} /&gt;, document.querySelector(&apos;#app&apos;));
-
-
-二、子路由的显示 
-
-    在加载子路由的组件中的位置使用 {this.props.children}, 如果子路由没有设置IndexRoute默认路由 this.props.children返回undefined
-
-    let IndexPage = funciton(){
-        return (
-            &lt;div&gt;
-                &lt;div className=&quot;side&quot;&gt; 侧栏 &lt;/side&gt;
-                &lt;div className=&quot;content&quot;&gt;
-                    {this.props.children}
-                &lt;/div&gt;
-            &lt;/div&gt;
-        )
-    }
-
-    home页面加载显示子路由方式:
-
-        vue使用的是&lt;router-view&gt;&lt;/router-view&gt;显示
-
-        react 显示子路由  {this.props.children}
-</code></pre><h4 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h4><pre><code>一、路由变量
-
-    定义变量: &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
-    获取变量: props.params 来获取
-
-    &lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
-    &lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
-    &lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
-
-    Example:
-
-        class Message extends Component {
-            render(props){
-                return (
-                    &lt;div&gt;
-                        // 这里this.props.params.msg 接收的是to的名字
-
-                        &lt;h1&gt;{this.props.params.msg || &apos;hello&apos;}&lt;/h1&gt;
-                        &lt;Links /&gt;
-                    &lt;/div&gt;
-                )
-            }
-        }
-
-        const Links = () =&gt;{
-            &lt;nav&gt;
-                &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
-                &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;
-                &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;
-            &lt;/nav&gt;
-        }
-
-        class ParamsRoute extends Component {
-            render() {
-                return (
-                    &lt;Router history={hashHistory}&gt;
-                        &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
-                    &lt;/Router&gt;
-                );
-            }
-        }
-        export default ParamsRoute;
-
-
-二、query: 获取URL中的参数
-
-    1、获取参数
-
-        http://localhost:8080/#/?message=ssssss
-
-        const Page = (props) =&gt;
-            &lt;div&gt;
-                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
-            &lt;/div&gt;
-
-    2、请求时带参数
-
-        const Page = (props) =&gt;
-            &lt;div&gt;
-                &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;
-            &lt;/div&gt;
-
-        const Links = () =&gt;
-            &lt;nav&gt;
-                &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
-            &lt;/nav&gt;
-
-    Example:
-
-        import React, {Component} from &apos;react&apos;
-        import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
-
-        class Page extends Component {
-            constructor(props){
-                super();
-                console.log(props);
-            }
-            render(){
-                return (
-                    &lt;div&gt;
-                        &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
-                    &lt;/div&gt;
-                )
-            }
-        }
-
-        class QueryRoute extends Component {
-            render() {
-                return (
-                    &lt;Router history={browserHistory}&gt;
-                        &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
-                    &lt;/Router&gt;
-                );
-            }
-        }
-        export default QueryRoute;
-</code></pre><h4 id="路由钩子"><a href="#路由钩子" class="headerlink" title="路由钩子"></a>路由钩子</h4><pre><code>return false  可以取消此次跳转
-
-方法一、onEnter、onLeave事件绑定到Route上
-
-    const backLogin = (nextState, replace) =&gt; {
-        console.log(nextState)
-        debugger;
-    }
-
-    class App extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} onEnter={backLogin} /&gt;
-                    &lt;Route path=&quot;*&quot; onEnter={backLogin} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-
-
-方法二、setRouteLeaveHook(单条路由， 要处理的函数) 路由钩子，切换路由时操作，可以用于对登录判断进行操作
-
-    import React, { Component, PropTypes } from &apos;react&apos;;
-    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
-
-    class Home extends Component {
-        componentWillMount(){
-            this.context.router.setRouteLeaveHook(
-                this.props.route,
-                this.routerWillLeave
-            )
-        }
-
-        routerWillLeave( nextLocation ){
-            alert(`页面即将从Home切换到${nextLocation.pathname}`);
-        }
-
-        render(){
-            return &lt;div&gt;
-                &lt;h1&gt;Home&lt;/h1&gt;
-                &lt;Links /&gt;
-            &lt;/div&gt;
-        }
-    }
-
-    Home.contextTypes = {
-        router: PropTypes.object.isRequired
-    };
-    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Links = () =&gt; {
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-            &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-        &lt;/nav&gt;
-    }
-
-    class SetRouteLeaveHookDemo extends Component {
-        render() {
-            return (
-                &lt;Router history={hashHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-    export default SetRouteLeaveHookDemo;    
-</code></pre><h4 id="Redirect重定向"><a href="#Redirect重定向" class="headerlink" title="Redirect重定向:"></a>Redirect重定向:</h4><pre><code>如果一个路由不存在就通过设置Redirect来跳转到指定的路由，用于404的跳转 定义&lt;Redirect from=&quot;/contact&quot; to=&quot;/contact-us&quot; /&gt;
-
-一、Redirect
-
-    import React, { Component } from &apos;react&apos;;
-    import { Router, Route, browserHistory, Link, Redirect } from &apos;react-router&apos;;
-
-    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-    const Links = () =&gt; {
-        &lt;nav&gt;
-            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-        &lt;/nav&gt;
-    }
-
-    class RedirectRoute extends Component {
-        render() {
-            return (
-                &lt;Router history={browserHistory}&gt;
-                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                    &lt;Redirect from=&quot;*&quot; to=&quot;/&quot; /&gt;
-                &lt;/Router&gt;
-            );
-        }
-    }
-    export default RedirectRoute;
-
-
-二、IndexRedirect: 用于访问根路由重定向到某个子路由 ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
-
-    &lt;Route path=&quot;/&quot; component={App}&gt;
-        ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
-        &lt;Route path=&quot;welcome&quot; component={Welcome} /&gt;
-        &lt;Route path=&quot;about&quot; component={About} /&gt;
-    &lt;/Route&gt;
-</code></pre><h4 id="js跳转路由"><a href="#js跳转路由" class="headerlink" title="js跳转路由"></a>js跳转路由</h4><pre><code>一、 browserHistory跳转
-
-    import { browserHistory } from &apos;react-router&apos;
-
-    handleSubmit(event) {
-        browserHistory.push(&apos;/user&apos;)
-    }
-
-二、context对象
-
-    export default React.createClass({
-        contextTypes: {
-            router: React.PropTypes.object
-        },
-
-        handleSubmit(event) {
-            this.context.router.push(path)
-        }
-    })
-</code></pre><h4 id="activeStyle-activeClassName"><a href="#activeStyle-activeClassName" class="headerlink" title="activeStyle, activeClassName"></a>activeStyle, activeClassName</h4><pre><code>当前路由被点击处于触发显示状态的时候，使用activeStyle来设置颜色，atciveClassName来设置class的名
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
-
-const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
-
-const Links = () =&gt;
-    &lt;nav&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-        &lt;Link activeStyle={{color: 'red'}} to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
-    &lt;/nav&gt;
-
-// className的写法 &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={browserHistory}&gt;
-                &lt;Route path=&quot;/&quot; component={Home} /&gt;
-                &lt;Route path=&quot;/about&quot; component={About} /&gt;
-                &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
-            &lt;/Router&gt;
-        );
-    }
-}
-
-export default App;
-</code></pre><h4 id="component、components"><a href="#component、components" class="headerlink" title="component、components"></a>component、components</h4><pre><code>component来指定一个路由对应加载的组件
-
-// 可以加载两个组件，并要指定组件中对应
-&lt;Route Componets={{ header: AppHeader, body: AppBody }}&gt;
-
-import React, { Component } from &apos;react&apos;;
-import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
-
-const HomeHeader = () =&gt; &lt;h1&gt;HomeHeader&lt;/h1&gt;
-const HomeBody = () =&gt; &lt;h1&gt;HomeBody&lt;/h1&gt;
-const AboutHeader = () =&gt; &lt;h1&gt;AboutHeader&lt;/h1&gt;
-const AboutBody = () =&gt; &lt;h1&gt;AboutBody&lt;/h1&gt;
-
-const Container = (props) =&gt;
-    &lt;div&gt;
-        {props.header}
-        {props.body}
-        &lt;Links /&gt;
-    &lt;/div&gt;
-
-const Links = () =&gt;
-    &lt;nav&gt;
-        &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
-        &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
-    &lt;/nav&gt;
-
-class App extends Component {
-    render() {
-        return (
-            &lt;Router history={hashHistory}&gt;
-                &lt;Route path=&quot;/&quot; component={Container}&gt;
-                    &lt;IndexRoute components={{ header:HomeHeader, body:HomeBody }} /&gt;
-                    &lt;Route path=&quot;about&quot; components={{ header:AboutHeader, body:AboutBody }} /&gt;
-                &lt;/Route&gt;
-            &lt;/Router&gt;
-        );
-    }
-}
-
-export default App;
-</code></pre><h4 id="react-router-4-0"><a href="#react-router-4-0" class="headerlink" title="react-router 4.0"></a>react-router 4.0</h4><pre><code>彩单代码仓库模型架构（monorepo），这意味者这个仓库里面有若干相互独立的包，分别是：
-
-react-router React Router 核心
-react-router-dom 用于 DOM 绑定的 React Router
-react-router-native 用于 React Native 的 React Router
-react-router-redux React Router 和 Redux 的集成
-react-router-config 静态路由配置的小助手
-
-不同之处就是后者比前者多出了 &lt;Link&gt; &lt;BrowserRouter&gt; 这样的 DOM 类组件
-因此只需引用 react-router-dom 这个包就行了。当然，如果搭配 redux ，你还需要使用 react-router-redux
-
-一、&lt;BrowserRouter&gt; HTML5 history路由组件
+二、&lt;BrowserRouter&gt; HTML5 history路由组件
 
     1、basename - 为所有位置添加一个基准的url
 
         &lt;BrowserRouter basename=&quot;/minooo&quot; /&gt;
-        Link to=&quot;/react&quot; /&gt; // 最终渲染为 &lt;a href=&quot;/minooo/react&quot;&gt;
+        &lt;Link to=&quot;/react&quot; /&gt; // 最终渲染为 &lt;a href=&quot;/minooo/react&quot;&gt;
 
     2、getUserConfirmation() - 导航到此页执行的函数
 
@@ -2242,7 +1781,6 @@ react-router-config 静态路由配置的小助手
             const allowTransition = window.confirm(message)
             callback(allowTransition)
         }
-
         &lt;BrowserRouter getUserConfirmation={getConfirmation(&apos;Are you sure?&apos;, yourCallBack)} /&gt;
 
     3、forceRefresh - bool当浏览器不支持 HTML5 的 history API 时强制刷新页面
@@ -2254,9 +1792,558 @@ react-router-config 静态路由配置的小助手
 
     5、children - 渲染唯一子元素
 
-二、&lt;HashRouter&gt; 该技术只是用来支持旧版浏览器, Hash history 不支持 location.key 和 location.state
+三、&lt;HashRouter&gt; 该技术只是用来支持旧版浏览器, Hash history 不支持 location.key 和 location.state
 
-三、&lt;Route&gt; 当前页面访问地址与Route上path的匹配渲染出对应的UI界面
+四、&lt;Route&gt; 页面访问地址与Router的path进行匹配，渲染出对应的UI界面
+
+        &lt;Route component&gt; - 渲染的组件
+        &lt;Route render&gt; - 
+        &lt;Route children&gt; - 加
+
+        props分别是的值: match、location、history
+
+            &lt;Route path=&quot;/:id&quot; component={ListBasic}&gt;&lt;/Route&gt;          // 参数传给子组件
+            this.props.match.params.id            // 获取参数值
+
+五、Example:
+
+    import { BrowserRouter as Router, Route, Link} from &apos;react-router-dom&apos;
+    import App from &apos;../App&apos;
+
+    export default class Reouterconfigure extends Component {
+        render() {
+            return (
+                &lt;Router&gt;
+                    &lt;div&gt;
+                        &lt;Route path=&quot;/&quot; components={App} isAccess=&quot;true&quot;&gt;&lt;/Route&gt;
+                    &lt;/div&gt;
+                &lt;/Router&gt;
+            )
+        }
+    }
+
+六、重定向
+
+    render() {
+return (
+    &lt;Router&gt;
+      &lt;div className=&quot;main-container&quot;&gt;
+        &lt;Route path=&quot;/main&quot; component={Main} /&gt;
+        &lt;Route component={Page404}/&gt;                // 没有定义path就是没有路径匹配时
+      &lt;/div&gt;
+    &lt;/Router&gt;
+);
+
+七、&lt;switch&gt;
+
+    只渲染出第一个与当前访问地址匹配的 &lt;Route&gt; 或 &lt;Redirect&gt;
+
+    // v3
+    &lt;Route path=&apos;/&apos; component={App}&gt;
+        &lt;IndexRoute component={Home} /&gt;
+        &lt;Route path=&apos;about&apos; component={About} /&gt;
+        &lt;Route path=&apos;contact&apos; component={Contact} /&gt;
+    &lt;/Route&gt;
+
+    v4中使用&lt;switch&gt;来取代&lt;IndexRouter&gt;, 当react渲染时switch下第一个子&lt;route&gt;会被渲染
+    // v4
+    const App = () =&gt; (
+        &lt;Switch&gt;
+            &lt;Route exact path=&apos;/&apos; component={Home} /&gt;
+            &lt;Route path=&apos;/about&apos; component={About} /&gt;
+            &lt;Route path=&apos;/contact&apos; component={Contact} /&gt;
+        &lt;/Switch&gt;
+    )
+
+八、Link、NavLink
+
+    &lt;Link to=&quot;/course&quot; /&gt;
+    &lt;Link to={{
+			pathname: '/course',
+			search: '?sort=name',
+			state: { price: 18 }
+		}} /&gt;
+
+    // 给导航使用的
+    &lt;NavLink
+        to=&quot;/about&quot;
+        activeStyle={{ color: 'green', fontWeight: 'bold' }}
+    &gt;MyBlog&lt;/NavLink&gt;
+</code></pre><h4 id="react-router-v3"><a href="#react-router-v3" class="headerlink" title="react-router v3"></a>react-router v3</h4><pre><code>一、安装
+
+    路由是保持页面与URL间的同步
+
+    $ npm install react-router history --save        // 安装
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+
+
+二、Router和Route
+
+    Router是一个容器，路由要通过Route组件定义
+
+    import { Router, Route, hashHistory } from &apos;react-router&apos;;
+    render((
+        &lt;Router history={hashHistory}&gt;
+            &lt;Route path=&quot;/&quot; component={App}/&gt;
+        &lt;/Router&gt;
+    ), document.getElementById(&apos;app&apos;));
+
+
+三、browserHistory 和 hashHistory
+
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
+
+    class App extends Component {
+        render() {
+            return (
+                &lt;Router history={browserHistory}&gt;            // 这里要加
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+
+    二者区别:
+
+        hashHistory: 带有&apos;#/&apos; http://localhost:5001/#/About
+
+        browserHistory: 不会带有&apos;#/&apos; http://localhost:5001/List   生产环境使用  --history-api-fallback
+
+        注意:
+
+        使用browserHistory，正常点击路由切换没有问题，但是重新刷新URL就会报找不到路由，
+        需要在webpack-dev-server启动的时候需要加上参数--history-api-fallback。
+
+        或者在webpack.config.js配置中 
+
+            devServer: {
+                port: 5000,                 // 端口
+                contentBase: &apos;build&apos;,       // 内容目录
+                hot: true,                    // 热刷新
+                inline: true,
+                historyApiFallBack: true,   // react路由历史管理使用
+            }
+
+
+四、Link、Links、IndexLink
+
+    是router的导航组件，用来切换路由
+
+    1、Example
+
+        import React, { Component } from &apos;react&apos;;
+        import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+
+        const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+        const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+        const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+
+        // 相当于一个导航将Link包装成一个
+        const Links = () =&gt;
+            &lt;nav&gt;
+                &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+                &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+                &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+            &lt;/nav&gt;
+
+        class App extends Component {
+            render() {
+                return (
+                    &lt;Router history={hashHistory}&gt;
+                        &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                        &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                        &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                    &lt;/Router&gt;
+                );
+            }
+        }
+
+        export default App;
+
+    2、IndexLink
+
+        如果是根路由&quot;/&quot;，不要使用link组件，需要使用IndexLink，因为如果是根路由activeStyle和activeClassName都会失效
+
+
+五、路由配置
+
+    基本配置:
+
+        1、直接写到Router下
+            React.render((
+                &lt;Router&gt;
+                    &lt;Route path=&quot;/&quot; component={App}&gt;
+                        {/* 当url为&apos;/&apos;时 加载Dashboard组件，IndexRoute默认路由 */}
+                        &lt;IndexRoute component={Dashboard} /&gt;
+                        &lt;Route path=&quot;about&quot; component={About} /&gt;
+                        &lt;Route path=&quot;inbox&quot; component={Inbox}&gt;
+                            &lt;Route path=&quot;messages/:id&quot; component={Message} /&gt;
+                        &lt;/Route&gt;
+                    &lt;/Route&gt;
+                &lt;/Router&gt;
+            ), document.body);
+
+        2、替换配置，可以写一套路由配置
+            const routerConfig = [
+                {
+                    path:&apos;/&apos;,
+                    component: Admin,        
+                    indexRoute: {            // 子路由初始加载的组件
+                        component: Home
+                    },
+                    childRoutes: [            // 子路由配置
+                        { path: &apos;parentToChild&apos;, component: ParentToChild },
+
+                        // 强制“刷新”页面的 hack
+                        { path: &apos;redirect&apos;, component: Error404 },
+
+                        // 无路由匹配的情况一定要放到最后，否则会拦截所有路由
+                        { path: &apos;*&apos;, component: Error404 }
+                    ]
+                }
+            ]
+
+            render(&lt;Router routes={routerConfig} history={browserHistory} /&gt;, document.querySelector(&apos;#app&apos;));
+
+
+    子路由的显示:
+
+        在加载子路由的组件中的位置使用 {this.props.children}, 如果子路由没有设置IndexRoute默认路由 this.props.children返回undefined
+
+        let IndexPage = funciton(){
+            return (
+                &lt;div&gt;
+                    &lt;div className=&quot;side&quot;&gt; 侧栏 &lt;/side&gt;
+                    &lt;div className=&quot;content&quot;&gt;
+                        {this.props.children}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            )
+        }
+
+        home页面加载显示子路由方式:
+
+            vue使用的是&lt;router-view&gt;&lt;/router-view&gt;显示
+
+            react 显示子路由  {this.props.children}
+
+
+六、动态路由
+
+    1、路由变量
+
+        定义变量: &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
+        获取变量: props.params 来获取
+
+        &lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
+        &lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
+        &lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
+
+        Example:
+
+            class Message extends Component {
+                render(props){
+                    return (
+                        &lt;div&gt;
+                            // 这里this.props.params.msg 接收的是to的名字
+
+                            &lt;h1&gt;{this.props.params.msg || &apos;hello&apos;}&lt;/h1&gt;
+                            &lt;Links /&gt;
+                        &lt;/div&gt;
+                    )
+                }
+            }
+
+            const Links = () =&gt;{
+                &lt;nav&gt;
+                    &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
+                    &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;
+                    &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;
+                &lt;/nav&gt;
+            }
+
+            class ParamsRoute extends Component {
+                render() {
+                    return (
+                        &lt;Router history={hashHistory}&gt;
+                            &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
+                        &lt;/Router&gt;
+                    );
+                }
+            }
+            export default ParamsRoute;
+
+
+    2、query: 获取URL中的参数
+
+        1) 获取参数
+
+            http://localhost:8080/#/?message=ssssss
+
+            const Page = (props) =&gt;
+                &lt;div&gt;
+                    &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
+                &lt;/div&gt;
+
+        2) 请求时带参数
+
+            const Page = (props) =&gt;
+                &lt;div&gt;
+                    &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;
+                &lt;/div&gt;
+
+            const Links = () =&gt;
+                &lt;nav&gt;
+                    &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
+                &lt;/nav&gt;
+
+        Example:
+
+            import React, {Component} from &apos;react&apos;
+            import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
+
+            class Page extends Component {
+                constructor(props){
+                    super();
+                    console.log(props);
+                }
+                render(){
+                    return (
+                        &lt;div&gt;
+                            &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
+                        &lt;/div&gt;
+                    )
+                }
+            }
+
+            class QueryRoute extends Component {
+                render() {
+                    return (
+                        &lt;Router history={browserHistory}&gt;
+                            &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
+                        &lt;/Router&gt;
+                    );
+                }
+            }
+            export default QueryRoute;
+
+
+七、路由钩子
+
+    return false  可以取消此次跳转
+
+    方法一、onEnter、onLeave事件绑定到Route上
+
+        const backLogin = (nextState, replace) =&gt; {
+            console.log(nextState)
+            debugger;
+        }
+
+        class App extends Component {
+            render() {
+                return (
+                    &lt;Router history={hashHistory}&gt;
+                        &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                        &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                        &lt;Route path=&quot;/contact&quot; component={Contact} onEnter={backLogin} /&gt;
+                        &lt;Route path=&quot;*&quot; onEnter={backLogin} /&gt;
+                    &lt;/Router&gt;
+                );
+            }
+        }
+
+
+    方法二、setRouteLeaveHook(单条路由， 要处理的函数) 路由钩子，切换路由时操作，可以用于对登录判断进行操作
+
+        import React, { Component, PropTypes } from &apos;react&apos;;
+        import { Router, Route, hashHistory, Link } from &apos;react-router&apos;;
+
+        class Home extends Component {
+            componentWillMount(){
+                this.context.router.setRouteLeaveHook(
+                    this.props.route,
+                    this.routerWillLeave
+                )
+            }
+
+            routerWillLeave( nextLocation ){
+                alert(`页面即将从Home切换到${nextLocation.pathname}`);
+            }
+
+            render(){
+                return &lt;div&gt;
+                    &lt;h1&gt;Home&lt;/h1&gt;
+                    &lt;Links /&gt;
+                &lt;/div&gt;
+            }
+        }
+
+        Home.contextTypes = {
+            router: PropTypes.object.isRequired
+        };
+        const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+        const Links = () =&gt; {
+            &lt;nav&gt;
+                &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+                &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+            &lt;/nav&gt;
+        }
+
+        class SetRouteLeaveHookDemo extends Component {
+            render() {
+                return (
+                    &lt;Router history={hashHistory}&gt;
+                        &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                        &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                    &lt;/Router&gt;
+                );
+            }
+        }
+        export default SetRouteLeaveHookDemo;    
+
+
+八、Redirect重定向:
+
+    如果一个路由不存在就通过设置Redirect来跳转到指定的路由，用于404的跳转 定义&lt;Redirect from=&quot;/contact&quot; to=&quot;/contact-us&quot; /&gt;
+
+    1、Redirect
+
+        import React, { Component } from &apos;react&apos;;
+        import { Router, Route, browserHistory, Link, Redirect } from &apos;react-router&apos;;
+
+        const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+        const Links = () =&gt; {
+            &lt;nav&gt;
+                &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+            &lt;/nav&gt;
+        }
+
+        class RedirectRoute extends Component {
+            render() {
+                return (
+                    &lt;Router history={browserHistory}&gt;
+                        &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                        &lt;Redirect from=&quot;*&quot; to=&quot;/&quot; /&gt;
+                    &lt;/Router&gt;
+                );
+            }
+        }
+        export default RedirectRoute;
+
+
+    2、IndexRedirect: 用于访问根路由重定向到某个子路由 ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
+
+        &lt;Route path=&quot;/&quot; component={App}&gt;
+            ＜IndexRedirect to=&quot;/welcome&quot; /&gt;
+            &lt;Route path=&quot;welcome&quot; component={Welcome} /&gt;
+            &lt;Route path=&quot;about&quot; component={About} /&gt;
+        &lt;/Route&gt;
+
+
+九、js跳转路由
+
+    1、browserHistory跳转
+
+        import { browserHistory } from &apos;react-router&apos;
+
+        handleSubmit(event) {
+            browserHistory.push(&apos;/user&apos;)
+        }
+
+    2、context对象
+
+        export default React.createClass({
+            contextTypes: {
+                router: React.PropTypes.object
+            },
+
+            handleSubmit(event) {
+                this.context.router.push(path)
+            }
+        })
+
+
+十、activeStyle, activeClassName
+
+    当前路由被点击处于触发显示状态的时候，使用activeStyle来设置颜色，atciveClassName来设置class的名
+
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, browserHistory, Link } from &apos;react-router&apos;;
+
+    const Home = () =&gt; &lt;div&gt;&lt;h1&gt;Home&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const About = () =&gt; &lt;div&gt;&lt;h1&gt;About&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+    const Contact = () =&gt; &lt;div&gt;&lt;h1&gt;Contact&lt;/h1&gt;&lt;Links /&gt;&lt;/div&gt;;
+
+    const Links = () =&gt;
+        &lt;nav&gt;
+            &lt;Link activeStyle={{color: 'red'}} to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+            &lt;Link activeStyle={{color: 'red'}} to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+            &lt;Link activeStyle={{color: 'red'}} to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+        &lt;/nav&gt;
+
+    // className的写法 &lt;Link activeClassName=&quot;active&quot; to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+
+    class App extends Component {
+        render() {
+            return (
+                &lt;Router history={browserHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Home} /&gt;
+                    &lt;Route path=&quot;/about&quot; component={About} /&gt;
+                    &lt;Route path=&quot;/contact&quot; component={Contact} /&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+
+    export default App;
+
+
+十一、component、components
+
+    component来指定一个路由对应加载的组件
+
+    // 可以加载两个组件，并要指定组件中对应
+    &lt;Route Componets={{ header: AppHeader, body: AppBody }}&gt;
+
+    import React, { Component } from &apos;react&apos;;
+    import { Router, Route, hashHistory, Link, IndexRoute } from &apos;react-router&apos;;
+
+    const HomeHeader = () =&gt; &lt;h1&gt;HomeHeader&lt;/h1&gt;
+    const HomeBody = () =&gt; &lt;h1&gt;HomeBody&lt;/h1&gt;
+    const AboutHeader = () =&gt; &lt;h1&gt;AboutHeader&lt;/h1&gt;
+    const AboutBody = () =&gt; &lt;h1&gt;AboutBody&lt;/h1&gt;
+
+    const Container = (props) =&gt;
+        &lt;div&gt;
+            {props.header}
+            {props.body}
+            &lt;Links /&gt;
+        &lt;/div&gt;
+
+    const Links = () =&gt;
+        &lt;nav&gt;
+            &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
+            &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+        &lt;/nav&gt;
+
+    class App extends Component {
+        render() {
+            return (
+                &lt;Router history={hashHistory}&gt;
+                    &lt;Route path=&quot;/&quot; component={Container}&gt;
+                        &lt;IndexRoute components={{ header:HomeHeader, body:HomeBody }} /&gt;
+                        &lt;Route path=&quot;about&quot; components={{ header:AboutHeader, body:AboutBody }} /&gt;
+                    &lt;/Route&gt;
+                &lt;/Router&gt;
+            );
+        }
+    }
+
+    export default App;
 </code></pre><h4 id="react-router-redux路由"><a href="#react-router-redux路由" class="headerlink" title="react-router-redux路由"></a>react-router-redux路由</h4><pre><code>保持路由与应用状态（state）同步
 
 $ npm install --save react-router-redux        // 安装
@@ -2267,9 +2354,8 @@ https://www.jianshu.com/p/bccca5bb6338
 http://blog.csdn.net/isaisai/article/details/78086913
 https://segmentfault.com/a/1190000007862103
 
-
 http://blog.csdn.net/sinat_17775997/article/details/69218382
-</code></pre><h4 id="dva-react-Ant-蚂蚁金服脚手架"><a href="#dva-react-Ant-蚂蚁金服脚手架" class="headerlink" title="dva + react + Ant 蚂蚁金服脚手架"></a>dva + react + Ant 蚂蚁金服脚手架</h4><pre><code>单独加载ant UI框架，也可以使用dva-cli蚂蚁提供的脚手架，支持IE9及以上版本
+</code></pre><h4 id="dva-react-Ant-蚂蚁金服脚手架"><a href="#dva-react-Ant-蚂蚁金服脚手架" class="headerlink" title="dva+react+Ant 蚂蚁金服脚手架"></a>dva+react+Ant 蚂蚁金服脚手架</h4><pre><code>单独加载ant UI框架，也可以使用dva-cli蚂蚁提供的脚手架，支持IE9及以上版本
 
 一、单独添加ant  
 
@@ -2397,9 +2483,8 @@ $ cd my-app/
 
 $ npm start
 
-
 http://blog.csdn.net/qtfying/article/details/78665664
-</code></pre><p>| <a href="http://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">http://react-guide.github.io/react-router-cn/</a>        React-router 中文网<br>| <a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">https://github.com/reactjs/react-router-tutorial/tree/master/lessons</a>        示例<br>| <a href="https://segmentfault.com/a/1190000009349377" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009349377</a>        router ^4<br>| <a href="http://react-china.org/t/webpack2-react16-react-router4/10419" target="_blank" rel="noopener">http://react-china.org/t/webpack2-react16-react-router4/10419</a><br>| <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">https://github.com/reactjs/react-router-redux</a><br>| <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu</a><br>| <a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">https://github.com/react-guide/react-router-cn</a><br>| <a href="https://github.com/ReactTraining/react-router/tree/master/examples" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router/tree/master/examples</a></p>
+</code></pre><p>| <a href="https://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">https://react-guide.github.io/react-router-cn/</a>        // React-router 中文网<br>| <a href="https://reacttraining.com/react-router/web/example/basic" target="_blank" rel="noopener">https://reacttraining.com/react-router/web/example/basic</a>    // 官方示例<br>| <a href="https://github.com/YutHelloWorld/Blog/issues/4" target="_blank" rel="noopener">https://github.com/YutHelloWorld/Blog/issues/4</a>        // v2、3迁移v4<br>| <a href="https://www.jianshu.com/p/e0a0ed6c3b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/e0a0ed6c3b8a</a>                // 路由跳转登录验证<br>|<br>| <a href="https://www.jianshu.com/p/e3adc9b5f75c/" target="_blank" rel="noopener">https://www.jianshu.com/p/e3adc9b5f75c/</a><br>| <a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">https://github.com/reactjs/react-router-tutorial/tree/master/lessons</a>        2.0示例<br>| <a href="https://segmentfault.com/a/1190000009349377" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009349377</a>        router ^4<br>| <a href="http://react-china.org/t/webpack2-react16-react-router4/10419" target="_blank" rel="noopener">http://react-china.org/t/webpack2-react16-react-router4/10419</a><br>| <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">https://github.com/reactjs/react-router-redux</a><br>| <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu</a><br>| <a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">https://github.com/react-guide/react-router-cn</a><br>| <a href="https://github.com/ReactTraining/react-router/tree/master/examples" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router/tree/master/examples</a></p>
 
         
     </section>
@@ -2419,7 +2504,7 @@ http://blog.csdn.net/qtfying/article/details/78665664
 
     </div>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     
     <script type="text/javascript">
         $(function() {
