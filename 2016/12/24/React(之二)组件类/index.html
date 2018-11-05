@@ -199,6 +199,15 @@ $ yarn add react-router-dom    // react-router是安装4.0之前版本，react-r
         },
 
 https://github.com/facebook/create-react-app
+
+
+四、常见问题
+
+    1、&lt;src&gt;引用本地图片无效
+
+        import JzkUrl from &apos;../../assets/img/jzk.png&apos;
+
+        &lt;img src={JzkUrl} /&gt;
 </code></pre><h4 id="PropTypes验证"><a href="#PropTypes验证" class="headerlink" title="PropTypes验证"></a>PropTypes验证</h4><pre><code>React.PropTypes 提供很多验证器来验证传入数据的有效性
 
 当向 props 传入无效数据时，JavaScript 控制台会抛出警告。注意为了性能考虑，只在开发环境验证 propTypes。下面用例子来说明不同验证器的区别: 
@@ -274,13 +283,13 @@ propTypes类型: {
         }
     }
 }
-</code></pre><h4 id="react-router-4-0"><a href="#react-router-4-0" class="headerlink" title="react-router 4.0"></a>react-router 4.0</h4><pre><code>v3到v4版本的变化是静态路由到动态路由的变化
+</code></pre><h4 id="react-router-4-0"><a href="#react-router-4-0" class="headerlink" title="react-router 4.0"></a>react-router 4.0</h4><pre><code>v3到v4版本的变化是静态路由到动态路由的变化，v2/v3将路由配置放单一个router文件中集中管理，并且页面的嵌套路路由嵌套决定
 
-react-router: React Router 核心
+rreact-router: 是浏览器和原生应用的通用部分, 核心文件
 
-react-router-dom: 用于 DOM 绑定的 React Router
+react-router-dom: 用于浏览器
 
-react-router-native: 用于 React Native 的 React Router
+react-router-native: 是用于原生(react-native)应用的    
 
 react-router-redux: React Router 和 Redux 的集成
 
@@ -292,7 +301,7 @@ react-router-config: 静态路由配置的小助手
 
     $ npm i react-router react-router-dom --save
 
-    import { BrowserRouter as Router, Route, Switch, Link,  Redirect, withRouter } from &apos;react-router-dom&apos;;
+    import { BrowserRouter as Router, Route, Switch, Link, Redirect, withRouter } from &apos;react-router-dom&apos;;
 
 二、&lt;BrowserRouter&gt; HTML5 history路由组件
 
@@ -322,45 +331,42 @@ react-router-config: 静态路由配置的小助手
 
 四、&lt;Route&gt; 页面访问地址与Router的path进行匹配，渲染出对应的UI界面
 
-        &lt;Route component&gt; - 渲染的组件
-        &lt;Route render&gt; - 
-        &lt;Route children&gt; - 加
+        &lt;Route path=&quot;/&quot; component={Main}&gt; - 渲染的组件
 
         props分别是的值: match、location、history
 
             &lt;Route path=&quot;/:id&quot; component={ListBasic}&gt;&lt;/Route&gt;          // 参数传给子组件
             this.props.match.params.id            // 获取参数值
 
-五、Example:
+五、Redirect重定向 和 未匹配路由跳转到404
 
-    import { BrowserRouter as Router, Route, Link} from &apos;react-router-dom&apos;
-    import App from &apos;../App&apos;
-
-    export default class Reouterconfigure extends Component {
-        render() {
-            return (
-                &lt;Router&gt;
-                    &lt;div&gt;
-                        &lt;Route path=&quot;/&quot; components={App} isAccess=&quot;true&quot;&gt;&lt;/Route&gt;
-                    &lt;/div&gt;
-                &lt;/Router&gt;
-            )
-        }
-    }
-
-六、重定向
-
+    // 跳404用法
     render() {
-return (
+    return (
     &lt;Router&gt;
       &lt;div className=&quot;main-container&quot;&gt;
         &lt;Route path=&quot;/main&quot; component={Main} /&gt;
         &lt;Route component={Page404}/&gt;                // 没有定义path就是没有路径匹配时
       &lt;/div&gt;
     &lt;/Router&gt;
-);
+    )
+    }
 
-七、&lt;switch&gt;
+    // Redirect 用法不渲染组件直接重定到其它页面
+    render() {
+        if(!this.state.logined){
+            return (
+                &lt;Redirect to=&quot;/todoList&quot; /&gt;
+            )
+        }
+        return (
+            &lt;div&gt;
+                这里是Login组件
+            &lt;/div&gt;
+        )
+    }
+
+六、&lt;switch&gt;
 
     只渲染出第一个与当前访问地址匹配的 &lt;Route&gt; 或 &lt;Redirect&gt;
 
@@ -381,7 +387,7 @@ return (
         &lt;/Switch&gt;
     )
 
-八、Link、NavLink
+七、Link、NavLink
 
     &lt;Link to=&quot;/course&quot; /&gt;
     &lt;Link to={{
@@ -395,6 +401,218 @@ return (
         to=&quot;/about&quot;
         activeStyle={{ color: 'green', fontWeight: 'bold' }}
     &gt;MyBlog&lt;/NavLink&gt;
+
+八、exact 
+
+    表示独一无二的路由
+
+    // 如果不加exact, &quot;/&quot; 时加载main, &quot;/login&quot; 会显示main和login两个组件，如果加了exact在&quot;/&quot;路由时只会显示main组件
+    &lt;div style={{ height: "500px", backgroundColor: "#ccc"}}&gt;
+        &lt;Route path=&quot;/&quot; exact component={Main} /&gt;
+        &lt;Route path=&quot;/login&quot; component={Login} /&gt;
+        &lt;Route path=&quot;/todoList&quot; component={TodoList} /&gt;
+    &lt;/div&gt;
+
+
+九、JS跳转
+
+    export default class SelectCard extends Component {
+        constructor(props){
+            super(props);
+        }
+
+        goHomePage(){
+            this.props.history.push(&apos;/main&apos;);            // 跳转
+        }
+
+        render(){
+            return {
+                &lt;div&gt;
+                    &lt;button onClick={this.goHomePage.bind(this)}&gt;跳转&lt;/button&gt;
+                &lt;/div&gt;
+            }
+        }
+    }
+
+
+十、动态路由
+
+    1、路由变量
+
+        定义变量: &lt;Route path=&quot;/:msg&quot; component={Message} /&gt;
+        获取变量: props.match.params.定义的名
+
+        &lt;Route path=&quot;/hello/:name&quot;&gt;         // 匹配 /hello/michael 和 /hello/ryan
+        &lt;Route path=&quot;/hello(/:name)&quot;&gt;       // 匹配 /hello, /hello/michael 和 /hello/ryan
+        &lt;Route path=&quot;/files/*.*&quot;&gt;           // 匹配 /files/hello.jpg 和 /files/path/to/hello.jpg
+
+        Example:
+
+            class Message extends Component {
+                render(props){
+                    return (
+                        &lt;div&gt;
+                            // 这里this.props.params.msg 接收的是to的名字
+                            &lt;h1&gt;{this.props.match.params.jumpUrl || &apos;hello&apos;}&lt;/h1&gt;
+                            &lt;Links /&gt;
+                        &lt;/div&gt;
+                    )
+                }
+            }
+
+            const Links = () =&gt;{
+                &lt;nav&gt;
+                    &lt;Link to=&quot;/&quot;&gt;Hello&lt;/Link&gt;
+                    &lt;Link to=&quot;/yong&quot;&gt;Yong&lt;/Link&gt;
+                    &lt;Link to=&quot;/feng&quot;&gt;Feng&lt;/Link&gt;
+                &lt;/nav&gt;
+            }
+
+            class ParamsRoute extends Component {
+                render() {
+                    return (
+                        &lt;Router history={hashHistory}&gt;
+                            &lt;Route path=&quot;/(:msg)&quot; component={Message} /&gt;
+                        &lt;/Router&gt;
+                    );
+                }
+            }
+            export default ParamsRoute;
+
+
+    2、query: 获取URL中的参数
+
+        1) 获取参数
+
+            http://localhost:8080/#/?message=ssssss
+
+            const Page = (props) =&gt;
+                &lt;div&gt;
+                    &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
+                &lt;/div&gt;
+
+        2) 请求时带参数
+
+            const Page = (props) =&gt;
+                &lt;div&gt;
+                    &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;
+                &lt;/div&gt;
+
+            const Links = () =&gt;
+                &lt;nav&gt;
+                    &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
+                &lt;/nav&gt;
+
+        Example:
+
+            import React, {Component} from &apos;react&apos;
+            import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
+
+            class Page extends Component {
+                constructor(props){
+                    super();
+                    console.log(props);
+                }
+                render(){
+                    return (
+                        &lt;div&gt;
+                            &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
+                        &lt;/div&gt;
+                    )
+                }
+            }
+
+            class QueryRoute extends Component {
+                render() {
+                    return (
+                        &lt;Router history={browserHistory}&gt;
+                            &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
+                        &lt;/Router&gt;
+                    );
+                }
+            }
+            export default QueryRoute;
+
+
+十一、路嵌套和展示
+
+    // v2/3版本 就是一个路由配置文件，在放子路由的地方使用
+    &lt;div&gt;
+        { this.props.childre }                // 加载子路由的位置
+    &lt;/div&gt;
+
+
+    // v4版本
+    // router.jsx
+    export default class Index extends Component {
+        render() {
+            return (
+                &lt;Router&gt;
+                    &lt;Switch&gt;
+                        &lt;Layout /&gt;
+                    &lt;/Switch&gt;
+                &lt;/Router&gt;
+            )
+        }
+    }
+
+    // layout.jsx
+    export default class Layout extends Component {
+        render() {
+            let menuHtml = () =&gt; {
+                const menuItem = [];
+                this.state.menuList.forEach(function(menu, idx, arr){
+                    menuItem.push(
+                        &lt;li&gt;
+                            &lt;Link to={menu.path}&gt;{menu.title}&lt;/Link&gt;
+                        &lt;/li&gt;
+                    )
+                })
+                return menuItem
+            }
+
+            return (
+                &lt;div&gt;
+                    &lt;header style={{height: "100px"}}&gt;
+                        菜单: { menuHtml() }
+                    &lt;/header&gt;
+                    &lt;main style={{ height: "500px", backgroundColor: "#ccc"}}&gt;
+                        &lt;Route path=&quot;/&quot; exact component={Main} /&gt;
+                        &lt;Route path=&quot;/login&quot; component={Login} /&gt;
+                        &lt;Route path=&quot;/todoList&quot; component={TodoList} /&gt;
+                        &lt;Route component={Page404}&gt;&lt;/Route&gt;                        // 注: 如果没有匹配路由指到到404页面, 不需要使用Redirect
+                    &lt;/main&gt;
+                &lt;/div&gt;
+            )
+        }
+    }
+
+    // login.jsx
+    export default class Login extends Component {
+        constructor(props){
+            super(props);
+            this.state = {
+                logined: true
+            }
+        }
+
+        render() {
+            /* 这里可以不渲染组件直接重定到其它页面 */
+            if(!this.state.logined){
+                return (
+                    &lt;Redirect to=&quot;/todoList&quot; /&gt;
+                )
+            }
+            return (
+                &lt;div&gt;
+                    这里是Login组件
+                &lt;/div&gt;
+            )
+        }
+    }
+
+https://www.jianshu.com/p/7bb4c1a0530d
+https://www.jianshu.com/p/548674270455
 </code></pre><h4 id="react-router-v3"><a href="#react-router-v3" class="headerlink" title="react-router v3"></a>react-router v3</h4><pre><code>一、安装
 
     路由是保持页面与URL间的同步

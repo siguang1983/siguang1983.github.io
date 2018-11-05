@@ -11,7 +11,7 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="| createStroe - 创建一个store| getState - 获取state值| dispatch - 执行action| action - 要执行的事件| subscribe - 侦听state的变化| reducer 用来改变state的值，结合了action的动作来分别处理| combineReducers - 将多个reducer合到一起赋给createStroe|| React-redux - 让react与redux结合| provider - 将redux的Store" />
+    <meta name="description" content="| createStroe - 创建一个store| reducer 用来改变state的值，结合了action的动作来分别处理| action - 要执行的事件| combineReducers - 将多个reducer合到一起,赋给createStroe| subscribe - 是接收state和action，并返回新的state| store.getState - 获取state值| store.dispatch - 触发action，改变state的值|| React-redux - " />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -94,7 +94,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据流"><span class="toc-number">1.</span> <span class="toc-text">数据流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux概述"><span class="toc-number">2.</span> <span class="toc-text">Redux概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#connect"><span class="toc-number">5.</span> <span class="toc-text">connect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#container组件"><span class="toc-number">6.</span> <span class="toc-text">container组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flux四部分"><span class="toc-number">7.</span> <span class="toc-text">Flux四部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux三个基本原则"><span class="toc-number">8.</span> <span class="toc-text">Redux三个基本原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">9.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Store"><span class="toc-number">10.</span> <span class="toc-text">Store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#State"><span class="toc-number">11.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dispatch-触发action的变化"><span class="toc-number">12.</span> <span class="toc-text">dispatch() 触发action的变化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个"><span class="toc-number">13.</span> <span class="toc-text">combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#subscribe-səbˈskraɪb-订阅-监听器"><span class="toc-number">14.</span> <span class="toc-text">subscribe()[səbˈskraɪb]订阅  监听器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react-redux"><span class="toc-number">15.</span> <span class="toc-text">react-redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bindActionCreators"><span class="toc-number">16.</span> <span class="toc-text">bindActionCreators()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redux-thunk-中间件"><span class="toc-number">17.</span> <span class="toc-text">redux-thunk 中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试工具"><span class="toc-number">18.</span> <span class="toc-text">调试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录"><span class="toc-number">19.</span> <span class="toc-text">项目目录</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux概述"><span class="toc-number">1.</span> <span class="toc-text">Redux概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Store"><span class="toc-number">5.</span> <span class="toc-text">Store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#State"><span class="toc-number">6.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react-redux"><span class="toc-number">7.</span> <span class="toc-text">react-redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#container组件"><span class="toc-number">8.</span> <span class="toc-text">container组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bindActionCreators"><span class="toc-number">9.</span> <span class="toc-text">bindActionCreators()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redux-thunk-中间件"><span class="toc-number">10.</span> <span class="toc-text">redux-thunk 中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试工具"><span class="toc-number">11.</span> <span class="toc-text">调试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录"><span class="toc-number">12.</span> <span class="toc-text">项目目录</span></a></li></ol>
         
     </div>
 </aside>
@@ -129,21 +129,67 @@
     
     <section class="article-body markdown-body">
         
-        <p>| createStroe - 创建一个store<br>| getState - 获取state值<br>| dispatch - 执行action<br>| action - 要执行的事件<br>| subscribe - 侦听state的变化<br>| reducer 用来改变state的值，结合了action的动作来分别处理<br>| combineReducers - 将多个reducer合到一起赋给createStroe<br>|<br>| React-redux - 让react与redux结合<br>| provider - 将redux的Store传到内部的其它组件，内部都可以对state更新<br>| connect - react与redux连接<br>|<br>| applyMiddleware - 加载中间件<br>| bindActionCreators - 直接调用dispatch(action)()<br>| compose</p>
-<h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4><pre><code>react是纯View层的框架，需要数据流进行支撑
+        <p>| createStroe - 创建一个store<br>| reducer 用来改变state的值，结合了action的动作来分别处理<br>| action - 要执行的事件<br>| combineReducers - 将多个reducer合到一起,赋给createStroe<br>| subscribe - 是接收state和action，并返回新的state<br>| store.getState - 获取state值<br>| store.dispatch - 触发action，改变state的值<br>|<br>| React-redux - 让react与redux结合<br>| provider - 将redux的Store传到内部的其它组件，内部都可以对state更新<br>| connect - react与redux连接<br>|<br>| applyMiddleware - 加载中间件<br>| bindActionCreators - 直接调用dispatch(action)()<br>| compose</p>
+<h4 id="Redux概述"><a href="#Redux概述" class="headerlink" title="Redux概述"></a>Redux概述</h4><pre><code>react是纯View层的框架，需要数据流进行支撑, 单一的状态树,主流数据流框架: Flux、Redux
 
-主流数据流框架: Flux、Redux
+UI -&gt; action -&gt; reducer -&gt; store -&gt; state -&gt; UI
 
-单一的状态树
-</code></pre><h4 id="Redux概述"><a href="#Redux概述" class="headerlink" title="Redux概述"></a>Redux概述</h4><pre><code>UI -&gt; Action -&gt; reducer -&gt; Store -&gt; State -&gt; UI
-</code></pre><h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><pre><code>定义Action指令并不能直接改变state，action必须是json
+
+一、Flux四部分
+
+    1、Dispatcher - 处理动作分发，维持Store之间的依赖关系
+
+    2、Store - 负责存储数据和处理数据相关逻辑
+
+    3、Action - 驱动Dispatcher的JS对象
+
+    4、View - 视图部分，负责显示用户界面
+
+    Dispatcher相当于Controller，Stroe相当于Modle，View相当于View，Action相当于用户的行为
+
+
+二、Redux三个基本原则
+
+    1、唯一数据源 - 状态数据只存储在唯一的一个Store上
+
+    2、保持状态只读 - 不能直接修改Store的状态，需要派发一个action对象完成
+
+    3、数据改变只能通过纯函数完成
+</code></pre><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>Facebook官方提出了Flux思想管理数据流，同时也给出了自己的实现方案Flux来管理React应用
+
+实现Flux思想的类库 Redux、Flux、reflux
+
+$ npm i redux --save                    // 安装redux
+
+$ npm i react-redux --save            // redux与react结合
+
+$ npm i react-router-redux --save     // redux-router
+
+$ npm i redux-devtools --save        // 查看调试
+
+    https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+$ npm i redux-thunk --save
+
+$ npm i redux-logger --save
+
+引用redux: import { createStore } from &apos;redux&apos;
+
+一、Redux流程:
+
+    1、view直接触发dispatch
+
+    2、dispatch将action发送到reducer中后，根节点上会更新props，改变全局view
+
+    3、redux将view和store的绑定从手动编码中提取出来，放在了统一规范放在了自己的体系中    
+</code></pre><h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><pre><code>action指令并不能直接改变state，action必须是json
 
 let todoId = 0;
 export const addTodo = (text) =&gt; {
     return {
         type: &apos;ADD_TODO&apos;,    // 处理的类型(必要)
-        id: todoId++,        // 存储数据当前的id标识
-        text                // 传入的内容
+        id: todoId++,            // 存储数据当前的id标识
+        text                            // 传入的内容
     }
 }
 
@@ -161,16 +207,16 @@ let todo = (state, action) =&gt; {
             break;
 
         /* 上面只是单个add_todo, 这里要写成多个add_todo
-            case &apos;ADD_TODO&apos;:
-                return [
-                    {
-                        id: action.id,
-                        text: action.text,
-                        completed: false
-                    },
-                    ...state
-                ]
-                break;            
+        case &apos;ADD_TODO&apos;:
+            return [
+                {
+                    id: action.id,
+                    text: action.text,
+                    completed: false
+                },
+                ...state
+            ]
+            break;            
         */
 
         case &apos;SUB_TODO&apos;:
@@ -183,130 +229,85 @@ let todo = (state, action) =&gt; {
     }
 }
 
-let store = createStore(comput);        // 将reducer当为参数给createStore
-store.dispatch({type: add});
-</code></pre><h4 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h4><pre><code>import { connect } from &apos;react-redux&apos;;
+1、combineReducers - 将多个的reducer合成一个
 
-let AddToDo = () =&gt; {
-    return (
-        &lt;div&gt;
-            &lt;from&gt;
-                &lt;input /&gt;
-                &lt;button /&gt;
-            &lt;/from&gt;
-        &lt;/div&gt;
-    )
-}
-AddToDo = connect()(AddToDo);        // 
-export default AddToDo;
-</code></pre><h4 id="container组件"><a href="#container组件" class="headerlink" title="container组件"></a>container组件</h4><pre><code>引用Redux将组件分两类container和component
+    // 目录 reducer/index.js
+    import {combineReducers} from &quot;redux&quot;;
+    import reducerA from &quot;./reducerA&quot;;
+    import reducerB from &quot;./reducerB&quot;;
+    import reducerC from &quot;./reducerC&quot;;
 
-container - 组件中使用redux获取数据，状态更新，从Redux获取state
-</code></pre><h4 id="Flux四部分"><a href="#Flux四部分" class="headerlink" title="Flux四部分"></a>Flux四部分</h4><pre><code>一、Dispatcher - 处理动作分发，维持Store之间的依赖关系
+    export default combineReducers({
+        reducerA,
+        reducerB,
+        reducerC,
+    });
 
-二、Store - 负责存储数据和处理数据相关逻辑
-
-三、Action - 驱动Dispatcher的JS对象
-
-四、View - 视图部分，负责显示用户界面
-
-Dispatcher相当于Controller，Stroe相当于Modle，View相当于View，Action相当于用户的行为
-</code></pre><h4 id="Redux三个基本原则"><a href="#Redux三个基本原则" class="headerlink" title="Redux三个基本原则"></a>Redux三个基本原则</h4><pre><code>一、唯一数据源 - 状态数据只存储在唯一的一个Store上
-
-二、保持状态只读 - 不能直接修改Store的状态，需要派发一个action对象完成
-
-三、数据改变只能通过纯函数完成
-</code></pre><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>Facebook官方提出了Flux思想管理数据流，同时也给出了自己的实现方案Flux来管理React应用
-
-实现Flux思想的类库 Redux、Flux、reflux
-
-$ npm i --save redux        // 安装redux
-
-$ npm i react-redux --save    // redux与react结合
-
-$ npm i redux-devtools --save        // 查看调试
-
-$ npm i redux-thunk --save
-
-$ npm i redux-logger --save
-
-$ import { createStore } from &apos;redux&apos;;    // 引用redux
-
-一、Redux流程:
-
-    1、view直接触发dispatch
-
-    2、dispatch将action发送到reducer中后，根节点上会更新props，改变全局view
-
-    3、redux将view和store的绑定从手动编码中提取出来，放在了统一规范放在了自己的体系中    
-</code></pre><h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><pre><code>Store 保存数据的容器， createStroe(reducer, applyMiddleware)
+    // createStore调用reducer
+    import reducers from &apos;./reducer/&apos;
+    let store = createStore(reducers)
+</code></pre><h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><pre><code>Store是来保存数据的容器，只有一个Store，可以根据不同业务拆分成多个reducer， createStroe(reducer, 初始化的)
 
 import { createStore } from &apos;redux&apos;;
-import counter from &apos;./reducers&apos;        // 获取定义的reducer
+import reducer from &apos;./reducers&apos;        // 获取定义的reducer
 
-let stroe = createStroe(counter);    // 使用createStore(reducer, initialState初始化state, 中间件传入)来创建一个数据仓库
+let stroe = createStroe(reducer);    // 使用createStore(reducer, initialState初始化state, 中间件传入)来创建一个数据仓库
 store.dispatch();
 
 方法:
 
     1、store.getState(): 获取State值
 
-    2、store.dispatch(action): 将一个 action 对象发送给 reducer
+    2、store.dispatch(action): 触发action，修改state的值
 
     3、store.subscribe(listener)，用来订阅状态的变化
+
+        添加一个变化的监听器，每当dispatch action的时候就会执行
+
+        // App组件
+        class App extends Component {
+            constructor(props){
+                super(props);
+                this.state = {
+                    num: 0
+                }
+            }
+
+            componentDidMount() {
+                store.subscribe(this.handleChange.bind(this));
+            }
+
+            handleChange(){
+                this.setState({num: store.getState()})
+            }
+
+            addClick(){
+                store.dispatch({type: &apos;add&apos;});
+            }
+
+            subClick(){
+                store.dispatch({type: &apos;sub&apos;});
+            }
+
+            showState(){
+                debugger;
+                console.log(store.getState())
+            }
+
+            render() {
+                return (
+                    &lt;div className = &quot;box&quot; &gt;
+                        {this.state.num}
+                        &lt;input type=&quot;button&quot; onClick={this.addClick} value=&quot;+&quot; /&gt;
+                        &lt;input type=&quot;button&quot; onClick={this.subClick} value=&quot;-&quot; /&gt;
+                        &lt;input type=&quot;button&quot; onClick={this.showState} value=&quot;查看state&quot; /&gt;
+                    &lt;/div&gt;
+                )
+            }
+        }
 </code></pre><h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><pre><code>state用于存储数据，state是只读的，改变需要触发action
 
 state树就是一个对象，所有的reducer的都会加到state中，取state值，store.getState().
-</code></pre><h4 id="dispatch-触发action的变化"><a href="#dispatch-触发action的变化" class="headerlink" title="dispatch() 触发action的变化"></a>dispatch() 触发action的变化</h4><pre><code>store.dispatch(actionJson);
-</code></pre><h4 id="combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个"><a href="#combineReducers-kəmˈbaɪn-rɪ’dju-səre-将所有的reducer合成一个" class="headerlink" title="combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个"></a>combineReducers [kəmˈbaɪn rɪ’dju:səre]  将所有的reducer合成一个</h4><pre><code>import {combineReducers} from &quot;redux&quot;;
-import chatIndex from &quot;./Chat&quot;;
-
-export default combineReducers({
-    chatIndex,
-});
-</code></pre><h4 id="subscribe-səbˈskraɪb-订阅-监听器"><a href="#subscribe-səbˈskraɪb-订阅-监听器" class="headerlink" title="subscribe()[səbˈskraɪb]订阅  监听器"></a>subscribe()[səbˈskraɪb]订阅  监听器</h4><pre><code>添加一个变化的监听器，每当dispatch action的时候就会执行
-
-// App组件
-class App extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            num: 0
-        }
-    }
-
-    componentDidMount() {
-        store.subscribe(this.handleChange.bind(this));
-    }
-
-    handleChange(){
-        this.setState({num: store.getState()})
-    }
-
-    addClick(){
-        store.dispatch({type: &apos;add&apos;});
-    }
-
-    subClick(){
-        store.dispatch({type: &apos;sub&apos;});
-    }
-
-    showState(){
-        debugger;
-        console.log(store.getState())
-    }
-
-    render() {
-        return (
-            &lt;div className = &quot;box&quot; &gt;
-                {this.state.num}
-                &lt;input type=&quot;button&quot; onClick={this.addClick} value=&quot;+&quot; /&gt;
-                &lt;input type=&quot;button&quot; onClick={this.subClick} value=&quot;-&quot; /&gt;
-                &lt;input type=&quot;button&quot; onClick={this.showState} value=&quot;查看state&quot; /&gt;
-            &lt;/div&gt;
-        )
-    }
-}
 </code></pre><h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><pre><code>一、provider(store, children) - 将Store传到子组件中，一般用在入口文件
 
     import React from &apos;react&apos;;
@@ -327,73 +328,81 @@ class App extends Component {
     );
 
     // 2、如果使用路由
-    &lt;Provider store={store}&gt;
-        &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
-            &lt;Route path=&apos;/&apos; component={Index}&gt;
-                &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
-            &lt;/Route&gt;
-        &lt;/Router&gt;
-    &lt;/Provider&gt;
-
-
-二、connect(mapStateToProps, mapDispatchToProps) - 连接react组件与redux store
-
-    1、mapStateToProps - 把状态绑定到组件的props中
-
-    2、mapDispatchToProps - 相当于用store.dispatch(actionType) 来发出操作指令，来改变state值
-
-
-Example:
-
-// app.jsx
-&lt;Provider store={store}&gt;
-    &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
-        &lt;Route path=&apos;/&apos; component={Index}&gt;
-            &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
-        &lt;/Route&gt;
-    &lt;/Router&gt;
-&lt;/Provider&gt;
-
-// Index.jsx
-import React, { Component } from &apos;react&apos;;
-import ReactDOM from &apos;react-dom&apos;;
-import { bindActionCreators } from &quot;redux&quot;;
-import { connect } from &quot;react-redux&quot;;
-import actions from &quot;src/actions&quot;;
-
-class wechat extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-
-        }
-    }
-
-    componentDidMount(){
-        let { ACTIONS } = this.props;
-        ACTIONS.chat_init();
-    }
-
-    render(
-        // ...
+    ReactDOM.render(
+        &lt;Provider store={store}&gt;
+            &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
+                &lt;Route path=&apos;/&apos; component={Index}&gt;
+                    &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
+                &lt;/Route&gt;
+            &lt;/Router&gt;
+        &lt;/Provider&gt;
     )
-}
 
-let mapStateToProps=(state)=&gt;{
-    let {sessions,user} = state.chatIndex;
-    return {
-        _sessions:sessions,
-        _user:user
-    };
-}; 
 
-let mapDispatchToProps=(dispatch)=&gt;{
-    return {
-        ACTIONS:bindActionCreators(actions,dispatch)
-    };
-};
+二、connect(mapStateToProps, mapDispatchToProps)(Component连接组件) - 连接react组件与redux store
 
-export default connect(mapStateToProps,mapDispatchToProps)(wechat);
+    1、mapStateToProps(state, ownProps) - 侦听Store的变化
+
+            state参数 - 如果Store中有变化此方法就会被调用，该回调函数返回一个纯对象，这个对象会与组件的props合并
+
+            ownProps参数 - 该参数的值为会飞经到组件的props,
+
+    2、mapDispatchToProps - 逻辑输出，相当于用store.dispatch(actionType) 来发出操作指令，来改变state值
+
+    Example:
+
+        // app.jsx
+        &lt;Provider store={store}&gt;
+            &lt;Router ref=&quot;router&quot; history={hashHistory}&gt;
+                &lt;Route path=&apos;/&apos; component={Index}&gt;
+                    &lt;IndexRoute  component={MainPage}&gt;&lt;/IndexRoute&gt;
+                &lt;/Route&gt;
+            &lt;/Router&gt;
+        &lt;/Provider&gt;
+
+        // Index.jsx
+        import React, { Component } from &apos;react&apos;;
+        import ReactDOM from &apos;react-dom&apos;;
+        import { bindActionCreators } from &quot;redux&quot;;
+        import { connect } from &quot;react-redux&quot;;
+        import actions from &quot;src/actions&quot;;
+
+        class wechat extends Component {
+            constructor(props){
+                super(props);
+                this.state = {
+
+                }
+            }
+
+            componentDidMount(){
+                let { ACTIONS } = this.props;
+                ACTIONS.chat_init();
+            }
+
+            render(
+                // ...
+            )
+        }
+
+        let mapStateToProps=(state)=&gt;{
+            let {sessions,user} = state.chatIndex;
+            return {
+                _sessions:sessions,
+                _user:user
+            };
+        }; 
+
+        let mapDispatchToProps=(dispatch)=&gt;{
+            return {
+                ACTIONS: bindActionCreators(actions, dispatch)
+            };
+        };
+
+        export default connect(mapStateToProps,mapDispatchToProps)(wechat);
+</code></pre><h4 id="container组件"><a href="#container组件" class="headerlink" title="container组件"></a>container组件</h4><pre><code>引用Redux将组件分两类container和component
+
+container - 组件中使用redux获取数据，状态更新，从Redux获取state
 </code></pre><h4 id="bindActionCreators"><a href="#bindActionCreators" class="headerlink" title="bindActionCreators()"></a>bindActionCreators()</h4><pre><code>是通过dispatch将action包裹起来，这样可以通过bindActionCreators创建的方法，直接调用dispatch(action)(隐式调用）
 
 import * as oldActionCreator from &apos;./action.js&apos;
@@ -423,7 +432,7 @@ http://blog.csdn.net/kuangshp128/article/details/67632683
 |------ reducers
 |-- router    // 路由
 |-- util    // 工具
-</code></pre><p>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a>                // Redux中文文档<br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a>                        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a></p>
+</code></pre><p>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a>                // Redux中文文档<br>| <a href="http://www.liuyiqi.cn/2016/01/19/r2-counter/" target="_blank" rel="noopener">http://www.liuyiqi.cn/2016/01/19/r2-counter/</a><br>| <a href="https://github.com/lewis617/react-redux-tutorial" target="_blank" rel="noopener">https://github.com/lewis617/react-redux-tutorial</a><br>| <a href="https://github.com/xgrommx/awesome-redux" target="_blank" rel="noopener">https://github.com/xgrommx/awesome-redux</a><br>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a>                        // react-redux<br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a><br>| <a href="https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js" target="_blank" rel="noopener">https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js</a>            // 示例 router3.0</p>
 
         
     </section>
