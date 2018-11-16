@@ -126,6 +126,621 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2017/04/24/LodashJS/">LodashJS</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/24/LodashJS/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="LodashJS"><a href="#LodashJS" class="headerlink" title="LodashJS"></a>LodashJS</h4><pre><code>工具库，处理数组、对象的一些方法
+
+官网: https://lodash.com/
+
+中文官网: http://lodashjs.com/docs/#_chunkarray-size1
+</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code>let box = document.querySelector(&quot;#box&quot;);
+
+let arr = [1,2,3,4,5,6];
+
+// 将数组每两个下标值，转成一个二维数组 
+// arr = _.chunk(arr, 2);      // [[1,2], [3,4], [5,6]]
+
+// 删除数组中的false, null, 0, &apos;&apos;, undefined, Nan
+// arr = [1, 0, 3, &apos;&apos;, false, &apos;ss&apos;]
+// arr = _.compact(arr);      //   [1,3,&apos;ss&apos;] 
+
+// 合并数组
+// arr = [1];
+// arr = _.concat(arr, 2, [3], [[4]]);    // [1, 2, 3, [4]]
+
+// 去除数组中指定的数值
+// arr = _.difference(arr, [2,3,4]);   // [1,5,6]
+
+// 截取数组从第个开始直到最后的值
+// arr = _.drop(arr, 2);      // [3,4,5,6]
+
+// 指定删除的下标个数，从右开始
+// arr = _.dropRight(arr, 2);    // [1,2,3]
+
+// 填充数组元素，全部或指定区域
+// arr = _.fill(arr, &apos;a&apos;);       // [&apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;];
+// arr = _.fill(arr, &apos;*&apos;, 1, 4);    // [1, &quot;*&quot;, &quot;*&quot;, &quot;*&quot;, 5, 6]
+
+// 查找指定的值返回下标
+// arr = [
+//   {user: &apos;siguang&apos;, age: 30},
+//   {user: &apos;lulu&apos;, age: 20},
+//   {user: &apos;haha&apos;, age: 10}
+// ]
+// arr = _.findIndex(arr, function(o){ return o.user == &apos;lulu&apos; });   // 1
+// arr = _.findIndex(arr, [&apos;age&apos;, 10])     // 2 如果不存在返回-1
+
+// findLastIndex() 与findIndex()相同只是从后向前
+// lastIndex()
+
+// 将一个二维数组转成对象
+// arr = [[&apos;a&apos;, 1], [&apos;b&apos;, 2]];
+// arr = _.fromPairs(arr);     // {a: 1, b: 2}
+
+// 返回数组第一个、最后一个元素
+// arr = _.head(arr);    // 1
+// arr = _.last(arr);    // 6
+
+// 根据下标返回值
+// arr = _.indexOf(arr, 2);   // 1
+
+// 删除最后一个数组值
+// arr = _.initial(arr);     // [1, 2, 3, 4, 5]
+
+// 将数组元素用分割符分开，返回一个字符串
+// arr = _.join(arr, &apos;~&apos;);      // &quot;1~2~3~4~5~6&quot;
+
+// 根据下标的返回数组中的值，如果是负数从后开始
+// arr = _.nth(arr, 2);      // 3
+// arr = _.nth(arr, -2);        // 5
+
+// 删除数组中指定的值
+// arr = _.pull(arr, 3, 4, 5);   // [1, 2, 6]
+// arr = _.pullAll(arr, [3,4,5]);   // [1, 2, 6]
+
+// 返回指定下标的数组值
+// arr = _.pullAt(arr, [1,3,5]);   // [2, 4, 6]
+
+// 删除数组元素
+arr = _.remove(arr, function(n){ return n % 2 == 0 });    // [2, 4, 6]
+
+
+console.log(arr);    
+box.innerHTML = &apos;sss&apos;
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/24/eCharts图表插件/">EChart</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/24/eCharts图表插件/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、npm install echarts --save
+
+2、引入echarts的两种方式
+
+    页面直接引入文件: &lt;script src=&quot;echarts.min.js&quot;&gt;&lt;/script&gt;
+
+    webpack: import echarts from &apos;echarts&apos;
+
+3、页面创建DOM的容器
+
+    &lt;div id=&quot;main&quot; style=&quot;width: 600px;height:400px;&quot;&gt;&lt;/div&gt;        必须要一个高度值
+</code></pre><h4 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h4><pre><code>1、数据异步
+
+    将数据通过ajax异步取到后，在通过setOption()方式直接加到载插件中
+
+
+2、loading动画
+
+    showLoading()来显示、hideLoading()隐藏
+
+    Exampole
+    var myChart = echarts.init(document.getElementById(&apos;main&apos;));
+
+    myChart.showLoading();
+    $.ajax({
+        success:function(data){
+            myChart.hideLoading();
+        }
+    })
+
+
+3、数据的动态更新
+
+    只需要加单个数据，先data.push(vlaue), 在通过setOption()将数据渲染出来
+
+    var data = [];        // 存储数据 
+
+    // 创建图表将data数据加入
+    ....
+
+    // 添加数据 
+    function addData(){
+        data.push(Math.random()*100);
+    }
+
+    setInterval(function(){
+        addData();
+        myChart.setOption({
+            数据
+        })
+    },1000)
+</code></pre><h4 id="数据区缩放组件-dataZoom"><a href="#数据区缩放组件-dataZoom" class="headerlink" title="数据区缩放组件 dataZoom"></a>数据区缩放组件 dataZoom</h4><pre><code>option = {
+    xAxis: {
+        type: &apos;value&apos;
+    },
+    yAxis: {
+        type: &apos;value&apos;
+    },
+
+    dataZoom: [
+        {   // 这个dataZoom组件，默认控制x轴。
+            type: &apos;slider&apos;, // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+            start: 10,      // 左边在 10% 的位置。
+            end: 60         // 右边在 60% 的位置。
+        }
+    ],
+
+    series: [
+        {
+            type: &apos;scatter&apos;, // 这是个『散点图』
+            itemStyle: {
+                normal: {
+                    opacity: 0.8
+                }
+            },
+            symbolSize: function (val) {
+                return val[2] * 40;
+            },
+            data: [[&quot;14.616&quot;,&quot;7.241&quot;,&quot;0.896&quot;],[&quot;3.958&quot;,&quot;5.701&quot;,&quot;0.955&quot;],[&quot;2.768&quot;,&quot;8.971&quot;,&quot;0.669&quot;],[&quot;9.051&quot;,&quot;9.710&quot;,&quot;0.171&quot;],[&quot;14.046&quot;,&quot;4.182&quot;,&quot;0.536&quot;],[&quot;12.295&quot;,&quot;1.429&quot;,&quot;0.962&quot;],[&quot;4.417&quot;,&quot;8.167&quot;,&quot;0.113&quot;],[&quot;0.492&quot;,&quot;4.771&quot;,&quot;0.785&quot;],[&quot;7.632&quot;,&quot;2.605&quot;,&quot;0.645&quot;],[&quot;14.242&quot;,&quot;5.042&quot;,&quot;0.368&quot;]]
+        }
+    ]
+}
+</code></pre><h4 id="事件和行为"><a href="#事件和行为" class="headerlink" title="事件和行为"></a>事件和行为</h4><pre><code>Echarts中有两种事件，1、用户的鼠标事件   2、交互组件后触发的行为事件
+
+一、鼠标事件
+
+    鼠标事件: &apos;click&apos;、&apos;dblclick&apos;、&apos;mousedown&apos;、&apos;mousemove&apos;、&apos;mouseup&apos;、&apos;mouseover&apos;、&apos;mouseout&apos;
+
+    myChart.on(&apos;click&apos;, function(params){
+        console.log(params.name)
+    })
+
+
+二、交互组件
+
+    myChart.dispatchAction({ type: &apos;&apos; })        // 通过dispatchAction触发
+
+    1、legendselectchanged: 切换图例开关时触发
+
+    2、datazoom: 数据区域缩放触发
+
+
+二、params 对象
+
+    {
+        // 当前点击的图形元素所属的组件名称，
+        // 其值如 &apos;series&apos;、&apos;markLine&apos;、&apos;markPoint&apos;、&apos;timeLine&apos; 等。
+        componentType: string,
+
+        // 系列类型。值可能为：&apos;line&apos;、&apos;bar&apos;、&apos;pie&apos; 等。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesType: string,
+
+        // 系列在传入的 option.series 中的 index。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesIndex: number,
+
+        // 系列名称。当 componentType 为 &apos;series&apos; 时有意义。
+        seriesName: string,
+
+        // 数据名，类目名
+        name: string,
+
+        // 数据在传入的 data 数组中的 index
+        dataIndex: number,
+
+        // 传入的原始数据项
+        data: Object,
+
+        // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+        // dataType 的值会是 &apos;node&apos; 或者 &apos;edge&apos;，表示当前点击在 node 还是 edge 上。
+        // 其他大部分图表中只有一种 data，dataType 无意义。
+        dataType: string,
+
+        // 传入的数据值
+        value: number|Array
+
+        // 数据图形的颜色。当 componentType 为 &apos;series&apos; 时有意义。
+        color: string
+    }
+</code></pre><h4 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h4><pre><code>1、title: 标题（包括主副标题、链接、样式）
+
+2、legend: 标记的区域 （对legend的显隐、宽高、位置、横纵向排列）
+
+3、grid: 图表的网格区域 （是否显示网格、位标、宽高、背景色、边线色）
+
+4、xAxis、yAxis: x、y坐标轴
+    {
+        splitLine:{
+            show: false,                // 去掉网格线
+            lineStyle: {
+                color: &apos;#48484a&apos;    // 设置网络线颜色 
+            }
+        },                
+        splitArea : {show : true}                //保留网格区域
+    }
+
+5、dataZoom: 数据缩放 （）
+
+6、toolTip: 提示信息，鼠标移到数据点浮现的提示信息（）
+
+7、axisPointer:
+
+8、toolBox: 工具栏 （导出图表、数据视图、动态类型切换、缩放、重置）
+
+9、series: 系列列表（来决定图表的类型、图表的数据）
+
+10、color: 图表每一项的颜色
+
+11、background: 图表背景色
+
+12、textStyle: 文本样式
+
+13、animate: 是否开启动画
+
+----- 组件 -------
+
+14、timeline: 时间轴组件
+
+15、graphic: 原生图形元素组件
+
+16、calendar: 日历坐标组件
+
+17、brush: 区域选择组件
+
+18、geo: 地理坐标系组件
+
+19、parallel: 平行坐标系
+
+20、parallelAxis: 这个组件是平行坐标系中的坐标轴
+
+21、singleAxis: 单轴。可以被应用到散点图中展现一维数据
+</code></pre><h4 id="series对象"><a href="#series对象" class="headerlink" title="series对象"></a>series对象</h4><pre><code>type: 展示图表的类型
+
+name: 名称
+
+label: 图形上文本标签的控制（show、position、offset、formatter、）
+
+    formatter可以是字符串也可以是函数 
+
+        字符串模板，模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
+
+        formatter: &apos;{b}: {c}&apos;
+
+        label:{
+            normal:{
+                formatter: function(data){            // callback
+                    return data.percent + &apos;%&apos;;
+                }
+            }
+        }, 
+
+        params:
+        {
+            componentType: &apos;series&apos;,
+            // 系列类型
+            seriesType: string,
+            // 系列在传入的 option.series 中的 index
+            seriesIndex: number,
+            // 系列名称
+            seriesName: string,
+            // 数据名，类目名
+            name: string,
+            // 数据在传入的 data 数组中的 index
+            dataIndex: number,
+            // 传入的原始数据项
+            data: Object,
+            // 传入的数据值
+            value: number|Array,
+            // 数据图形的颜色
+            color: string,
+
+            // 百分比
+            percent: number,
+
+        }
+
+labelLine: 图形上图形与文本之间连接线的控制
+
+data: 数据
+
+center: 饼图中心坐标
+
+radius: 半径
+</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>1、x、y轴文字的颜色和角度
+
+    xAxis: {
+        type: &apos;category&apos;,
+        boundaryGap: false,
+        data: [&apos;Mon&apos;, &apos;Tue&apos;, &apos;Wed&apos;, &apos;Thu&apos;, &apos;Fri&apos;, &apos;Sat&apos;, &apos;Sun&apos;],
+        axisLabel: {            // 这里控制颜色
+            show: true,
+            textStyle: {
+                color: &apos;#fff&apos;
+            },
+            rotate: 45
+        }
+    },
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://echarts.baidu.com/echarts2/doc/doc.html#Title" target="_blank" rel="noopener">http://echarts.baidu.com/echarts2/doc/doc.html#Title</a><br><a href="http://echarts.baidu.com/gallery/editor.html" target="_blank" rel="noopener">http://echarts.baidu.com/gallery/editor.html</a>   在线编辑</p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/06/Nginx服务器/">Nginx</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/06/Nginx服务器/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">2017-04-06</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/服务器/">服务器</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="Nginx介绍"><a href="#Nginx介绍" class="headerlink" title="Nginx介绍"></a>Nginx介绍</h4><pre><code>服务器分类: Nginx、Apache、tomcat、Micorsoft Server
+
+ng是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，超越Apache的高性能和稳定性.
+</code></pre><h4 id="四层和七层负载均衡"><a href="#四层和七层负载均衡" class="headerlink" title="四层和七层负载均衡"></a>四层和七层负载均衡</h4><pre><code>负载均衡设备也被称为&quot;四到七层交换机&quot;，四层就是基于IP+端口的负载均衡，七层就是基于URL等应用信息的负载均衡.
+
+如果只做HTTP的负载均衡，用haproxy好了。性能很强。
+
+七层负载均衡优点:
+
+    1、高并发连接: 支撑5万并发连接
+
+    2、内存消耗少: 在3万并发连接，开启10个Nginx进程消耗150M内存
+
+    3、配置文件简单
+
+    4、节省带宽: 支持GZIP压缩，可以添加浏览器本地缓存的Header头，
+
+    5、稳定性高: 用于反向代理, 宕机概率小
+
+    9、支持热部署: 不间断服务进行更新
+</code></pre><h4 id="Nginx原理"><a href="#Nginx原理" class="headerlink" title="Nginx原理"></a>Nginx原理</h4><pre><code>一、七层负载均衡优势:
+
+    1、对HTTP报头检查，可以检出状态码为400、500、600的错误信息，如果有错误将连接请求重新定向到另一台服务器
+
+    2、可以根据数据类型（判断数据包是图像、压缩文件、或多媒体文件等），将数据引向内容服务器
+
+    3、根据请求类型，将普通文本、图象等静态文档，或是动态文档请求，引向相应的服务器来处理
+
+
+二、Nginx负载均衡是基于内容和应用的七层资的，Nginx抗并发强，是因为Nginx使用了非阻塞、异步传输
+
+三、模块
+
+    1、nginx负载均衡模块
+
+        配置负载均衡是ngx_http_upstream_module，这模块是默认安装
+
+    2、代理模块
+
+        Proxy为nginx的代理模块, 允许将用户的HTTP请求转发到后端服务器
+
+四、反向代理 
+
+    反向代理是指以代理服务器接受internet上的连接请求，将请求转发给内部服务器，并将从服务器得到结果返回给internet的客户端
+</code></pre><h4 id="Nginx负载均衡调试策略"><a href="#Nginx负载均衡调试策略" class="headerlink" title="Nginx负载均衡调试策略"></a>Nginx负载均衡调试策略</h4><pre><code>ng的upstream目前支付几种分配:
+
+1、轮询: 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务down掉，能自动剔除
+
+2、weight: 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况
+
+    upstream bakend { 
+        server 192.168.0.14 weight=10; 
+        server 192.168.0.15 weight=10; 
+    }
+
+3、ip_hash: 每个请求按访问ip的hash结果分配，每个访客访问一个固定的后端服务器
+
+    upstream bakend { 
+        ip_hash; 
+            server 192.168.0.14:88; 
+            server 192.168.0.15:80; 
+        }
+    }
+
+4、fair（第三方）
+
+5、url_hash（第三方）
+
+    upstream backend { 
+        server squid1:3128; 
+        server squid2:3128; 
+        hash $request_uri; 
+        hash_method crc32; 
+    }
+</code></pre><h4 id="通过brew安装nginx"><a href="#通过brew安装nginx" class="headerlink" title="通过brew安装nginx"></a>通过brew安装nginx</h4><pre><code>$ brew install nginx
+
+    cd /usr/local/etc/nginx/            // nginx.conf 配置目录
+
+    open /usr/local/Cellar/nginx  // 其实这个才是nginx被安装到的目录
+
+$ cd /usr/local/var/www                // 进入到目录 localhost:9080
+
+$ nginx             // 启动服务
+
+重启ng:
+
+    ps -ef|grep nginx
+
+    kill -9 进程号
+</code></pre><h4 id="Nginx安装和删除"><a href="#Nginx安装和删除" class="headerlink" title="Nginx安装和删除"></a>Nginx安装和删除</h4><pre><code>主要步骤: 下载包，压缩、配置编译
+
+$ https://nginx.org/en/download.html    下载一个nginx包版本
+
+$ cd /usr/local/ &amp;&amp; mkdir newNginx     // 进入到local目录并创建一个newNginx目录
+
+$ 将下载的包copy到新创建的newNginx目录, 并将包解压到当前目录   tar zxf nginx-1.12.2.tar.gz 
+
+$ cd nginx-1.12.2
+
+$ ./configure        // 验证过程
+
+$ make
+
+$ make install         // 这时候会创建一个nginx目录 /usr/local/nginx
+
+$ 将newNginx目录的文件copy到nginx目录
+</code></pre><h4 id="Nginx配置文件"><a href="#Nginx配置文件" class="headerlink" title="Nginx配置文件"></a>Nginx配置文件</h4><pre><code>默认该配置文件被命名nginx.conf
+
+    配置server
+
+    server {
+        listen       9092;                                // 端口
+        root /Users/apple/siguang.liu/Hh/hh_h5;            // 指定根目录
+
+        location / {
+            proxy_pass  http://174.16.1.82:8080/;        // 代理到的服务器
+        }
+
+        error_page   500 502 503 504  /50x.html;        // 错误
+        location = /50x.html {
+            root   html;
+        }
+
+        location ^~ /api {
+            proxy_pass  http://172.16.1.82:8080/;        // 如果访问以&quot;/api&quot;开头的代理的服务器
+        }
+
+        location ~ \.(gif|jpg|png|js|css|html|map)$ {    // 指定静态资源
+            root /Users/apple/siguang.liu/Hh/hh_h5;
+        }
+    }
+
+    可以通过include来将另一个文件的内容引用
+
+    include servers/*.conf;
+
+
+一、所存在的目录 /usr/local/nginx/conf            // 本机mac /usr/local/openresty/nginx
+
+二、启动  sudo /usr/local/openresty/nginx/sbin/nginx      // 需要sudo管理员权限
+
+三、启动后的可以通过调用带-s参数来执行文件来控制 
+
+    $ nginx -s 命令
+
+    1、reload - 重启  sudo /usr/local/openresty/nginx/sbin/nginx -s reload
+
+    2、stop - 快速关机 sudo /usr/local/openresty/nginx/sbin/nginx -s stop
+
+    3、quit - 优雅关机 sudo /usr/local/openresty/nginx/sbin/nginx -s quit
+
+    4、reopen - 重新打开日志文件 sudo /usr/local/openresty/nginx/sbin/nginx -s reopen
+
+四、查看、杀掉进程
+
+    $ ps -ex | grep nginx
+
+    $ kill -s quit 1682
+
+五、配置文件结构
+
+    指令分为简单指令和块指令，以空格分隔，以分号(;)结束
+
+四、注释使用 #
+
+    # HTTPS server
+    #
+    # server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+    # }
+</code></pre><h4 id="Nginx配置-HTTP2-0"><a href="#Nginx配置-HTTP2-0" class="headerlink" title="Nginx配置 HTTP2.0"></a>Nginx配置 HTTP2.0</h4><pre><code>https://www.nginx.com/blog/nginx-1-9-5/
+</code></pre><p>| <a href="https://www.cnblogs.com/meng1314-shuai/p/8335140.html" target="_blank" rel="noopener">https://www.cnblogs.com/meng1314-shuai/p/8335140.html</a>          // 安装Ng<br>| <a href="http://www.cnblogs.com/felixzh/category/937300.html" target="_blank" rel="noopener">http://www.cnblogs.com/felixzh/category/937300.html</a><br>| <a href="https://www.cnblogs.com/felixzh/p/6283788.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixzh/p/6283788.html</a><br>| <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html" target="_blank" rel="noopener">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/04/06/服务器端概念/">大型网站架构</a>
         </h1>
         
@@ -298,61 +913,88 @@ http://www.alloyteam.com/2015/05/dns%EF%BC%8Cnode%E4%BB%A5%E5%8F%8A%E5%8F%8D%E5%
     
     <section class="article-body markdown-body">
         
-        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明。
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明
 
 Model -  由Schema转化的数据模型，具有抽象属性和行为的数据库操作，可以进行查询操作
 
 Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完整的CRUD操作
-</code></pre><h4 id="Mongoose使用"><a href="#Mongoose使用" class="headerlink" title="Mongoose使用"></a>Mongoose使用</h4><pre><code>一、安装 
+</code></pre><h4 id="Mongoose使用"><a href="#Mongoose使用" class="headerlink" title="Mongoose使用"></a>Mongoose使用</h4><pre><code>一、安装
 
-    $ npm install mongoose      
+    $ npm install mongoose
 
-二、引用
+二、示例
 
     const mongoose = require(&apos;mongoose&apos;);
+    const Schema = mongoose.Schema;
 
-    // connect()创建一个数据库连接
-    let db = mongoose.connect(&apos;mongodb://car:welcomeCar@localhost/myCar&apos;);          // mongodb://用户名:密码@数据库IP/库名
+    // 连接mongodb
+    mongoose.connect(&apos;mongodb://car:welcomeCar@localhost/myCar&apos;);       // mongodb://用户名:密码@数据库IP/库名
 
-    db.on(&apos;error&apos;, console.error.bind(console, &apos;connection error:&apos;));   // 连接失败
-    db.once(&apos;open&apos;, function (callback) {    
-        // yay! 连接成功
-    });
-
-    // 定义Schema文档结构
-    let Schema = mongoose.Schema;
-    let carSchema = new Schema({
-        id: Number,
-        carName: String,
-        carPrice: Nuber,
-        date: {type: Date, default: Date.now}
+    // 连接成功
+    mongoose.connection(&apos;connected&apos;, ()=&gt;{
+        console.log(&apos;connect success&apos;);
     })
 
-    // 定义Model模型
-    let carMode = db.model(&apos;cars&apos;, carSchema);
-
-    // 定义一个Entity
-    let carEntity = new carMode({
-        id: 1,
-        carName: &apos;路虎&apos;,
-        carPrice: 700000
+    // 连接失败
+    mongoose.connection(&apos;error&apos;, ()=&gt;{
+        console.log(&apos;connect error&apos; + err);
     })
 
-    // 存储
-    carEntity.save(function(err){
+    // 连接断开
+    mongoose.connection(&apos;disconnected&apos;, ()=&gt;{
+        console.log(&apos;connect disconnected&apos;);
+    })
+
+
+    // 创建Schema
+    const UserSchema = new Schema({
+        username: String,
+        password: String,
+        age: Number,
+        LoginAt: Date
+    })
+
+    // 定义Model
+    const UserModel = mongoose.model(&apos;User&apos;, UserSchema);
+
+    // 插入数据
+    let userData = new UserModel({
+        username: &apos;siguang&apos;,
+        password: &apos;ssssss&apos;,
+        age: 20,
+        loginAt: new Date()
+    })
+
+    // 保存
+    userData.save((err, res)=&gt;{
         if(err){
-            console.log(&apos;存储错误&apos;)
+            return console.log(err)
         }
+        console.log(res);
     })
 
-    // 查找
-    carMode.find({carName: &apos;路虎&apos;}, function(err, doc){
+    // 删除
+    userData.remove({age: 30}, (err, doc) =&gt; {
         if(err){
-            console.log(err)
+            return console.log(err)
         }
-        else{
-            console.log(doc);
+        console.log(doc);
+    })
+
+    // 查询
+    userData.find({username: &apos;siguang&apos;, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
         }
+        console.log(doc);
+    })
+
+    // 数量
+    userData.count({age: 20}, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
+        }
+        console.log(doc);
     })
 </code></pre><h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><pre><code>mongoose两种连接： connect连单个db并打开，createConnect连接多个db
 
@@ -362,7 +1004,6 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
         connect(&apos;mongodb://[username]:[password]@host:port/database?options...&apos;);   // 用户名、密码、主机、端口、库名、参数
 
         let db = mongoose.connect(&apos;mongodb://[username]:[password]@127.0.0.1:27017/myDB&apos;);
-
 
     写法2:
         -- conect(uri, options) --
@@ -377,10 +1018,9 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
         var uri = &apos;mongodb://localhost/dbName?poolSize=4&apos;;
         mongoose.connect(uri, options);
 
+    -- mongoose.createConnection() --
 
 二、多个连接
-
-    -- mongoose.createConnection() --
 
     let mongoose = require(&apos;mongoose&apos;);
     let db = mongoose.connect(&apos;mongodb://127.0.0.1:27017/myDB&apos;);        // mongodb://IP:端口号/数据库名
@@ -394,7 +1034,6 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
     db.connection.on(&apos;open&apos;, function(){
         console.log(&apos;连接成功&apos;)
     })
-
 
 三、两者的区别
 
@@ -414,19 +1053,30 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
     createConnection，可以open，但完全不会查询。第二种方法就可以
 </code></pre><h4 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h4><pre><code>Schema: 一种文件形式存储数据库模型的骨架，无法直接连接数据端，不具备操作数据库的能力，叫数据属性模型或集合
 
-let personSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    email: String
-})
+一、定义表的文档结构
 
-二、实例方法
+    let personSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
 
-三、静态方法
+二、实例方法、静态方法
 
-四、indexes 索引
+    let PersonSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
 
-创建规则
+    var Person = mongoose.model(&apos;person&apos;, PersonSchema);
+    var silence = new Person({ name: &apos;Silence&apos; });
+
+    PersonSchema.methods.speak = function(){
+
+    }
+
+三、index 索引
 
     let Schema = mongoose.Schema;
     let carSchema = new Schema({
@@ -445,29 +1095,49 @@ let personSchema = new mongoose.Schema({
     carSchema.index({ name: 1, type: -1});  // 
 </code></pre><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="Schema Type"></a>Schema Type</h4><pre><code>一、类型
 
-    String：字符串
-    Number：数值
-    Date：日期
-    Buffer： 二进制
-    Boolean：布尔
-    Mixed： 混合
-    ObjectId： ObjectId
-    Array：数组
+    1、String：字符串
+
+    2、Number：数值
+
+    3、Date：日期
+
+    4、Buffer： 二进制
+
+    5、Boolean：布尔
+
+    6、Mixed： 混合
+
+    7、ObjectId： ObjectId
+
+    8、Array：数组
 
 二、其它参数
 
-    default: 默认         // updated: { type: Date, default: Date.now }
+    default: 默认       // updated: { type: Date, default: Date.now }
 
-    min/max: 最小或最大    // age: { type: Number, min: 18, max: 65 }
+    min/max: 最小或最大  // age: { type: Number, min: 18, max: 65 }
 
     trim: 去掉两端空格
 
-    unique: true 指定字段为独一无二
+    lowercase: true     // 保存前将字符转成小写
+
+    uppercase: true     // 保存前将字符转成大写
+
+    required: true      // 必填
+
+    match：RegExp       // 创建一个正则验证器
+
+    enum：Array         // 检查值是否在给定的数组中
+
+    index: true         // 索引
+
+    unique: true        // 索引，指定字段为独一无二
 
 三、Example
 
     var schema = new Schema({
-        name:    String,
+        idCard: { type: String, unique: true, trim: true },     // 用户id 字段独一无二、去掉两端空格
+        name:    String,            // 可以直接写成String，也可以写成 {type: String}
         binary:  Buffer,
         living:  Boolean,
         updated: { type: Date, default: Date.now }
@@ -627,9 +1297,7 @@ Tank.findByIdAndUpdate(id, [update]);
                 email: &apos;maolv@126.com&apos; 
             }
         ]
-</code></pre><blockquote>
-<p><a href="http://www.nodeclass.com/api/mongoose.html" target="_blank" rel="noopener">http://www.nodeclass.com/api/mongoose.html</a><br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a>         egg-mongoose<br><a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br><a href="http://www.cnblogs.com/xuange306/p/4603551.html" target="_blank" rel="noopener">http://www.cnblogs.com/xuange306/p/4603551.html</a><br><a href="http://www.cnblogs.com/winyh/p/6682039.html" target="_blank" rel="noopener">http://www.cnblogs.com/winyh/p/6682039.html</a><br><a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a></p>
-</blockquote>
+</code></pre><p>| <a href="https://mongoose.shujuwajue.com/guide/schemas.html" target="_blank" rel="noopener">https://mongoose.shujuwajue.com/guide/schemas.html</a>        // 中文API<br>| <a href="http://www.nodeclass.com/api/mongoose.html" target="_blank" rel="noopener">http://www.nodeclass.com/api/mongoose.html</a><br>| <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a>         egg-mongoose<br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br>| <a href="http://www.cnblogs.com/xuange306/p/4603551.html" target="_blank" rel="noopener">http://www.cnblogs.com/xuange306/p/4603551.html</a><br>| <a href="http://www.cnblogs.com/winyh/p/6682039.html" target="_blank" rel="noopener">http://www.cnblogs.com/winyh/p/6682039.html</a><br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a></p>
 
         
     </section>
@@ -664,7 +1332,9 @@ Tank.findByIdAndUpdate(id, [update]);
     
     <section class="article-body markdown-body">
         
-        <p>| mongodb的安装和启动<br>| 创建用户权限<br>| 数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>| 库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>| 创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>| 删除行 -<br>| 插入值 - db.myColl.insert({name: ‘haha’})<br>| 更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>|         $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>| 删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>| 查询值 - db.myColl.find({})<br>|         .sort()、count()、limite()、skip()<br>|         查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>|         数组查询 $all、$size、$sclie<br>|         $where 子句<br>| 索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>|        索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>| 复制集<br>| 分片<br>| 数据均衡<br>| 性能分析</p>
+        <blockquote>
+<p>创建用户权限<br>数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>删除行 -<br>插入值 - db.myColl.insert({name: ‘haha’})<br>更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>        $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>查询值 - db.myColl.find({})<br>        .sort()、count()、limite()、skip()<br>        查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>        数组查询 $all、$size、$sclie<br>        $where 子句<br>索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>       索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>复制集<br>分片<br>数据均衡<br>性能分析</p>
+</blockquote>
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>自动提示，按两次Tab
 
 db.getMongo() - 查看当前mongo的ip和端口
@@ -764,7 +1434,11 @@ $ brew install mongodb         // 安装的目录 /usr/local/Cellar/mongodb/
 
 $ brew list                    // 查看brew安装的列表中是否存在brew
 
-$ sudo mkdir -p /data/db       // 创建数据库存储目录, 这个是mongo默认找的地址，如果需要放到其它目录使用 mongod --dbpath /xxx/xxx/xx, 注意目录权限不能为root
+$ sudo mkdir -p /data/db       // 用来存放mongo创建的数据文件
+
+    注意这里如果启动服务时报/data权限问题需要执行
+
+    $ sudo chmod -R 777 /data
 
 $ 连接本地和远端服务器的mongoDB
 
@@ -774,7 +1448,7 @@ $ 连接本地和远端服务器的mongoDB
 
         mongodb://10.10.13.123:27017,10.10.13.341:27017/ibg_node_core
 
-$ 启动和关闭mongo服务
+$ 启动和关闭服务
 
     启动服务: 
 
@@ -805,6 +1479,8 @@ $ brew info mongodb            // 查看安装信息    mongod --config /usr/loc
     http://blog.csdn.net/sun491922556/article/details/74973191            // 3.4版本配置
 
 $ mongo --version            // 查看版本
+
+https://www.imooc.com/article/23046
 </code></pre><h4 id="mongo的基本数据类型"><a href="#mongo的基本数据类型" class="headerlink" title="mongo的基本数据类型"></a>mongo的基本数据类型</h4><pre><code>null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object
 </code></pre><h4 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h4><pre><code>一、查询库、查询集合
 
@@ -933,13 +1609,13 @@ $ mongo --version            // 查看版本
 
 10、数组查询
 
-    1）$all - 用来查询是否包括数组里的值
+    1）$all - 用来查询数组中是否包含指定的值
 
         // content field值为数组
         db.myColl.find({content: {$all: [1, 8]})        返回content中包含1或8的数组
 
 
-    2）$size - 用来查询数组的长度
+    2）$size - 查询数组的长度
 
         db.myColl.find({content: {$size: 3}});        返回content数组字段长度为3个
 
@@ -986,7 +1662,7 @@ $ mongo --version            // 查看版本
     update() 第四个参数为true更所有匹配的值，false只更新一个
 
     // 只更匹配的第一条 如果type=&apos;123&apos;不存在, 则插入一条只有name=&apos;456&apos;的数据
-    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        
+    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        // 注意如果不使用$set那么type=123这行记录只剩name=456
 
     // 更新全部匹配
     db.myColl.update({name:’hf’}, {$set:{age:25}}, false, true)
@@ -1000,10 +1676,7 @@ $ mongo --version            // 查看版本
 
 2、$unset - 删除字段列
 
-    db.myColl.find({id:1})             { &quot;id&quot; : 1, &quot;content&quot; : &quot;&quot; }    注意这里要删除的字段值必须填写一个数字，可以是0、1或其它数字
-
-    db.myColl.update({id: 1}, {$unset: {content: 1}});
-    db.myColl.find({id:1})            { &quot;id&quot; : 1}     content被删除
+    db.myColl.update({id: 1}, {$unset: {content: 1}});        // 删除id=1，content字段
 
 
 3、$inc - 只能对一个数字字段的值的进行累加，key不存在或者非数字都报错
@@ -1067,11 +1740,15 @@ http://chenzhou123520.iteye.com/myColl/1637629
 
     1、查看索引 - getIndexes()    db.myColl.getIndexes()
 
-    2、创建索引 - ensureIndex()    db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
+    2、创建、修改索引 - ensureIndex()    
 
-    3、删除索引 - dropIndexes()    db.myColl.dropIndexes()
+        创建: db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
 
-    4、修改索引 - {background: true}        db.myColl.ensureIndex({id: 1}, {background: true});
+        上修改: db.myColl.ensureIndex({id: 1}, {background: true});        // {background: true}
+
+    3、删除索引 - dropIndexes()
+
+        db.myColl.dropIndexes(name);        // getIndexes()中查出来所索name的值
 
 
 二、ensureIndex()参数
@@ -1095,6 +1772,8 @@ http://chenzhou123520.iteye.com/myColl/1637629
     9、default_language - string 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
 
     10、language_override - string 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
+
+http://blog.51cto.com/chenql/2071267
 
 
 三、索引类型
@@ -2007,771 +2686,10 @@ url.resolve(&apos;http://example.com/one&apos;, &apos;/two&apos;) // &apos;http:
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJS（之一）Global全局/">nodeJS基 (之一) Global全局对象</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJS（之一）Global全局/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| <strong>filename - 前当文件名<br>| </strong>dirname - 当前所在的目录<br>| setTimeout、clearTimeout - 定时器<br>| setInterval、clearInterval - 定时器<br>| console - 打印到控制台<br>| process - 进程<br>| exports、require() - 导入、导出<br>| </p>
-<h4 id="dirname-当前的绝对路径"><a href="#dirname-当前的绝对路径" class="headerlink" title="__dirname  当前的绝对路径"></a>__dirname  当前的绝对路径</h4><h4 id="filename-当前文件名"><a href="#filename-当前文件名" class="headerlink" title="__filename  当前文件名"></a>__filename  当前文件名</h4><h4 id="exports-暴露接口"><a href="#exports-暴露接口" class="headerlink" title="exports  暴露接口"></a>exports  暴露接口</h4><h4 id="require-引入模板"><a href="#require-引入模板" class="headerlink" title="require()  引入模板"></a>require()  引入模板</h4><pre><code>1、模块分为
-
-    模块加载：require(&apos;2.js&apos;);
-
-    1）内置模块:  var fs = require(&apos;fs&apos;);        // 加载Node的内置模块 fs文件系统
-
-    2）文件模块: 自己定义的业务模块
-
-        定义一个food.common.js
-
-        var food = reuqire(&apos;./js/food.common&apos;);        // 加载业务模块
-
-    3）加载第三方模块
-
-        require(&apos;./2&apos;);        // 先按照加载的模块文件进行查找，如果没有找到会在文件名加上.js
-
-
-2、绝对和相对路径
-
-    var fs = require(&apos;fs&apos;);        // 绝对路径，是在Node通过内部的node_modules查找到的模块
-
-    var moduleA = reuqire(&apos;./lib/moduleA&apos;);        // 相对路径
-
-
-2、npm 全局安装和局部安装
-
-    1）全局安装会安装到Node目录中，各项目都可以使用 npm install -g gulp
-
-    2）局部安装，将一个模块安装到node_modules中，只在当前和子目录中使用
-
-
-require.cache
-require.resolve()
-</code></pre><h4 id="global-全局对象"><a href="#global-全局对象" class="headerlink" title="global  全局对象"></a>global  全局对象</h4><h4 id="module"><a href="#module" class="headerlink" title="module"></a>module</h4><pre><code>module和exports两个全局变量
-
-1）module：每个模块下都包括module对象
-
-    Module {
-        id: &apos;.&apos;,
-        exports: {},
-        parent: null,
-        filename: &apos;/Users/apple/siguang.liu/nodeProject/server.js&apos;,
-        loaded: false,
-        children: [],
-        paths: [
-            &apos;/Users/apple/siguang.liu/nodeProject/node_modules&apos;,
-            &apos;/Users/apple/siguang.liu/node_modules&apos;,
-            &apos;/Users/apple/node_modules&apos;,
-            &apos;/Users/node_modules&apos;,
-            &apos;/node_modules&apos;
-        ]
-     }
-
- 2）exports外部接口，通过require就可以调用这个接口
-
-     其实exports就是module.exports的引用
-
-    exports.name = &apos;siguang&apos;;
-    exports.getPrivate = function(){
-        return &apos;haha&apos;;
-    }
-</code></pre><h4 id="process-进程"><a href="#process-进程" class="headerlink" title="process  进程"></a>process  进程</h4><h4 id="console-打印到控制台"><a href="#console-打印到控制台" class="headerlink" title="console 打印到控制台"></a>console 打印到控制台</h4><pre><code>log()、info()、error()、warn()、time()、timeEnd()
-</code></pre><h4 id="setImmediate-callback-…args-、clearImmediate-immediateObject"><a href="#setImmediate-callback-…args-、clearImmediate-immediateObject" class="headerlink" title="setImmediate(callback[, …args])、clearImmediate(immediateObject)"></a>setImmediate(callback[, …args])、clearImmediate(immediateObject)</h4><h4 id="setInterval-、clearInterval"><a href="#setInterval-、clearInterval" class="headerlink" title="setInterval()、clearInterval()"></a>setInterval()、clearInterval()</h4><h4 id="setTimeout-、clearTimeout"><a href="#setTimeout-、clearTimeout" class="headerlink" title="setTimeout()、clearTimeout()"></a>setTimeout()、clearTimeout()</h4>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJs（之二）FileSystem/">nodeJS (之二) FileSystem</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJs（之二）FileSystem/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>| open() - 打开文件<br>| close() - 关闭文件<br>| stat() - 文件信息<br>| read()、write() - 读文件数据并写入Buffer<br>| readFile()、readFileSync() - 读、写取文件，可以读图片并写出图片，但不能写流文件<br>| createReadStream()、createWriteStream() - 读/写文件流<br>| rename()、renameSync() - 修改文件或目录<br>| ftruncate() - 截断文件<br>| appendFile() - 将数据追加到文件中<br>| mkdir() - 创建/删除目录<br>| rmdir() - 删除空目录<br>| readDir()、readdirSync() - 读取目录下所有文件<br>|<br>| stat() - 文件信息<br>| utimes() - 修改文件时间<br>| watchFile() - 监视文件<br>| access() - 判断文件或目录权限<br>| link() - 硬链接<br>| unlink() - 删除文件链接<br>| symlink() - 符号链接<br>| readlink() - 读取链接源地址<br>| watchFile()、watch() - 侦听文件/文件夹内文件的变化 </p>
-<h4 id="fs-模块引用"><a href="#fs-模块引用" class="headerlink" title="fs 模块引用"></a>fs 模块引用</h4><pre><code>var fs = reuqire(&apos;fs&apos;);        // 加载文件模块
-
-文件系统方法有异步和同步两种
-
-1、readFile()与createReadStream()区别
-
-    readFile是整个文件都读取完后在载入内存中，createReadStream()分片来读取内容块，直接读取完成，缓存与文件流的区别
-</code></pre><h3 id="一、文件操作"><a href="#一、文件操作" class="headerlink" title="一、文件操作"></a>一、文件操作</h3><h4 id="open-异步打开文件"><a href="#open-异步打开文件" class="headerlink" title="open() 异步打开文件"></a>open() 异步打开文件</h4><pre><code>open(文件路径， 打开方式（读/写），设置模式（读4/写2/执行1）, callback(err, fd文件句柄)): 异步打开文件
-
-    打开方式: r 读、 w 写
-
-opensync(): 同步打开文件
-
-Example:
-
-    const fileName = path.resolve(__dirname, &apos;test.txt&apos;);
-    fs.open(fileName, &apos;r&apos;, (err, fd) =&gt; {
-        console.log(err);
-        fs.close();
-    })
-</code></pre><h4 id="close-关闭一个文件"><a href="#close-关闭一个文件" class="headerlink" title="close() 关闭一个文件"></a>close() 关闭一个文件</h4><pre><code>fs.close(fd, callback)
-</code></pre><h4 id="read-指定的文件中读取数据，并写入缓存区buffer"><a href="#read-指定的文件中读取数据，并写入缓存区buffer" class="headerlink" title="read() 指定的文件中读取数据，并写入缓存区buffer"></a>read() 指定的文件中读取数据，并写入缓存区buffer</h4><pre><code>read(fd, buffer, offset, length, position, callback): 读文件
-
-// read(路径, 指定存到的缓存区, buf的开始, buf的结束, 文件读取的起启位置, callback)
-
-Example: 
-    var buf = new Buffer(6);
-    fs.open(path.resolve(basePath, &apos;append.txt&apos;), &apos;r&apos;, (err, fd) =&gt; {
-        if(err){
-            console.log(err);
-            return false;
-        }
-
-        fs.read(fd, buf, 0, buf.length, 3, (err, bytesRead, buffer) =&gt; {
-            var str = new Buffer(buffer);
-            console.log(str.toString())
-            console.log(&apos;bytesRead : &apos; + bytesRead);
-        })
-    })
-</code></pre><h4 id="write-指定的文件中写数据"><a href="#write-指定的文件中写数据" class="headerlink" title="write() 指定的文件中写数据"></a>write() 指定的文件中写数据</h4><pre><code>fs.write(fd, buffer, offset, length, position, callback)
-</code></pre><h4 id="readFile-读取文件"><a href="#readFile-读取文件" class="headerlink" title="readFile() 读取文件"></a>readFile() 读取文件</h4><pre><code>readFile(&apos;filename&apos;, [编码方式], callback): 读取文件(异步) , readFileSync同步读取文件
-
-缺点: readFile()是先将数据全部读入内存，文件大时候，读取效率低下，而createReadStream会把文件分割成小块，然后通过事件和来最后得到数据
-
-*注意*: 编码方式不设置返回的是Buffer, 如果设置了utf-8返回的是字符串
-
-Example:
-    fs.readFile(&apos;./nodeJS学习笔记.txt&apos;, &apos;utf-8&apos;, function(err, data){
-        if(err){
-            console.log(&apos;文件读取错误&apos;)
-        }
-        else{
-            var buf = new Buffer(data);        // 将读取到的数据转成Buffer
-            console.log(buf.toString());    // 二进制转成字符串
-        }                
-    })
-</code></pre><h4 id="writeFile-向文件写内容"><a href="#writeFile-向文件写内容" class="headerlink" title="writeFile() 向文件写内容"></a>writeFile() 向文件写内容</h4><pre><code>可以使用readFile读图片并写出图片，但不能写流文件
-
-writeFile(filename, data, [flag], callback(err)err不为真写入成功) 向文件写内容，文件不存在自动创建文件
-
-writeFileSync同步
-
-    filename: 路径加文件名, 如果文件不存在会创建一个文件**
-    data: 写入的内容可以是字符串或二进制
-    flag: 对文件怎么来操作,  &apos;w&apos; 清空后在写入  &apos;a&apos; 将新内容加到之后  {flag: &apos;w&apos;}
-    writeFileSync(&apos;文件名&apos;, &apos;内容&apos;): 同步写文件
-
-Example: 
-    var writeBuf = new Buffer(writeStr);
-
-    fs.writeFile(&apos;./buffer/file/user.txt&apos;, writeStr, {flag: &apos;a&apos;}, function(err){
-        err ? console.log(&apos;文件写入失败&apos;) : console.log(&apos;文件写入成功&apos;);
-    })
-</code></pre><h4 id="createReadStream-path-options-读取文件流"><a href="#createReadStream-path-options-读取文件流" class="headerlink" title="createReadStream(path, [options]): 读取文件流"></a>createReadStream(path, [options]): 读取文件流</h4><pre><code>fs模块允许你通过Stream来对数据进行读取操作，与readFile、writeFile不同是它对内存分配不是一次完成的.
-
-options:
-    { 
-        flags: &apos;r&apos;,            // r只读 w写
-        encoding: null,        // 字符编码 utf-8
-        fd: null,
-        mode: 0666,
-        autoClose: true,    // 读完数据是否关闭文件描述符
-        start: 0,            // 读取流的开始
-        end: 300            // 读取流的结束
-    }
-
-Example: 
-    var fs = require(&apos;fs&apos;);
-    var rs = fs.createReadStream(path.resolve(basePath, &apos;test.txt&apos;), {statr:100});
-    var str = &apos;&apos;;        // 存储读取的数据
-
-    // 读取数据
-    rs.on(&apos;data&apos;, (data)=&gt;{
-        str += data;
-    })
-
-    // 数据读取完成
-    rs.on(&apos;end&apos;, ()=&gt;{
-        console.log(&apos;读取完成&apos;)
-        console.log(str);            // 打印出读取数据
-    })
-
-    // 读取出错
-    rs.on(&apos;error&apos;, (err) =&gt; {
-        console.log(err);
-    })
-</code></pre><h4 id="createWriteStream-文件路径-options-可写数据流"><a href="#createWriteStream-文件路径-options-可写数据流" class="headerlink" title="createWriteStream(文件路径, {options}): 可写数据流"></a>createWriteStream(文件路径, {options}): 可写数据流</h4><pre><code>write(): 写入内容, 把文件内容清空后在写入
-
-end(): 关闭写入
-
-    var fs = require(&apos;fs&apos;);
-    var ws = fs.createWriteStream(&apos;./files/stream.txt&apos;);
-
-    // 写入内容
-    ws.write(&apos;内容加入到文件中&apos;, &apos;utf-8&apos;, function(){
-        console.log(arguments);
-    })
-    ws.end(function(){
-
-    })
-</code></pre><h4 id="rename-修改文件或目录名"><a href="#rename-修改文件或目录名" class="headerlink" title="rename() 修改文件或目录名"></a>rename() 修改文件或目录名</h4><pre><code>rename(oldPath, newPath, callback) 修改文件或目录名, renameSync同步
-
-Example: 
-    let oldName = path.resolve(basePath, &apos;newTest.txt&apos;);
-    let newName = path.resolve(basePath, &apos;test.txt&apos;);
-    fs.rename(oldName, newName, (err) =&gt; {
-        if(err){
-            console.log(err);
-        }
-        console.log(&apos;文件名修改成功&apos;)
-    })
-</code></pre><h4 id="ftruncate-截断文件"><a href="#ftruncate-截断文件" class="headerlink" title="ftruncate() 截断文件"></a>ftruncate() 截断文件</h4><pre><code>ftruncate(文件路径, 第几个字符截断, callback) 截断文件， ftruncateSync同步
-
-一个中文四个字节，英文两个字节
-
-Example: 
-    const basePath = __dirname;
-    fs.open(path.resolve(basePath, &apos;test.txt&apos;), &apos;r+&apos;, (err, fd)=&gt;{
-        if(err){
-            console.log(err);
-        }
-        else{
-            fs.truncate(fd, 400, (err)=&gt;{        // 截取四百个字节
-                var readNewFile = fs.readFile(fd, &apos;utf8&apos;, (err, data)=&gt;{    // 读取文件
-                    var buf = new Buffer(data);
-                    console.log(buf.toString(&apos;utf-8&apos;));        //
-                    fs.close();
-                });
-            })
-        }
-    })
-</code></pre><h4 id="appendFile-将数据追加到文件中"><a href="#appendFile-将数据追加到文件中" class="headerlink" title="appendFile(): 将数据追加到文件中"></a>appendFile(): 将数据追加到文件中</h4><pre><code>appendFile(文件名, 加入内容): 异步地追加数据到一个文件，如果文件不存在则创建文件，与writeFile()中设置flag: &apos;a&apos; 一样
-
-Example: 
-    fs.appendFile(path.resolve(basePath, &apos;append.txt&apos;), &apos;这是要加入的字符串&apos;, (err) =&gt; {
-        console.log(&apos;complate&apos;);
-    })
-</code></pre><h3 id="二、操作目录"><a href="#二、操作目录" class="headerlink" title="二、操作目录"></a>二、操作目录</h3><h4 id="mkdir-目录名-callback-err-、rmdir-创建-删除目录"><a href="#mkdir-目录名-callback-err-、rmdir-创建-删除目录" class="headerlink" title="mkdir(目录名, callback(err))、rmdir(): 创建/删除目录"></a>mkdir(目录名, callback(err))、rmdir(): 创建/删除目录</h4><pre><code>fs.mkdir(&apos;js/lib&apos;, function(err){        // 可以连续创建子目录， 先创建js，并在js目录下在创建lib目录
-    console.log(err)
-})
-</code></pre><h4 id="rmdir-path-callback-删除空目录"><a href="#rmdir-path-callback-删除空目录" class="headerlink" title="rmdir(path, callback): 删除空目录"></a>rmdir(path, callback): 删除空目录</h4><h4 id="readdir-path-callback-err-files-获取目录下所有文件"><a href="#readdir-path-callback-err-files-获取目录下所有文件" class="headerlink" title="readdir(path, callback(err, files)): 获取目录下所有文件"></a>readdir(path, callback(err, files)): 获取目录下所有文件</h4><pre><code>eaddirSync()同步
-
-files: 将目录下所有文件返回一个数组
-
-fs.readdir(basePath, &apos;utf-8&apos;, (err, files) =&gt; {
-    if(err){
-        console.log(&apos;文件目录获取失败&apos;, err);
-    }
-    else{
-        files.forEach(function(data){
-            var buf = new Buffer(data);
-            console.log(buf);       // 输出文件名的二进制
-        })
-    }
-})
-</code></pre><h3 id="三、文件权限"><a href="#三、文件权限" class="headerlink" title="三、文件权限"></a>三、文件权限</h3><h4 id="chown-文件所有者变更"><a href="#chown-文件所有者变更" class="headerlink" title="chown() 文件所有者变更"></a>chown() 文件所有者变更</h4><pre><code>fs.chown(文件名,uid,gid,回调函数);
-fs.fchown(文件句柄fd,uid,gid,回调函数);
-fs.lchown(链接路径,uid,gid,回调函数);    
-</code></pre><h4 id="chmod-文件权限变更"><a href="#chmod-文件权限变更" class="headerlink" title="chmod()文件权限变更"></a>chmod()文件权限变更</h4><pre><code>fs.chmod(文件名,mode,回调函数);
-fs.fchmod(文件句柄,mode,回调函数);
-fs.lchmod(链接路径,mode,回调函数);
-</code></pre><h4 id="stat-文件信息"><a href="#stat-文件信息" class="headerlink" title="stat() 文件信息"></a>stat() 文件信息</h4><pre><code>也可以判断文件是否存在
-
-fs.stat(文件路径, 回调函数(err.fs.Stats对象)); 获取文件或目录下的文件详情
-fs.fstat(文件句柄fd, 回调函数(err.fs.Stats对象)); 显示文件或文件系统状态
-fs.lstat(链接路径, 回调函数(err.fs.Stats对象)); 显示文件或文件系统状态(符号链接)
-
-stat(path, callback(err, stats)): 获取文件详情， statSync同步
-
-    fs.stat(`${dir}/img/readText.txt`, function (err, stats) {
-        console.log(stats);                    // stats类
-        console.log(stats.isFile());        // true
-    })
-
-    stats.isFile() - 是否是文件
-    stats.isDirectory() - 是否是目录
-    stats.isBlockDevice() - 是否是块设备
-    stats.isCharacterDevice() - 是否是是字符
-    stats.isSymbolicLink() (仅对 fs.lstat() 有效) - 是否是软链接
-    stats.isFIFO() - 是不是FIFO
-    stats.isSocket() - 是不是Socket
-
-
-Example: fileSystem目录下有两个文件， a.txt、main.js
-
-    fs.readdir(&apos;./fileSystem&apos;, function(err, files){
-        files.forEach(function(file){
-            console.log(file)
-            fs.stat(&apos;./fileSystem/&apos;+file, function(erro, stats){
-                console.log(&apos;是否是目录:&apos; + stats.isDirectory());
-                console.log(&apos;是否是文件:&apos; + stats.isFile());
-                console.log(stats);      // 输出所有文件的详情
-            })
-        })
-    })
-</code></pre><h4 id="utimes-修改文件时间"><a href="#utimes-修改文件时间" class="headerlink" title="utimes() 修改文件时间"></a>utimes() 修改文件时间</h4><pre><code>fs.utimes(文件路径,访问时间,新建时间,回调函数);
-fs.futimes(文件句柄,访问时间,新建时间,回调函数);      
-</code></pre><h4 id="watchFile-监视文件"><a href="#watchFile-监视文件" class="headerlink" title="watchFile()监视文件"></a>watchFile()监视文件</h4><pre><code>fs.watchFile(文件名,[options],listener_callback(当前文件的stats,改变前的stats));      
-fs.unwatchFile(文件名);
-</code></pre><h4 id="access-path-mode-callback-也是判断文件或目录的权限"><a href="#access-path-mode-callback-也是判断文件或目录的权限" class="headerlink" title="access(path, [mode], callback): 也是判断文件或目录的权限"></a>access(path, [mode], callback): 也是判断文件或目录的权限</h4><pre><code>fs.constants.F_OK - path 文件对调用进程可见。 这在确定文件是否存在时很有用，但不涉及 rwx 权限。 如果没指定 mode，则默认为该值。
-fs.constants.R_OK - path 文件可被调用进程读取。
-fs.constants.W_OK - path 文件可被调用进程写入。
-fs.constants.X_OK - path 文件可被调用进程执行。 对 Windows 系统没作用（相当于 fs.constants.F_OK）
-</code></pre><h3 id="四、链接文件操作"><a href="#四、链接文件操作" class="headerlink" title="四、链接文件操作"></a>四、链接文件操作</h3><h4 id="创建一个硬链接"><a href="#创建一个硬链接" class="headerlink" title="创建一个硬链接"></a>创建一个硬链接</h4><pre><code>fs.link(srcpath, dstpath, [callback]): 硬链接 
-
-fs.symlink(destination, path, [type], [callback]): 符号链接
-</code></pre><h4 id="读取链接指向的路径"><a href="#读取链接指向的路径" class="headerlink" title="读取链接指向的路径"></a>读取链接指向的路径</h4><pre><code>fs.readlink(path, [callback(err,linkstr)]): 读取链接源地址 
-
-fs.unlink(path,[callback]); 删除文件链接
-</code></pre><h4 id="watchFile-、watch-侦听文件-文件夹内的文件的变化"><a href="#watchFile-、watch-侦听文件-文件夹内的文件的变化" class="headerlink" title="watchFile()、watch(): 侦听文件/文件夹内的文件的变化"></a>watchFile()、watch(): 侦听文件/文件夹内的文件的变化</h4><pre><code>unwatchFile(): 停止侦听
-
-// 侦听文件
-fs.watch(&apos;./buffer/file/password.txt&apos;, {encoding: &apos;buffer&apos;}, (eventType, filename) =&gt; {
-    console.log(eventType, filename);
-    if (filename){
-        console.log(filename);
-    }
-});
-
-// 向password.txt写内容
-fs.writeFile(&apos;./buffer/file/password.txt&apos;, &apos;添加新内容&apos;, {flag: &apos;a&apos;}, function(err, data){
-    if(!err){
-        console.log(&apos;写入成功&apos;);
-    }
-})
-</code></pre>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/03/01/nodeJS（之八）HTTP/">nodeJS（之八）HTTP</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/03/01/nodeJS（之八）HTTP/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-03-01T15:12:21.000Z" itemprop="datePublished">2017-03-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Node-js/">Node.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="HTTP超文本传输协议"><a href="#HTTP超文本传输协议" class="headerlink" title="HTTP超文本传输协议"></a>HTTP超文本传输协议</h4><pre><code>let http = require(&apos;http&apos;);        // 导入http模块
-
-HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。
-</code></pre><h4 id="http-server类"><a href="#http-server类" class="headerlink" title="http.server类"></a>http.server类</h4><pre><code>是一个创建服务的类 ServerRequest()
-
-方法:
-
-    1、close([callback]): 停止服务器连接
-
-    2、listen(path, [callback]): 侦听, 与TCP使用方法相同
-
-属性:
-
-    1、listening: 返回是否在监听连接服务器的布尔值
-
-    2、maxHeadersCount: 限制最大的请求头数据，默认2000
-
-    3、keepAliveTimeout
-
-    3、setTimeout(msecs, callback): 为socket设置超时值，如果一个超时发生
-
-事件
-
-    1、connect - 请求时触发
-
-
-Example:
-
-    const HOST = &apos;127.0.0.1&apos;;
-    const PORT = 3000;
-
-    // 创建服务器
-    let server = http.createServer((req, res) =&gt; {
-        console.log(&apos;请求方法:&apos;, request.method);       // 请求方法
-        console.log(&apos;请求url:&apos;, request.url);          // 请求url
-        console.log(&apos;请求头:&apos;, request.headers);       // 请求头
-
-        res.writeHead(200);
-        res.end(&apos;hello world&apos;);    
-    })            
-
-    // 侦听3000端口
-    server.listen(PORT, HOST, ()=&gt; {
-        console.log(`server running at http://${hostname}:${port}`);
-    })
-</code></pre><h4 id="Request类"><a href="#Request类" class="headerlink" title="Request类"></a>Request类</h4><pre><code>url - 返回url地址
-
-method - 返回请求方法
-</code></pre><h4 id="Response类"><a href="#Response类" class="headerlink" title="Response类"></a>Response类</h4><pre><code>// 这里res返回的就是ServerResponse类
-const server = http.createServer((req, res) =&gt; { ..... });   
-
-方法:
-
-    1、addTrailers(headers)
-
-    2、end([data],[encoding],[callback]) - 告诉服务器所有响应头和主体都已被发送，等同于response.write()
-
-    3、finished: 
-
-    4、getHeader(name): 
-
-    5、headersSent: 返回消息头是否被发送，发送为true否则false
-
-    6、removeHeader(name): 移出一个头消息 response.removeHeader(&apos;Content-Encoding&apos;);
-
-    7、sendDate: 如果设置为true消息头存在日期消息头则自动生成并且响应在发送
-
-    8、setHeader(name, value): 设置头信息
-
-        response.setHeader(&apos;Content-Type&apos;, &apos;text/html&apos;);
-        response.setHeader(&apos;Set-Cookie&apos;, [&apos;type=ninja&apos;, &apos;language=javascript&apos;]);
-
-    9、setTimeout(msecs, callback): 设置 socket 的超时时间
-
-    10、statusCode: 设置向客户端响应的状态码  res.statusCode = 200;
-
-    11、statusMessage
-
-    12、write(chunk[, encoding][, callback])
-
-    13、writeContinue()
-
-    14、writeHead(statusCode[, statusMessage][, headers]): 发送一个响应头给请求
-
-        writeHead(状态码, [状态消息], {响应头信息})
-
-        Example: res.writeHead(200, { content-Type: &apos;text/html&apos;, Connection: &apos;keep-alive&apos;})
-
-    15、setEncoding(编码): 设置编码格式 res.setEncoding(&apos;utf8&apos;);
-
-
-res.connection
-
-事件:
-
-    1、close - 关闭连接，会自动调用response.end();
-
-    2、finish - 当响应已被发送时触发
-</code></pre><h4 id="http-IncomingMessage-类"><a href="#http-IncomingMessage-类" class="headerlink" title="http.IncomingMessage 类"></a>http.IncomingMessage 类</h4><pre><code>const server = http.createServer((req, res) =&gt; { ..... });  就是req返回的类
-
-1、headers: 客户端的请求头
-
-2、method: 获取请求方式
-
-3、url: 请求url
-
-4、statusCode: 状态码
-
-5、statusMessage: 状态消息
-
-6、socket: 与连接有关的 net.Socket 对象。
-
-7、destroy([error])
-
-8、httpVersion: http的版本
-
-9、rawHeaders
-
-10、rawTrailers
-
-11、setTimeout(msecs, callback)
-
-12、trailers
-</code></pre><h4 id="http-createServer-创建server服务"><a href="#http-createServer-创建server服务" class="headerlink" title="http.createServer(): 创建server服务"></a>http.createServer(): 创建server服务</h4><h4 id="http-get-options-callback-用来模拟客户端向服务器发送请求"><a href="#http-get-options-callback-用来模拟客户端向服务器发送请求" class="headerlink" title="http.get(options, [callback]): 用来模拟客户端向服务器发送请求"></a>http.get(options, [callback]): 用来模拟客户端向服务器发送请求</h4><pre><code>Example： 请求nodejs.org的index.json文件，返回json的内容
-
-const http = require(&apos;http&apos;);
-
-http.get(&apos;http://nodejs.org/dist/index.json&apos;, (res) =&gt; {
-    const statusCode = res.statusCode;
-    const contentType = res.headers[&apos;content-type&apos;];
-
-    let error;
-    if (statusCode !== 200) {
-        error = new Error(`请求失败。\n` +
-            `状态码: ${statusCode}`);
-    } else if (!/^application\/json/.test(contentType)) {
-        error = new Error(`无效的 content-type.\n` +
-            `期望 application/json 但获取的是 ${contentType}`);
-    }
-    if (error) {
-        console.log(error.message);
-        // 消耗响应数据以释放内存
-        res.resume();
-        return;
-    }
-
-    res.setEncoding(&apos;utf8&apos;);
-    let rawData = &apos;&apos;;
-    res.on(&apos;data&apos;, (chunk) =&gt; rawData += chunk);
-    res.on(&apos;end&apos;, () =&gt; {
-        try {
-            let parsedData = JSON.parse(rawData);
-            console.log(parsedData);
-        } catch (e) {
-            console.log(e.message);
-        }
-    });
-}).on(&apos;error&apos;, (e) =&gt; {
-    console.log(`错误: ${e.message}`);
-});
-</code></pre><h4 id="http-request-options-callback-模拟HTTP请求"><a href="#http-request-options-callback-模拟HTTP请求" class="headerlink" title="http.request(options, [callback]): 模拟HTTP请求"></a>http.request(options, [callback]): 模拟HTTP请求</h4><pre><code>options:
-
-    protocol &lt;String&gt; 使用的协议。默认为 &apos;http:&apos;。
-
-    host &lt;String&gt; 请求发送至的服务器的域名或 IP 地址。默认为 &apos;localhost&apos;。
-
-    hostname &lt;String&gt; host 的别名。为了支持 url.parse()，hostname 优于 host。
-
-    family &lt;Number&gt; 当解析 host 和 hostname 时使用的 IP 地址族。 有效值是 4 或 6。当未指定时，则同时使用 IP v4 和 v6。
-
-    port &lt;Number&gt; 远程服务器的端口。默认为 80。
-
-    localAddress &lt;String&gt; 要绑定到网络连接的本地接口。
-
-    socketPath &lt;String&gt; Unix 域 Socket（使用 host:port 或 socketPath 的其中之一）。
-
-    method &lt;String&gt; 一个指定 HTTP 请求方法的字符串。默认为 &apos;GET&apos;。
-
-    path &lt;String&gt; 请求的路径。默认为 &apos;/&apos;。 应包括查询字符串（如有的话）。如 &apos;/index.html?page=12&apos;。 
-    当请求的路径中包含非法字符时，会抛出异常。 目前只有空字符会被拒绝，但未来可能会变化。
-
-    headers &lt;Object&gt; 一个包含请求头的对象。
-
-    auth &lt;String&gt; 基本身份验证，如 &apos;user:password&apos; 来计算 Authorization 头。
-
-    agent &lt;http.Agent&gt; | &lt;Boolean&gt; 控制 Agent 的行为。 当使用 Agent 是，请求默认为 Connection: keep-alive。 可能的值有：
-    undefined (默认): 对该主机和端口使用 http.globalAgent。
-
-    Agent 对象：显式地使用传入的 Agent。
-
-    false: 不对连接池使用 Agent，默认请求 Connection: close。
-
-    createConnection &lt;Function&gt; 当不使用 agent 选项时，产生一个用于请求的 socket/stream 的函数。 这可以用于避免创建一个自定义的 Agent 类，只是为了覆盖默认的 createConnection 函数。详见 agent.createConnection()。
-
-    timeout &lt;Integer&gt;: 一个数值，指定 socket 超时的毫秒数。 它会在 socket 被连接时设置超时。
-
-
-Example:
-
-    var postData = querystring.stringify({
-            &apos;msg&apos; : &apos;Hello World!&apos;
-        });
-
-    var options = {
-        hostname: &apos;www.google.com&apos;,
-        port: 80,
-        path: &apos;/upload&apos;,
-        method: &apos;POST&apos;,
-        headers: {
-            &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos;,
-            &apos;Content-Length&apos;: Buffer.byteLength(postData)
-        }
-    };
-
-    var req = http.request(options, (res) =&gt; {
-        console.log(`STATUS: ${res.statusCode}`);
-        console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-        res.setEncoding(&apos;utf8&apos;);
-        res.on(&apos;data&apos;, (chunk) =&gt; {
-            console.log(`主体: ${chunk}`);
-        });
-        res.on(&apos;end&apos;, () =&gt; {
-            console.log(&apos;响应中已无数据。&apos;);
-        });
-    });
-
-    req.on(&apos;error&apos;, (e) =&gt; {
-        console.log(`请求遇到问题: ${e.message}`);
-    });
-
-    // 写入数据到请求主体
-    req.write(postData);
-    req.end();
-</code></pre><h4 id="http概念"><a href="#http概念" class="headerlink" title="http概念"></a>http概念</h4><pre><code>1、请求方法:
-
-    Get: 请求从服务器获取数据，没有请求体，不会影响服务器数据
-
-    Post: 从服务器获取数据，有请求体，会影响服务器端的数据
-
-    DELETE: 从服务器删除资源
-
-    HEAD: 向服务器获取响应头，不要响应体
-
-    PUT: 要新的服务器一个资源
-
-    OPTIONS: 获取服务器支持的方法
-
-
-2、文件类型 Content-type
-
-    html: text/html
-
-    ASCII文本: text/plain
-
-    jpeg图片: image/jpeg
-
-    GIF图片: image/gif
-
-    javascript: text/javascript
-
-    css: text/css
-
-    表单: application/x-www-form-urlencoded
-
-
-
-# 获取 index.html 文件内容返回给客户端
-
-    var http = require(&apos;http&apos;);
-    var fs = require(&apos;fs&apos;);
-
-    exports.createServer2 = function(){
-        var server = http.createServer(function(request, response){
-
-            var url = request.url;
-
-            // 获取 index.html 文件内容返回给客户端
-            fs.readFile(&apos;./index.html&apos;, &apos;utf-8&apos;, function(err, data){
-                console.log(err, data);
-
-                response.write(data);
-                response.end();
-            })
-        });
-
-        server.listen(8081, &apos;localhost&apos;);
-    }
-
-
-# 处理Get请求的参数
-
-    var server = http.createServer(function(request, response){
-        var oUrl = url.parse(request.url, true);
-
-        console.log(oUrl.query);        // { username: &apos;siguang&apos;, age: &apos;30&apos; }
-
-        var urlQuery = oUrl.query;
-        if(urlQuery){
-            response.write(&apos;服务器接收GET请求参数成功\n&apos;)
-            response.write(&apos;用户名:&apos;+ urlQuery.username +&apos;\n&apos;);
-            response.write(&apos;年级:&apos;+ urlQuery.age +&apos;\n&apos;);
-        }
-        else{
-            response.write(&apos;服务器接收参数失败&apos;);
-        }
-        response.end();
-    });
-
-    server.listen(8081, &apos;localhost&apos;);
-
-
-# 处理POST请求
-
-    if(urlObj.pathname == &apos;/register&apos;){           // 处理 &apos;/clock&apos; 的请求
-        var str = &apos;&apos;;
-        var userList = {};
-
-        // 通过on来侦听 data事件, data事件就是接收客户端传输过来的事件, 用可接收post的数据
-        request.on(&apos;data&apos;, function(data){
-            console.log(data.toString());          // 返回的是 Buffer
-            str += data.toString();
-        })
-
-        // 所有接收完成后处理接收数据
-        request.on(&apos;end&apos;, function(data){
-            userList = JSON.parse(str);
-
-            response.writeHead(&apos;200&apos;, {&apos;Content-Type&apos;: &apos;text/html;charset=utf-8&apos;});
-            if(userList.username == &apos;aaa&apos; &amp;&amp; userList.password == &apos;ssssss&apos;){
-                 response.end(JSON.stringify({&quot;res&quot;:true,&quot;message&quot;:&quot;注册成功&quot;}));        // 这里一定要用JSON.stringify来转成串
-            }
-            else{
-                response.end(JSON.stringify({&apos;res&apos;:false,&apos;message&apos;:&apos;注册失败&apos;}));
-            }
-            response.end();
-        })
-    }
-
-    注意：
-
-        1、客户端发送ajax请求时
-
-            如果data是字符串，接收过来就是 &apos;{&apos;username&apos;: &apos;aaa&apos;, &apos;password&apos;: &apos;ssssss&apos;}&apos; 字符串可以直接转成json,
-
-            如果data传的是一个对象，jquery会转成&quot;{&apos;username&apos;=&apos;aaa&apos;&amp;&apos;password&apos;=&apos;ssssss&apos;}&quot;, 还需要node重组
-</code></pre><h4 id="http概念-1"><a href="#http概念-1" class="headerlink" title="http概念"></a>http概念</h4><pre><code>1、up 工具 通过nodeAPI来监听文件或目录下所有文件，如果有文件改变不需要重启服务器
-
-    $ sudo npm i up -g   
-
-    运行命令: up -watch -port 8080 server.js 
-</code></pre>
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
 </nav>
 
 

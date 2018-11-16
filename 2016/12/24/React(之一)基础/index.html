@@ -1198,37 +1198,6 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
     }
 
 
-2、create-react-app 配置Sass
-
-    注意文件扩展名 *.scss
-
-    $ npm install create-react-app
-
-    $ create-react-app my-app
-
-    $ cd my-app
-
-    $ npm start
-
-    $ npm install sass-loader node-sass --save-dev            // 安装依赖
-
-    $ 在node_modules/react-scripts/config下找到 webpack.config.dev.js 文件，在 exclude 中添加 /.scss$/,
-
-    $ {
-        test: /\.scss$/,
-        loaders: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;],
-    },
-
-    https://www.jianshu.com/p/96658be50642
-
-
-3、create-react-app 配置router、redux
-
-    npm i react-router --save 
-    npm i redux --save 
-    npm i react-redux --save
-
-
 4、setState()异步的问题
 
     setUser(uname){
@@ -1243,6 +1212,20 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
             () =&gt; {  console.log(this.state.username); }        // 这里还是为之前的值而不是「sg」
         );
     }
+
+
+5、使用redux子组件会取不到 this.props.history
+
+    因为redux会将值传给props，所以就需要通过context来获取
+
+    解决方法: 在子组件中
+    import PropTypes from &apos;prop-types&apos;
+
+    子组件名.contextTypes = {
+        router: PropTypes.object.isRequired
+    }
+
+    console.log( this.context.router.history.push(&apos;/&apos;) );
 </code></pre><h4 id="Antd-UI组件问题收集"><a href="#Antd-UI组件问题收集" class="headerlink" title="Antd UI组件问题收集"></a>Antd UI组件问题收集</h4><pre><code>1、Table的每页条数  通过pagination属性来控制分页的内容
 
     &lt;Table pagination={{ pageSize: this.state.queryInfo.pageSize }} rowSelection={rowSelection} columns={columns} dataSource={data}  /&gt;

@@ -11,18 +11,18 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="概念Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明。
+    <meta name="description" content="概念Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明
 
 Model -  由Schema转化的数据模型，具有抽象属性和行为的数据库操作，可以进行查询操作
 
 Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完整的CRUD操作
-Mongoose使用一、安装 
+Mongoose使用一、安装
 
-    $ npm install mongoose      
+    $ npm install mongoose
 
-二、引用
+二、示例
 
-    const mongoose = require(&amp;apos;mongoose" />
+    const mongoose = require(&amp;apos;mongoose&amp;apos;);" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -140,61 +140,88 @@ Mongoose使用一、安装
     
     <section class="article-body markdown-body">
         
-        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明。
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>Schema[ˈskimə] - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明
 
 Model -  由Schema转化的数据模型，具有抽象属性和行为的数据库操作，可以进行查询操作
 
 Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完整的CRUD操作
-</code></pre><h4 id="Mongoose使用"><a href="#Mongoose使用" class="headerlink" title="Mongoose使用"></a>Mongoose使用</h4><pre><code>一、安装 
+</code></pre><h4 id="Mongoose使用"><a href="#Mongoose使用" class="headerlink" title="Mongoose使用"></a>Mongoose使用</h4><pre><code>一、安装
 
-    $ npm install mongoose      
+    $ npm install mongoose
 
-二、引用
+二、示例
 
     const mongoose = require(&apos;mongoose&apos;);
+    const Schema = mongoose.Schema;
 
-    // connect()创建一个数据库连接
-    let db = mongoose.connect(&apos;mongodb://car:welcomeCar@localhost/myCar&apos;);          // mongodb://用户名:密码@数据库IP/库名
+    // 连接mongodb
+    mongoose.connect(&apos;mongodb://car:welcomeCar@localhost/myCar&apos;);       // mongodb://用户名:密码@数据库IP/库名
 
-    db.on(&apos;error&apos;, console.error.bind(console, &apos;connection error:&apos;));   // 连接失败
-    db.once(&apos;open&apos;, function (callback) {    
-        // yay! 连接成功
-    });
-
-    // 定义Schema文档结构
-    let Schema = mongoose.Schema;
-    let carSchema = new Schema({
-        id: Number,
-        carName: String,
-        carPrice: Nuber,
-        date: {type: Date, default: Date.now}
+    // 连接成功
+    mongoose.connection(&apos;connected&apos;, ()=&gt;{
+        console.log(&apos;connect success&apos;);
     })
 
-    // 定义Model模型
-    let carMode = db.model(&apos;cars&apos;, carSchema);
-
-    // 定义一个Entity
-    let carEntity = new carMode({
-        id: 1,
-        carName: &apos;路虎&apos;,
-        carPrice: 700000
+    // 连接失败
+    mongoose.connection(&apos;error&apos;, ()=&gt;{
+        console.log(&apos;connect error&apos; + err);
     })
 
-    // 存储
-    carEntity.save(function(err){
+    // 连接断开
+    mongoose.connection(&apos;disconnected&apos;, ()=&gt;{
+        console.log(&apos;connect disconnected&apos;);
+    })
+
+
+    // 创建Schema
+    const UserSchema = new Schema({
+        username: String,
+        password: String,
+        age: Number,
+        LoginAt: Date
+    })
+
+    // 定义Model
+    const UserModel = mongoose.model(&apos;User&apos;, UserSchema);
+
+    // 插入数据
+    let userData = new UserModel({
+        username: &apos;siguang&apos;,
+        password: &apos;ssssss&apos;,
+        age: 20,
+        loginAt: new Date()
+    })
+
+    // 保存
+    userData.save((err, res)=&gt;{
         if(err){
-            console.log(&apos;存储错误&apos;)
+            return console.log(err)
         }
+        console.log(res);
     })
 
-    // 查找
-    carMode.find({carName: &apos;路虎&apos;}, function(err, doc){
+    // 删除
+    userData.remove({age: 30}, (err, doc) =&gt; {
         if(err){
-            console.log(err)
+            return console.log(err)
         }
-        else{
-            console.log(doc);
+        console.log(doc);
+    })
+
+    // 查询
+    userData.find({username: &apos;siguang&apos;, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
         }
+        console.log(doc);
+    })
+
+    // 数量
+    userData.count({age: 20}, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
+        }
+        console.log(doc);
     })
 </code></pre><h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><pre><code>mongoose两种连接： connect连单个db并打开，createConnect连接多个db
 
@@ -204,7 +231,6 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
         connect(&apos;mongodb://[username]:[password]@host:port/database?options...&apos;);   // 用户名、密码、主机、端口、库名、参数
 
         let db = mongoose.connect(&apos;mongodb://[username]:[password]@127.0.0.1:27017/myDB&apos;);
-
 
     写法2:
         -- conect(uri, options) --
@@ -219,10 +245,9 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
         var uri = &apos;mongodb://localhost/dbName?poolSize=4&apos;;
         mongoose.connect(uri, options);
 
+    -- mongoose.createConnection() --
 
 二、多个连接
-
-    -- mongoose.createConnection() --
 
     let mongoose = require(&apos;mongoose&apos;);
     let db = mongoose.connect(&apos;mongodb://127.0.0.1:27017/myDB&apos;);        // mongodb://IP:端口号/数据库名
@@ -236,7 +261,6 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
     db.connection.on(&apos;open&apos;, function(){
         console.log(&apos;连接成功&apos;)
     })
-
 
 三、两者的区别
 
@@ -256,19 +280,30 @@ Entity [ˈɛntɪti] - 由Model创建的实体，可以对数据库表进行完�
     createConnection，可以open，但完全不会查询。第二种方法就可以
 </code></pre><h4 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h4><pre><code>Schema: 一种文件形式存储数据库模型的骨架，无法直接连接数据端，不具备操作数据库的能力，叫数据属性模型或集合
 
-let personSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    email: String
-})
+一、定义表的文档结构
 
-二、实例方法
+    let personSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
 
-三、静态方法
+二、实例方法、静态方法
 
-四、indexes 索引
+    let PersonSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
 
-创建规则
+    var Person = mongoose.model(&apos;person&apos;, PersonSchema);
+    var silence = new Person({ name: &apos;Silence&apos; });
+
+    PersonSchema.methods.speak = function(){
+
+    }
+
+三、index 索引
 
     let Schema = mongoose.Schema;
     let carSchema = new Schema({
@@ -287,29 +322,49 @@ let personSchema = new mongoose.Schema({
     carSchema.index({ name: 1, type: -1});  // 
 </code></pre><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="Schema Type"></a>Schema Type</h4><pre><code>一、类型
 
-    String：字符串
-    Number：数值
-    Date：日期
-    Buffer： 二进制
-    Boolean：布尔
-    Mixed： 混合
-    ObjectId： ObjectId
-    Array：数组
+    1、String：字符串
+
+    2、Number：数值
+
+    3、Date：日期
+
+    4、Buffer： 二进制
+
+    5、Boolean：布尔
+
+    6、Mixed： 混合
+
+    7、ObjectId： ObjectId
+
+    8、Array：数组
 
 二、其它参数
 
-    default: 默认         // updated: { type: Date, default: Date.now }
+    default: 默认       // updated: { type: Date, default: Date.now }
 
-    min/max: 最小或最大    // age: { type: Number, min: 18, max: 65 }
+    min/max: 最小或最大  // age: { type: Number, min: 18, max: 65 }
 
     trim: 去掉两端空格
 
-    unique: true 指定字段为独一无二
+    lowercase: true     // 保存前将字符转成小写
+
+    uppercase: true     // 保存前将字符转成大写
+
+    required: true      // 必填
+
+    match：RegExp       // 创建一个正则验证器
+
+    enum：Array         // 检查值是否在给定的数组中
+
+    index: true         // 索引
+
+    unique: true        // 索引，指定字段为独一无二
 
 三、Example
 
     var schema = new Schema({
-        name:    String,
+        idCard: { type: String, unique: true, trim: true },     // 用户id 字段独一无二、去掉两端空格
+        name:    String,            // 可以直接写成String，也可以写成 {type: String}
         binary:  Buffer,
         living:  Boolean,
         updated: { type: Date, default: Date.now }
@@ -469,9 +524,7 @@ Tank.findByIdAndUpdate(id, [update]);
                 email: &apos;maolv@126.com&apos; 
             }
         ]
-</code></pre><blockquote>
-<p><a href="http://www.nodeclass.com/api/mongoose.html" target="_blank" rel="noopener">http://www.nodeclass.com/api/mongoose.html</a><br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a>         egg-mongoose<br><a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br><a href="http://www.cnblogs.com/xuange306/p/4603551.html" target="_blank" rel="noopener">http://www.cnblogs.com/xuange306/p/4603551.html</a><br><a href="http://www.cnblogs.com/winyh/p/6682039.html" target="_blank" rel="noopener">http://www.cnblogs.com/winyh/p/6682039.html</a><br><a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a></p>
-</blockquote>
+</code></pre><p>| <a href="https://mongoose.shujuwajue.com/guide/schemas.html" target="_blank" rel="noopener">https://mongoose.shujuwajue.com/guide/schemas.html</a>        // 中文API<br>| <a href="http://www.nodeclass.com/api/mongoose.html" target="_blank" rel="noopener">http://www.nodeclass.com/api/mongoose.html</a><br>| <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a>         egg-mongoose<br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br>| <a href="http://www.cnblogs.com/xuange306/p/4603551.html" target="_blank" rel="noopener">http://www.cnblogs.com/xuange306/p/4603551.html</a><br>| <a href="http://www.cnblogs.com/winyh/p/6682039.html" target="_blank" rel="noopener">http://www.cnblogs.com/winyh/p/6682039.html</a><br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a></p>
 
         
     </section>

@@ -7,11 +7,21 @@
 
     
 
-    <title>Archives | 大排档</title>
+    <title>LodashJS | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="description" content="LodashJS工具库，处理数组、对象的一些方法
+
+官网: https://lodash.com/
+
+中文官网: http://lodashjs.com/docs/#_chunkarray-size1
+示例let box = document.querySelector(&amp;quot;#box&amp;quot;);
+
+let arr = [1,2,3,4,5,6];
+
+// 将数组每两个下标值，转成一个二维数组 
+// arr = _.chunk(arr, 2);      // [[1,2], [3," />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -61,7 +71,7 @@
         
         
         
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="/archives">归档</a>
         </li>
         
@@ -90,234 +100,151 @@
 
         
         
+        
+        
 
         
-        <div class="author-meta">
-            
-            <div class="author-avatar">
-                <a href="/">
-                    <img src="/images/avatar.jpg" title="siguang" style="box-shadow: 3px 3px 4px rgba(0,0,0, .2);">
-                </a>
-            </div>
-            
-            <div class="author-name">Siguang(厨子)</div>
-            <div class="author-work">Front-end development</div>
-            <div class="author-location">
-                <i class="icon-location vm"></i>
-                <span class="vm">BeiJing, China</span>
-            </div>
-            <div class="author-thread-wrap">
-                <div class="author-threads clearfix">
-                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-github"></i></a>
-                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-circle-more"></i></a>
-                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-twitter"></i></a>
-                </div>
-            </div>
-        </div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#LodashJS"><span class="toc-number">1.</span> <span class="toc-text">LodashJS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li></ol>
         
     </div>
 </aside>
 
 </header>
 
-        <div id="content" class="content">
-
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
     
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            LodashJS
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/24/LodashJS/">
     
+    <i class="icon-calendar"></i>
     
-    
-    <section class="archives-wrap">
-    <div class="archive-year-wrap">
-    <a href="/archives/2016" class="archive-year">2016</a>
-    </div>
-    <ol class="archives">
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/Git/">Git</a>
-            (<a class="article-date" href="/2016/12/07/Git/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
 </a>
-)
-        </header>
-    </div>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="LodashJS"><a href="#LodashJS" class="headerlink" title="LodashJS"></a>LodashJS</h4><pre><code>工具库，处理数组、对象的一些方法
+
+官网: https://lodash.com/
+
+中文官网: http://lodashjs.com/docs/#_chunkarray-size1
+</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code>let box = document.querySelector(&quot;#box&quot;);
+
+let arr = [1,2,3,4,5,6];
+
+// 将数组每两个下标值，转成一个二维数组 
+// arr = _.chunk(arr, 2);      // [[1,2], [3,4], [5,6]]
+
+// 删除数组中的false, null, 0, &apos;&apos;, undefined, Nan
+// arr = [1, 0, 3, &apos;&apos;, false, &apos;ss&apos;]
+// arr = _.compact(arr);      //   [1,3,&apos;ss&apos;] 
+
+// 合并数组
+// arr = [1];
+// arr = _.concat(arr, 2, [3], [[4]]);    // [1, 2, 3, [4]]
+
+// 去除数组中指定的数值
+// arr = _.difference(arr, [2,3,4]);   // [1,5,6]
+
+// 截取数组从第个开始直到最后的值
+// arr = _.drop(arr, 2);      // [3,4,5,6]
+
+// 指定删除的下标个数，从右开始
+// arr = _.dropRight(arr, 2);    // [1,2,3]
+
+// 填充数组元素，全部或指定区域
+// arr = _.fill(arr, &apos;a&apos;);       // [&apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;];
+// arr = _.fill(arr, &apos;*&apos;, 1, 4);    // [1, &quot;*&quot;, &quot;*&quot;, &quot;*&quot;, 5, 6]
+
+// 查找指定的值返回下标
+// arr = [
+//   {user: &apos;siguang&apos;, age: 30},
+//   {user: &apos;lulu&apos;, age: 20},
+//   {user: &apos;haha&apos;, age: 10}
+// ]
+// arr = _.findIndex(arr, function(o){ return o.user == &apos;lulu&apos; });   // 1
+// arr = _.findIndex(arr, [&apos;age&apos;, 10])     // 2 如果不存在返回-1
+
+// findLastIndex() 与findIndex()相同只是从后向前
+// lastIndex()
+
+// 将一个二维数组转成对象
+// arr = [[&apos;a&apos;, 1], [&apos;b&apos;, 2]];
+// arr = _.fromPairs(arr);     // {a: 1, b: 2}
+
+// 返回数组第一个、最后一个元素
+// arr = _.head(arr);    // 1
+// arr = _.last(arr);    // 6
+
+// 根据下标返回值
+// arr = _.indexOf(arr, 2);   // 1
+
+// 删除最后一个数组值
+// arr = _.initial(arr);     // [1, 2, 3, 4, 5]
+
+// 将数组元素用分割符分开，返回一个字符串
+// arr = _.join(arr, &apos;~&apos;);      // &quot;1~2~3~4~5~6&quot;
+
+// 根据下标的返回数组中的值，如果是负数从后开始
+// arr = _.nth(arr, 2);      // 3
+// arr = _.nth(arr, -2);        // 5
+
+// 删除数组中指定的值
+// arr = _.pull(arr, 3, 4, 5);   // [1, 2, 6]
+// arr = _.pullAll(arr, [3,4,5]);   // [1, 2, 6]
+
+// 返回指定下标的数组值
+// arr = _.pullAt(arr, [1,3,5]);   // [2, 4, 6]
+
+// 删除数组元素
+arr = _.remove(arr, function(n){ return n % 2 == 0 });    // [2, 4, 6]
+
+
+console.log(arr);    
+box.innerHTML = &apos;sss&apos;
+</code></pre>
+        
+    </section>
 </article>
-    </li>
 
-    
-    
 
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/宏观经济学/">宏观经济学</a>
-            (<a class="article-date" href="/2016/12/07/宏观经济学/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
-</a>
-)
-        </header>
+
+<div class="comments">
+    <div id="disqus_thread">
+        <p class="comment-tips">国内查看评论需要代理~</p>
     </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/Linux命令/">Linux命令</a>
-            (<a class="article-date" href="/2016/12/07/Linux命令/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/函数式编程/">函数式编程</a>
-            (<a class="article-date" href="/2016/12/07/函数式编程/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
-            (<a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/07/weex/">Weex</a>
-            (<a class="article-date" href="/2016/12/07/weex/">
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">12/7</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/04/MySQL/">MySQL</a>
-            (<a class="article-date" href="/2016/12/04/MySQL/">
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">12/4</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/04/Egg.js-数据库/">EggJS-数据库</a>
-            (<a class="article-date" href="/2016/12/04/Egg.js-数据库/">
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">12/4</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/04/Egg.js-框架/">EggJS基础</a>
-            (<a class="article-date" href="/2016/12/04/Egg.js-框架/">
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">12/4</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-    
-    
-
-    <li class="archive-section-item">
-        <article class="archive-article archive-type-post">
-    <div class="archive-article-inner">
-        <header class="archive-article-header">
-            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
-            (<a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">12/4</time>
-</a>
-)
-        </header>
-    </div>
-</article>
-    </li>
-
-
-</ol></section>
-
-
-
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/archives/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/7/">Next &raquo;</a>
-</nav>
+    <script>
+    window.disqus_config = function () {
+        this.language = 'zh';
+        this.page.url = 'http://siguang1983.github.io/2017/04/24/LodashJS/';
+        this.page.title = 'LodashJS';
+        this.page.identifier = '2017/04/24/LodashJS/';
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://name.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 
 </div>
         <footer class="footer">
@@ -330,6 +257,8 @@
     </div>
 
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
     
     <script type="text/javascript">
         $(function() {
@@ -351,6 +280,8 @@
                 nodes.navTags.removeClass('tag-show');
             });*/
 
+            
+            $(document.body).scrollspy({target: '#aside-inner'});
             
         });
     </script>

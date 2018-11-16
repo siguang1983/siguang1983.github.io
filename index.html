@@ -126,6 +126,232 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/07/20/axios-ajax请求封装/">axios</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/07/20/axios-ajax请求封装/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-07-20T06:08:21.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件/">前端插件</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>$ npm i axios            // 阿西奥斯
+
+引用 const axios = require(&apos;axios&apos;);
+
+$ bower install axios
+
+cdn &lt;script src=&quot;http://unpkg.com/axios/dist/axios.min.js&quot;&gt;
+</code></pre><h4 id="Request参数"><a href="#Request参数" class="headerlink" title="Request参数"></a>Request参数</h4><pre><code>{
+    baseUrl: &apos;/api&apos;                    // 基础url
+    url: &apos;/databaseList&apos;,        // 请求的接口，与基础合起来为&apos;/api/databaseList&apos;
+    method: &apos;get&apos;,        // 请求方式，default=get
+
+    // 设置头部信息
+    headers: {
+        &apos;Content-Type&apos;: &apos;Application-json&apos;,
+        &apos;X-token&apos;: &apos;1k12hkj34j2kbjhs9df74b&apos;},
+    },
+
+    // URL的参数，get或Content-Type=&apos;application/x-www-form-urlencoded&apos;使用的参数，不能用data
+    params: {
+        ID: 12345
+    },
+
+    // data发送的主休，用于post、stream、buffer
+    data: {
+        username: &apos;sigunag&apos;,
+        password: &apos;*******&apos;
+    },
+
+    // 超时时间
+    timeout: 1000,
+
+    // 响应类型，可以是 &apos;arraybuffer&apos;, &apos;blob&apos;, &apos;document&apos;, &apos;json&apos;, &apos;text&apos;, &apos;stream&apos;
+    responseType: &apos;json&apos;,
+
+    // 响应的编码
+    responseEncoding: &apos;utf8&apos;,
+
+    // socket代理路径
+    socketPath: null, // default
+
+    // keepAlive 保持连接，默认不启动
+    httpAgent: new http.Agent({ keepAlive: true }),
+    httpsAgent: new https.Agent({ keepAlive: true }),
+
+    // 代理主机
+    proxy: {
+        host: &apos;127.0.0.1&apos;,
+        port: 9000,
+        auth: {
+            username: &apos;mikeymike&apos;,
+            password: &apos;rapunz3l&apos;
+        }
+    },
+
+    // 取消请求
+    cancelToken: new CancelToken(function (cancel) {
+
+    })
+
+    // 一个可选的函数负责序列化“参数”
+    paramsSerializer: function(params) {
+        return Qs.stringify(params, {arrayFormat: &apos;brackets&apos;})
+    },
+
+    transformRequest: [function (data, headers) {        // 在请求服务器之前的回调，适用于post
+        return data;
+    }],
+    transformResponse: [function (data) {        // 在响应的回调，适用于post
+        return data;
+    }],
+}
+</code></pre><h4 id="Response参数"><a href="#Response参数" class="headerlink" title="Response参数"></a>Response参数</h4><pre><code>{
+    // 响应数据
+    data: {},
+
+    // 状态码
+    status: 200,
+
+    // http响应状态消息
+    statusText: &apos;OK&apos;,
+
+    // 响应头
+    headers: {},
+
+    // `config` is the config that was provided to `axios` for the request
+    config: {},
+
+    // `request` is the request that generated this response
+    // It is the last ClientRequest instance in node.js (in redirects)
+    // and an XMLHttpRequest instance the browser
+    request: {}
+}
+</code></pre><h4 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h4><pre><code>const axios = require(&apos;axios&apos;);
+
+
+const request = axios.create({
+      baseURL: &apos;/api&apos;,     // api的base_url
+        timeout: 10000,     // 请求超时时间 ms
+})
+
+/* 创建拦截器 */
+// 请求拦截器
+request.interceptors.request.use(
+    (config) =&gt; {
+        // Do something before request is sent
+        return config;
+    }, 
+  (error) =&gt; {
+        // Do something with request error
+        return Promise.reject(error);
+    }
+);
+
+// 响应拦截器
+request.interceptors.response.use(
+    (response) =&gt; {
+        // Do something with response data
+        return response;
+    }, 
+    (error) =&gt; {
+        // Do something with response error
+        return Promise.reject(error);
+    }
+);
+
+axios.get(&apos;/user&apos;, {        
+    params: {
+        ID: 12345
+    }
+})
+.then((d) =&gt; {
+    // success
+})
+.catch((error) =&gt; {
+    // error
+})
+.then(() =&gt; {
+    //
+})
+
+
+一、请求参数 
+
+    1、get或content-type=&quot;application/x-www-form-urlencoded&quot; 使用 params来加参数
+
+    2、post、content-type=&quot;application/json&quot; 使用 data来传参数
+</code></pre><h4 id="axios-all-处理多个请求"><a href="#axios-all-处理多个请求" class="headerlink" title="axios.all 处理多个请求"></a>axios.all 处理多个请求</h4><pre><code>就是promis.all()，多个请求全部执行成功后在执行
+
+function getUserAccount() { return axios.get(&apos;/user/12345&apos;);     }
+function getUserPermissions() { return axios.get(&apos;/user/12345/permissions&apos;); }
+
+axios.all([getUserAccount(), getUserPermissions()])
+    .then(axios.spread(function (acct, perms) {
+        // Both requests are now complete
+    }));
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、axios(config)
+
+    1、post请求
+
+        axios.request(&apos;/user/12345&apos;,{
+            method: &apos;post&apos;,
+            data: {
+                firstName: &apos;Fred&apos;,
+                lastName: &apos;Flintstone&apos;
+            }
+        });
+
+    2、get请求
+
+        axios.request(&apos;http://bit.ly/2mTM3nY&apos;, {
+            method:&apos;get&apos;,
+            responseType:&apos;stream&apos;
+        })
+        .then(function(response) {
+            response.data.pipe(fs.createWriteStream(&apos;ada_lovelace.jpg&apos;))
+        });
+
+二、创建实例
+
+    const request = axios.create({
+        baseURL: &apos;/api&apos;,            // 基础
+        timeout: 1000,                // 请求超时时间
+        headers: {&apos;X-Custom-Header&apos;: &apos;foobar&apos;}
+    });
+
+
+{
+
+
+}
+</code></pre><h4 id="axios-mock-adapter-axios使用mock"><a href="#axios-mock-adapter-axios使用mock" class="headerlink" title="axios-mock-adapter axios使用mock"></a>axios-mock-adapter axios使用mock</h4><pre><code>https://github.com/ctimmerm/axios-mock-adapter
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/10/23/微信小程序、公众号开发/">微信小程序、公众号开发</a>
         </h1>
         
@@ -687,6 +913,155 @@ RN做的app需要到商店下载使用，小程序发布后在微信就可以找
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/09/20/numjucks模板/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">2017-09-20</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/模板引擎/">模板引擎</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="numjucks"><a href="#numjucks" class="headerlink" title="numjucks"></a>numjucks</h4><pre><code>numjucks可以用任意扩展名来命名模板名文件，推荐使用&apos;.njk&apos;
+
+$ npm install nunjucks
+
+require(&apos;nunjucks&apos;);
+</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>{{ usernmae }}    {{ foo.bar }}
+</code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>{{ foo | title }}    {{ foo | join(',') }}
+</code></pre><h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><pre><code>定义一个&quot;block&quot;，子模板可以覆盖它
+
+一、Example
+
+    A.html
+
+        {% block header %}{% endblock %}
+
+			<div>
+				aaaa
+			</div>
+
+		B.html
+
+			{% extends 'A.html' %}
+
+			{% block header %}
+				<div>
+					<ul>
+						<li>aaaa</li>
+						<li>bbbb</li>
+						<li>cccc</li>
+					</ul>
+				</div>
+			{% endblock %}
+
+二、super()
+</code></pre><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><pre><code>{% if num > 20 %}
+		<div>
+			大于20显示些内容
+		</div>
+	{% endif %}
+
+
+{% if num > 20 %}
+		<span>大于20</span>
+	{% elif num < 6 %}
+		<span>小于6</span>
+	{% else %}
+		<span>其它</span>
+	{% endif %}
+</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>一、遍历数组
+
+    var items = [{ title: &quot;foo&quot;, id: 1 }, { title: &quot;bar&quot;, id: 2}];
+
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for item in items %}
+				<li> {{item.title}} </li>
+			{% endfor %}
+    &lt;/ul&gt;
+
+二、遍历对象
+
+    var food = {
+        &apos;ketchup&apos;: &apos;5 tbsp&apos;,
+        &apos;mustard&apos;: &apos;1 tbsp&apos;,
+        &apos;pickle&apos;: &apos;0 tbsp&apos;
+    };
+
+    &lt;div&gt;
+        {% for key, value in food %}
+				<p>{{key}} - {{value}}</p>
+			{% endfor %}
+    &lt;/div&gt;
+</code></pre><h4 id="set-设置和修改变量"><a href="#set-设置和修改变量" class="headerlink" title="set 设置和修改变量"></a>set 设置和修改变量</h4><pre><code>let username = &apos;siguang&apos;;
+
+{{ username }}            // siguang
+{% set username = 'lulu' %}
+{{ username }}            // lulu
+</code></pre><h4 id="extends-指定模板继承"><a href="#extends-指定模板继承" class="headerlink" title="extends 指定模板继承"></a>extends 指定模板继承</h4><pre><code>{% extends 'A.html' %}
+
+{% block header %}
+		<div>
+			<ul>
+				<li>aaaa</li>
+				<li>bbbb</li>
+				<li>cccc</li>
+			</ul>
+		</div>
+	{% endblock %}
+</code></pre><h4 id="block-区块"><a href="#block-区块" class="headerlink" title="block 区块"></a>block 区块</h4><pre><code>{% block css %}
+		<link rel="stylesheet" href="app.css">
+	{% endblock %}
+</code></pre><h4 id="include-可以引用的模板"><a href="#include-可以引用的模板" class="headerlink" title="include 可以引用的模板"></a>include 可以引用的模板</h4><pre><code>{% include "item.html" %}
+</code></pre><h4 id="import-加载不同的模板"><a href="#import-加载不同的模板" class="headerlink" title="import 加载不同的模板"></a>import 加载不同的模板</h4><h4 id="filter-区块中内容调用过滤器"><a href="#filter-区块中内容调用过滤器" class="headerlink" title="filter 区块中内容调用过滤器"></a>filter 区块中内容调用过滤器</h4><pre><code>{% filter replace("force", "forth") %}
+		may the force be with you
+	{% endfilter %}
+</code></pre><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><h4 id="去除前后空格"><a href="#去除前后空格" class="headerlink" title="去除前后空格"></a>去除前后空格</h4><pre><code>var str = &apos; sssfsdfs &apos;;
+
+{% -%}
+</code></pre><h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><pre><code>表达式 String、Number、Array、Dicts、Boolean
+
+运算符 +、-、/、//、%、*、**
+
+比较 ==、===、!=、!==、&gt;、&gt;=、&lt;、&lt;=
+
+逻辑 and、or、not   {% if users and showUsers %} ... {% endif %}
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>传入一个函数，在这里可以执行 {{ foo(1,2,3) }}
+</code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>{{ /bar$/g }}
+
+g: 应用到全局
+i: 不区分大小写
+m: 多行模式
+y: 粘性支持（sticky
+</code></pre><blockquote>
+<p>参考资料<br><a href="http://mozilla.github.io/nunjucks/cn/templating.html" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/cn/templating.html</a></p>
+</blockquote>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/09/20/Jade模板/">Jade 模板</a>
         </h1>
         
@@ -1005,160 +1380,11 @@ html2jade.convertDocument(document, {}, function(err, jade){
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/09/20/numjucks模板/">numjucks模板</a>
+            <a href="/2017/07/01/hexo安装使用/">Hexo安装使用</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/09/20/numjucks模板/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-09-20T03:41:55.000Z" itemprop="datePublished">2017-09-20</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/模板引擎/">模板引擎</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="numjucks"><a href="#numjucks" class="headerlink" title="numjucks"></a>numjucks</h4><pre><code>numjucks可以用任意扩展名来命名模板名文件，推荐使用&apos;.njk&apos;
-
-$ npm install nunjucks
-
-require(&apos;nunjucks&apos;);
-</code></pre><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>{{ usernmae }}    {{ foo.bar }}
-</code></pre><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><pre><code>{{ foo | title }}    {{ foo | join(',') }}
-</code></pre><h4 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h4><pre><code>定义一个&quot;block&quot;，子模板可以覆盖它
-
-一、Example
-
-    A.html
-
-        {% block header %}{% endblock %}
-
-			<div>
-				aaaa
-			</div>
-
-		B.html
-
-			{% extends 'A.html' %}
-
-			{% block header %}
-				<div>
-					<ul>
-						<li>aaaa</li>
-						<li>bbbb</li>
-						<li>cccc</li>
-					</ul>
-				</div>
-			{% endblock %}
-
-二、super()
-</code></pre><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><pre><code>{% if num > 20 %}
-		<div>
-			大于20显示些内容
-		</div>
-	{% endif %}
-
-
-{% if num > 20 %}
-		<span>大于20</span>
-	{% elif num < 6 %}
-		<span>小于6</span>
-	{% else %}
-		<span>其它</span>
-	{% endif %}
-</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>一、遍历数组
-
-    var items = [{ title: &quot;foo&quot;, id: 1 }, { title: &quot;bar&quot;, id: 2}];
-
-    &lt;h1&gt;标题&lt;/h1&gt;
-    &lt;ul&gt;
-        {% for item in items %}
-				<li> {{item.title}} </li>
-			{% endfor %}
-    &lt;/ul&gt;
-
-二、遍历对象
-
-    var food = {
-        &apos;ketchup&apos;: &apos;5 tbsp&apos;,
-        &apos;mustard&apos;: &apos;1 tbsp&apos;,
-        &apos;pickle&apos;: &apos;0 tbsp&apos;
-    };
-
-    &lt;div&gt;
-        {% for key, value in food %}
-				<p>{{key}} - {{value}}</p>
-			{% endfor %}
-    &lt;/div&gt;
-</code></pre><h4 id="set-设置和修改变量"><a href="#set-设置和修改变量" class="headerlink" title="set 设置和修改变量"></a>set 设置和修改变量</h4><pre><code>let username = &apos;siguang&apos;;
-
-{{ username }}            // siguang
-{% set username = 'lulu' %}
-{{ username }}            // lulu
-</code></pre><h4 id="extends-指定模板继承"><a href="#extends-指定模板继承" class="headerlink" title="extends 指定模板继承"></a>extends 指定模板继承</h4><pre><code>{% extends 'A.html' %}
-
-{% block header %}
-		<div>
-			<ul>
-				<li>aaaa</li>
-				<li>bbbb</li>
-				<li>cccc</li>
-			</ul>
-		</div>
-	{% endblock %}
-</code></pre><h4 id="block-区块"><a href="#block-区块" class="headerlink" title="block 区块"></a>block 区块</h4><pre><code>{% block css %}
-		<link rel="stylesheet" href="app.css">
-	{% endblock %}
-</code></pre><h4 id="include-可以引用的模板"><a href="#include-可以引用的模板" class="headerlink" title="include 可以引用的模板"></a>include 可以引用的模板</h4><pre><code>{% include "item.html" %}
-</code></pre><h4 id="import-加载不同的模板"><a href="#import-加载不同的模板" class="headerlink" title="import 加载不同的模板"></a>import 加载不同的模板</h4><h4 id="filter-区块中内容调用过滤器"><a href="#filter-区块中内容调用过滤器" class="headerlink" title="filter 区块中内容调用过滤器"></a>filter 区块中内容调用过滤器</h4><pre><code>{% filter replace("force", "forth") %}
-		may the force be with you
-	{% endfilter %}
-</code></pre><h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><h4 id="去除前后空格"><a href="#去除前后空格" class="headerlink" title="去除前后空格"></a>去除前后空格</h4><pre><code>var str = &apos; sssfsdfs &apos;;
-
-{% -%}
-</code></pre><h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><pre><code>表达式 String、Number、Array、Dicts、Boolean
-
-运算符 +、-、/、//、%、*、**
-
-比较 ==、===、!=、!==、&gt;、&gt;=、&lt;、&lt;=
-
-逻辑 and、or、not   {% if users and showUsers %} ... {% endif %}
-</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>传入一个函数，在这里可以执行 {{ foo(1,2,3) }}
-</code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>{{ /bar$/g }}
-
-g: 应用到全局
-i: 不区分大小写
-m: 多行模式
-y: 粘性支持（sticky
-</code></pre><blockquote>
-<p>参考资料<br><a href="http://mozilla.github.io/nunjucks/cn/templating.html" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/cn/templating.html</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/07/01/Jenkins/">Jenkins</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/07/01/Jenkins/">
+            <a class="article-date" href="/2017/07/01/hexo安装使用/">
     
     <i class="icon-calendar"></i>
     
@@ -1168,7 +1394,7 @@ y: 粘性支持（sticky
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Jenkins/">Jenkins</a>
+    <a class="article-tag-link" href="/tags/hexo/">hexo</a>
 </div>
 
 
@@ -1177,31 +1403,50 @@ y: 粘性支持（sticky
     
     <section class="article-body markdown-body">
         
-        <h4 id="Jankins"><a href="#Jankins" class="headerlink" title="Jankins"></a>Jankins</h4><pre><code>Jankins是自动化测试的一键部署工具
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>一、hexo安装
 
-服务器: Linux、CentOS
+    $ npm install -g hexo-cli
 
-数据库 - MySQL Server      github 账户    java开发工具 Intellij Idea
-</code></pre><h4 id="jenkins安装"><a href="#jenkins安装" class="headerlink" title="jenkins安装"></a>jenkins安装</h4><pre><code>jenkins.io 官网
+    $ hexo init
 
-1、download Generic Java package (.war)
+    $ npm install
 
-2、命令行中找到 下载的文件Jenkins.war
+    $ hexo generate            生成静态文件
 
-3、$ java -jar jenkins.war        // 安装
+    $ hexo server            启动服务器
 
-4、http://localhost:8080        // 解锁通过给出的服务器文件路径 
 
-    1）$ vim /Users/apple/.jenkins/secrets/initialAdminPassword        // 路径不同注意取到密码 添加到管理员密码中
+二、github创建项目
 
-    2）创建admin账户
+    github创建项目并取到ssh路径
 
-    3）配置Jenkins URL http://localhost:7890/
+三、配置_config.yml
 
-5、安装完成
+    根目录打开_config.yml，修改下面内容
 
-6、插件安装
-</code></pre>
+    theme: concise            // 接下来安装主题的名称
+
+    deploy:
+        type: git
+        repo: https://github.com/siguang1983/siguang1983.github.io.git
+        branch: master
+
+四、安装主题
+
+    https://hexo.io/themes/            选择一个主题
+
+    安装主题每个主题都会有安装的介绍 
+
+    主题安装会在themes目录下，删除其它主题如果不删除还上传后还会显示之前的主题
+
+    设置主题的样式也在这里
+</code></pre><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><pre><code>$ hexo clean
+
+$ hexo d -g         根据设置的deploy中repo的地址发布到github上
+
+文档放到source/_posts目录下
+</code></pre><p>| <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+
         
     </section>
 </article>
@@ -1327,83 +1572,6 @@ y: 粘性支持（sticky
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/07/01/hexo安装使用/">Hexo安装使用</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/07/01/hexo安装使用/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">2017-07-01</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/hexo/">hexo</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>一、hexo安装
-
-    $ npm install -g hexo-cli
-
-    $ hexo init
-
-    $ npm install
-
-    $ hexo generate            生成静态文件
-
-    $ hexo server            启动服务器
-
-
-二、github创建项目
-
-    github创建项目并取到ssh路径
-
-三、配置_config.yml
-
-    根目录打开_config.yml，修改下面内容
-
-    theme: concise            // 接下来安装主题的名称
-
-    deploy:
-        type: git
-        repo: https://github.com/siguang1983/siguang1983.github.io.git
-        branch: master
-
-四、安装主题
-
-    https://hexo.io/themes/            选择一个主题
-
-    安装主题每个主题都会有安装的介绍 
-
-    主题安装会在themes目录下，删除其它主题如果不删除还上传后还会显示之前的主题
-
-    设置主题的样式也在这里
-</code></pre><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><pre><code>$ hexo clean
-
-$ hexo d -g         根据设置的deploy中repo的地址发布到github上
-
-文档放到source/_posts目录下
-</code></pre><p>| <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2017/07/01/Rap的使用和mock数据/">Rap的使用和mock数据</a>
         </h1>
         
@@ -1486,6 +1654,64 @@ https://github.com/thx/RAP/wiki/user_manual_cn#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2017/07/01/Jenkins/">Jenkins</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/07/01/Jenkins/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-07-01T08:54:51.000Z" itemprop="datePublished">2017-07-01</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Jenkins/">Jenkins</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="Jankins"><a href="#Jankins" class="headerlink" title="Jankins"></a>Jankins</h4><pre><code>Jankins是自动化测试的一键部署工具
+
+服务器: Linux、CentOS
+
+数据库 - MySQL Server      github 账户    java开发工具 Intellij Idea
+</code></pre><h4 id="jenkins安装"><a href="#jenkins安装" class="headerlink" title="jenkins安装"></a>jenkins安装</h4><pre><code>jenkins.io 官网
+
+1、download Generic Java package (.war)
+
+2、命令行中找到 下载的文件Jenkins.war
+
+3、$ java -jar jenkins.war        // 安装
+
+4、http://localhost:8080        // 解锁通过给出的服务器文件路径 
+
+    1）$ vim /Users/apple/.jenkins/secrets/initialAdminPassword        // 路径不同注意取到密码 添加到管理员密码中
+
+    2）创建admin账户
+
+    3）配置Jenkins URL http://localhost:7890/
+
+5、安装完成
+
+6、插件安装
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/05/08/前端插件收集/">前端插件收集</a>
         </h1>
         
@@ -1512,54 +1738,58 @@ https://github.com/thx/RAP/wiki/user_manual_cn#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B
         <h4 id="前端开发桌面程序"><a href="#前端开发桌面程序" class="headerlink" title="前端开发桌面程序"></a>前端开发桌面程序</h4><pre><code>1、Electron - https://electronjs.org/docs                可以开发.exe的桌面程序
 
     https://www.jianshu.com/p/57d910008612
-</code></pre><h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><pre><code>1、Bootstrap中文网：http://www.bootcss.com/       
+</code></pre><h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><pre><code>一、Bootstrap中文网：http://www.bootcss.com/       
 
-2、Bootstrap Table API:  http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/
+二、Bootstrap Table API:  http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/
 
         http://www.cnblogs.com/gamehiboy/p/5176618.html
 
-3、layUI框架: http://www.layui.com/
+三、Vue UI:
 
-    页面中加载layui
-    &lt;script src=&quot;lib/layui.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;mian.js&quot;&gt;&lt;/script&gt;
+    1、layUI框架: http://www.layui.com/
 
-    main.js
-    layui.use([&apos;laydate&apos;], function(){         // laydate 调用日期插件
-          var laydate = layui.laydate;
-          var oD = document.getElementById(&quot;dateInput&quot;);
+        页面中加载layui
+        &lt;script src=&quot;lib/layui.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;mian.js&quot;&gt;&lt;/script&gt;
 
-          var start = {
-            elem: oD,
-            min: laydate.now(),
-            max: &apos;2099-06-16 23:59:59&apos;,
-            istoday: false,
-            choose: function(datas){
-                end.min = datas;     // 开始日选好后，重置结束日的最小日期
-                end.start = datas     // 将结束日的初始值设定为开始日
-            }
-        };
+        main.js
+        layui.use([&apos;laydate&apos;], function(){         // laydate 调用日期插件
+                var laydate = layui.laydate;
+                var oD = document.getElementById(&quot;dateInput&quot;);
 
-        laydate(start);          
-    });
+                var start = {
+                elem: oD,
+                min: laydate.now(),
+                max: &apos;2099-06-16 23:59:59&apos;,
+                istoday: false,
+                choose: function(datas){
+                    end.min = datas;     // 开始日选好后，重置结束日的最小日期
+                    end.start = datas     // 将结束日的初始值设定为开始日
+                }
+            };
 
-阿里移动端框架 mui: http://m.sui.taobao.org/
+            laydate(start);          
+        });
+
+    饿了么vue PC端框架 : http://element.eleme.io/#/zh-CN/resource
+
+四、React UI:
+
+    蚂蚁金服React ui框架https://ant.design/
+
+    react native https://github.com/ant-design/ant-design-mobile/blob/master/README.zh-CN.md
+
+                    https://mobile.ant.design/docs/react/introduce
+
+    React UI: http://rsuite.github.io/#/?_k=1me3ji
+
+    React 图表: BizCharts:http://bizcharts.net/products/bizCharts/demo
+</code></pre><h4 id="微信UI"><a href="#微信UI" class="headerlink" title="微信UI"></a>微信UI</h4><pre><code>UI库 http://vue.ydui.org/
+</code></pre><h4 id="移动端UI"><a href="#移动端UI" class="headerlink" title="移动端UI"></a>移动端UI</h4><pre><code>阿里移动端框架 mui: http://m.sui.taobao.org/
 
 饿了么vue ui移动框架: http://mint-ui.github.io/#!/zh-cn
 
-饿了么vue PC端框架 : http://element.eleme.io/#/zh-CN/resource
-
-蚂蚁金服React ui框架https://ant.design/
-
-react native https://github.com/ant-design/ant-design-mobile/blob/master/README.zh-CN.md
-
-                https://mobile.ant.design/docs/react/introduce
-
-React UI: http://rsuite.github.io/#/?_k=1me3ji
-
-移动端UI框架
-
-mock：http://mockjs.com/       // 生成随机数据，拦截 Ajax 请求
+flexible移动端rem转换: http://caibaojian.com/flexible-js.html
 </code></pre><h4 id="JS库"><a href="#JS库" class="headerlink" title="JS库"></a>JS库</h4><pre><code>1、jQeruy
 
 2、underscore: http://www.css88.com/doc/underscore/
@@ -1583,11 +1813,26 @@ vue-strap：http://yuche.github.io/vue-strap/
 3、React
 
 4、ReactNative
+</code></pre><h4 id="Mock数据"><a href="#Mock数据" class="headerlink" title="Mock数据"></a>Mock数据</h4><pre><code>1、mock：http://mockjs.com/       // 生成随机数据，拦截 Ajax 请求
+
+2、RAP: http://rap.taobao.org/org/index.do
+
+    复制一个字段名，然后新建一个字段粘贴，在按ctrl+回车，就会将他下面所有的数据都复制过来，对于层级很复杂的比较好用
+
+chrome 插件
+
+    EditThisCookie   设置cookie
+
+    PostMan        post请求
+
+3、在线编辑代码: https://jsfiddle.net/
 </code></pre><h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><pre><code>Exporess:  http://www.expressjs.com.cn/
 
 egg阿里nodejs框架:https://eggjs.org/zh-cn/basics/middleware.html
 </code></pre><h4 id="移动端的Sass框架"><a href="#移动端的Sass框架" class="headerlink" title="移动端的Sass框架"></a>移动端的Sass框架</h4><pre><code>yo: https://github.com/doyoe/Yo#bugs-and-feature-requests
-</code></pre><h4 id="icons"><a href="#icons" class="headerlink" title="icons"></a>icons</h4><pre><code>http://www.fontawesome.com.cn/
+</code></pre><h4 id="icons"><a href="#icons" class="headerlink" title="icons"></a>icons</h4><pre><code>http://www.iconfont.cn/                    // 阿里图标收集
+
+http://www.fontawesome.com.cn/
 
 https://icons8.com/icon/new-icons/all
 
@@ -1614,7 +1859,10 @@ http://emojipedia.org/    小图片
 6、Swipper: http://www.swiper.com.cn/
 
 http://www.jq22.com/      jquery插件网
-</code></pre><h4 id="前端打包工具"><a href="#前端打包工具" class="headerlink" title="前端打包工具"></a>前端打包工具</h4><pre><code>1、gulp
+</code></pre><h4 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h4><pre><code>1、momentjs: http://momentjs.cn/            // 日期格式化
+</code></pre><p>#### </p>
+<p>  chalk: <a href="https://github.com/chalk/chalk" target="_blank" rel="noopener">https://github.com/chalk/chalk</a>            // 可以设置终端log的显示颜色</p>
+<h4 id="前端打包工具"><a href="#前端打包工具" class="headerlink" title="前端打包工具"></a>前端打包工具</h4><pre><code>1、gulp
 
 2、webpack
 
@@ -1630,112 +1878,96 @@ omniGraffle
 JIRA   产品版本  产品需求 - 技术开发 - 测试
 
 Stash  git 仓库
-
-https://jsfiddle.net/
-
-
-mockJS: http://mockjs.com/
-
-RAP: http://rap.taobao.org/org/index.do
-
-    复制一个字段名，然后新建一个字段粘贴，在按ctrl+回车，就会将他下面所有的数据都复制过来，对于层级很复杂的比较好用
-
-chrome 插件
-
-    EditThisCookie   设置cookie
-
-    PostMan        post请求
 </code></pre><p>/<strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong> 工具类 <strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong>/</p>
 <h4 id="查看chrome的DNS缓存对应表-chrome-net-internals-dns"><a href="#查看chrome的DNS缓存对应表-chrome-net-internals-dns" class="headerlink" title="查看chrome的DNS缓存对应表: chrome://net-internals#dns"></a>查看chrome的DNS缓存对应表: chrome://net-internals#dns</h4><h4 id="Sublime-Text"><a href="#Sublime-Text" class="headerlink" title="Sublime Text"></a>Sublime Text</h4><pre><code>http://blog.csdn.net/u013861109/article/details/53106074
 
 1、安装package control
 
-    https://packagecontrol.io/
+        https://packagecontrol.io/
 
-    Control + `（mac） 或 Ctrl+～ （win） 调出console  输入下面命令，查看是否安装成功 Perferences-&gt;package settings中看到package control这一项，则安装成功
+        Control + `（mac） 或 Ctrl+～ （win） 调出console  输入下面命令，查看是否安装成功 Perferences-&gt;package settings中看到package control这一项，则安装成功
 
-    import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
+        import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
 
 2、安装编辑器主题
 
-   按下Ctrl+Shift+P，输入install，选择Package Control: Install Package，然后输入Spacegray，选择Theme: Spacegray.
+        按下Ctrl+Shift+P，输入install，选择Package Control: Install Package，然后输入Spacegray，选择Theme: Spacegray.
 
-   在菜单栏中选择Preferences-&gt;Settings-User，复制以下代码，覆盖打开的文件内容，保存即可应用主题：    
-    {
-        &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
-        &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;
-    }
+        在菜单栏中选择Preferences-&gt;Settings-User，复制以下代码，覆盖打开的文件内容，保存即可应用主题：    
+        {
+                &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;
+        }
 
 3、设置代码行间距、字号
 
-    需要个性哪个就直接在preferences -&gt; settings user 中的配置添加
-    {
-        &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;,
-        &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
-        &quot;font_size&quot;: &quot;16&quot;,
-        &quot;line_padding_top&quot;: 2,
-           &quot;line_padding_bottom&quot;: 2
-    }
+        需要个性哪个就直接在preferences -&gt; settings user 中的配置添加
+        {
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;,
+            &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;font_size&quot;: &quot;16&quot;,
+            &quot;line_padding_top&quot;: 2,
+                &quot;line_padding_bottom&quot;: 2
+        }
 
 
 4、安装常用插件
 
-    安装：command + shift + p 输入 ip 回车
+        安装：command + shift + p 输入 ip 回车
 
-    卸载：command + shift + p 输入remove 回车
+        卸载：command + shift + p 输入remove 回车
 
-    1) px转rem插件  https://github.com/flashlizi/cssrem
+        1) px转rem插件  https://github.com/flashlizi/cssrem
 
-    1）emmet：html、css快速编写
+        1）emmet：html、css快速编写
 
             如果emmet插件失效：http://www.jianshu.com/p/0862e754cf15
 
-    2）syncedSideBar：侧栏与主界面的颜色相同
+        2）syncedSideBar：侧栏与主界面的颜色相同
 
-    3）babel：ES6、JSX、React
+        3）babel：ES6、JSX、React
 
-    4）AngularJS
+        4）AngularJS
 
-    5）jQuery：jQuery提示
+        5）jQuery：jQuery提示
 
-    6）Html5：html5捆
+        6）Html5：html5捆
 
-    7）Less：一个Less语法高亮插件
+        7）Less：一个Less语法高亮插件
 
-    8）Sass
+        8）Sass
 
-    9）JsFormat：js 格式化插件
+        9）JsFormat：js 格式化插件
 
-    10）SublimeLinter：行内高亮语法
+        10）SublimeLinter：行内高亮语法
 
-    11）SideBarEnhancements：一个左边栏增强
+        11）SideBarEnhancements：一个左边栏增强
 
-    12）SublimeCodeintel：一个代码智能提示引擎
+        12）SublimeCodeintel：一个代码智能提示引擎
 
-    13）Alignment：Js代码对其插件
+        13）Alignment：Js代码对其插件
 
-    14）BracketHighlighter：代码对其线高亮
+        14）BracketHighlighter：代码对其线高亮
 
-    15）Git：git的支持插件
+        15）Git：git的支持插件
 
-    16）Prefixr：Prefixr Api支持，Prefixr是一个生成css3兼容性的api
+        16）Prefixr：Prefixr Api支持，Prefixr是一个生成css3兼容性的api
 
-    17）LiveReload：网页浏览器页面重新加载插件
+        17）LiveReload：网页浏览器页面重新加载插件
 
-    18）Tag：格式化代码排版
+        18）Tag：格式化代码排版
 
-            Mac OS X: Command-Option-Shift-F
-            Windows: Control-Alt-Shift-F
+                Mac OS X: Command-Option-Shift-F
+                Windows: Control-Alt-Shift-F
 
 
+        19) HTML-CSS-JS Prettify 代码格式化插件 cmd+shift+h
 
-    19) HTML-CSS-JS Prettify 代码格式化插件 cmd+shift+h
+        20）cssrem：sublime的px转rem的插件   https://github.com/flashlizi/cssrem      需要手动下载放到packages中，配置cssrem.sublime文件指定px_to_rem的值 
 
-    20）cssrem：sublime的px转rem的插件   https://github.com/flashlizi/cssrem      需要手动下载放到packages中，配置cssrem.sublime文件指定px_to_rem的值 
+        21）MarioRicalde-SCSS       SCSS的代码提式和高亮
 
-    21）MarioRicalde-SCSS       SCSS的代码提式和高亮
-
-react插件   http://www.jianshu.com/p/ecf6c802fdc5?open_source=weibo_search
+        react插件   http://www.jianshu.com/p/ecf6c802fdc5?open_source=weibo_search
 </code></pre><h4 id="emmet快捷方法"><a href="#emmet快捷方法" class="headerlink" title="emmet快捷方法"></a>emmet快捷方法</h4><pre><code>http://www.w3cplus.com/tools/emmet-cheat-sheet.html
 
 http://www.iteye.com/news/27580
@@ -1749,9 +1981,7 @@ http://www.iteye.com/news/27580
 atom-react-autocomplete 组件名及状态的自动补全 
 
 http://blog.csdn.net/crper/article/details/52196675
-</code></pre><h4 id="vs-Code"><a href="#vs-Code" class="headerlink" title="vs-Code"></a>vs-Code</h4><pre><code>插件：
-
-安装插件： ext install 插件名
+</code></pre><h4 id="vs-Code"><a href="#vs-Code" class="headerlink" title="vs-Code"></a>vs-Code</h4><pre><code>安装插件： ext install 插件名
 
 https://marketplace.visualstudio.com/VSCode
 
@@ -1780,7 +2010,7 @@ https://marketplace.visualstudio.com/VSCode
     vscode-icon-theme: 
 
 12、ReactSnippets: ReactJS  jsx文件内 输入 rcc 就可以创建一个react组件的初始代码  
-        https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
+    https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 
 13、vscode-node-readme: 可以查看node reuqire中引用的node-module的包内容
 
@@ -1792,11 +2022,11 @@ https://marketplace.visualstudio.com/VSCode
 
     Atom One Dark Theme
 
-    vsc-material-theme
+        vsc-material-theme
 
-    Material Theme
+        Material Theme
 
-    切换主题  ⌘ + shift + p   =&gt;  输入 them 选择颜色主题在列表中在选择
+        切换主题  ⌘ + shift + p   =&gt;  输入 them 选择颜色主题在列表中在选择
 
 17、guides: 高亮缩进基准线   ext install guides
 
@@ -1845,6 +2075,19 @@ https://marketplace.visualstudio.com/VSCode
 </code></pre><h4 id="gitBook"><a href="#gitBook" class="headerlink" title="gitBook"></a>gitBook</h4><pre><code>https://segmentfault.com/a/1190000005859901
 http://www.chengweiyang.cn/gitbook/introduction/README.html
 </code></pre><h4 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h4><pre><code>https://sspai.com/post/25137
+</code></pre><h4 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h4><pre><code>1、sFTP - 可视化拖拽上传服务器，也命令行
+
+2、SecureCRT - 纯命令行上传服务器
+
+3、Navicat Premium - Mysql 可视化工具
+
+4、Studio 3T - MongoDB 可视化工具
+
+5、Sourcetree - Git工具
+
+6、VSCode、Sublime、Atom、WebStorm - 前端开发工具
+
+7、
 </code></pre>
         
     </section>
@@ -1856,11 +2099,11 @@ http://www.chengweiyang.cn/gitbook/introduction/README.html
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/04/24/eCharts图表插件/">EChart</a>
+            <a href="/2017/04/24/sheetJS表格导成elsx文件/">EChart</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/04/24/eCharts图表插件/">
+            <a class="article-date" href="/2017/04/24/sheetJS表格导成elsx文件/">
     
     <i class="icon-calendar"></i>
     
@@ -1879,459 +2122,125 @@ http://www.chengweiyang.cn/gitbook/introduction/README.html
     
     <section class="article-body markdown-body">
         
-        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、npm install echarts --save
+        <h4 id="sheetjs-用于读取和导出文件，如Excel、csv"><a href="#sheetjs-用于读取和导出文件，如Excel、csv" class="headerlink" title="sheetjs 用于读取和导出文件，如Excel、csv"></a>sheetjs 用于读取和导出文件，如Excel、csv</h4><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、CDN src=&quot;https://unpkg.com/xlsx/dist/xlsx.full.min.js&quot;
 
-2、引入echarts的两种方式
+2、$ npm i xlsx --save
 
-    页面直接引入文件: &lt;script src=&quot;echarts.min.js&quot;&gt;&lt;/script&gt;
+3、$ npm install file-saver --save       // 依赖插件，用于对文件的生成保存  https://github.com/eligrey/FileSaver.js
+</code></pre><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>let XLSX = require(&apos;xlsx&apos;);     // 引用插件
+let FileSaver = require(&apos;file-saver&apos;);
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、读写:
 
-    webpack: import echarts from &apos;echarts&apos;
+    XLSX.readFile(&apos;test.xlsx&apos;) - 读取文件
 
-3、页面创建DOM的容器
+    XLSX.read(); 
 
-    &lt;div id=&quot;main&quot; style=&quot;width: 600px;height:400px;&quot;&gt;&lt;/div&gt;        必须要一个高度值
-</code></pre><h4 id="异步数据加载和更新"><a href="#异步数据加载和更新" class="headerlink" title="异步数据加载和更新"></a>异步数据加载和更新</h4><pre><code>1、数据异步
+    XLSX.write(wb, opt);  
 
-    将数据通过ajax异步取到后，在通过setOption()方式直接加到载插件中
+    XLSX.writeFile(wb, filename, write_opts); 
 
 
-2、loading动画
+二、方法
 
-    showLoading()来显示、hideLoading()隐藏
+    XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});    // 通过table遍历成导出文件
 
-    Exampole
-    var myChart = echarts.init(document.getElementById(&apos;main&apos;));
+    XLSX.utils.json_to_book()      // 将组装sheet需要的格式，见下面数据格式
 
-    myChart.showLoading();
-    $.ajax({
-        success:function(data){
-            myChart.hideLoading();
+    XLSX.utils.sheet_to_json(ws, {header:1, raw:true})
+
+
+三、输入
+
+    aoa_to_sheet() - 将JS数据数组转换为工作表
+
+    json_to_sheet() - 将一个JSON对象数组转换为工作表
+
+    table_to_sheet() - 将DOM TABLE元素转换为工作表
+
+
+四、出口: 将Sheet生成的数据转成其它格式:
+
+    XLSX.utils.sheet_to_csv() - 生成CSV
+
+    XLSX.utils.sheet_to_txt() - 生成UTF16格式文本
+
+    XLSX.utils.sheet_to_html() - 生成HTML
+
+    XLSX.utils.sheet_to_json() - 生成一个对象数组
+
+    XLSX.utils.sheet_to_formulae() - 生成公式列表
+
+    Example 将Sheet生成的数据转成html:
+
+        let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+        let sheetData = wb.Sheets[&apos;Sheet JS&apos;];
+        console.log(XLSX.utils.sheet_to_html(sheetData));
+
+
+五、通过Blob对象转成文件
+
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+    let fname = &apos;借款.xlsx&apos;;
+    FileSaver.saveAs(new Blob([s2ab(wb)], {type:&quot;application/octet-stream&quot;}), fname);
+
+    function s2ab(s) {
+        if(typeof ArrayBuffer !== &apos;undefined&apos;) {
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
+        } else {
+            let buf = new Array(s.length);
+            for (var i=0; i!=s.length; ++i) buf[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
         }
-    })
-
-
-3、数据的动态更新
-
-    只需要加单个数据，先data.push(vlaue), 在通过setOption()将数据渲染出来
-
-    var data = [];        // 存储数据 
-
-    // 创建图表将data数据加入
-    ....
-
-    // 添加数据 
-    function addData(){
-        data.push(Math.random()*100);
     }
+</code></pre><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><pre><code>let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});      // sheet定义的值是返回中数据SheetNames的值
 
-    setInterval(function(){
-        addData();
-        myChart.setOption({
-            数据
-        })
-    },1000)
-</code></pre><h4 id="数据区缩放组件-dataZoom"><a href="#数据区缩放组件-dataZoom" class="headerlink" title="数据区缩放组件 dataZoom"></a>数据区缩放组件 dataZoom</h4><pre><code>option = {
-    xAxis: {
-        type: &apos;value&apos;
-    },
-    yAxis: {
-        type: &apos;value&apos;
-    },
-
-    dataZoom: [
-        {   // 这个dataZoom组件，默认控制x轴。
-            type: &apos;slider&apos;, // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-            start: 10,      // 左边在 10% 的位置。
-            end: 60         // 右边在 60% 的位置。
+{
+    SheetNames:[&quot;SheetJSaaa&quot;],      // 这里存的名与Sheets中的名对应
+    Sheets:{
+        &quot;SheetJSaaa&quot;: {
+            !merges: [],
+            !ref: &quot;A1:F7&quot;,              // 指定数据的开始和结束
+            A1: {t: &apos;s&apos;, v: &apos;创建时间&apos;},        // t:
+            A2: {t: &quot;n&quot;, v: 43205.613541666666, z: &quot;m/d/yy&quot;},
+            B1: {t: &quot;s&quot;, v: &quot;业务类型&quot;},
+            B2: {t: &quot;s&quot;, v: &quot;PAY_DAY_LOAN&quot;}
+            .....
         }
-    ],
-
-    series: [
-        {
-            type: &apos;scatter&apos;, // 这是个『散点图』
-            itemStyle: {
-                normal: {
-                    opacity: 0.8
-                }
-            },
-            symbolSize: function (val) {
-                return val[2] * 40;
-            },
-            data: [[&quot;14.616&quot;,&quot;7.241&quot;,&quot;0.896&quot;],[&quot;3.958&quot;,&quot;5.701&quot;,&quot;0.955&quot;],[&quot;2.768&quot;,&quot;8.971&quot;,&quot;0.669&quot;],[&quot;9.051&quot;,&quot;9.710&quot;,&quot;0.171&quot;],[&quot;14.046&quot;,&quot;4.182&quot;,&quot;0.536&quot;],[&quot;12.295&quot;,&quot;1.429&quot;,&quot;0.962&quot;],[&quot;4.417&quot;,&quot;8.167&quot;,&quot;0.113&quot;],[&quot;0.492&quot;,&quot;4.771&quot;,&quot;0.785&quot;],[&quot;7.632&quot;,&quot;2.605&quot;,&quot;0.645&quot;],[&quot;14.242&quot;,&quot;5.042&quot;,&quot;0.368&quot;]]
-        }
-    ]
+    }
 }
-</code></pre><h4 id="事件和行为"><a href="#事件和行为" class="headerlink" title="事件和行为"></a>事件和行为</h4><pre><code>Echarts中有两种事件，1、用户的鼠标事件   2、交互组件后触发的行为事件
 
-一、鼠标事件
+一、wb - workbook对象
 
-    鼠标事件: &apos;click&apos;、&apos;dblclick&apos;、&apos;mousedown&apos;、&apos;mousemove&apos;、&apos;mouseup&apos;、&apos;mouseover&apos;、&apos;mouseout&apos;
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});
 
-    myChart.on(&apos;click&apos;, function(params){
-        console.log(params.name)
-    })
+    1、wb.SheetNames - 工作表的名
 
+    2、wb.Sheets[sheetname] - 返回工作表中存储的数据
 
-二、交互组件
+    3、wb.Props - 存储标准属性的对象
 
-    myChart.dispatchAction({ type: &apos;&apos; })        // 通过dispatchAction触发
+    4、wb.Workbook - 存储工作簿属性
 
-    1、legendselectchanged: 切换图例开关时触发
 
-    2、datazoom: 数据区域缩放触发
+二、修改单元格的值
 
+    t - 单元格类型：b布尔值，n数字，e错误，s字符串，d日期
+    https://docs.sheetjs.com/#cell-object     单元格对象
 
-二、params 对象
 
-    {
-        // 当前点击的图形元素所属的组件名称，
-        // 其值如 &apos;series&apos;、&apos;markLine&apos;、&apos;markPoint&apos;、&apos;timeLine&apos; 等。
-        componentType: string,
+    let first_sheet_name = wb.SheetNames[0];
+    let workSheet = wb.Sheets[first_sheet_name];
 
-        // 系列类型。值可能为：&apos;line&apos;、&apos;bar&apos;、&apos;pie&apos; 等。当 componentType 为 &apos;series&apos; 时有意义。
-        seriesType: string,
+    let desired_cell = workSheet[&apos;A1&apos;].v;       // 取出v的值
 
-        // 系列在传入的 option.series 中的 index。当 componentType 为 &apos;series&apos; 时有意义。
-        seriesIndex: number,
 
-        // 系列名称。当 componentType 为 &apos;series&apos; 时有意义。
-        seriesName: string,
+三、设置xlsx单元格行、列样式
 
-        // 数据名，类目名
-        name: string,
-
-        // 数据在传入的 data 数组中的 index
-        dataIndex: number,
-
-        // 传入的原始数据项
-        data: Object,
-
-        // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
-        // dataType 的值会是 &apos;node&apos; 或者 &apos;edge&apos;，表示当前点击在 node 还是 edge 上。
-        // 其他大部分图表中只有一种 data，dataType 无意义。
-        dataType: string,
-
-        // 传入的数据值
-        value: number|Array
-
-        // 数据图形的颜色。当 componentType 为 &apos;series&apos; 时有意义。
-        color: string
-    }
-</code></pre><h4 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h4><pre><code>1、title: 标题（包括主副标题、链接、样式）
-
-2、legend: 标记的区域 （对legend的显隐、宽高、位置、横纵向排列）
-
-3、grid: 图表的网格区域 （是否显示网格、位标、宽高、背景色、边线色）
-
-4、xAxis、yAxis: x、y坐标轴
-    {
-        splitLine:{
-            show: false,                // 去掉网格线
-            lineStyle: {
-                color: &apos;#48484a&apos;    // 设置网络线颜色 
-            }
-        },                
-        splitArea : {show : true}                //保留网格区域
-    }
-
-5、dataZoom: 数据缩放 （）
-
-6、toolTip: 提示信息，鼠标移到数据点浮现的提示信息（）
-
-7、axisPointer:
-
-8、toolBox: 工具栏 （导出图表、数据视图、动态类型切换、缩放、重置）
-
-9、series: 系列列表（来决定图表的类型、图表的数据）
-
-10、color: 图表每一项的颜色
-
-11、background: 图表背景色
-
-12、textStyle: 文本样式
-
-13、animate: 是否开启动画
-
------ 组件 -------
-
-14、timeline: 时间轴组件
-
-15、graphic: 原生图形元素组件
-
-16、calendar: 日历坐标组件
-
-17、brush: 区域选择组件
-
-18、geo: 地理坐标系组件
-
-19、parallel: 平行坐标系
-
-20、parallelAxis: 这个组件是平行坐标系中的坐标轴
-
-21、singleAxis: 单轴。可以被应用到散点图中展现一维数据
-</code></pre><h4 id="series对象"><a href="#series对象" class="headerlink" title="series对象"></a>series对象</h4><pre><code>type: 展示图表的类型
-
-name: 名称
-
-label: 图形上文本标签的控制（show、position、offset、formatter、）
-
-    formatter可以是字符串也可以是函数 
-
-        字符串模板，模板变量有 {a}、{b}、{c}，分别表示系列名，数据名，数据值。
-
-        formatter: &apos;{b}: {c}&apos;
-
-        label:{
-            normal:{
-                formatter: function(data){            // callback
-                    return data.percent + &apos;%&apos;;
-                }
-            }
-        }, 
-
-        params:
-        {
-            componentType: &apos;series&apos;,
-            // 系列类型
-            seriesType: string,
-            // 系列在传入的 option.series 中的 index
-            seriesIndex: number,
-            // 系列名称
-            seriesName: string,
-            // 数据名，类目名
-            name: string,
-            // 数据在传入的 data 数组中的 index
-            dataIndex: number,
-            // 传入的原始数据项
-            data: Object,
-            // 传入的数据值
-            value: number|Array,
-            // 数据图形的颜色
-            color: string,
-
-            // 百分比
-            percent: number,
-
-        }
-
-labelLine: 图形上图形与文本之间连接线的控制
-
-data: 数据
-
-center: 饼图中心坐标
-
-radius: 半径
-</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>1、x、y轴文字的颜色和角度
-
-    xAxis: {
-        type: &apos;category&apos;,
-        boundaryGap: false,
-        data: [&apos;Mon&apos;, &apos;Tue&apos;, &apos;Wed&apos;, &apos;Thu&apos;, &apos;Fri&apos;, &apos;Sat&apos;, &apos;Sun&apos;],
-        axisLabel: {            // 这里控制颜色
-            show: true,
-            textStyle: {
-                color: &apos;#fff&apos;
-            },
-            rotate: 45
-        }
-    },
-</code></pre><blockquote>
-<p>参考资料<br><a href="http://echarts.baidu.com/echarts2/doc/doc.html#Title" target="_blank" rel="noopener">http://echarts.baidu.com/echarts2/doc/doc.html#Title</a><br><a href="http://echarts.baidu.com/gallery/editor.html" target="_blank" rel="noopener">http://echarts.baidu.com/gallery/editor.html</a>   在线编辑</p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/04/06/Nginx服务器/">Nginx</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/04/06/Nginx服务器/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-04-06T10:18:51.000Z" itemprop="datePublished">2017-04-06</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/服务器/">服务器</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="Nginx介绍"><a href="#Nginx介绍" class="headerlink" title="Nginx介绍"></a>Nginx介绍</h4><pre><code>服务器分类: Nginx、Apache、tomcat、Micorsoft Server
-
-ng是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，超越Apache的高性能和稳定性.
-</code></pre><h4 id="四层和七层负载均衡"><a href="#四层和七层负载均衡" class="headerlink" title="四层和七层负载均衡"></a>四层和七层负载均衡</h4><pre><code>负载均衡设备也被称为&quot;四到七层交换机&quot;，四层就是基于IP+端口的负载均衡，七层就是基于URL等应用信息的负载均衡.
-
-如果只做HTTP的负载均衡，用haproxy好了。性能很强。
-
-七层负载均衡优点:
-
-    1、高并发连接: 支撑5万并发连接
-
-    2、内存消耗少: 在3万并发连接，开启10个Nginx进程消耗150M内存
-
-    3、配置文件简单
-
-    4、节省带宽: 支持GZIP压缩，可以添加浏览器本地缓存的Header头，
-
-    5、稳定性高: 用于反向代理, 宕机概率小
-
-    9、支持热部署: 不间断服务进行更新
-</code></pre><h4 id="Nginx原理"><a href="#Nginx原理" class="headerlink" title="Nginx原理"></a>Nginx原理</h4><pre><code>一、七层负载均衡优势:
-
-    1、对HTTP报头检查，可以检出状态码为400、500、600的错误信息，如果有错误将连接请求重新定向到另一台服务器
-
-    2、可以根据数据类型（判断数据包是图像、压缩文件、或多媒体文件等），将数据引向内容服务器
-
-    3、根据请求类型，将普通文本、图象等静态文档，或是动态文档请求，引向相应的服务器来处理
-
-
-二、Nginx负载均衡是基于内容和应用的七层资的，Nginx抗并发强，是因为Nginx使用了非阻塞、异步传输
-
-三、模块
-
-    1、nginx负载均衡模块
-
-        配置负载均衡是ngx_http_upstream_module，这模块是默认安装
-
-    2、代理模块
-
-        Proxy为nginx的代理模块, 允许将用户的HTTP请求转发到后端服务器
-
-四、反向代理 
-
-    反向代理是指以代理服务器接受internet上的连接请求，将请求转发给内部服务器，并将从服务器得到结果返回给internet的客户端
-</code></pre><h4 id="Nginx负载均衡调试策略"><a href="#Nginx负载均衡调试策略" class="headerlink" title="Nginx负载均衡调试策略"></a>Nginx负载均衡调试策略</h4><pre><code>ng的upstream目前支付几种分配:
-
-1、轮询: 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务down掉，能自动剔除
-
-2、weight: 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况
-
-    upstream bakend { 
-        server 192.168.0.14 weight=10; 
-        server 192.168.0.15 weight=10; 
-    }
-
-3、ip_hash: 每个请求按访问ip的hash结果分配，每个访客访问一个固定的后端服务器
-
-    upstream bakend { 
-        ip_hash; 
-            server 192.168.0.14:88; 
-            server 192.168.0.15:80; 
-        }
-    }
-
-4、fair（第三方）
-
-5、url_hash（第三方）
-
-    upstream backend { 
-        server squid1:3128; 
-        server squid2:3128; 
-        hash $request_uri; 
-        hash_method crc32; 
-    }
-</code></pre><h4 id="Nginx安装和删除"><a href="#Nginx安装和删除" class="headerlink" title="Nginx安装和删除"></a>Nginx安装和删除</h4><pre><code>主要步骤: 下载包，压缩、配置编译
-
-$ https://nginx.org/en/download.html    下载一个nginx包版本
-
-$ cd /usr/local/ &amp;&amp; mkdir newNginx     // 进入到local目录并创建一个newNginx目录
-
-$ 将下载的包copy到新创建的newNginx目录, 并将包解压到当前目录   tar zxf nginx-1.12.2.tar.gz 
-
-$ cd nginx-1.12.2
-
-$ ./configure        // 验证过程
-
-$ make
-
-$ make install         // 这时候会创建一个nginx目录 /usr/local/nginx
-
-$ 将newNginx目录的文件copy到nginx目录
-</code></pre><h4 id="Nginx配置文件"><a href="#Nginx配置文件" class="headerlink" title="Nginx配置文件"></a>Nginx配置文件</h4><pre><code>默认该配置文件被命名nginx.conf
-
-    配置server
-
-    server {
-        listen       9092;                                // 端口
-        root /Users/apple/siguang.liu/Hh/hh_h5;            // 指定根目录
-
-        location / {
-            proxy_pass  http://174.16.1.82:8080/;        // 代理到的服务器
-        }
-
-        error_page   500 502 503 504  /50x.html;        // 错误
-        location = /50x.html {
-            root   html;
-        }
-
-        location ^~ /api {
-            proxy_pass  http://172.16.1.82:8080/;        // 如果访问以&quot;/api&quot;开头的代理的服务器
-        }
-
-        location ~ \.(gif|jpg|png|js|css|html|map)$ {    // 指定静态资源
-            root /Users/apple/siguang.liu/Hh/hh_h5;
-        }
-    }
-
-    可以通过include来将另一个文件的内容引用
-
-    include servers/*.conf;
-
-
-一、所存在的目录 /usr/local/nginx/conf            // 本机mac /usr/local/openresty/nginx
-
-二、启动  sudo /usr/local/openresty/nginx/sbin/nginx      // 需要sudo管理员权限
-
-三、启动后的可以通过调用带-s参数来执行文件来控制 
-
-    $ nginx -s 命令
-
-    1、reload - 重启  sudo /usr/local/openresty/nginx/sbin/nginx -s reload
-
-    2、stop - 快速关机 sudo /usr/local/openresty/nginx/sbin/nginx -s stop
-
-    3、quit - 优雅关机 sudo /usr/local/openresty/nginx/sbin/nginx -s quit
-
-    4、reopen - 重新打开日志文件 sudo /usr/local/openresty/nginx/sbin/nginx -s reopen
-
-四、查看、杀掉进程
-
-    $ ps -ex | grep nginx
-
-    $ kill -s quit 1682
-
-五、配置文件结构
-
-    指令分为简单指令和块指令，以空格分隔，以分号(;)结束
-
-四、注释使用 #
-
-    # HTTPS server
-    #
-    # server {
-    #    listen       443 ssl;
-    #    server_name  localhost;
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-    # }
-</code></pre><h4 id="Nginx配置-HTTP2-0"><a href="#Nginx配置-HTTP2-0" class="headerlink" title="Nginx配置 HTTP2.0"></a>Nginx配置 HTTP2.0</h4><pre><code>https://www.nginx.com/blog/nginx-1-9-5/
-</code></pre><p>| <a href="http://www.cnblogs.com/felixzh/category/937300.html" target="_blank" rel="noopener">http://www.cnblogs.com/felixzh/category/937300.html</a><br>| <a href="https://www.cnblogs.com/felixzh/p/6283788.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixzh/p/6283788.html</a><br>| <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html" target="_blank" rel="noopener">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
+    https://docs.sheetjs.com/#formulae
+</code></pre><p>| <a href="https://www.gitbook.com/book/sheetjs/docs/details" target="_blank" rel="noopener">https://www.gitbook.com/book/sheetjs/docs/details</a><br>| <a href="https://docs.sheetjs.com/#sheetjs-js-xlsx" target="_blank" rel="noopener">https://docs.sheetjs.com/#sheetjs-js-xlsx</a>           // 官方文档</p>
 
         
     </section>
@@ -2341,7 +2250,7 @@ $ 将newNginx目录的文件copy到nginx目录
 
 
 <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
 </nav>
 
 

@@ -126,6 +126,232 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2018/07/20/axios-ajax请求封装/">axios</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/07/20/axios-ajax请求封装/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-07-20T06:08:21.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件/">前端插件</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>$ npm i axios            // 阿西奥斯
+
+引用 const axios = require(&apos;axios&apos;);
+
+$ bower install axios
+
+cdn &lt;script src=&quot;http://unpkg.com/axios/dist/axios.min.js&quot;&gt;
+</code></pre><h4 id="Request参数"><a href="#Request参数" class="headerlink" title="Request参数"></a>Request参数</h4><pre><code>{
+    baseUrl: &apos;/api&apos;                    // 基础url
+    url: &apos;/databaseList&apos;,        // 请求的接口，与基础合起来为&apos;/api/databaseList&apos;
+    method: &apos;get&apos;,        // 请求方式，default=get
+
+    // 设置头部信息
+    headers: {
+        &apos;Content-Type&apos;: &apos;Application-json&apos;,
+        &apos;X-token&apos;: &apos;1k12hkj34j2kbjhs9df74b&apos;},
+    },
+
+    // URL的参数，get或Content-Type=&apos;application/x-www-form-urlencoded&apos;使用的参数，不能用data
+    params: {
+        ID: 12345
+    },
+
+    // data发送的主休，用于post、stream、buffer
+    data: {
+        username: &apos;sigunag&apos;,
+        password: &apos;*******&apos;
+    },
+
+    // 超时时间
+    timeout: 1000,
+
+    // 响应类型，可以是 &apos;arraybuffer&apos;, &apos;blob&apos;, &apos;document&apos;, &apos;json&apos;, &apos;text&apos;, &apos;stream&apos;
+    responseType: &apos;json&apos;,
+
+    // 响应的编码
+    responseEncoding: &apos;utf8&apos;,
+
+    // socket代理路径
+    socketPath: null, // default
+
+    // keepAlive 保持连接，默认不启动
+    httpAgent: new http.Agent({ keepAlive: true }),
+    httpsAgent: new https.Agent({ keepAlive: true }),
+
+    // 代理主机
+    proxy: {
+        host: &apos;127.0.0.1&apos;,
+        port: 9000,
+        auth: {
+            username: &apos;mikeymike&apos;,
+            password: &apos;rapunz3l&apos;
+        }
+    },
+
+    // 取消请求
+    cancelToken: new CancelToken(function (cancel) {
+
+    })
+
+    // 一个可选的函数负责序列化“参数”
+    paramsSerializer: function(params) {
+        return Qs.stringify(params, {arrayFormat: &apos;brackets&apos;})
+    },
+
+    transformRequest: [function (data, headers) {        // 在请求服务器之前的回调，适用于post
+        return data;
+    }],
+    transformResponse: [function (data) {        // 在响应的回调，适用于post
+        return data;
+    }],
+}
+</code></pre><h4 id="Response参数"><a href="#Response参数" class="headerlink" title="Response参数"></a>Response参数</h4><pre><code>{
+    // 响应数据
+    data: {},
+
+    // 状态码
+    status: 200,
+
+    // http响应状态消息
+    statusText: &apos;OK&apos;,
+
+    // 响应头
+    headers: {},
+
+    // `config` is the config that was provided to `axios` for the request
+    config: {},
+
+    // `request` is the request that generated this response
+    // It is the last ClientRequest instance in node.js (in redirects)
+    // and an XMLHttpRequest instance the browser
+    request: {}
+}
+</code></pre><h4 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h4><pre><code>const axios = require(&apos;axios&apos;);
+
+
+const request = axios.create({
+      baseURL: &apos;/api&apos;,     // api的base_url
+        timeout: 10000,     // 请求超时时间 ms
+})
+
+/* 创建拦截器 */
+// 请求拦截器
+request.interceptors.request.use(
+    (config) =&gt; {
+        // Do something before request is sent
+        return config;
+    }, 
+  (error) =&gt; {
+        // Do something with request error
+        return Promise.reject(error);
+    }
+);
+
+// 响应拦截器
+request.interceptors.response.use(
+    (response) =&gt; {
+        // Do something with response data
+        return response;
+    }, 
+    (error) =&gt; {
+        // Do something with response error
+        return Promise.reject(error);
+    }
+);
+
+axios.get(&apos;/user&apos;, {        
+    params: {
+        ID: 12345
+    }
+})
+.then((d) =&gt; {
+    // success
+})
+.catch((error) =&gt; {
+    // error
+})
+.then(() =&gt; {
+    //
+})
+
+
+一、请求参数 
+
+    1、get或content-type=&quot;application/x-www-form-urlencoded&quot; 使用 params来加参数
+
+    2、post、content-type=&quot;application/json&quot; 使用 data来传参数
+</code></pre><h4 id="axios-all-处理多个请求"><a href="#axios-all-处理多个请求" class="headerlink" title="axios.all 处理多个请求"></a>axios.all 处理多个请求</h4><pre><code>就是promis.all()，多个请求全部执行成功后在执行
+
+function getUserAccount() { return axios.get(&apos;/user/12345&apos;);     }
+function getUserPermissions() { return axios.get(&apos;/user/12345/permissions&apos;); }
+
+axios.all([getUserAccount(), getUserPermissions()])
+    .then(axios.spread(function (acct, perms) {
+        // Both requests are now complete
+    }));
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、axios(config)
+
+    1、post请求
+
+        axios.request(&apos;/user/12345&apos;,{
+            method: &apos;post&apos;,
+            data: {
+                firstName: &apos;Fred&apos;,
+                lastName: &apos;Flintstone&apos;
+            }
+        });
+
+    2、get请求
+
+        axios.request(&apos;http://bit.ly/2mTM3nY&apos;, {
+            method:&apos;get&apos;,
+            responseType:&apos;stream&apos;
+        })
+        .then(function(response) {
+            response.data.pipe(fs.createWriteStream(&apos;ada_lovelace.jpg&apos;))
+        });
+
+二、创建实例
+
+    const request = axios.create({
+        baseURL: &apos;/api&apos;,            // 基础
+        timeout: 1000,                // 请求超时时间
+        headers: {&apos;X-Custom-Header&apos;: &apos;foobar&apos;}
+    });
+
+
+{
+
+
+}
+</code></pre><h4 id="axios-mock-adapter-axios使用mock"><a href="#axios-mock-adapter-axios使用mock" class="headerlink" title="axios-mock-adapter axios使用mock"></a>axios-mock-adapter axios使用mock</h4><pre><code>https://github.com/ctimmerm/axios-mock-adapter
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2017/05/08/前端插件收集/">前端插件收集</a>
         </h1>
         
@@ -152,54 +378,58 @@
         <h4 id="前端开发桌面程序"><a href="#前端开发桌面程序" class="headerlink" title="前端开发桌面程序"></a>前端开发桌面程序</h4><pre><code>1、Electron - https://electronjs.org/docs                可以开发.exe的桌面程序
 
     https://www.jianshu.com/p/57d910008612
-</code></pre><h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><pre><code>1、Bootstrap中文网：http://www.bootcss.com/       
+</code></pre><h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><pre><code>一、Bootstrap中文网：http://www.bootcss.com/       
 
-2、Bootstrap Table API:  http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/
+二、Bootstrap Table API:  http://bootstrap-table.wenzhixin.net.cn/zh-cn/getting-started/
 
         http://www.cnblogs.com/gamehiboy/p/5176618.html
 
-3、layUI框架: http://www.layui.com/
+三、Vue UI:
 
-    页面中加载layui
-    &lt;script src=&quot;lib/layui.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;mian.js&quot;&gt;&lt;/script&gt;
+    1、layUI框架: http://www.layui.com/
 
-    main.js
-    layui.use([&apos;laydate&apos;], function(){         // laydate 调用日期插件
-          var laydate = layui.laydate;
-          var oD = document.getElementById(&quot;dateInput&quot;);
+        页面中加载layui
+        &lt;script src=&quot;lib/layui.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;mian.js&quot;&gt;&lt;/script&gt;
 
-          var start = {
-            elem: oD,
-            min: laydate.now(),
-            max: &apos;2099-06-16 23:59:59&apos;,
-            istoday: false,
-            choose: function(datas){
-                end.min = datas;     // 开始日选好后，重置结束日的最小日期
-                end.start = datas     // 将结束日的初始值设定为开始日
-            }
-        };
+        main.js
+        layui.use([&apos;laydate&apos;], function(){         // laydate 调用日期插件
+                var laydate = layui.laydate;
+                var oD = document.getElementById(&quot;dateInput&quot;);
 
-        laydate(start);          
-    });
+                var start = {
+                elem: oD,
+                min: laydate.now(),
+                max: &apos;2099-06-16 23:59:59&apos;,
+                istoday: false,
+                choose: function(datas){
+                    end.min = datas;     // 开始日选好后，重置结束日的最小日期
+                    end.start = datas     // 将结束日的初始值设定为开始日
+                }
+            };
 
-阿里移动端框架 mui: http://m.sui.taobao.org/
+            laydate(start);          
+        });
+
+    饿了么vue PC端框架 : http://element.eleme.io/#/zh-CN/resource
+
+四、React UI:
+
+    蚂蚁金服React ui框架https://ant.design/
+
+    react native https://github.com/ant-design/ant-design-mobile/blob/master/README.zh-CN.md
+
+                    https://mobile.ant.design/docs/react/introduce
+
+    React UI: http://rsuite.github.io/#/?_k=1me3ji
+
+    React 图表: BizCharts:http://bizcharts.net/products/bizCharts/demo
+</code></pre><h4 id="微信UI"><a href="#微信UI" class="headerlink" title="微信UI"></a>微信UI</h4><pre><code>UI库 http://vue.ydui.org/
+</code></pre><h4 id="移动端UI"><a href="#移动端UI" class="headerlink" title="移动端UI"></a>移动端UI</h4><pre><code>阿里移动端框架 mui: http://m.sui.taobao.org/
 
 饿了么vue ui移动框架: http://mint-ui.github.io/#!/zh-cn
 
-饿了么vue PC端框架 : http://element.eleme.io/#/zh-CN/resource
-
-蚂蚁金服React ui框架https://ant.design/
-
-react native https://github.com/ant-design/ant-design-mobile/blob/master/README.zh-CN.md
-
-                https://mobile.ant.design/docs/react/introduce
-
-React UI: http://rsuite.github.io/#/?_k=1me3ji
-
-移动端UI框架
-
-mock：http://mockjs.com/       // 生成随机数据，拦截 Ajax 请求
+flexible移动端rem转换: http://caibaojian.com/flexible-js.html
 </code></pre><h4 id="JS库"><a href="#JS库" class="headerlink" title="JS库"></a>JS库</h4><pre><code>1、jQeruy
 
 2、underscore: http://www.css88.com/doc/underscore/
@@ -223,11 +453,26 @@ vue-strap：http://yuche.github.io/vue-strap/
 3、React
 
 4、ReactNative
+</code></pre><h4 id="Mock数据"><a href="#Mock数据" class="headerlink" title="Mock数据"></a>Mock数据</h4><pre><code>1、mock：http://mockjs.com/       // 生成随机数据，拦截 Ajax 请求
+
+2、RAP: http://rap.taobao.org/org/index.do
+
+    复制一个字段名，然后新建一个字段粘贴，在按ctrl+回车，就会将他下面所有的数据都复制过来，对于层级很复杂的比较好用
+
+chrome 插件
+
+    EditThisCookie   设置cookie
+
+    PostMan        post请求
+
+3、在线编辑代码: https://jsfiddle.net/
 </code></pre><h4 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h4><pre><code>Exporess:  http://www.expressjs.com.cn/
 
 egg阿里nodejs框架:https://eggjs.org/zh-cn/basics/middleware.html
 </code></pre><h4 id="移动端的Sass框架"><a href="#移动端的Sass框架" class="headerlink" title="移动端的Sass框架"></a>移动端的Sass框架</h4><pre><code>yo: https://github.com/doyoe/Yo#bugs-and-feature-requests
-</code></pre><h4 id="icons"><a href="#icons" class="headerlink" title="icons"></a>icons</h4><pre><code>http://www.fontawesome.com.cn/
+</code></pre><h4 id="icons"><a href="#icons" class="headerlink" title="icons"></a>icons</h4><pre><code>http://www.iconfont.cn/                    // 阿里图标收集
+
+http://www.fontawesome.com.cn/
 
 https://icons8.com/icon/new-icons/all
 
@@ -254,7 +499,10 @@ http://emojipedia.org/    小图片
 6、Swipper: http://www.swiper.com.cn/
 
 http://www.jq22.com/      jquery插件网
-</code></pre><h4 id="前端打包工具"><a href="#前端打包工具" class="headerlink" title="前端打包工具"></a>前端打包工具</h4><pre><code>1、gulp
+</code></pre><h4 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h4><pre><code>1、momentjs: http://momentjs.cn/            // 日期格式化
+</code></pre><p>#### </p>
+<p>  chalk: <a href="https://github.com/chalk/chalk" target="_blank" rel="noopener">https://github.com/chalk/chalk</a>            // 可以设置终端log的显示颜色</p>
+<h4 id="前端打包工具"><a href="#前端打包工具" class="headerlink" title="前端打包工具"></a>前端打包工具</h4><pre><code>1、gulp
 
 2、webpack
 
@@ -270,112 +518,96 @@ omniGraffle
 JIRA   产品版本  产品需求 - 技术开发 - 测试
 
 Stash  git 仓库
-
-https://jsfiddle.net/
-
-
-mockJS: http://mockjs.com/
-
-RAP: http://rap.taobao.org/org/index.do
-
-    复制一个字段名，然后新建一个字段粘贴，在按ctrl+回车，就会将他下面所有的数据都复制过来，对于层级很复杂的比较好用
-
-chrome 插件
-
-    EditThisCookie   设置cookie
-
-    PostMan        post请求
 </code></pre><p>/<strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong> 工具类 <strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong>/</p>
 <h4 id="查看chrome的DNS缓存对应表-chrome-net-internals-dns"><a href="#查看chrome的DNS缓存对应表-chrome-net-internals-dns" class="headerlink" title="查看chrome的DNS缓存对应表: chrome://net-internals#dns"></a>查看chrome的DNS缓存对应表: chrome://net-internals#dns</h4><h4 id="Sublime-Text"><a href="#Sublime-Text" class="headerlink" title="Sublime Text"></a>Sublime Text</h4><pre><code>http://blog.csdn.net/u013861109/article/details/53106074
 
 1、安装package control
 
-    https://packagecontrol.io/
+        https://packagecontrol.io/
 
-    Control + `（mac） 或 Ctrl+～ （win） 调出console  输入下面命令，查看是否安装成功 Perferences-&gt;package settings中看到package control这一项，则安装成功
+        Control + `（mac） 或 Ctrl+～ （win） 调出console  输入下面命令，查看是否安装成功 Perferences-&gt;package settings中看到package control这一项，则安装成功
 
-    import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
+        import urllib.request,os; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &apos;wb&apos;).write(urllib.request.urlopen( &apos;http://sublime.wbond.net/&apos; + pf.replace(&apos; &apos;,&apos;%20&apos;)).read())
 
 2、安装编辑器主题
 
-   按下Ctrl+Shift+P，输入install，选择Package Control: Install Package，然后输入Spacegray，选择Theme: Spacegray.
+        按下Ctrl+Shift+P，输入install，选择Package Control: Install Package，然后输入Spacegray，选择Theme: Spacegray.
 
-   在菜单栏中选择Preferences-&gt;Settings-User，复制以下代码，覆盖打开的文件内容，保存即可应用主题：    
-    {
-        &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
-        &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;
-    }
+        在菜单栏中选择Preferences-&gt;Settings-User，复制以下代码，覆盖打开的文件内容，保存即可应用主题：    
+        {
+                &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;
+        }
 
 3、设置代码行间距、字号
 
-    需要个性哪个就直接在preferences -&gt; settings user 中的配置添加
-    {
-        &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;,
-        &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
-        &quot;font_size&quot;: &quot;16&quot;,
-        &quot;line_padding_top&quot;: 2,
-           &quot;line_padding_bottom&quot;: 2
-    }
+        需要个性哪个就直接在preferences -&gt; settings user 中的配置添加
+        {
+            &quot;color_scheme&quot;: &quot;Packages/Theme - Spacegray/base16-ocean.dark.tmTheme&quot;,
+            &quot;theme&quot;: &quot;Spacegray.sublime-theme&quot;,
+            &quot;font_size&quot;: &quot;16&quot;,
+            &quot;line_padding_top&quot;: 2,
+                &quot;line_padding_bottom&quot;: 2
+        }
 
 
 4、安装常用插件
 
-    安装：command + shift + p 输入 ip 回车
+        安装：command + shift + p 输入 ip 回车
 
-    卸载：command + shift + p 输入remove 回车
+        卸载：command + shift + p 输入remove 回车
 
-    1) px转rem插件  https://github.com/flashlizi/cssrem
+        1) px转rem插件  https://github.com/flashlizi/cssrem
 
-    1）emmet：html、css快速编写
+        1）emmet：html、css快速编写
 
             如果emmet插件失效：http://www.jianshu.com/p/0862e754cf15
 
-    2）syncedSideBar：侧栏与主界面的颜色相同
+        2）syncedSideBar：侧栏与主界面的颜色相同
 
-    3）babel：ES6、JSX、React
+        3）babel：ES6、JSX、React
 
-    4）AngularJS
+        4）AngularJS
 
-    5）jQuery：jQuery提示
+        5）jQuery：jQuery提示
 
-    6）Html5：html5捆
+        6）Html5：html5捆
 
-    7）Less：一个Less语法高亮插件
+        7）Less：一个Less语法高亮插件
 
-    8）Sass
+        8）Sass
 
-    9）JsFormat：js 格式化插件
+        9）JsFormat：js 格式化插件
 
-    10）SublimeLinter：行内高亮语法
+        10）SublimeLinter：行内高亮语法
 
-    11）SideBarEnhancements：一个左边栏增强
+        11）SideBarEnhancements：一个左边栏增强
 
-    12）SublimeCodeintel：一个代码智能提示引擎
+        12）SublimeCodeintel：一个代码智能提示引擎
 
-    13）Alignment：Js代码对其插件
+        13）Alignment：Js代码对其插件
 
-    14）BracketHighlighter：代码对其线高亮
+        14）BracketHighlighter：代码对其线高亮
 
-    15）Git：git的支持插件
+        15）Git：git的支持插件
 
-    16）Prefixr：Prefixr Api支持，Prefixr是一个生成css3兼容性的api
+        16）Prefixr：Prefixr Api支持，Prefixr是一个生成css3兼容性的api
 
-    17）LiveReload：网页浏览器页面重新加载插件
+        17）LiveReload：网页浏览器页面重新加载插件
 
-    18）Tag：格式化代码排版
+        18）Tag：格式化代码排版
 
-            Mac OS X: Command-Option-Shift-F
-            Windows: Control-Alt-Shift-F
+                Mac OS X: Command-Option-Shift-F
+                Windows: Control-Alt-Shift-F
 
 
+        19) HTML-CSS-JS Prettify 代码格式化插件 cmd+shift+h
 
-    19) HTML-CSS-JS Prettify 代码格式化插件 cmd+shift+h
+        20）cssrem：sublime的px转rem的插件   https://github.com/flashlizi/cssrem      需要手动下载放到packages中，配置cssrem.sublime文件指定px_to_rem的值 
 
-    20）cssrem：sublime的px转rem的插件   https://github.com/flashlizi/cssrem      需要手动下载放到packages中，配置cssrem.sublime文件指定px_to_rem的值 
+        21）MarioRicalde-SCSS       SCSS的代码提式和高亮
 
-    21）MarioRicalde-SCSS       SCSS的代码提式和高亮
-
-react插件   http://www.jianshu.com/p/ecf6c802fdc5?open_source=weibo_search
+        react插件   http://www.jianshu.com/p/ecf6c802fdc5?open_source=weibo_search
 </code></pre><h4 id="emmet快捷方法"><a href="#emmet快捷方法" class="headerlink" title="emmet快捷方法"></a>emmet快捷方法</h4><pre><code>http://www.w3cplus.com/tools/emmet-cheat-sheet.html
 
 http://www.iteye.com/news/27580
@@ -389,9 +621,7 @@ http://www.iteye.com/news/27580
 atom-react-autocomplete 组件名及状态的自动补全 
 
 http://blog.csdn.net/crper/article/details/52196675
-</code></pre><h4 id="vs-Code"><a href="#vs-Code" class="headerlink" title="vs-Code"></a>vs-Code</h4><pre><code>插件：
-
-安装插件： ext install 插件名
+</code></pre><h4 id="vs-Code"><a href="#vs-Code" class="headerlink" title="vs-Code"></a>vs-Code</h4><pre><code>安装插件： ext install 插件名
 
 https://marketplace.visualstudio.com/VSCode
 
@@ -420,7 +650,7 @@ https://marketplace.visualstudio.com/VSCode
     vscode-icon-theme: 
 
 12、ReactSnippets: ReactJS  jsx文件内 输入 rcc 就可以创建一个react组件的初始代码  
-        https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
+    https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 
 13、vscode-node-readme: 可以查看node reuqire中引用的node-module的包内容
 
@@ -432,11 +662,11 @@ https://marketplace.visualstudio.com/VSCode
 
     Atom One Dark Theme
 
-    vsc-material-theme
+        vsc-material-theme
 
-    Material Theme
+        Material Theme
 
-    切换主题  ⌘ + shift + p   =&gt;  输入 them 选择颜色主题在列表中在选择
+        切换主题  ⌘ + shift + p   =&gt;  输入 them 选择颜色主题在列表中在选择
 
 17、guides: 高亮缩进基准线   ext install guides
 
@@ -485,6 +715,19 @@ https://marketplace.visualstudio.com/VSCode
 </code></pre><h4 id="gitBook"><a href="#gitBook" class="headerlink" title="gitBook"></a>gitBook</h4><pre><code>https://segmentfault.com/a/1190000005859901
 http://www.chengweiyang.cn/gitbook/introduction/README.html
 </code></pre><h4 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h4><pre><code>https://sspai.com/post/25137
+</code></pre><h4 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h4><pre><code>1、sFTP - 可视化拖拽上传服务器，也命令行
+
+2、SecureCRT - 纯命令行上传服务器
+
+3、Navicat Premium - Mysql 可视化工具
+
+4、Studio 3T - MongoDB 可视化工具
+
+5、Sourcetree - Git工具
+
+6、VSCode、Sublime、Atom、WebStorm - 前端开发工具
+
+7、
 </code></pre>
         
     </section>

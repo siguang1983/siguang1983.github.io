@@ -515,6 +515,954 @@ git merge origin/dev_crm2.5_base
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2016/12/07/宏观经济学/">宏观经济学</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/宏观经济学/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/经济学/">经济学</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h2 id="宏观经济、微观经济"><a href="#宏观经济、微观经济" class="headerlink" title="宏观经济、微观经济"></a>宏观经济、微观经济</h2><pre><code>宏观经济 - 研究整体经济现象，包括通货膨胀、失业和经济增长
+
+微观经济 - 研究家庭和企业如何做出决策，以及市场上的相互影响
+</code></pre><h2 id="GDP"><a href="#GDP" class="headerlink" title="GDP"></a>GDP</h2><pre><code>国内生产总值即GDP，可以衡量经济中所有人总收
+
+GDP = 消费 + 投资 + 政府购买 + 净出口
+
+一、消费
+
+    消费是家庭除购买住房之外用于物品与服务的支出
+
+二、投资
+
+    用于未来生产更多物品和服务的物品，如房产，这里投资与金融投资不同
+
+三、政府购买 
+
+    包括政府员工薪水与公务支出
+
+四、净出口
+
+    等于外国对国内生产的物品进行购买
+</code></pre><h2 id="CPI"><a href="#CPI" class="headerlink" title="CPI"></a>CPI</h2><pre><code>消费物价指数 - 是普通消费者所购买的物品与服务总费用的衡量指标
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/Linux命令/">Linux命令</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/Linux命令/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Linux/">Linux</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><pre><code>[root@localhost~]  root 管理员    localhost 主机名    ~ 用户的目录 $ 为普通用户 # root用户
+
+1、命令 [选项] [参数]        选项可简化  -a 等于 --all
+
+2、Linux中 .xxx文件 是隐藏文件
+
+3、命令补全: 输入一个开头字母，按Tab会将当前目录下所有的相关文件显示
+
+4、sudo 使用超级使用者权限
+
+nginx 目录: /usr/local/openresty/nginx 9092
+
+启动 sudo /usr/local/openresty/nginx/sbin/nginx
+
+重启 /usr/local/openresty/nginx/sbin/nginx -s reload
+</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>使用 SecureCRT 工具
+
+1、exit 或 logout 退出登录
+
+2、文件上传和下载 到服务器
+
+    $ sz 要下载的文件或目录   在secureCRT中设置 options -&gt; session options -&gt; x/z/zmodem 中设置的下载目录 
+
+    $ rz 上传的文件            上传相同名文件，不会被替换，不能上传目录，可以直接发压缩gzip包在传
+
+/Users/apple/siguang.liu/技术积累/大前端技术/前端框架/技术笔记/Nginx服务器.md
+3、查看日志  使用tail 或 cat来查看文件内容
+
+    $ tail -fn  显示行数  服务器的日志文件
+
+    tail -fn 100  /opt/server/apache-tomcat-6.0.41_8084/logs/catalina.2016-01-21.log    56服务器8084端口
+
+
+4、解决secureCRT 中文编码问题
+
+    options -&gt;    session options  -&gt; terminal 下的 appearance  将 character encodeing 改成 utf-8
+
+
+5、清理服务器缓存
+
+    进入到apache-tomcat服务中的works中清楚loaclhost目录 
+
+    $ cd /opt/server/apache-tomcat-6.0.41_8084/works/Catalina
+
+    $ rm -rf  localhost
+
+    8084：网站  apache-tomcat-6.0.41_8084
+
+    8086：H5   apache-tomcat-7.0.47_8086
+
+
+6、open 打开目录
+
+7、clear 清除当前屏    cmd+k 清除所有
+
+8、tree 打印出目录树
+
+    mac下没有tree命令  brew install tree  安装
+
+    $ tree -a   显示所有的文件和目录
+
+    $ tree -L 1 -a  只显示一个层级的目录和文件(包括隐藏文件)
+
+    $ tree -L 1 -d
+</code></pre><h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><pre><code>Example: 
+
+-rw-r--r--@   1 apple  staff   8196  5 15 19:26 .gitignore.js
+
+一、第一个字符为文件类型 -
+
+    剩下每三位一组
+
+        rw- u所有者    r-- g所属组    r-- o其它人
+
+    r 读        w 写        x 执行
+
+
+一、文件类型
+
+    1、- 文件    如果第一个符号为&apos;-&apos;就是一个普通文件
+
+    2、d 目录 
+
+    3、l 软链接文件
+</code></pre><h4 id="目录处理"><a href="#目录处理" class="headerlink" title="目录处理"></a>目录处理</h4><pre><code>1、cd 切换到指定目录
+
+    cd 与 cd ~  回到apple目录, 也就是 /Users/apple
+
+    cd -   回到上次操作所在的目录
+
+    cd ..  进入到上一级目录
+
+
+2、mkdir [-p]  dirname 创建目录 
+
+    -p 递归创建  mkdir -p parent/child    可以直接创建多个目录，如果不加就只能创建一个目录
+
+
+3、pwd 显示当前路径
+
+4、rm 删除文件或目录   rm -rf [文件或目录]
+
+    -r  删除目录 如果删除目录必须要加 -r, 删除文件不需要
+
+    -f  强制
+
+
+5、cp 复制目录或文件   cp [选项][原文件或目录][目标目录]
+
+    -r 复制目录
+
+    -p 连带文件属性复制 一些类似文件创建日期等
+
+    -d 如果源文件是链接文件，则复制链接属性
+
+    -a 相当于 -pdr
+
+
+6、mv 移动目录或文件    mv [源文件或目录] [目标目录]
+
+    mv dir1 dir2 将文件或目录移动到指定目录中  
+
+    mv a.js b.js 修改文件或目录名  
+
+
+七、查目录权限 
+
+    $ cd /
+
+    $ ls -l         显示根目录所的权限
+
+7、chown设置目录权限
+
+    1、命令格式：
+
+        chown [选项]... [所有者][:[组]] 文件...
+
+    2．命令功能：
+
+        通过chown改变文件的拥有者和群组。在更改文件的所有者或所属群组时，可以使用用户名称和用户识别码设置。普通用户不能将自己的文件改变成其他的拥有者。其操作权限一般为管理员。
+
+    3．命令参数：
+
+        必要参数:
+
+        -c 显示更改的部分的信息
+
+        -f 忽略错误信息
+
+        -h 修复符号链接
+
+        -R 处理指定目录以及其子目录下的所有文件
+
+        -v 显示详细的处理信息
+
+        -deference 作用于符号链接的指向，而不是链接文件本身
+
+        选择参数:
+
+        --reference=&lt;目录或文件&gt; 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组
+
+        --from=&lt;当前用户：当前群组&gt; 只有当前用户和群组跟指定的用户和群组相同时才进行改变
+
+        --help 显示帮助信息
+
+        --version 显示版本信息
+
+    4．使用实例：
+
+        实例1：改变拥有者和群组
+
+        命令：
+
+        chown mail:mail log2012.log
+</code></pre><h4 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h4><pre><code>1、touch .gitignore  创建文件
+
+2、ls 显示文件
+
+    # 显示详细列表
+    $ ls -l  显示详细信息
+    # 
+    $ ll 是ls -l的简写
+    # 
+    $ ls -a 显示所有文件，包含隐藏文件（以. 起头的文件名）
+    # 
+    $ ls -R 显示文件及所有子目录
+    $ 
+    $ ls -F 显示文件（后跟*）和目录（后跟/）
+    # 
+    $ ls -d 与l选项合用，显示目录名而非其内容
+    #
+    $ ls -h 显示文件大小
+    #
+    $ ls -i 显示文件的id号    30988816 README.md
+
+
+3、cat 显示文件内容
+
+    cat package.json
+
+
+4、echo 输出内容
+
+5、ln 文件名   将文件的内容输出带行号
+
+    $ ln package.json
+
+
+6、wc 文件名  统计指定文件中的字节数、字数、行数，并将统计结果显示输出
+
+    -c 统计字节数。
+
+    -l 统计行数。
+
+    -m 统计字符数。这个标志不能与 -c 标志一起使用。
+
+    -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。
+
+    -L 打印最长行的长度。
+</code></pre><h4 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h4><pre><code>一、find [搜索范围] [搜索条件]  避免大范围搜索，耗费系统资源
+
+    通配符: * 匹配任意内容      ? 匹配任意一个字符      [] 匹配任意一个中括号内的字符
+
+    按文件名搜索    $find / -name person.js     从根目录开始搜索person.js文件
+
+    1、-name   搜索文件名   
+
+    2、-iname  搜索的文件名不区分大小写
+
+    3、-user   按所有者文件
+
+    4、-nouser  没有所有者文件
+
+
+    按时间搜索   $ find /var/log/ -mtime +10    搜索10天前修改的文件   +10 十天前     10 十天当天修改    -10  十天内修改文件
+
+    5、-mtime  修改文件内容
+
+    6、-atime  文件访问时间
+
+    7、-ctime  改变文件属性
+
+
+    按文件大小搜索   $ find . -size 25k  查找文件大小是25K的文件  -25k 小于25k   +25k 大于25k   25k 等于25k
+
+        注意: M 是大写   k 用小写
+
+    8、-size  查找文件大小
+
+    9、-inum  通过 i 节点个数来查看   ls -i 查看当前目录下的文件带id   29560848 Bluetooth    31587257 opendirectoryd.log.0  31745680 system.log.4.gz
+
+        find /var/log/ -inum  29560848   // 返回 Bluetooth
+
+        逻辑运算符  -a 逻辑与    -o 逻辑或
+
+        example   find /var/log -size +20K  -a  -size -50K    查找大于20K并小于50K
+
+    10、-exec ... {} \;  将搜索的内容交给第二条命令来处理
+
+         find /var/log -size +20k -a -size -500M  -exec ls -l -a {} \;
+
+
+二、grep 在文件中匹配符合条件的字符串   grep [选项]  字符串   文件名
+
+    -i 忽略大小写
+
+    -v 排除指定字符串    
+
+    $ grep -i 丝绸之路 package.json 
+
+
+三、whereis 和 which  搜索系统命令
+
+    whereis vim        // 输出 /usr/bin/vim 可以
+
+    which 指令会在环境变量$PATH设置的目录里查找符合条件的文件。
+
+        which mongod        // 返回当前mongod命令所在的目录 /usr/local/bin/mongod
+
+
+四、locate 文件名   在后台数据库中按文件名搜索，搜索速度快
+
+    locate不是在文件中搜索，而是在 /var/lib/mlocat 只在后台数据库搜索
+
+    updatedb  更新数据库
+</code></pre><h4 id="ln-链接命令-ln-s-原文件或目录-目录文件"><a href="#ln-链接命令-ln-s-原文件或目录-目录文件" class="headerlink" title="ln 链接命令   ln -s [原文件或目录] [目录文件]"></a>ln 链接命令   ln -s [原文件或目录] [目录文件]</h4><pre><code>硬链接: 硬链接看做是文件或目录的副本，两个i节点和存储，可以看成是同一个文件
+
+软链接: 软连接看做是文件或目录的快捷方式
+
+选项:
+
+-s 创建软链接    
+
+    注意软链接要写绝对路径 ln -s /Users/apple/siguang.liu/linux/catalogB   /Users/apple/siguang.liu/linux/lnDir
+
+    appledeMacBook-Pro-2:lnDir apple$ ls -il
+    31874703 lrwxr-xr-x  1 apple  staff  39  5 16 18:54 catalogB -&gt; /Users/apple/siguang.liu/linux/catalogB    这种 -&gt; 就是指的软链接 或者 lrwxr第一个类型为『l』
+
+删除软连接就去目标目录直接把软链接的目录直接删掉
+</code></pre><h4 id="压缩文件、目录"><a href="#压缩文件、目录" class="headerlink" title="压缩文件、目录"></a>压缩文件、目录</h4><pre><code>一、zip压缩文件、目录
+
+    1、压缩文件     zip 压缩文件名  源文件        // 注意这里压缩zip，原文件不会被删除，而gzip会删除源文件
+
+    2、压缩目录  zip -r 压缩文件名.zip   要压缩的目录       // 最好先进入要指定压缩的目录，如果写成a/b/c，这样就会将所有目录一层一层压缩，如果要压缩的目录在aa下面，而且你当前就在aa目录下面不用从指定根目录，否则解压后会一层一层的 
+
+    3、解压缩    unzip 解压的文件
+
+
+二、gzip压缩
+
+    压缩后的扩展为 .gz  
+
+    1、gzip 源文件      压缩为.gz文件，源文件会消失
+
+    2、gzip -c 源文件 &gt; 压缩 文件     压缩为.gz文件，保留源文件
+
+    3、gzip -r 目录     压缩目录下所有子文件，但不压缩目录
+
+    2、gunzip             解压文件名
+
+
+三、tar压缩目录
+
+    通过tar来对目录进行打包，然后通过gzip进行压缩
+
+    $ 格式: tar -cvf  打包文件名  源文件
+
+    1、打包成 .tar文件
+
+        1) tar -cvf  压缩后的目录  要压缩的目录 
+
+        2) tar -xcvf  打包的文件名
+
+
+    2、打包成 .tar.gz格式
+
+        1) tar -zcvf  压缩后的目录  要压缩的目录 
+
+        2) tar -zxcvf  打包的文件名
+
+        -c: 产生.tar打包文件
+
+        -v: 显示详细信息
+
+        -f: 指定压缩后缀名
+
+        -z: 打包同时压缩
+
+
+    3、当包解压到当前目录
+
+        tar zxf  nginx-1.12.2.tar.gz
+</code></pre><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><pre><code>所有程序只要运行就会产生一个进程，客户端网页访问服务器就会产生一个进程
+
+一、查看进程
+
+    1、ps aux  系统所有进程
+
+        ps -ef|grep nginx 查看nginx服务的进程
+
+            a 显示所有进程，包括会话引线
+
+            u 显示进程的归属用户及内存使用情况
+
+            x 显示没有控制终端进程
+
+            -l 长格式显示 显示更详细信息
+
+            -e 显示所有进程，和-A作用一致
+
+    2、pstree [选项]
+
+        -p 显示进程PID
+
+        -u 显示进程用户
+
+    3、top  每3秒查看一下系统的健康，有cpu和内存的数据和所有进程
+
+
+二、杀死进程
+
+    kill -1 进程ID    重启进程
+
+    kill -9 进程ID    强制杀死进程
+</code></pre><h4 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a>curl命令</h4><pre><code>https://www.cnblogs.com/duhuo/p/5695256.html
+</code></pre><h4 id="环境变量和host的修改"><a href="#环境变量和host的修改" class="headerlink" title="环境变量和host的修改"></a>环境变量和host的修改</h4><pre><code>一、host目录
+
+    etc/hosts
+
+二、环境变量、export 设置或显示环境变量  export [-fnp][变量名称]=[变量设置值]
+
+    -f 　代表[变量名称]中为函数名称。 
+
+    -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。 
+
+    -p 　列出所有的shell赋予程序的环境变量。
+
+
+    $ export   查看环境变量
+
+
+    设置环境变量有两种: 
+
+        1、使用export命令 这种方法只是临时设置，重启终端就
+
+            $ export PATH=$PATH:/opt/au1200_rm/build_tools/bin
+
+        2、修改profile文件 或者设置到 source ~/.bash_profile 
+
+            $ vi ~/.profile
+
+              export PATH=$PATH:/usr/local/zend/mysql/bin/:/usr/local/zend/bin     // 设置$PATH 扩展一下加一下
+
+            $ source ~/.profile    立即执行
+
+    注意两个环境变量使用 “：”来分割
+
+
+三、通过环境变量来设置命令快捷键
+
+    $ vi ~/.profile
+
+        alias ll=&quot;ls -a&quot;
+        alias ..=&quot;cd ..&quot;
+        alias ...=&quot;cd ../../&quot;
+        alias ....=&quot;cd ../../../&quot;
+        alias .....=&quot;cd ../../../../&quot;
+        alias ......=&quot;cd ../../../../../&quot;
+</code></pre><h4 id="man-–help-帮助"><a href="#man-–help-帮助" class="headerlink" title="man  –help  帮助"></a>man  –help  帮助</h4><pre><code>一、man ls  查看帮助信息
+
+二、ls --help   
+</code></pre><h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><pre><code>一、日期
+
+    date 日期时间
+
+    cal  显示当前日历
+
+二、关机重启系统
+
+    1、shutdown [选项] 时间   来进行重启和关机
+
+        shutdown -r now    立即重启  -h 立即关机
+
+        shutdown -r 18:00  定时在18点的时候重启
+
+        -c: 取消前一个关机命令
+
+        -h: 关机
+
+        -r: 重启
+
+    2、halt  回车  直接关机
+
+    3、poweroff  回车  直接关机
+
+    4、init 0 回车  直接关机
+
+    5、reboot 回车  直接重启
+
+三、查询与自动挂载
+
+    1、mount
+</code></pre><h4 id="linux根目录"><a href="#linux根目录" class="headerlink" title="linux根目录"></a>linux根目录</h4><pre><code>Linux的目录
+
+    根目录下的 bin目录不允许操作， usr下的 sbin目录是可以操作的
+
+    /bin 传统unix命令的存放目录，如ls，rm，mv等。
+    /sbin 传统unix管理类命令存放目录，如fdisk，ifconfig等等。
+    /tmp 临时文件存放目录，其权限为所有人任意读写。此目录实际为指向/private/tmp的链接。
+    /usr 第三方程序安装目录。
+        /usr/bin, /usr/sbin, /usr/lib，其中/usr/lib目录中存放了共享库（动态链接库）.
+    /etc. 标准unix系统配置文件存放目录，如用户密码文件/etc/passwd。此目录实际为指向/private/etc的链接。        
+    /var 存放经常变化的文件，如日志文件。此目录实际为指向/private/var的链接。
+
+
+OS X系统中，除了标准的unix目录外，还增加了特有的目录。
+
+    /Applications 应用程序目录，默认所有的GUI应用程序都安装在这里；
+    /Library 系统的数据文件、帮助文件、文档等等；
+    /Network 网络节点存放目录；
+    /System 他只包含一个名为Library的目录，这个子目录中存放了系统的绝大部分组件，如各种framework，以及内核模块，字体文件等等。
+    /Users 存放用户的个人资料和配置。每个用户有自己的单独目录。
+    /Volumes 文件系统挂载点存放目录。
+    /cores 内核转储文件存放目录。当一个进程崩溃时，如果系统允许则会产生转储文件。
+    /private 里面的子目录存放了/tmp, /var, /etc等链接目录的目标目录。
+
+
+/bin是系统的一些指令。bin为binary的简写主要放置一些系统的必备执行档例如:cat、cp、chmod df、dmesg、gzip、kill、ls、mkdir、more、mount、rm、su、tar等。
+
+/sbin一般是指超级用户指令。主要放置一些系统管理的必备程式例如:cfdisk、dhcpcd、dump、e2fsck、fdisk、halt、ifconfig、ifup、 ifdown、init、insmod、lilo、lsmod、mke2fs、modprobe、quotacheck、reboot、rmmod、 runlevel、shutdown等。
+
+/usr/bin　是你在后期安装的一些软件的运行脚本。主要放置一些应用软体工具的必备执行档例如c++、g++、gcc、chdrv、diff、dig、du、eject、elm、free、gnome*、 gzip、htpasswd、kfm、ktop、last、less、locale、m4、make、man、mcopy、ncftp、 newaliases、nslookup passwd、quota、smb*、wget等。
+
+/usr/sbin   放置一些用户安装的系统管理的必备程式例如:dhcpd、httpd、imap、in.*d、inetd、lpd、named、netconfig、nmbd、samba、sendmail、squid、swap、tcpd、tcpdump等。
+
+/usr/bin用于分发包管理器（如Ubuntu apt等）存放它所管理的应用的路径, /usr/sbin与/usr/bin的关系类似与/bin和/sbin的关系
+
+/usr/local/bin用于存放用户自己的程序（如自己编译出来的包等），不受分发包管理器的控制。如果用户把自己的程序放在/usr/bin下，则有可能在未来被包管理器给修改或删除了。
+</code></pre><h4 id="vim-编辑器"><a href="#vim-编辑器" class="headerlink" title="vim 编辑器"></a>vim 编辑器</h4><pre><code>vi  文件名    或vim 文件名
+
+命令状态：
+
+H 左  L 右   K 上  J 下
+
+0（零） 行首     $（shift+5） 行尾       G（shift+G） 文件尾
+
+i 插入命令
+
+dd  删除当前行    pp 复制并粘贴当前行    x: 删除光标处字符
+
+control+f 后翻页        control+b前翻页
+
+u 取消上次操作)
+
+
+a,A:追加命令，a 在当前光标后追加，A 在行末追加
+
+o,O:打开命令，o 在当前行下打开一行，O在当前行上插入一行
+
+r,R :替换命令，r 替换当前光标处字符，R从光标处开始替换
+
+数字s: 替换指定数量字符
+
+d0: 删除光标前半行
+
+d$: 删除光标后半行
+
+/string 查找字符串
+
+n 继续查找
+
+N 反向继续查找
+
+% 查找对应括号
+
+ex命令状态
+
+    ：0 文件首
+
+    ：1,5 copy 7 块拷贝
+
+    ：1，5 del 块删除
+
+    ：1，5 move 7 块移动
+
+    ：1，$s/string1/string2/g 全文件查找string1并替换为string2
+
+    ：wq! 存盘退出
+
+保存命令
+
+    按ESC键 跳到命令模式，然后：
+
+    :w   保存文件但不退出vi
+
+    :w file 将修改另外保存到file中，不退出vi
+
+    :w!  强制保存，不推出vi
+
+    :wq  保存文件并退出vi
+
+    :wq! 强制保存文件，并退出vi
+
+    q:   不保存文件，退出vi
+
+    :q!  不保存文件，强制退出vi
+
+    :e!  放弃所有修改，从上次保存文件开始再编辑
+</code></pre><h4 id="Mac终端下的快捷键"><a href="#Mac终端下的快捷键" class="headerlink" title="Mac终端下的快捷键"></a>Mac终端下的快捷键</h4><pre><code>cmd + A 移到行首
+cmd + E 移到行尾
+
+cmd + L 清除上一次操作的内容
+cmd + K 清除所有内容
+
+cmd + option + H 将所有窗口隐藏到应用程序图标
+cmd + H  将当前窗口隐藏到图标中
+cmd + M  将当前窗口最小化到
+
+control + U 清除当前行命令
+
+cmd + shift + .  显示/隐藏当前文件的隐藏文件
+
+traceroute -n 125.35.51.162        // 查看当前网络访问到这个ip都通过哪些途径
+
+mac 打开iphone界面  iphone与mac连接，打开QuickTime，文件 -&gt; 新建录制影片
+</code></pre><h4 id="修改mac地址"><a href="#修改mac地址" class="headerlink" title="修改mac地址"></a>修改mac地址</h4><pre><code>$ ifconfig        en0:  ether ac:bc:32:83:a2:4b     原始的mac地址
+
+$ openssl rand -hex 6 | sed &apos;s/\(..\)/\1:/g; s/.$//&apos;        生成一个mac地址
+
+$ sudo /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -z      断开airport无线网卡连接
+
+$ sudo ifconfig en0 ether 7e:df:f7:a5:07:56        修改成生成的mac地址
+
+$ networksetup -detectnewhardware     重新连接网卡
+
+$ ifconfig    查看是否是改后的mac地址
+
+44:9f:24:59:ca:13
+</code></pre><h4 id="SSL-权限"><a href="#SSL-权限" class="headerlink" title="SSL 权限"></a>SSL 权限</h4><pre><code>open ~/.ssh/     打开ssh目录
+
+GitLab：中配置ssh
+
+1、登录后找到 Profile Settings  -&gt;  SSH Keys  添加Key来做映射
+
+id_rsa.pub 文件
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcmEJCTlr57na4TJ8xU8J/EG0KcrH6Dh+MwBPbs0NO6lA09Pdjro4knzSRYeSHc9X63Km/OR18JU7ygcE9foUYAN8BatnDTh6R+ynyQxyIqIG7Gn8YGF0g8Zx8oU9LsYc8SWP6zdryr7NaQZ41583jt9JxheG0la6D10cqZRQiix7pZMiXmHZXPKCSkTZSGHLaR0Ws24eyz1Yt9HmLXZem8FPkUrwmn2IYk05cwMyK+NE/g9pPJbpVEtEssU4FZ4I++LNltMbAxgtCp2QXZ7Z7ViA3CvK9u8g6u4yLLBPydpXWJ1pu+9bYFV3CvoTEawN3+mIIMsDaDhPlI6PJMk/j 632505215@qq.com
+</code></pre><p>| <a href="http://www.cnblogs.com/webzhangnan/p/3221410.html" target="_blank" rel="noopener">http://www.cnblogs.com/webzhangnan/p/3221410.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/函数式编程/">函数式编程</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/函数式编程/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/函数式编程/">函数式编程</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="纯函数式"><a href="#纯函数式" class="headerlink" title="纯函数式"></a>纯函数式</h4><pre><code>一、非纯净的
+
+    let number = 1;
+
+    const increment = () =&gt; number += 1;
+
+    increment();  // 2
+
+
+二、纯净的
+
+    const increment = n =&gt; n + 1;
+
+    increment(1);
+</code></pre><h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><pre><code>把函数当做其它函数的参数来传递
+
+let sum = (x, y) =&gt; x+y;
+
+let calculate = (fn, x, y) =&gt; fn(x,y);
+
+calculate(sum, 1, 2)
+</code></pre><h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><pre><code>柯里化就是将多参函数转换成单参函数
+
+// 一个多参函数 
+var add = (a, b) =&gt; a + b;
+add(1, 2); // =&gt; 3
+
+// 柯里化
+var add = a =&gt; b =&gt; a+b;
+add(1)(2);
+
+
+Example:
+
+    var say = function(title) {
+        return function(type){
+            return title + &quot; is &quot; + type;
+        }
+    }
+
+    var sayFP = say(&quot;Functional Programming&quot;);
+    var sayOther = say(&quot;Other Programming&quot;);
+
+    sayFP(&quot;good&quot;); // =&gt; Functional Programming is good
+    sayOther(&quot;bad&quot;); // =&gt; Other Programming is good
+</code></pre><h4 id="compose-函数组合"><a href="#compose-函数组合" class="headerlink" title="compose 函数组合"></a>compose 函数组合</h4><pre><code>将多个函数组合成一个函数
+
+Example:
+
+    var compose = function(fn1, fn2) {
+        return function(arg){
+            return fn1(fn2(arg));
+        }
+    }
+
+    var a = arg =&gt; arg + &apos;a&apos;;
+    var b = arg =&gt; arg + &apos;b&apos;;
+
+    var c = compose(a, b); // 将a,b函数进行组合
+    console.log(c(&apos;c&apos;));  // =&gt; cba
+</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(type){
+    var typeName = &apos;&apos;;
+
+    switch(toString.call(type)){
+        case &apos;[object String]&apos;:
+            return &apos;string&apos;;
+            break;
+
+        case &apos;[object Number]&apos;:
+            if(type.toString().indexOf(&apos;.&apos;) != -1){
+                return &apos;float&apos;;
+            }
+            else{
+                return &apos;number&apos;;
+            }
+            break;
+
+        case &apos;[object Array]&apos;:
+            return &apos;array&apos;;
+            break;
+
+        case &apos;[object Object]&apos;:
+            return &apos;object&apos;;
+            break;
+
+        case &apos;[object Undefined]&apos;:
+            return &apos;undefined&apos;;
+            break;
+
+        case &apos;[object Null]&apos;:
+            return &apos;null&apos;;
+            break;    
+
+        default: break;
+    }
+
+    return typeName;
+}
+</code></pre><p>| <a href="http://www.alloyteam.com/2016/09/talk-about-functional-programming/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/09/talk-about-functional-programming/</a><br>| <a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html" target="_blank" rel="noopener">https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
+
+    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
+
+二、App图标
+
+    方法1 Xcode中配置:
+
+        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
+
+    方法2 代码中配置
+
+        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
+
+        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
+
+三、设置启动图
+
+    方法1 Xcode中配置:
+
+        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
+
+        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
+
+    方法2 代码配置
+
+        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
+
+        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
+
+
+http://www.cnblogs.com/allenxieyusheng/p/5802179.html
+http://www.jianshu.com/p/adpKye/
+https://appicontemplate.com/ios9    图标尺寸导出  
+
+转icon尺寸
+http://www.zcool.com.cn/article/ZNjE1MTI=.html
+http://makeappicon.com/
+http://blog.csdn.net/leiyu231/article/details/52830151
+</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
+
+1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
+2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
+
+http://blog.csdn.net/liyijun4114/article/details/51792179
+</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
+
+在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
+</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
+
+    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
+
+https://developer.apple.com/  苹果开发者账号申请
+
+苹果开发者平台可以进行
+
+苹果的安装包为 *.ipa 文件
+
+1、先登录Account，注册苹果开发者账号个人或企业
+
+2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
+</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
+
+    class TabPage extends Component {
+
+        _createNav(name, colorValue){
+            return (
+                &lt;View&gt;
+                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
+                &lt;/View&gt;
+            )
+        }
+
+        render(){
+            return (
+                &lt;View&gt;
+                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
+                &lt;/View&gt;
+            )
+        }
+    }
+</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2016/12/07/weex/">Weex</a>
         </h1>
         
@@ -647,21 +1595,21 @@ weex流程:
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/07/ReactNative之基础篇/">React Native之基础篇</a>
+            <a href="/2016/12/04/MySQL/">MySQL</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/ReactNative之基础篇/">
+            <a class="article-date" href="/2016/12/04/MySQL/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+    <a class="article-tag-link" href="/tags/数据库/">数据库</a>
 </div>
 
 
@@ -670,473 +1618,780 @@ weex流程:
     
     <section class="article-body markdown-body">
         
-        <h4 id="React-Native-介绍"><a href="#React-Native-介绍" class="headerlink" title="React Native 介绍"></a>React Native 介绍</h4><pre><code>一、Native的类别
+        <blockquote>
+<p>数据类型: 字符型、整型、浮点型、日期时间型<br>操作符: 算术运算符、比较运算符、逻辑运算符、位运算符<br>属性: 自动编号<br>约束: 主键、外键、表关连、索引<br>库操作: 创建库、修改库、删除库<br>表操作: 创建表、删除表、查看表结构、查看库中所有表<br>列操作: 添加列、删除列、修改列<br>记录操作: 插入记录、更新记录（单表、多表更新）、删除记录、查询记录（多列查询、分组、指定查询范围、使用别名）<br>子查询语句、例约束<br>运算符与函数: 字符函数、数值运算符、比较运算符、日期时间函数、信息函数、聚合函数、加密函数、自定义函数<br>存储过程: 创建（参数:IN、OUT、INOUT）、调用<br>其它概念: 存储引擎、并发控制(锁、锁颗粒)、事务</p>
+</blockquote>
+<h4 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h4><pre><code>一、MySQL介绍
 
-    React Native 编译后是原生应用，v0.22.0热更新hot reloading
+    1、MySQL是关系型数据库
 
-    Hybrid  混合应用
+    2、安装后的有4个默认库 nformation_schem、performance_schema、test、mysql     
 
-    phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题
+    3、Mysql 端口号 3306
 
+    4、mac下mySQL的配置文件 /usr/local/mysql/my.cnf
 
-二、实时加载（Live Reload）和热加载（Hot Reload）的区别
 
-    http://www.jianshu.com/p/1fa6e9c0799f
+二、MySQL 目录结构 
 
-    Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+    mysql安装后的路径 /usr/local/mysql
 
-    Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+    1、bin: 存储可执行文件
 
-三、React Native 应用部署/热更新 codePush
+    2、data: 存储数据文件
 
-    http://blog.csdn.net/fengyuzhengfan/article/details/52003798
-</code></pre><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、安装 XCode
+    3、docs: 文档
 
-    $ xcode-select --install  检查xcode是否安装, 如果未安装会出现提示
+    4、include: 存储包含头文件
 
-    android 下载 android studio  https://developer.android.google.cn/index.html
+    5、lib: 存储库文件
 
+    6、share: 错误消息和字符集文件
 
-2、安装 homebrew
 
-    用于包管理，与npm类似
+三、停止和启动mysql服务
 
-    $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+    关闭mysql服务    查看进程：ps -ef|grep mysql         杀进程和子进程：sudo kill -9 239 746
 
-    $ sudo chown -R `whoami` /usr/local   解决/usr/local目录不可写的权限问题  
+    启动mysql服务    sudo /usr/local/mysql/bin/mysqld_safe
 
-    Homebrew将工具安装到 /usr/local/Cellar 目录中，并在 /usr/local/bin 中创建符号链接。
+    系统偏好设置 -&gt; mysql   启动
 
 
-3、安装 watchman 和 flow
+四、登录、退出mysql
 
-    watchman是facebook的开源项目用于监视文件并且记录文件的改动情况
+    1、登录
 
-    flow 是js的静态类型检查器，用于找出js代码中的类型错误
+        mysql -uroot -pssssss -h127.0.0.1          
 
-    $ brew install watchman
+        -u 用户名    -p 密码       -P 端口号       -h 数据库地址 
 
-    $ brew install flow
+        隐藏密码输入 mysql -uroot -h127.0.0.1 -p    回车后在输入密码
 
+    2、退出: exit;
 
-4、安装 NodeJS
 
-5、安装 react-native 
+五、语法规范
 
-    $ npm install -g react-native-cli      // Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载
+    1、关键字和函数名全部大写
 
-6、vscode中react-native插件
-</code></pre><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><pre><code>1、创建项目
+    2、数据库名称、表名称、字段字都小写
 
-    $ react-native init 项目名  // 创建项目
+    3、SQL语句必须以&quot;;&quot;分号结束
 
-    $ react-native run-ios     // 运行 react-native run-ios --simulator &quot;iPhone 4s&quot;  定义模拟器类型
+        修改结束符  DELIMITER  //        以 // 为结束
 
-        或者在ios目录 AwesomeProject.xcodeproj  双击打开
 
+六、数据库概念
 
-2、查看命令
+    1、库: 一些关联表的集合
 
-    $ react-native -h   所有命令
+    2、表: 行和列组成, 行一条数据
 
-    $ react-native -v   版本
+    3、主键: 可以唯一标识不会有重复, 可以通过主键来查询数据
 
+    4、外键: 外键可以引用主键数据，用于关联
 
-3、安装第三方插件
 
-    $ npm i react-native-elements lodash query-string sha1 react-native-audio react-native-video react-native-image-picker react-native-progress react-native-sk-countdown react-native-swiper react-native-barcodescanner --save
+七、安装和卸载mysql
 
+    1、homebrew安装mysql
 
-4、link 命令
+        http://brew.sh/
 
-    link的原因：以下组件都是原生开发，wrapper了一层js，因此需要link .a到project中
+        $ brew install mysql        // 安装mysql
 
-    $ react-native link
+        $ mysql.server start           // 启动
 
-    或 rnpm link     需要先安装rnpm     npm install rnpm -g --save-dev
+        $ mysql  -V            // 查看版本
 
 
-5、模拟器调试技巧
+    2、卸载mysql
 
-    http://blog.csdn.net/quanqinyang/article/details/52215652  
+        sudo rm /usr/local/mysql 
 
-    # 模拟器打开后可以通过cmd+1/2/3/4来调整窗口大小
+        sudo rm -rf /usr/local/var/mysql 
 
-    # 模拟器在所有窗口置顶 window -&gt; stay in front
+        sudo rm -rf /usr/local/mysql* 
 
-    # ISO cmd + D 打开调试菜单，Android cmd + M
+        sudo rm -rf /Library/StartupItems/MySQLCOM 
 
-    # comond + T  show Animate 呼出菜单cmd+D会变成慢动画
+        sudo rm -rf /Library/PreferencePanes/My* 
 
+        vim /etc/hostconfig and removed the line MYSQLCOM=-YES- 
 
-    # Reload 重新bundle代码 cmd + R
+        rm -rf ~/Library/PreferencePanes/My* 
 
-    # Debug JS Remotely   调试模式 chrome Developer Tools调试
+        sudo rm -rf /Library/Receipts/mysql* 
 
-    # Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+        sudo rm -rf /Library/Receipts/MySQL* 
 
-    # Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+        sudo rm -rf /var/db/receipts/com.mysql.*
+</code></pre><h4 id="库服务命令"><a href="#库服务命令" class="headerlink" title="库服务命令"></a>库服务命令</h4><pre><code>1、启动和停止MySQL服务
 
+    service stop mysql
 
-    # 警告
+    service start mysql
 
-        红错误 - console.error(&apos;&apos;)
+2、登录: mysql -uroot -p123456 -h127.0.0.1
 
-        关闭警告 - console.disableYellowBox = true;    显示警告 - console.warn(&apos;YellowBox is disabled.&apos;);
+3、退出: \q 、 exit、 quit
+</code></pre><h4 id="库操作语句"><a href="#库操作语句" class="headerlink" title="库操作语句"></a>库操作语句</h4><pre><code>1、创建数据库       CREATE DATABASE 库名;
 
-    # 日志 - react-native log-ios      react-native log-android
+        创建一个指定字符集的数据库         CREATE DATABASE 库名 CHARACTER SET utf8;
 
-    # chrome开发工具 - debug js Remotely  可以跟进代码
-</code></pre><h4 id="react-native-目录"><a href="#react-native-目录" class="headerlink" title="react-native 目录"></a>react-native 目录</h4><pre><code>.
-├── .DS_Store
-├── .babelrc            // ES6转换的配置
-├── .buckconfig
-├── .flowconfig         // 做js代码类型检查 
-├── .watchmanconfig     // 监听文件改变watchman的配置
-├── .gitattributes
-├── .gitignore          // 对哪些文件被git忽略不显示
-├── node_modules        // 存储资源包    
-├── __tests__
-├── android             // android原生文件目录
-├── ios                 // ios的原生文件目录 运行reactNative会将文件打包到这个目录，然后xcode调用的就是这里的项目文件
-├── app.json
-├── index.android.js    // android文件入口
-├── index.ios.js        // ios文件入口
-├── package.json        // 依赖文件
-└── yarn.lock
-</code></pre><h4 id="AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口"><a href="#AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口" class="headerlink" title="AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口"></a>AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口</h4><pre><code>AppRegistry是js运行RN应用的入口，通过registerComponent()来注册方法
+2、修改数据库       ALTER  DATABASE 库名 CHARACTER SET = uft-8;   // 将库编码改成utf8
 
-AppRegistry.registerComponent(&apos;项目名&apos;, () =&gt; 入口组件名)  注册入口
+3、删除数据库     DROP database 库名;
 
-AppRegistry.runApplication 来真正运行应用
-</code></pre><h4 id="React-Native-生命周期"><a href="#React-Native-生命周期" class="headerlink" title="React Native 生命周期"></a>React Native 生命周期</h4><pre><code>第一阶段，初始化
+4、查看所有数据库     SHOW databases;
 
-    getDefaultProps -&gt; getInitialState -&gt; componentWillMount -&gt; render -&gt; componentDidMount
+5、打开数据库        USE 库名;
 
-       获取配置参数        获取初始状态值         通知要开始渲染        渲染       告诉组件已经完成
+6、查看当前所在的数据库   SELECT database();
 
+7、查看库的编码: SHOW CREATE DATABASE 库名;
+</code></pre><h4 id="操作表语句"><a href="#操作表语句" class="headerlink" title="操作表语句"></a>操作表语句</h4><pre><code>1、创建表    CREATE TABLE  表名(字段名 数据类型, 字段名 数据类型);
 
-第二阶段，运行阶段 组件运行中
+        CREATE TABLE  表名(字段 数据类型  primary key,  username VARCHAR(20));        // 加主键 primary key 
 
-    1、state变化 -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+2、查看库中所有表  SHOW TABLES [db_name] [where expr];
 
-       状态变化    判断组件是否要更新true/false     需要更新就触发           渲染         更新组件
+3、查看表结构    SHOW COLUMNS FROM 表名;         // 与 desc 表名;   相同
 
-    2、props变化 -&gt; componentWillReceiveProps -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+4、删除表        DROP TABLE 表名;
 
-       props变化         属性改变调用             判断组件是否要更新true/false       需要更新就触发        渲染           更新组件
+5、ALTER 列操作: 
 
+    1）添加列: ALTER TABLE 表名 ADD 列名 varchar(20);
 
-第三阶段 卸载
+    2）删除列: ALTER TABLE 表名 DROP 列名;
 
-    unmount -&gt; componentWillUnmout -&gt; 结束 
-</code></pre><p><img src="images/lifecycle.png" alt="组件生命周期"></p>
-<h4 id="props、state"><a href="#props、state" class="headerlink" title="props、state"></a>props、state</h4><pre><code>一、props属性: 父组件传值给子组件
+    3）修改列的类型信息
 
-    &lt;Greeting name=&apos;Rexxar&apos; /&gt;      父组件调用子组件
+        ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
 
-    &lt;Text&gt;Hello {this.props.name}!&lt;/Text&gt;   子组件接收
+    4）重命名列
 
-    1、defaultProps定义默认的props
+        ALTER TABLE 【表名】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
 
-        class Smiple extends Component{
-            static defaultProps = {     // 定义默认props静态属性
-                name: &apos;siguang&apos;
-            }
+    5）重命名表
 
-            static propsTypes = {       // 检测props的类型
-                name: &apos;String&apos;
-            }
+        ALTER TABLE 【表名字】 RENAME 【表新名字】
 
-            render(){
-                return (
-                    &lt;View&gt;
-                        &lt;Text&gt; {this.props.name} &lt;/Text&gt;
-                    &lt;View&gt;
-                )
-            }
-        }
+    6）删除表中主键
 
+        Alter TABLE 【表名字】 drop primary key
 
-二、state状态、setState()改变状态，组件中可以改变的值
+    7）添加主键
 
-    export default class rrdProject extends Component {
-        constructor(props){
-            super(props);
+        ALTER TABLE sj_resource_charges ADD CONSTRAINT PK_SJ_RESOURCE_CHARGES PRIMARY KEY (resid,resfromid)
 
-            // 定义state对象
-            this.state = { 
-                showText: &apos;&apos;
-            }
-        }
+    8）添加索引
 
-        // state = {  };     // RN也支持ES7 类的静态属性写法
+        ALTER TABLE sj_resource_charges add index INDEX_NAME (name);
 
-        render() {
-            return(
-                &lt;View style={styles.container}&gt;
-                    &lt;Text&gt;这里有内容: {this.state.showText}&lt;/Text&gt;
-                &lt;/View&gt;
-            );
-        }
-    }
-</code></pre><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><pre><code>通过ref来获取真实的DOM
+    9）添加唯一限制条件索引
 
-import childComponent from &apos;./childComponent&apos;;
+        ALTER TABLE sj_resource_charges add unique emp_name2(cardnumber);
 
-class Simple extends Component {
-    clickChild(){
-        var size = this.refs.childRef.getSize();       // 获取childComponent组件的getSize()方法
-    }
+    10）删除索引
 
-    render() {
-        return (
-            &lt;View&gt;
-                &lt;Text&gt;Simple 基本页面&lt;/Text&gt;
-                &lt;button onPress={this.clickChild} title=&quot;点击&quot; /&gt;
+        ALTER TABLE [表名] index emp_name;
+</code></pre><h4 id="记录操作语句"><a href="#记录操作语句" class="headerlink" title="记录操作语句"></a>记录操作语句</h4><pre><code>1、插入记录     
 
-                &lt;childComponent ref=&quot;childRef&quot; /&gt;
-            &lt;/View&gt;
-        )
-    }
-}
-</code></pre><h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><pre><code>http://blog.csdn.net/sbsujjbcy/article/details/50017029
-http://www.cnblogs.com/wonyun/p/5481134.html
+    1) INFO 插入指定字段值:     INSERT INTO 表名(name, age) VALUES (name值, age值);
 
-1、直接写样式
+    2) SET  插入指定字段值:     INSERT 表名 SET name=&quot;sssss&quot;, age=&quot;lll&quot;;
 
-    &lt;View style={{width: 193, height: 110}}&gt;&lt;/View&gt;     {{}} 两个括号可以直接写样式
-    &lt;View style={styles.red}&gt;&lt;/View&gt;                    {} 一个括号需要来调用样式类
-    const styles = StyleSheet.create({
-        red: {
-            color: red
-        }
-    })
+    3）插入所有字段值:        INSERT 表名 VALUES (NULL, name值, age值)；        // 1、没有INFO  2、如果id为主键、自增涨，需要给一个默认传入NULL 或 DEFAULT
 
-2、写多个样式
+    4）INSERT ... SELECT 将查询结果写入数据表
 
-    &lt;Text style={[styles.btn, styles.color]}&gt;立即体验&lt;/Text&gt;
+        INSERT [INTO] 表名 FROM 列名   SELECT 
 
-    // 支持表达式
-    &lt;Text style={[styles.btn, styles.color &amp;&amp; this.props.dotColor]}&gt;立即体验&lt;/Text&gt;
+        // 将查询出restaurant表中的type进行分组内容，插入到rest_type表中的type字段中
 
+        INSERT rest_type(type) SELECT type FROM restaurant GROUP BY type;    
 
-2、styleSheet.create({}) 定义样式
 
-    const styles = StyleSheet.create({
-        rootView:{
-            height: &apos;100%&apos;,
-            width: &apos;100%&apos;,
-            backgroundColor: &apos;#eff0f3&apos;
-        },
-        big: {
-            color: &apos;blue&apos;,
-            fontSize: 30
-        }
-    })
-    &lt;View style={styles.rootView}&gt;      // 多个样式 style={[styles.rootView, styles.big]}
-        &lt;Text&gt;REACT NATIVE ELEMENTS&lt;/Text&gt;
-    &lt;/View&gt;
+2、更新数据     
 
+    单表更新:  UPDATE 表名 SET 要更新字段名=新值, 要更新字段名=新值  WHERE  条件        // 如果省略where条件，将修改表中的所有记录
 
-3、颜色支持
+    多表更新:  
 
-    &apos;#ccc&apos;、 &apos;rgba(0,0,0,.4)&apos;、 &apos;transparent&apos;、 &apos;red&apos;
+        UPDATE 表1  [JOIN | CROSS JOIN | INNER JOIN] 表2
 
+        表连接类型，JOIN、CROSS JOIN、INNER JOIN
 
-4、RN样式与css样式的异同
+                   LEFT [OUTER] JOIN 左外连接
 
-    View类型div，会默认占用窗口的100%宽度
+                   RIGHT [OUTER] JOIN 右外连接
 
-    绝对定位和相对定位不需要父元素设置positioin，也没有zIndex配置
 
-    不能将RN的inline元素设置maginTop、marginBottom
+3、删除记录     
 
-    样式继承只存在Text元素内的Text元素
+    单表删除:  DELETE FROM  表名 WHERE id=2
 
-        &lt;Text style={{color:'red'}}&gt;
-             &lt;Text&gt;父：我是white还是red{&apos;\n&apos;}
-                 &lt;Text&gt;子：那我是神马颜色&lt;/Text&gt;
-             &lt;/Text&gt;
-       &lt;/Text&gt;
-</code></pre><h4 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h4><pre><code>直接给组件指定宽、高   &lt;View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} /&gt;
-http://www.devio.org/2016/08/01/Reac-Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/#和而不同
+    多表删除:  
 
-一、父视图属性:
 
-    1、flexDirection(&apos;row&apos;, &apos;column&apos;,&apos;row-reverse&apos;,&apos;column-reverse&apos;)- 布局子元素的排列方向，默认是column不是row
 
-        &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;
-            &lt;View style={{flex:1, height: 50, backgroundColor: 'powderblue'}} /&gt;
-            &lt;View style={{flex:2, height: 50, backgroundColor: 'skyblue'}} /&gt;
-            &lt;View style={{flex:3, height: 50, backgroundColor: 'steelblue'}} /&gt;
-        &lt;/View&gt;
+4、查询记录    
 
-        重要:  
-            &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;  
-            父组件没设置flexDirection=row，默认布局为列，子组件设置flex:1是没用的，子组件只能设置width
-            父组件设置为flexDirection=row，子组件可以设置flex:1
+    查询所有列: SELECT * FROM 表名;        // 查询所有列
 
-    2、flexWrap (&apos;wrap&apos;, &apos;nowrap&apos;) - 定义子元素是否允许多行排列
+    查询多列:   SELECT username, age, sex FROM 表名;
 
-    3、justifyContent (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;space-between&apos;, &apos;space-around&apos;) - 定义子元素如何对齐
+    条件查询:   SELECT * FROM 表名  WHERE  条件表达式(id&lt;100);        // 查询表中的id小于100的所有记录
 
-    4、alignItems (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 定义子元素在侧轴对齐的
+    查询结果分组 GROUP BY: 返回一个列中所有不相同的类别
 
+        SELECT * FROM 表名  GROUP BY  列名 [ASC | DESC];             // 分组以哪列进行返回 ASC | DESC 正、倒序
 
-    justifyContent - 子元素沿主轴的排列方式
+                例: SELECT * FROM users GROUP BY sex;            # 返回sex列的分组内容，结果为两类: &apos;男&apos; 和 &apos;女&apos;
 
-        justifyContent: flex-start、center、flex-end、space-around以及space-between
-        &lt;View style={{ flex: 1,  flexDirection: 'row' justifyContent: center}}&gt;
 
-    alignItems - 
+    HAVING 分组条件: SELECT * FROM 表名  GROUP BY  列名  HAVING  version &lt; 100;   // 分组后进行过滤
 
+    LIMIT 指定查询范围: SELECT * FROM 表名 LIMIT  5, 10;        // 从第5条数据开始，查找出10条数据，也就是查询出第5-15条数据
 
-二、子视图属性：
+    AS 给予别名: 当名子太长可以定义一个名，输出的时候就是定义的名字
 
-    1、alignSelf (&apos;auto&apos;, &apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 
+            SELECT person AS ps, username AS un FORM users;
 
-    2、flex - 
-</code></pre><h4 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h4><pre><code>RN里网络请求分为: Fetch、WebSocket、XMLHttpRequest
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>onPress: 点击
 
-onLongPress: 长按
+    --------------- select 其它  ---------------
 
-maximumZoomScale和minimumZoomScale: 双指缩放
+    SELECT COUNT(*) FROM 表名 WHERE (条件)         // 返回记录的总数，如果不加条件返回整个表的总记录
 
-http://reactnative.cn/docs/0.42/panresponder.html
-</code></pre><h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><pre><code>1、LayoutAnimation 用于全局的布局动画
+    SELECT AVG(price) FROM 表名;                    // AVG()来求一个字段的平均值
 
-2、Animated 用于创建更精细的交互控制的动画
+    SELECT ROUND(AVG(price), 2) FROM 表名;        // ROUND() 对数值进行四舍五入
 
-    Animated 封装了四个可以动画的组件: View、Text、Image和ScrollView
 
-    start/stop 方法来控制动画按顺序执行
-</code></pre><h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><pre><code>setTimeout, clearTimeout
-setInterval, clearInterval
-setImmediate, clearImmediate
-requestAnimationFrame, cancelAnimationFrame
-</code></pre><h4 id="RN与原生通信"><a href="#RN与原生通信" class="headerlink" title="RN与原生通信"></a>RN与原生通信</h4><pre><code>http://blog.csdn.net/zww1984774346/article/details/71167775
+小技巧:
 
-rn与IOS原生通信的三部分
+    1、SELECT * FROM users\G;        // 加\G 以网格形势展示查询，格式化了数据方便来看
 
-    1、属性        2、原生模块      3、原生UI组件封装
 
-    原生要写到AppDelegate.m文件中
+设置空值
 
-    # 属性是最简单的跨组件通信，从原生组件传递属性到React Native 或 React Native到原生组件
+    例 UPDATE tag SET label=&apos;折&apos; WHERE label=NULL;        // 将label列中所有空值更新成&apos;折&apos;，失效不会被
 
-        原生中添加imageList:
+    MySQL: null值需要通过几种方式
 
-            NSArray *imageList = @[@&quot;https://facebook.github.io/react/img/logo_og.png&quot;,
-                        @&quot;https://facebook.github.io/react/img/logo_og.png&quot;];
+    1、is null、is not null: UPDATE tag SET label=&apos;折&apos; WHERE label is null;
 
-            NSDictionary *props = @{@&quot;images&quot; : imageList};
+    2、ISNULL(): 与上面一样 UPDATE tag SET label=&apos;折&apos; WHERE ISNULL(label);
+</code></pre><h4 id="子查询语句"><a href="#子查询语句" class="headerlink" title="子查询语句"></a>子查询语句</h4><pre><code>子查询指嵌套在查询内部，且必须始终出现在圆括号内
 
-            RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                        moduleName:@&quot;AwesomeProject&quot;
-                                        initialProperties:props             // 这里initialProperties:props]传递给RN
-                                        launchOptions:launchOptions];
+子查询包含关键字或条件: DISTINCT、GROUP BY、ORDER BY、LIMIT、函数等
 
-        RN中接收与props传值一样:
+子查询外层查询可以是: SELECT、INSERT、UPDATE、SET、DO
 
-            &lt;View&gt;
-                {
-                    this.props.images.map(function(items){
-                        return &lt;Image 
-                            source={{uri:items}} 
-                            style={{width:100,height:100}}&gt;&lt;/Image&gt; 
-                    })
-                }
-            &lt;/View&gt;
+1、按返回结果集分类
 
+    http://www.cnblogs.com/herry52/p/5643986.html
 
-1、RN访问OC
+    分为4种：表子查询，行子查询，列子查询和标量子查询
 
-    // 创建原生模块实例
-    var NativeModule = require(&apos;react-native&apos;).NativeModules.NativeTest;
+    1) 表子查询：返回的结果集是一个行的集合，N行N列（N&gt;=1）。表子查询经常用于父查询的FROM子句中。
 
-    // 调用原生的doSomething()方法
-    NativeModule.doSomething(&apos;ReactNative&apos;);
+        示例: 获取编号小于10的男性球员的号码
 
+        SELECT playerno FROM (SELECT playerno, sex FROM players WHERE playerno &lt; 10) AS players10 WHERE sex=&apos;M&apos;;
 
-2、OC访问RN
+        分析: 
 
-http://www.jianshu.com/p/9d7dbf17daa5
-</code></pre><h4 id="生成测试包"><a href="#生成测试包" class="headerlink" title="生成测试包"></a>生成测试包</h4><pre><code>iOS—最全的真机测试教程   http://www.cocoachina.com/ios/20160711/17004.html
+        // 查询players中playerno小于10的两个字段的记录，并起别名为player10
+        SELECT playerno, sex FROM players WHERE playerno &lt; 10 AS players10;    
 
-团队开发的Xcode配置和生成包
+        // 显示playerno字段内容，条件是子表中的sex=&apos;M&apos;
+        SELECT playerno FROM 查询出的内容 WHERE sex=&apos;M&apos;
 
-    xCode -&gt; Preferencse -&gt; Accounts -&gt; + 填加 选择 add apple ID 将账号和密码输入
 
-    点击工程目录 -&gt; General 
-        -&gt; Identity面板下的 Bundle Identifler 填写权限 “com.ucredit.paydayloan” 
-        -&gt; 在 Signing面板中的 Team 中选择&quot;ZhongChengXingyu of......&quot;
+    2) 行子查询：返回的结果集是一个列的集合，一行N列（N&gt;=1）。行子查询可以用于福查询的FROM子句和WHERE子句中。
 
-    将手机与mac连接，将Device选择当前手机设备，点击 运行，写读取设备成功后，在运行一次这次是执行build
-</code></pre><h4 id="原生组件"><a href="#原生组件" class="headerlink" title="原生组件"></a>原生组件</h4><pre><code>两种方法加载原生组件
+        示例: players表中获取与100号球员性别相同并且居住在同一城市的球员号码。
 
-1、react-native link 命令
+        SELECT playerno, sex, town FROM players WHERE (sex, town) = (select sex, town FROM players where playerno = 100);
 
-    不仅会将第三方模块的原生组件代码链接入 Android/IOS 中，还会将字体等文件移动相应的目录中
 
-2、通过Xcode来导入组件
+    3) 列子查询：返回的结果集是一个行的集合，N行一列（N&gt;=1）
 
-    http://www.cnblogs.com/shaoting/p/6148085.html
+        列子查询可以使用 IN、ANY、SOME、ALL
 
-3、Flow
+        1、修饰的比较运算符: ANY、SOME、ALL
 
-    Flow是 Facebook出品的表态类型语言，可以将RN内部也支持ES 7的类属性的写法
+            如果子查询返回：Subquery returns more than 1 row   多于一行记录，使用上面运算符
 
-        // 就可以不用在象ES 6将静态属性写到constructor中
-        class MyComponent extends Component {
-            constructor(props){
-                super(props);
+            ANY和SOME是等价的意思只符合一个就可以
 
-                // 私有属性
-                this.isField = 1;   
-                // state
-                this.state = {
-                    username: &apos;siguang&apos;
-                }
-            }
+            ALL 需要符合全部
 
-            render(){
-                return (
-                    &lt;View&gt;
-                        {this.username}
-                    &lt;/View&gt;
-                )
-            }
-        }
 
-        class MyComponent extends Component {
-            isField = 1;
-            state = {
-                username: &apos;siguang&apos;
-            }
+        2、IN、NOT IN 子查询
 
-            render(){
-                return (
-                    &lt;View&gt;
-                        {this.usernmae}
-                    &lt;/View&gt;
-                )
-            }
-        }
-</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><pre><code>1、Command+R  重新刷新
 
-2、Command+D  打开菜单 
 
-3、Debug JS Remotely 用chrome浏览器调试,Alt+Command+j出现浏览器debug窗口
+    4) 标量子查询：可以指定一个标量表达式的任何地方，几乎都可以使用一个标量子查询
 
-4、Disable Live Reload 时实刷新，代码修改保存后会就刷新
+        示例: 获取和27号球员出生在同一年的球员的号码
 
-5、show Perf Monitor 打开FPS监控器
+        SELECT playerno, name, birth_date FROM players WHERE YEAR(birth_date) = (SELECT YEAR(birth_date) FROM players WHERE playerno=100) AND playerno != 100;
+</code></pre><p>—————————– 运算符与函数 —————————–</p>
+<h4 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h4><pre><code>1、CONCAT(): 字符连接    SELECT CONCAT(&apos;user&apos;, &apos;-&apos;, &apos;name&apos;);
 
-6、show Inspector 用于查看页面结构及属性
-</code></pre><p>XCode装证书<br><a href="http://www.cocoachina.com/ios/20160711/17004.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160711/17004.html</a></p>
-<p>| 相关文章<br>| <a href="https://github.com/jondot/awesome-react-native#videos" target="_blank" rel="noopener">https://github.com/jondot/awesome-react-native#videos</a><br>| <a href="http://reactnative.cn/docs/0.44/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.44/getting-started.html</a><br>| <a href="http://www.devio.org/" target="_blank" rel="noopener">http://www.devio.org/</a><br>| <a href="https://github.com/crazycodeboy/RNStudyNotes/" target="_blank" rel="noopener">https://github.com/crazycodeboy/RNStudyNotes/</a><br>| <a href="http://blog.csdn.net/quanqinyang/article/details/52215652" target="_blank" rel="noopener">http://blog.csdn.net/quanqinyang/article/details/52215652</a>   调试方法<br>| <a href="http://lib.csdn.net/base/reactnative/structure" target="_blank" rel="noopener">http://lib.csdn.net/base/reactnative/structure</a><br>| <a href="http://www.jianshu.com/p/5b185df2d11a" target="_blank" rel="noopener">http://www.jianshu.com/p/5b185df2d11a</a><br>| <a href="http://www.lcode.org/react-native/" target="_blank" rel="noopener">http://www.lcode.org/react-native/</a><br>| <a href="http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3" target="_blank" rel="noopener">http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3</a><br>| <a href="http://lib.csdn.net/article/reactnative/63268" target="_blank" rel="noopener">http://lib.csdn.net/article/reactnative/63268</a>   打包到真机<br>|<br>| 示例<br>| <a href="https://github.com/react-native-community" target="_blank" rel="noopener">https://github.com/react-native-community</a><br>| <a href="https://github.com/ljunb/react-native-iShiWuPai" target="_blank" rel="noopener">https://github.com/ljunb/react-native-iShiWuPai</a>       示例<br>| <a href="https://github.com/sunnylqm" target="_blank" rel="noopener">https://github.com/sunnylqm</a><br>| <a href="https://github.com/DoctorQ/react-native-helloworld" target="_blank" rel="noopener">https://github.com/DoctorQ/react-native-helloworld</a><br>|<br>| <a href="http://blog.csdn.net/liu__520/article/category/6460088" target="_blank" rel="noopener">http://blog.csdn.net/liu__520/article/category/6460088</a><br>| <a href="http://www.devio.org/tags/#React" target="_blank" rel="noopener">http://www.devio.org/tags/#React</a> Native<br>|</p>
+    // 将tag表中value和label字段的值连接，并通过AS来返回一个别列名为tagName
+    SELECT CONCAT(value, &apos;_&apos;, label) AS tagName FROM tag;
+
+
+2、CONCAT_WS(): 使用指定的分隔符进行字符连接
+
+    SELECT CONCAT_WS(&apos;|&apos;, name, user, id);        以&quot;|&quot;进行分隔
+
+
+3、FORMAT(): 数据格式化
+
+    SELECT FORMAT(132.34234, 2);        // 132.34
+
+
+4、LOWER(): 将字符转成小写
+
+5、UPPER(): 将字符转成大写
+
+6、LEFT()、RIGHT(): 获取从左、右侧字符的几位
+
+    SELECT LEFT(&apos;what are you doing.&apos;, 7);         // what ar
+
+7、LENGTH(): 获取字符串长度
+
+8、LTRIM()、RTRIM()、TRIM(): 删除前空格、删除后空格、删除前后空格
+
+9、SUBSTRING(): 字符串的截取 substring();
+
+        SELECT SUBSTRING(&apos;what are you doing.&apos;, 3, 7);        // at are
+
+10、RESPLACE(): 字符替换 
+
+        SELECT REPLACE(&apos;what are you doing.&apos;, &apos; &apos;, &apos;&apos;);      // whatareyoudoing.
+
+11、LIKE(): 模式匹配
+
+        %: 为任意字符            _: 任意一个字符
+
+        ESCAPE: 使用哪个字符后的百分号
+
+        SELECT * FROM sys_user WHERE username LIKE &apos;%@renrendai.com%&apos;\G;    // sys_user表中username字段匹配出 带有@renrendai.com的字符
+
+        SELECT * FROM sys_user WHERE username LIKE &apos;%renren%%&apos; ESCAPE &apos;renren&apos;\G;    // 匹配出 renren%
+</code></pre><h4 id="数值运算符"><a href="#数值运算符" class="headerlink" title="数值运算符"></a>数值运算符</h4><pre><code>1、CEIL(): 向上取整    SELECT CEIL(4.9);        // 5     SELECT CEIL(log) FROM office;
+
+2、FLOOR(): 向下取整    SELECT FLOOR(4.2);        // 4
+
+3、DIV(): 整数除法     SELECT 20 DIV 3;        // 6
+
+4、MOD(): 取模
+
+5、POWER(): 幂运算
+
+6、ROUND(): 四舍五入        SELECT ROUND(2.3464, 2);    // 2.35
+
+7、TEUNCATE(): 数字截取
+</code></pre><h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><pre><code>1、[NOT] BETWEEN ... AND ... :  在不在一个范围内
+
+        // 查找出fruit表中fruit_price字段（价格）10元至30无之间的数据
+        SELECT fruit_id, fruit_desc, fruit_price FROM  fruit WHERE fruit_price BETWEEN 10 AND 30;
+
+
+2、[NOT] IN(): 在不在几个值的内
+
+        SELECT 10 IN (5, 20, 40);        // 返回0
+
+        SELECT 10 IN (2, 10, 30, 49);    // 返回1
+
+
+3、IS [NOT] NULL: 返回为空， IS NOT NULL 返回不为空
+
+    // 返回 fruit_dim_three 内容为空的值
+    SELECT fruit_product_name, fruit_price,fruit_dim_three FROM fruit WHERE fruit_dim_three IS NULL;  
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>一、日期时间函数
+
+    1、NOW(): 返回一个当前日期和时间
+
+    2、CURDATE(): 当前日期
+
+    3、CURTIME(): 当前时间
+
+    4、DATE_ADD(): 在一个时间内添加多少时间
+
+            SELECT DATE_ADD(&apos;2016-12-12&apos;, INTERVAL 365 DAY);        // 返回 2017-12-12 , -365就是减365天
+
+    5、DATEDIFF(date1, date2): 两个日期的差值
+
+            SELECT DATEDIFF(&apos;2018-12-12&apos;, NOW());        // 2018-12-12与今天相差多少天
+
+    6、DATE_FORMAT(): 日期格式化
+
+            SELECT DATE_FORMAT(&apos;2016-12-10&apos;, &apos;%Y/%m/%d&apos;);        // 转换成 2016/12/10 
+
+            SELECT DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
+
+
+二、信息函数
+
+    1、CONNECTION_ID(): 连接的ID（线程的ID）
+
+    2、DATABASE(): 查看当前数据库     SELECT DATABASE();
+
+    3、LAST_INSERT_ID(): 最后插入记录
+
+    4、USER(): 当前用户
+
+    5、VERSION(): 版本信息
+
+
+三、聚合函数
+
+    1、AVG(): 平均值的计算
+
+            SELECT AVG(fruit_price) FROM fruit;        // 将水果的价格字段平均值返回
+
+    2、COUNT(): 返回条件的行数
+
+            SELECT COUNT(列名) FROM 表名;        // 返回数目(NULL 不计)
+
+            SELECT COUNT(*) FROM 表名;        // 返回所有的记录数
+
+    3、MAX(): 最大值
+
+    4、MIN(): 最小值
+
+    5、SUM(): 返回和
+
+
+四、加密函数
+
+    1、MD5(): 信息摘要算法
+
+            MD5(&apos;adf234sdf2=-a1%af123#$&apos;);        // 16f7709af2898dd3c9f116d56ea93c82
+
+    2、PASSWORD(): 密码算法
+
+            PASSWORD(&apos;adf234sdf2=-a1%af123#$&apos;);    // *6D3B0C079BFF7DAD315D9AF131F0868939A74A8D
+</code></pre><h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><pre><code>一、创建自定函数:
+
+    CREATE FUNCTION 函数名 RETURNS {STRING | INTERGER | REAL | DECIMAL} routine_body
+
+    创建     函数      名    返回                    类型                     函数体          
+
+
+    函数体: 由合法的SQL语句构成，可以是简单的SELECT 或 INSERT语句
+
+    示例1 无参数:
+
+        // 创建一个返回当前格式化的日期
+        CREATE FUNCTION newDate() RETURNS VARCHAR(30) 
+
+            RETURN  DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
+
+        // 调用
+        SELECT newDate();        // 2016年-12月-12日 11时:31分:55秒
+
+
+    示例2 有参数:
+
+        CREATE FUNCTION fun2(num1 SMALLINT UNSIGNED, num2 SMALLINT UNSIGNED) 
+
+            RETURNS FLOAT(10,2) UNSIGNED  
+
+            RETURN (num1+num2)/2;
+
+
+        SELECT fun2(20, 30);        // 25.00
+
+
+    示例3 返回语句
+
+        # 需要修改结束符 “;”
+
+        // 定义一个向users表中的username字段插入值
+
+        DELIMITER //;
+
+        CREATE FUNCTION addUser(username VARCHAR(20))
+
+            RETURNS INT UNSIGNED
+
+            BEGIN
+
+            INSERT users(username) VALUES(username);
+
+            RETURN LAST_INSERT_ID();
+
+            END//
+
+
+二、删除自定义函数: DROP FUNCTION 函数名;
+
+ROW_COUNT(): 用于返回被 update, insert, delete 实际修改的行数
+
+FOUND_ROWS(): 返回上一条执行语句，影响的行数
+</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><pre><code>一、int: 整型
+
+二、浮点
+
+    1、float: 单精度
+
+    2、double: 双精度浮点
+
+三、日期
+
+    1、datetime: 日期
+
+    2、timestamp: 日期
+
+    3、year、month、date
+
+四、字符型
+
+    1、char: 定长字符类型
+
+    2、varchar: 不定长字符
+
+    3、tinytext:
+
+    4、text: 
+
+    5、medinmtext:
+
+    6、longtext:
+
+    7、enum: 
+
+    8、set: 
+</code></pre><h4 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h4><pre><code>一、算术运算符
+
+    +     加   SET var1=2+2;       4
+    -     减   SET var2=3-2;       1
+    *     乘   SET var3=3*2;       6
+    /     除   SET var4=10/3;      3.3333
+    DIV   整除 SET var5=10 DIV 3;  3
+    %     取模 SET var6=10%3 ;     1
+
+
+二、比较运算符
+
+    &gt;            大于 1&gt;2 False
+    &lt;            小于 2&lt;1 False
+    &lt;=           小于等于 2&lt;=2 True
+    &gt;=           大于等于 3&gt;=2 True
+    BETWEEN      在两值之间 5 BETWEEN 1 AND 10 True
+    NOT BETWEEN  不在两值之间 5 NOT BETWEEN 1 AND 10 False
+    IN           在集合中 5 IN (1,2,3,4) False
+    NOT IN       不在集合中 5 NOT IN (1,2,3,4) True
+    =            等于 2=3 False
+    &lt;&gt;, !=       不等于 2&lt;&gt;3 False
+    &lt;=&gt;          严格比较两个NULL值是否相等 NULL&lt;=&gt;NULL True
+    LIKE         简单模式匹配 &quot;Guy Harrison&quot; LIKE &quot;Guy%&quot; True
+    REGEXP       正则式匹配 &quot;Guy Harrison&quot; REGEXP &quot;[Gg]reg&quot; False
+    IS NULL      为空 0 IS NULL False
+    IS NOT NULL  不为空 0 IS NOT NULL True
+
+
+三、逻辑运算符
+
+    与(AND) &amp;&amp;       或（OR）||        非（NOT）！
+
+
+四、位运算符
+
+    |   位或
+    &amp;   位与
+    &lt;&lt;  左移位
+    &gt;&gt;  右移位
+    ~   位非(单目运算，按位取反)
+</code></pre><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><pre><code>1、AUTO_INCREMENT: 自动编号，必须与主键组合使用，起始值为1，每次增加1
+
+2、primary key         主键约束 每张表只能存在一个主键，主键保证记录的唯一性, 主键自动为 NOT NULL
+
+3、foreign            外键约束 保持数据的一致性, 实现一对一或一对多的关系约束
+</code></pre><h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><pre><code>2、PRIMARY KEY（主键约束）: 每张表只能存在一个主键，保证记录的唯一性，主键自动为NOT NULL
+
+3、UNIQUE KEY（唯一约束）: 可以保证记录的唯一性，字段可以为空值（NULL），每张数据表可以存在多个唯一约束
+
+4、DEFAULT（默认约束）: 默认值，插入记录时没有赋值，自动赋予默认值
+
+    创建表时的性别字段，有三个值1，2，3 =&gt; 男，女，不男不女  如果insert插入未写入值，默认加入3
+    sex ENUM(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;) DEFAULT &apos;3&apos;        
+
+5、FOREIGN KEY（外键约束）: 保证数据一致性和完整性，实现一对一 或 一对多关系
+
+5、NOT NULL（非空约束） 不能为空，必须写值要不报错
+
+6、NULL 可以为空
+
+# 约束分为表级约束 和 列级约束
+
+    约束只针对一个字段来约束，叫列级约束
+
+    约束针对两个或以上字段来约束，叫表级约束
+
+
+# 外键约束的要求
+
+    1、父表和子表必须使用相同的存储引擎，禁止使用临时表
+
+    2、数据表存储只能为InnoDB
+
+    3、外键列和参照必须有相似的数据类型，
+
+CURRENT_TIMESTAMP
+</code></pre><p>—————————– 存储过程 —————————–</p>
+<h4 id="MySQL命令执行过程"><a href="#MySQL命令执行过程" class="headerlink" title="MySQL命令执行过程"></a>MySQL命令执行过程</h4><pre><code>SQL命令 -&gt; MySQL引擎 -&gt; 语法正确 -&gt; 可识别命令 -&gt; 执行结果 -&gt; 返回客户端
+
+需要这一套流程才能跑完，如果使用存储过程会节省中间的一些步骤，可以节省性能.
+</code></pre><h4 id="什么是存储过程"><a href="#什么是存储过程" class="headerlink" title="什么是存储过程"></a>什么是存储过程</h4><pre><code>存储过程: 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理
+
+存储过程存储在数据库内，可以通过应用程序调用和输出
+
+存储过程的优点:
+
+    1、增强SQL语句的功能和灵活性
+
+    2、实现较快的执行速度
+
+        存储过程是不需要语法解析等操作，预编译，所以速度上要快
+
+    3、减少网络流量
+
+        后端应用程序与数据库通信，需要传SQL语句，如果有存储过程就直接告诉执行哪个存储过程就可以了
+</code></pre><h4 id="存储过程的使用"><a href="#存储过程的使用" class="headerlink" title="存储过程的使用"></a>存储过程的使用</h4><pre><code>一、创建存储过程
+
+    CREATE 
+
+    [DEFINER = {user | CURRENT_USER}]         // 如果省略就是默认走的当前登录客户端的用户
+
+    PROCEDURE 存储过程名(参数)
+
+
+    参数：
+
+        1) IN: 表示该参数值必须在调用存储过程时指定，这个值不能返回只能进不能出
+
+        2）OUT: 表示该参数值可以审美观点存储过程改变，并且可以返回，
+
+        3）INOUT: 表示该参数调用时指定，并且可以被改变和返回
+
+
+    过程体
+
+        1）由合法的SQL语句构成
+
+        2）可以是做任意的SQL语句
+
+        3）复合结构则使用BEGIN...END语句，与函数相同，如果执行两个或两个以上语句需要使用BEGIN...END
+
+        4）复合结构可以包含声明、循环、控制结构
+
+
+
+    示例1: 无参数
+
+        // 定义一个返回客户端信息的存储过程
+        CREATE PROCEDURE sp1() SELEECT VERSION();
+
+        // 调用存储过程
+        CALL sp1();                // 如果没有参数可以去掉小括号  CALL sp1;
+
+
+    示例2: 带参数 IN
+
+        DELIMITER //
+
+        CREATE PROCEDURE removeUserId(IN uid INT UNSIGNED)
+
+        BEGIN
+
+        DELETE FROM users WHERE id=uid;                    // 通过传入的id来删除users表中的一条记录
+
+        END //
+
+        // 调用存储过程
+        CALL removeUserId(5);    
+
+
+    示例3: OUT
+
+        DELIMITER ;;
+
+        CREATE PROCEDURE removeIdAndReturnUserCount(IN pid INT UNSIGNED, OUT userCount INT UNSIGNED)         // OUT 定义输出的变量
+
+        BEGIN 
+
+        DELETE FROM users WHERE id = pid;                      // 删除指定的记录
+
+        SELECT count(id) FROM users INTO userCount;         // 查询id字段所有的记录数，并返回userCount变量中，注意结果返回使用INTO
+
+        END;;
+
+
+        // 调用
+        CALL removeIdAndReturnUserCount(3, @count);        // 执行删除并返回记录数，存储在count变量中
+
+        SELECT @count;                // 显示变量的值
+
+
+
+二、删除存储过程: DROP PROCEDURE 存储过程名;
+</code></pre><h4 id="常用概念"><a href="#常用概念" class="headerlink" title="常用概念"></a>常用概念</h4><pre><code>一、什么是存储引擎
+
+    MySQL可以将数据以不同的技术存储在文件（内存）中，这种技术就称为存储引擎。
+
+    每种存储引擎使用不同的存储机制、索引技术、锁定水平，最终提供广泛且不同的功能。
+
+
+二、并发控制
+
+    当多个连接对记录进行修改时保证数据的一致性和完整性
+
+        例: 一个用户删除id=22的操作，另一个用户要读取id=22的操作，这样读取id=22就会报错
+
+            解决这个问题就是使用并发，当迸发读或写时系统会使用锁系统，来控制读写
+
+
+    1、锁
+
+        共享锁（读锁）: 在同一时间段内，多个用户读取同一个资源，读取过程中数据不会发生任何变化.
+
+        排他锁（写锁）: 在任何时候只能有一个用户写入资源，当进行写锁时会阻塞其它的读锁或写锁操作.
+
+
+    2、锁颗粒
+
+        表锁: 开锁最小的锁策略
+
+        行锁: 开锁最大的锁策略
+
+三、事务
+
+    事务的主要作用就是保证数据的完整性
+
+四、外键
+
+    保证数据一致性的策略
+
+五、索引
+
+    是对数据表中一列或多列进行排序的一种结构
+</code></pre><h4 id="Navicat工具"><a href="#Navicat工具" class="headerlink" title="Navicat工具"></a>Navicat工具</h4><pre><code>一、导入、导出表数据
+
+    1、导出，选择要导出的表右键 Dump SQL File 
+
+    2、导入，选中Table右键 import Wizard...
+</code></pre><p>| 使用工具<br>| Navicat</p>
 
         
     </section>
@@ -1358,866 +2613,6 @@ http://www.jianshu.com/p/9d7dbf17daa5
 </code></pre><p>unique</p>
 <blockquote>
 <p>参考资料<br><a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Egg-js/">Egg.js</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
-    const mongoose = app.mongoose;
-    const UserSchema = new mongoose.Schema({
-        username: { type: String },
-        passworrd: { type: String }
-    }, {collection: &apos;user&apos;});
-
-    return mongoose.model(&apos;User&apos;, UserSchema);
-}
-</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
-</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
-<p>bodyParser  中间件，egg内置，用来处里post</p>
-<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
-<blockquote>
-<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
-</blockquote>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/04/MySQL/">MySQL</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/MySQL/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/数据库/">数据库</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <blockquote>
-<p>知识索引</p>
-<p>数据类型: 字符型、整型、浮点型、日期时间型<br>操作符: 算术运算符、比较运算符、逻辑运算符、位运算符<br>属性: 自动编号<br>约束: 主键、外键、表关连、索引<br>库操作: 创建库、修改库、删除库、<br>表操作: 创建表、删除表、查看表结构、查看库中所有表<br>列操作: 添加列、删除列、修改列<br>记录操作: 插入记录、更新记录（单表、多表更新）、删除记录、查询记录（多列查询、分组、指定查询范围、使用别名）<br>子查询语句、例约束、<br>运算符与函数: 字符函数、数值运算符、比较运算符、日期时间函数、信息函数、聚合函数、加密函数、自定义函数<br>存储过程: 创建（参数:IN、OUT、INOUT）、调用<br>其它概念: 存储引擎、并发控制(锁、锁颗粒)、事务、</p>
-</blockquote>
-<h3 id="一、MySQL基础"><a href="#一、MySQL基础" class="headerlink" title="一、MySQL基础"></a>一、MySQL基础</h3><pre><code>1、MySQL介绍
-
-    1）MySQL是关系型数据库
-
-    2）安装后的有4个默认库
-
-        1）information_schem: 
-
-        2) performance_schema: 
-
-        3) test: 
-
-        4) mysql:     
-
-    3）Mysql 端口号 3306
-
-    4）mac下Mysql的配置文件 /usr/local/mysql-5.6.24-osx10.9-x86_64/my.cnf
-
-
-2、MySQL 目录结构 
-
-    mysql安装后的路径 /usr/local/mysql
-
-    1）bin: 存储可执行文件
-
-    2）data: 存储数据文件
-
-    3）docs: 文档
-
-    4）include: 存储包含头文件
-
-    5）lib: 存储库文件
-
-    6）share: 错误消息和字符集文件
-
-
-3、停止和启动mysql服务
-
-    关闭mysql服务    查看进程：ps -ef|grep mysql         杀进程和子进程：sudo kill -9 239 746
-
-    启动mysql服务    sudo /usr/local/mysql-5.6.24-osx10.9-x86_64/bin/mysqld_safe
-
-    系统偏好设置 -&gt; mysql   启动
-
-
-4、登录、退出mysql
-
-    1）登录
-
-        mysql -uroot -pssssss -h127.0.0.1          
-
-        -u 用户名    -p 密码       -P 端口号       -h 数据库地址 
-
-        隐藏密码输入 mysql -uroot -h127.0.0.1 -p    回车后在输入密码
-
-
-    2）退出: exit;
-
-
-5、语法规范
-
-    1）关键字和函数名全部大写
-
-    2）数据库名称、表名称、字段字都小写
-
-    3）SQL语句必须以&quot;;&quot;分号结束
-
-        修改结束符  DELIMITER  //        以 // 为结束
-
-
-6、数据库概念
-
-    1）库: 一些关联表的集合
-
-    2）表: 行和列组成, 行一条数据
-
-    3）主键: 可以唯一标识不会有重复, 可以通过主键来查询数据
-
-    4）外键: 外键可以引用主键数据，用于关联
-
-
-7、安装mysql
-
-    1）安装 homebrew      http://brew.sh/
-
-    2）brew install mysql
-</code></pre><h3 id="二、库服务命令"><a href="#二、库服务命令" class="headerlink" title="二、库服务命令"></a>二、库服务命令</h3><pre><code>1、启动和停止MySQL服务
-
-    service stop mysql
-
-    service start mysql
-
-2、登录: mysql -uroot -p123456 -h127.0.0.1
-
-3、退出: \q 、 exit、 quit
-</code></pre><p>—————————– 语句 —————————–</p>
-<pre><code>关键字与函数名全部大写
-
-数据库名称表名字段名全部小写
-
-SQL语句必须以分号结尾
-</code></pre><h3 id="三、库操作语句"><a href="#三、库操作语句" class="headerlink" title="三、库操作语句"></a>三、库操作语句</h3><pre><code>1、创建数据库       CREATE DATABASE 库名;
-
-        创建一个指定字符集的数据库         CREATE DATABASE 库名 CHARACTER SET utf8;
-
-2、修改数据库       ALTER  DATABASE 库名 CHARACTER SET = uft-8;   // 将库编码改成utf8
-
-3、删除数据库     DROP database 库名;
-
-4、查看所有数据库     SHOW databases;
-
-5、打开数据库        USE 库名;
-
-6、查看当前所在的数据库   SELECT database();
-
-7、查看库的编码: SHOW CREATE DATABASE 库名;
-</code></pre><h3 id="四、操作表语句"><a href="#四、操作表语句" class="headerlink" title="四、操作表语句"></a>四、操作表语句</h3><pre><code>1、创建表        CREATE TABLE  表名(字段名 数据类型, 字段名 数据类型);
-
-            CREATE TABLE  表名(字段 数据类型  primary key,  username VARCHAR(20));        // 加主键 primary key 
-
-2、查看库中所有表  SHOW TABLES [db_name] [where expr];
-
-3、查看表结构    SHOW COLUMNS FROM 表名;         // 与 desc 表名;   相同
-
-4、删除表        DROP TABLE 表名;
-
-5、ALTER 列操作: 
-
-    1）添加列: ALTER TABLE 表名 ADD 列名 varchar(20);
-
-    2）删除列: ALTER TABLE 表名 DROP 列名;
-
-    3）修改列的类型信息
-
-        ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
-
-    4）重命名列
-
-        ALTER TABLE 【表名】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT &apos;注释说明&apos;
-
-    5）重命名表
-
-        ALTER TABLE 【表名字】 RENAME 【表新名字】
-
-    6）删除表中主键
-
-        Alter TABLE 【表名字】 drop primary key
-
-    7）添加主键
-
-        ALTER TABLE sj_resource_charges ADD CONSTRAINT PK_SJ_RESOURCE_CHARGES PRIMARY KEY (resid,resfromid)
-
-    8）添加索引
-
-        ALTER TABLE sj_resource_charges add index INDEX_NAME (name);
-
-    9）添加唯一限制条件索引
-
-        ALTER TABLE sj_resource_charges add unique emp_name2(cardnumber);
-
-    10）删除索引
-
-        ALTER TABLE [表名] index emp_name;
-</code></pre><h3 id="五、记录操作语句"><a href="#五、记录操作语句" class="headerlink" title="五、记录操作语句"></a>五、记录操作语句</h3><pre><code>1、插入记录     
-
-    1) INFO 插入指定字段值:     INSERT INTO 表名(name, age) VALUES (name值, age值);
-
-    2) SET  插入指定字段值:     INSERT 表名 SET name=&quot;sssss&quot;, age=&quot;lll&quot;;
-
-    3）插入所有字段值:        INSERT 表名 VALUES (NULL, name值, age值)；        // 1、没有INFO  2、如果id为主键、自增涨，需要给一个默认传入NULL 或 DEFAULT
-
-    4）INSERT ... SELECT 将查询结果写入数据表
-
-        INSERT [INTO] 表名 FROM 列名   SELECT 
-
-        // 将查询出restaurant表中的type进行分组内容，插入到rest_type表中的type字段中
-
-        INSERT rest_type(type) SELECT type FROM restaurant GROUP BY type;    
-
-
-2、更新数据     
-
-    单表更新:  UPDATE 表名 SET 要更新字段名=新值, 要更新字段名=新值  WHERE  条件        // 如果省略where条件，将修改表中的所有记录
-
-    多表更新:  
-
-        UPDATE 表1  [JOIN | CROSS JOIN | INNER JOIN] 表2
-
-        表连接类型，JOIN、CROSS JOIN、INNER JOIN
-
-                   LEFT [OUTER] JOIN 左外连接
-
-                   RIGHT [OUTER] JOIN 右外连接
-
-
-3、删除记录     
-
-    单表删除:  DELETE FROM  表名 WHERE id=2
-
-    多表删除:  
-
-
-
-4、查询记录    
-
-    查询所有列: SELECT * FROM 表名;        // 查询所有列
-
-    查询多列:   SELECT username, age, sex FROM 表名;
-
-    条件查询:   SELECT * FROM 表名  WHERE  条件表达式(id&lt;100);        // 查询表中的id小于100的所有记录
-
-    查询结果分组 GROUP BY: 返回一个列中所有不相同的类别
-
-        SELECT * FROM 表名  GROUP BY  列名 [ASC | DESC];             // 分组以哪列进行返回 ASC | DESC 正、倒序
-
-                例: SELECT * FROM users GROUP BY sex;            # 返回sex列的分组内容，结果为两类: &apos;男&apos; 和 &apos;女&apos;
-
-
-    HAVING 分组条件: SELECT * FROM 表名  GROUP BY  列名  HAVING  version &lt; 100;   // 分组后进行过滤
-
-    LIMIT 指定查询范围: SELECT * FROM 表名 LIMIT  5, 10;        // 从第5条数据开始，查找出10条数据，也就是查询出第5-15条数据
-
-    AS 给予别名: 当名子太长可以定义一个名，输出的时候就是定义的名字
-
-            SELECT person AS ps, username AS un FORM users;
-
-
-    --------------- select 其它  ---------------
-
-    SELECT COUNT(*) FROM 表名 WHERE (条件)         // 返回记录的总数，如果不加条件返回整个表的总记录
-
-    SELECT AVG(price) FROM 表名;                    // AVG()来求一个字段的平均值
-
-    SELECT ROUND(AVG(price), 2) FROM 表名;        // ROUND() 对数值进行四舍五入
-
-
-小技巧:
-
-    1、SELECT * FROM users\G;        // 加\G 以网格形势展示查询，格式化了数据方便来看
-
-
-设置空值
-
-    例 UPDATE tag SET label=&apos;折&apos; WHERE label=NULL;        // 将label列中所有空值更新成&apos;折&apos;，失效不会被
-
-    MySQL: null值需要通过几种方式
-
-    1、is null、is not null: UPDATE tag SET label=&apos;折&apos; WHERE label is null;
-
-    2、ISNULL(): 与上面一样 UPDATE tag SET label=&apos;折&apos; WHERE ISNULL(label);
-</code></pre><h3 id="六、子查询语句"><a href="#六、子查询语句" class="headerlink" title="六、子查询语句"></a>六、子查询语句</h3><pre><code>子查询指嵌套在查询内部，且必须始终出现在圆括号内
-
-子查询包含关键字或条件: DISTINCT、GROUP BY、ORDER BY、LIMIT、函数等
-
-子查询外层查询可以是: SELECT、INSERT、UPDATE、SET、DO
-
-1、按返回结果集分类
-
-    http://www.cnblogs.com/herry52/p/5643986.html
-
-    分为4种：表子查询，行子查询，列子查询和标量子查询
-
-    1) 表子查询：返回的结果集是一个行的集合，N行N列（N&gt;=1）。表子查询经常用于父查询的FROM子句中。
-
-        示例: 获取编号小于10的男性球员的号码
-
-        SELECT playerno FROM (SELECT playerno, sex FROM players WHERE playerno &lt; 10) AS players10 WHERE sex=&apos;M&apos;;
-
-        分析: 
-
-        // 查询players中playerno小于10的两个字段的记录，并起别名为player10
-        SELECT playerno, sex FROM players WHERE playerno &lt; 10 AS players10;    
-
-        // 显示playerno字段内容，条件是子表中的sex=&apos;M&apos;
-        SELECT playerno FROM 查询出的内容 WHERE sex=&apos;M&apos;
-
-
-    2) 行子查询：返回的结果集是一个列的集合，一行N列（N&gt;=1）。行子查询可以用于福查询的FROM子句和WHERE子句中。
-
-        示例: players表中获取与100号球员性别相同并且居住在同一城市的球员号码。
-
-        SELECT playerno, sex, town FROM players WHERE (sex, town) = (select sex, town FROM players where playerno = 100);
-
-
-    3) 列子查询：返回的结果集是一个行的集合，N行一列（N&gt;=1）
-
-        列子查询可以使用 IN、ANY、SOME、ALL
-
-        1、修饰的比较运算符: ANY、SOME、ALL
-
-            如果子查询返回：Subquery returns more than 1 row   多于一行记录，使用上面运算符
-
-            ANY和SOME是等价的意思只符合一个就可以
-
-            ALL 需要符合全部
-
-
-        2、IN、NOT IN 子查询
-
-
-
-    4) 标量子查询：可以指定一个标量表达式的任何地方，几乎都可以使用一个标量子查询
-
-        示例: 获取和27号球员出生在同一年的球员的号码
-
-        SELECT playerno, name, birth_date FROM players WHERE YEAR(birth_date) = (SELECT YEAR(birth_date) FROM players WHERE playerno=100) AND playerno != 100;
-</code></pre><p>—————————– 运算符与函数 —————————–</p>
-<h3 id="七、字符函数"><a href="#七、字符函数" class="headerlink" title="七、字符函数"></a>七、字符函数</h3><pre><code>1、CONCAT(): 字符连接    SELECT CONCAT(&apos;user&apos;, &apos;-&apos;, &apos;name&apos;);
-
-    // 将tag表中value和label字段的值连接，并通过AS来返回一个别列名为tagName
-    SELECT CONCAT(value, &apos;_&apos;, label) AS tagName FROM tag;
-
-
-2、CONCAT_WS(): 使用指定的分隔符进行字符连接
-
-    SELECT CONCAT_WS(&apos;|&apos;, name, user, id);        以&quot;|&quot;进行分隔
-
-
-3、FORMAT(): 数据格式化
-
-    SELECT FORMAT(132.34234, 2);        // 132.34
-
-
-4、LOWER(): 将字符转成小写
-
-5、UPPER(): 将字符转成大写
-
-6、LEFT()、RIGHT(): 获取从左、右侧字符的几位
-
-    SELECT LEFT(&apos;what are you doing.&apos;, 7);         // what ar
-
-7、LENGTH(): 获取字符串长度
-
-8、LTRIM()、RTRIM()、TRIM(): 删除前空格、删除后空格、删除前后空格
-
-9、SUBSTRING(): 字符串的截取 substring();
-
-        SELECT SUBSTRING(&apos;what are you doing.&apos;, 3, 7);        // at are
-
-10、RESPLACE(): 字符替换 
-
-        SELECT REPLACE(&apos;what are you doing.&apos;, &apos; &apos;, &apos;&apos;);      // whatareyoudoing.
-
-11、LIKE(): 模式匹配
-
-        %: 为任意字符            _: 任意一个字符
-
-        ESCAPE: 使用哪个字符后的百分号
-
-        SELECT * FROM sys_user WHERE username LIKE &apos;%@renrendai.com%&apos;\G;    // sys_user表中username字段匹配出 带有@renrendai.com的字符
-
-        SELECT * FROM sys_user WHERE username LIKE &apos;%renren%%&apos; ESCAPE &apos;renren&apos;\G;    // 匹配出 renren%
-</code></pre><h3 id="八、数值运算符"><a href="#八、数值运算符" class="headerlink" title="八、数值运算符"></a>八、数值运算符</h3><pre><code>1、CEIL(): 向上取整    SELECT CEIL(4.9);        // 5     SELECT CEIL(log) FROM office;
-
-2、FLOOR(): 向下取整    SELECT FLOOR(4.2);        // 4
-
-3、DIV(): 整数除法     SELECT 20 DIV 3;        // 6
-
-4、MOD(): 取模
-
-5、POWER(): 幂运算
-
-6、ROUND(): 四舍五入        SELECT ROUND(2.3464, 2);    // 2.35
-
-7、TEUNCATE(): 数字截取
-</code></pre><h3 id="九、比较运算符"><a href="#九、比较运算符" class="headerlink" title="九、比较运算符"></a>九、比较运算符</h3><pre><code>1、[NOT] BETWEEN ... AND ... :  在不在一个范围内
-
-        // 查找出fruit表中fruit_price字段（价格）10元至30无之间的数据
-        SELECT fruit_id, fruit_desc, fruit_price FROM  fruit WHERE fruit_price BETWEEN 10 AND 30;
-
-
-2、[NOT] IN(): 在不在几个值的内
-
-        SELECT 10 IN (5, 20, 40);        // 返回0
-
-        SELECT 10 IN (2, 10, 30, 49);    // 返回1
-
-
-3、IS [NOT] NULL: 返回为空， IS NOT NULL 返回不为空
-
-    // 返回 fruit_dim_three 内容为空的值
-    SELECT fruit_product_name, fruit_price,fruit_dim_three FROM fruit WHERE fruit_dim_three IS NULL;  
-</code></pre><h3 id="十、函数"><a href="#十、函数" class="headerlink" title="十、函数"></a>十、函数</h3><pre><code>1、日期时间函数
-
-    1）NOW(): 返回一个当前日期和时间
-
-    2）CURDATE(): 当前日期
-
-    3）CURTIME(): 当前时间
-
-    4）DATE_ADD(): 在一个时间内添加多少时间
-
-            SELECT DATE_ADD(&apos;2016-12-12&apos;, INTERVAL 365 DAY);        // 返回 2017-12-12 , -365就是减365天
-
-    5）DATEDIFF(date1, date2): 两个日期的差值
-
-            SELECT DATEDIFF(&apos;2018-12-12&apos;, NOW());        // 2018-12-12与今天相差多少天
-
-    6）DATE_FORMAT(): 日期格式化
-
-            SELECT DATE_FORMAT(&apos;2016-12-10&apos;, &apos;%Y/%m/%d&apos;);        // 转换成 2016/12/10 
-
-            SELECT DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
-
-
-2、信息函数
-
-    1）CONNECTION_ID(): 连接的ID（线程的ID）
-
-    2）DATABASE(): 查看当前数据库     SELECT DATABASE();
-
-    3）LAST_INSERT_ID(): 最后插入记录
-
-    4）USER(): 当前用户
-
-    5）VERSION(): 版本信息
-
-
-3、聚合函数
-
-    1）AVG(): 平均值的计算
-
-            SELECT AVG(fruit_price) FROM fruit;        // 将水果的价格字段平均值返回
-
-    2）COUNT(): 返回条件的行数
-
-            SELECT COUNT(列名) FROM 表名;        // 返回数目(NULL 不计)
-
-            SELECT COUNT(*) FROM 表名;        // 返回所有的记录数
-
-    3）MAX(): 最大值
-
-    4）MIN(): 最小值
-
-    5）SUM(): 返回和
-
-
-4、加密函数
-
-    1）MD5(): 信息摘要算法
-
-            MD5(&apos;adf234sdf2=-a1%af123#$&apos;);        // 16f7709af2898dd3c9f116d56ea93c82
-
-    2）PASSWORD(): 密码算法
-
-            PASSWORD(&apos;adf234sdf2=-a1%af123#$&apos;);    // *6D3B0C079BFF7DAD315D9AF131F0868939A74A8D
-</code></pre><h3 id="十一、自定义函数"><a href="#十一、自定义函数" class="headerlink" title="十一、自定义函数"></a>十一、自定义函数</h3><pre><code>1、创建自定函数:
-
-    CREATE FUNCTION 函数名 RETURNS {STRING | INTERGER | REAL | DECIMAL} routine_body
-
-    创建     函数      名    返回                    类型                     函数体          
-
-
-    函数体: 由合法的SQL语句构成，可以是简单的SELECT 或 INSERT语句
-
-    示例1 无参数:
-
-        // 创建一个返回当前格式化的日期
-        CREATE FUNCTION newDate() RETURNS VARCHAR(30) 
-
-            RETURN  DATE_FORMAT(NOW(), &apos;%Y年-%m月-%d日 %H时:%i分:%s秒&apos;);
-
-        // 调用
-        SELECT newDate();        // 2016年-12月-12日 11时:31分:55秒
-
-
-    示例2 有参数:
-
-        CREATE FUNCTION fun2(num1 SMALLINT UNSIGNED, num2 SMALLINT UNSIGNED) 
-
-            RETURNS FLOAT(10,2) UNSIGNED  
-
-            RETURN (num1+num2)/2;
-
-
-        SELECT fun2(20, 30);        // 25.00
-
-
-    示例3 返回语句
-
-        # 需要修改结束符 “;”
-
-        // 定义一个向users表中的username字段插入值
-
-        DELIMITER //;
-
-        CREATE FUNCTION addUser(username VARCHAR(20))
-
-            RETURNS INT UNSIGNED
-
-            BEGIN
-
-            INSERT users(username) VALUES(username);
-
-            RETURN LAST_INSERT_ID();
-
-            END//
-
-
-2、删除自定义函数: DROP FUNCTION 函数名;
-
-
-
-ROW_COUNT(): 用于返回被 update, insert, delete 实际修改的行数
-
-FOUND_ROWS(): 返回上一条执行语句，影响的行数
-</code></pre><p>—————————– 数据类型 —————————–</p>
-<h3 id="十二、数据类型："><a href="#十二、数据类型：" class="headerlink" title="十二、数据类型："></a>十二、数据类型：</h3><pre><code>1、int: 整型
-
-2、浮点
-
-    1）float: 单精度
-
-    2）double: 双精度浮点
-
-3、日期
-
-    1）datetime: 日期
-
-    2）timestamp: 日期
-
-    3) year、month、date
-
-4、字符型
-
-    1）char: 定长字符类型
-
-    2) varchar: 不定长字符
-
-    3) tinytext:
-
-    4) text: 
-
-    5) medinmtext:
-
-    6) longtext:
-
-    7) enum: 
-
-    8) set: 
-</code></pre><h3 id="十三、操作符"><a href="#十三、操作符" class="headerlink" title="十三、操作符"></a>十三、操作符</h3><pre><code>1、算术运算符
-
-    +     加   SET var1=2+2;       4
-    -     减   SET var2=3-2;       1
-    *     乘   SET var3=3*2;       6
-    /     除   SET var4=10/3;      3.3333
-    DIV   整除 SET var5=10 DIV 3;  3
-    %     取模 SET var6=10%3 ;     1
-
-
-2、比较运算符
-
-    &gt;            大于 1&gt;2 False
-    &lt;            小于 2&lt;1 False
-    &lt;=           小于等于 2&lt;=2 True
-    &gt;=           大于等于 3&gt;=2 True
-    BETWEEN      在两值之间 5 BETWEEN 1 AND 10 True
-    NOT BETWEEN  不在两值之间 5 NOT BETWEEN 1 AND 10 False
-    IN           在集合中 5 IN (1,2,3,4) False
-    NOT IN       不在集合中 5 NOT IN (1,2,3,4) True
-    =            等于 2=3 False
-    &lt;&gt;, !=       不等于 2&lt;&gt;3 False
-    &lt;=&gt;          严格比较两个NULL值是否相等 NULL&lt;=&gt;NULL True
-    LIKE         简单模式匹配 &quot;Guy Harrison&quot; LIKE &quot;Guy%&quot; True
-    REGEXP       正则式匹配 &quot;Guy Harrison&quot; REGEXP &quot;[Gg]reg&quot; False
-    IS NULL      为空 0 IS NULL False
-    IS NOT NULL  不为空 0 IS NOT NULL True
-
-
-3、逻辑运算符
-
-    与(AND) &amp;&amp;       或（OR）||        非（NOT）！
-
-
-4、位运算符
-
-    |   位或
-    &amp;   位与
-    &lt;&lt;  左移位
-    &gt;&gt;  右移位
-    ~   位非(单目运算，按位取反)
-</code></pre><h3 id="十四、属性"><a href="#十四、属性" class="headerlink" title="十四、属性"></a>十四、属性</h3><pre><code>1、AUTO_INCREMENT: 自动编号，必须与主键组合使用，起始值为1，每次增加1
-
-2、primary key         主键约束 每张表只能存在一个主键，主键保证记录的唯一性, 主键自动为 NOT NULL
-
-3、foreign            外键约束 保持数据的一致性, 实现一对一或一对多的关系约束
-</code></pre><h3 id="十五、约束"><a href="#十五、约束" class="headerlink" title="十五、约束"></a>十五、约束</h3><pre><code>2、PRIMARY KEY（主键约束）: 每张表只能存在一个主键，保证记录的唯一性，主键自动为NOT NULL
-
-3、UNIQUE KEY（唯一约束）: 可以保证记录的唯一性，字段可以为空值（NULL），每张数据表可以存在多个唯一约束
-
-4、DEFAULT（默认约束）: 默认值，插入记录时没有赋值，自动赋予默认值
-
-    创建表时的性别字段，有三个值1，2，3 =&gt; 男，女，不男不女  如果insert插入未写入值，默认加入3
-    sex ENUM(&apos;1&apos;, &apos;2&apos;, &apos;3&apos;) DEFAULT &apos;3&apos;        
-
-5、FOREIGN KEY（外键约束）: 保证数据一致性和完整性，实现一对一 或 一对多关系
-
-5、NOT NULL（非空约束） 不能为空，必须写值要不报错
-
-6、NULL 可以为空
-
-
-# 约束分为表级约束 和 列级约束
-
-    约束只针对一个字段来约束，叫列级约束
-
-    约束针对两个或以上字段来约束，叫表级约束
-
-
-# 外键约束的要求
-
-    1、父表和子表必须使用相同的存储引擎，禁止使用临时表
-
-    2、数据表存储只能为InnoDB
-
-    3、外键列和参照必须有相似的数据类型，
-
-
-
-CURRENT_TIMESTAMP
-</code></pre><p>—————————– 存储过程 —————————–</p>
-<h3 id="十六、MySQL命令执行过程"><a href="#十六、MySQL命令执行过程" class="headerlink" title="十六、MySQL命令执行过程"></a>十六、MySQL命令执行过程</h3><pre><code>SQL命令 -&gt; MySQL引擎 -&gt; 语法正确 -&gt; 可识别命令 -&gt; 执行结果 -&gt; 返回客户端
-
-需要这一套流程才能跑完，如果使用存储过程会节省中间的一些步骤，可以节省性能.
-</code></pre><h3 id="十七、什么是存储过程"><a href="#十七、什么是存储过程" class="headerlink" title="十七、什么是存储过程"></a>十七、什么是存储过程</h3><pre><code>存储过程: 是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理
-
-存储过程存储在数据库内，可以通过应用程序调用和输出
-
-存储过程的优点:
-
-    1、增强SQL语句的功能和灵活性
-
-    2、实现较快的执行速度
-
-        存储过程是不需要语法解析等操作，预编译，所以速度上要快
-
-    3、减少网络流量
-
-        后端应用程序与数据库通信，需要传SQL语句，如果有存储过程就直接告诉执行哪个存储过程就可以了
-</code></pre><h3 id="十八、存储过程的使用"><a href="#十八、存储过程的使用" class="headerlink" title="十八、存储过程的使用"></a>十八、存储过程的使用</h3><pre><code>1、创建存储过程
-
-    CREATE 
-
-    [DEFINER = {user | CURRENT_USER}]         // 如果省略就是默认走的当前登录客户端的用户
-
-    PROCEDURE 存储过程名(参数)
-
-
-    参数：
-
-        1) IN: 表示该参数值必须在调用存储过程时指定，这个值不能返回只能进不能出
-
-        2）OUT: 表示该参数值可以审美观点存储过程改变，并且可以返回，
-
-        3）INOUT: 表示该参数调用时指定，并且可以被改变和返回
-
-
-    过程体
-
-        1）由合法的SQL语句构成
-
-        2）可以是做任意的SQL语句
-
-        3）复合结构则使用BEGIN...END语句，与函数相同，如果执行两个或两个以上语句需要使用BEGIN...END
-
-        4）复合结构可以包含声明、循环、控制结构
-
-
-
-    示例1: 无参数
-
-        // 定义一个返回客户端信息的存储过程
-        CREATE PROCEDURE sp1() SELEECT VERSION();
-
-        // 调用存储过程
-        CALL sp1();                // 如果没有参数可以去掉小括号  CALL sp1;
-
-
-    示例2: 带参数 IN
-
-        DELIMITER //
-
-        CREATE PROCEDURE removeUserId(IN uid INT UNSIGNED)
-
-        BEGIN
-
-        DELETE FROM users WHERE id=uid;                    // 通过传入的id来删除users表中的一条记录
-
-        END //
-
-        // 调用存储过程
-        CALL removeUserId(5);    
-
-
-    示例3: OUT
-
-        DELIMITER ;;
-
-        CREATE PROCEDURE removeIdAndReturnUserCount(IN pid INT UNSIGNED, OUT userCount INT UNSIGNED)         // OUT 定义输出的变量
-
-        BEGIN 
-
-        DELETE FROM users WHERE id = pid;                      // 删除指定的记录
-
-        SELECT count(id) FROM users INTO userCount;         // 查询id字段所有的记录数，并返回userCount变量中，注意结果返回使用INTO
-
-        END;;
-
-
-        // 调用
-        CALL removeIdAndReturnUserCount(3, @count);        // 执行删除并返回记录数，存储在count变量中
-
-        SELECT @count;                // 显示变量的值
-
-
-
-2、删除存储过程: DROP PROCEDURE 存储过程名;
-</code></pre><p>—————————– 概念 —————————–</p>
-<h3 id="十九、常用概念"><a href="#十九、常用概念" class="headerlink" title="十九、常用概念"></a>十九、常用概念</h3><pre><code>1、什么是存储引擎
-
-    MySQL可以将数据以不同的技术存储在文件（内存）中，这种技术就称为存储引擎。
-
-    每种存储引擎使用不同的存储机制、索引技术、锁定水平，最终提供广泛且不同的功能。
-
-
-2、并发控制
-
-    当多个连接对记录进行修改时保证数据的一致性和完整性
-
-        例: 一个用户删除id=22的操作，另一个用户要读取id=22的操作，这样读取id=22就会报错
-
-            解决这个问题就是使用并发，当迸发读或写时系统会使用锁系统，来控制读写
-
-
-    1、锁
-
-        共享锁（读锁）: 在同一时间段内，多个用户读取同一个资源，读取过程中数据不会发生任何变化.
-
-        排他锁（写锁）: 在任何时候只能有一个用户写入资源，当进行写锁时会阻塞其它的读锁或写锁操作.
-
-
-    2、锁颗粒
-
-        表锁: 开锁最小的锁策略
-
-        行锁: 开锁最大的锁策略
-
-
-3、事务
-
-    事务的主要作用就是保证数据的完整性
-
-
-
-4、外键
-
-    保证数据一致性的策略
-
-
-
-5、索引
-
-    是对数据表中一列或多列进行排序的一种结构
-</code></pre><h3 id="二十、Navicat工具"><a href="#二十、Navicat工具" class="headerlink" title="二十、Navicat工具"></a>二十、Navicat工具</h3><pre><code>1、导入、导出表数据
-
-    1）导出，选择要导出的表右键 Dump SQL File 
-
-    2）导入，选中Table右键 import Wizard...
-</code></pre><blockquote>
-<p>使用工具</p>
-<p>Navicat</p>
 </blockquote>
 
         
@@ -3521,11 +3916,11 @@ egg-ua插件
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
+            <a href="/2016/12/04/Egg.js-问题积累/">EggJS框架-问题积累</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
+            <a class="article-date" href="/2016/12/04/Egg.js-问题积累/">
     
     <i class="icon-calendar"></i>
     
@@ -3544,699 +3939,23 @@ egg-ua插件
     
     <section class="article-body markdown-body">
         
-        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+        <h4 id="数据库需要指定表"><a href="#数据库需要指定表" class="headerlink" title="数据库需要指定表"></a>数据库需要指定表</h4><pre><code>module.exports = app =&gt; {
+    const mongoose = app.mongoose;
+    const UserSchema = new mongoose.Schema({
+        username: { type: String },
+        passworrd: { type: String }
+    }, {collection: &apos;user&apos;});
 
-$ npm i egg-validate --save  安装
-
-// {app_root}/config/plugin.js
-exports.validate = {
-    package: &apos;egg-validate&apos;,
-};
-
-// 校验规则 post
-async fromRule(){
-    const {ctx, app} = this;
-
-    // Request 参数规则
-    const paramRule = {
-        username: {type: &apos;string&apos;},
-        password: {type: &apos;string&apos;},
-        rememberMe: {type: &apos;boolean&apos;, required: false},
-    };
-    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
-
-    if(paramErrors){    // 如果为真说明校验不通过
-        ctx.body = `校验失败`;
-    }   
-    else{
-        ctx.body = `校验成功, ${ctx.request.body.username}`;
-    }
+    return mongoose.model(&apos;User&apos;, UserSchema);
 }
-</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+</code></pre><h4 id="不支持ES6的import"><a href="#不支持ES6的import" class="headerlink" title="不支持ES6的import"></a>不支持ES6的import</h4><pre><code>module.exports = app =&gt; {}      // egg使用ES5的导出所以不支持 import
+</code></pre><p>1、this.get(‘user-agent’)  controller中通过this.get()获取请求头的信息</p>
+<p>bodyParser  中间件，egg内置，用来处里post</p>
+<p>加入全局方法:<br>module.exports = {<br>  generateUuid() {<br>    const uuid = uuidV1();<br>    return uuid.replace(/-/g, ‘’).toUpperCase();<br>  },<br>};</p>
+<blockquote>
+<p>参考资料<br><a href="http://koa.bootcss.com/" target="_blank" rel="noopener">http://koa.bootcss.com/</a></p>
+</blockquote>
 
-https://segmentfault.com/a/1190000004286562
-http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
-https://github.com/tj/ejs
-</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
-https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
-</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
-
-2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
-
-3、文件上传 - https://github.com/node-modules/formstream
-
-4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
-
-5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
-</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/11/11/Gulp/">Gulp</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/11/11/Gulp/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-11-11T10:39:38.000Z" itemprop="datePublished">2016-11-11</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/前端构建工具/">前端构建工具</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h4><pre><code>https://github.com/gulpjs
-
-可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理
-
-Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快
-
-主要作用:
-
-    1、多个js或css文件合并、压缩
-
-    2、Sass或Less的编译
-
-    3、图像的压缩
-
-    3、实时刷新页面的本地服务器
-
-gulp对按需加载不好做到，如A和B页面都依赖base.js，但又各依赖a.js和b.js，这种情况gulp打包是将三个都包括了，所以css和html部分gulp来处理，js的webpack处理
-</code></pre><h4 id="安装、使用"><a href="#安装、使用" class="headerlink" title="安装、使用"></a>安装、使用</h4><pre><code>$ npm install -g gulp     // 全局安装Gulp
-
-$ npm init    // 创建package.json 项目描述文件
-
-$ npm install --save-dev gulp    // 作为项目的开发依赖(只在开发时用，不会发布到线上)
-
-$ touch gulpfile.js
-
-    var gulp = require(&apos;gulp&apos;);
-    gulp.task(&apos;default&apos;, function(){
-
-    })
-
-$ gulp     // 运行gulp
-</code></pre><h4 id="gulp-方法"><a href="#gulp-方法" class="headerlink" title="gulp 方法"></a>gulp 方法</h4><pre><code>1、gulp.src(): 获取到想要处理的文件流，可以是一个字符串或者数组，返回一个stream
-
-    1)、*.{png,jpg,gif,ico}      // 匹配文件
-
-    2)、**/*.html        // 目录用**、文件名用*
-
-    gulp.task(&apos;count&apos;, function(){
-        gulp.src([&apos;aa.html&apos;, &apos;bb.html&apos;])    // 或 gulp.src(&apos;src/*.html&apos;);
-            .pipe(gulp.uglify())
-    })
-
-2、gulp.pipe(): 将获取到的文件流通过pipe()导入到gulp的插件中进行处理
-
-3、gulp.dest(): 用来写文件的，插件处理完，通过dest()处理完成后把流中的内容写到指定的文件中
-
-    var gulp = require(&apos;gulp&apos;);
-    gulp.src(&apos;js/main.js&apos;)                 // 获取文件的流的api
-        .pipe(gulp.uglify())            // 文件进行压缩
-        .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));     // 写文件的api
-
-
-4、gulp.task(&apos;任务名&apos; [依赖任务], callback): 定义任务，依赖任务会在当前任务执行前完成
-
-    gulp.task(&apos;test&apos;, [&apos;styles&apos;, &apos;task&apos;], function() {
-        // 将你的默认的任务代码放在这
-    });
-
-    # gulp test     // 执行任务
-
-
-5、gulp.watch(&apos;要监视文件的匹配模式&apos;, [要执行的task定义的任务], callback): 监视文件的变化，变化后来执行定义的任务
-</code></pre><h4 id="gulp-执行命令"><a href="#gulp-执行命令" class="headerlink" title="gulp 执行命令"></a>gulp 执行命令</h4><pre><code>-v 或 --version 会显示全局和项目本地所安装的 gulp 版本号
-
---gulpfile 手动指定一个 gulpfile 的路径，这在你有很多个 gulpfile 的时候很有用。这也会将 CWD 设置到该 gulpfile 所在目录
-
---cwd dirpath 手动指定 CWD。定义 gulpfile 查找的位置，此外，所有的相应的依赖（require）会从这里开始计算相对路径
-
--T 或 --tasks 会显示所指定 gulpfile 的 task 依赖树
-
---tasks-simple 会以纯文本的方式显示所载入的 gulpfile 中的 task 列表
-
---color 强制 gulp 和 gulp 插件显示颜色，即便没有颜色支持
-
---no-color 强制不显示颜色，即便检测到有颜色支持
-
---silent 禁止所有的 gulp 日志
-</code></pre><h4 id="Gulp-扩散操作"><a href="#Gulp-扩散操作" class="headerlink" title="Gulp 扩散操作"></a>Gulp 扩散操作</h4><pre><code>1、复制单个文件task
-
-    gulp.task(&apos;copy-html&apos;,function(){
-        return gulp.src(&apos;app/index.html&apos;).pipe(gulp.dest(&apos;dist&apos;));
-    });
-
-
-2、复制多个文件
-
-    gulp.task(&apos;copy-images&apos;,function(){
-        return gulp.src(&apos;app/imgs/**/*.{jpg,png}&apos;).pipe(gulp.dest(&apos;dist&apos;));
-    });
-
-    gulp.task(&apos;copy-other&apos;,function(){
-        return gulp.src([&apos;app/css/*.css&apos;,&apos;app/js/*.js&apos;],{base:&apos;app&apos;}).pipe(gulp.dest(&apos;dist&apos;));
-    });
-</code></pre><h4 id="gulp-插件"><a href="#gulp-插件" class="headerlink" title="gulp 插件"></a>gulp 插件</h4><pre><code>https://gulpjs.com/plugins/
-
-$ gulp
-$ gulp-babel babel-core babel-preset-env        // ES6转ES5
-$ babel-plugin-transform-runtime        // ES6转ES5运行时转换
-$ gulp-uglify            // 压缩js
-$ gulp-concat            // 合并js
-$ gulp-jshint            // js语法检测
-$ gulp-less              // less编译
-$ gulp-ruby-sass        // sass编译
-$ gulp-minify-css        // css压缩
-$ gulp-css-base64        // 生成64位图标
-$ gulp-htmlmin           // html压缩
-$ gulp-file-include        // includer嵌入到另一个html文件
-$ gulp.spritesmith       // 雪碧图
-$ gulp-imagemin          // 压缩图片
-$ imagemin-pngquant      // 图片的深度压缩
-$ gulp-cache             // 只压缩修改的图片
-$ gulp-rev-append        // 加版本号，给页面文件引用的js和css资源
-$ gulp-autoprefixer     // 自动补齐前缀，根据设置浏览器版本自动处理浏览器前缀 CSS3的前缀
-$ gulp-react             // react区分jsx文件进行转换
-$ gulp-webpack           // webpack
-$ gulp-amd-optimizer     // requirejs 压缩
-$ vinyl-buffer           // 流缓存
-$ merge-stream           // 合并流
-$ gulp-watch             // 侦听变化自动执行task
-$ gulp-livereload        // 当监听文件发生变化时，浏览器自动刷新页面
-$ gulp-header            // 注释自定义插件
-$ gulp-rimraf            // 清除文件
-$ gulp-clean             // 删除文件或目录
-$ gulp-plumber           // 错误提示
-$ gulp-notify            // 消息提示
-$ gulp-rename            // 重命
-$ gulp-connect           // gulp的服务器
-$ gulp-browserify          // 
-$ gulp-open                // 打开浏览器
-$ gulp-md5-plus            // 生成md5码
-
-一、gulpfile.js中引用插件   
-
-    var uglify = require(&apos;gulp-uglify&apos;);
-
-
-二、gulp-load-plugins 模块化管理插件
-
-    1、一般情况下，gulpfile.js中的模块需要一个个加载。
-
-        var gulp = require(&apos;gulp&apos;)
-               jshint = require(&apos;gulp-jshint&apos;),
-            uglify = require(&apos;gulp-uglify&apos;),
-            concat = require(&apos;gulp-concat&apos;);
-
-        gulp.task(&apos;js&apos;, function () {
-               return gulp.src(&apos;js/*.js&apos;)
-                  .pipe(uglify())
-                  .pipe(concat(&apos;app.js&apos;))
-                  .pipe(gulp.dest(&apos;build&apos;));
-        });
-
-
-    2、gulp-load-plugins 会加载 package.json中存在下面的插件依赖：
-
-        &quot;devDependencies&quot;: {
-            &quot;gulp&quot;: &quot;^3.9.0&quot;,
-            &quot;gulp-uglify&quot;: &quot;^2.6.0&quot;,
-            &quot;gulp-concat&quot;: &quot;^2.2.0&quot;
-        }
-
-        var gulp = require(&apos;gulp&apos;);
-        var $ = require(&apos;gulp-load-plugins&apos;)();            // 加载gulp-load-plugins插件，并立刻运行
-
-        使用：$.uglify  可以省去单个引入
-        gulp.task(&apos;add&apos;, function(){
-            gulp.src([&apos;js/main.js&apos;])
-                .pipe($.concat)
-                .pipe($.uglify)            // $.uglify就可以调用了
-                .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
-        })
-</code></pre><h4 id="gulp-webpack构建多页面"><a href="#gulp-webpack构建多页面" class="headerlink" title="gulp + webpack构建多页面"></a>gulp + webpack构建多页面</h4><pre><code>├── .DS_Store
-├── src                // 生产目录
-├── dist            // 发布目录
-├── gulpfile.js
-├── node_modules
-└── package.json
-</code></pre><p>| 参考资料<br>| <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a>   gulp中文网<br>| <a href="http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7</a><br>| <a href="http://www.gulpjs.com.cn/docs/recipes/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/recipes/</a>    gulp 技巧集<br>| <a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/api/</a>    gulp api<br>| <a href="http://www.techug.com/gulp" target="_blank" rel="noopener">http://www.techug.com/gulp</a>  gulp使用指南<br>| <a href="http://www.w3ctech.com/topic/134" target="_blank" rel="noopener">http://www.w3ctech.com/topic/134</a>    gulp开发教程<br>| <a href="http://www.qianduancun.com/nodejs/33.html" target="_blank" rel="noopener">http://www.qianduancun.com/nodejs/33.html</a>      gulp-load-plugins[模块化管理插件]<br>| <a href="http://segmentfault.com/a/1190000003098076#articleHeader0" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003098076#articleHeader0</a>        利用 gulp 处理前端工作流程<br>| <a href="http://www.cnblogs.com/2050/p/4198792.html" target="_blank" rel="noopener">http://www.cnblogs.com/2050/p/4198792.html</a>        前端构建工具gulpjs的使用介绍及技巧<br>| <a href="https://www.cnblogs.com/weixing/p/5474324.html" target="_blank" rel="noopener">https://www.cnblogs.com/weixing/p/5474324.html</a><br>|<br>| 多页面<br>| <a href="https://www.cnblogs.com/maskmtj/archive/2016/07/21/5597307.html" target="_blank" rel="noopener">https://www.cnblogs.com/maskmtj/archive/2016/07/21/5597307.html</a><br>| <a href="https://github.com/fwon/gulp-webpack-demo" target="_blank" rel="noopener">https://github.com/fwon/gulp-webpack-demo</a><br>|<br>| 文件流<br>| <a href="http://segmentfault.com/a/1190000000519006" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000519006</a>    nodejs中流(stream)的理解<br>| <a href="http://www.it165.net/pro/html/201406/15924.html" target="_blank" rel="noopener">http://www.it165.net/pro/html/201406/15924.html</a>    Node.js Stream（流）的学习笔记<br>| <a href="http://segmentfault.com/a/1190000000357044" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000357044</a>    Node 中的流（Stream）<br>|<br>| Promise<br>| <a href="http://segmentfault.com/a/1190000002591145" target="_blank" rel="noopener">http://segmentfault.com/a/1190000002591145</a>    深入理解Promise实现细节<br>| <a href="http://www.tuicool.com/articles/fe6Jbyz" target="_blank" rel="noopener">http://www.tuicool.com/articles/fe6Jbyz</a>    Promise实现原理<br>| <a href="http://segmentfault.com/a/1190000003028634" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003028634</a>    异步编程 promise模式 的简单实现<br>| <a href="http://sentsin.com/web/861.html" target="_blank" rel="noopener">http://sentsin.com/web/861.html</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/11/02/webpack插件类/">webpack插件类</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/11/02/webpack插件类/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-11-02T03:06:16.000Z" itemprop="datePublished">2016-11-02</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/前端构建工具/">前端构建工具</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><pre><code>1、自动刷新浏览器 - 修改代码编译后自动刷新浏览器
-
-2、热替换 - 在不刷新整个网页的时候做到实时预览
-
-    script: {
-        &quot;server&quot;: &quot;webpack-dev-server --open --hot --inline&quot;
-    }
-
-    --hot 与在 new webpack.HotModuleReplacementPlugin() 相同
-
-3、提取公用代码
-
-    通过CommonsChunkPlugin插件来提取指定业务文件中的公用库
-
-4、按需加载、首屏加载
-
-    &lt;!-- 加载 import(/* webpackChunkName: &quot;show&quot; */&apos;./show&apos;, then((show) =&gt; {
-        show(&apos;webpack&apos;)
-    })) --&gt;
-</code></pre><h4 id="将业务逻辑与其它组件库分离"><a href="#将业务逻辑与其它组件库分离" class="headerlink" title="将业务逻辑与其它组件库分离"></a>将业务逻辑与其它组件库分离</h4><pre><code>将业务逻辑和第三方代码分离，不能将他们都合并到一个文件内，使这个js文件比较大，并且跳转到另一个地址也还会重新加载这些公用的文件
-
-Example: 
-
-    对引用的jquery单独提取
-
-    1、import $ from &apos;jquery&apos;;     // js中引用的jquery, 先npm i jquery下载包
-
-    2、webpack.config.js
-
-        // 入口文件
-        entry: {
-            app: path.resolve(__dirname, &apos;web/js/index.js&apos;),
-            vendor: [&apos;jquery&apos;]
-        },
-
-        // 出口文件
-        output: {
-            path: path.resolve(buildPath, &apos;dist&apos;),
-            filename: &apos;[name].min.js?[hash]&apos;,
-            chunkFilename: &quot;[name].min.js?[hash]&quot;
-        },
-
-        plugins: [
-            // 将在html文件中添加&lt;script&gt;引用，并生创建到指定的目录中
-            new HtmlWebpackPlugin({
-                title: &apos;index&apos;,
-                filename: &apos;./web/index.html&apos;,
-                template: &apos;./web/index.html&apos;,
-                chunks: [&apos;app&apos;, &apos;vendor&apos;],            // 这里要把vendor依赖的文件加上，不然生成的html只有引用app.min.js，不会引用jquery.vendor.js
-                inject: true,
-                hash: true
-            }),
-
-            // 拆分插件
-            new webpack.optimize.CommonsChunkPlugin({
-                name: &apos;vendor&apos;,                            // 上面入口定义的节点组
-                filename: &apos;jquery.vendor.js?[hash]&apos;     // 最后生成的文件名
-            }),
-        }
-</code></pre><h4 id="require-ensure按需加载"><a href="#require-ensure按需加载" class="headerlink" title="require,ensure按需加载"></a>require,ensure按需加载</h4><pre><code>require()与require.ensure()加载的不同
-
-1、require(): AMD加载规范，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数
-
-2、require.ensure(): requi.ensure的依赖模块只会被先下载下来，但不会被执行，会将require.ensure()内加载的模块合成一个文件，在
-
-    如果webpack打包会将所有资源加到一个文件中，这样会使这个文件变的很大，require.ensure()来对加载的资源单独打包
-
-    require.ensure([], function(require) {
-        var dialog = require(&apos;./components/dialog&apos;);
-        // todo ...
-    });
-
-    CommonsChunkPlugin插件对指定的chunks进行公共模块的提取。我们指定好生成文件的名字，以及想抽取哪些入口js文件的公共代码，webpack就会自动帮我们合并好
-
-    webpack.config.js中配置
-
-        var chunks = Object.keys(entries);
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                name: &apos;vendors&apos;,             // 将公共模块提取，生成名为`vendors`的chunk
-                chunks: chunks,
-                minChunks: chunks.length     // 提取所有entry共同依赖的模块
-            })
-        ]
-
-http://blog.csdn.net/zhbhun/article/details/46826129
-https://segmentfault.com/a/1190000007775743
-</code></pre><h4 id="插件类详解"><a href="#插件类详解" class="headerlink" title="插件类详解"></a>插件类详解</h4><pre><code>* webpack-dev-server - webpack自带服务
-
-webpack自带的插件
-* CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin - 提取公用部分
-* uglifyJsPlugin - js压缩
-
-外部加载插件
-* HotMooduleReplacementPlugin() - 热替换
-* html-webpack-plugin - 解析html模板
-* web-webpack-plugin - 与html-webpack-plugin类型国内人写的https://github.com/gwuhaolin/web-webpack-plugin/blob/master/readme_zh.md
-* extract-text-webpack-plugin - 单独打包css文件
-* open-browser-webpack-plugin - 资源构建成功后自动打开浏览器 
-* clean-webpack-plugin - 清除文件夹,添加hash后，会导致改变文件内容重新打包时文件名不同越来越多，使用clean-webpack-plugin
-
-* babel-plugin-react-transform react-transform-hmr - react的热更新, 需要在配置bable.rc
-* ExtractTextPlugin - 将js中引用的css文件抽取出一个单独的css文件
-* webpack-merge - 合并数组、函数
-* webpack-dev-middleware - devServer就是基于webpack-dev-middleware和ExpressJS来实现的
-* imagemin-webpacl-plugin - 压缩图片
-* webpack-spritesmith - 制作雪碧图
-* HotModuleReplacementPlugin - devServer热更新
-
-一、webpack-dev-server webpack自带服务
-
-    webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式。
-
-    1、iframe模式: 页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载;使用iframe模式无需额外的配置，只需在浏览器输入以下地址: http://localhost:8080/webpack-dev-server/index.html
-
-    2、inline模式: 一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面。
-
-    以下三种配置都可以实现页面的刷新效果: 
-
-        // 1.启动webpack-dev-server的时候带上inline参数
-        webpack-dev-server --inline
-
-        // 2.给HTML插入JS
-        &lt;script src=&quot;http://localhost:3000/webpack-dev-server.js&quot;|&lt;/script|
-
-        // 3.webpack配置
-        entry: [
-            &apos;webpack-dev-server/client?http://localhost:3000&apos;,
-            path.resolve(__dirname, &apos;src/index.js&apos;)
-        ]
-
-
-二、HotMooduleReplacementPlugin() 热替换
-
-    webpac-dev-server支持模块热替换，在前端代码变动的时候无需整个刷新页面，只把变化的部分替换掉。使用HMR功能也有两种方式: 命令行方式和Node.js API。
-
-    1、cli命令行方式  webpack-dev-server --inline --hot
-
-    2、Node.js API方式
-
-        entry: [
-            &apos;webpack/hot/dev-server&apos;,
-            path.resolve(__dirname, &apos;src/index.js&apos;)
-        ],
-        devServer: {
-            hot: true
-        },
-        plugins: [
-            new webpack.HotModuleReplacementPlugin(),
-        ]
-
-
-三、html-webpack-plugin 解析html模板
-
-    插件将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
-
-    $ npm i html-webpack-plugin
-
-    $ const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);            // 引用插件
-
-    1、单入口配置
-
-        // 这里省略其他配置代码
-        plugins: [
-            // 使用这个plugin，这是最简单的一个配置，更多资料可到github查看
-            new HtmlWebpackPlugin({
-                title: &apos;zhufeng-react&apos;,
-                template: &apos;./src/index.html&apos;,
-            })
-        ]
-
-    2、多入口配置
-
-        会将两个入口分别对html文件进行加载指定的入口js文件
-
-        // 入口文件
-        entry: {
-            app: &apos;./web/js/index.js&apos;,
-            list: &apos;./web/js/list.js&apos;
-        },
-
-        // 出口文件
-        output: {
-            path: path.resolve(buildPath, &apos;dist&apos;),
-            filename: &apos;[name].min.js?[hash]&apos;
-        },
-
-        plugins: [
-            new HtmlWebpackPlugin({
-                title: &apos;index&apos;,                    // 生成html文档的标题
-                filename: &apos;./web/index.html&apos;,    // 输出文件名称
-                template: &apos;./web/index.html&apos;,    // 本地模板的位置，支持(handlebars、ejs、undersore、html)
-                chunks: [&apos;app&apos;],                // 对应的入口entry, 也可以是数组[&apos;app&apos;, &apos;list&apos;]
-                inject: true,                    // 向template中注入所有静态资源
-                hash: true                        // 为静态资源添加webpack每次编译产生的唯一hash值， &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
-            }),
-            new HtmlWebpackPlugin({
-                title: &apos;list&apos;,
-                filename: &apos;./web/list.html&apos;,
-                template: &apos;./web/list.html&apos;,
-                chunks: [&apos;list&apos;],
-                inject: true,
-                hash: true
-            })
-        ]
-
-    https://segmentfault.com/q/1010000009810148
-    https://www.cnblogs.com/wonyun/p/6030090.html
-
-
-四、extract-text-webpack-plugin 单独打包css文件
-
-    $ npm i extract-text-webpack-plugin
-
-
-五、open-browser-webpack-plugin  资源构建成功后自动打开浏览器 --- 已可以在命令中配置
-
-    1、package.json中加 --open，与使用此插件相同
-
-        &quot;scripts&quot;: {
-            &quot;start&quot;: &quot;webpack-dev-server --hot --inline --open&quot;,
-        }
-
-
-    2、$ npm install open-browser-webpack-plugin --save-dev
-
-        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
-        plugin: [
-            new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
-        ]
-
-
-六、CSS Module
-
-    webpack 的 css-loader 是解决这个问题的最好办法之一。简单配置一下: 
-    module: {
-      loaders: [{
-        test: /\.css$/,
-        loaders: [
-          &apos;style-loader&apos;,
-          &apos;css-loader?modules&amp;localIdentName=[name]__[local]___[hash:base64:5]&apos;,
-          &apos;postcss-loader&apos;
-        ]
-      }]
-    },
-    postcss: [
-      require(&apos;postcss-nested&apos;)(),
-      require(&apos;cssnext&apos;)(),
-      require(&apos;autoprefixer-core&apos;)({ browsers: [&apos;last 2 versions&apos;] })
-    ]
-
-
-七、UglifyJs Plugin 压缩资源
-
-    var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-
-    plugins: [
-        new uglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
-        new webpack.optimize.MinChunkSizePlugin({
-            compress: {
-                warnings: false
-            }
-        }),
-        // 查找相等或近似的模块，避免在最终生成的文件中出现重复的模块
-        new webpack.optimize.DedupePlugin(),
-        // 按引用频度来排序 ID，以便达到减少文件大小的效果
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.AggressiveMergingPlugin({
-            minSizeReduce: 1.5,
-            moveToParents: true
-        })
-    ]
-
-
-八、clean-webpack-plugin 清除文件夹
-
-    $ npm install clean-webpack-plugin --save-dev
-
-    webpack.config.js:
-
-        const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);
-
-        plugins: [
-            new CleanWebpackPlugin([&apos;dist&apos;]),
-            new HtmlWebpackPlugin({
-                title: &apos;Output Management&apos;
-            })
-        ]
-
-
-九、react的热替换
-
-    $ npm install --save-dev babel-plugin-react-transform react-transform-hmr
-
-    .babelrc配置
-        {
-            &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;],
-            &quot;env&quot;: {
-                &quot;development&quot;: {
-                &quot;plugins&quot;: [[&quot;react-transform&quot;, {
-                    &quot;transforms&quot;: [{
-                        &quot;transform&quot;: &quot;react-transform-hmr&quot;,
-
-                        &quot;imports&quot;: [&quot;react&quot;],
-
-                        &quot;locals&quot;: [&quot;module&quot;]
-                    }]
-                }]]
-                }
-            }
-        }
-
-十、ExtractTextPlugin 分享css和js文件
-
-    $ npm install --save extract-text-webpack-plugin
-
-    webpack.config.js
-
-        const ExtractTextPlugin = require(&apos;extract-text-webpack-plugin&apos;);
-
-        module.exports = {
-            entry: {},
-            output: {},
-
-            plugins:[
-                new webpack.BannerPlugin(&apos;版权所有，翻版必究&apos;),
-                new ExtractTextPlugin(&quot;style.css&quot;)
-            ]
-
-        }
-
-十一、clean-webpack-plugin
-
-    $ npm install clean-webpack-plugin --save
-
-        const CleanWebpackPlugin = require(&quot;clean-webpack-plugin&quot;);
-        module.exports = {
-
-            plugins: [
-                &lt;!-- ...// 这里是之前配置的其它各种插件 --&gt;
-                new CleanWebpackPlugin( &apos;build/*.*&apos;, {
-                        root: __dirname,
-                        verbose: true,
-                        dry: false
-                    }
-                )
-            ]
-        }
-
-十二、CommonsChunkPlugin
-
-    const CommonsChunkPlugin = require(&apos;CommonsChunkPlugin&apos;);
-    module.exports = {
-        plugins: [
-            new CommonsChunkPlugin({
-                // 从哪些Chunk 中提取
-                chunks: [&apos;a&apos;, &apos;b&apos;],
-                // 提取的公共部分形成一个chunk
-                name: &apos;common&apos;
-            })
-        ]
-    }
-
-
-十三、暴露全局对象
-
-    如果想将report数据上报组件放到全局，有两种办法: 
-
-    方法一: 
-    在loader里使expose将report暴露到全局，然后就可以直接使用report进行上报
-    {
-        test: path.join(config.path.src, &apos;/js/common/report&apos;),
-        loader: &apos;expose?report&apos;
-    }
-
-    方法二: 
-    如果想用R直接代表report，除了要用expose loader之外，还需要用ProvidePlugin帮助，指向report，这样在代码中直接用R.tdw， R.monitor这样就可以
-    new webpack.ProvidePlugin({
-        &quot;R&quot;: &quot;report&quot;,
-    })
-</code></pre><h4 id="gulp与webpack构建单页面与多页面总结"><a href="#gulp与webpack构建单页面与多页面总结" class="headerlink" title="gulp与webpack构建单页面与多页面总结"></a>gulp与webpack构建单页面与多页面总结</h4><pre><code>1、gulp: 处理html、css都可以，对处理js依赖这块不占优势
-
-2、webpack: 对js入口进行单页面构建和模块化开发，如果页面较多不占优势，多页面webpack也可以做到，不过将js合并并加载到html中配置比较麻烦，需要HtmlWebpackPlugin插件来完成，每一个页面都需要创建一次，也可以将公用进行提取chunks
-
-3、gulp+webpck 构建多页面
-
-    优点: gulp进行对html和css处理，webpack进行js的处理
-
-    缺点: webpack如果需要合并js，还需要手动去改html的引用
-</code></pre><h4 id="webpack踩坑"><a href="#webpack踩坑" class="headerlink" title="webpack踩坑"></a>webpack踩坑</h4><pre><code>一、安装完webpack后执行命令提示需要安装webpack
-
-    webpack -h          // 提示没有装webpack-cli
-
-    $ npm i webpack-cli --save-dev            // 如果全局没有安装就全局装一下 $ sudo npm i webpack-cli -g
-
-    https://segmentfault.com/a/1190000013699050
-</code></pre>
         
     </section>
 </article>
@@ -4245,7 +3964,7 @@ webpack自带的插件
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
 </nav>
 
 

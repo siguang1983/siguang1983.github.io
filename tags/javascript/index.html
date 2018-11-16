@@ -182,13 +182,18 @@
 
     const NAME = &apos;siguang&apos;;        // 不能变化的值
     NAME = &apos;lulu&apos;;                // 报错
+
+    if (true) {
+        const MAX = 5;
+    }
+    MAX            // 报错，const与let相同都是在块内使用
 </code></pre><h4 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h4><pre><code>允许从数组和对象中提取的值，对变量进行赋值，被称为解构赋值
 
 一、数组解构使用[]
 
     let [a, b, c] = [1,2,3];    // a=1, b=2, c=3
 
-    # 默认值
+    // 默认值
     let [x, y = &apos;b&apos;] = [&apos;a&apos;];     // x=&apos;a&apos;, y=&apos;b&apos;
 
 
@@ -246,12 +251,12 @@
         return x + y + z;
     }
     // 将数组中的每个元素展开为函数参数
-    f(...[1,2,3]) == 6
+    f(...[1,2,3])            // 6
 </code></pre><h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><pre><code>一、写到`...`之间，值的输出使用 ${...} 
 
 二、可以写多行字符串，只写到`...`之间就可以
 
-二、${...}可以解析变量、对象的值、表达式、函数返回
+三、${...}可以解析变量、对象的值、表达式、函数返回
 
     let name = &apos;siguang&apos;;
     let obj = {
@@ -259,7 +264,7 @@
     }
     console.log(`你的名字是: ${ name } 你的年龄是:  ${ obj.age }`)
 
-三、标签模板
+四、标签模板
 
     let a=10, b=20;
     dialog`Hello ${a+b} world ${a*b}`;        // 等同于 dialog()
@@ -288,14 +293,10 @@
         }
         Template.test();
 
-
-    2、var f = function(v){
-            return v;
-        }
+    2、var f = function(v){ return v; }
 
         // ES6写法
         var f = v =&gt; v;
-
 
     3、var sum = function(num1, num2){
             return num1 + num2;
@@ -305,7 +306,6 @@
         var sum = (num1, num2) =&gt; {
             return num1 + num2;
         }
-
 
     4、对象中方法的简写
 
@@ -320,7 +320,6 @@
             }
         }
 
-
     5、参数的解构赋值
 
         const full = ({ first, last }) =&gt; first + &apos; &apos; + last;    
@@ -329,15 +328,14 @@
         // 等同于
         // function full(person) {
         //      return person.first + &apos; &apos; + person.last;
-        // }        
-
+        // }
 
     6、[1,2,3].map(function (x) {
             return x * x;
         });
 
         // ES6写法
-        [1,2,3].map( (x) =&gt; x * x);
+        [1,2,3].map( (x) =&gt; x * x );
 
 
 二、函数参数默认值
@@ -376,9 +374,8 @@
     function add(x, y) {
         return x + y;        // 4+38
     }
-    var numbers = [4, 38];
+    var numbers = [4, 38];            // 只能为数组不能为对象
     add(...numbers)         // 42
-
 
     # 可以将字符串转成数组
     let arr = [...&apos;hello&apos;];        // [&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;]
@@ -409,7 +406,6 @@
         };
         console.log(baz.foo.name);    // siguang
 
-
     2、对象中函数的简写
 
         var o = {
@@ -419,20 +415,17 @@
             }
         }
 
+    3、参数作为对象返回
 
-    3、示例1 参数作为对象返回
-
-        function f(x, y) {
-            return {x, y};
-        }
+        function f(x, y) { return {x, y}; }
 
         // 等同于
         function f(x, y) {
             return {x: x, y: y};
         }
-        f(1, 2) // Object {x: 1, y: 2}
+        f(1, 2)     // Object {x: 1, y: 2}
 
-    // 示例2 CommonJS模块输出变量
+        // 2、CommonJS模块输出变量
         const getItem = function(){ ... }
         const setItem = function(){ ... }
         const clear = function(){ ... }
@@ -457,7 +450,6 @@
             console.log(this.name, this[&apos;男&apos;]);        // 返回 momo false
         }
     }
-
     obj.getName();
 
 
@@ -474,7 +466,7 @@
     }
 
 
-四、Object.is(): 用于对比是否相等，相当于 === ，可以正确比较 -0和0，NaN和
+四、Object.is(): 用于对比两个数字或字符串是否相等，相当于 === ，可以正确比较 -0和0，NaN和
 
     &apos;==&apos;与&apos;===&apos;的缺点:
 
@@ -485,9 +477,9 @@
     Object.is(NaN, NaN);    // true
 
 
-五、Object.assign(全并目标对象， 被合并对象B, 被合并对象C): 合并到第一个参数上，不是深度拷贝，所以还存在引用关系
+五、Object.assign(合并目标对象， 被合并对象B, 被合并对象C): 合并到第一个参数上，不是深度拷贝，所以还存在引用关系
 
-    /* 注意: 如果后面的对象与前面对象的属性相同会赋盖掉前面的对象的值 */
+    /* 注意: 被合并对象与合并目标对象的属性相同会赋盖掉前面的对象的值 */
 
     var objA = {a: 1, b:2}, objB = {b: 3, c: 4}; 
     let req = Object.assign(objA, objB);         // {a:1, b:3, c:4}
@@ -570,7 +562,6 @@
     var opc = new PersonChilder(); 
     console.log(opc.getName())
 
-
     增强的对象字面量
 
     // 通过对象字面量创建对象
@@ -588,17 +579,17 @@
         }
     };
 
-    human.breathe();//输出 ‘breathing...’
+    human.breathe();        // 输出 ‘breathing...’
 
-    //调用继承来的breathe方法
-    worker.breathe();//输出 ‘breathing...’
+    // 调用继承来的breathe方法
+    worker.breathe();        // 输出 ‘breathing...’
 
 
 九、遍历属性的方法
 
-    1) for...in 循环
+    1、for...in 循环
 
-    2）Object.keys(obj): 返回obj对象的所有key, 返回是一个数组
+    2、Object.keys(obj): 返回obj对象的所有key, 返回是一个数组
 </code></pre><h4 id="类、继承"><a href="#类、继承" class="headerlink" title="类、继承"></a>类、继承</h4><pre><code>一、类的一些特性
 
     1、对象方法的简写方法
@@ -695,7 +686,6 @@
                 return &apos;hello&apos;
             }
         }
-
         Foo.methodName();    // hello
 
         var foo = new Foo();
@@ -706,7 +696,7 @@
         ES6中没有静态属性，只能声明静态方法，ES7中可以直接写到类内在进行转码
 
         class Foo {
-            constructor(...args) {
+            constructor(...arg){
                 this.args = args;
             } 
             outputUserName(){
@@ -716,8 +706,8 @@
         Foo.username = &apos;siguang&apos;;       // 类的静态属性
 
         var foo = new Foo();
-        console.log(foo.personName);    // undefined
-        foo.outputUserName();   // undefined 
+        console.log(foo.personName);  // undefined
+        foo.outputUserName();               // undefined 
 
 
 五、实例属性
@@ -806,10 +796,10 @@ var pro = new Promise(function(resolve, reject){        // resolve成功, reject
 })
 
 pro.then(
-    function(){                        // 这里执行的就是reslove
+    function(){                        // reslove回调
         console.log(&apos;成功执行&apos;);
     },
-    function(){                        // 这里执行的就是reject
+    function(){                        // reject回调
         console.log(&apos;失败执行&apos;);
     }
 )
@@ -874,8 +864,6 @@ https://www.jianshu.com/p/c98eb98bd00c
 
         export function person(){ ... }
 
-        export {...}
-
         // 不能直接输出变量名
         var name = &apos;siguang&apos;;
         export name;            // 报错
@@ -921,24 +909,24 @@ https://www.jianshu.com/p/c98eb98bd00c
 
 四、export default 指定匿名
 
-    import加载时将定义的名与导出的相同，否则无法加载，如果指定默认输出使用export default，在import导入的时候不用在关心命名的问题
+    不使用default在import加载定义名与导出名必须相同，否则无法加载，如果指定默认输出使用export default，在import导入的时候不用在关心命名的问题
 
     1、meat.js
 
-            // 输出时是匿名
-            export default function() {
-                console.log(&apos;foo&apos;);
-            }
+        // 倒出匿名函数
+        export default function() {
+            console.log(&apos;foo&apos;);
+        }
 
-            简写
-            export default(){        // export default {}  写成默认对象
+        简写
+        export default(){        // export default {}  写成默认对象
 
-            }
+        }
 
-        main.js
+    main.js
 
-            // 导入时可以任意起名
-            import beef from &apos;./meat.js&apos;
+        // 导入时可以任意起名
+        import beef from &apos;./meat.js&apos;
 
 
     2、default与不写default输出的区别
@@ -1003,7 +991,7 @@ https://www.jianshu.com/p/c98eb98bd00c
 
     2、key的简写
 
-        var fn1 = funtion(){
+        var fn1 = function(){
             console.log(&apos;fn1&apos;);
         }
 
@@ -1034,13 +1022,14 @@ https://www.jianshu.com/p/c98eb98bd00c
         5、set.clear(): 删除set的所有成员
 
 
-二、Map(): 传统的对象key只能为字符串, Map可以是对象和其它类型
+二、Map(): 将二维数组转成对象
 
-    var map = new Map([[&apos;name&apos;, &apos;age&apos;]]);
-    console.log(map);        // {name: &apos;age&apos;}
+    var map = new Map([[&apos;username&apos;, &apos;siguang&apos;], [&apos;password&apos;, &apos;ssssss&apos;]]);
+    map.get(&apos;username&apos;);        // siguang
 
-    特性: 
-        不允许有重复的key值
+    /* new Map([[&apos;usernmae&apos;, &apos;aaa&apos;, &apos;password&apos;, &apos;ssssss&apos;], [&apos;aaaa&apos;, 1111]]);  注意一个数组中只有两个下标的值，这里只能get到username, password不会取到 */
+
+    特性: 不允许有重复的key值
 
     方法: 
         1、map.size: 成员总数
@@ -1050,7 +1039,9 @@ https://www.jianshu.com/p/c98eb98bd00c
         3、map.get(): 获取
 
         4、map.clear(): 清除所有
-</code></pre><h4 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h4><pre><code>一、repeat(): 复制字符串  &apos;哈哈哈！&apos;.repeat(5);    复制五个&apos;哈哈哈！&apos;
+</code></pre><h4 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h4><pre><code>一、repeat(): 复制字符串 
+
+    var str = &apos;哈哈哈！&apos;.repeat(3);        // str输出 &apos;哈哈哈！哈哈哈！哈哈哈！&apos;
 
 二、includes()、startsWith()、endsWith(): 查找三个方法
 
@@ -1058,7 +1049,7 @@ https://www.jianshu.com/p/c98eb98bd00c
     str.includes(&apos;o&apos;);        // 查找字符串中是否包含值，包含返回true否则返回false
     str.startsWith(&apos;s&apos;);    // 第一个字符是不是s，如果是返回true
     str.endsWith(&apos;d&apos;);        // 最后一个字符是不是 d，返回布尔值
-</code></pre><h4 id="数值-Math"><a href="#数值-Math" class="headerlink" title="数值 Math"></a>数值 Math</h4><pre><code>一、trunc(): 去除小数部分
+</code></pre><h4 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h4><pre><code>一、trunc(): 去除小数部分
 
     Math.trunc(123.123123);    // 123
 
@@ -1069,6 +1060,14 @@ https://www.jianshu.com/p/c98eb98bd00c
 三、hypot(): 返回所有参数的平方和的平方根
 
     Math.hypot(3,4);    // 5 勾股定理
+
+四、Number.isFinite(): 是否是无穷数
+
+        Number.isNaN(): 是否是NaN
+
+        parseInt(&apos;12.34&apos;): es5的写法   Number.parseInt(&apos;12.34&apos;): es6的写法，为了减少全局方法
+
+        Number.isInteger(num): 判断是否是一个整数
 </code></pre><h4 id="数组扩展-Array"><a href="#数组扩展-Array" class="headerlink" title="数组扩展 Array"></a>数组扩展 Array</h4><pre><code>一、form(): 将对象转成数组
 
     var obj = {&apos;0&apos;: &apos;a&apos;, &apos;1&apos;: &apos;b&apos;, &apos;2&apos;: &apos;c&apos;};

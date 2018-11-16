@@ -452,6 +452,11 @@ http://blog.csdn.net/kuangshp128/article/details/67632683
 |------ reducers
 |-- router    // 路由
 |-- util    // 工具
+</code></pre><h4 id="其它状态管理框架"><a href="#其它状态管理框架" class="headerlink" title="其它状态管理框架"></a>其它状态管理框架</h4><pre><code>https://cn.mobx.js.org/
+
+https://redux-saga-in-chinese.js.org/    redux-saga
+
+https://dvajs.com/guide/#%E7%89%B9%E6%80%A7        dva
 </code></pre><p>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a>                // Redux中文文档<br>| <a href="http://www.liuyiqi.cn/2016/01/19/r2-counter/" target="_blank" rel="noopener">http://www.liuyiqi.cn/2016/01/19/r2-counter/</a><br>| <a href="https://github.com/lewis617/react-redux-tutorial" target="_blank" rel="noopener">https://github.com/lewis617/react-redux-tutorial</a><br>| <a href="https://github.com/xgrommx/awesome-redux" target="_blank" rel="noopener">https://github.com/xgrommx/awesome-redux</a><br>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a>                        // react-redux<br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a><br>| <a href="https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js" target="_blank" rel="noopener">https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js</a>            // 示例 router3.0</p>
 
         
@@ -1551,37 +1556,6 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
     }
 
 
-2、create-react-app 配置Sass
-
-    注意文件扩展名 *.scss
-
-    $ npm install create-react-app
-
-    $ create-react-app my-app
-
-    $ cd my-app
-
-    $ npm start
-
-    $ npm install sass-loader node-sass --save-dev            // 安装依赖
-
-    $ 在node_modules/react-scripts/config下找到 webpack.config.dev.js 文件，在 exclude 中添加 /.scss$/,
-
-    $ {
-        test: /\.scss$/,
-        loaders: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;],
-    },
-
-    https://www.jianshu.com/p/96658be50642
-
-
-3、create-react-app 配置router、redux
-
-    npm i react-router --save 
-    npm i redux --save 
-    npm i react-redux --save
-
-
 4、setState()异步的问题
 
     setUser(uname){
@@ -1596,6 +1570,20 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
             () =&gt; {  console.log(this.state.username); }        // 这里还是为之前的值而不是「sg」
         );
     }
+
+
+5、使用redux子组件会取不到 this.props.history
+
+    因为redux会将值传给props，所以就需要通过context来获取
+
+    解决方法: 在子组件中
+    import PropTypes from &apos;prop-types&apos;
+
+    子组件名.contextTypes = {
+        router: PropTypes.object.isRequired
+    }
+
+    console.log( this.context.router.history.push(&apos;/&apos;) );
 </code></pre><h4 id="Antd-UI组件问题收集"><a href="#Antd-UI组件问题收集" class="headerlink" title="Antd UI组件问题收集"></a>Antd UI组件问题收集</h4><pre><code>1、Table的每页条数  通过pagination属性来控制分页的内容
 
     &lt;Table pagination={{ pageSize: this.state.queryInfo.pageSize }} rowSelection={rowSelection} columns={columns} dataSource={data}  /&gt;
@@ -1942,6 +1930,17 @@ react-router-config: 静态路由配置的小助手
     }
 
 
+    /** 注意如果使用redux子组件会取不到this.props.history **/
+    解决方法: 在子组件中
+    import PropTypes from &apos;prop-types&apos;
+
+    子组件名.contextTypes = {
+        router: PropTypes.object.isRequired
+    }
+
+    console.log( this.context.router.history.push(&apos;/&apos;) );
+
+
 十、动态路由
 
     1、路由变量
@@ -1998,7 +1997,7 @@ react-router-config: 静态路由配置的小助手
                     &lt;h1&gt;{props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;            // props.location.query.message输出 ssssss
                 &lt;/div&gt;
 
-        2) 请求时带参数
+        2) &lt;Link&gt;请求时带参数
 
             const Page = (props) =&gt;
                 &lt;div&gt;
@@ -2010,35 +2009,14 @@ react-router-config: 静态路由配置的小助手
                     &lt;Link to={{ pathname: "/", query: {message: "ssssss"} }} /&gt;         
                 &lt;/nav&gt;
 
-        Example:
+        3) js中请求参数 
 
-            import React, {Component} from &apos;react&apos;
-            import { Router, Route, Link, browserHistory } from &apos;react-router&apos;
-
-            class Page extends Component {
-                constructor(props){
-                    super();
-                    console.log(props);
-                }
-                render(){
-                    return (
-                        &lt;div&gt;
-                            &lt;h1&gt;{this.props.location.query.message || &apos;Hello&apos;}&lt;/h1&gt;      // url带有message参数就输出, 否则输出Hello
-                        &lt;/div&gt;
-                    )
-                }
+            goToMessage(){
+                that.props.history.push({ 
+                    pathname : &apos;/success&apos;,
+                    query : { messageTitle: &apos;充值成功&apos;, messageContent: &apos;请取您的充值单请取您的充值单请取您的充值单&apos;} 
+                })
             }
-
-            class QueryRoute extends Component {
-                render() {
-                    return (
-                        &lt;Router history={browserHistory}&gt;
-                            &lt;Route path=&quot;/(message)&quot; component={Page} /&gt;        // http://localhost:5001/?message=12312312
-                        &lt;/Router&gt;
-                    );
-                }
-            }
-            export default QueryRoute;
 
 
 十一、路嵌套和展示
@@ -2735,6 +2713,52 @@ $ cd my-app/
 $ npm start
 
 http://blog.csdn.net/qtfying/article/details/78665664
+
+
+一、build的打包的时候注意的地方
+
+    在package.json中的有一个homePage: &apos;.&apos;，这个在打包的时候图片会成为相对路径，如果改成 homePage: &apos;/&apos;
+
+
+二、create-react-app 配置Sass
+
+    注意文件扩展名 *.scss
+
+    $ npm install sass-loader node-sass --save-dev            // 安装依赖
+
+    $ 在node_modules/react-scripts/config下找到 webpack.config.dev.js 文件，在 exclude 中添加 /.scss$/,
+
+    $ {
+            test: /\.scss$/,
+            loaders: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;],
+        },
+
+    https://www.jianshu.com/p/96658be50642
+
+
+三、create-react-app 配置router、redux
+
+    npm i react-router --save 
+    npm i redux --save 
+    npm i react-redux --save
+
+
+四、修改webpack配置加一个全局配置
+
+    function resolve (dir) {
+        return path.join(__dirname, &apos;..&apos;, dir)
+    }
+
+    resolve: {
+        alias: {
+            &apos;react-native&apos;: &apos;react-native-web&apos;,
+            &apos;@&apos;: resolve(&apos;src&apos;)
+        }
+    }
+
+    在页面里可以直接引用@来找到src目录
+
+        import User from &apos;@/views/User/&apos;
 </code></pre><p>| <a href="https://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">https://react-guide.github.io/react-router-cn/</a>        // React-router 中文网<br>| <a href="https://reacttraining.com/react-router/web/example/basic" target="_blank" rel="noopener">https://reacttraining.com/react-router/web/example/basic</a>    // 官方示例<br>| <a href="https://github.com/YutHelloWorld/Blog/issues/4" target="_blank" rel="noopener">https://github.com/YutHelloWorld/Blog/issues/4</a>        // v2、3迁移v4<br>| <a href="https://www.jianshu.com/p/e0a0ed6c3b8a" target="_blank" rel="noopener">https://www.jianshu.com/p/e0a0ed6c3b8a</a>                // 路由跳转登录验证<br>|<br>| <a href="https://www.jianshu.com/p/e3adc9b5f75c/" target="_blank" rel="noopener">https://www.jianshu.com/p/e3adc9b5f75c/</a><br>| <a href="https://github.com/reactjs/react-router-tutorial/tree/master/lessons" target="_blank" rel="noopener">https://github.com/reactjs/react-router-tutorial/tree/master/lessons</a>        2.0示例<br>| <a href="https://segmentfault.com/a/1190000009349377" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009349377</a>        router ^4<br>| <a href="http://react-china.org/t/webpack2-react16-react-router4/10419" target="_blank" rel="noopener">http://react-china.org/t/webpack2-react16-react-router4/10419</a><br>| <a href="https://github.com/reactjs/react-router-redux" target="_blank" rel="noopener">https://github.com/reactjs/react-router-redux</a><br>| <a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu</a><br>| <a href="https://github.com/react-guide/react-router-cn" target="_blank" rel="noopener">https://github.com/react-guide/react-router-cn</a><br>| <a href="https://github.com/ReactTraining/react-router/tree/master/examples" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router/tree/master/examples</a></p>
 
         

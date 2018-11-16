@@ -334,11 +334,1918 @@ node.onclick = function(evt){
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/07/函数式编程/">函数式编程</a>
+            <a href="/2016/12/19/DOM/">DOM</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/函数式编程/">
+            <a class="article-date" href="/2016/12/19/DOM/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="DOM介绍"><a href="#DOM介绍" class="headerlink" title="DOM介绍"></a>DOM介绍</h4><pre><code>DOM 文档对象模型     D - Document      O - Object      M - Model
+</code></pre><h4 id="Node-对象属性"><a href="#Node-对象属性" class="headerlink" title="Node 对象属性"></a>Node 对象属性</h4><pre><code>1、nodeType: 节点类型
+
+    e.target.nodeType 来获取节点的类别
+
+    1、Element 1
+
+    2、Attr  2
+
+    3、Text  3
+
+    4、注释  8
+
+    5、Document 9
+
+
+2、nodeName: 节点名称   返回的是大写 &apos;DIV&apos;
+
+3、nodeValue: 节点的类型
+
+    元素节点的 nodeValue 是 undefined 或 null
+    文本节点的 nodeValue 是文本本身
+    属性节点的 nodeValue 是属性值
+
+    &lt;p&gt;dfsdfsdf&lt;/p&gt;
+
+    let oP = document.querySelector(&apos;p&apos;);   
+    // 这里注意oP是元素如果直接写成oP.nodeValue返回是null，写成oP下的第一个节点才找到文本元素
+    oP.firstChild.nodeValue;            
+
+4、parentNode: 返回当前节点的父节点   e.target.parentNode.nodeName
+
+    document.querySelector(&apos;ul&apos;).parentNode     // &lt;div class=&quot;box&quot;&gt;...&lt;/box&gt;
+
+5、childNodes、children: 返回所有子节点元素，不包括孙节点
+
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;111&lt;/li&gt;
+        &lt;li&gt;222&lt;/li&gt;
+        &lt;li&gt;
+            &lt;ul&gt;
+                &lt;li&gt;333&lt;/li&gt;
+                &lt;li&gt;444&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    let oList = document.querySelector(&quot;#list&quot;);
+    let lis = oList.children;
+    for(let i=0; i&lt;lis.length; i++){
+        console.log(lis[i].nodeName);   // output LI LI LI
+    }
+
+    ** childeNodes与children区别 ** 
+
+        childeNodes: 包括空行的文本节点, 如果是空行的节点返回是一个text节点
+        children: 不包括空行之类的节点
+
+6、hasChildNodes(): 判断是否有子节点，返回Booleanw值
+
+7、firstChild、lastChild: 返回子节点的第一个节点、最后一个节点
+
+    firstChild 相当于 children[0]
+
+    lastChilde 相当于 children[node.children.length-1]
+
+    &lt;div id=&quot;car&quot;&gt;&lt;p&gt;aaa&lt;/p&gt;&lt;div&gt;bbb&lt;/div&gt;&lt;span&gt;ccc&lt;/span&gt;&lt;/div&gt;
+
+    let oCars = document.querySelector(&quot;#car&quot;);
+    console.log(oCars.firstNode, oCars.lastNode);   //&lt;p&gt;aaa&lt;/p&gt; 、 &lt;span&gt;ccc&lt;/span&gt;
+
+8、previousSibling、nextSibling: 当前节点的前一个节点、后一个节点
+
+    注意: 如果是空行返回的是 text
+
+9、innerHTML: 获取或修改HTML元素内容
+
+    Element.innerHTML = &apos;&lt;div&gt;xxxxx&lt;div&gt;&apos;;
+
+10、innerText: 获取或修改的是除去html的文本
+
+11、outerHTML、outerText: 与innerHTML、innerText相当，不同的是它包含当前节点元素，inner只包含子节点元素
+
+12、offsetParent: 获取当前元素定位的父元素  找到基于设置position的父元素
+
+     document.querySelector(&apos;ul&apos;).offsetParent
+</code></pre><h4 id="Node-对象的方法"><a href="#Node-对象的方法" class="headerlink" title="Node 对象的方法"></a>Node 对象的方法</h4><pre><code>一、节点操作方法
+
+    1、getElementById(): 获取指定ID的元素
+
+    2、getElementsByTagName(): 获取指定标签名称的所有元素
+
+    3、getElementsByClassName(): 获取指定类名的元素
+
+    4、appendChild(): 追加子节点  注意这里插入的是一个节点，而不是HTML的字符串 parent.appendChild(children);
+
+    5、removeChild(): 删除子节点，不能删除孙子节点    (removeNode 只支持IE)
+
+        删除节点 并返回删除的节点
+        let oSubCar = document.querSelector(&apos;#subCar&apos;);
+        document.querySelector(&apos;body&apos;).removeChild(oSubCar);        // &lt;div id=&quot;subCar&quot;&gt;...&lt;/div&gt;
+
+    6、cloneNode(Boolean): 复制节点  如果参数为true复制指定节点下包括所有子节点，如果不写只复制当前节点不手包子节点
+
+        &lt;div class=&quot;car&quot;&gt;
+            &lt;ul id=&quot;box&quot;&gt;
+                &lt;li&gt;aaa&lt;/li&gt;
+                &lt;li&gt;bbb&lt;/li&gt;
+                &lt;li&gt;ccc&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;subCar&quot;&gt;&lt;/div&gt;
+
+        &lt;script&gt;
+            // 将id=box所有的节点插入到id=subCar中
+            let boxList = document.querySelector(&apos;#box&apos;).cloneNode(true);
+            var oSubCar = document.querySelector(&apos;#subCar&apos;);
+            oSubCar.appendChild(boxList);
+        &lt;/script&gt;
+
+    7、hasAttributes(): 判断当前节点是否拥有属性
+
+        &lt;div id=&quot;miniCar&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;swsss&lt;/div&gt;
+
+        let isAttribute = document.getElementsByTagName(&apos;div&apos;)[1].hasAttributes();
+        console.log(isAttribute);   // false
+
+    8、hasChildNodes(): 判断当前节点是否拥有子节点
+
+    9、insertBefore(newitem, ex): 在指定节点之前插入
+
+        insertAfter(): 这个需要自己来写没有这个方法
+
+        let oMain = document.querySelector(&apos;#main&apos;);
+        let oP = document.querySelector(&apos;p&apos;);
+        let oUl = document.querySelector(&apos;.uls&apos;).cloneNode(true);
+        oMain.insertBefore(oUl, oP);    将ul元素内所有节点复制并插入到oP元素之前
+
+    10、replaceChild(newNode, oldNode): 替换节点
+
+        document.querySelector(&apos;body&apos;).replaceChild(oMiniCar, oSubCar)
+
+
+二、创建元素方法
+
+    1、createAttribute(): 创建属性节点
+
+    2、createElement(): 创建元素节点
+
+    3、createTextNode(): 创建文本节点
+
+
+三、操作属性方法
+
+    1、getAttribute(): 获取属性值
+
+    2、setAttribute(): 设置属性值
+</code></pre><h4 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h4><pre><code>1、style：获取或设置style值   Element.style.color = &apos;blue&apos; 
+
+2、currentStyle、getCurrentStyle()获取样式中每个属性的值
+
+    var oBox = document.querySelector(&apos;#box&apos;);
+    var getStyle = function(obj, attr){
+        return window.getComputedStyle ? window.getComputedStyle(obj, null)[attr] : obj.currentStyle[attr];
+    }
+
+    var attrTxt = getStyle(oBox, &apos;width&apos;);          // &apos;100px&apos;;
+
+    注意: (1)中style只能获取元素中的内联样式，而currentStyle、getCurrentStyle()无论是内联样式还是在class中都可以找到
+
+3、getComputedStyle(元素， 伪类): 获取指定元素值，currentStyle（ie独有） 
+
+    &lt;script&gt;
+        function getStyle(element, attr) {
+            if(window.getComputedStyle) {
+                return window.getComputedStyle(element, null)[attr];
+            } else {
+                return element.currentStyle[attr];
+            }
+        }
+
+        // 获取class=position-node元素上的position值
+        var dom = document.querySelector(&quot;.position-node&quot;);
+        var style = getStyle(dom);
+        console.log(style.position);    // 返回relative
+    &lt;/script&gt;
+
+
+    *** element.getComputedStyle与element.style的区别
+
+    element.getComputedStyle: 只读
+    element.style: 可读写
+
+4、className: 获取或设置元素的类名  Element.addClass = &apos;classname&apos;
+</code></pre><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><pre><code>1、write(): 向输出流写文本或html
+
+2、document.title: 返回标题
+
+4、&quot;javascript:&quot; : 伪协议 来调用javascript http协议(http://)，FTP协议(ftp://)
+
+5、对象检测: 可以测试浏览器是否支持当前对象
+
+    if(document.getElementById){ ...}
+</code></pre><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><pre><code>1、createDocumentFragment: 创建文档碎片
+
+    Example: 创建节点并插入到body中，如果不使用文档碎片，每次都需要重新插入一次
+
+    var oFragment = document.createDocumentFragment();
+    for(var i = 0 ; i &lt; 10; i ++) {
+        var p = document.createElement(&quot;p&quot;);
+        var oTxt = document.createTextNode(&quot;段落&quot; + i);
+        p.appendChild(oTxt);
+        oFragment.appendChild(p);
+    }
+    document.body.appendChild(oFragment);
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>1、表单事件：
+
+    submit事件
+
+    reset事件
+
+    click事件
+
+    change事件
+
+    focus事件（不冒泡） （IE和ES5支持冒泡的focusin）
+
+    blur事件（不冒泡） （IE和ES5支持冒泡的focusout）
+
+    input事件（ES5 textinput提供更方便的获取输入文字的方案）
+
+
+2、Window事件
+
+    load: 资源全部加载完成后触发事件（图片、css、js）
+
+    DOMContentLoaded事件: Document对象构建完后就开始调用此事件
+
+    readyStatechage事件:
+
+    unload事件: 关闭borwser的时候触发
+
+    beforeunload事件
+
+    resize: 浏览器窗口发生改变触发
+
+    scroll: 滚动条有变化时触发
+
+
+3、鼠标事件
+
+    click: 点击事件
+
+    dbclick：双击事件
+
+    mouseover: 鼠标移入事件（冒泡）
+
+    mouseout: 鼠标移出事件（冒泡）
+
+    mousedown: 鼠标按下事件
+
+    mouseup: 鼠标放开事件
+
+    contextmenu: 上下文本菜单事件
+
+    mouseenter: 事件（不冒泡）
+
+    mouseleave: 事件（不冒泡）
+
+    mousewheel: 事件（FF DOMMouseScroll事件、DOM3 wheel事件）
+
+
+4、键盘事件
+
+    keydown事件
+
+    keyup事件
+
+    keypress事件
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/19/正则表达式/">正则表达式</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/19/正则表达式/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="特殊字符和转义序列"><a href="#特殊字符和转义序列" class="headerlink" title="特殊字符和转义序列"></a>特殊字符和转义序列</h4><pre><code>1、[...] 位于括号内的任意字符            
+
+    /[abcde]/.test(&apos;aboot&apos;);     // 只要含有任意一个字符返回 true
+
+    /a[bo]t/.test(&apos;abot&apos;);        // false 中间只能含有其中一个字符，匹配&apos;abt&apos;或&apos;aot&apos;
+
+2、[^...] 不在括号中之中的任意字符
+
+    /a[^bo]t/.test(&apos;ast&apos;);        // true a|t之间不含有b、o期中一个字符
+
+*3、. 除了换行和Unicode行止符之外的任意字符
+
+    /a.t/.test(&apos;a*t&apos;);        // true , &apos;a\nt&apos;换行false，使用 \.来进行转义
+
+4、\w 任何ASCII字符,等于[a-zA-Z0-9_]
+
+    /\w/.test(&apos;think&apos;);        // true, 不含有其它字符
+
+5、\W 任何非ASCII字符单字字符，等于[^a-zA-Z0-9_]
+
+    /\w/.test(&apos;think&apos;);        // false, 至少需要有一个特殊字符
+
+6、\s 任何空格
+
+    /\s/.test(&apos;I think&apos;);    // true
+
+7、\S 不包含空格
+
+    /\s/.test(&apos;I think&apos;);    // false, 非空格为true
+
+8、\d 任何数字，等于[0-9]
+
+9、\D 除了数字之外的任意字符
+
+10、\b 单词边界
+
+    例: 匹配 hi 这个词，如果写成 /hi/ 这样 &apos;wordhibiry are you&apos; 也会匹配，如果加\b会单词的分界空格处来匹配， /hi\b/.test(&apos;word hi biry are you&apos;);  true
+
+11、\B 非单词边界 
+</code></pre><h4 id="指定匹配的位置"><a href="#指定匹配的位置" class="headerlink" title="指定匹配的位置"></a>指定匹配的位置</h4><pre><code>1、^ 匹配字符串的开头
+
+    /^ab/.test(&apos;absolute&apos;);        // true 以ab开头
+
+2、$ 匹配字符串的结尾
+
+    /te$/.test(&apos;absolute&apos;);        // true 以te结尾
+
+* 3、? ! 一个反前向声明者，含义与反前向声明相反
+</code></pre><h4 id="选择、分组和引用"><a href="#选择、分组和引用" class="headerlink" title="选择、分组和引用"></a>选择、分组和引用</h4><pre><code>1、| 用于分隔选择的字符，相当于或
+
+    /oa|on|op/.test(&apos;option&apos;);    // true，只要带有oa、on、op都匹配
+
+2、(...) 分组，相当于并且
+
+    /(\d+&amp;)([a-zA-Z]+%)/.test(&apos;1234&amp;abcde%&apos;);        // true, 必须包含数据+&amp;，并且还包含英文字母+%
+
+* 3、(?...) 只组合，把项组合到一个单元，但不记忆与该组匹配的字符
+
+    (?:):
+
+    (?!):
+
+    (?&lt;=):
+
+    (?&lt;!):
+</code></pre><h4 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h4><pre><code>1、{ } 匹配一个字符的重复  **** 注意{3,10} 逗号后不能有空格, 如{3, 10}        
+
+    /^\d{1,3}$/: 最少2个数字，最多4个数字
+
+    /^\d{4,}$/: 最少有4个数字
+
+    /^\d{4}$/: 只能有4个数字
+
+2、* 表示0次或多次重复,等价于{0, }    /^\d*$/
+
+3、？最少0次, 最多1次重复，等价于{0,1}   
+
+4、+ 表示最少出现1次，等价于{1,}
+
+5、\1、\2 重复的子项
+
+    var reg = /(a)(b)(c)\1/;
+    var str = &quot;abca&quot;;
+
+    // 返回 true： \1是重复第一个子项(a)，相当于/(a)(b)(c)(a)/.     \2就是第二项(b)
+    console.log(reg.test(str));
+</code></pre><h4 id="修饰符，高级匹配"><a href="#修饰符，高级匹配" class="headerlink" title="修饰符，高级匹配"></a>修饰符，高级匹配</h4><pre><code>1、g 匹配的是全局，检索字符串的所有匹配
+
+    如果不加g只匹配第一个后就退出
+
+    let reg = /你妈的|去你妈|傻逼/g;
+    let content = &apos;你妈的房子傻逼是用来住的你妈的不是用来炒的去你妈的吧&apos;;
+    content = content.replace(reg, &apos;***&apos;);
+    console.log(content)            // ***房子***是用来住的***不是用来炒的***的吧
+
+2、i 匹配忽略大小写
+
+    /java/i.test(&apos;JavdaScript&apos;);        // true
+
+3、m 进行多行匹配
+</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>1、match(reg) 将匹配结果返回一个数组
+
+    var arr = &apos;123kasdo34kk234k234234k&apos;.match(/\d+/g);        // 如果不加g，只返回第一个
+    console.log(arr);        // [&quot;123&quot;, &quot;34&quot;, &quot;234&quot;, &quot;234234&quot;]
+
+2、test() 如果没有匹配返回false否则返回true
+
+3、search(reg) 查找并返回所在的位置，如果没有匹配的返回-1
+
+    var result = &apos;房地产行业究竟是白银时代还是钻石时代&apos;.search(/钻石/); 
+    console.log(result);        // 返回 8
+
+4、content.replace(reg, str) 用于执行检索和替换操作
+
+5、exec() [ɪɡ&apos;zek] 如果找到返回一个数组并存放匹配的结果，如果没有找到返回null
+
+    var result = /白银|钻石/g.exec(&apos;房地产行业究竟是白银时代还是钻石时代&apos;); 
+    console.log(result);        // [&apos;&apos;]
+</code></pre><h4 id="整理经验"><a href="#整理经验" class="headerlink" title="整理经验"></a>整理经验</h4><pre><code>1、如果检查全部需要前后加匹配
+
+    /\d+/  只对字符中存在数字就匹配
+
+    /^\d+$/  对字符中全部为数字的进行匹配
+
+
+2、test()、exec()是对每一个字符串进行匹配，如果为true就不会往下执行，并返回true
+
+    例如: 匹配字符中不能带有.字符
+    /[^\.]/.test(&apos;123123.&apos;);    // 返回true，因为第一个字符就不是.返回true不在往下执行
+
+    /[\.]/.test(&apos;23412.34&apos;);    // 如果存在就返回true
+    或者
+    /^[^\.]$/g.test(&apos;asdfa.sdf&apos;) // 返回true
+
+3、| 或符号只能用到()中，不能在[]中使用
+</code></pre><h4 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h4><pre><code>1、密码强度
+
+    // 弱密码 - 纯数字、纯字母或纯特殊字符
+    /^(?:\d+|[a-zA-Z]+|[!@#$%^&amp;*]+)$/
+
+    // 中密码 - 字母+数字，字母+特殊字符，数字+特殊字符
+    /^(?![a-zA-z]+$)(?!\d+$)(?![!@#$%^&amp;*]+$)[a-zA-Z\d!@#$%^&amp;*]+$/
+
+    // 强密码 - 必须有数字、小写字母、大写字母和特殊字符
+    /^(?=.*((?=[!@#$%^&amp;*_]+)[^A-Za-z0-9]))(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[^\u4e00-\u9fa5]{8,16}$/
+
+
+2、手机号码验证
+
+    /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139|186|185|170|156|155|130|131|132|189|180|170|153|133)(\d){8}$/.test(&apos;13012345678&apos;)
+
+    移动号段: /^(139|138|137|136|135|134|178|170|188|187|183|182|159|158|157|152|150|147|139)(\d){8}$/;     
+
+    联通号段: /^(186|185|170|156|155|130|131|132)(\d){8}$/
+
+    电信号段: /^(189|180|170|153|133)(\d){8}$/
+
+
+3、验证Email - /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+
+4、验证中文 - /^[\u4e00-\u9fa5]+$/
+
+5、域名验证 - /^(http(s)?:\/\/)(www)?\.\w+\.(com|cn|net|org)$/
+
+6、手机号前带86或是+86 - /^((\+86)|(86))?(13)\d{9}$/
+
+7、电话号码与手机号码同时验证 - /(^(\d{3,4}-)?\d{7,8})$|(13[0-9]{9})/
+
+8、验证IP地址 - /^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$/;    //  匹配0-255, 匹配&apos;255.255.255.255&apos;
+
+9、邮政编码 - /[1-9]{1}(\d+){5}/
+
+10、身份证号码 - /\d{18}|\d{15}/
+
+11、双字节字符串(汉字) - /[^\x00-\xff]*/
+
+12、去除两端空格 - /^\s*|\s*$/
+
+数字正则
+
+    /^\d+$/ - 非负整数（正整数 + 0)
+
+    /^[1-9](\d)+$/ - 正整数(不可以以0开头)  
+
+    /^-(\d)+$/ - 非正整数（负整数 + 0） 
+
+    /^-[1-9]?(\d){0,}$/ - 负整数(-12345), 不可以-012312
+
+    /^[1-9]?(\d)+\.(\d)+$/ - 浮点数   
+
+    /^[+-]?\d+(\.\d{1,2})?$/ - 可以是整数 或 浮点数，并且小数点只能后两位
+
+    ^(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*))$    //正浮点数   
+    ^((-\\d+(　　//非正浮点数（负浮点数 + 0）   
+    ^(-(([0-9]+\\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\\.[0-9]+)|([0-9]*[1-9][0-9]*)))$  //负浮点数  
+
+    /^[A-Za-z]+$/ - 由26个英文字母组成的字符串   
+
+    /^[A-Z]+$/ - 由26个英文字母的大写组成的字符串   
+
+    /^[a-z]+$/ - 由26个英文字母的小写组成的字符串  
+
+    /^[A-Za-z0-9]+$/ - 由数字和26个英文字母组成的字符串   
+
+    /^\w+$/ - 由数字、26个英文字母或者下划线组成的字符串
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/19/ES5/">ES5</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/19/ES5/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-19T02:44:28.000Z" itemprop="datePublished">2016-12-19</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h4><pre><code>1、async: 异步下载当前脚本，不阻塞后续代码的执行
+
+2、charset: 字符集
+
+3、defer: 表示当前脚本延迟到文档完全被解析和显示后在执行 defer=&quot;defer&quot;
+
+4、src: 文件路径
+
+5、language: 语言
+
+6、type: 脚本类型
+
+&apos;use strict&apos; 严格模式
+</code></pre><h4 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h4><pre><code>作用域: 变量和函数可访问的范围，作用域分为局部和全局，函数中声明的变量叫局部变量，在window对象下定义的变量为全局变量
+
+作用域链: 决定哪些变量能够被当前函数访问及访问顺序
+
+    函数对象有一个[[Scope]]属性，包含了函数被创建作用域中对象的集合，集合被称为函数的作用域链scope chain，它决定了哪些数据能被函数访问
+
+    function doSomething(){
+        var blogName=&quot;Jessica&quot;;
+        function innerSay(){
+            alert(blogName);
+        }
+        innerSay();
+    }
+    alert(blogName);        //脚本错误
+    innerSay();             //脚本错误
+</code></pre><h4 id="js预解析"><a href="#js预解析" class="headerlink" title="js预解析"></a>js预解析</h4><pre><code>JS执行时先将代码中所有 var定义变量和function(){} 进行提取，函数内部变量除外。
+
+将var的变量赋为undefined
+
+将函数都为函数本身function getName(){}，所以在调用函数时无论在前还是在后都会被调用。
+
+Example:
+    var add = &apos;bbb&apos;; 
+    function add(){console.log(&apos;aaa&apos;)} 
+
+    add();      报错
+</code></pre><h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><pre><code>闭包: 函数嵌套，内部函数调用外部函数的局部变量，内部函数执行完后自动消毁，外部函数的变量不会被回收一直保存在内存中.
+
+&lt;script&gt;
+    var fun = function(){
+        var a = 1;
+        return function(){
+            a++;
+            alert(a);
+        }
+    }
+
+    var f = fun();        // 这里返回了匿名函数的引用，里面的局部变量就不会被消毁
+    f();    // 2
+    f();    // 3
+    f();    // 4
+&lt;/script&gt;
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>一、函数没有重载: 当两个函数名相同，后面的函数会覆盖掉之前的函数
+
+    function getUserName(){
+        console.log(&apos;a&apos;);
+    }
+
+    function getUserName(){
+        console.log(&apos;b&apos;);
+    }
+
+    getUserName();      // &apos;b&apos;
+
+
+二、声明函数和匿名函数: 
+
+    function person() {  ...  };          // 声明
+    var person = function() {  ...  }     // 匿名
+
+    Example:
+
+        getName();          // b
+        var getName = function(){       // 优先级要高于声明函数，但要必须执行到这里才有效
+            console.log(&apos;a&apos;);
+        };
+
+        getName();          // a
+
+        function getName(){
+            console.log(&apos;b&apos;);
+        }
+        getName();          // a
+
+
+三、函数参数
+
+    1、形参、实参
+
+        function add(a, b){ return a+b }    // 形参
+
+        add(1,2)    // 实参
+
+
+    2、arguments数组: 函数参数的数组
+
+    3、callee 函数的调用当前函数的本身，可以使用arguments.caller(), 可以用于递归
+
+        function factorial(num){
+            if(num &lt; 1){
+                return 1;
+            }
+            else{
+                return num * arguments.callee(num-1);
+            }
+        }
+
+    4、caller 返回被调用函数的本身
+
+        function outer() {
+            inner();
+        }
+
+        function inner() {
+            alert(arguments.callee);        // function inner(){ ... }
+            alert(arguments.callee.caller); // function outer(){ ... }
+        }
+
+        outer();
+
+四、如果函数没有return返回undefined
+
+    var fn = function(){ }; 
+    fn();       // undefined
+</code></pre><h4 id="call-、apply"><a href="#call-、apply" class="headerlink" title="call()、apply()"></a>call()、apply()</h4><pre><code>Function.prototype.call() 和 Function.prototype.apply() 用于改变函数的this指向
+
+一、无参
+
+    var obj1 = {
+        name: &apos;siguang&apos;,
+        getName: function(){
+            return this.name;
+        }
+    }
+
+    var obj2 = {
+        name: &apos;lulu&apos;
+    }
+
+    console.log(obj1.getName());  // siguang
+
+    // 注意这里是将getName中的this指定指向了obj2，并且执行了getName()函数
+    var n1 = obj1.getName.call(obj2);
+    console.log(n1);        // lulu
+
+二、有参
+
+    var objA = {
+        num: 10,
+        add: function(a, b){
+            return a + b + this.num;
+        }
+    }
+    var objB = {
+        num: 20
+    } 
+
+    var n1 = objA.add(1, 2);
+    console.log(n1);    // 13
+
+    var n2 = objA.add.call(objB, 1, 2);     // 如果objA.add.apply(objB, [1,2]);
+    console.log(n2)     // 23
+</code></pre><h4 id="void-0"><a href="#void-0" class="headerlink" title="void(0)"></a>void(0)</h4><pre><code>这个操作符允许插入一个计算结果等效于undefined的表达式。
+
+void操作符经常仅仅是用来获得undefined值，比如经常使用到的“void(0)”(这等效于“void 0”)
+
+当浏览器遇到一个javascript:URI，它会运算带有URI的代码，然后将计算结果替换当前页面的内容，除非它的返回值是undefined。void操作符可以被用于返回undefined
+
+&lt;a href=&quot;javascript:void(0);&quot;&gt;
+    Click here to do nothing
+&lt;/a&gt;
+</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><pre><code>一、 数据类型包括
+
+    Number、String、Boolean、null、undefined
+
+    获取数据的类型: 返回的值（number、string、boolean、array、object、function、undefined、null）
+
+    Object.prototype.toString.call(val)
+
+    // 判断类型
+    function returnType(val) {
+        let typeName;
+        if (typeof val === &apos;object&apos;) {
+            let typeName = Object.prototype.toString.call(val);
+
+            if (typeName == &apos;[object Array]&apos;) {
+                return &apos;array&apos;
+            } else if (typeName == &apos;[object Object]&apos;) {
+                return &apos;object&apos;
+            }
+            else if(typeName == &apos;[object Null]&apos;){
+                return &apos;null&apos;
+            }
+        } else {
+            return typeof val;
+        }
+    }
+
+
+二、NaN 非数值
+
+    isNaN() 是否是一个NaN非数值， 如果是数字返回false, 否则返回true
+
+        isNaN(NaN);     // true
+        isNaN(10);      // false
+        isNaN(&apos;10&apos;);    // false 转换后是一个数字
+        isNaN(&apos;blue&apos;);  // true 转换后不会是一个数字
+        isNaN(true);    // false true转换后为1是一个数字
+
+
+    数值转换:
+        Number() 布尔转换成1或0，null返回0，undefined返回NaN，
+        parseiInt()
+        parseFloat()
+
+
+toString(): 将该对象的原型始以字符串形式返回   xx.toString();       // &apos;xx&apos;
+
+valueOf(): 返回最适合该对象的类型的原始值
+</code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>var testA = 3 &amp;&amp; 2;             // 返回 2，如果左侧为真返回右侧，否则返回左侧
+
+var testB = 0 || 3;             // 返回3，如果左侧为假返回右侧
+
+var a = 1; console.log(!!a);    // 返回true，!!强制转换成布尔值
+
+var a = &apos;123.563&apos;; console.log( +a );  // 123.563，+转换成数值类型
+</code></pre><h4 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h4><pre><code>for(var i=0; i&lt;10; i++){}
+
+do{....} while(express)
+
+while(){ ... }
+
+for( in ){}
+
+break 退出整个循环        continue 跳出当前循环，继续执行下一个循环
+
+switch case default
+</code></pre><h4 id="定时器的运行机制"><a href="#定时器的运行机制" class="headerlink" title="定时器的运行机制"></a>定时器的运行机制</h4><pre><code>JS的执行机制: 
+
+    JS引擎执行JS的机制是基于事件循环，JS是单线程，同一时间只能执行一个任务，其它任务就得排队，后续任务需要前一个任务结束才能执行
+
+    为了避免一些长时间任务造成的无意义等待，JS引入了异步，用另一个线程来管理异步任务
+
+    同步任务在主线程队列中顺序执行，而异步任务会进入另一个任务队列，不会阻塞主线程，等主线程队列执行完后，在去异步队列查询是否有可执行的异步任务
+
+异步 - ajax、定时器、Promise
+
+Example:
+
+    // HTML5规范规定最小时间不能小于4ms(毫秒)，如果小于4会被当4来处理，Chrome可以设置1ms
+    setTimeout(function(){
+        console.log(1);
+    }, 0);
+    console.log(2);         // 先log出2，在log出1
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>一、事件机制: 事件捕获 和 事件冒泡, IE11之前没有捕获
+
+二、事件委托
+
+    事件委托（也称事件代理）: 将事件绑定到父元素上，利用冒泡机制来对点击的元素进行处理
+
+    &lt;div id=&quot;boxList&quot;&gt;
+        &lt;ul&gt;
+            &lt;li data-attr=&quot;a1&quot;&gt;aaa&lt;/li&gt;
+            &lt;li data-attr=&quot;a2&quot;&gt;bbb&lt;/li&gt;
+            &lt;li data-attr=&quot;a3&quot;&gt;ccc&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var oList = document.querySelector(&apos;#boxList&apos;);
+        oList.onclick = function(e){
+            var arrtName = e.target.getAttribute(&apos;data-attr&apos;);
+            console.log(arrtName);
+        }
+    &lt;/script&gt;
+
+
+三、自定义事件
+
+四、onLoad与DOMContentLoaded事件的区别
+
+    onLoad: 是当所有资源都加载完成后在执行onLoad函数内的程序
+
+    DOMContentLoaded: 是当DOM树加载完成后就执行此函数内的程序
+
+
+五、onmouseover、onmouseout与onmouseEnter、onmouseLeave
+
+    onmouseover、onmouseout 会冒泡
+
+    onmouseEnter、onmouseLeave 不会冒泡
+
+
+六、addEventListener(事件类型, 执行函数, boolear): 第三个参数，如果是true表示在捕获取中调用事件，false冒泡时调用
+
+    这里执行的函数不会被重载
+
+    var oSendBtn = document.querySelector(&apos;#sendBtn&apos;);      // 点击会输出&apos;aa&apos;, &apos;bb&apos;
+
+    oSendBtn.addEventListener(&apos;click&apos;, function(){
+        console.log(&apos;aa&apos;);
+    }, false);
+
+    oSendBtn.addEventListener(&apos;click&apos;, function(){
+        console.log(&apos;bb&apos;);
+    }, false);
+</code></pre><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>一、加载非阻塞脚本:  
+
+    浏览器遇到 &lt;script&gt; 标签时，页面加载都会停下来，先执行js代码，然后在继续加载（因为不知道脚本里有没有document.wirte()
+    来向页面写内容，所以会需要先执行完js文件在继续）
+
+    使用动态创建DOM元素，将脚本加载放到&lt;/body&gt;之前来加载，这样不会影响页面的内容展示
+
+
+二、按需加载: 可以分图片按需加载，js文件按需加载、数据接需加载
+
+    图片按需加载使用的lazyload
+
+    JS按需加载类似模块化开发，只对依赖的文件进行加载
+
+
+三、图片预加载: 通过new Images()来创建图像对象提前将图片进行加载
+
+    function preloadImg(url) {
+        var img = new Image();
+        img.src = url;
+        if(img.complete) {
+            //接下来可以使用图片了
+            //do something here
+        }
+        else {
+            img.onload = function() {
+                //接下来可以使用图片了
+                //do something here
+            };
+        }
+    }
+</code></pre><h4 id="跨域的解决方法"><a href="#跨域的解决方法" class="headerlink" title="跨域的解决方法"></a>跨域的解决方法</h4><pre><code>由于同源策略，安全性，ajax不同域下的数据不可以调用
+
+跨域的产生: 1、同域名不同端口        2、同域名不同协议        3、主域和子域之间        4、子域和子域之间
+
+解决跨域的方法: 
+
+一、JSONP
+
+    JSONP利用script标签中的src属性，src属性没有跨域限制，通过url的参数将回调函数的名称和数据请求给服务器，服务器接收到url参数进行处理，并将数据挂载到回调函数的参数并执行回调函数，客户端有与回调函数名相同，来处理这些数据
+
+    // 处理回调函数数据的函数
+    function doSomething(data) {
+        // 对data处理
+    }
+    var script = document.createElement(&quot;script&quot;);
+    script.src = &quot;http://www.b.com/b.html?callback=doSomething&quot;;
+    document.body.appendChild(script);
+
+
+二、document.domain: 
+
+    适用于主域相同子域不同，比如 www.renrendai.com 和 action.renrendai.com
+
+    例如: 两个域下各有a.html和b.html, a通过iframe嵌到另一个子域b.html是无权访问b.html文档内的元素, 所以通过document.domain来设置
+
+    a.html: 
+        document.domain = &quot;www.we.com&quot;;
+        var iframe = document.createElement(&quot;iframe&quot;);
+            iframe.src = &quot;http://a.we.com/b.html&quot;;
+            document.body.appendChild(iframe);
+            iframe.onload = function() {
+                console.log(iframe.contentWindow....); // 在这里操作b.html里的元素数据
+        }
+
+    b.html:
+       document.domain = &quot;www.we.com&quot;;       // b页面必须要设置a.html
+
+
+三、HTML5 postMessage() 处理iframe跨域问题
+
+    如果在一个主域中的a.html嵌套个 &lt;iframe src=&quot;http://www.b.com/b.html&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+    postMessage有两个接口: postMessage(send) 发送数据和 onmessage接收数据事件通过e.data来获取到
+
+    Example: 
+        // a.html
+        &lt;iframe src=&quot;http://www.b.com/b.html&quot; frameborder=&quot;0&quot; id=&quot;messageId&quot;&gt;&lt;/iframe&gt;
+
+        var oMessage = document.getElementById(&apos;messageId&apos;);
+        window.onload = function(){
+            window.addEventListener(&apos;message&apos;, function(e){
+                console.log(e.data);    // 接收b的数据
+            }, false);
+            oMessage.postMessage(&apos;发送给b的数据&apos;, &apos;http://www.b.com/b.html&apos;);
+        }
+
+        // b.html
+        window.onload = function(){
+            window.addEventListener(&apos;message&apos;, function(e){
+                console.log(e.data);    // 接收a的数据
+            })
+            window.parent.postMessage(&apos;发送给a的数据&apos;, &apos;http://www.a.html/a.html&apos;);
+        }
+
+    传统的iframe跨域使用方法: http://www.cnblogs.com/snandy/p/3900016.html
+
+
+四、window.name + iframe
+
+    window.name原理是利用同一个窗口在不同页面共用一个window.name，这个需要在a.com下建立一个代理文件c.html，使同源后a.html能获取c.html的window.name.
+
+        // a.html
+        var iframe = document.createElement(&quot;iframe&quot;);
+        iframe.src = &quot;http://www.b.com/b.html&quot;;
+        document.body.appendChild(iframe); // 现在a.html里建一个引用b.html的iframe，获得b的数据
+
+        var flag = true;
+        iframe.onload = function() {
+            if (flag) {
+                iframe.src = &quot;c.html&quot;;          // 这里在去加载c.html
+
+                  // 判断是第一次载入的话，设置代理c.html使和a.html在同目录同源，这样才能在下面的else取到data
+                flag = false;
+            } 
+            else { 
+                // 第二次载入由于a和c同源，a可以直接获取c的window.name
+                alert(iframe.contentWindow.name);
+
+                iframe.contentWindow.close();
+                document.body.removeChild(iframe);
+                iframe.src = &apos;&apos;;
+                iframe = null;
+            }
+        }
+
+        // b.html
+        window.name = &quot;这是 b 页面的数据&quot;;
+
+
+五、window.location.hash + iframe
+
+    b.html将数据以hash值的方式附加到c.html的url上，在c.html页面通过loaction.hash获取数据后传到a.html
+
+    // a.html
+    var iframe = document.createElement(&quot;iframe&quot;);
+    iframe.src = &quot;http://www.b.com/b.html&quot;;
+    document.body.appendChild(iframe); // 在a页面引用b
+    function check() { 
+        // 设置个定时器不断监控hash的变化，hash一变说明数据传过来了
+        var hashs = window.location.hash;
+        if (hashs) {
+            clearInterval(time);
+            alert(hashs.substring(1));
+        }
+    }
+    var time = setInterval(check, 30);
+
+    //b.html
+    window.onload = function() {
+        var data = &quot;this is b&apos;s data&quot;; 
+        var iframe = document.createElement(&quot;iframe&quot;);
+        iframe.src = &quot;http://www.a.com/c.html#&quot; + data;         
+        document.body.appendChild(iframe); // 将数据附加在c.html的hash上
+    }
+
+    //c.html
+    // 获取自身的hash再传到a.html的hash里，数据传输完毕
+    parent.parent.location.hash = self.location.hash.substring(1);
+</code></pre><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>一、CORS概念: 是指跨域资源共享, 用于解决前端跨域问题, 使用自定义头部让浏览器与服务器进行沟通, 来进行请求成功或失败
+
+    原理: 服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。
+
+    *表示接受所有域名的请求。也可以指定特定的域名 Access-Control-Allow-Origin: http://www.client.com。
+
+
+二、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
+
+    1、post请求跨域
+
+    2、&quot;script error&quot; 的脚本错误提示
+
+    3、canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+</code></pre><p>   三、CORS缺点: </p>
+<pre><code>1、cookie不会随请求发送，也不会响应
+
+2、不能设置请求头的Content-Type字段
+
+3、不能访问响应头信息
+</code></pre><h4 id="Promise异步编程"><a href="#Promise异步编程" class="headerlink" title="Promise异步编程"></a>Promise异步编程</h4><h4 id="同步、异步"><a href="#同步、异步" class="headerlink" title="同步、异步"></a>同步、异步</h4><pre><code>同步: 就是代码逐行执行
+
+异步: Promins、Ajax、setTimeout 来实现，执行到异步的代码时不会等待返回结果后在执行之后的代码，会直接往下执行。
+
+同步和异步是针对单线程来讲的象JS，象Java一般不会说同步和异步，而是阻塞和非阻塞。
+</code></pre><h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><pre><code>面向对象的特点: 封装、继承、多态
+
+对象组件: 私有、公有属性、方法和特权方法
+
+一、constructor属性: 指向这个原型的构造函数，如果是类式继承需要修改子类的constructor的指向，如果不改子类会指向父类.
+
+二、原型和原型链: 
+
+    prototype原型: 在创建函数的时候JS会为这个函数自动加上prototype属性
+
+    原型链: 每一个构造函数都有一个prototype, prototype包含一个指向构造函数的指针, 而实例包含指向原型的对象的指针, 都是通过 __proto__ 属性来指向
+
+    1）构造函数实例化后，prototype下的所有属性和方法都为公用的一套, 这样为了节省资源提高性能
+
+    2）优先级: 如果同时在构造函数内或prototype中定义相同的属性或方法名, 会先找到执行构造函数内的属性或方法, 如果没有在到prototype中查找。
+
+        __proto__属性: __proto__是实例与prototype之间的链接，实例的__proto__指向构造函数的prototype.function F(){}; 
+
+        var f = new F(); 
+        console.log(f.__proto__ === F.prototype);           // true
+        Object.prototype是顶级对象，所有对象都继承它
+
+三、继承
+
+    每个对象都是由Object.prototype对象继承的
+
+    继承分为: 类式继承、原型链继承、拷贝继承。
+
+    1、类式继承: 
+
+        function Parent(){}
+        Parent.prototype.say = function(){ 
+            console.log(&apos;haha&apos;)
+        }
+
+        function Childer(){}
+
+        /* 将第一个类的实例赋给第二个类的原形，类式继承的原因
+        *  类的原型对象作用就是为类的原型添加公有方法，但不能直接访问这些属性和方法，必须通过原型prototype来访问
+        */
+        Childer.prototype = new Parent();   
+
+        // 上一步执行后prototype的constructor会指向Parent，所以需要修正回来
+        Childer.prototype.constructor = Childer;    
+        Childer.prototype.getAuthor = function(){ console.log(&apos;siguang&apos;) }
+
+
+    2、原型链继承: 
+
+        // 原型链式继承
+        /*
+        * 流程:
+        * 1、clonePlan调用blood属性会在clonePlan查找所有属性，
+        * 2、如果没有找到在看clonePlan的__proto__指象哪里，这里指向了F，到F对象下的prototype下查找
+        * 3、plane将prototype赋给了F的prototype所以最终找到了blood属性
+        */
+
+        function extend(obj){
+            var F = function(){};
+            F.prototype = obj;
+            return new F();
+        }
+
+        // 定义一个类
+        var Plane = function(){
+            this.blood = 100;
+            this.attackLevel = 1;
+            this.defenseLevel = 1;
+        }
+        Plane.prototype = {
+            getBlood: function(){
+                console.log(this.blood);
+            },
+            getAttackLevel: function(){
+                console.log(this.attackLevel)
+            }
+        }
+        var plane = new Plane();
+
+        // 将类通过extend函数继承过来
+        var clonePlan = extend(plane);
+        clonePlan.blood = 1234;
+        clonePlan.attackLevel = 4567;
+
+        clonePlan.getBlood();               // 1234
+        clonePlan.getAttackLevel();         // 4567
+
+
+    3、拷贝继承
+
+        function extend(parent, childer){
+            for(var key in parent){
+                childer[key] = parent[key];
+            }
+        }
+
+        extend(a.prototype, b.prototype);
+
+
+    4、Object.create()继承
+
+        function Car(desc){
+            this.desc = desc;
+            this.color = &apos;red&apos;
+        }
+
+        Car.prototype = {
+            getInfo: function(){
+                return `color: ${this.color}, desc: ${this.desc}`
+            }
+        }
+
+        // 注意这里的name : {value: &apos;lulu&apos;} 必须是对象，必须是value在根一个值，要不报错
+        var child = Object.create(Car.prototype);
+        child.desc = &apos;aaa&apos;;
+        child.color = &apos;bbb&apos;;
+
+        // 改变子类不会影响到父类
+        console.log(child);
+        var childCar = child.getInfo();
+        console.log(childCar)       // color: bbb, desc: aaa
+
+
+        var oCar = new Car(&apos;ccc&apos;);
+        console.log(oCar.getInfo());    /// color: red, desc: ccc
+
+
+四、SuperClass.prototype = {} 与 SuperClass.prototype.getName = function(){} 区别
+
+    一个是将对象覆盖prototype, 一个是将方法添加到prototype中
+
+    存在的问题，SuperClass.prototype = {}这种方式，实例的对象没有constructor,
+</code></pre><h4 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h4><pre><code>一、XMLHttpRequrest 缓存
+
+    缓存只有在get请求中存在，如果服务端设置了缓存，如果在缓存失效前请求就会取到缓存的数据，解决有两种方法:
+
+    1、加If-Modified-Since头
+
+        xhr.setRequestHeader(&apos;If-Modified-Since&apos;, &apos;0&apos;);
+
+        jquery中设置  $.ajax({ cache: false })
+
+    2、给请求的URL后加参数 
+
+        let sendUrl = &quot;http://host/getUser&quot;+&quot;?&quot;+Math.random();
+
+
+// 创建一个XMLHttpRequest对象
+var xhr = window.XMLHttpRequrest ? new XMLHttpRequrest() : new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);   
+
+属性: 服务器响应
+
+    1、reponseText: 字符串响应数据
+
+    2、responseXML: 获取XML响应数据
+
+    3、timout: 设置超时请求时间
+
+    4、responseType: 设置返回数据类型
+
+        1、text: 字符串      2、document: Document对象       3、json: json数据       4、blob: 二进制对象       5、arrayBuffer: 二进制
+
+方法: 
+
+    1、open(请求类型，请求地址，同步/异步): 请求类型
+
+    2、send(): 请求发送到服务器
+
+    3、setRequestHeader(key，value): 设置请求头
+
+    4、getResponseHeader(header)、getAllResponseHeaders(): 获取响应头
+
+事件: 
+
+    1、onabort: 停止传输
+
+    2、onerror: 错误
+
+    3、onload: 
+
+    4、ontimout: 超时执行的事件
+
+    5、onreadystatechange: 请求发送到服务器时，接收一些响应
+
+        readyState: XMLHttpRequest的状态，
+
+            0: 请求未初始化    1、服务器连接已建立      2、请求已接收     3、请求处理中     4、请求已完成，已响应
+
+        status:  200: 成功  404:  未找到资源
+
+        xhr.onreadystatechange = function(e){
+            if(this.readyState == 4 &amp;&amp; this.state == 200){
+                console.log(this.reponseText)
+            }
+        }
+
+    6、upload: 上传 XMLHttpRequestUpload
+
+        function uploadFile() {  
+            // 创建FormData对象
+            var fd = new FormData();
+            // 添加值
+            fd.append(&quot;fileToUpload&quot;, document.getElementById(&apos;fileToUpload&apos;).files[0]); 
+
+            // 创建XMLHttpRequest()请求
+            var xhr = new XMLHttpRequest();  
+            // 文件上传时侦听progress事件
+            xhr.upload.addEventListener(&quot;progress&quot;, uploadProgress, false);  
+
+            xhr.addEventListener(&quot;load&quot;, uploadComplete, false);    // 载入 
+            xhr.addEventListener(&quot;error&quot;, uploadFailed, false);     // 错误
+            xhr.addEventListener(&quot;abort&quot;, uploadCanceled, false);   // 终止
+
+            // 请求方式和地址
+            xhr.open(&quot;POST&quot;, &quot;test2.php&quot;);  
+            // 发送请求到服务器
+            xhr.send(fd);  
+        }
+
+        function uploadProgress(evt) { 
+            // evt.loaded 当前上传的大小， evt.total 文件总大小
+            if (evt.lengthComputable) {  
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);  
+                document.getElementById(&apos;progressNumber&apos;).innerHTML = percentComplete.toString() + &apos;%&apos;;  
+            }  
+            else {  
+                document.getElementById(&apos;progressNumber&apos;).innerHTML = &apos;unable to compute&apos;;  
+            }
+        }
+
+        function uploadComplete(evt) {  
+            /* This event is raised when the server send back a response */  
+            alert(evt.target.responseText);  
+        }
+
+        function uploadFailed(evt) {  
+            alert(&quot;There was an error attempting to upload the file.&quot;);  
+        }
+
+        function uploadCanceled(evt) {  
+            alert(&quot;The upload has been canceled by the user or the browser dropped the connection.&quot;);  
+        }
+</code></pre><h4 id="content-type四种类型"><a href="#content-type四种类型" class="headerlink" title="content-type四种类型"></a>content-type四种类型</h4><pre><code>get请求包括请求头、状态行
+
+post请求包括请求头、状态行、请求主体（主体类型设置就是content-type来处理）
+
+Content-Type:
+
+一、application/x-www-form-urlencoded: 浏览器的原生 form 表单，如果不设置 enctype 属性，那么最终就会以 application/x-www-form-urlencoded 方式提交数据
+
+    jquery和ajax的默认的方式 content-type:「application/x-www-form-urlencoded;charset=utf-8」
+
+    header:
+    POST http://wwwexamplecom HTTP/11 
+    Content-Type: application/x-www-form-urlencoded;charset=utf-8 
+
+    ** Form Data
+
+        incomeTime: &quot;16:25:13&quot;
+        serialNumber: &quot;223&quot;
+        incomeBank: &quot;中央银行&quot;
+        incomeAccount: &quot;穷逼&quot;
+
+
+二、multipart/form-data: 一般用来上传文件，必须让 form 的 enctyped 等于这个值
+
+    content-type: multipart/form-data
+
+    POST http://wwwexamplecom HTTP/11 
+    Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+
+    ** Request Payload
+
+        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+        Content-Disposition: form-data; name=&quot;text&quot; 
+
+        title 
+        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+        Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;chromepng&quot; 
+        Content-Type: image/png 
+
+        PNG  content of chromepng  
+        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA-- 
+
+
+三、application/json: 告诉服务端消息主体是序列化后的 JSON 字符串
+
+    POST http://wwwexamplecom HTTP/11 
+    Content-Type: application/json;charset=utf-8 
+
+    // ajax请求
+    var data = {&apos;title&apos;:&apos;test&apos;, &apos;sub&apos; : [1,2,3]};
+    $ajaxpost(url, data)success(function(result){
+
+    });
+
+    // 发送
+    POST http://wwwexamplecom HTTP/11
+    Content-Type: application/json;charset=utf-8
+
+    ** Request Payload
+
+        {&quot;title&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2,3]}
+
+
+四、text/xml: XML文件作为编码方式的需要用到的类型
+
+    POST http://wwwexamplecom HTTP/11
+    Content-Type: text/xml
+
+    ** Request Payload
+
+
+五、HTML5中的fromData异步上传表单
+
+    这里注意需设置 content-type:false 和 processData: false
+
+    function upThumbSubmit() {
+        if(!windowFormData) {　
+            alert(&apos;your brower is too old&apos;);
+            return false;
+        }
+        var formData = new FormData($( &quot;#upForm&quot; )[0]);
+        var upLoadFile = documentquerySelector(&apos;upfile&apos;)files[0];
+        formDataappend(&apos;file&apos;: upLoadFile);
+
+        $ajax({
+            url:&apos;?c=api&amp;a=upload&apos;,
+            type:&apos;post&apos;,
+            data:formData,
+            processData: false,        // 不会被序列化
+            contentType: false,        
+            dataType:&apos;json&apos;,
+            success:function(data){
+                alert(data);
+                return false;
+
+            }
+        });
+    }
+</code></pre><h4 id="iframe父子页面的通信"><a href="#iframe父子页面的通信" class="headerlink" title="iframe父子页面的通信"></a>iframe父子页面的通信</h4><pre><code>Example:
+
+    parent.html:
+        &lt;body&gt;
+            &lt;iframe src=&quot;child.html&quot; frameborder=&quot;0&quot; id=&quot;child&quot;&gt;&lt;/iframe&gt;
+        &lt;/body&gt;
+
+    childe.html:
+        &lt;body&gt;
+            &lt;div id=&quot;box&quot;&gt;&lt;/div&gt;
+        &lt;/body&gt;
+
+一、父页面获取子页面
+
+    &lt;script&gt;
+        var myIframe = document.querySelector(&apos;#child&apos;), 
+            childDocument;
+
+        if(myIframe.document){
+            childDocument = myIframe.docuemnt;
+        }
+        else{
+            childDocument = myIframe.contentWindow.docuemnt;
+        }
+
+        childDocument.querySelector(&apos;#box&apos;).innerHTML = &apos;xxxx&apos;;
+    &lt;/script&gt;
+
+    1、先获取iframe节点
+
+        var myIframe = document.querySelector(&apos;#child&apos;);        // 或 myIframe = window.frames[&apos;child&apos;];
+
+    2、获取iframe页面的document对象
+
+        // ie浏览器
+        var childDocument = myIframe.docuemnt;
+
+        // 其它浏览器
+        var childWindow = myIframe.contentWindow;     // 获取iframe的window对象
+        var childDocument = myIframe.contentWindow.docuemnt;    // 获取iframe的document对象
+        var childDocuemnt = myIframe.contentDocument;   // 也是获取document对象  与 myIframe.contentWindow.docuemnt 相同
+
+    3、向id=&apos;box&apos;设置内容
+
+        childDocument.querySelector(&apos;#box&apos;).innerHTML = &apos;xxxx&apos;;
+
+
+二、子页面获取父页面
+
+    1、获取父页面的document对象
+
+        var parentDocument = window.parent.document;
+
+    2、如果iframe嵌套多个iframe，想直接取到最顶层的iframe
+
+        var selfDocument = window.self.document;
+</code></pre><p>——————— ES5 API ————————</p>
+<h4 id="提供全局的JSON对象"><a href="#提供全局的JSON对象" class="headerlink" title="提供全局的JSON对象"></a>提供全局的JSON对象</h4><pre><code>1、JSON.parse(): 将字符串转成对象
+
+2、JSON.stringify(): 将对象转成字符串
+</code></pre><h4 id="Array扩展"><a href="#Array扩展" class="headerlink" title="Array扩展"></a>Array扩展</h4><pre><code>1、push(): 向数组最后插入内容   unshift():向数据最前面插入一项
+
+2、pop(): 删除数组最后一项内容  shift(): 删除数组第一项内容
+
+    var arr = [1, 2, 3];   
+    console.log(arr.pop());     // 3
+    console.log(arr)    // [1, 2]
+
+3、reverse(): 数组顺序颠倒
+
+4、sort(): 排序
+
+    let arr = [1, 123, 23, 4, 125, 6, 2, 31];
+    arr.sort(function(v1, v2) {
+        return v1 &lt; v2 // 从大到小排列
+    })
+
+5、concat(): 两个数组进行合并, 也可以拷贝成为一个新数组，而不是带指向
+
+        var arrA = [1,2,3];
+        var arrB = arrA.concat();
+        arrB.push(5,6,7);
+        console.log(arrA);  // [1,2,3]
+        console.log(arrB);  // [1,2,3,5,6,7]
+
+6、slice(开始，结束): 返回一个子数组,  如果结束参数不传为从开始取到最后的值
+
+    let arr = [125, 123, 31, 23, 6, 4, 2, 1];
+    let newArr = arr.slice(2, 5);  
+    console.log(newArr, arr);        // [31, 23, 6]    [125, 123, 31, 23, 6, 4, 2, 1]
+
+7、splice(): 用于替换、插入、删除
+
+    splice(1,3): 删除 下标1-3的数据
+    splice(3,0, &apos;insert&apos;): 插入 在位置3一个&apos;insert&apos;字符串
+    splice(2,4, &apos;replce&apos;): 替换 将2-4的数组用 &apos;replce&apos;符
+
+8、indexOf(): 查找数组中指定的字位的位置，未找到返回-1
+
+    var arr = [1,2,3,4,5,6];  arr.indexOf(3);         // 返回2
+
+9、lastIndexOf(): 查找数组中指定的字位的位置，从后向前查找，未找到返回-1
+
+
+* 迭代方法
+
+10、every(): 每一项为true，结果返回true
+
+    // 数组中是否包含大于2的数
+    var num = [1,2,3,2,1];
+    var result = num.every(function(item,index,array) {    // item: 1, index: 0, array: [1,2,3,2,1]
+        return (item &gt; 2);
+    })
+    console.log(result);        // true
+
+
+11、some(): 有一项为true就不会往下执行，并返回true
+
+    var dwarfPlanets = [&quot;ceres&quot;, &quot;pluto&quot;, &quot;haumea&quot;, &quot;makemake&quot;, &quot;eris&quot;];
+    var result = dwarfPlanets.some(function(element) {
+        return (element === &quot;pluto&quot;);
+    });   
+    console.log(result)     // true
+
+
+5、filter(): 条件中返回true结果，重新返回一个新数组
+
+    var arr = [1, 2, 3, 2, 5, 7];
+    var result = arr.filter(function(item,index,array){
+        return (item &gt; 2);
+    })
+    console.log(result);        // [3, 5, 7];
+
+
+6、forEach(): 遍历数组, forEach无法跳出循环, 只能通过try...catch
+
+    var arr = [&apos;lulu&apos;, &apos;siguang&apos;, &apos;mama&apos;, &apos;baba&apos;];
+    arr.forEach(function(item, index, arr){  // lulu  0  [&quot;lulu&quot;, &quot;siguang&quot;, &quot;mama&quot;, &quot;baba&quot;]
+        console.log(&apos;name:&apos;+item, index, arr);
+    })
+
+
+7、map(): 将每次return的数据，最终组成一个数组返回
+
+    var srcColors = [
+        {r: 255, g: 255, b: 255 },
+        {r: 128, g: 128, b: 128 },
+        {r: 0,   g: 0,   b: 0   }
+    ];
+
+    var newColor = srcColors.map(function(item, index, arr){         
+        return item.r;
+    })
+    console.log(newColor);        // 返回 [255, 128, 0]
+
+
+8、reduce(上次执行的结果，当前值，当前索引，数组对象)、reduceRight(): 归并数组，每次循环都会返回上一次值和当前值
+
+    var val = [1,2,3,4,5];
+    var sum = val.reduce(function(prev, cur, index, arr){   // prev 第一次执行的是1, 第二次执行的就是上次1+2返回的结果
+        return prev + cur;   
+    })
+    console.log(sum);   // 15
+</code></pre><h4 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h4><pre><code>1、__proto__: 对象实例与prototype之间的连接，原型链
+
+2、prototype: 原型，公用的，节省内存开支，查找先去对象本身找属性和方法，如果没有到prototype下查找
+
+3、constructor: 保存用于创建当前对象的构造函数名
+
+4、toString()、valueOf()
+
+5、delete: 删除对象属性
+
+6、hasOwnProperty(propertyName): 用来判断属性是否在对象中（而不是原型中） var obj = {name: &apos;aaa&apos;}; obj.hasOwnProperty(&apos;name&apos;)
+
+    var o = { name: &apos;siguang&apos;, getName: function(){ console.log(this.name) } };
+    o.hasOwnProperty(&apos;name&apos;);       // true
+
+    判断对象的属性或方法是否存在
+    var obj = {};
+
+    判断属性
+        obj.name    // 如果属性不存在返回 undefined，也就是false
+
+    判断方法
+        typeof obj.getName == &apos;function&apos;      // 如果存在返回true
+
+
+7、isPrototypeOf(object): 判断一个对象的原型是否是在指定对象的原型链中
+
+    var o = new Object();
+    Object.prototype.isPrototypeOf(o)
+
+
+8、instanceof: 用来判断一个构造函数的prototype属性是否在另一个检测对象的原型链上
+
+    A instanceof B   // 检测B的prototype是否存在于A的原型链上
+
+9、in: 属性是否在对象中能访问，返回true或false
+
+    function Persion(){
+        var sex = &apos;男&apos;;
+        this.name = &apos;siguang&apos;;
+    }
+    Persion.prototype.age = &apos;haha&apos;;
+
+    var p1 = new Persion();
+    console.log(&apos;name&apos; in p1);      // true
+    console.log(&apos;age&apos; in p1);       // true
+    console.log(&apos;sex&apos; in p1);       // false;
+
+
+10、Object.create(o, p): 可以创建一个干净的对象，给o对象创建一个prototype，如果p对象存在
+
+    var oA = Object.create(null);    // 创建一个干净的对象，没有__proto__属性
+    var oB = {};        // 存储__proto__
+
+    function Car(desc){
+        this.desc = desc;
+        this.color = &apos;red&apos;
+    }
+
+    Car.prototype = {
+        getInfo: function(){
+            return `color: ${this.color}, desc: ${this.desc}`
+        }
+    }
+
+    // 注意这里的name : {value: &apos;lulu&apos;} 必须是对象，必须是value在根一个值，要不报错
+    var child = Object.create(Car.prototype);
+    child.desc = &apos;aaa&apos;;
+    child.color = &apos;bbb&apos;;
+
+    // 改变子类不会影响到父类
+    console.log(child);
+    var childCar = child.getInfo();
+    console.log(childCar)       // color: bbb, desc: aaa
+
+    var oCar = new Car(&apos;ccc&apos;);
+    console.log(oCar.getInfo());    /// color: red, desc: ccc
+
+    1) Object.create()与new Object()的区别
+
+        var Base = function () {}
+        var o1 = new Base();
+        var o2 = Object.create(Base);
+
+        Object.create(null) 是创建一个空对象，这个对象不继承Object.prototype原型链上的属性或方法
+
+
+11、Object.defineProperty(obj, prop, descriptor): 对象新增或修改一个属性会执行set()、get()方法来通知
+
+    参数: obj 目标对象     prop需要定义的属性      descriptor该属性拥有的特性，可设置的值有
+
+    descriptor的值: 
+
+        value 属性的值，默认为 undefined。
+
+        writable 该属性是否可写，如果设置成 false，则任何对该属性改写的操作都无效（但不会报错），默认为 false。
+
+        get 一旦目标对象访问该属性，就会调用这个方法，并返回结果。默认为 undefined。
+
+        set 一旦目标对象设置该属性，就会调用这个方法。默认为 undeinfed。
+
+        configurable 如果为false，则任何尝试删除目标属性或修改属性以下特性（writable, configurable, enumerable）的行为将被无效化，默认为 false。
+
+        enumerable 是否能在for...in循环中遍历出来或在Object.keys中列举出来。默认为 false。
+
+    Example:
+        var obj = {};
+        Object.defineProperty(obj, &apos;name&apos;, {
+            get: function(){
+                debugger;
+                // this.name;  
+                return 23;
+            },
+            set: function(newValue){
+                debugger
+            }
+        })
+
+        Object.defineProperty(obj, &apos;sex&apos;, {
+            get: function(){
+                debugger;
+                return &apos;女&apos;;
+            },
+            set: function(newValue){
+                debugger
+            }
+        })
+
+        obj.name = &apos;sss&apos;;           // 调用set()
+        console.log(obj.name);      // 调用get()   23
+
+        obj.sex = &apos;男&apos;;
+        console.log(obj.sex);       // 女
+
+
+    MVVM的核心: 
+
+        &lt;div&gt;
+            &lt;p&gt;你好，&lt;span id=&apos;nickName&apos;&gt;&lt;/span&gt;&lt;/p&gt;
+            &lt;div id=&quot;introduce&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;script type=&quot;text/javascript&quot;&gt;
+
+            // 视图控制器
+            var userInfo = {};
+            Object.defineProperty(userInfo, &quot;nickName&quot;, {
+                get: function(){
+                    return document.getElementById(&apos;nickName&apos;).innerHTML;
+                },
+                set: function(nick){
+                    document.getElementById(&apos;nickName&apos;).innerHTML = nick;
+                }
+            });
+
+            Object.defineProperty(userInfo, &quot;introduce&quot;, {
+                get: function(){
+                    return document.getElementById(&apos;introduce&apos;).innerHTML;
+                },
+                set: function(introduce){
+                    document.getElementById(&apos;introduce&apos;).innerHTML = introduce;
+                }
+            })
+
+            userInfo.nickName = &quot;siguang&quot;;
+            userInfo.introduce = &quot;我是&quot;+ userInfo.nickName +&quot;，我来自黑龙江，...&quot;
+
+        &lt;/script&gt;
+
+    https://segmentfault.com/a/1190000004346467
+
+
+12、Object.defineProperties: 与defineProperty相同就是可以设置多个属性
+
+    let book = { year: 2004, edit: 1}
+    Object.defainProperyies(book, {
+        year:{
+            get: function(){},
+            set: function(){}
+        },
+        edit: {
+            get: function(){},
+            set: function(){}
+        }
+    })
+
+
+13、Object.getPrototypeOf(object): 调用父类原型上的方法
+
+    // 定义一个父类
+    function PersonA(){
+        this.methodA = function(){ 
+            alert(&quot;a&quot;);
+        }
+    }
+    PersonA.prototype.methodB = function(){
+        alert(&apos;b&apos;);
+    }
+
+    // 定义一个子类
+    function Man(){
+        this.m1 = function(){
+            //getPrototypeOf只有继承父类的时候才可以调用其方法
+            Object.getPrototypeOf(this).methodA();        
+        }
+    }
+
+    Man.prototype = new PersonA();
+    Man.prototype.m2 = function(){
+        Object.getPrototypeOf(this).methodB();
+    }
+
+    var man = new Man();
+    man.m1();        // a
+    man.m2();        // b
+
+
+14、Object.keys(obj): 将对象obj下所有的属性的key，返回一个数组，用可以用它来判断是数组是否为空
+
+    Object.keys(obj).length 是否等于0
+
+15、Object.getOwnPropertyDescriptor(): 
+</code></pre><h4 id="Function扩展"><a href="#Function扩展" class="headerlink" title="Function扩展"></a>Function扩展</h4><pre><code>1、bind(): 一个函数绑定之后，可以保持传递this的上下文
+
+    var obj = {
+        nameStr: 20,
+        getName: function(){
+            setTimeout(function(){
+                console.log(this.nameStr);
+            }.bind(obj), 10)
+        }
+    }
+
+    // 输出20，如果不加bind()，this指向window所以输出的是undeined
+    obj.getName();
+</code></pre><h4 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h4><pre><code>var od = new Date();    // 创建当前中国标准时间 Thu Apr 27 2017 18:39:17 GMT+0800 (CST)
+var od = new Date(&apos;2017-04-27 18:40:00&apos;);   // 指定时间 返回当前标准时间 Thu Apr 27 2017 18:40:00 GMT+0800 (CST)
+
+1、getTime(): 返回当前毫秒数
+
+2、setTime(): 以毫秒设置时期
+
+    var od = new Date(); 
+    od.setTime(12312312312332); 
+    console.log(od);        // Mon Feb 29 2360 22:45:12 GMT+0800 (CST)
+
+3、getFullYear()、setFullYear(): 获取或设置年份
+
+4、getMonth()、setMonth(): 获取或设置月份，值需要+1
+
+5、getDate()、setDate(): 获取或设置日
+
+6、getDay(): 返回星期几，值是0-6
+
+7、getHours(): 小时
+
+8、getMinutes(): 分钟
+
+9、getSeconds(): 秒
+</code></pre><h4 id="Number对象"><a href="#Number对象" class="headerlink" title="Number对象"></a>Number对象</h4><pre><code>1、toFixed(): 将值格式化小数点后几位
+</code></pre><h4 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h4><pre><code>1、length: 字符串长度
+
+2、charAt(): 返回指定位置的字符  &apos;abcde&apos;.charAt(3)  &apos;d&apos;
+
+3、chartCodeAt(): 返回指定位置的字符编码
+
+4、concat(): 两个字符串拼接
+
+5、split(): 将字符串以什么为分割，并返回为一个数组
+
+截取
+
+6、slice(begin,end): 截取字符串指定开始和结束位置的字符并返回， 可以接受负数
+
+7、substring(begin,end): 截取字符串从开始到结束，
+
+8、substr(begin, length): 返回一个指定开始到一个结束长度的字符
+
+位置
+
+9、indexOf(): 查找指定字符所在的位置
+
+10、lastIndexOf(): 从后向前查找指定字符的位置
+
+11、trim(): 删除前后空格  str.replace(/^\s*|$\s*/g, &apos;&apos;);
+
+12、toLocaleUpperCase(): 转成小写字母
+
+13、toUpperCase(): 转成大写字母
+
+正则
+
+14、search(reg): 搜索正则中匹配字符的位置，没有返回-1
+
+15、match(reg): 将匹配的正则返回一个数组
+
+    let text = &quot;cat, bat, sat, fat&quot;;
+    let om = text.match(/.at/g);        // [&quot;cat&quot;, &quot;bat&quot;, &quot;sat&quot;, &quot;fat&quot;]
+
+16、exec():
+
+17、replace(reg, 替换字符): 替换指定字符
+</code></pre><h4 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h4><pre><code>1、min()、max(): 返回最小、最大值
+
+舍入
+
+2、ceil(): 向上舍入
+
+3、floor(): 向下舍入
+
+4、round(): 四舍五入
+
+5、random(): 随机数 0-1之间
+
+6、abs(): 绝对值
+
+7、sin()、cos()
+</code></pre><h4 id="Global对象"><a href="#Global对象" class="headerlink" title="Global对象"></a>Global对象</h4><pre><code>encodeURI()、encodeURIComponent()
+</code></pre><h4 id="前端动画实现种类"><a href="#前端动画实现种类" class="headerlink" title="前端动画实现种类"></a>前端动画实现种类</h4><pre><code>1、纯粹的CSS3: transition/animation+transform（大名鼎鼎的animate.css）
+
+2、JS+CSS3 transition或者animation: 这里第一种一样，只是通过js里add class和remove class去增加或者移除对应的动画
+
+3、纯粹JS控制时间轴: 第一和第二种都是自带时间轴，使用 setInterval / setTimeout / requestAnimationFrame 不断地修改 DOM 的 style 属性产生动画
+</code></pre><p>| <a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es5/</a>    ES5兼容表<br>| <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className</a>        API<br>| <a href="https://segmentfault.com/a/1190000000515151" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000515151</a><br>| <a href="https://segmentfault.com/a/1190000005653355" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005653355</a><br>| <a href="https://msdn.microsoft.com/zh-cn/library/dn342818(v=vs.94).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-cn/library/dn342818(v=vs.94).aspx</a><br>| <a href="http://www.alloyteam.com/2016/05/javascript-timer/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/05/javascript-timer/</a>        js运行机制</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/NPM/">NPM 常用命令</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/NPM/">
     
     <i class="icon-calendar"></i>
     
@@ -348,7 +2255,7 @@ node.onclick = function(evt){
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/函数式编程/">函数式编程</a>
+    <a class="article-tag-link" href="/tags/npm/">npm</a>
 </div>
 
 
@@ -357,105 +2264,1113 @@ node.onclick = function(evt){
     
     <section class="article-body markdown-body">
         
-        <h4 id="纯函数式"><a href="#纯函数式" class="headerlink" title="纯函数式"></a>纯函数式</h4><pre><code>一、非纯净的
+        <h4 id="npm是什么"><a href="#npm是什么" class="headerlink" title="npm是什么"></a>npm是什么</h4><pre><code>资源包的管理器，安装NodeJS时会直接安装NPM
+</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>$ 下载并安装node.js也就将npm直接安装
 
-    let number = 1;
+$ npm install npm@latest -g        // 更新npm
 
-    const increment = () =&gt; number += 1;
+$ npm i [package_name]         // 安装包，将在当前目录创建一个node_modules目录，将下载的包保存到这个目录
 
-    increment();  // 2
+$ npm update     // 获取最新的包并更新
 
+$ npm uninstall [package_name]    // 卸载包，命令是将node_modules目录将包的文件删除
 
-二、纯净的
+$ npm uninstall --save [package_name]    // 卸载包，将从package.json文件中删除依赖, 如果--save-dev安装就需要换成--save-dev
 
-    const increment = n =&gt; n + 1;
+# npm i -g [package_name]    // 全局安装包，两种安装本地和全局安装，如果遇到acces错误权限问题，需要在前面加sudo，安装在/usr/local/lib/node_modules/中
 
-    increment(1);
-</code></pre><h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h4><pre><code>把函数当做其它函数的参数来传递
+$ npm update -g [package_name]    // 更新全局包
 
-let sum = (x, y) =&gt; x+y;
+$ npm uninstall -g [package_name]    // 卸载全局包
+</code></pre><h4 id="package-json参数介绍"><a href="#package-json参数介绍" class="headerlink" title="package.json参数介绍"></a>package.json参数介绍</h4><pre><code>name - 包名
 
-let calculate = (fn, x, y) =&gt; fn(x,y);
+version - 包的版本号
 
-calculate(sum, 1, 2)
-</code></pre><h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><pre><code>柯里化就是将多参函数转换成单参函数
+description - 包的描述
 
-// 一个多参函数 
-var add = (a, b) =&gt; a + b;
-add(1, 2); // =&gt; 3
+homepage - 包的官网 url 
 
-// 柯里化
-var add = a =&gt; b =&gt; a+b;
-add(1)(2);
+author - 包的作者姓名
 
+contributors - 包的其他贡献者姓名
 
-Example:
+dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下
 
-    var say = function(title) {
-        return function(type){
-            return title + &quot; is &quot; + type;
+repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上
+
+main - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require(&quot;express&quot;)
+
+keywords - 关键字
+</code></pre><h4 id="npm-install-安装模块"><a href="#npm-install-安装模块" class="headerlink" title="npm install 安装模块"></a>npm install 安装模块</h4><pre><code>npm i [package_name] --save-dev
+
+1、-S, --save 安装包添加到dependencies（项目依赖)中
+
+    npm i 包名 --save
+
+    当发布时可以不会将node_module目录发布出去，可以将package.json发布出去，其它项目的人，可以通过npm install 下载dependenciess中的所有包内容.
+
+    例：
+        npm install gulp --save 或 npm install gulp -S
+
+        &quot;dependencies&quot;: {
+            &quot;gulp&quot;: &quot;^1.0.0&quot;
         }
+
+2、-D, --save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
+
+    npm install gulp --save-dev 或 npm install gulp -D
+
+    &quot;devDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^1.0.0&quot;
     }
 
-    var sayFP = say(&quot;Functional Programming&quot;);
-    var sayOther = say(&quot;Other Programming&quot;);
 
-    sayFP(&quot;good&quot;); // =&gt; Functional Programming is good
-    sayOther(&quot;bad&quot;); // =&gt; Other Programming is good
-</code></pre><h4 id="compose-函数组合"><a href="#compose-函数组合" class="headerlink" title="compose 函数组合"></a>compose 函数组合</h4><pre><code>将多个函数组合成一个函数
+3、-O, --save-optional 安装包信息将加入到optionalDependencies（可选阶段的依赖）
 
-Example:
+    npm install gulp --save-optional 或 npm install gulp -O
 
-    var compose = function(fn1, fn2) {
-        return function(arg){
-            return fn1(fn2(arg));
-        }
+    &quot;optionalDependencies&quot;: {
+        &quot;gulp&quot;: &quot;^1.0.0&quot;
     }
 
-    var a = arg =&gt; arg + &apos;a&apos;;
-    var b = arg =&gt; arg + &apos;b&apos;;
 
-    var c = compose(a, b); // 将a,b函数进行组合
-    console.log(c(&apos;c&apos;));  // =&gt; cba
-</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(type){
-    var typeName = &apos;&apos;;
+4、-E, --save-exact 精确安装指定模块版本
 
-    switch(toString.call(type)){
-        case &apos;[object String]&apos;:
-            return &apos;string&apos;;
-            break;
+    npm install gulp --save-exact 或 npm install gulp -E
 
-        case &apos;[object Number]&apos;:
-            if(type.toString().indexOf(&apos;.&apos;) != -1){
-                return &apos;float&apos;;
-            }
-            else{
-                return &apos;number&apos;;
-            }
-            break;
+    输入命令npm install gulp -ES，留意package.json 文件的 dependencies 字段，以看出版本号中的^消失了
 
-        case &apos;[object Array]&apos;:
-            return &apos;array&apos;;
-            break;
-
-        case &apos;[object Object]&apos;:
-            return &apos;object&apos;;
-            break;
-
-        case &apos;[object Undefined]&apos;:
-            return &apos;undefined&apos;;
-            break;
-
-        case &apos;[object Null]&apos;:
-            return &apos;null&apos;;
-            break;    
-
-        default: break;
+    &quot;dependencies&quot;: {
+        &quot;gulp&quot;: &quot;3.9.1&quot;
     }
+</code></pre><h4 id="npm-i-选项–global，–save，–save-dev"><a href="#npm-i-选项–global，–save，–save-dev" class="headerlink" title="npm i 选项–global，–save，–save-dev"></a>npm i 选项–global，–save，–save-dev</h4><pre><code>-global: 简写 -g
 
-    return typeName;
+    npm i express -g 为全局安装，这种就可以直接使用express命令, 否则会提示express不是内部或外部命令
+
+-save: 简写 -S, 作用是在package.json的dependencies字段增加或修改安装包和版本号
+
+-save-dev: 简写 -D, 是修改devDependencies, 这样就不用安装了某个包之后手动修改package.json
+</code></pre><h4 id="与-版本"><a href="#与-版本" class="headerlink" title="~ 与 ^ 版本"></a>~ 与 ^ 版本</h4><pre><code>版本分为: 主版本号、次版本号、补丁版本号
+
+&quot;devDependencies&quot;: {
+    &quot;vue&quot;: &quot;~2.2.2&quot;,            // 匹配最近小版本，如，会匹配所有的2.2.x版本，但最高不会匹配2.3.0
+    &quot;vue-router&quot;: &quot;^2.2.0&quot;        // 最近的一个大版本，所有 2.x.x但不不包括3.0.0，相当于 2.0.0 &lt;= version &lt; 3.0.0
 }
-</code></pre><p>| <a href="http://www.alloyteam.com/2016/09/talk-about-functional-programming/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/09/talk-about-functional-programming/</a><br>| <a href="https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html" target="_blank" rel="noopener">https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch1.html</a></p>
+</code></pre><h4 id="npm-ls-查看安装的模块"><a href="#npm-ls-查看安装的模块" class="headerlink" title="npm ls 查看安装的模块"></a>npm ls 查看安装的模块</h4><pre><code>查看安装模块及依赖：npm ls -g
+</code></pre><h4 id="发布模块"><a href="#发布模块" class="headerlink" title="发布模块"></a>发布模块</h4><pre><code>使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
+
+$ npm adduser
+Username: mcmohd
+Password:
+Email: (this IS public) xxxxxx@qq.com
+
+来发布模块命令: $ npm publish
+</code></pre><h4 id="script属性"><a href="#script属性" class="headerlink" title="script属性"></a>script属性</h4><pre><code>script属性定义的对应了一段shell脚本
+
+1、npm start 启动模块
+
+    该命令写在package.json文件scripts的start字段中，可以自定义命令来配置一个服务器环境和安装一系列的必要程序
+
+    &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;gulp -ws&quot;
+    }
+
+2、npm stop 停止模块
+
+3、npm restart 重新启动模块
+</code></pre><h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><pre><code>一、npm使用过程中遇到的 Cannot find module &apos;internal/fs&apos;，错误场景 gulp中执行任务报错，的确amd-optimize插件中的graceful-fs与gulp中graceful-fs的版本问题，
+
+    解决:
+        删除插件 npm uninstall graceful-fs
+        安装  npm i graceful-fs --save
+
+二、$ npm view react versions    查看包在npm所有版本
+
+三、$ npm i vue@2.0.0 --save    安装指定版本
+</code></pre><p>| 参考资料<br>| <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">https://www.npmjs.com.cn/</a><br>| <a href="https://www.cnblogs.com/blackgan/p/7828047.html" target="_blank" rel="noopener">https://www.cnblogs.com/blackgan/p/7828047.html</a>            常用命令<br>| <a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/master-npm/</a><br>| <a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="noopener">https://github.com/ericdum/mujiang.info/issues/6/</a><br>| <a href="http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/" target="_blank" rel="noopener">http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/ReactNative之基础篇/">React Native之基础篇</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/ReactNative之基础篇/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="React-Native-介绍"><a href="#React-Native-介绍" class="headerlink" title="React Native 介绍"></a>React Native 介绍</h4><pre><code>一、Native的类别
+
+    React Native 编译后是原生应用，v0.22.0热更新hot reloading
+
+    Hybrid  混合应用
+
+    phoneGap 包皮应用，一次编写，到处运行，依然是网页，只是将页面内容内嵌到webView中，用中间件来对网页进行通信，对一些动画会有性能上的问题
+
+
+二、实时加载（Live Reload）和热加载（Hot Reload）的区别
+
+    http://www.jianshu.com/p/1fa6e9c0799f
+
+    Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+
+    Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+
+三、React Native 应用部署/热更新 codePush
+
+    http://blog.csdn.net/fengyuzhengfan/article/details/52003798
+</code></pre><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、安装 XCode
+
+    $ xcode-select --install  检查xcode是否安装, 如果未安装会出现提示
+
+    android 下载 android studio  https://developer.android.google.cn/index.html
+
+
+2、安装 homebrew
+
+    用于包管理，与npm类似
+
+    $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+    $ sudo chown -R `whoami` /usr/local   解决/usr/local目录不可写的权限问题  
+
+    Homebrew将工具安装到 /usr/local/Cellar 目录中，并在 /usr/local/bin 中创建符号链接。
+
+
+3、安装 watchman 和 flow
+
+    watchman是facebook的开源项目用于监视文件并且记录文件的改动情况
+
+    flow 是js的静态类型检查器，用于找出js代码中的类型错误
+
+    $ brew install watchman
+
+    $ brew install flow
+
+
+4、安装 NodeJS
+
+5、安装 react-native 
+
+    $ npm install -g react-native-cli      // Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载
+
+6、vscode中react-native插件
+</code></pre><h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><pre><code>1、创建项目
+
+    $ react-native init 项目名  // 创建项目
+
+    $ react-native run-ios     // 运行 react-native run-ios --simulator &quot;iPhone 4s&quot;  定义模拟器类型
+
+        或者在ios目录 AwesomeProject.xcodeproj  双击打开
+
+
+2、查看命令
+
+    $ react-native -h   所有命令
+
+    $ react-native -v   版本
+
+
+3、安装第三方插件
+
+    $ npm i react-native-elements lodash query-string sha1 react-native-audio react-native-video react-native-image-picker react-native-progress react-native-sk-countdown react-native-swiper react-native-barcodescanner --save
+
+
+4、link 命令
+
+    link的原因：以下组件都是原生开发，wrapper了一层js，因此需要link .a到project中
+
+    $ react-native link
+
+    或 rnpm link     需要先安装rnpm     npm install rnpm -g --save-dev
+
+
+5、模拟器调试技巧
+
+    http://blog.csdn.net/quanqinyang/article/details/52215652  
+
+    # 模拟器打开后可以通过cmd+1/2/3/4来调整窗口大小
+
+    # 模拟器在所有窗口置顶 window -&gt; stay in front
+
+    # ISO cmd + D 打开调试菜单，Android cmd + M
+
+    # comond + T  show Animate 呼出菜单cmd+D会变成慢动画
+
+
+    # Reload 重新bundle代码 cmd + R
+
+    # Debug JS Remotely   调试模式 chrome Developer Tools调试
+
+    # Enable Live Reload  实时加载，应用于更新时需要刷新当前页面，可以看到全局刷新效果
+
+    # Enable Hot Reloading   热加载，当布局修改时会自动更新模拟器，看不出来刷新效果类似买局部刷新
+
+
+    # 警告
+
+        红错误 - console.error(&apos;&apos;)
+
+        关闭警告 - console.disableYellowBox = true;    显示警告 - console.warn(&apos;YellowBox is disabled.&apos;);
+
+    # 日志 - react-native log-ios      react-native log-android
+
+    # chrome开发工具 - debug js Remotely  可以跟进代码
+</code></pre><h4 id="react-native-目录"><a href="#react-native-目录" class="headerlink" title="react-native 目录"></a>react-native 目录</h4><pre><code>.
+├── .DS_Store
+├── .babelrc            // ES6转换的配置
+├── .buckconfig
+├── .flowconfig         // 做js代码类型检查 
+├── .watchmanconfig     // 监听文件改变watchman的配置
+├── .gitattributes
+├── .gitignore          // 对哪些文件被git忽略不显示
+├── node_modules        // 存储资源包    
+├── __tests__
+├── android             // android原生文件目录
+├── ios                 // ios的原生文件目录 运行reactNative会将文件打包到这个目录，然后xcode调用的就是这里的项目文件
+├── app.json
+├── index.android.js    // android文件入口
+├── index.ios.js        // ios文件入口
+├── package.json        // 依赖文件
+└── yarn.lock
+</code></pre><h4 id="AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口"><a href="#AppRegistry-注册模块，用来告诉RN哪个组件被注册为根窗口" class="headerlink" title="AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口"></a>AppRegistry 注册模块，用来告诉RN哪个组件被注册为根窗口</h4><pre><code>AppRegistry是js运行RN应用的入口，通过registerComponent()来注册方法
+
+AppRegistry.registerComponent(&apos;项目名&apos;, () =&gt; 入口组件名)  注册入口
+
+AppRegistry.runApplication 来真正运行应用
+</code></pre><h4 id="React-Native-生命周期"><a href="#React-Native-生命周期" class="headerlink" title="React Native 生命周期"></a>React Native 生命周期</h4><pre><code>第一阶段，初始化
+
+    getDefaultProps -&gt; getInitialState -&gt; componentWillMount -&gt; render -&gt; componentDidMount
+
+       获取配置参数        获取初始状态值         通知要开始渲染        渲染       告诉组件已经完成
+
+
+第二阶段，运行阶段 组件运行中
+
+    1、state变化 -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+
+       状态变化    判断组件是否要更新true/false     需要更新就触发           渲染         更新组件
+
+    2、props变化 -&gt; componentWillReceiveProps -&gt; shouldComponentUpdate -&gt; componentWhllUpdate -&gt;  render -&gt; componentDidUpdate
+
+       props变化         属性改变调用             判断组件是否要更新true/false       需要更新就触发        渲染           更新组件
+
+
+第三阶段 卸载
+
+    unmount -&gt; componentWillUnmout -&gt; 结束 
+</code></pre><p><img src="images/lifecycle.png" alt="组件生命周期"></p>
+<h4 id="props、state"><a href="#props、state" class="headerlink" title="props、state"></a>props、state</h4><pre><code>一、props属性: 父组件传值给子组件
+
+    &lt;Greeting name=&apos;Rexxar&apos; /&gt;      父组件调用子组件
+
+    &lt;Text&gt;Hello {this.props.name}!&lt;/Text&gt;   子组件接收
+
+    1、defaultProps定义默认的props
+
+        class Smiple extends Component{
+            static defaultProps = {     // 定义默认props静态属性
+                name: &apos;siguang&apos;
+            }
+
+            static propsTypes = {       // 检测props的类型
+                name: &apos;String&apos;
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        &lt;Text&gt; {this.props.name} &lt;/Text&gt;
+                    &lt;View&gt;
+                )
+            }
+        }
+
+
+二、state状态、setState()改变状态，组件中可以改变的值
+
+    export default class rrdProject extends Component {
+        constructor(props){
+            super(props);
+
+            // 定义state对象
+            this.state = { 
+                showText: &apos;&apos;
+            }
+        }
+
+        // state = {  };     // RN也支持ES7 类的静态属性写法
+
+        render() {
+            return(
+                &lt;View style={styles.container}&gt;
+                    &lt;Text&gt;这里有内容: {this.state.showText}&lt;/Text&gt;
+                &lt;/View&gt;
+            );
+        }
+    }
+</code></pre><h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><pre><code>通过ref来获取真实的DOM
+
+import childComponent from &apos;./childComponent&apos;;
+
+class Simple extends Component {
+    clickChild(){
+        var size = this.refs.childRef.getSize();       // 获取childComponent组件的getSize()方法
+    }
+
+    render() {
+        return (
+            &lt;View&gt;
+                &lt;Text&gt;Simple 基本页面&lt;/Text&gt;
+                &lt;button onPress={this.clickChild} title=&quot;点击&quot; /&gt;
+
+                &lt;childComponent ref=&quot;childRef&quot; /&gt;
+            &lt;/View&gt;
+        )
+    }
+}
+</code></pre><h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><pre><code>http://blog.csdn.net/sbsujjbcy/article/details/50017029
+http://www.cnblogs.com/wonyun/p/5481134.html
+
+1、直接写样式
+
+    &lt;View style={{width: 193, height: 110}}&gt;&lt;/View&gt;     {{}} 两个括号可以直接写样式
+    &lt;View style={styles.red}&gt;&lt;/View&gt;                    {} 一个括号需要来调用样式类
+    const styles = StyleSheet.create({
+        red: {
+            color: red
+        }
+    })
+
+2、写多个样式
+
+    &lt;Text style={[styles.btn, styles.color]}&gt;立即体验&lt;/Text&gt;
+
+    // 支持表达式
+    &lt;Text style={[styles.btn, styles.color &amp;&amp; this.props.dotColor]}&gt;立即体验&lt;/Text&gt;
+
+
+2、styleSheet.create({}) 定义样式
+
+    const styles = StyleSheet.create({
+        rootView:{
+            height: &apos;100%&apos;,
+            width: &apos;100%&apos;,
+            backgroundColor: &apos;#eff0f3&apos;
+        },
+        big: {
+            color: &apos;blue&apos;,
+            fontSize: 30
+        }
+    })
+    &lt;View style={styles.rootView}&gt;      // 多个样式 style={[styles.rootView, styles.big]}
+        &lt;Text&gt;REACT NATIVE ELEMENTS&lt;/Text&gt;
+    &lt;/View&gt;
+
+
+3、颜色支持
+
+    &apos;#ccc&apos;、 &apos;rgba(0,0,0,.4)&apos;、 &apos;transparent&apos;、 &apos;red&apos;
+
+
+4、RN样式与css样式的异同
+
+    View类型div，会默认占用窗口的100%宽度
+
+    绝对定位和相对定位不需要父元素设置positioin，也没有zIndex配置
+
+    不能将RN的inline元素设置maginTop、marginBottom
+
+    样式继承只存在Text元素内的Text元素
+
+        &lt;Text style={{color:'red'}}&gt;
+             &lt;Text&gt;父：我是white还是red{&apos;\n&apos;}
+                 &lt;Text&gt;子：那我是神马颜色&lt;/Text&gt;
+             &lt;/Text&gt;
+       &lt;/Text&gt;
+</code></pre><h4 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h4><pre><code>直接给组件指定宽、高   &lt;View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} /&gt;
+http://www.devio.org/2016/08/01/Reac-Native%E5%B8%83%E5%B1%80%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97/#和而不同
+
+一、父视图属性:
+
+    1、flexDirection(&apos;row&apos;, &apos;column&apos;,&apos;row-reverse&apos;,&apos;column-reverse&apos;)- 布局子元素的排列方向，默认是column不是row
+
+        &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;
+            &lt;View style={{flex:1, height: 50, backgroundColor: 'powderblue'}} /&gt;
+            &lt;View style={{flex:2, height: 50, backgroundColor: 'skyblue'}} /&gt;
+            &lt;View style={{flex:3, height: 50, backgroundColor: 'steelblue'}} /&gt;
+        &lt;/View&gt;
+
+        重要:  
+            &lt;View style={{flex: 1, flexDirection: 'row'}}&gt;  
+            父组件没设置flexDirection=row，默认布局为列，子组件设置flex:1是没用的，子组件只能设置width
+            父组件设置为flexDirection=row，子组件可以设置flex:1
+
+    2、flexWrap (&apos;wrap&apos;, &apos;nowrap&apos;) - 定义子元素是否允许多行排列
+
+    3、justifyContent (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;space-between&apos;, &apos;space-around&apos;) - 定义子元素如何对齐
+
+    4、alignItems (&apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 定义子元素在侧轴对齐的
+
+
+    justifyContent - 子元素沿主轴的排列方式
+
+        justifyContent: flex-start、center、flex-end、space-around以及space-between
+        &lt;View style={{ flex: 1,  flexDirection: 'row' justifyContent: center}}&gt;
+
+    alignItems - 
+
+
+二、子视图属性：
+
+    1、alignSelf (&apos;auto&apos;, &apos;flex-start&apos;, &apos;flex-end&apos;, &apos;center&apos;, &apos;stretch&apos;) - 
+
+    2、flex - 
+</code></pre><h4 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h4><pre><code>RN里网络请求分为: Fetch、WebSocket、XMLHttpRequest
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>onPress: 点击
+
+onLongPress: 长按
+
+maximumZoomScale和minimumZoomScale: 双指缩放
+
+http://reactnative.cn/docs/0.42/panresponder.html
+</code></pre><h4 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h4><pre><code>1、LayoutAnimation 用于全局的布局动画
+
+2、Animated 用于创建更精细的交互控制的动画
+
+    Animated 封装了四个可以动画的组件: View、Text、Image和ScrollView
+
+    start/stop 方法来控制动画按顺序执行
+</code></pre><h4 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h4><pre><code>setTimeout, clearTimeout
+setInterval, clearInterval
+setImmediate, clearImmediate
+requestAnimationFrame, cancelAnimationFrame
+</code></pre><h4 id="RN与原生通信"><a href="#RN与原生通信" class="headerlink" title="RN与原生通信"></a>RN与原生通信</h4><pre><code>http://blog.csdn.net/zww1984774346/article/details/71167775
+
+rn与IOS原生通信的三部分
+
+    1、属性        2、原生模块      3、原生UI组件封装
+
+    原生要写到AppDelegate.m文件中
+
+    # 属性是最简单的跨组件通信，从原生组件传递属性到React Native 或 React Native到原生组件
+
+        原生中添加imageList:
+
+            NSArray *imageList = @[@&quot;https://facebook.github.io/react/img/logo_og.png&quot;,
+                        @&quot;https://facebook.github.io/react/img/logo_og.png&quot;];
+
+            NSDictionary *props = @{@&quot;images&quot; : imageList};
+
+            RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                        moduleName:@&quot;AwesomeProject&quot;
+                                        initialProperties:props             // 这里initialProperties:props]传递给RN
+                                        launchOptions:launchOptions];
+
+        RN中接收与props传值一样:
+
+            &lt;View&gt;
+                {
+                    this.props.images.map(function(items){
+                        return &lt;Image 
+                            source={{uri:items}} 
+                            style={{width:100,height:100}}&gt;&lt;/Image&gt; 
+                    })
+                }
+            &lt;/View&gt;
+
+
+1、RN访问OC
+
+    // 创建原生模块实例
+    var NativeModule = require(&apos;react-native&apos;).NativeModules.NativeTest;
+
+    // 调用原生的doSomething()方法
+    NativeModule.doSomething(&apos;ReactNative&apos;);
+
+
+2、OC访问RN
+
+http://www.jianshu.com/p/9d7dbf17daa5
+</code></pre><h4 id="生成测试包"><a href="#生成测试包" class="headerlink" title="生成测试包"></a>生成测试包</h4><pre><code>iOS—最全的真机测试教程   http://www.cocoachina.com/ios/20160711/17004.html
+
+团队开发的Xcode配置和生成包
+
+    xCode -&gt; Preferencse -&gt; Accounts -&gt; + 填加 选择 add apple ID 将账号和密码输入
+
+    点击工程目录 -&gt; General 
+        -&gt; Identity面板下的 Bundle Identifler 填写权限 “com.ucredit.paydayloan” 
+        -&gt; 在 Signing面板中的 Team 中选择&quot;ZhongChengXingyu of......&quot;
+
+    将手机与mac连接，将Device选择当前手机设备，点击 运行，写读取设备成功后，在运行一次这次是执行build
+</code></pre><h4 id="原生组件"><a href="#原生组件" class="headerlink" title="原生组件"></a>原生组件</h4><pre><code>两种方法加载原生组件
+
+1、react-native link 命令
+
+    不仅会将第三方模块的原生组件代码链接入 Android/IOS 中，还会将字体等文件移动相应的目录中
+
+2、通过Xcode来导入组件
+
+    http://www.cnblogs.com/shaoting/p/6148085.html
+
+3、Flow
+
+    Flow是 Facebook出品的表态类型语言，可以将RN内部也支持ES 7的类属性的写法
+
+        // 就可以不用在象ES 6将静态属性写到constructor中
+        class MyComponent extends Component {
+            constructor(props){
+                super(props);
+
+                // 私有属性
+                this.isField = 1;   
+                // state
+                this.state = {
+                    username: &apos;siguang&apos;
+                }
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        {this.username}
+                    &lt;/View&gt;
+                )
+            }
+        }
+
+        class MyComponent extends Component {
+            isField = 1;
+            state = {
+                username: &apos;siguang&apos;
+            }
+
+            render(){
+                return (
+                    &lt;View&gt;
+                        {this.usernmae}
+                    &lt;/View&gt;
+                )
+            }
+        }
+</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><pre><code>1、Command+R  重新刷新
+
+2、Command+D  打开菜单 
+
+3、Debug JS Remotely 用chrome浏览器调试,Alt+Command+j出现浏览器debug窗口
+
+4、Disable Live Reload 时实刷新，代码修改保存后会就刷新
+
+5、show Perf Monitor 打开FPS监控器
+
+6、show Inspector 用于查看页面结构及属性
+</code></pre><p>XCode装证书<br><a href="http://www.cocoachina.com/ios/20160711/17004.html" target="_blank" rel="noopener">http://www.cocoachina.com/ios/20160711/17004.html</a></p>
+<p>| 相关文章<br>| <a href="https://github.com/jondot/awesome-react-native#videos" target="_blank" rel="noopener">https://github.com/jondot/awesome-react-native#videos</a><br>| <a href="http://reactnative.cn/docs/0.44/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.44/getting-started.html</a><br>| <a href="http://www.devio.org/" target="_blank" rel="noopener">http://www.devio.org/</a><br>| <a href="https://github.com/crazycodeboy/RNStudyNotes/" target="_blank" rel="noopener">https://github.com/crazycodeboy/RNStudyNotes/</a><br>| <a href="http://blog.csdn.net/quanqinyang/article/details/52215652" target="_blank" rel="noopener">http://blog.csdn.net/quanqinyang/article/details/52215652</a>   调试方法<br>| <a href="http://lib.csdn.net/base/reactnative/structure" target="_blank" rel="noopener">http://lib.csdn.net/base/reactnative/structure</a><br>| <a href="http://www.jianshu.com/p/5b185df2d11a" target="_blank" rel="noopener">http://www.jianshu.com/p/5b185df2d11a</a><br>| <a href="http://www.lcode.org/react-native/" target="_blank" rel="noopener">http://www.lcode.org/react-native/</a><br>| <a href="http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3" target="_blank" rel="noopener">http://blog.csdn.net/column/details/reactnative2016.html?&amp;page=3</a><br>| <a href="http://lib.csdn.net/article/reactnative/63268" target="_blank" rel="noopener">http://lib.csdn.net/article/reactnative/63268</a>   打包到真机<br>|<br>| 示例<br>| <a href="https://github.com/react-native-community" target="_blank" rel="noopener">https://github.com/react-native-community</a><br>| <a href="https://github.com/ljunb/react-native-iShiWuPai" target="_blank" rel="noopener">https://github.com/ljunb/react-native-iShiWuPai</a>       示例<br>| <a href="https://github.com/sunnylqm" target="_blank" rel="noopener">https://github.com/sunnylqm</a><br>| <a href="https://github.com/DoctorQ/react-native-helloworld" target="_blank" rel="noopener">https://github.com/DoctorQ/react-native-helloworld</a><br>|<br>| <a href="http://blog.csdn.net/liu__520/article/category/6460088" target="_blank" rel="noopener">http://blog.csdn.net/liu__520/article/category/6460088</a><br>| <a href="http://www.devio.org/tags/#React" target="_blank" rel="noopener">http://www.devio.org/tags/#React</a> Native<br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/JS作用域和整理经验/">JS作用域和整理经验</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/JS作用域和整理经验/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>一、示例
+
+    console.log(str);        // 输出undefined  因为读取的是解析器预先存储的str，还没有被赋值
+    var str = 1;         
+
+
+二、示例2
+
+    alert(a);        // 弹出的是function a(){ alert(&quot;2&quot;)}
+    var a = 1;
+    function a(){
+        alert(&quot;2&quot;)
+    }
+
+    预解析会保存a = undefinded，和 a = function a(){alert(&quot;2&quot;)}，
+    因为函数与变量重名，函数后最执行所以保留函数，结果输出的就是函数
+
+
+三、示例3
+
+    var a = 1;
+    function a(){
+        alert(&quot;2&quot;);
+    }
+
+    // 报错，因为a被定义成变量，typeof a 返回的是number，如果 var a;不能定义值那么a()是成功的
+    a();
+
+
+四、示例4
+
+    var a = 1;
+    function fn1(){
+        alert(a);
+        // 注意这里因为是使用var声明所以执行数预解析器才会把它单独存储起来，
+        // 如果将var去掉，a=2改成了赋值这样会改变外部的a的值，下面输出的就是1，2
+        var a = 2;
+    }
+
+    fn1();                        // undefined
+    console.log(a);        // 1
+
+
+五、示例5
+
+    function foo(){
+        return fn1;
+
+        function fn1(){};
+        var fn1 = 10;
+    }
+
+    var f = foo();
+
+    // 输出 function fn1(){};    因为调用foo函数时，return  fn1因为变量还未定义所以 直接调用的函数
+    alert(f);                
+
+
+六、示例6
+
+    var  myname = &quot;global&quot;; // 全局变量
+    function func() {
+
+        // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined
+        alert(myname);                 
+        var myname = &quot;local&quot;;
+        alert(myname);                 // &quot;local&quot;
+    }
+    func();
+
+
+七、示例7
+
+    &lt;script&gt;
+        window.name = &apos;globalName&apos;;
+
+        var getName = function(){
+            return this.name;
+        }
+
+        getName();         // &apos;globalName&apos;
+    &lt;/script&gt;
+
+
+八、示例8
+
+    &lt;script&gt;
+        window.id = &apos;window&apos;;
+
+        document.getElementById(&apos;divA&apos;).onclick = function(){
+            alert(this.id);
+
+            var callback = function(){
+                return this.id;        // divA
+            }
+            callback();            // window
+        }
+    &lt;/script&gt;
+
+
+ 九、示例9
+
+    1、Example
+        var getName;
+        console.log(getName)    // undefined
+
+        getName()                // Uncaught TypeError: getName is not a function
+
+        var getName = function() {
+            console.log(&apos;wscat&apos;)
+        }
+
+    2、Example
+        var getName;
+        console.log(getName)    // function getName() {console.log(&apos;oaoafly&apos;)}
+
+        getName()                // oaoafly
+
+        function getName() {
+            console.log(&apos;oaoafly&apos;)
+        }
+
+
+十、bind()
+
+    &lt;script&gt;
+        window.id = &apos;window&apos;;
+
+        document.getElementById(&apos;divA&apos;).onclick = function(){
+            alert(this.id);
+
+            var obj = {
+                id: &apos;objId&apos;,
+                callback: function(){
+                    return this.id;         // &apos;divA&apos;
+                }.bind(window)                // 通过bind来将callback内的this指向window
+            }
+
+            console.log(obj.callback());    // &apos;window&apos;
+        }
+    &lt;/script&gt;
+
+
+十一、严格模式下的this
+
+    &lt;script&gt;
+        &apos;use strict&apos;
+
+        function fun(){
+            alert(this);        // 返回 &apos;undefined&apos;, strict模式下this不会指向全局
+        }
+
+        fun();
+    &lt;/script&gt;
+
+
+十二、箭头函数下的this指向
+
+    let Template = {
+        test(){
+            console.log(this);        // this指向Template
+
+            document.querySelector(&quot;#showThis&quot;).onclick = () =&gt;{
+                // 如果非箭头函数this应该指向 #showThis
+                // 这里箭头函数不是指向调用者，所以指向了 Template
+                console.log(this);    
+            }
+        }
+    }
+    Template.test();
+</code></pre><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code>1、函数本身是对象也是构造函数
+
+2、直接挂载到函数下，是对象的属性和方法
+
+    function Foo(){};
+    Foo.username = &apos;111&apos;;     // 注意这里Foo的属性不能为name因为被name被函数的名所占用
+    Foo.getName = function(){ console.log(this.username) };
+
+    // 调用
+    Foo.getName();        // 111
+
+3、在构造函数的内部属性和方法
+
+    function Foo() {
+        this.username = &apos;111&apos;
+    }
+    Foo.username = &apos;222&apos;;
+
+    // 调用
+    console.log(new Foo().username);    // 111
+
+&lt;script&gt;
+    function Foo() {
+        getName = function() {
+            console.log(this);
+            console.log(1);
+        }
+
+        console.log(this);
+        return this;
+    }
+    Foo.getName = function() { // 这里只是Foo对象的方法，而不是构造函数的方法，
+        console.log(2);
+    }
+
+    // Foo.prototype.getName = function() {
+    //     console.log(3);
+    // }
+
+    var getName = function() {
+        console.log(4)
+    }
+
+    function getName() {
+        console.log(5)
+    }
+
+    Foo.getName(); // 2    Foo.getName=function(){}  是存到Foo下的方法，Foo.getName()可以取到
+    getName(); // 4     如果一个作用域下有var的变量名与函数名相当，var的作用域提升高于function
+    Foo().getName();     // 1  因为Foo()被调用，定义中加了return this，Foo指向的是window全局，getName没有var升明，所以为全局，所以相当于window.getName()，Foo中如果不加return this那么就会报错，因为Foo没有链式调用，所以this断了
+    getName(); // 1   因为上面已经将Foo内的getName()提升成全局，所以会赋盖掉var getName、function getName定义的全局方法
+
+    // var ofo = new Foo;
+    // ofo.getName();   // 3
+
+    // Foo既是一个对象也是一个构造函数
+    new Foo.getName();             // 2  先执行Foo.getName()，因为&quot;.&quot;运算符优先于new运算符，所以这时候Foo只是一个对象并不是构造函数的实例，所以会调用对象下的方法
+    new Foo().getName();         // 1  先执行new Foo()构造函数，然后在构造函数下去找getName方法，Foo构造函数方法没有getName()所以到prototype下去找
+    new new Foo().getName();     // 1  与上面相同
+&lt;/script&gt;
+</code></pre><h4 id="将对象拷贝并不引用指针"><a href="#将对象拷贝并不引用指针" class="headerlink" title="将对象拷贝并不引用指针"></a>将对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
+
+另一种方法是使用Object.assign()
+
+let objA = {
+    name: &apos;siguang&apos;,
+    age: 30
+}
+let objB = Object.assign({}, objA);
+objB.name = &apos;lulu&apos;;         // lulu
+console.log(objA.name);     // siguang
+</code></pre><h4 id="对象的深拷贝和浅拷贝"><a href="#对象的深拷贝和浅拷贝" class="headerlink" title="对象的深拷贝和浅拷贝"></a>对象的深拷贝和浅拷贝</h4><pre><code>浅拷贝就是对象之间还存引用关系，深拷贝就是两个对象之间没有引用关系
+
+一、浅拷贝
+
+    const a = {t: 1, p: &apos;gg&apos;};
+    const b = a;
+    b.t = 3;
+    console.log(a);     // {t: 3, p: &apos;gg&apos;}
+    console.log(b);     // {t: 3, p: &apos;gg&apos;}
+
+二 、深拷贝
+
+    1、Object.assign() 方法是将两个对象合并，并返回一个新对象
+
+        **** 注意assig()只能拷贝一层，多层结构还是浅拷贝 ****
+
+        const c = {t: 1, p: &apos;gg&apos;};
+        const d = Object.assign({}, c);
+        d.t = 3;
+        console.log(c);     // {t: 1, p: &apos;gg&apos;}
+        console.log(d);     // {t: 3, p: &apos;gg&apos;}
+
+    2、Object.create() 将拷贝的内容入到prototype下，对象和数组都适用
+
+        对象:
+
+            var oA = {
+                name: &apos;sg&apos;,
+                age: 33
+            }
+            var oB = {};
+            oB = Object.create(oA);
+
+            oB.eat = &apos;bread&apos;;
+
+        数组:
+
+            var oA = [1,2]
+            var oB = [];
+            oB = Object.create(oA);
+
+            oB.push(3);            // oB.length;   3        
+
+    3、jQuery.extend()
+
+        let oa = {a: 1, b: 2}; let ob = {};  
+        $.extend(ob, oa); 
+        ob.b = 3; 
+        console.log(oa, ob);        // oa: {a: 1, b: 2}、 ob: {a: 1, b: 3}
+</code></pre><h4 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h4><pre><code>一、concat()方法
+
+    var arrA = [1,2,3];
+    var arrB = arrA.concat();
+    arrB.push(5,6,7);
+    console.log(arrA);  // [1,2,3]
+    console.log(arrB);  // [1,2,3,5,6,7]
+
+二、slice()方法
+
+    var arrA = [1,2,3];
+    var arrB = arrA.slice();
+    arrB.push(5,6,7);
+    console.log(arrA);  // [1,2,3]
+    console.log(arrB);  // [1,2,3,5,6,7]
+
+两种方法都是回返一个不带指向的新数组
+</code></pre><h4 id="对象处理"><a href="#对象处理" class="headerlink" title="对象处理"></a>对象处理</h4><pre><code>一、查看是否是一个空对象
+
+    // 使用keys来查看对象中所有的kyes并返回一个数组，如果数组为度为0则对象为空
+    var obj = {}; 
+    var Len = Object.keys(obj);         
+    console.log(Len.length);
+
+二、查看对象中属性是否存在
+
+    var obj = {
+        a: 1,
+        b: 2
+    }
+    console.log(obj.c);        // undefined
+</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(data){
+
+}
+</code></pre><h4 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h4><pre><code>一、数据去重
+
+    1、普通方法
+
+        function clearRepeat(arr){
+            var newArr = [], obj = {};
+            for(var i=0; i&lt;arr.length; i++){
+                if(!obj[arr[i]]){
+                    obj[arr[i]] = &apos;&apos;;        // 对象属性相同会直接覆盖
+                    newArr.push(key);        
+                }
+            }
+            return newArr;
+        }
+
+        let retArray = clearRepeat([3,2,3,4,5,5,2,2,13,3]);
+
+
+    2、使用ES6的set()方法，set方法就是不允许数组内有重复的值
+
+        let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
+        console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
+        let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
+
+    http://www.jb51.net/article/46154.htm
+
+
+二、数组排序
+
+    1、使用sort方法
+
+        var arr = [6,7,5,8,4,2342342,23,234,2,34];
+        arr.sort(function(v1, v2){
+            return v1 - v2        // 正序
+        })
+        console.log(arr);
+
+
+三、返回数组中最大最小值
+
+    let arr = [2,1,423,343,5,67,8];
+    let min = Math.min.apply(null, arr);
+    let max = Math.max.apply(null, arr);
+</code></pre><h4 id="编写组件并兼容AMD、ES6写法"><a href="#编写组件并兼容AMD、ES6写法" class="headerlink" title="编写组件并兼容AMD、ES6写法"></a>编写组件并兼容AMD、ES6写法</h4><pre><code>;(function(root, factory){
+
+    // 判断使用的支持定义模块的方式
+    if(typeof define === &apos;function&apos; &amp;&amp; define.amd){
+        define(factory)
+    }
+    else if(typeof exports === &apos;object&apos;){
+        module.exports = factory();
+    }
+    else{
+        root.NProgress = factory();
+    }
+
+})(this, function(){
+    console.log(`输出内容`);
+})
+</code></pre><p>| <a href="https://juejin.im/entry/58db95eaac502e0058f8472e" target="_blank" rel="noopener">https://juejin.im/entry/58db95eaac502e0058f8472e</a><br>| <a href="http://www.iamaddy.net/2015/04/front-end-engineering/" target="_blank" rel="noopener">http://www.iamaddy.net/2015/04/front-end-engineering/</a>       // 前端的发展</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/12/07/金融类/">金融类</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/07/金融类/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/金融/">金融</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="居民的金融四大决策"><a href="#居民的金融四大决策" class="headerlink" title="居民的金融四大决策"></a>居民的金融四大决策</h4><pre><code>一、消费决策和储蓄决策 - 多少财富用于消费，多少为储蓄
+
+二、投资决策 - 怎么样投资所节省的资金
+
+三、融资决策 - 自己的消费和投资计划
+
+四、风险管理决策 - 降低金融不确定性
+</code></pre><h4 id="金融体系"><a href="#金融体系" class="headerlink" title="金融体系"></a>金融体系</h4><pre><code>金融体系包括金融市场、金融中介、金融服务企业以其它用来执行居民户、企业和政府的金融决策的机构
+
+1、金融中介 - 主要业务向客户提供金融产品和服务的企业，主要包括(银行、存款储蓄机构、保险公司、养老金与退休基金、投资银行、风险投资企业、资产管理企业)
+</code></pre><h2 id="M0、M1、M2"><a href="#M0、M1、M2" class="headerlink" title="M0、M1、M2"></a>M0、M1、M2</h2><h2 id="什么是金融、金融体系"><a href="#什么是金融、金融体系" class="headerlink" title="什么是金融、金融体系"></a>什么是金融、金融体系</h2><h2 id="赤字"><a href="#赤字" class="headerlink" title="赤字"></a>赤字</h2><h2 id="金融危机和次贷危机"><a href="#金融危机和次贷危机" class="headerlink" title="金融危机和次贷危机"></a>金融危机和次贷危机</h2><pre><code>低利率照成所有人去银行进行贷款，然后使用杠杆
+
+杠杆是用借贷来扩大交易收益的手段
+
+杠杆的操作 - 例 A用1万美元买一个箱子，在以1.1万美元卖给B，在中间赚了1千美元，这属于正常操作，
+
+        如果用杠杆就是 A有1万美元，又去借了99万美元，这样手里有100万美元，去买了100个箱子，赚取110万，还了99万借款和1万的利息，赚了9万美元
+
+次贷危机 - 通过这种杠杆会使大面积的贷款短贷导金融系统破崩溃
+</code></pre><h2 id="刚性兑付"><a href="#刚性兑付" class="headerlink" title="刚性兑付"></a>刚性兑付</h2><pre><code>就是投资、理财的项目，无论赔了赚了都有平台或银行兜底，打破刚性兑付就是将打掉这种模式，平台和银行不在兜底，赔与赚要看借款方的企业
+</code></pre><h2 id="投资类型"><a href="#投资类型" class="headerlink" title="投资类型"></a>投资类型</h2><pre><code>股票
+
+基金
+
+p2p借贷
+
+股权投资
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>只要政府低利率加上超发货币，资产一定会上涨
+</code></pre><p><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s</a><br><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s</a></p>
+<p><a href="https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV" target="_blank" rel="noopener">https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV</a>  金融学</p>
 
         
     </section>
@@ -1046,186 +3961,6 @@ import Mock from &apos;mockjs&apos;
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2016/12/07/ReactNative之积累篇/">React Native之积累篇</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/ReactNative之积累篇/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/React-Native/">React Native</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="IOS、Android的图标、app名称和启动图"><a href="#IOS、Android的图标、app名称和启动图" class="headerlink" title="IOS、Android的图标、app名称和启动图"></a>IOS、Android的图标、app名称和启动图</h4><pre><code>一、App名称修改
-
-    Xcode中打开项目下info.plist -&gt; Bundle name 和 Bundle display name 都修改APP的名称
-
-二、App图标
-
-    方法1 Xcode中配置:
-
-        Xcode工程目录下的Images.xcassets -&gt; AppIcon中将来加载图标，分别为120x120、180x180
-
-    方法2 代码中配置
-
-        1、使用icon psd模板右键 Edit me and save图层 ——&gt; 编辑内容 ——&gt; 编辑完后保存 ——&gt; 导出图片（窗口）——&gt; 动作 ——&gt; 右上角按钮选择载入动作将App Icon Template [3.3].atn文件载入 ——&gt; 选择导出动作中有两种一个都是圆角图标一个是方形图标
-
-        2、将导出的图标添加到项目中 找到ios/gzApp/Images.xcassets ——&gt; 将所有导出的图标放到这个目录下
-
-三、设置启动图
-
-    方法1 Xcode中配置:
-
-        Xcode工程下点击Images.xcassets -&gt; 进入后 右键 App Icons &amp; launch Image -&gt; New IOS Launch Image -&gt; 将启动图加载到各配置中（注意如果尺寸与当前不配置编译时会报错）
-
-        在项目的General面板 Launch Images Source 选择刚才创建的launchImage, launch Screen File设置为空，App Icons Source就是图标的配置
-
-    方法2 代码配置
-
-        https://github.com/fbsamples/f8app/tree/master/ios/F8v2   // Base.lproj -&gt; LaunchScreen.xib
-
-        在ios文件夹 -&gt; gzCar项目 -&gt; Base.Iproj -&gt; LaunchScreen.xib 使用文件替换，将Splash.png文件导入到项目中，启动
-
-
-http://www.cnblogs.com/allenxieyusheng/p/5802179.html
-http://www.jianshu.com/p/adpKye/
-https://appicontemplate.com/ios9    图标尺寸导出  
-
-转icon尺寸
-http://www.zcool.com.cn/article/ZNjE1MTI=.html
-http://makeappicon.com/
-http://blog.csdn.net/leiyu231/article/details/52830151
-</code></pre><h4 id="fetch-请求提示netWork-quest-failed"><a href="#fetch-请求提示netWork-quest-failed" class="headerlink" title="fetch 请求提示netWork quest failed"></a>fetch 请求提示netWork quest failed</h4><pre><code>在 Xcode 7.0 bata、ios9 中fetch默认https请求, 对http不起作用，需要修改info.plist配置
-
-1、在Info.plist中添加 NSAppTransportSecurity 类型 Dictionary ; 
-2、在 NSAppTransportSecurity 下添加 NSAllowsArbitraryLoads 类型Boolean ,值设为 YES;
-
-http://blog.csdn.net/liyijun4114/article/details/51792179
-</code></pre><h4 id="网络图片无法加载问题"><a href="#网络图片无法加载问题" class="headerlink" title="网络图片无法加载问题"></a>网络图片无法加载问题</h4><pre><code>在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问。
-
-在App Transport Security Settings中添加 Allow Arbitrary Loads设置为 YES
-</code></pre><h4 id="内测平台"><a href="#内测平台" class="headerlink" title="内测平台"></a>内测平台</h4><pre><code>https://www.pgyer.com/      蒲公英将测试包分发给多人的设备上进行测试
-
-    在Xcode中倒出一个应用包，通过蒲公英上传进行分发多个设备
-
-https://developer.apple.com/  苹果开发者账号申请
-
-苹果开发者平台可以进行
-
-苹果的安装包为 *.ipa 文件
-
-1、先登录Account，注册苹果开发者账号个人或企业
-
-2、Xcode 打包IOS文件 https://www.pgyer.com/doc/view/app_upload
-</code></pre><h4 id="代码类"><a href="#代码类" class="headerlink" title="代码类"></a>代码类</h4><pre><code>一、render中调用方法将View返回
-
-    class TabPage extends Component {
-
-        _createNav(name, colorValue){
-            return (
-                &lt;View&gt;
-                    &lt;Text style={{color: colorValue}}&gt;{name}&lt;/Text&gt;
-                &lt;/View&gt;
-            )
-        }
-
-        render(){
-            return (
-                &lt;View&gt;
-                    {this._createNav(&apos;siguang&apos;, &apos;#ddd&apos;)}
-                &lt;/View&gt;
-            )
-        }
-    }
-</code></pre><p>| 参考资料<br>|  react.parts/native<br>|</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/金融类/">金融类</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/金融类/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/金融/">金融</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="居民的金融四大决策"><a href="#居民的金融四大决策" class="headerlink" title="居民的金融四大决策"></a>居民的金融四大决策</h4><pre><code>一、消费决策和储蓄决策 - 多少财富用于消费，多少为储蓄
-
-二、投资决策 - 怎么样投资所节省的资金
-
-三、融资决策 - 自己的消费和投资计划
-
-四、风险管理决策 - 降低金融不确定性
-</code></pre><h4 id="金融体系"><a href="#金融体系" class="headerlink" title="金融体系"></a>金融体系</h4><pre><code>金融体系包括金融市场、金融中介、金融服务企业以其它用来执行居民户、企业和政府的金融决策的机构
-
-1、金融中介 - 主要业务向客户提供金融产品和服务的企业，主要包括(银行、存款储蓄机构、保险公司、养老金与退休基金、投资银行、风险投资企业、资产管理企业)
-</code></pre><h2 id="M0、M1、M2"><a href="#M0、M1、M2" class="headerlink" title="M0、M1、M2"></a>M0、M1、M2</h2><h2 id="什么是金融、金融体系"><a href="#什么是金融、金融体系" class="headerlink" title="什么是金融、金融体系"></a>什么是金融、金融体系</h2><h2 id="赤字"><a href="#赤字" class="headerlink" title="赤字"></a>赤字</h2><h2 id="金融危机和次贷危机"><a href="#金融危机和次贷危机" class="headerlink" title="金融危机和次贷危机"></a>金融危机和次贷危机</h2><pre><code>低利率照成所有人去银行进行贷款，然后使用杠杆
-
-杠杆是用借贷来扩大交易收益的手段
-
-杠杆的操作 - 例 A用1万美元买一个箱子，在以1.1万美元卖给B，在中间赚了1千美元，这属于正常操作，
-
-        如果用杠杆就是 A有1万美元，又去借了99万美元，这样手里有100万美元，去买了100个箱子，赚取110万，还了99万借款和1万的利息，赚了9万美元
-
-次贷危机 - 通过这种杠杆会使大面积的贷款短贷导金融系统破崩溃
-</code></pre><h2 id="刚性兑付"><a href="#刚性兑付" class="headerlink" title="刚性兑付"></a>刚性兑付</h2><pre><code>就是投资、理财的项目，无论赔了赚了都有平台或银行兜底，打破刚性兑付就是将打掉这种模式，平台和银行不在兜底，赔与赚要看借款方的企业
-</code></pre><h2 id="投资类型"><a href="#投资类型" class="headerlink" title="投资类型"></a>投资类型</h2><pre><code>股票
-
-基金
-
-p2p借贷
-
-股权投资
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code>只要政府低利率加上超发货币，资产一定会上涨
-</code></pre><p><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=340s</a><br><a href="https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mu9W9SrsXu8&amp;t=342s</a></p>
-<p><a href="https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV" target="_blank" rel="noopener">https://www.youtube.com/watch?v=eY_Y_w_95JY&amp;list=PLuoaTfw_1lYwyxS-RQ7_Hwsd_gcAdVJtV</a>  金融学</p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
             <a href="/2016/12/07/微观经济学/">微观经济学</a>
         </h1>
         
@@ -1273,1283 +4008,10 @@ p2p借贷
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/宏观经济学/">宏观经济学</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/宏观经济学/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/经济学/">经济学</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h2 id="宏观经济、微观经济"><a href="#宏观经济、微观经济" class="headerlink" title="宏观经济、微观经济"></a>宏观经济、微观经济</h2><pre><code>宏观经济 - 研究整体经济现象，包括通货膨胀、失业和经济增长
-
-微观经济 - 研究家庭和企业如何做出决策，以及市场上的相互影响
-</code></pre><h2 id="GDP"><a href="#GDP" class="headerlink" title="GDP"></a>GDP</h2><pre><code>国内生产总值即GDP，可以衡量经济中所有人总收
-
-GDP = 消费 + 投资 + 政府购买 + 净出口
-
-一、消费
-
-    消费是家庭除购买住房之外用于物品与服务的支出
-
-二、投资
-
-    用于未来生产更多物品和服务的物品，如房产，这里投资与金融投资不同
-
-三、政府购买 
-
-    包括政府员工薪水与公务支出
-
-四、净出口
-
-    等于外国对国内生产的物品进行购买
-</code></pre><h2 id="CPI"><a href="#CPI" class="headerlink" title="CPI"></a>CPI</h2><pre><code>消费物价指数 - 是普通消费者所购买的物品与服务总费用的衡量指标
-</code></pre>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/NPM/">NPM 常用命令</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/NPM/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/npm/">npm</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="npm是什么"><a href="#npm是什么" class="headerlink" title="npm是什么"></a>npm是什么</h4><pre><code>资源包的管理器，安装NodeJS时会直接安装NPM
-</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>$ 下载并安装node.js也就将npm直接安装
-
-$ npm install npm@latest -g        // 更新npm
-
-$ npm i [package_name]         // 安装包，将在当前目录创建一个node_modules目录，将下载的包保存到这个目录
-
-$ npm update     // 获取最新的包并更新
-
-$ npm uninstall [package_name]    // 卸载包，命令是将node_modules目录将包的文件删除
-
-$ npm uninstall --save [package_name]    // 卸载包，将从package.json文件中删除依赖, 如果--save-dev安装就需要换成--save-dev
-
-# npm i -g [package_name]    // 全局安装包，两种安装本地和全局安装，如果遇到acces错误权限问题，需要在前面加sudo，安装在/usr/local/lib/node_modules/中
-
-$ npm update -g [package_name]    // 更新全局包
-
-$ npm uninstall -g [package_name]    // 卸载全局包
-</code></pre><h4 id="package-json参数介绍"><a href="#package-json参数介绍" class="headerlink" title="package.json参数介绍"></a>package.json参数介绍</h4><pre><code>name - 包名
-
-version - 包的版本号
-
-description - 包的描述
-
-homepage - 包的官网 url 
-
-author - 包的作者姓名
-
-contributors - 包的其他贡献者姓名
-
-dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下
-
-repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上
-
-main - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require(&quot;express&quot;)
-
-keywords - 关键字
-</code></pre><h4 id="npm-install-安装模块"><a href="#npm-install-安装模块" class="headerlink" title="npm install 安装模块"></a>npm install 安装模块</h4><pre><code>npm i [package_name] --save-dev
-
-1、-S, --save 安装包添加到dependencies（项目依赖)中
-
-    npm i 包名 --save
-
-    当发布时可以不会将node_module目录发布出去，可以将package.json发布出去，其它项目的人，可以通过npm install 下载dependenciess中的所有包内容.
-
-    例：
-        npm install gulp --save 或 npm install gulp -S
-
-        &quot;dependencies&quot;: {
-            &quot;gulp&quot;: &quot;^1.0.0&quot;
-        }
-
-2、-D, --save-dev 安装包信息将加入到devDependencies（开发阶段的依赖），所以开发阶段一般使用它
-
-    npm install gulp --save-dev 或 npm install gulp -D
-
-    &quot;devDependencies&quot;: {
-        &quot;gulp&quot;: &quot;^1.0.0&quot;
-    }
-
-
-3、-O, --save-optional 安装包信息将加入到optionalDependencies（可选阶段的依赖）
-
-    npm install gulp --save-optional 或 npm install gulp -O
-
-    &quot;optionalDependencies&quot;: {
-        &quot;gulp&quot;: &quot;^1.0.0&quot;
-    }
-
-
-4、-E, --save-exact 精确安装指定模块版本
-
-    npm install gulp --save-exact 或 npm install gulp -E
-
-    输入命令npm install gulp -ES，留意package.json 文件的 dependencies 字段，以看出版本号中的^消失了
-
-    &quot;dependencies&quot;: {
-        &quot;gulp&quot;: &quot;3.9.1&quot;
-    }
-</code></pre><h4 id="npm-i-选项–global，–save，–save-dev"><a href="#npm-i-选项–global，–save，–save-dev" class="headerlink" title="npm i 选项–global，–save，–save-dev"></a>npm i 选项–global，–save，–save-dev</h4><pre><code>-global: 简写 -g
-
--save: 简写 -S, 作用是在package.json的dependencies字段增加或修改安装包和版本号
-
--save-dev: 简写 -D, 是修改devDependencies, 这样就不用安装了某个包之后手动修改package.json
-</code></pre><h4 id="与-版本"><a href="#与-版本" class="headerlink" title="~ 与 ^ 版本"></a>~ 与 ^ 版本</h4><pre><code>版本分为: 主版本号、次版本号、补丁版本号
-
-&quot;devDependencies&quot;: {
-    &quot;vue&quot;: &quot;~2.2.2&quot;,            // 匹配最近小版本，如，会匹配所有的2.2.x版本，但最高不会匹配2.3.0
-    &quot;vue-router&quot;: &quot;^2.2.0&quot;        // 最近的一个大版本，所有 2.x.x但不不包括3.0.0，相当于 2.0.0 &lt;= version &lt; 3.0.0
-}
-</code></pre><h4 id="npm-ls-查看安装的模块"><a href="#npm-ls-查看安装的模块" class="headerlink" title="npm ls 查看安装的模块"></a>npm ls 查看安装的模块</h4><pre><code>查看安装模块及依赖：npm ls -g
-</code></pre><h4 id="发布模块"><a href="#发布模块" class="headerlink" title="发布模块"></a>发布模块</h4><pre><code>使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
-
-$ npm adduser
-Username: mcmohd
-Password:
-Email: (this IS public) xxxxxx@qq.com
-
-来发布模块命令: $ npm publish
-</code></pre><h4 id="script属性"><a href="#script属性" class="headerlink" title="script属性"></a>script属性</h4><pre><code>script属性定义的对应了一段shell脚本
-
-1、npm start 启动模块
-
-    该命令写在package.json文件scripts的start字段中，可以自定义命令来配置一个服务器环境和安装一系列的必要程序
-
-    &quot;scripts&quot;: {
-        &quot;start&quot;: &quot;gulp -ws&quot;
-    }
-
-2、npm stop 停止模块
-
-3、npm restart 重新启动模块
-</code></pre><h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><pre><code>一、npm使用过程中遇到的 Cannot find module &apos;internal/fs&apos;，错误场景 gulp中执行任务报错，的确amd-optimize插件中的graceful-fs与gulp中graceful-fs的版本问题，
-
-    解决:
-        删除插件 npm uninstall graceful-fs
-        安装  npm i graceful-fs --save
-
-二、$ npm view react versions    查看包在npm所有版本
-
-三、$ npm i vue@2.0.0 --save    安装指定版本
-</code></pre><p>| 参考资料<br>| <a href="https://www.npmjs.com.cn/" target="_blank" rel="noopener">https://www.npmjs.com.cn/</a><br>| <a href="https://www.cnblogs.com/blackgan/p/7828047.html" target="_blank" rel="noopener">https://www.cnblogs.com/blackgan/p/7828047.html</a>            常用命令<br>| <a href="http://www.alloyteam.com/2016/03/master-npm/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/master-npm/</a><br>| <a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="noopener">https://github.com/ericdum/mujiang.info/issues/6/</a><br>| <a href="http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/" target="_blank" rel="noopener">http://www.luckyonecn.com/blog/difference_between_dependencies_and_devdependencies_in_npm/</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/Linux命令/">Linux命令</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/Linux命令/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Linux/">Linux</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h4><pre><code>[root@localhost~]  root 管理员    localhost 主机名    ~ 用户的目录 $ 为普通用户 # root用户
-
-1、命令 [选项] [参数]        选项可简化  -a 等于 --all
-
-2、Linux中 .xxx文件 是隐藏文件
-
-3、命令补全: 输入一个开头字母，按Tab会将当前目录下所有的相关文件显示
-
-4、sudo 使用超级使用者权限
-
-nginx 目录: /usr/local/openresty/nginx 9092
-
-启动 sudo /usr/local/openresty/nginx/sbin/nginx
-
-重启 /usr/local/openresty/nginx/sbin/nginx -s reload
-</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>使用 SecureCRT 工具
-
-1、exit 或 logout 退出登录
-
-2、文件上传和下载 到服务器
-
-    $ sz 要下载的文件或目录   在secureCRT中设置 options -&gt; session options -&gt; x/z/zmodem 中设置的下载目录 
-
-    $ rz 上传的文件            上传相同名文件，不会被替换，不能上传目录，可以直接发压缩gzip包在传
-
-/Users/apple/siguang.liu/技术积累/大前端技术/前端框架/技术笔记/Nginx服务器.md
-3、查看日志  使用tail 或 cat来查看文件内容
-
-    $ tail -fn  显示行数  服务器的日志文件
-
-    tail -fn 100  /opt/server/apache-tomcat-6.0.41_8084/logs/catalina.2016-01-21.log    56服务器8084端口
-
-
-4、解决secureCRT 中文编码问题
-
-    options -&gt;    session options  -&gt; terminal 下的 appearance  将 character encodeing 改成 utf-8
-
-
-5、清理服务器缓存
-
-    进入到apache-tomcat服务中的works中清楚loaclhost目录 
-
-    $ cd /opt/server/apache-tomcat-6.0.41_8084/works/Catalina
-
-    $ rm -rf  localhost
-
-    8084：网站  apache-tomcat-6.0.41_8084
-
-    8086：H5   apache-tomcat-7.0.47_8086
-
-
-6、open 打开目录
-
-7、clear 清除当前屏    cmd+k 清除所有
-
-8、tree 打印出目录树
-
-    mac下没有tree命令  brew install tree  安装
-
-    $ tree -a   显示所有的文件和目录
-
-    $ tree -L 1 -a  只显示一个层级的目录和文件(包括隐藏文件)
-
-    $ tree -L 1 -d
-</code></pre><h4 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h4><pre><code>Example: 
-
--rw-r--r--@   1 apple  staff   8196  5 15 19:26 .gitignore.js
-
-一、第一个字符为文件类型 -
-
-    剩下每三位一组
-
-        rw- u所有者    r-- g所属组    r-- o其它人
-
-    r 读        w 写        x 执行
-
-
-一、文件类型
-
-    1、- 文件    如果第一个符号为&apos;-&apos;就是一个普通文件
-
-    2、d 目录 
-
-    3、l 软链接文件
-</code></pre><h4 id="目录处理"><a href="#目录处理" class="headerlink" title="目录处理"></a>目录处理</h4><pre><code>1、cd 切换到指定目录
-
-    cd 与 cd ~  回到apple目录, 也就是 /Users/apple
-
-    cd -   回到上次操作所在的目录
-
-    cd ..  进入到上一级目录
-
-
-2、mkdir [-p]  dirname 创建目录 
-
-    -p 递归创建  mkdir -p parent/child    可以直接创建多个目录，如果不加就只能创建一个目录
-
-
-3、pwd 显示当前路径
-
-4、rm 删除文件或目录   rm -rf [文件或目录]
-
-    -r  删除目录 如果删除目录必须要加 -r, 删除文件不需要
-
-    -f  强制
-
-
-5、cp 复制目录或文件   cp [选项][原文件或目录][目标目录]
-
-    -r 复制目录
-
-    -p 连带文件属性复制 一些类似文件创建日期等
-
-    -d 如果源文件是链接文件，则复制链接属性
-
-    -a 相当于 -pdr
-
-
-6、mv 移动目录或文件    mv [源文件或目录] [目标目录]
-
-    mv dir1 dir2 将文件或目录移动到指定目录中  
-
-    mv a.js b.js 修改文件或目录名  
-
-
-七、查目录权限 
-
-    $ cd /
-
-    $ ls -l         显示根目录所的权限
-
-7、chown设置目录权限
-
-    1、命令格式：
-
-        chown [选项]... [所有者][:[组]] 文件...
-
-    2．命令功能：
-
-        通过chown改变文件的拥有者和群组。在更改文件的所有者或所属群组时，可以使用用户名称和用户识别码设置。普通用户不能将自己的文件改变成其他的拥有者。其操作权限一般为管理员。
-
-    3．命令参数：
-
-        必要参数:
-
-        -c 显示更改的部分的信息
-
-        -f 忽略错误信息
-
-        -h 修复符号链接
-
-        -R 处理指定目录以及其子目录下的所有文件
-
-        -v 显示详细的处理信息
-
-        -deference 作用于符号链接的指向，而不是链接文件本身
-
-        选择参数:
-
-        --reference=&lt;目录或文件&gt; 把指定的目录/文件作为参考，把操作的文件/目录设置成参考文件/目录相同拥有者和群组
-
-        --from=&lt;当前用户：当前群组&gt; 只有当前用户和群组跟指定的用户和群组相同时才进行改变
-
-        --help 显示帮助信息
-
-        --version 显示版本信息
-
-    4．使用实例：
-
-        实例1：改变拥有者和群组
-
-        命令：
-
-        chown mail:mail log2012.log
-</code></pre><h4 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h4><pre><code>1、touch .gitignore  创建文件
-
-2、ls 显示文件
-
-    # 显示详细列表
-    $ ls -l  显示详细信息
-    # 
-    $ ll 是ls -l的简写
-    # 
-    $ ls -a 显示所有文件，包含隐藏文件（以. 起头的文件名）
-    # 
-    $ ls -R 显示文件及所有子目录
-    $ 
-    $ ls -F 显示文件（后跟*）和目录（后跟/）
-    # 
-    $ ls -d 与l选项合用，显示目录名而非其内容
-    #
-    $ ls -h 显示文件大小
-    #
-    $ ls -i 显示文件的id号    30988816 README.md
-
-
-3、cat 显示文件内容
-
-    cat package.json
-
-
-4、echo 输出内容
-
-5、ln 文件名   将文件的内容输出带行号
-
-    $ ln package.json
-
-
-6、wc 文件名  统计指定文件中的字节数、字数、行数，并将统计结果显示输出
-
-    -c 统计字节数。
-
-    -l 统计行数。
-
-    -m 统计字符数。这个标志不能与 -c 标志一起使用。
-
-    -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。
-
-    -L 打印最长行的长度。
-</code></pre><h4 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h4><pre><code>一、find [搜索范围] [搜索条件]  避免大范围搜索，耗费系统资源
-
-    通配符: * 匹配任意内容      ? 匹配任意一个字符      [] 匹配任意一个中括号内的字符
-
-    按文件名搜索    $find / -name person.js     从根目录开始搜索person.js文件
-
-    1、-name   搜索文件名   
-
-    2、-iname  搜索的文件名不区分大小写
-
-    3、-user   按所有者文件
-
-    4、-nouser  没有所有者文件
-
-
-    按时间搜索   $ find /var/log/ -mtime +10    搜索10天前修改的文件   +10 十天前     10 十天当天修改    -10  十天内修改文件
-
-    5、-mtime  修改文件内容
-
-    6、-atime  文件访问时间
-
-    7、-ctime  改变文件属性
-
-
-    按文件大小搜索   $ find . -size 25k  查找文件大小是25K的文件  -25k 小于25k   +25k 大于25k   25k 等于25k
-
-        注意: M 是大写   k 用小写
-
-    8、-size  查找文件大小
-
-    9、-inum  通过 i 节点个数来查看   ls -i 查看当前目录下的文件带id   29560848 Bluetooth    31587257 opendirectoryd.log.0  31745680 system.log.4.gz
-
-        find /var/log/ -inum  29560848   // 返回 Bluetooth
-
-        逻辑运算符  -a 逻辑与    -o 逻辑或
-
-        example   find /var/log -size +20K  -a  -size -50K    查找大于20K并小于50K
-
-    10、-exec ... {} \;  将搜索的内容交给第二条命令来处理
-
-         find /var/log -size +20k -a -size -500M  -exec ls -l -a {} \;
-
-
-二、grep 在文件中匹配符合条件的字符串   grep [选项]  字符串   文件名
-
-    -i 忽略大小写
-
-    -v 排除指定字符串    
-
-    $ grep -i 丝绸之路 package.json 
-
-
-三、whereis 和 which  搜索系统命令
-
-    whereis vim        // 输出 /usr/bin/vim 可以
-
-    which 指令会在环境变量$PATH设置的目录里查找符合条件的文件。
-
-        which mongod        // 返回当前mongod命令所在的目录 /usr/local/bin/mongod
-
-
-四、locate 文件名   在后台数据库中按文件名搜索，搜索速度快
-
-    locate不是在文件中搜索，而是在 /var/lib/mlocat 只在后台数据库搜索
-
-    updatedb  更新数据库
-</code></pre><h4 id="ln-链接命令-ln-s-原文件或目录-目录文件"><a href="#ln-链接命令-ln-s-原文件或目录-目录文件" class="headerlink" title="ln 链接命令   ln -s [原文件或目录] [目录文件]"></a>ln 链接命令   ln -s [原文件或目录] [目录文件]</h4><pre><code>硬链接: 硬链接看做是文件或目录的副本，两个i节点和存储，可以看成是同一个文件
-
-软链接: 软连接看做是文件或目录的快捷方式
-
-选项:
-
--s 创建软链接    
-
-    注意软链接要写绝对路径 ln -s /Users/apple/siguang.liu/linux/catalogB   /Users/apple/siguang.liu/linux/lnDir
-
-    appledeMacBook-Pro-2:lnDir apple$ ls -il
-    31874703 lrwxr-xr-x  1 apple  staff  39  5 16 18:54 catalogB -&gt; /Users/apple/siguang.liu/linux/catalogB    这种 -&gt; 就是指的软链接 或者 lrwxr第一个类型为『l』
-
-删除软连接就去目标目录直接把软链接的目录直接删掉
-</code></pre><h4 id="压缩文件、目录"><a href="#压缩文件、目录" class="headerlink" title="压缩文件、目录"></a>压缩文件、目录</h4><pre><code>一、zip压缩文件、目录
-
-    1、压缩文件     zip 压缩文件名  源文件        // 注意这里压缩zip，原文件不会被删除，而gzip会删除源文件
-
-    2、压缩目录  zip -r 压缩文件名.zip   要压缩的目录       // 最好先进入要指定压缩的目录，如果写成a/b/c，这样就会将所有目录一层一层压缩，如果要压缩的目录在aa下面，而且你当前就在aa目录下面不用从指定根目录，否则解压后会一层一层的 
-
-    3、解压缩    unzip 解压的文件
-
-
-二、gzip压缩
-
-    压缩后的扩展为 .gz  
-
-    1、gzip 源文件      压缩为.gz文件，源文件会消失
-
-    2、gzip -c 源文件 &gt; 压缩 文件     压缩为.gz文件，保留源文件
-
-    3、gzip -r 目录     压缩目录下所有子文件，但不压缩目录
-
-    2、gunzip             解压文件名
-
-
-三、tar压缩目录
-
-    通过tar来对目录进行打包，然后通过gzip进行压缩
-
-    $ 格式: tar -cvf  打包文件名  源文件
-
-    1、打包成 .tar文件
-
-        1) tar -cvf  压缩后的目录  要压缩的目录 
-
-        2) tar -xcvf  打包的文件名
-
-
-    2、打包成 .tar.gz格式
-
-        1) tar -zcvf  压缩后的目录  要压缩的目录 
-
-        2) tar -zxcvf  打包的文件名
-
-        -c: 产生.tar打包文件
-
-        -v: 显示详细信息
-
-        -f: 指定压缩后缀名
-
-        -z: 打包同时压缩
-
-
-    3、当包解压到当前目录
-
-        tar zxf  nginx-1.12.2.tar.gz
-</code></pre><h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><pre><code>所有程序只要运行就会产生一个进程，客户端网页访问服务器就会产生一个进程
-
-一、查看进程
-
-    1、ps aux  系统所有进程
-
-        ps -ef|grep nginx 查看nginx服务的进程
-
-            a 显示所有进程，包括会话引线
-
-            u 显示进程的归属用户及内存使用情况
-
-            x 显示没有控制终端进程
-
-            -l 长格式显示 显示更详细信息
-
-            -e 显示所有进程，和-A作用一致
-
-    2、pstree [选项]
-
-        -p 显示进程PID
-
-        -u 显示进程用户
-
-    3、top  每3秒查看一下系统的健康，有cpu和内存的数据和所有进程
-
-
-二、杀死进程
-
-    kill -1 进程ID    重启进程
-
-    kill -9 进程ID    强制杀死进程
-</code></pre><h4 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a>curl命令</h4><pre><code>https://www.cnblogs.com/duhuo/p/5695256.html
-</code></pre><h4 id="环境变量和host的修改"><a href="#环境变量和host的修改" class="headerlink" title="环境变量和host的修改"></a>环境变量和host的修改</h4><pre><code>一、host目录
-
-    etc/hosts
-
-二、环境变量、export 设置或显示环境变量  export [-fnp][变量名称]=[变量设置值]
-
-    -f 　代表[变量名称]中为函数名称。 
-
-    -n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。 
-
-    -p 　列出所有的shell赋予程序的环境变量。
-
-
-    $ export   查看环境变量
-
-
-    设置环境变量有两种: 
-
-        1、使用export命令 这种方法只是临时设置，重启终端就
-
-            $ export PATH=$PATH:/opt/au1200_rm/build_tools/bin
-
-        2、修改profile文件 或者设置到 source ~/.bash_profile 
-
-            $ vi ~/.profile
-
-              export PATH=$PATH:/usr/local/zend/mysql/bin/:/usr/local/zend/bin     // 设置$PATH 扩展一下加一下
-
-            $ source ~/.profile    立即执行
-
-    注意两个环境变量使用 “：”来分割
-
-
-三、通过环境变量来设置命令快捷键
-
-    $ vi ~/.profile
-
-        alias ll=&quot;ls -a&quot;
-        alias ..=&quot;cd ..&quot;
-        alias ...=&quot;cd ../../&quot;
-        alias ....=&quot;cd ../../../&quot;
-        alias .....=&quot;cd ../../../../&quot;
-        alias ......=&quot;cd ../../../../../&quot;
-</code></pre><h4 id="man-–help-帮助"><a href="#man-–help-帮助" class="headerlink" title="man  –help  帮助"></a>man  –help  帮助</h4><pre><code>一、man ls  查看帮助信息
-
-二、ls --help   
-</code></pre><h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><pre><code>一、日期
-
-    date 日期时间
-
-    cal  显示当前日历
-
-二、关机重启系统
-
-    1、shutdown [选项] 时间   来进行重启和关机
-
-        shutdown -r now    立即重启  -h 立即关机
-
-        shutdown -r 18:00  定时在18点的时候重启
-
-        -c: 取消前一个关机命令
-
-        -h: 关机
-
-        -r: 重启
-
-    2、halt  回车  直接关机
-
-    3、poweroff  回车  直接关机
-
-    4、init 0 回车  直接关机
-
-    5、reboot 回车  直接重启
-
-三、查询与自动挂载
-
-    1、mount
-</code></pre><h4 id="linux根目录"><a href="#linux根目录" class="headerlink" title="linux根目录"></a>linux根目录</h4><pre><code>Linux的目录
-
-    根目录下的 bin目录不允许操作， usr下的 sbin目录是可以操作的
-
-    /bin 传统unix命令的存放目录，如ls，rm，mv等。
-    /sbin 传统unix管理类命令存放目录，如fdisk，ifconfig等等。
-    /tmp 临时文件存放目录，其权限为所有人任意读写。此目录实际为指向/private/tmp的链接。
-    /usr 第三方程序安装目录。
-        /usr/bin, /usr/sbin, /usr/lib，其中/usr/lib目录中存放了共享库（动态链接库）.
-    /etc. 标准unix系统配置文件存放目录，如用户密码文件/etc/passwd。此目录实际为指向/private/etc的链接。        
-    /var 存放经常变化的文件，如日志文件。此目录实际为指向/private/var的链接。
-
-
-OS X系统中，除了标准的unix目录外，还增加了特有的目录。
-
-    /Applications 应用程序目录，默认所有的GUI应用程序都安装在这里；
-    /Library 系统的数据文件、帮助文件、文档等等；
-    /Network 网络节点存放目录；
-    /System 他只包含一个名为Library的目录，这个子目录中存放了系统的绝大部分组件，如各种framework，以及内核模块，字体文件等等。
-    /Users 存放用户的个人资料和配置。每个用户有自己的单独目录。
-    /Volumes 文件系统挂载点存放目录。
-    /cores 内核转储文件存放目录。当一个进程崩溃时，如果系统允许则会产生转储文件。
-    /private 里面的子目录存放了/tmp, /var, /etc等链接目录的目标目录。
-
-
-/bin是系统的一些指令。bin为binary的简写主要放置一些系统的必备执行档例如:cat、cp、chmod df、dmesg、gzip、kill、ls、mkdir、more、mount、rm、su、tar等。
-
-/sbin一般是指超级用户指令。主要放置一些系统管理的必备程式例如:cfdisk、dhcpcd、dump、e2fsck、fdisk、halt、ifconfig、ifup、 ifdown、init、insmod、lilo、lsmod、mke2fs、modprobe、quotacheck、reboot、rmmod、 runlevel、shutdown等。
-
-/usr/bin　是你在后期安装的一些软件的运行脚本。主要放置一些应用软体工具的必备执行档例如c++、g++、gcc、chdrv、diff、dig、du、eject、elm、free、gnome*、 gzip、htpasswd、kfm、ktop、last、less、locale、m4、make、man、mcopy、ncftp、 newaliases、nslookup passwd、quota、smb*、wget等。
-
-/usr/sbin   放置一些用户安装的系统管理的必备程式例如:dhcpd、httpd、imap、in.*d、inetd、lpd、named、netconfig、nmbd、samba、sendmail、squid、swap、tcpd、tcpdump等。
-
-/usr/bin用于分发包管理器（如Ubuntu apt等）存放它所管理的应用的路径, /usr/sbin与/usr/bin的关系类似与/bin和/sbin的关系
-
-/usr/local/bin用于存放用户自己的程序（如自己编译出来的包等），不受分发包管理器的控制。如果用户把自己的程序放在/usr/bin下，则有可能在未来被包管理器给修改或删除了。
-</code></pre><h4 id="vim-编辑器"><a href="#vim-编辑器" class="headerlink" title="vim 编辑器"></a>vim 编辑器</h4><pre><code>vi  文件名    或vim 文件名
-
-命令状态：
-
-H 左  L 右   K 上  J 下
-
-0（零） 行首     $（shift+5） 行尾       G（shift+G） 文件尾
-
-i 插入命令
-
-dd  删除当前行    pp 复制并粘贴当前行    x: 删除光标处字符
-
-control+f 后翻页        control+b前翻页
-
-u 取消上次操作)
-
-
-a,A:追加命令，a 在当前光标后追加，A 在行末追加
-
-o,O:打开命令，o 在当前行下打开一行，O在当前行上插入一行
-
-r,R :替换命令，r 替换当前光标处字符，R从光标处开始替换
-
-数字s: 替换指定数量字符
-
-d0: 删除光标前半行
-
-d$: 删除光标后半行
-
-/string 查找字符串
-
-n 继续查找
-
-N 反向继续查找
-
-% 查找对应括号
-
-ex命令状态
-
-    ：0 文件首
-
-    ：1,5 copy 7 块拷贝
-
-    ：1，5 del 块删除
-
-    ：1，5 move 7 块移动
-
-    ：1，$s/string1/string2/g 全文件查找string1并替换为string2
-
-    ：wq! 存盘退出
-
-保存命令
-
-    按ESC键 跳到命令模式，然后：
-
-    :w   保存文件但不退出vi
-
-    :w file 将修改另外保存到file中，不退出vi
-
-    :w!  强制保存，不推出vi
-
-    :wq  保存文件并退出vi
-
-    :wq! 强制保存文件，并退出vi
-
-    q:   不保存文件，退出vi
-
-    :q!  不保存文件，强制退出vi
-
-    :e!  放弃所有修改，从上次保存文件开始再编辑
-</code></pre><h4 id="Mac终端下的快捷键"><a href="#Mac终端下的快捷键" class="headerlink" title="Mac终端下的快捷键"></a>Mac终端下的快捷键</h4><pre><code>cmd + A 移到行首
-cmd + E 移到行尾
-
-cmd + L 清除上一次操作的内容
-cmd + K 清除所有内容
-
-cmd + option + H 将所有窗口隐藏到应用程序图标
-cmd + H  将当前窗口隐藏到图标中
-cmd + M  将当前窗口最小化到
-
-control + U 清除当前行命令
-
-cmd + shift + .  显示/隐藏当前文件的隐藏文件
-
-traceroute -n 125.35.51.162        // 查看当前网络访问到这个ip都通过哪些途径
-
-mac 打开iphone界面  iphone与mac连接，打开QuickTime，文件 -&gt; 新建录制影片
-</code></pre><h4 id="修改mac地址"><a href="#修改mac地址" class="headerlink" title="修改mac地址"></a>修改mac地址</h4><pre><code>$ ifconfig        en0:  ether ac:bc:32:83:a2:4b     原始的mac地址
-
-$ openssl rand -hex 6 | sed &apos;s/\(..\)/\1:/g; s/.$//&apos;        生成一个mac地址
-
-$ sudo /System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -z      断开airport无线网卡连接
-
-$ sudo ifconfig en0 ether 7e:df:f7:a5:07:56        修改成生成的mac地址
-
-$ networksetup -detectnewhardware     重新连接网卡
-
-$ ifconfig    查看是否是改后的mac地址
-
-44:9f:24:59:ca:13
-</code></pre><h4 id="SSL-权限"><a href="#SSL-权限" class="headerlink" title="SSL 权限"></a>SSL 权限</h4><pre><code>open ~/.ssh/     打开ssh目录
-
-GitLab：中配置ssh
-
-1、登录后找到 Profile Settings  -&gt;  SSH Keys  添加Key来做映射
-
-id_rsa.pub 文件
-
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcmEJCTlr57na4TJ8xU8J/EG0KcrH6Dh+MwBPbs0NO6lA09Pdjro4knzSRYeSHc9X63Km/OR18JU7ygcE9foUYAN8BatnDTh6R+ynyQxyIqIG7Gn8YGF0g8Zx8oU9LsYc8SWP6zdryr7NaQZ41583jt9JxheG0la6D10cqZRQiix7pZMiXmHZXPKCSkTZSGHLaR0Ws24eyz1Yt9HmLXZem8FPkUrwmn2IYk05cwMyK+NE/g9pPJbpVEtEssU4FZ4I++LNltMbAxgtCp2QXZ7Z7ViA3CvK9u8g6u4yLLBPydpXWJ1pu+9bYFV3CvoTEawN3+mIIMsDaDhPlI6PJMk/j 632505215@qq.com
-</code></pre><p>| <a href="http://www.cnblogs.com/webzhangnan/p/3221410.html" target="_blank" rel="noopener">http://www.cnblogs.com/webzhangnan/p/3221410.html</a></p>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/12/07/JS作用域和整理经验/">JS作用域和整理经验</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/12/07/JS作用域和整理经验/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-12-07T08:54:51.000Z" itemprop="datePublished">2016-12-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/javascript/">javascript</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>一、示例
-
-    console.log(str);        // 输出undefined  因为读取的是解析器预先存储的str，还没有被赋值
-    var str = 1;         
-
-
-二、示例2
-
-    alert(a);        // 弹出的是function a(){ alert(&quot;2&quot;)}
-    var a = 1;
-    function a(){
-        alert(&quot;2&quot;)
-    }
-
-    预解析会保存a = undefinded，和 a = function a(){alert(&quot;2&quot;)}，
-    因为函数与变量重名，函数后最执行所以保留函数，结果输出的就是函数
-
-
-三、示例3
-
-    var a = 1;
-    function a(){
-        alert(&quot;2&quot;);
-    }
-
-    // 报错，因为a被定义成变量，typeof a 返回的是number，如果 var a;不能定义值那么a()是成功的
-    a();
-
-
-四、示例4
-
-    var a = 1;
-    function fn1(){
-        alert(a);
-        // 注意这里因为是使用var声明所以执行数预解析器才会把它单独存储起来，
-        // 如果将var去掉，a=2改成了赋值这样会改变外部的a的值，下面输出的就是1，2
-        var a = 2;
-    }
-
-    fn1();                        // undefined
-    console.log(a);        // 1
-
-
-五、示例5
-
-    function foo(){
-        return fn1;
-
-        function fn1(){};
-        var fn1 = 10;
-    }
-
-    var f = foo();
-
-    // 输出 function fn1(){};    因为调用foo函数时，return  fn1因为变量还未定义所以 直接调用的函数
-    alert(f);                
-
-
-六、示例6
-
-    var  myname = &quot;global&quot;; // 全局变量
-    function func() {
-
-        // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined
-        alert(myname);                 
-        var myname = &quot;local&quot;;
-        alert(myname);                 // &quot;local&quot;
-    }
-    func();
-
-
-七、示例7
-
-    &lt;script&gt;
-        window.name = &apos;globalName&apos;;
-
-        var getName = function(){
-            return this.name;
-        }
-
-        getName();         // &apos;globalName&apos;
-    &lt;/script&gt;
-
-
-八、示例8
-
-    &lt;script&gt;
-        window.id = &apos;window&apos;;
-
-        document.getElementById(&apos;divA&apos;).onclick = function(){
-            alert(this.id);
-
-            var callback = function(){
-                return this.id;        // divA
-            }
-            callback();            // window
-        }
-    &lt;/script&gt;
-
-
- 九、示例9
-
-    1、Example
-        var getName;
-        console.log(getName)    // undefined
-
-        getName()                // Uncaught TypeError: getName is not a function
-
-        var getName = function() {
-            console.log(&apos;wscat&apos;)
-        }
-
-    2、Example
-        var getName;
-        console.log(getName)    // function getName() {console.log(&apos;oaoafly&apos;)}
-
-        getName()                // oaoafly
-
-        function getName() {
-            console.log(&apos;oaoafly&apos;)
-        }
-
-
-十、bind()
-
-    &lt;script&gt;
-        window.id = &apos;window&apos;;
-
-        document.getElementById(&apos;divA&apos;).onclick = function(){
-            alert(this.id);
-
-            var obj = {
-                id: &apos;objId&apos;,
-                callback: function(){
-                    return this.id;         // &apos;divA&apos;
-                }.bind(window)                // 通过bind来将callback内的this指向window
-            }
-
-            console.log(obj.callback());    // &apos;window&apos;
-        }
-    &lt;/script&gt;
-
-
-十一、严格模式下的this
-
-    &lt;script&gt;
-        &apos;use strict&apos;
-
-        function fun(){
-            alert(this);        // 返回 &apos;undefined&apos;, strict模式下this不会指向全局
-        }
-
-        fun();
-    &lt;/script&gt;
-
-
-十二、箭头函数下的this指向
-
-    let Template = {
-        test(){
-            console.log(this);        // this指向Template
-
-            document.querySelector(&quot;#showThis&quot;).onclick = () =&gt;{
-                // 如果非箭头函数this应该指向 #showThis
-                // 这里箭头函数不是指向调用者，所以指向了 Template
-                console.log(this);    
-            }
-        }
-    }
-    Template.test();
-</code></pre><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code>1、函数本身是对象也是构造函数
-
-2、直接挂载到函数下，是对象的属性和方法
-
-    function Foo(){};
-    Foo.username = &apos;111&apos;;     // 注意这里Foo的属性不能为name因为被name被函数的名所占用
-    Foo.getName = function(){ console.log(this.username) };
-
-    // 调用
-    Foo.getName();        // 111
-
-3、在构造函数的内部属性和方法
-
-    function Foo() {
-        this.username = &apos;111&apos;
-    }
-    Foo.username = &apos;222&apos;;
-
-    // 调用
-    console.log(new Foo().username);    // 111
-
-&lt;script&gt;
-    function Foo() {
-        getName = function() {
-            console.log(this);
-            console.log(1);
-        }
-
-        console.log(this);
-        return this;
-    }
-    Foo.getName = function() { // 这里只是Foo对象的方法，而不是构造函数的方法，
-        console.log(2);
-    }
-
-    // Foo.prototype.getName = function() {
-    //     console.log(3);
-    // }
-
-    var getName = function() {
-        console.log(4)
-    }
-
-    function getName() {
-        console.log(5)
-    }
-
-    Foo.getName(); // 2    Foo.getName=function(){}  是存到Foo下的方法，Foo.getName()可以取到
-    getName(); // 4     如果一个作用域下有var的变量名与函数名相当，var的作用域提升高于function
-    Foo().getName();     // 1  因为Foo()被调用，定义中加了return this，Foo指向的是window全局，getName没有var升明，所以为全局，所以相当于window.getName()，Foo中如果不加return this那么就会报错，因为Foo没有链式调用，所以this断了
-    getName(); // 1   因为上面已经将Foo内的getName()提升成全局，所以会赋盖掉var getName、function getName定义的全局方法
-
-    // var ofo = new Foo;
-    // ofo.getName();   // 3
-
-    // Foo既是一个对象也是一个构造函数
-    new Foo.getName();             // 2  先执行Foo.getName()，因为&quot;.&quot;运算符优先于new运算符，所以这时候Foo只是一个对象并不是构造函数的实例，所以会调用对象下的方法
-    new Foo().getName();         // 1  先执行new Foo()构造函数，然后在构造函数下去找getName方法，Foo构造函数方法没有getName()所以到prototype下去找
-    new new Foo().getName();     // 1  与上面相同
-&lt;/script&gt;
-</code></pre><h4 id="将对象拷贝并不引用指针"><a href="#将对象拷贝并不引用指针" class="headerlink" title="将对象拷贝并不引用指针"></a>将对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
-
-另一种方法是使用Object.assign()
-
-let objA = {
-    name: &apos;siguang&apos;,
-    age: 30
-}
-let objB = Object.assign({}, objA);
-objB.name = &apos;lulu&apos;;         // lulu
-console.log(objA.name);     // siguang
-</code></pre><h4 id="对象的深拷贝和浅拷贝"><a href="#对象的深拷贝和浅拷贝" class="headerlink" title="对象的深拷贝和浅拷贝"></a>对象的深拷贝和浅拷贝</h4><pre><code>浅拷贝就是对象之间还存引用关系，深拷贝就是两个对象之间没有引用关系
-
-一、浅拷贝
-
-    const a = {t: 1, p: &apos;gg&apos;};
-    const b = a;
-    b.t = 3;
-    console.log(a);     // {t: 3, p: &apos;gg&apos;}
-    console.log(b);     // {t: 3, p: &apos;gg&apos;}
-
-二 、深拷贝
-
-    1、Object.assign() 方法是将两个对象合并，并返回一个新对象
-
-        **** 注意assig()只能拷贝一层，多层结构还是浅拷贝 ****
-
-        const c = {t: 1, p: &apos;gg&apos;};
-        const d = Object.assign({}, c);
-        d.t = 3;
-        console.log(c);     // {t: 1, p: &apos;gg&apos;}
-        console.log(d);     // {t: 3, p: &apos;gg&apos;}
-
-    2、Object.create() 将拷贝的内容入到prototype下，对象和数组都适用
-
-        对象:
-
-            var oA = {
-                name: &apos;sg&apos;,
-                age: 33
-            }
-            var oB = {};
-            oB = Object.create(oA);
-
-            oB.eat = &apos;bread&apos;;
-
-        数组:
-
-            var oA = [1,2]
-            var oB = [];
-            oB = Object.create(oA);
-
-            oB.push(3);            // oB.length;   3        
-
-    3、jQuery.extend()
-
-        let oa = {a: 1, b: 2}; let ob = {};  
-        $.extend(ob, oa); 
-        ob.b = 3; 
-        console.log(oa, ob);        // oa: {a: 1, b: 2}、 ob: {a: 1, b: 3}
-</code></pre><h4 id="数组的深拷贝"><a href="#数组的深拷贝" class="headerlink" title="数组的深拷贝"></a>数组的深拷贝</h4><pre><code>一、concat()方法
-
-    var arrA = [1,2,3];
-    var arrB = arrA.concat();
-    arrB.push(5,6,7);
-    console.log(arrA);  // [1,2,3]
-    console.log(arrB);  // [1,2,3,5,6,7]
-
-二、slice()方法
-
-    var arrA = [1,2,3];
-    var arrB = arrA.slice();
-    arrB.push(5,6,7);
-    console.log(arrA);  // [1,2,3]
-    console.log(arrB);  // [1,2,3,5,6,7]
-
-两种方法都是回返一个不带指向的新数组
-</code></pre><h4 id="对象处理"><a href="#对象处理" class="headerlink" title="对象处理"></a>对象处理</h4><pre><code>一、查看是否是一个空对象
-
-    // 使用keys来查看对象中所有的kyes并返回一个数组，如果数组为度为0则对象为空
-    var obj = {}; 
-    var Len = Object.keys(obj);         
-    console.log(Len.length);
-
-二、查看对象中属性是否存在
-
-    var obj = {
-        a: 1,
-        b: 2
-    }
-    console.log(obj.c);        // undefined
-</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(data){
-
-}
-</code></pre><h4 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h4><pre><code>一、数据去重
-
-    1、普通方法
-
-        function clearRepeat(arr){
-            var newArr = [], obj = {};
-            for(var i=0; i&lt;arr.length; i++){
-                if(!obj[arr[i]]){
-                    obj[arr[i]] = &apos;&apos;;        // 对象属性相同会直接覆盖
-                    newArr.push(key);        
-                }
-            }
-            return newArr;
-        }
-
-        let retArray = clearRepeat([3,2,3,4,5,5,2,2,13,3]);
-
-
-    2、使用ES6的set()方法，set方法就是不允许数组内有重复的值
-
-        let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
-        console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
-        let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
-
-    http://www.jb51.net/article/46154.htm
-
-
-二、数组排序
-
-    1、使用sort方法
-
-        var arr = [6,7,5,8,4,2342342,23,234,2,34];
-        arr.sort(function(v1, v2){
-            return v1 - v2        // 正序
-        })
-        console.log(arr);
-
-
-三、返回数组中最大最小值
-
-    let arr = [2,1,423,343,5,67,8];
-    let min = Math.min.apply(null, arr);
-    let max = Math.max.apply(null, arr);
-</code></pre><h4 id="编写组件并兼容AMD、ES6写法"><a href="#编写组件并兼容AMD、ES6写法" class="headerlink" title="编写组件并兼容AMD、ES6写法"></a>编写组件并兼容AMD、ES6写法</h4><pre><code>;(function(root, factory){
-
-    // 判断使用的支持定义模块的方式
-    if(typeof define === &apos;function&apos; &amp;&amp; define.amd){
-        define(factory)
-    }
-    else if(typeof exports === &apos;object&apos;){
-        module.exports = factory();
-    }
-    else{
-        root.NProgress = factory();
-    }
-
-})(this, function(){
-    console.log(`输出内容`);
-})
-</code></pre><p>| <a href="https://juejin.im/entry/58db95eaac502e0058f8472e" target="_blank" rel="noopener">https://juejin.im/entry/58db95eaac502e0058f8472e</a><br>| <a href="http://www.iamaddy.net/2015/04/front-end-engineering/" target="_blank" rel="noopener">http://www.iamaddy.net/2015/04/front-end-engineering/</a>       // 前端的发展</p>
-
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
 </nav>
 
 

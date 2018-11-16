@@ -7,20 +7,16 @@
 
     
 
-    <title>目录结构 | 大排档</title>
+    <title>EChart | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="CSS| 
-|– base/ 
-|   |– reset.scss       # 重置样式
-|   |– bass                            # 设置基础样式
-|   |– functions.scss   # 自定义函数
-|   |– mixins.scss      # 宏
-|   |– variables.scss     # 变量
-|   ...                  # Etc… 
-| 
-|– components/          # 组件" />
+    <meta name="description" content="sheetjs 用于读取和导出文件，如Excel、csv安装1、CDN src=&amp;quot;https://unpkg.com/xlsx/dist/xlsx.full.min.js&amp;quot;
+
+2、$ npm i xlsx --save
+
+3、$ npm install file-saver --save       // 依赖插件，用于对文件的生成保存  https://github.com/eligrey/FileSaver.js
+使用let XLSX = require(&amp;apos;x" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -103,7 +99,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS"><span class="toc-number">1.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JS"><span class="toc-number">2.</span> <span class="toc-text">JS</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#sheetjs-用于读取和导出文件，如Excel、csv"><span class="toc-number">1.</span> <span class="toc-text">sheetjs 用于读取和导出文件，如Excel、csv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-number">4.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式"><span class="toc-number">5.</span> <span class="toc-text">格式</span></a></li></ol>
         
     </div>
 </aside>
@@ -115,21 +111,21 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            目录结构
+            EChart
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/10/17/目录结构/">
+            <a class="article-date" href="/2017/04/24/sheetJS表格导成elsx文件/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/前端优化/">前端优化</a>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
 </div>
 
 
@@ -138,79 +134,126 @@
     
     <section class="article-body markdown-body">
         
-        <h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><pre><code>| 
-|– base/ 
-|   |– reset.scss       # 重置样式
-|   |– bass                            # 设置基础样式
-|   |– functions.scss   # 自定义函数
-|   |– mixins.scss      # 宏
-|   |– variables.scss     # 变量
-|   ...                  # Etc… 
-| 
-|– components/          # 组件样式
-|   |– buttons.scss     # Buttons 
-|   |– carousel.scss    # Carousel 
-|   |– cover.scss       # Cover 
-|   |– dropdown.scss    # Dropdown 
-|   |– navigation.scss  # Navigation 
-|   ...                  # Etc… 
-| 
-|– layout/                 
-|   |– grid.scss        # 栅格
-|   |– header.scss      # 公共头 
-|   |– footer.scss      # 公共尾 
-|   |– sidebar.scss     # 侧栏 
-|   |– forms.scss       # Forms 
-|   ...                  # Etc… 
-| 
-|– pages/ 
-|   |– home.scss        # 主页
-|   |– contact.scss     # 
-|   ...                  # Etc… 
-| 
-|– themes/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– vendors/             # 存放第三方库
-|   |– bootstrap.scss   # Bootstrap 
-|   |– jquery-ui.scss   # jQuery UI 
-|   ...                  # Etc… 
-| 
-`– main.scss             # primary Sass file 
-</code></pre><h4 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h4><pre><code>| 
-|– dist/                                # 压缩目录
-| 
-|– public/                            # 公共目录    
-| 
-|– api/                         # 存放一些接口
-| 
-|– assets/                             # 公共资源
-|   |– css
-|   |– img
-| 
-|– components/                     # 公共组件
-| 
-|– resources/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– utils/                             # 工具类库
-|   |– filter.js                
-|   |– mock.js    
-|   ...                  # Etc… 
-|
-|– views/                                # 业务组件
-|   |– 404.vue
-|   |– layout.vue
-|
-|- app.vue            
-|- config.js                
-|- main.js
-`- router.js
-</code></pre>
+        <h4 id="sheetjs-用于读取和导出文件，如Excel、csv"><a href="#sheetjs-用于读取和导出文件，如Excel、csv" class="headerlink" title="sheetjs 用于读取和导出文件，如Excel、csv"></a>sheetjs 用于读取和导出文件，如Excel、csv</h4><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、CDN src=&quot;https://unpkg.com/xlsx/dist/xlsx.full.min.js&quot;
+
+2、$ npm i xlsx --save
+
+3、$ npm install file-saver --save       // 依赖插件，用于对文件的生成保存  https://github.com/eligrey/FileSaver.js
+</code></pre><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>let XLSX = require(&apos;xlsx&apos;);     // 引用插件
+let FileSaver = require(&apos;file-saver&apos;);
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、读写:
+
+    XLSX.readFile(&apos;test.xlsx&apos;) - 读取文件
+
+    XLSX.read(); 
+
+    XLSX.write(wb, opt);  
+
+    XLSX.writeFile(wb, filename, write_opts); 
+
+
+二、方法
+
+    XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});    // 通过table遍历成导出文件
+
+    XLSX.utils.json_to_book()      // 将组装sheet需要的格式，见下面数据格式
+
+    XLSX.utils.sheet_to_json(ws, {header:1, raw:true})
+
+
+三、输入
+
+    aoa_to_sheet() - 将JS数据数组转换为工作表
+
+    json_to_sheet() - 将一个JSON对象数组转换为工作表
+
+    table_to_sheet() - 将DOM TABLE元素转换为工作表
+
+
+四、出口: 将Sheet生成的数据转成其它格式:
+
+    XLSX.utils.sheet_to_csv() - 生成CSV
+
+    XLSX.utils.sheet_to_txt() - 生成UTF16格式文本
+
+    XLSX.utils.sheet_to_html() - 生成HTML
+
+    XLSX.utils.sheet_to_json() - 生成一个对象数组
+
+    XLSX.utils.sheet_to_formulae() - 生成公式列表
+
+    Example 将Sheet生成的数据转成html:
+
+        let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+        let sheetData = wb.Sheets[&apos;Sheet JS&apos;];
+        console.log(XLSX.utils.sheet_to_html(sheetData));
+
+
+五、通过Blob对象转成文件
+
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+    let fname = &apos;借款.xlsx&apos;;
+    FileSaver.saveAs(new Blob([s2ab(wb)], {type:&quot;application/octet-stream&quot;}), fname);
+
+    function s2ab(s) {
+        if(typeof ArrayBuffer !== &apos;undefined&apos;) {
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
+        } else {
+            let buf = new Array(s.length);
+            for (var i=0; i!=s.length; ++i) buf[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
+        }
+    }
+</code></pre><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><pre><code>let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});      // sheet定义的值是返回中数据SheetNames的值
+
+{
+    SheetNames:[&quot;SheetJSaaa&quot;],      // 这里存的名与Sheets中的名对应
+    Sheets:{
+        &quot;SheetJSaaa&quot;: {
+            !merges: [],
+            !ref: &quot;A1:F7&quot;,              // 指定数据的开始和结束
+            A1: {t: &apos;s&apos;, v: &apos;创建时间&apos;},        // t:
+            A2: {t: &quot;n&quot;, v: 43205.613541666666, z: &quot;m/d/yy&quot;},
+            B1: {t: &quot;s&quot;, v: &quot;业务类型&quot;},
+            B2: {t: &quot;s&quot;, v: &quot;PAY_DAY_LOAN&quot;}
+            .....
+        }
+    }
+}
+
+一、wb - workbook对象
+
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});
+
+    1、wb.SheetNames - 工作表的名
+
+    2、wb.Sheets[sheetname] - 返回工作表中存储的数据
+
+    3、wb.Props - 存储标准属性的对象
+
+    4、wb.Workbook - 存储工作簿属性
+
+
+二、修改单元格的值
+
+    t - 单元格类型：b布尔值，n数字，e错误，s字符串，d日期
+    https://docs.sheetjs.com/#cell-object     单元格对象
+
+
+    let first_sheet_name = wb.SheetNames[0];
+    let workSheet = wb.Sheets[first_sheet_name];
+
+    let desired_cell = workSheet[&apos;A1&apos;].v;       // 取出v的值
+
+
+三、设置xlsx单元格行、列样式
+
+    https://docs.sheetjs.com/#formulae
+</code></pre><p>| <a href="https://www.gitbook.com/book/sheetjs/docs/details" target="_blank" rel="noopener">https://www.gitbook.com/book/sheetjs/docs/details</a><br>| <a href="https://docs.sheetjs.com/#sheetjs-js-xlsx" target="_blank" rel="noopener">https://docs.sheetjs.com/#sheetjs-js-xlsx</a>           // 官方文档</p>
+
         
     </section>
 </article>
@@ -224,9 +267,9 @@
     <script>
     window.disqus_config = function () {
         this.language = 'zh';
-        this.page.url = 'http://siguang1983.github.io/2016/10/17/目录结构/';
-        this.page.title = '目录结构';
-        this.page.identifier = '2016/10/17/目录结构/';
+        this.page.url = 'http://siguang1983.github.io/2017/04/24/sheetJS表格导成elsx文件/';
+        this.page.title = 'EChart';
+        this.page.identifier = '2017/04/24/sheetJS表格导成elsx文件/';
     };
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');

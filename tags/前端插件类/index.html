@@ -414,6 +414,272 @@ radius: 半径
 </article>
 
 
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/24/LodashJS/">LodashJS</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/24/LodashJS/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="LodashJS"><a href="#LodashJS" class="headerlink" title="LodashJS"></a>LodashJS</h4><pre><code>工具库，处理数组、对象的一些方法
+
+官网: https://lodash.com/
+
+中文官网: http://lodashjs.com/docs/#_chunkarray-size1
+</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code>let box = document.querySelector(&quot;#box&quot;);
+
+let arr = [1,2,3,4,5,6];
+
+// 将数组每两个下标值，转成一个二维数组 
+// arr = _.chunk(arr, 2);      // [[1,2], [3,4], [5,6]]
+
+// 删除数组中的false, null, 0, &apos;&apos;, undefined, Nan
+// arr = [1, 0, 3, &apos;&apos;, false, &apos;ss&apos;]
+// arr = _.compact(arr);      //   [1,3,&apos;ss&apos;] 
+
+// 合并数组
+// arr = [1];
+// arr = _.concat(arr, 2, [3], [[4]]);    // [1, 2, 3, [4]]
+
+// 去除数组中指定的数值
+// arr = _.difference(arr, [2,3,4]);   // [1,5,6]
+
+// 截取数组从第个开始直到最后的值
+// arr = _.drop(arr, 2);      // [3,4,5,6]
+
+// 指定删除的下标个数，从右开始
+// arr = _.dropRight(arr, 2);    // [1,2,3]
+
+// 填充数组元素，全部或指定区域
+// arr = _.fill(arr, &apos;a&apos;);       // [&apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;, &apos;a&apos;];
+// arr = _.fill(arr, &apos;*&apos;, 1, 4);    // [1, &quot;*&quot;, &quot;*&quot;, &quot;*&quot;, 5, 6]
+
+// 查找指定的值返回下标
+// arr = [
+//   {user: &apos;siguang&apos;, age: 30},
+//   {user: &apos;lulu&apos;, age: 20},
+//   {user: &apos;haha&apos;, age: 10}
+// ]
+// arr = _.findIndex(arr, function(o){ return o.user == &apos;lulu&apos; });   // 1
+// arr = _.findIndex(arr, [&apos;age&apos;, 10])     // 2 如果不存在返回-1
+
+// findLastIndex() 与findIndex()相同只是从后向前
+// lastIndex()
+
+// 将一个二维数组转成对象
+// arr = [[&apos;a&apos;, 1], [&apos;b&apos;, 2]];
+// arr = _.fromPairs(arr);     // {a: 1, b: 2}
+
+// 返回数组第一个、最后一个元素
+// arr = _.head(arr);    // 1
+// arr = _.last(arr);    // 6
+
+// 根据下标返回值
+// arr = _.indexOf(arr, 2);   // 1
+
+// 删除最后一个数组值
+// arr = _.initial(arr);     // [1, 2, 3, 4, 5]
+
+// 将数组元素用分割符分开，返回一个字符串
+// arr = _.join(arr, &apos;~&apos;);      // &quot;1~2~3~4~5~6&quot;
+
+// 根据下标的返回数组中的值，如果是负数从后开始
+// arr = _.nth(arr, 2);      // 3
+// arr = _.nth(arr, -2);        // 5
+
+// 删除数组中指定的值
+// arr = _.pull(arr, 3, 4, 5);   // [1, 2, 6]
+// arr = _.pullAll(arr, [3,4,5]);   // [1, 2, 6]
+
+// 返回指定下标的数组值
+// arr = _.pullAt(arr, [1,3,5]);   // [2, 4, 6]
+
+// 删除数组元素
+arr = _.remove(arr, function(n){ return n % 2 == 0 });    // [2, 4, 6]
+
+
+console.log(arr);    
+box.innerHTML = &apos;sss&apos;
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/24/sheetJS表格导成elsx文件/">EChart</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/24/sheetJS表格导成elsx文件/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-24T03:43:51.000Z" itemprop="datePublished">2017-04-24</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端插件类/">前端插件类</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="sheetjs-用于读取和导出文件，如Excel、csv"><a href="#sheetjs-用于读取和导出文件，如Excel、csv" class="headerlink" title="sheetjs 用于读取和导出文件，如Excel、csv"></a>sheetjs 用于读取和导出文件，如Excel、csv</h4><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>1、CDN src=&quot;https://unpkg.com/xlsx/dist/xlsx.full.min.js&quot;
+
+2、$ npm i xlsx --save
+
+3、$ npm install file-saver --save       // 依赖插件，用于对文件的生成保存  https://github.com/eligrey/FileSaver.js
+</code></pre><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>let XLSX = require(&apos;xlsx&apos;);     // 引用插件
+let FileSaver = require(&apos;file-saver&apos;);
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、读写:
+
+    XLSX.readFile(&apos;test.xlsx&apos;) - 读取文件
+
+    XLSX.read(); 
+
+    XLSX.write(wb, opt);  
+
+    XLSX.writeFile(wb, filename, write_opts); 
+
+
+二、方法
+
+    XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});    // 通过table遍历成导出文件
+
+    XLSX.utils.json_to_book()      // 将组装sheet需要的格式，见下面数据格式
+
+    XLSX.utils.sheet_to_json(ws, {header:1, raw:true})
+
+
+三、输入
+
+    aoa_to_sheet() - 将JS数据数组转换为工作表
+
+    json_to_sheet() - 将一个JSON对象数组转换为工作表
+
+    table_to_sheet() - 将DOM TABLE元素转换为工作表
+
+
+四、出口: 将Sheet生成的数据转成其它格式:
+
+    XLSX.utils.sheet_to_csv() - 生成CSV
+
+    XLSX.utils.sheet_to_txt() - 生成UTF16格式文本
+
+    XLSX.utils.sheet_to_html() - 生成HTML
+
+    XLSX.utils.sheet_to_json() - 生成一个对象数组
+
+    XLSX.utils.sheet_to_formulae() - 生成公式列表
+
+    Example 将Sheet生成的数据转成html:
+
+        let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+        let sheetData = wb.Sheets[&apos;Sheet JS&apos;];
+        console.log(XLSX.utils.sheet_to_html(sheetData));
+
+
+五、通过Blob对象转成文件
+
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tab1&apos;), {sheet:&quot;Sheet JS&quot;});
+    let fname = &apos;借款.xlsx&apos;;
+    FileSaver.saveAs(new Blob([s2ab(wb)], {type:&quot;application/octet-stream&quot;}), fname);
+
+    function s2ab(s) {
+        if(typeof ArrayBuffer !== &apos;undefined&apos;) {
+            let buf = new ArrayBuffer(s.length);
+            let view = new Uint8Array(buf);
+            for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
+        } else {
+            let buf = new Array(s.length);
+            for (var i=0; i!=s.length; ++i) buf[i] = s.charCodeAt(i) &amp; 0xFF;
+            return buf;
+        }
+    }
+</code></pre><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><pre><code>let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});      // sheet定义的值是返回中数据SheetNames的值
+
+{
+    SheetNames:[&quot;SheetJSaaa&quot;],      // 这里存的名与Sheets中的名对应
+    Sheets:{
+        &quot;SheetJSaaa&quot;: {
+            !merges: [],
+            !ref: &quot;A1:F7&quot;,              // 指定数据的开始和结束
+            A1: {t: &apos;s&apos;, v: &apos;创建时间&apos;},        // t:
+            A2: {t: &quot;n&quot;, v: 43205.613541666666, z: &quot;m/d/yy&quot;},
+            B1: {t: &quot;s&quot;, v: &quot;业务类型&quot;},
+            B2: {t: &quot;s&quot;, v: &quot;PAY_DAY_LOAN&quot;}
+            .....
+        }
+    }
+}
+
+一、wb - workbook对象
+
+    let wb = XLSX.utils.table_to_book(document.getElementById(&apos;tableau&apos;), {sheet:&quot;Sheet JS&quot;});
+
+    1、wb.SheetNames - 工作表的名
+
+    2、wb.Sheets[sheetname] - 返回工作表中存储的数据
+
+    3、wb.Props - 存储标准属性的对象
+
+    4、wb.Workbook - 存储工作簿属性
+
+
+二、修改单元格的值
+
+    t - 单元格类型：b布尔值，n数字，e错误，s字符串，d日期
+    https://docs.sheetjs.com/#cell-object     单元格对象
+
+
+    let first_sheet_name = wb.SheetNames[0];
+    let workSheet = wb.Sheets[first_sheet_name];
+
+    let desired_cell = workSheet[&apos;A1&apos;].v;       // 取出v的值
+
+
+三、设置xlsx单元格行、列样式
+
+    https://docs.sheetjs.com/#formulae
+</code></pre><p>| <a href="https://www.gitbook.com/book/sheetjs/docs/details" target="_blank" rel="noopener">https://www.gitbook.com/book/sheetjs/docs/details</a><br>| <a href="https://docs.sheetjs.com/#sheetjs-js-xlsx" target="_blank" rel="noopener">https://docs.sheetjs.com/#sheetjs-js-xlsx</a>           // 官方文档</p>
+
+        
+    </section>
+</article>
+
+
 
 
 

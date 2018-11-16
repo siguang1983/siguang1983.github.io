@@ -11,7 +11,8 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="| mongodb的安装和启动| 创建用户权限| 数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object| 库操作 - show dbs、show collections、use db、db、db.dropDatabase()| 创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()| 删除行 -| 插入值 - db.m" />
+    <meta name="description" content="
+创建用户权限数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object库操作 - show dbs、show collections、use db、db、db.dropDatabase()创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()删除行 -插入值 - db.myColl.insert({name: ‘haha’" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -129,7 +130,9 @@
     
     <section class="article-body markdown-body">
         
-        <p>| mongodb的安装和启动<br>| 创建用户权限<br>| 数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>| 库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>| 创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>| 删除行 -<br>| 插入值 - db.myColl.insert({name: ‘haha’})<br>| 更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>|         $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>| 删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>| 查询值 - db.myColl.find({})<br>|         .sort()、count()、limite()、skip()<br>|         查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>|         数组查询 $all、$size、$sclie<br>|         $where 子句<br>| 索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>|        索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>| 复制集<br>| 分片<br>| 数据均衡<br>| 性能分析</p>
+        <blockquote>
+<p>创建用户权限<br>数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>删除行 -<br>插入值 - db.myColl.insert({name: ‘haha’})<br>更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>        $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>查询值 - db.myColl.find({})<br>        .sort()、count()、limite()、skip()<br>        查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>        数组查询 $all、$size、$sclie<br>        $where 子句<br>索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>       索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>复制集<br>分片<br>数据均衡<br>性能分析</p>
+</blockquote>
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>自动提示，按两次Tab
 
 db.getMongo() - 查看当前mongo的ip和端口
@@ -229,7 +232,11 @@ $ brew install mongodb         // 安装的目录 /usr/local/Cellar/mongodb/
 
 $ brew list                    // 查看brew安装的列表中是否存在brew
 
-$ sudo mkdir -p /data/db       // 创建数据库存储目录, 这个是mongo默认找的地址，如果需要放到其它目录使用 mongod --dbpath /xxx/xxx/xx, 注意目录权限不能为root
+$ sudo mkdir -p /data/db       // 用来存放mongo创建的数据文件
+
+    注意这里如果启动服务时报/data权限问题需要执行
+
+    $ sudo chmod -R 777 /data
 
 $ 连接本地和远端服务器的mongoDB
 
@@ -239,7 +246,7 @@ $ 连接本地和远端服务器的mongoDB
 
         mongodb://10.10.13.123:27017,10.10.13.341:27017/ibg_node_core
 
-$ 启动和关闭mongo服务
+$ 启动和关闭服务
 
     启动服务: 
 
@@ -270,6 +277,8 @@ $ brew info mongodb            // 查看安装信息    mongod --config /usr/loc
     http://blog.csdn.net/sun491922556/article/details/74973191            // 3.4版本配置
 
 $ mongo --version            // 查看版本
+
+https://www.imooc.com/article/23046
 </code></pre><h4 id="mongo的基本数据类型"><a href="#mongo的基本数据类型" class="headerlink" title="mongo的基本数据类型"></a>mongo的基本数据类型</h4><pre><code>null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object
 </code></pre><h4 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h4><pre><code>一、查询库、查询集合
 
@@ -398,13 +407,13 @@ $ mongo --version            // 查看版本
 
 10、数组查询
 
-    1）$all - 用来查询是否包括数组里的值
+    1）$all - 用来查询数组中是否包含指定的值
 
         // content field值为数组
         db.myColl.find({content: {$all: [1, 8]})        返回content中包含1或8的数组
 
 
-    2）$size - 用来查询数组的长度
+    2）$size - 查询数组的长度
 
         db.myColl.find({content: {$size: 3}});        返回content数组字段长度为3个
 
@@ -451,7 +460,7 @@ $ mongo --version            // 查看版本
     update() 第四个参数为true更所有匹配的值，false只更新一个
 
     // 只更匹配的第一条 如果type=&apos;123&apos;不存在, 则插入一条只有name=&apos;456&apos;的数据
-    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        
+    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        // 注意如果不使用$set那么type=123这行记录只剩name=456
 
     // 更新全部匹配
     db.myColl.update({name:’hf’}, {$set:{age:25}}, false, true)
@@ -465,10 +474,7 @@ $ mongo --version            // 查看版本
 
 2、$unset - 删除字段列
 
-    db.myColl.find({id:1})             { &quot;id&quot; : 1, &quot;content&quot; : &quot;&quot; }    注意这里要删除的字段值必须填写一个数字，可以是0、1或其它数字
-
-    db.myColl.update({id: 1}, {$unset: {content: 1}});
-    db.myColl.find({id:1})            { &quot;id&quot; : 1}     content被删除
+    db.myColl.update({id: 1}, {$unset: {content: 1}});        // 删除id=1，content字段
 
 
 3、$inc - 只能对一个数字字段的值的进行累加，key不存在或者非数字都报错
@@ -532,11 +538,15 @@ http://chenzhou123520.iteye.com/myColl/1637629
 
     1、查看索引 - getIndexes()    db.myColl.getIndexes()
 
-    2、创建索引 - ensureIndex()    db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
+    2、创建、修改索引 - ensureIndex()    
 
-    3、删除索引 - dropIndexes()    db.myColl.dropIndexes()
+        创建: db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
 
-    4、修改索引 - {background: true}        db.myColl.ensureIndex({id: 1}, {background: true});
+        上修改: db.myColl.ensureIndex({id: 1}, {background: true});        // {background: true}
+
+    3、删除索引 - dropIndexes()
+
+        db.myColl.dropIndexes(name);        // getIndexes()中查出来所索name的值
 
 
 二、ensureIndex()参数
@@ -560,6 +570,8 @@ http://chenzhou123520.iteye.com/myColl/1637629
     9、default_language - string 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
 
     10、language_override - string 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
+
+http://blog.51cto.com/chenql/2071267
 
 
 三、索引类型

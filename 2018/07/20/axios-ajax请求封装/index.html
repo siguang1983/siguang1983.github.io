@@ -7,20 +7,20 @@
 
     
 
-    <title>目录结构 | 大排档</title>
+    <title>axios | 大排档</title>
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="CSS| 
-|– base/ 
-|   |– reset.scss       # 重置样式
-|   |– bass                            # 设置基础样式
-|   |– functions.scss   # 自定义函数
-|   |– mixins.scss      # 宏
-|   |– variables.scss     # 变量
-|   ...                  # Etc… 
-| 
-|– components/          # 组件" />
+    <meta name="description" content="安装$ npm i axios            // 阿西奥斯
+
+引用 const axios = require(&amp;apos;axios&amp;apos;);
+
+$ bower install axios
+
+cdn &amp;lt;script src=&amp;quot;http://unpkg.com/axios/dist/axios.min.js&amp;quot;&amp;gt;
+Request参数{
+    baseUrl: &amp;apos;/api&amp;apos;                    // 基础url
+" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -103,7 +103,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS"><span class="toc-number">1.</span> <span class="toc-text">CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JS"><span class="toc-number">2.</span> <span class="toc-text">JS</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Request参数"><span class="toc-number">2.</span> <span class="toc-text">Request参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Response参数"><span class="toc-number">3.</span> <span class="toc-text">Response参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建实例"><span class="toc-number">4.</span> <span class="toc-text">创建实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#axios-all-处理多个请求"><span class="toc-number">5.</span> <span class="toc-text">axios.all 处理多个请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-number">6.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#axios-mock-adapter-axios使用mock"><span class="toc-number">7.</span> <span class="toc-text">axios-mock-adapter axios使用mock</span></a></li></ol>
         
     </div>
 </aside>
@@ -115,21 +115,21 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            目录结构
+            axios
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/10/17/目录结构/">
+            <a class="article-date" href="/2018/07/20/axios-ajax请求封装/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
+    <time datetime="2018-07-20T06:08:21.000Z" itemprop="datePublished">2018-07-20</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/前端优化/">前端优化</a>
+    <a class="article-tag-link" href="/tags/前端插件/">前端插件</a>
 </div>
 
 
@@ -138,78 +138,198 @@
     
     <section class="article-body markdown-body">
         
-        <h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><pre><code>| 
-|– base/ 
-|   |– reset.scss       # 重置样式
-|   |– bass                            # 设置基础样式
-|   |– functions.scss   # 自定义函数
-|   |– mixins.scss      # 宏
-|   |– variables.scss     # 变量
-|   ...                  # Etc… 
-| 
-|– components/          # 组件样式
-|   |– buttons.scss     # Buttons 
-|   |– carousel.scss    # Carousel 
-|   |– cover.scss       # Cover 
-|   |– dropdown.scss    # Dropdown 
-|   |– navigation.scss  # Navigation 
-|   ...                  # Etc… 
-| 
-|– layout/                 
-|   |– grid.scss        # 栅格
-|   |– header.scss      # 公共头 
-|   |– footer.scss      # 公共尾 
-|   |– sidebar.scss     # 侧栏 
-|   |– forms.scss       # Forms 
-|   ...                  # Etc… 
-| 
-|– pages/ 
-|   |– home.scss        # 主页
-|   |– contact.scss     # 
-|   ...                  # Etc… 
-| 
-|– themes/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– vendors/             # 存放第三方库
-|   |– bootstrap.scss   # Bootstrap 
-|   |– jquery-ui.scss   # jQuery UI 
-|   ...                  # Etc… 
-| 
-`– main.scss             # primary Sass file 
-</code></pre><h4 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h4><pre><code>| 
-|– dist/                                # 压缩目录
-| 
-|– public/                            # 公共目录    
-| 
-|– api/                         # 存放一些接口
-| 
-|– assets/                             # 公共资源
-|   |– css
-|   |– img
-| 
-|– components/                     # 公共组件
-| 
-|– resources/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– utils/                             # 工具类库
-|   |– filter.js                
-|   |– mock.js    
-|   ...                  # Etc… 
-|
-|– views/                                # 业务组件
-|   |– 404.vue
-|   |– layout.vue
-|
-|- app.vue            
-|- config.js                
-|- main.js
-`- router.js
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>$ npm i axios            // 阿西奥斯
+
+引用 const axios = require(&apos;axios&apos;);
+
+$ bower install axios
+
+cdn &lt;script src=&quot;http://unpkg.com/axios/dist/axios.min.js&quot;&gt;
+</code></pre><h4 id="Request参数"><a href="#Request参数" class="headerlink" title="Request参数"></a>Request参数</h4><pre><code>{
+    baseUrl: &apos;/api&apos;                    // 基础url
+    url: &apos;/databaseList&apos;,        // 请求的接口，与基础合起来为&apos;/api/databaseList&apos;
+    method: &apos;get&apos;,        // 请求方式，default=get
+
+    // 设置头部信息
+    headers: {
+        &apos;Content-Type&apos;: &apos;Application-json&apos;,
+        &apos;X-token&apos;: &apos;1k12hkj34j2kbjhs9df74b&apos;},
+    },
+
+    // URL的参数，get或Content-Type=&apos;application/x-www-form-urlencoded&apos;使用的参数，不能用data
+    params: {
+        ID: 12345
+    },
+
+    // data发送的主休，用于post、stream、buffer
+    data: {
+        username: &apos;sigunag&apos;,
+        password: &apos;*******&apos;
+    },
+
+    // 超时时间
+    timeout: 1000,
+
+    // 响应类型，可以是 &apos;arraybuffer&apos;, &apos;blob&apos;, &apos;document&apos;, &apos;json&apos;, &apos;text&apos;, &apos;stream&apos;
+    responseType: &apos;json&apos;,
+
+    // 响应的编码
+    responseEncoding: &apos;utf8&apos;,
+
+    // socket代理路径
+    socketPath: null, // default
+
+    // keepAlive 保持连接，默认不启动
+    httpAgent: new http.Agent({ keepAlive: true }),
+    httpsAgent: new https.Agent({ keepAlive: true }),
+
+    // 代理主机
+    proxy: {
+        host: &apos;127.0.0.1&apos;,
+        port: 9000,
+        auth: {
+            username: &apos;mikeymike&apos;,
+            password: &apos;rapunz3l&apos;
+        }
+    },
+
+    // 取消请求
+    cancelToken: new CancelToken(function (cancel) {
+
+    })
+
+    // 一个可选的函数负责序列化“参数”
+    paramsSerializer: function(params) {
+        return Qs.stringify(params, {arrayFormat: &apos;brackets&apos;})
+    },
+
+    transformRequest: [function (data, headers) {        // 在请求服务器之前的回调，适用于post
+        return data;
+    }],
+    transformResponse: [function (data) {        // 在响应的回调，适用于post
+        return data;
+    }],
+}
+</code></pre><h4 id="Response参数"><a href="#Response参数" class="headerlink" title="Response参数"></a>Response参数</h4><pre><code>{
+    // 响应数据
+    data: {},
+
+    // 状态码
+    status: 200,
+
+    // http响应状态消息
+    statusText: &apos;OK&apos;,
+
+    // 响应头
+    headers: {},
+
+    // `config` is the config that was provided to `axios` for the request
+    config: {},
+
+    // `request` is the request that generated this response
+    // It is the last ClientRequest instance in node.js (in redirects)
+    // and an XMLHttpRequest instance the browser
+    request: {}
+}
+</code></pre><h4 id="创建实例"><a href="#创建实例" class="headerlink" title="创建实例"></a>创建实例</h4><pre><code>const axios = require(&apos;axios&apos;);
+
+
+const request = axios.create({
+      baseURL: &apos;/api&apos;,     // api的base_url
+        timeout: 10000,     // 请求超时时间 ms
+})
+
+/* 创建拦截器 */
+// 请求拦截器
+request.interceptors.request.use(
+    (config) =&gt; {
+        // Do something before request is sent
+        return config;
+    }, 
+  (error) =&gt; {
+        // Do something with request error
+        return Promise.reject(error);
+    }
+);
+
+// 响应拦截器
+request.interceptors.response.use(
+    (response) =&gt; {
+        // Do something with response data
+        return response;
+    }, 
+    (error) =&gt; {
+        // Do something with response error
+        return Promise.reject(error);
+    }
+);
+
+axios.get(&apos;/user&apos;, {        
+    params: {
+        ID: 12345
+    }
+})
+.then((d) =&gt; {
+    // success
+})
+.catch((error) =&gt; {
+    // error
+})
+.then(() =&gt; {
+    //
+})
+
+
+一、请求参数 
+
+    1、get或content-type=&quot;application/x-www-form-urlencoded&quot; 使用 params来加参数
+
+    2、post、content-type=&quot;application/json&quot; 使用 data来传参数
+</code></pre><h4 id="axios-all-处理多个请求"><a href="#axios-all-处理多个请求" class="headerlink" title="axios.all 处理多个请求"></a>axios.all 处理多个请求</h4><pre><code>就是promis.all()，多个请求全部执行成功后在执行
+
+function getUserAccount() { return axios.get(&apos;/user/12345&apos;);     }
+function getUserPermissions() { return axios.get(&apos;/user/12345/permissions&apos;); }
+
+axios.all([getUserAccount(), getUserPermissions()])
+    .then(axios.spread(function (acct, perms) {
+        // Both requests are now complete
+    }));
+</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、axios(config)
+
+    1、post请求
+
+        axios.request(&apos;/user/12345&apos;,{
+            method: &apos;post&apos;,
+            data: {
+                firstName: &apos;Fred&apos;,
+                lastName: &apos;Flintstone&apos;
+            }
+        });
+
+    2、get请求
+
+        axios.request(&apos;http://bit.ly/2mTM3nY&apos;, {
+            method:&apos;get&apos;,
+            responseType:&apos;stream&apos;
+        })
+        .then(function(response) {
+            response.data.pipe(fs.createWriteStream(&apos;ada_lovelace.jpg&apos;))
+        });
+
+二、创建实例
+
+    const request = axios.create({
+        baseURL: &apos;/api&apos;,            // 基础
+        timeout: 1000,                // 请求超时时间
+        headers: {&apos;X-Custom-Header&apos;: &apos;foobar&apos;}
+    });
+
+
+{
+
+
+}
+</code></pre><h4 id="axios-mock-adapter-axios使用mock"><a href="#axios-mock-adapter-axios使用mock" class="headerlink" title="axios-mock-adapter axios使用mock"></a>axios-mock-adapter axios使用mock</h4><pre><code>https://github.com/ctimmerm/axios-mock-adapter
 </code></pre>
         
     </section>
@@ -224,9 +344,9 @@
     <script>
     window.disqus_config = function () {
         this.language = 'zh';
-        this.page.url = 'http://siguang1983.github.io/2016/10/17/目录结构/';
-        this.page.title = '目录结构';
-        this.page.identifier = '2016/10/17/目录结构/';
+        this.page.url = 'http://siguang1983.github.io/2018/07/20/axios-ajax请求封装/';
+        this.page.title = 'axios';
+        this.page.identifier = '2018/07/20/axios-ajax请求封装/';
     };
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');

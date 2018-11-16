@@ -126,6 +126,732 @@
     <header class="article-header">
         
         <h1 itemprop="name">
+            <a href="/2016/12/04/Egg.js-第三方插件收集/">Egg.js</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/12/04/Egg.js-第三方插件收集/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-12-04T07:15:23.000Z" itemprop="datePublished">2016-12-04</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Egg-js/">Egg.js</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+
+$ npm i egg-validate --save  安装
+
+// {app_root}/config/plugin.js
+exports.validate = {
+    package: &apos;egg-validate&apos;,
+};
+
+// 校验规则 post
+async fromRule(){
+    const {ctx, app} = this;
+
+    // Request 参数规则
+    const paramRule = {
+        username: {type: &apos;string&apos;},
+        password: {type: &apos;string&apos;},
+        rememberMe: {type: &apos;boolean&apos;, required: false},
+    };
+    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    if(paramErrors){    // 如果为真说明校验不通过
+        ctx.body = `校验失败`;
+    }   
+    else{
+        ctx.body = `校验成功, ${ctx.request.body.username}`;
+    }
+}
+</code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
+
+https://segmentfault.com/a/1190000004286562
+http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
+https://github.com/tj/ejs
+</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
+</code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
+
+2、MD5加密 - https://github.com/jkiss/crypto-js      npm i crypto-js --save  引用 const MD5 = require(&apos;crypto-js/md5&apos;);
+
+3、文件上传 - https://github.com/node-modules/formstream
+
+4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
+
+5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/11/11/Gulp/">Gulp</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/11/11/Gulp/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-11-11T10:39:38.000Z" itemprop="datePublished">2016-11-11</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端构建工具/">前端构建工具</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="gulp"><a href="#gulp" class="headerlink" title="gulp"></a>gulp</h4><pre><code>https://github.com/gulpjs
+
+可以自动化执行任务的工具，主要用于生产环境和开发环境的文件处理
+
+Gulp是一个新的基于流的管道式构建系统，需要很少的配置并且更快
+
+主要作用:
+
+    1、多个js或css文件合并、压缩
+
+    2、Sass或Less的编译
+
+    3、图像的压缩
+
+    3、实时刷新页面的本地服务器
+
+gulp对按需加载不好做到，如A和B页面都依赖base.js，但又各依赖a.js和b.js，这种情况gulp打包是将三个都包括了，所以css和html部分gulp来处理，js的webpack处理
+</code></pre><h4 id="安装、使用"><a href="#安装、使用" class="headerlink" title="安装、使用"></a>安装、使用</h4><pre><code>$ npm install -g gulp     // 全局安装Gulp
+
+$ npm init    // 创建package.json 项目描述文件
+
+$ npm install --save-dev gulp    // 作为项目的开发依赖(只在开发时用，不会发布到线上)
+
+$ touch gulpfile.js
+
+    var gulp = require(&apos;gulp&apos;);
+    gulp.task(&apos;default&apos;, function(){
+
+    })
+
+$ gulp     // 运行gulp
+</code></pre><h4 id="gulp-方法"><a href="#gulp-方法" class="headerlink" title="gulp 方法"></a>gulp 方法</h4><pre><code>1、gulp.src(): 获取到想要处理的文件流，可以是一个字符串或者数组，返回一个stream
+
+    1)、*.{png,jpg,gif,ico}      // 匹配文件
+
+    2)、**/*.html        // 目录用**、文件名用*
+
+    gulp.task(&apos;count&apos;, function(){
+        gulp.src([&apos;aa.html&apos;, &apos;bb.html&apos;])    // 或 gulp.src(&apos;src/*.html&apos;);
+            .pipe(gulp.uglify())
+    })
+
+2、gulp.pipe(): 将获取到的文件流通过pipe()导入到gulp的插件中进行处理
+
+3、gulp.dest(): 用来写文件的，插件处理完，通过dest()处理完成后把流中的内容写到指定的文件中
+
+    var gulp = require(&apos;gulp&apos;);
+    gulp.src(&apos;js/main.js&apos;)                 // 获取文件的流的api
+        .pipe(gulp.uglify())            // 文件进行压缩
+        .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));     // 写文件的api
+
+
+4、gulp.task(&apos;任务名&apos; [依赖任务], callback): 定义任务，依赖任务会在当前任务执行前完成
+
+    gulp.task(&apos;test&apos;, [&apos;styles&apos;, &apos;task&apos;], function() {
+        // 将你的默认的任务代码放在这
+    });
+
+    # gulp test     // 执行任务
+
+
+5、gulp.watch(&apos;要监视文件的匹配模式&apos;, [要执行的task定义的任务], callback): 监视文件的变化，变化后来执行定义的任务
+</code></pre><h4 id="gulp-执行命令"><a href="#gulp-执行命令" class="headerlink" title="gulp 执行命令"></a>gulp 执行命令</h4><pre><code>-v 或 --version 会显示全局和项目本地所安装的 gulp 版本号
+
+--gulpfile 手动指定一个 gulpfile 的路径，这在你有很多个 gulpfile 的时候很有用。这也会将 CWD 设置到该 gulpfile 所在目录
+
+--cwd dirpath 手动指定 CWD。定义 gulpfile 查找的位置，此外，所有的相应的依赖（require）会从这里开始计算相对路径
+
+-T 或 --tasks 会显示所指定 gulpfile 的 task 依赖树
+
+--tasks-simple 会以纯文本的方式显示所载入的 gulpfile 中的 task 列表
+
+--color 强制 gulp 和 gulp 插件显示颜色，即便没有颜色支持
+
+--no-color 强制不显示颜色，即便检测到有颜色支持
+
+--silent 禁止所有的 gulp 日志
+</code></pre><h4 id="Gulp-扩散操作"><a href="#Gulp-扩散操作" class="headerlink" title="Gulp 扩散操作"></a>Gulp 扩散操作</h4><pre><code>1、复制单个文件task
+
+    gulp.task(&apos;copy-html&apos;,function(){
+        return gulp.src(&apos;app/index.html&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+
+2、复制多个文件
+
+    gulp.task(&apos;copy-images&apos;,function(){
+        return gulp.src(&apos;app/imgs/**/*.{jpg,png}&apos;).pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+    gulp.task(&apos;copy-other&apos;,function(){
+        return gulp.src([&apos;app/css/*.css&apos;,&apos;app/js/*.js&apos;],{base:&apos;app&apos;}).pipe(gulp.dest(&apos;dist&apos;));
+    });
+</code></pre><h4 id="gulp-插件"><a href="#gulp-插件" class="headerlink" title="gulp 插件"></a>gulp 插件</h4><pre><code>https://gulpjs.com/plugins/
+
+$ gulp
+$ gulp-babel babel-core babel-preset-env        // ES6转ES5
+$ babel-plugin-transform-runtime        // ES6转ES5运行时转换
+$ gulp-uglify            // 压缩js
+$ gulp-concat            // 合并js
+$ gulp-jshint            // js语法检测
+$ gulp-less              // less编译
+$ gulp-ruby-sass        // sass编译
+$ gulp-minify-css        // css压缩
+$ gulp-css-base64        // 生成64位图标
+$ gulp-htmlmin           // html压缩
+$ gulp-file-include        // includer嵌入到另一个html文件
+$ gulp.spritesmith       // 雪碧图
+$ gulp-imagemin          // 压缩图片
+$ imagemin-pngquant      // 图片的深度压缩
+$ gulp-cache             // 只压缩修改的图片
+$ gulp-rev-append        // 加版本号，给页面文件引用的js和css资源
+$ gulp-autoprefixer     // 自动补齐前缀，根据设置浏览器版本自动处理浏览器前缀 CSS3的前缀
+$ gulp-react             // react区分jsx文件进行转换
+$ gulp-webpack           // webpack
+$ gulp-amd-optimizer     // requirejs 压缩
+$ vinyl-buffer           // 流缓存
+$ merge-stream           // 合并流
+$ gulp-watch             // 侦听变化自动执行task
+$ gulp-livereload        // 当监听文件发生变化时，浏览器自动刷新页面
+$ gulp-header            // 注释自定义插件
+$ gulp-rimraf            // 清除文件
+$ gulp-clean             // 删除文件或目录
+$ gulp-plumber           // 错误提示
+$ gulp-notify            // 消息提示
+$ gulp-rename            // 重命
+$ gulp-connect           // gulp的服务器
+$ gulp-browserify          // 
+$ gulp-open                // 打开浏览器
+$ gulp-md5-plus            // 生成md5码
+
+一、gulpfile.js中引用插件   
+
+    var uglify = require(&apos;gulp-uglify&apos;);
+
+
+二、gulp-load-plugins 模块化管理插件
+
+    1、一般情况下，gulpfile.js中的模块需要一个个加载。
+
+        var gulp = require(&apos;gulp&apos;)
+               jshint = require(&apos;gulp-jshint&apos;),
+            uglify = require(&apos;gulp-uglify&apos;),
+            concat = require(&apos;gulp-concat&apos;);
+
+        gulp.task(&apos;js&apos;, function () {
+               return gulp.src(&apos;js/*.js&apos;)
+                  .pipe(uglify())
+                  .pipe(concat(&apos;app.js&apos;))
+                  .pipe(gulp.dest(&apos;build&apos;));
+        });
+
+
+    2、gulp-load-plugins 会加载 package.json中存在下面的插件依赖：
+
+        &quot;devDependencies&quot;: {
+            &quot;gulp&quot;: &quot;^3.9.0&quot;,
+            &quot;gulp-uglify&quot;: &quot;^2.6.0&quot;,
+            &quot;gulp-concat&quot;: &quot;^2.2.0&quot;
+        }
+
+        var gulp = require(&apos;gulp&apos;);
+        var $ = require(&apos;gulp-load-plugins&apos;)();            // 加载gulp-load-plugins插件，并立刻运行
+
+        使用：$.uglify  可以省去单个引入
+        gulp.task(&apos;add&apos;, function(){
+            gulp.src([&apos;js/main.js&apos;])
+                .pipe($.concat)
+                .pipe($.uglify)            // $.uglify就可以调用了
+                .pipe(gulp.dest(&apos;dist/[name].min.js&apos;));    // 如果不改变文件名就直接写成 dist/js/
+        })
+</code></pre><h4 id="gulp-webpack构建多页面"><a href="#gulp-webpack构建多页面" class="headerlink" title="gulp + webpack构建多页面"></a>gulp + webpack构建多页面</h4><pre><code>├── .DS_Store
+├── src                // 生产目录
+├── dist            // 发布目录
+├── gulpfile.js
+├── node_modules
+└── package.json
+</code></pre><p>| 参考资料<br>| <a href="http://www.gulpjs.com.cn/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/</a>   gulp中文网<br>| <a href="http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">http://www.ydcss.com/archives/category/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7</a><br>| <a href="http://www.gulpjs.com.cn/docs/recipes/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/recipes/</a>    gulp 技巧集<br>| <a href="http://www.gulpjs.com.cn/docs/api/" target="_blank" rel="noopener">http://www.gulpjs.com.cn/docs/api/</a>    gulp api<br>| <a href="http://www.techug.com/gulp" target="_blank" rel="noopener">http://www.techug.com/gulp</a>  gulp使用指南<br>| <a href="http://www.w3ctech.com/topic/134" target="_blank" rel="noopener">http://www.w3ctech.com/topic/134</a>    gulp开发教程<br>| <a href="http://www.qianduancun.com/nodejs/33.html" target="_blank" rel="noopener">http://www.qianduancun.com/nodejs/33.html</a>      gulp-load-plugins[模块化管理插件]<br>| <a href="http://segmentfault.com/a/1190000003098076#articleHeader0" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003098076#articleHeader0</a>        利用 gulp 处理前端工作流程<br>| <a href="http://www.cnblogs.com/2050/p/4198792.html" target="_blank" rel="noopener">http://www.cnblogs.com/2050/p/4198792.html</a>        前端构建工具gulpjs的使用介绍及技巧<br>| <a href="https://www.cnblogs.com/weixing/p/5474324.html" target="_blank" rel="noopener">https://www.cnblogs.com/weixing/p/5474324.html</a><br>|<br>| 多页面<br>| <a href="https://www.cnblogs.com/maskmtj/archive/2016/07/21/5597307.html" target="_blank" rel="noopener">https://www.cnblogs.com/maskmtj/archive/2016/07/21/5597307.html</a><br>| <a href="https://github.com/fwon/gulp-webpack-demo" target="_blank" rel="noopener">https://github.com/fwon/gulp-webpack-demo</a><br>|<br>| 文件流<br>| <a href="http://segmentfault.com/a/1190000000519006" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000519006</a>    nodejs中流(stream)的理解<br>| <a href="http://www.it165.net/pro/html/201406/15924.html" target="_blank" rel="noopener">http://www.it165.net/pro/html/201406/15924.html</a>    Node.js Stream（流）的学习笔记<br>| <a href="http://segmentfault.com/a/1190000000357044" target="_blank" rel="noopener">http://segmentfault.com/a/1190000000357044</a>    Node 中的流（Stream）<br>|<br>| Promise<br>| <a href="http://segmentfault.com/a/1190000002591145" target="_blank" rel="noopener">http://segmentfault.com/a/1190000002591145</a>    深入理解Promise实现细节<br>| <a href="http://www.tuicool.com/articles/fe6Jbyz" target="_blank" rel="noopener">http://www.tuicool.com/articles/fe6Jbyz</a>    Promise实现原理<br>| <a href="http://segmentfault.com/a/1190000003028634" target="_blank" rel="noopener">http://segmentfault.com/a/1190000003028634</a>    异步编程 promise模式 的简单实现<br>| <a href="http://sentsin.com/web/861.html" target="_blank" rel="noopener">http://sentsin.com/web/861.html</a></p>
+
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2016/11/02/webpack插件类/">webpack插件类</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/11/02/webpack插件类/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-11-02T03:06:16.000Z" itemprop="datePublished">2016-11-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端构建工具/">前端构建工具</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><pre><code>1、自动刷新浏览器 - 修改代码编译后自动刷新浏览器
+
+2、热替换 - 在不刷新整个网页的时候做到实时预览
+
+    script: {
+        &quot;server&quot;: &quot;webpack-dev-server --open --hot --inline&quot;
+    }
+
+    --hot 与在 new webpack.HotModuleReplacementPlugin() 相同
+
+3、提取公用代码
+
+    通过CommonsChunkPlugin插件来提取指定业务文件中的公用库
+
+4、按需加载、首屏加载
+
+    &lt;!-- 加载 import(/* webpackChunkName: &quot;show&quot; */&apos;./show&apos;, then((show) =&gt; {
+        show(&apos;webpack&apos;)
+    })) --&gt;
+</code></pre><h4 id="将业务逻辑与其它组件库分离"><a href="#将业务逻辑与其它组件库分离" class="headerlink" title="将业务逻辑与其它组件库分离"></a>将业务逻辑与其它组件库分离</h4><pre><code>将业务逻辑和第三方代码分离，不能将他们都合并到一个文件内，使这个js文件比较大，并且跳转到另一个地址也还会重新加载这些公用的文件
+
+Example: 
+
+    对引用的jquery单独提取
+
+    1、import $ from &apos;jquery&apos;;     // js中引用的jquery, 先npm i jquery下载包
+
+    2、webpack.config.js
+
+        // 入口文件
+        entry: {
+            app: path.resolve(__dirname, &apos;web/js/index.js&apos;),
+            vendor: [&apos;jquery&apos;]
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;,
+            chunkFilename: &quot;[name].min.js?[hash]&quot;
+        },
+
+        plugins: [
+            // 将在html文件中添加&lt;script&gt;引用，并生创建到指定的目录中
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,
+                filename: &apos;./web/index.html&apos;,
+                template: &apos;./web/index.html&apos;,
+                chunks: [&apos;app&apos;, &apos;vendor&apos;],            // 这里要把vendor依赖的文件加上，不然生成的html只有引用app.min.js，不会引用jquery.vendor.js
+                inject: true,
+                hash: true
+            }),
+
+            // 拆分插件
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendor&apos;,                            // 上面入口定义的节点组
+                filename: &apos;jquery.vendor.js?[hash]&apos;     // 最后生成的文件名
+            }),
+        }
+</code></pre><h4 id="require-ensure按需加载"><a href="#require-ensure按需加载" class="headerlink" title="require,ensure按需加载"></a>require,ensure按需加载</h4><pre><code>require()与require.ensure()加载的不同
+
+1、require(): AMD加载规范，使用时传递一个模块数组和回调函数，模块都被下载下来且都被执行后才执行回调函数
+
+2、require.ensure(): requi.ensure的依赖模块只会被先下载下来，但不会被执行，会将require.ensure()内加载的模块合成一个文件，在
+
+    如果webpack打包会将所有资源加到一个文件中，这样会使这个文件变的很大，require.ensure()来对加载的资源单独打包
+
+    require.ensure([], function(require) {
+        var dialog = require(&apos;./components/dialog&apos;);
+        // todo ...
+    });
+
+    CommonsChunkPlugin插件对指定的chunks进行公共模块的提取。我们指定好生成文件的名字，以及想抽取哪些入口js文件的公共代码，webpack就会自动帮我们合并好
+
+    webpack.config.js中配置
+
+        var chunks = Object.keys(entries);
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin({
+                name: &apos;vendors&apos;,             // 将公共模块提取，生成名为`vendors`的chunk
+                chunks: chunks,
+                minChunks: chunks.length     // 提取所有entry共同依赖的模块
+            })
+        ]
+
+http://blog.csdn.net/zhbhun/article/details/46826129
+https://segmentfault.com/a/1190000007775743
+</code></pre><h4 id="插件类详解"><a href="#插件类详解" class="headerlink" title="插件类详解"></a>插件类详解</h4><pre><code>* webpack-dev-server - webpack自带服务
+
+webpack自带的插件
+* CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin - 提取公用部分
+* uglifyJsPlugin - js压缩
+
+外部加载插件
+* HotMooduleReplacementPlugin() - 热替换
+* html-webpack-plugin - 解析html模板
+* web-webpack-plugin - 与html-webpack-plugin类型国内人写的https://github.com/gwuhaolin/web-webpack-plugin/blob/master/readme_zh.md
+* extract-text-webpack-plugin - 单独打包css文件
+* open-browser-webpack-plugin - 资源构建成功后自动打开浏览器 
+* clean-webpack-plugin - 清除文件夹,添加hash后，会导致改变文件内容重新打包时文件名不同越来越多，使用clean-webpack-plugin
+
+* babel-plugin-react-transform react-transform-hmr - react的热更新, 需要在配置bable.rc
+* ExtractTextPlugin - 将js中引用的css文件抽取出一个单独的css文件
+* webpack-merge - 合并数组、函数
+* webpack-dev-middleware - devServer就是基于webpack-dev-middleware和ExpressJS来实现的
+* imagemin-webpacl-plugin - 压缩图片
+* webpack-spritesmith - 制作雪碧图
+* HotModuleReplacementPlugin - devServer热更新
+
+一、webpack-dev-server webpack自带服务
+
+    webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式。
+
+    1、iframe模式: 页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载;使用iframe模式无需额外的配置，只需在浏览器输入以下地址: http://localhost:8080/webpack-dev-server/index.html
+
+    2、inline模式: 一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面。
+
+    以下三种配置都可以实现页面的刷新效果: 
+
+        // 1.启动webpack-dev-server的时候带上inline参数
+        webpack-dev-server --inline
+
+        // 2.给HTML插入JS
+        &lt;script src=&quot;http://localhost:3000/webpack-dev-server.js&quot;|&lt;/script|
+
+        // 3.webpack配置
+        entry: [
+            &apos;webpack-dev-server/client?http://localhost:3000&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ]
+
+
+二、HotMooduleReplacementPlugin() 热替换
+
+    webpac-dev-server支持模块热替换，在前端代码变动的时候无需整个刷新页面，只把变化的部分替换掉。使用HMR功能也有两种方式: 命令行方式和Node.js API。
+
+    1、cli命令行方式  webpack-dev-server --inline --hot
+
+    2、Node.js API方式
+
+        entry: [
+            &apos;webpack/hot/dev-server&apos;,
+            path.resolve(__dirname, &apos;src/index.js&apos;)
+        ],
+        devServer: {
+            hot: true
+        },
+        plugins: [
+            new webpack.HotModuleReplacementPlugin(),
+        ]
+
+
+三、html-webpack-plugin 解析html模板
+
+    插件将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+
+    $ npm i html-webpack-plugin
+
+    $ const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);            // 引用插件
+
+    1、单入口配置
+
+        // 这里省略其他配置代码
+        plugins: [
+            // 使用这个plugin，这是最简单的一个配置，更多资料可到github查看
+            new HtmlWebpackPlugin({
+                title: &apos;zhufeng-react&apos;,
+                template: &apos;./src/index.html&apos;,
+            })
+        ]
+
+    2、多入口配置
+
+        会将两个入口分别对html文件进行加载指定的入口js文件
+
+        // 入口文件
+        entry: {
+            app: &apos;./web/js/index.js&apos;,
+            list: &apos;./web/js/list.js&apos;
+        },
+
+        // 出口文件
+        output: {
+            path: path.resolve(buildPath, &apos;dist&apos;),
+            filename: &apos;[name].min.js?[hash]&apos;
+        },
+
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: &apos;index&apos;,                    // 生成html文档的标题
+                filename: &apos;./web/index.html&apos;,    // 输出文件名称
+                template: &apos;./web/index.html&apos;,    // 本地模板的位置，支持(handlebars、ejs、undersore、html)
+                chunks: [&apos;app&apos;],                // 对应的入口entry, 也可以是数组[&apos;app&apos;, &apos;list&apos;]
+                inject: true,                    // 向template中注入所有静态资源
+                hash: true                        // 为静态资源添加webpack每次编译产生的唯一hash值， &lt;script type=&quot;text/javascript&quot; src=&quot;common.js?a3e1396b501cdd9041be&quot;&gt;&lt;/script&gt;
+            }),
+            new HtmlWebpackPlugin({
+                title: &apos;list&apos;,
+                filename: &apos;./web/list.html&apos;,
+                template: &apos;./web/list.html&apos;,
+                chunks: [&apos;list&apos;],
+                inject: true,
+                hash: true
+            })
+        ]
+
+    https://segmentfault.com/q/1010000009810148
+    https://www.cnblogs.com/wonyun/p/6030090.html
+
+
+四、extract-text-webpack-plugin 单独打包css文件
+
+    $ npm i extract-text-webpack-plugin
+
+
+五、open-browser-webpack-plugin  资源构建成功后自动打开浏览器 --- 已可以在命令中配置
+
+    1、package.json中加 --open，与使用此插件相同
+
+        &quot;scripts&quot;: {
+            &quot;start&quot;: &quot;webpack-dev-server --hot --inline --open&quot;,
+        }
+
+
+    2、$ npm install open-browser-webpack-plugin --save-dev
+
+        var openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+        plugin: [
+            new openBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
+        ]
+
+
+六、CSS Module
+
+    webpack 的 css-loader 是解决这个问题的最好办法之一。简单配置一下: 
+    module: {
+      loaders: [{
+        test: /\.css$/,
+        loaders: [
+          &apos;style-loader&apos;,
+          &apos;css-loader?modules&amp;localIdentName=[name]__[local]___[hash:base64:5]&apos;,
+          &apos;postcss-loader&apos;
+        ]
+      }]
+    },
+    postcss: [
+      require(&apos;postcss-nested&apos;)(),
+      require(&apos;cssnext&apos;)(),
+      require(&apos;autoprefixer-core&apos;)({ browsers: [&apos;last 2 versions&apos;] })
+    ]
+
+
+七、UglifyJs Plugin 压缩资源
+
+    var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+
+    plugins: [
+        new uglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.MinChunkSizePlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        // 查找相等或近似的模块，避免在最终生成的文件中出现重复的模块
+        new webpack.optimize.DedupePlugin(),
+        // 按引用频度来排序 ID，以便达到减少文件大小的效果
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin({
+            minSizeReduce: 1.5,
+            moveToParents: true
+        })
+    ]
+
+
+八、clean-webpack-plugin 清除文件夹
+
+    $ npm install clean-webpack-plugin --save-dev
+
+    webpack.config.js:
+
+        const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);
+
+        plugins: [
+            new CleanWebpackPlugin([&apos;dist&apos;]),
+            new HtmlWebpackPlugin({
+                title: &apos;Output Management&apos;
+            })
+        ]
+
+
+九、react的热替换
+
+    $ npm install --save-dev babel-plugin-react-transform react-transform-hmr
+
+    .babelrc配置
+        {
+            &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;],
+            &quot;env&quot;: {
+                &quot;development&quot;: {
+                &quot;plugins&quot;: [[&quot;react-transform&quot;, {
+                    &quot;transforms&quot;: [{
+                        &quot;transform&quot;: &quot;react-transform-hmr&quot;,
+
+                        &quot;imports&quot;: [&quot;react&quot;],
+
+                        &quot;locals&quot;: [&quot;module&quot;]
+                    }]
+                }]]
+                }
+            }
+        }
+
+十、ExtractTextPlugin 分享css和js文件
+
+    $ npm install --save extract-text-webpack-plugin
+
+    webpack.config.js
+
+        const ExtractTextPlugin = require(&apos;extract-text-webpack-plugin&apos;);
+
+        module.exports = {
+            entry: {},
+            output: {},
+
+            plugins:[
+                new webpack.BannerPlugin(&apos;版权所有，翻版必究&apos;),
+                new ExtractTextPlugin(&quot;style.css&quot;)
+            ]
+
+        }
+
+十一、clean-webpack-plugin
+
+    $ npm install clean-webpack-plugin --save
+
+        const CleanWebpackPlugin = require(&quot;clean-webpack-plugin&quot;);
+        module.exports = {
+
+            plugins: [
+                &lt;!-- ...// 这里是之前配置的其它各种插件 --&gt;
+                new CleanWebpackPlugin( &apos;build/*.*&apos;, {
+                        root: __dirname,
+                        verbose: true,
+                        dry: false
+                    }
+                )
+            ]
+        }
+
+十二、CommonsChunkPlugin
+
+    const CommonsChunkPlugin = require(&apos;CommonsChunkPlugin&apos;);
+    module.exports = {
+        plugins: [
+            new CommonsChunkPlugin({
+                // 从哪些Chunk 中提取
+                chunks: [&apos;a&apos;, &apos;b&apos;],
+                // 提取的公共部分形成一个chunk
+                name: &apos;common&apos;
+            })
+        ]
+    }
+
+
+十三、暴露全局对象
+
+    如果想将report数据上报组件放到全局，有两种办法: 
+
+    方法一: 
+    在loader里使expose将report暴露到全局，然后就可以直接使用report进行上报
+    {
+        test: path.join(config.path.src, &apos;/js/common/report&apos;),
+        loader: &apos;expose?report&apos;
+    }
+
+    方法二: 
+    如果想用R直接代表report，除了要用expose loader之外，还需要用ProvidePlugin帮助，指向report，这样在代码中直接用R.tdw， R.monitor这样就可以
+    new webpack.ProvidePlugin({
+        &quot;R&quot;: &quot;report&quot;,
+    })
+</code></pre><h4 id="gulp与webpack构建单页面与多页面总结"><a href="#gulp与webpack构建单页面与多页面总结" class="headerlink" title="gulp与webpack构建单页面与多页面总结"></a>gulp与webpack构建单页面与多页面总结</h4><pre><code>1、gulp: 处理html、css都可以，对处理js依赖这块不占优势
+
+2、webpack: 对js入口进行单页面构建和模块化开发，如果页面较多不占优势，多页面webpack也可以做到，不过将js合并并加载到html中配置比较麻烦，需要HtmlWebpackPlugin插件来完成，每一个页面都需要创建一次，也可以将公用进行提取chunks
+
+3、gulp+webpck 构建多页面
+
+    优点: gulp进行对html和css处理，webpack进行js的处理
+
+    缺点: webpack如果需要合并js，还需要手动去改html的引用
+</code></pre><h4 id="webpack踩坑"><a href="#webpack踩坑" class="headerlink" title="webpack踩坑"></a>webpack踩坑</h4><pre><code>一、安装完webpack后执行命令提示需要安装webpack
+
+    webpack -h          // 提示没有装webpack-cli
+
+    $ npm i webpack-cli --save-dev            // 如果全局没有安装就全局装一下 $ sudo npm i webpack-cli -g
+
+    https://segmentfault.com/a/1190000013699050
+</code></pre>
+        
+    </section>
+</article>
+
+
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
             <a href="/2016/11/02/webpack/">webpack</a>
         </h1>
         
@@ -3079,417 +3805,10 @@ https://zhuanlan.zhihu.com/p/24944905
 </article>
 
 
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/10/17/目录结构/">目录结构</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/10/17/目录结构/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/前端优化/">前端优化</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><pre><code>| 
-|– base/ 
-|   |– reset.scss       # 重置样式
-|   |– bass                            # 设置基础样式
-|   |– functions.scss   # 自定义函数
-|   |– mixins.scss      # 宏
-|   |– variables.scss     # 变量
-|   ...                  # Etc… 
-| 
-|– components/          # 组件样式
-|   |– buttons.scss     # Buttons 
-|   |– carousel.scss    # Carousel 
-|   |– cover.scss       # Cover 
-|   |– dropdown.scss    # Dropdown 
-|   |– navigation.scss  # Navigation 
-|   ...                  # Etc… 
-| 
-|– layout/                 
-|   |– grid.scss        # 栅格
-|   |– header.scss      # 公共头 
-|   |– footer.scss      # 公共尾 
-|   |– sidebar.scss     # 侧栏 
-|   |– forms.scss       # Forms 
-|   ...                  # Etc… 
-| 
-|– pages/ 
-|   |– home.scss        # 主页
-|   |– contact.scss     # 
-|   ...                  # Etc… 
-| 
-|– themes/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– vendors/             # 存放第三方库
-|   |– bootstrap.scss   # Bootstrap 
-|   |– jquery-ui.scss   # jQuery UI 
-|   ...                  # Etc… 
-| 
-`– main.scss             # primary Sass file 
-</code></pre><h4 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h4><pre><code>| 
-|– dist/                                # 压缩目录
-| 
-|– public/                            # 公共目录    
-| 
-|– api/                         # 存放一些接口
-| 
-|– assets/                             # 公共资源
-| 
-|– components/                     # 公共组件
-| 
-|– resources/ 
-|   |– theme.scss       # Default theme 
-|   |– admin.scss       # Admin theme 
-|   ...                  # Etc… 
-| 
-|– utils/                             # 工具类库
-|   |– filter.js                
-|   |– mock.js    
-|   ...                  # Etc… 
-|
-|– views/                                # 业务组件
-|   |– 404.vue
-|   |– layout.vue
-|
-|- app.vue            
-|- config.js                
-|- main.js
-`- router.js
-</code></pre>
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2016/10/17/HTTP协议/">HTTP详解</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2016/10/17/HTTP协议/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2016-10-17T08:54:51.000Z" itemprop="datePublished">2016-10-17</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/HTTP详解/">HTTP详解</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <h4 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h4><pre><code>一、TCP/IP分为4个层: 应用层、传输导、网络层和数据链路层
-
-    1）应用层: 向用户提供应用服务FTP和DNS服务
-
-    2）传输层: 两台计算机之间的数据传输，两种协议TCP和UDP
-
-    3）网络层: 用来处理网络上的数据包
-
-    4）链路层: 处理连接网络的硬件部分
-
-
-二、一个http请求服务器的过程
-
-    客户端请求: HTTP -&gt; TCP -&gt; IP -&gt; 网络 
-
-    服务器接收: 网络 -&gt; IP -&gt; TCP -&gt; HTTP
-</code></pre><h4 id="IP、TCP和DNS"><a href="#IP、TCP和DNS" class="headerlink" title="IP、TCP和DNS"></a>IP、TCP和DNS</h4><pre><code>与HTTP关系的协议: 
-
-    1、IP协议: 将把各种数据包传到指定位置，两种重要的条件就是IP地址和MAC地址
-
-    2、TCP协议: 确保数据能到达目标，TCP协议采用了三次握手策略
-
-    3、DNS服务: 负责将域名转换成IP地址之间的解析服务
-</code></pre><h4 id="URI和URL"><a href="#URI和URL" class="headerlink" title="URI和URL"></a>URI和URL</h4><pre><code>URI: HTTP使用URI可以让客户端找到指定的资源 
-
-URL: 服务器的
-</code></pre><h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><pre><code>HTTP超文本传输协议，是用于客户端和服务器端之间的通信，HTTP从客户端发起请求，最后服务器端响应请求并返回
-
-一、请求方式的总类
-
-    GET: 获取资源，不返回主体部分，GET方法要求服务器将URL定位的资源放在响应报文的数据部分，回送给客户端，向服务器请求通过 URL？id=100&amp;user=&apos;siguang&apos;来传递
-
-    POST: 传输实体主体，客户端向服务器传输内容比较多时使用POST，
-
-    PUT: 传输文件，象FTP的文件上传一样
-
-    HEAD: 获取报文首部
-
-    DELETE: 删除文件，与PUT相反
-
-    OPTIONS: 用来查询针对请求资源的方法
-
-    TRACE: 追踪路径
-
-    CONNECT: 隧道协议连接代理
-
-二、持久连接节省通信量 Kepp-alive
-
-    每建立一次HTTP通信流程，建立一次TCP连接 -&gt; HTTP请求 -&gt; 服务器HTTP响应 -&gt; 断开TCP连接
-
-    持久连接也就是只要任意一端没断开，TCP连接状态就一直保持连接状态，这种好处就是减少TCP连接的重复建立和断开，增加的额外开销，减轻服务器端的负载
-
-三、HTTP报头、报文
-
-    客户端请求的HTTP报文叫请求报文，服务器端响应的叫响应报文
-
-    报文分为: 报文首部 和 报文主体
-
-四、Gzip压缩
-
-    服务器将资源用zip压缩在发送给客户端，客户端接收后在进行解压缩
-</code></pre><h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><pre><code>HTTP状态码负责表示客户端HTTP请求服务器的结果，服务器处理的是否正常，状态码类别: 
-
-1XX 接收的主求正在处理
-
-2XX 成功状态码 请求正常处理完毕
-
-    200 请求成功正常处理
-
-3XX 重定向状态码
-
-    301 请求永久重定向
-
-    302 临时重定向，与301相同但只是临时的而不是永久的
-
-    304 文件未修改，可以直接使用缓存的文件
-
-4XX 客户端错误状态码
-
-    400 由于客户端请求有语法错误，不能被服务器所理解
-
-    401 请求未经授权，无法访问
-
-    403 服务器拒绝请求访问的资源
-
-    404 Not Found 服务器上没有请求的资源
-
-5XX 服务器本身错误
-
-    500 服务器在执行请求时错误，web应用存在bug
-
-    503 服务器处于超负载或正在停机维护，无法处理请求
-</code></pre><h4 id="缓存Cache"><a href="#缓存Cache" class="headerlink" title="缓存Cache"></a>缓存Cache</h4><pre><code>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存减少对服务器的访问
-
-一、缓存分类:          
-
-    1、缓存服务器: 客户端请求资源先到缓存服务器查看是否到期，如果还在缓存期直接返回给客户端，否则去服务器取最新的资源
-
-    2、客户端缓存: 浏览器将缓存资源存到磁盘的指定文件夹内
-
-    3、数据库缓存: 
-
-    4、CDN内容分发:
-
-    另外两种客户端缓存: LocalStorage 和 SessionStroage
-
-    LocalStorage: 在PC上的兼容性不太好，而且当网络速度快、协商缓存响应快时使用localStorage的速度比不上304并且不能缓存css文件而移动端由于网速慢，使用localStorage要快于304
-
-
-二、缓存一般是GET请求，而POST一般不缓存，客户端缓存是否需要是在服务器端代码控制，那就是响应头，响应头告诉是否缓存
-
-    注意，所有缓存如果强制刷新的话，所有的资源都会重新从服务器加载
-
-# Expires: 缓存过期时间，用来指定资源到期的时间，Expires=max-age + 请求时间，需要和Last-modified结合使用但在上面我们提到过，cache-control的优先级更高 
-
-# Cache-control: （单位 秒）指定设置缓存最大的有效时间，定义的是时间长短 
-    Cache-control:max-age=2592000  缓存有效期为30天
-    public        所有内容都将被缓存
-    private        内容只缓存到私有缓存中
-    no-cache    所有内容都不会被缓存
-    no-store    绝对禁止缓存，一看就知道如果用了这个命令当然就是不会进行缓存啦～每次请求资源都要从服务器重新获取
-    must-revalidation/proxy-revalidation    指定如果页面是过期的，则去服务器进行获取这个指令并不常用，就不做过多的讨论了
-    max-age=xxx (xxx is numeric)    缓存的内容将在 xxx 秒后失效, 并如果和Last-Modified一起使用时, 优先级较高
-
-# Last-Modified: 服务器端文件的最后修改时间，需要和cache-control共同使用，是检查服务器端资源是否更新的一种方式，当浏览器再次进行请求时，会向服务器传送If-Modified-Since报头，询问Last-Modified时间点之后资源是否被修改过如果没有修改，则返回码为304，使用缓存；如果修改过，则再次去服务器请求资源，返回码和首次请求相同为200，资源为服务器最新资源
-
-# ETag: web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定），生成算法的话，我测试etag效果的时候用的是MD5值，Apache可以配置对静态文件生成Etag
-</code></pre><h4 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h4><pre><code>HTTP协议的请求和响应报文中包含的HTTP首部
-
-一、HTTP报文首部包括
-
-    报文首部（客户端和服务器处理时需要的信息）、报文主体（资源信息）
-
-
-二、HTTP通用头 General
-
-    # Request URL: http://mjdcom/        请求的URL
-
-    # Request Method: GET                 请求类型
-
-    # Status Code: 200 OK                 请求状态码
-
-    # Remote Address: 36110181152:80    服务器地址及端口号
-
-
-三、请求头 Request Headers
-
-    # Accept: 告诉服务器文件的类型和处理的优先级，象文本 text/html、图片 images/jpeg、视频 video/mp4、二进制 application/octet-stream
-            Accept: text/html,application/xhtml+xml,application/xml;q=09,image/webp,*/*;q=08
-
-    # Accept-Charset: 优先的字符集
-
-    # Accept-Encoding: 优先的内容编码  Accept-Encoding:gzip, deflate, sdch
-
-    # Accept-Language: 优先语言  Accept-Language:zh-CN,zh;q=08
-
-    # Host: 请求的资源所在的服务器  Host:mjdcom
-
-    # Cache-Control: max-age=315360000  控制缓存的行为  no-cache、max-age、
-
-    # Connection: keep-alive  保持持久连接
-
-    # If-Match: If-xxx 条件请求，客户端的if-match值与服务器的Etag值相匹配，如果相同就返回
-
-            If-Match: &quot;57724c86-1232&quot;、 ETag: &quot;57724c86-1232&quot;
-
-    # If-None-Match: 比较实体标记（与If-Match相反），如果与Etag不同相将资源更新给客户端
-            If-None-Match:&quot;57724c86-1232&quot;
-
-    # If-Modified-Since: 比较更新时间
-
-    # If-Range: 如果If-Range与Etag相同，就作用范围请求处理
-
-    # Range: 实体字节请求范围
-
-    # Referer: http://mjdcom/ 告知服务器请求资源的原URI
-
-    # User-Agent: 将浏览器和代理用户的信息传给服务器
-            User-Agent:Mozilla/50 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/53736 (KHTML, like Gecko) Chrome/490262387 Safari/53736
-
-
-四、响应头 Response Headers
-
-    # Expires: 将失效日期告诉客户端， Expires是HTTP10的内容，如果同时 Expires 和 Cache-control:max-age 存在的话，Expires会被覆盖
-
-    # Cache-control: 缓存控制方式，服务器设置Response Header中能看到，Cache-control:max-age=3600
-
-        public        所有内容都将被缓存
-        private        内容只缓存到私有缓存中
-        no-cache    所有内容都不会被缓存
-        no-store    所有内容都不会被缓存到缓存或 Internet 临时文件中
-        must-revalidation/proxy-revalidation    如果缓存的内容失效，请求必须发送到服务器/代理以进行重新验证
-        max-age=xxx (xxx is numeric)    缓存的内容将在 xxx 秒后失效, 并如果和Last-Modified一起使用时, 优先级较高
-
-    # ETag: web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定），生成算法的话，我测试Etag效果的时候用的是MD5值，
-            Apache可以配置对静态文件生成Etag
-            ETag:&quot;57724c86-1232&quot;
-            If-None-Match:&quot;57724c86-1232&quot;
-
-    # Date: 首部字段Date表明创建HTTP报文的日期和时间    Date: Fri, 12 Aug 2016 16:25:13 GMT
-
-    # Server: apache  nginx  服务器类型
-
-    # Via: 是为了追踪客户端与服务器端之间请求和响应报文传输的路径
-            Via: http/11 BJ-Y-JCS-204 ( [cRs f ]), http/11 BJ-GWBN-1-JCS-160 ( [cRs f ])
-
-    # Accept-Ranges: 用来告诉客户端，服务器是否能处理范围请求
-            Accept-Ranges: 1000bytes， 或none
-
-    # Age: 告诉客户端，源服务器在多久前创建了响应，单位以秒
-            Age: 600
-
-    # Last-Modified: 指名了资源最终修改的时间，
-            Last-Modified:Mon, 14 Mar 2016 08:04:07 GMT
-
-
-五、实体字段  也在Response Headers中
-
-    # Content-Length: 45783        表名实体部分的大小
-
-    # Content-Type: image/jpeg  实体的文件类型
-
-    # Set-Cookie: 服务器写入客户端的Cookie
-            Set-Cookie:JAMCookie=true
-</code></pre><h4 id="web安全的HTTPS"><a href="#web安全的HTTPS" class="headerlink" title="web安全的HTTPS"></a>web安全的HTTPS</h4><pre><code>HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费
-
-HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的
-
-HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443
-
-HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题    
-</code></pre><p><img src="images/HTTPQUBIE2.png" alt="HTTPS"> </p>
-<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><pre><code>页面的浏览器缓存状态是由header决定的，header参数有四种:
-
-1、Cache-Control: 
-
-    1) max-age - 指定设置缓存的最大有效时间，当浏览器向服务器发送请求后，如果还在max-age有效期里就不会在向服务器发送请求
-
-    2) public - 指定响应会被缓存，并且在多用户间共享
-
-    3) private - 响应只作为私有缓存，不能在用户间共享，如果要求http认证，响应会自动设置为private
-
-    4) no-cache - 指定不缓存响应
-
-    5) no-store - 绝对禁止缓存，每次请求资源都要从服务器获取 
-
-2、Expires - 设置缓存过期时间，用来指定资源的到期时间，是服务端的具体时间，Expires = max-age + 请求时间，需要和Last-modified结合使用
-
-3、last-modified - 服务器端文件最后修改时间，需要和cache-control共同使用，是检查服务资源是否更新的一种方式，浏览器再次请求会向服务器传送if-Modified-Since报头，询问Last-Modified时间点之后的资源是否被修改，如果没有则返回304，使用缓存，如果修改过，在去服务器请求资源返回200
-
-4、Etag - 根据实体内容生成一段hash字符串，由服务端产生，浏览器会将这字符串传回给服务器，验证资源是否已经被修改
-
-使用缓存流程:
-</code></pre><p><img src="images/使用缓存流程.png" alt="使用缓存流程"> </p>
-<pre><code>cache-control指令使用:
-</code></pre><p><img src="images/cache-control指令使用.png" alt="cache-control指令使用">     </p>
-<h4 id="200和304的产生"><a href="#200和304的产生" class="headerlink" title="200和304的产生"></a>200和304的产生</h4><pre><code>200 OK( from cache )不向服务器发送请求，直接使用本地缓存文件, Ctrl+F5 直接返回200
-304 Not Modified则向服务器询问，若服务器认为浏览器的缓存版本还可用，那么便会返回304, F5 返回304
-
-    200 OK( from cache ) 出现操作: 1.地址栏回车   2.页面链接跳转   3.前进、后退  
-
-    304 Not Modified 出现操作: 1.F5刷新   2.新开窗口
-</code></pre><p><img src="/images/1.png" alt="缓存机制"> </p>
-<h4 id="Web的攻击技术"><a href="#Web的攻击技术" class="headerlink" title="Web的攻击技术"></a>Web的攻击技术</h4><pre><code>1、以服务器为目标的主动攻击，SQL注入攻击和OS命令注入功击
-
-2、以服务器为目标的被动攻击，设计好一个陷阱来让用户打开网站，来获取用户的登录信息
-
-3、跨站脚本攻击 XSS: 
-</code></pre><p>| 参考资料<br>| <a href="http://www.alloyteam.com/2016/03/discussion-on-web-caching/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/discussion-on-web-caching/</a><br>| <a href="http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/07/httphttp2-0spdyhttps-reading-this-is-enough/</a><br>| <a href="http://www.cnblogs.com/lovesong/p/5352973.html" target="_blank" rel="noopener">http://www.cnblogs.com/lovesong/p/5352973.html</a><br>| <a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html" target="_blank" rel="noopener">http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html</a></p>
-
-        
-    </section>
-</article>
-
-
 
 
 <nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
 </nav>
 
 

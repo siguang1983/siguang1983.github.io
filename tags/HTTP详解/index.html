@@ -151,20 +151,31 @@
         
         <h4 id="网络基础TCP-IP"><a href="#网络基础TCP-IP" class="headerlink" title="网络基础TCP/IP"></a>网络基础TCP/IP</h4><pre><code>一、TCP/IP分为4个层: 应用层、传输导、网络层和数据链路层
 
-    1）应用层: 向用户提供应用服务FTP和DNS服务
+    1、应用层: 向用户提供应用服务FTP和DNS服务
 
-    2）传输层: 两台计算机之间的数据传输，两种协议TCP和UDP
+    2、传输层: 两台计算机之间的数据传输，两种协议TCP和UDP
 
-    3）网络层: 用来处理网络上的数据包
+    3、网络层: 用来处理网络上的数据包
 
-    4）链路层: 处理连接网络的硬件部分
+    4、链路层: 处理连接网络的硬件部分
+</code></pre><h4 id="客户端一个请求到加载完成所发生的过程"><a href="#客户端一个请求到加载完成所发生的过程" class="headerlink" title="客户端一个请求到加载完成所发生的过程"></a>客户端一个请求到加载完成所发生的过程</h4><pre><code>客户端URL请求 -&gt; DNS将URL转成IP -&gt; 发起HTTP发请求建立连接 -&gt; 发给服务端的报头报文件 -&gt; 服务端器来处理请求 -&gt; 服务器返回响应报文，是否有缓存 -&gt; 浏览器接收响应，查看状态码是304还是200
 
+HTTP的本质就是TCP/IP请求, 三次握手规则建立连接，以及断开连接时的四次挥手
 
-二、一个http请求服务器的过程
+一、TCP/IP并发
 
-    客户端请求: HTTP -&gt; TCP -&gt; IP -&gt; 网络 
+    浏览器对同一域名下并发的tcp连接是有限制的（2-10个不等）。
 
-    服务器接收: 网络 -&gt; IP -&gt; TCP -&gt; HTTP
+    而且在http1.0中往往一个资源下载就需要对应一个tcp/ip请求。
+</code></pre><h4 id="主流的浏览器内核有4类"><a href="#主流的浏览器内核有4类" class="headerlink" title="主流的浏览器内核有4类"></a>主流的浏览器内核有4类</h4><pre><code>Trident：IE、360、搜狗等
+
+Gecko：Netscape、Firefox等
+
+Presto：Opera（新的 Opera 使用了 Blink 内核，是 Webkit 的一个分支，添加了一些优化特性）
+
+Webkit：Safari、Chrome
+
+*** chrome每次加载6个并行请求，加载完后在继续下载下6个，每个浏览器并行加载的各数不同 ***
 </code></pre><h4 id="IP、TCP和DNS"><a href="#IP、TCP和DNS" class="headerlink" title="IP、TCP和DNS"></a>IP、TCP和DNS</h4><pre><code>与HTTP关系的协议: 
 
     1、IP协议: 将把各种数据包传到指定位置，两种重要的条件就是IP地址和MAC地址
@@ -210,37 +221,40 @@ URL: 服务器的
 四、Gzip压缩
 
     服务器将资源用zip压缩在发送给客户端，客户端接收后在进行解压缩
-</code></pre><h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><pre><code>HTTP状态码负责表示客户端HTTP请求服务器的结果，服务器处理的是否正常，状态码类别: 
+</code></pre><h4 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h4><pre><code>一、状态码由三位数字组成，第一个数字定义了响应的类别，共分五种类别:
 
-1XX 接收的主求正在处理
+    1xx：指示信息--表示请求已接收，继续处理
 
-2XX 成功状态码 请求正常处理完毕
+    2xx：成功--表示请求已被成功接收、理解、接受
 
-    200 请求成功正常处理
+    3xx：重定向--要完成请求必须进行更进一步的操作
 
-3XX 重定向状态码
+    4xx：客户端错误--请求有语法错误或请求无法实现
 
-    301 请求永久重定向
+    5xx：服务器端错误--服务器未能实现合法的请求
 
-    302 临时重定向，与301相同但只是临时的而不是永久的
 
-    304 文件未修改，可以直接使用缓存的文件
+二、常见的状态码有如下几种:
 
-4XX 客户端错误状态码
+    200 OK 客户端请求成功
 
-    400 由于客户端请求有语法错误，不能被服务器所理解
+    301 Moved Permanently 请求永久重定向
 
-    401 请求未经授权，无法访问
+    302 Moved Temporarily 请求临时重定向
 
-    403 服务器拒绝请求访问的资源
+    304 Not Modified 文件未修改，可以直接使用缓存的文件
 
-    404 Not Found 服务器上没有请求的资源
+    400 Bad Request 由于客户端请求有语法错误，不能被服务器所理解
 
-5XX 服务器本身错误
+    401 Unauthorized 请求未经授权
 
-    500 服务器在执行请求时错误，web应用存在bug
+    403 Forbidden 服务器收到请求，但是拒绝提供服务。服务器通常会在响应正文中给出不提供服务的原因
 
-    503 服务器处于超负载或正在停机维护，无法处理请求
+    404 Not Found 请求的资源不存在，例如，输入了错误的URL
+
+    500 Internal Server Error 服务器发生不可预期的错误，导致无法完成客户端的请求
+
+    503 Service Unavailable 服务器当前不能够处理客户端的请求，在一段时间之后，服务器可能会恢复正常
 </code></pre><h4 id="缓存Cache"><a href="#缓存Cache" class="headerlink" title="缓存Cache"></a>缓存Cache</h4><pre><code>缓存是指代理服务器或客户端本地磁盘内保存的资源副本，利用缓存减少对服务器的访问
 
 一、缓存分类:          

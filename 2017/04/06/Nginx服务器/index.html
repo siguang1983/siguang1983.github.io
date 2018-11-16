@@ -103,7 +103,7 @@ ng是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/S
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx介绍"><span class="toc-number">1.</span> <span class="toc-text">Nginx介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四层和七层负载均衡"><span class="toc-number">2.</span> <span class="toc-text">四层和七层负载均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx原理"><span class="toc-number">3.</span> <span class="toc-text">Nginx原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx负载均衡调试策略"><span class="toc-number">4.</span> <span class="toc-text">Nginx负载均衡调试策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx安装和删除"><span class="toc-number">5.</span> <span class="toc-text">Nginx安装和删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx配置文件"><span class="toc-number">6.</span> <span class="toc-text">Nginx配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx配置-HTTP2-0"><span class="toc-number">7.</span> <span class="toc-text">Nginx配置 HTTP2.0</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx介绍"><span class="toc-number">1.</span> <span class="toc-text">Nginx介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四层和七层负载均衡"><span class="toc-number">2.</span> <span class="toc-text">四层和七层负载均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx原理"><span class="toc-number">3.</span> <span class="toc-text">Nginx原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx负载均衡调试策略"><span class="toc-number">4.</span> <span class="toc-text">Nginx负载均衡调试策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过brew安装nginx"><span class="toc-number">5.</span> <span class="toc-text">通过brew安装nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx安装和删除"><span class="toc-number">6.</span> <span class="toc-text">Nginx安装和删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx配置文件"><span class="toc-number">7.</span> <span class="toc-text">Nginx配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nginx配置-HTTP2-0"><span class="toc-number">8.</span> <span class="toc-text">Nginx配置 HTTP2.0</span></a></li></ol>
         
     </div>
 </aside>
@@ -212,6 +212,21 @@ ng是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/S
         hash $request_uri; 
         hash_method crc32; 
     }
+</code></pre><h4 id="通过brew安装nginx"><a href="#通过brew安装nginx" class="headerlink" title="通过brew安装nginx"></a>通过brew安装nginx</h4><pre><code>$ brew install nginx
+
+    cd /usr/local/etc/nginx/            // nginx.conf 配置目录
+
+    open /usr/local/Cellar/nginx  // 其实这个才是nginx被安装到的目录
+
+$ cd /usr/local/var/www                // 进入到目录 localhost:9080
+
+$ nginx             // 启动服务
+
+重启ng:
+
+    ps -ef|grep nginx
+
+    kill -9 进程号
 </code></pre><h4 id="Nginx安装和删除"><a href="#Nginx安装和删除" class="headerlink" title="Nginx安装和删除"></a>Nginx安装和删除</h4><pre><code>主要步骤: 下载包，压缩、配置编译
 
 $ https://nginx.org/en/download.html    下载一个nginx包版本
@@ -297,7 +312,7 @@ $ 将newNginx目录的文件copy到nginx目录
     #    ssl_certificate_key  cert.key;
     # }
 </code></pre><h4 id="Nginx配置-HTTP2-0"><a href="#Nginx配置-HTTP2-0" class="headerlink" title="Nginx配置 HTTP2.0"></a>Nginx配置 HTTP2.0</h4><pre><code>https://www.nginx.com/blog/nginx-1-9-5/
-</code></pre><p>| <a href="http://www.cnblogs.com/felixzh/category/937300.html" target="_blank" rel="noopener">http://www.cnblogs.com/felixzh/category/937300.html</a><br>| <a href="https://www.cnblogs.com/felixzh/p/6283788.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixzh/p/6283788.html</a><br>| <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html" target="_blank" rel="noopener">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
+</code></pre><p>| <a href="https://www.cnblogs.com/meng1314-shuai/p/8335140.html" target="_blank" rel="noopener">https://www.cnblogs.com/meng1314-shuai/p/8335140.html</a>          // 安装Ng<br>| <a href="http://www.cnblogs.com/felixzh/category/937300.html" target="_blank" rel="noopener">http://www.cnblogs.com/felixzh/category/937300.html</a><br>| <a href="https://www.cnblogs.com/felixzh/p/6283788.html" target="_blank" rel="noopener">https://www.cnblogs.com/felixzh/p/6283788.html</a><br>| <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html" target="_blank" rel="noopener">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
 
         
     </section>
