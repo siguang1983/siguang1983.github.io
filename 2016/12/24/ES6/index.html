@@ -11,10 +11,8 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="| let块级作用域、 const常量| 解构赋值| 箭头函数、default、rest、spread| 模板字符串| class: extends、super、constructor、静态属性和方法、实例属性| Proxy 对象的拦截器| Promise、Generator、async| 模块化: import、export、as、*、default export| 数据结构: Set不重复值的集合、Map| symbol 独一无二的值
-let和const一、let 声明变量
-
-    let" />
+    <meta name="description" content="| let块级作用域、 const常量| 解构赋值| 箭头函数、default、rest、spread| 模板字符串| class: extends、super、constructor、静态属性和方法、实例属性| Promise、Generator、async/await| 模块化: import、export、as、*、default export| 数据结构: Set不重复值的集合、Map| Proxy 对象的拦截器| Symbol| symbol 独一无二的值| Set、Map数据结构
+l" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -97,7 +95,7 @@ let和const一、let 声明变量
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#let和const"><span class="toc-number">1.</span> <span class="toc-text">let和const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构赋值"><span class="toc-number">2.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模板字符串"><span class="toc-number">3.</span> <span class="toc-text">模板字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数扩展"><span class="toc-number">4.</span> <span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象扩展-Object"><span class="toc-number">5.</span> <span class="toc-text">对象扩展 Object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类、继承"><span class="toc-number">6.</span> <span class="toc-text">类、继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise-异步编程"><span class="toc-number">7.</span> <span class="toc-text">Promise 异步编程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module-模块"><span class="toc-number">8.</span> <span class="toc-text">Module 模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据结构-Set-、Map"><span class="toc-number">9.</span> <span class="toc-text">数据结构 Set()、Map()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串扩展"><span class="toc-number">10.</span> <span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数值"><span class="toc-number">11.</span> <span class="toc-text">数值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组扩展-Array"><span class="toc-number">12.</span> <span class="toc-text">数组扩展 Array</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制数组-ArrayBuffer对象"><span class="toc-number">13.</span> <span class="toc-text">二进制数组 ArrayBuffer对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Symbol"><span class="toc-number">14.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Proxy-拦截器"><span class="toc-number">15.</span> <span class="toc-text">Proxy 拦截器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Generator"><span class="toc-number">16.</span> <span class="toc-text">Generator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#async、await"><span class="toc-number">17.</span> <span class="toc-text">async、await</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#let和const"><span class="toc-number">1.</span> <span class="toc-text">let和const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解构赋值"><span class="toc-number">2.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模板字符串"><span class="toc-number">3.</span> <span class="toc-text">模板字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数扩展"><span class="toc-number">4.</span> <span class="toc-text">函数扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类、继承"><span class="toc-number">5.</span> <span class="toc-text">类、继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module-模块"><span class="toc-number">6.</span> <span class="toc-text">Module 模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Set、Map数据结构"><span class="toc-number">7.</span> <span class="toc-text">Set、Map数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象扩展-Object"><span class="toc-number">8.</span> <span class="toc-text">对象扩展 Object</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串对象扩展"><span class="toc-number">9.</span> <span class="toc-text">字符串对象扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Number、Math对象扩展"><span class="toc-number">10.</span> <span class="toc-text">Number、Math对象扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组扩展-Array"><span class="toc-number">11.</span> <span class="toc-text">数组扩展 Array</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制数组-ArrayBuffer对象"><span class="toc-number">12.</span> <span class="toc-text">二进制数组 ArrayBuffer对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Symbol"><span class="toc-number">13.</span> <span class="toc-text">Symbol</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Proxy对象拦截器"><span class="toc-number">14.</span> <span class="toc-text">Proxy对象拦截器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise异步"><span class="toc-number">15.</span> <span class="toc-text">Promise异步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Generator"><span class="toc-number">16.</span> <span class="toc-text">Generator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#async、await"><span class="toc-number">17.</span> <span class="toc-text">async、await</span></a></li></ol>
         
     </div>
 </aside>
@@ -132,7 +130,7 @@ let和const一、let 声明变量
     
     <section class="article-body markdown-body">
         
-        <p>| let块级作用域、 const常量<br>| 解构赋值<br>| 箭头函数、default、rest、spread<br>| 模板字符串<br>| class: extends、super、constructor、静态属性和方法、实例属性<br>| Proxy 对象的拦截器<br>| Promise、Generator、async<br>| 模块化: import、export、as、*、default export<br>| 数据结构: Set不重复值的集合、Map<br>| symbol 独一无二的值</p>
+        <p>| let块级作用域、 const常量<br>| 解构赋值<br>| 箭头函数、default、rest、spread<br>| 模板字符串<br>| class: extends、super、constructor、静态属性和方法、实例属性<br>| Promise、Generator、async/await<br>| 模块化: import、export、as、*、default export<br>| 数据结构: Set不重复值的集合、Map<br>| Proxy 对象的拦截器<br>| Symbol<br>| symbol 独一无二的值<br>| Set、Map数据结构</p>
 <h4 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h4><pre><code>一、let 声明变量
 
     let完全可以取代var, 特性: 1、let不允许重复声明        2、没有预解析功能        3、块级作用域
@@ -174,7 +172,7 @@ let和const一、let 声明变量
 
 一、数组解构使用[]
 
-    let [a, b, c] = [1,2,3];    // a=1, b=2, c=3
+    let [a, b, c] = [1, 2, 3];    // a=1, b=2, c=3
 
     // 默认值
     let [x, y = &apos;b&apos;] = [&apos;a&apos;];     // x=&apos;a&apos;, y=&apos;b&apos;
@@ -256,7 +254,7 @@ let和const一、let 声明变量
     1、箭头函数的注意问题: 
 
         * 箭头函数里的this不是指向调用者，而指向对象
-        * 不能当构造函数来用
+        * 不能当构造函数来用, 不能使用new
         * 函数内不存在arguments对象
         * 不可以使用yield命令，箭头函数不能用作Generator函数
 
@@ -303,27 +301,10 @@ let和const一、let 声明变量
             }
         }
 
-    5、参数的解构赋值
-
-        const full = ({ first, last }) =&gt; first + &apos; &apos; + last;    
-        full({first: 20, last: 30})
-
-        // 等同于
-        // function full(person) {
-        //      return person.first + &apos; &apos; + person.last;
-        // }
-
-    6、[1,2,3].map(function (x) {
-            return x * x;
-        });
-
-        // ES6写法
-        [1,2,3].map( (x) =&gt; x * x );
-
 
 二、函数参数默认值
 
-    function fn(a, b=2){
+    function fn(a, b = 2){
         // b如果不传相当于2，等同于 var b = arguments.length &gt; 1 &amp;&amp; arguments[1] == undefined ? arguments[1] : 2;
         return {a, b}
     }
@@ -336,7 +317,18 @@ let和const一、let 声明变量
     fn();
 
 
-三、rest 参数  获取多余参数
+三、参数的解构赋值
+
+        const full = ({ first, last }) =&gt; first + &apos; &apos; + last;    
+        full({first: 20, last: 30})
+
+        // 等同于
+        // function full(person) {
+        //      return person.first + &apos; &apos; + person.last;
+        // }
+
+
+四、rest 获取多余参数
 
     以&apos;...变量名&apos; 来获取多余的参数，返回一个数组，这样就不需要arguments对象了
 
@@ -352,7 +344,7 @@ let和const一、let 声明变量
     person(1,2,3,4,5);
 
 
-四、spread 扩展操作符 ...  与rest相反
+五、spread 扩展操作符 ...  与rest相反
 
     function add(x, y) {
         return x + y;        // 4+38
@@ -364,32 +356,427 @@ let和const一、let 声明变量
     let arr = [...&apos;hello&apos;];        // [&apos;h&apos;, &apos;e&apos;, &apos;l&apos;, &apos;l&apos;, &apos;o&apos;]
 
 
-五、name属性
+六、name属性
 
     funciton foo(){ ... }
     foo.name;        // &apos;foo&apos; 返回函数名
 
 
-六、绑定this
+七、::运算符
 
     箭头函数可以绑定this对象，减少显式this对象的写法(call、apply、bind)
 
     ES7提出了函数绑定来取代&quot;call、apply、bind&quot;调用，使用两个&quot;::&quot;
 
-    Example
+    foo::bar;        // 等同于 bar.bind(foo);
+    foo::bar(...arguments);        // 等同于 bar.apply(foo, arguments);
+</code></pre><h4 id="类、继承"><a href="#类、继承" class="headerlink" title="类、继承"></a>类、继承</h4><pre><code>一、类的一些特性
 
-        foo::bar        // 等同于 bar.bind(foo)
+    1、对象方法的简写方法
+        class Cat{
+            getName(){        // 老写法 getName: function(){}
+                ...
+            }
+        }
+
+    2、通过__proto__属性可以直接调用父类
+        var parent = {
+            getParentName(){
+                console.log(&apos;parent&apos;)
+            }
+        }
+
+        var childer = {
+            __proto__: parent,            // 通过__proto__指向parent, 就可以直接调用parent类中的方法
+            getChildeName(){
+                console.log(&apos;childer&apos;);
+            }
+        }
+
+        childer.getChildeName();    // childer
+        childer.getParentName();    // parent
+
+
+二、创建类
+
+    class Cat {
+        // ES6中新型构造器, 用来初始化时这里接收参数
+        constructor(name){ 
+            this.name = name;
+        }
+
+        getName(){        // 公有方法
+            console.log(this.name);
+        }
+
+        static bar(baz){        // 私有方法
+            debugger;
+            return this.name = baz;
+        }
+
+        * gen(){
+            let arg = 10;
+            yield arg;
+        }
+    }
+
+    Cat.userName = &apos;siguang&apos;;
+
+    var oCat = new Cat(&apos;哈哈&apos;);
+    oCat.getName();
+    oCat.bar(&apos;lulu&apos;);                // 报错静态方法调用不到，并且不会被继承
+    oCat.gen().next()
+
+
+三、继承 extends
+
+    // 创建一个类
+    class Person {
+        constructor(name){
+            this.name = name;
+        }
+
+        getName(){
+            console.log(this.name);
+        }
+    }
+
+    // 继承这个类
+    class Children extends Person {
+        constructor(name, color){
+            super(name);                // super指向继承的构造函数Person的constructor
+            this.color = color;
+        }
+
+        getColor(){
+            console.log(this.name, this.color);
+        }
+    }
+
+    // 实例化
+    var op = new Person(&apos;siguang&apos;);
+    op.getName();            // &apos;siguang&apos;
+
+    var oc = new Children(&apos;lulu&apos;, &apos;red&apos;);        
+    oc.getColor();        // &apos;red&apos;
+    oc.getName();            // &apos;lulu&apos;
+
+
+四、static 静态属性和方法
+
+    类似构造函数，直接挂载到函数下的叫对象的属性和方法，而写到构造函数内部的叫构造函数的属性和方法
+
+    1、静态方法前面需要加上&apos;static&apos;关键字，相当于只是函数下的方法而不是prototype的方法，静态方法可以被子类继承，
+
+        class Foo{
+            static methodName(){
+                return &apos;hello&apos;
+            }
+        }
+        Foo.methodName();    // hello
+
+        var foo = new Foo();
+        foo.methodName();    // 报错
+
+    2、静态属性
+
+        ES6中没有静态属性，只能声明静态方法，ES7中可以直接写到类内在进行转码
+
+        class Foo {
+            constructor(...arg){
+                this.args = args;
+            } 
+            outputUserName(){
+                console.log(this.username);    // 这里username未定义，除非在constructor中定义 this.username
+            }
+        }
+        Foo.username = &apos;siguang&apos;;       // 类的静态属性
+
+        var foo = new Foo();
+        console.log(foo.personName);  // undefined
+        foo.outputUserName();               // undefined 
+
+
+五、实例属性
+
+    注意: 一定要将实例属性和静态属性区分，实例属性写到constructor中this.username, new后的实例时候可以被实例方法调用，而静态属性只挂到了类下直接通过类来调取，Foo.username
+
+    class Foo{
+        constructor(){
+            this.username = &apos;siguang&apos;;
+        }
+        showName(){
+            console.log(this.username);     // siguang
+            console.log(Foo.username);      // lulu
+        }
+    }
+    Foo.username = &apos;lulu&apos;;
+
+    var foo = new Foo();
+    foo.showName();
+
+    ****** ES7 中静态属性和实例属性的定义 ******
+    class MyClass{
+        usernameA = &apos;siguang&apos;;        // 实例属性
+
+        showName(){
+            console.log(this.usernameA);
+        }
+    }
+
+
+六、super()方法
+
+    继承时必须调用一次super方法，否则constructor中的this为undefined，调用父类的构造器进行初始化, 子类调用父类的构造函数
+
+    class BaseModel {
+        constructor(options, data) { // class constructor，node.js 5.6暂时不支持options = {}, data = []这样传参
+            this.name = &apos;Base&apos;;
+            this.url = &apos;http://azat.co/api&apos;;
+            this.data = data;
+            this.options = options;
+        }
+        getName() { // class method
+            console.log(`Class name: ${this.name}`);
+        }
+    }
+
+    class AccountModel extends BaseModel {
+        constructor(options, data) {
+            super({private: true}, [&apos;3333&apos;, &apos;4444&apos;]); 
+            this.name = &apos;Account Model&apos;;
+            this.url +=&apos;/accounts/&apos;;
+        }
+        getAccountsData() {
+            return this.data;
+        }
+    }
+
+    let accounts = new AccountModel(5);
+    accounts.getName();         // Account Model
+    console.log(&apos;Data is %s&apos;, accounts.getAccountsData);        // {private: true}
+
+    let base = new BaseModel({public: true}, [&apos;111&apos;, &apos;2222&apos;]);
+    console.log(base.getName());        // Base
+
+
+七、class中的Generator方法
+
+    方法前面加&quot; * &quot; 号表示该方法是Generator函数
+
+    class MyClass = {
+        constructor(){
+            ...
+        }
+
+        * getName(){
+            ...
+        }
+    }
+</code></pre><h4 id="Module-模块"><a href="#Module-模块" class="headerlink" title="Module 模块"></a>Module 模块</h4><pre><code>一、import: 模块加载
+
+    // 取整个对象
+    import $ from &apos;jquery&apos;;
+
+    // 通过解构取对象
+    import {name1, name2, nam3} from &apos;./user.js&apos;;
+
+    // 通过逗号分两整体和解构分别来取
+    import React, { Component, PropTypes } from &apos;react&apos;;
+
+    // 重命名
+    import * as React from &apos;react&apos;;        // * 对整体模块加载，并通过as转换一个名
+
+    // 按需加载
+    button.addEventListener(&apos;click&apos;, event =&gt; {
+        imoprt(&apos;dialog.js&apos;)
+            .then(dialog =&gt; {
+                dialog.show();
+            }).
+            catch(err =&gt;{
+                // error
+            })
+    }, false)
+
+
+    不同写法
+
+        1、普通写法
+
+            meat.js
+                export function beef(){
+                    return &apos;牛肉&apos;;
+                }
+                export function pork(){
+                    return &apos;猪肉&apos;;
+                }
+
+            main.js
+
+                import { beef, pork } from &apos;meat.js&apos;;
+                console.log(beef());        // 牛肉
+                console.log(pork());        // 猪肉
+
+
+        2、key的简写
+
+            var fn1 = function(){
+                console.log(&apos;fn1&apos;);
+            }
+            var fn2 = function(){
+                console.log(&apos;fn2&apos;);
+            }
+
+            export {fn1, fn2}         // 对象名与key相同可以写成一个
+
+
+二、export: 模块输出
+
+    1、使用对象简写方式
+
+        var name1 = &apos;aaa&apos;;
+        var name2 = &apos;bbb&apos;;
+        var name3 = &apos;ccc&apos;;
+        export {name1, name2, name3} 
+
+        // 也可以写成    
+        export var name1 = &apos;aaa&apos;;
+        export var name2 = &apos;bbb&apos;;
+        export var name3 = &apos;ccc&apos;;
+
+
+    2、可以直接输出变量、函数或类
+
+        export function person(){ ... }
+
+        // 不能直接输出变量名
+        var name = &apos;siguang&apos;;
+        export name;            // 报错
+
+        写成: export var name = &apos;siguang&apos;;        
+        写成: var name = &apos;siguang&apos;;   export {name};    
+
+
+    3、跨模块常量
+
+        const常量只能在当前代码下使用，通过export可以进行跨模块常量，多个文件都可以使用
+
+        export const name = &apos;siguang&apos;;
+        export const age = 33;
+
+        import * as info from &apos;userinfo&apos;;        // 或 import { name, age } from &apos;userinfo&apos;
+
+
+三、as 关键字来修改名字
+
+    meat.js
+
+        export function beef(){
+            return &apos;牛肉&apos;;
+        }
+
+        export function pork(){
+            return &apos;猪肉&apos;;
+        }
+
+    main.js
+
+        // * 代表meat.js下所有的对外接口，转换成meat对象下，这样就可以通过meat来调用meat下的
+        import * as meat from &apos;./meat.js&apos;;        
+        console.log(meat.beef());        // 牛肉
+        console.log(meat.pork());        // 猪肉
+
+
+四、* 将somModule内的所有导出接口
+
+    import * as newSome from &apos;./someModule&apos;        // 将someModule类的所有接口更改到newSome下
+
+
+五、export default指定匿名
+
+    不使用default在import加载定义名与导出名必须相同，否则无法加载，如果指定默认输出使用export default，在import导入的时候不用在关心命名的问题
+
+    1、meat.js
+
+        // 倒出匿名函数
+        export default function() {
+            console.log(&apos;foo&apos;);
+        }
+
+        简写
+        export default(){        // export default {}  写成默认对象
+
+        }
+
+    main.js
+
+        // 导入时可以任意起名
+        import beef from &apos;./meat.js&apos;
+
+
+    2、default与不写default输出的区别
+
+        // 使用default来输出，import不需要使用{}
+        export default function crc32() {
+            // ...
+        }
+        import crc32 from &apos;crc32&apos;;
+
+        // 不使用default来输出，import需要使用 {}
+        export function crc32() { // 输出
+            // ...
+        };
+        import {crc32} from &apos;crc32&apos;; // 输入
+</code></pre><h4 id="Set、Map数据结构"><a href="#Set、Map数据结构" class="headerlink" title="Set、Map数据结构"></a>Set、Map数据结构</h4><pre><code>一、Set(): 类似数组的一种新结构，成员都是唯一的值没有重复值，相当于数组去重
+
+    # 数组去重的新方法
+    let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
+    console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
+    let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
+
+    特性: 
+        1、不允许数组里有重复数据
+
+    方法: 
+        1、set.size: 获取数据的长度
+
+        2、set.add(value): 添加值
+
+        3、set.delete(value): 删除set的实例值
+
+        4、set.has(value): 传入的参数是否为set的成员
+
+        5、set.clear(): 删除set的所有成员
+
+
+二、Map(): 将二维数组转成对象
+
+    var map = new Map([[&apos;username&apos;, &apos;siguang&apos;], [&apos;password&apos;, &apos;ssssss&apos;]]);
+    map.get(&apos;username&apos;);        // siguang
+
+    /* new Map([[&apos;usernmae&apos;, &apos;aaa&apos;, &apos;password&apos;, &apos;ssssss&apos;], [&apos;aaaa&apos;, 1111]]);  注意一个数组中只有两个下标的值，这里只能get到username, password不会取到 */
+
+    特性: 不允许有重复的key值
+
+    方法: 
+        1、map.size: 成员总数
+
+        2、map.set(&apos;key&apos;, &apos;value&apos;): 添加成员
+
+        3、map.get(): 获取
+
+        4、map.clear(): 清除所有
 </code></pre><h4 id="对象扩展-Object"><a href="#对象扩展-Object" class="headerlink" title="对象扩展 Object"></a>对象扩展 Object</h4><pre><code>一、简写
 
     1、对象属性和值相同可以写成一个
 
         var foo = { name: &apos;siguang&apos;};
         var baz = {
-            foo            // 与 foo: foo 相同
+            foo            // foo: foo 相同
         };
         console.log(baz.foo.name);    // siguang
 
-    2、对象中函数的简写
+    2、对象中函数简写
 
         var o = {
             name: &apos;momo&apos;,
@@ -460,10 +847,9 @@ let和const一、let 声明变量
     Object.is(NaN, NaN);    // true
 
 
-五、Object.assign(合并目标对象， 被合并对象B, 被合并对象C): 合并到第一个参数上，不是深度拷贝，所以还存在引用关系
+五、Object.assign(目标对象， 被合并对象B, 被合并对象C): 合并对象
 
     /* 注意: 被合并对象与合并目标对象的属性相同会赋盖掉前面的对象的值 */
-
     var objA = {a: 1, b:2}, objB = {b: 3, c: 4}; 
     let req = Object.assign(objA, objB);         // {a:1, b:3, c:4}
 
@@ -485,6 +871,12 @@ let和const一、let 声明变量
         function clone(obj){
             return Object.assign({}, obj);
         }
+
+    注意点: 
+
+        1、assign 是浅拷贝
+
+        2、同名属性替换
 
 
 六、getPrototypeOf(object)、setPrototype(object, 谁的prototype): 获取、设置对象的prototype
@@ -573,484 +965,39 @@ let和const一、let 声明变量
     1、for...in 循环
 
     2、Object.keys(obj): 返回obj对象的所有key, 返回是一个数组
-</code></pre><h4 id="类、继承"><a href="#类、继承" class="headerlink" title="类、继承"></a>类、继承</h4><pre><code>一、类的一些特性
-
-    1、对象方法的简写方法
-        class Cat{
-            getName(){        // 老写法 getName: function(){}
-
-            }
-        }
-
-    2、通过__proto__属性可以直接调用父类
-        var parent = {
-            getParentName(){
-                console.log(&apos;parent&apos;)
-            }
-        }
-
-        var childer = {
-            __proto__: parent,            // 通过__proto__指向parent, 就可以直接调用parent类中的方法
-            getChildeName(){
-                console.log(&apos;childer&apos;);
-            }
-        }
-
-        childer.getChildeName();    // childer
-        childer.getParentName();    // parent
-
-
-二、创建类
-
-    class Cat {
-
-        // ES6中新型构造器, 用来初始化时这里接收参数
-        constructor(name){ 
-            this.name = name;
-        }
-
-        getName(){        // 公有方法
-            console.log(this.name);
-        }
-
-        _bar(baz){        // 私有方法
-            return this.sfn = baz;
-        }
-    }
-
-    Cat.userName = &apos;siguang&apos;;
-
-    var oCat = new Cat(&apos;哈哈&apos;);
-    oCat.getName();
-
-
-三、继承 extends
-
-    // 创建一个类
-    class Person {
-        constructor(name){
-            this.name = name;
-        }
-
-        getName(){
-            console.log(this.name);
-        }
-    }
-
-    // 继承这个类
-    class Children extends Person {
-        constructor(name, color){
-            super(name);                // super指向继承的构造函数Person的constructor
-            this.color = color;
-        }
-
-        getColor(){
-            console.log(this.name, this.color);
-        }
-    }
-
-    // 实例化
-    var op = new Person(&apos;siguang&apos;);
-    op.getName();        // output &apos;siguang&apos;
-
-    var oc = new Children(&apos;lulu&apos;, &apos;red&apos;);        
-    oc.getColor();        // output &apos;red&apos;
-    oc.getName();        // output &apos;lulu&apos;
-
-
-四、static 静态属性和方法
-
-    类似构造函数，直接挂载到函数下的叫对象的属性和方法，而写到构造函数内部的叫构造函数的属性和方法
-
-    1、静态方法前面需要加上&apos;static&apos;关键字，相当于只是函数下的方法而不是prototype的方法，静态方法可以被子类继承，
-
-        class Foo{
-            static methodName(){
-                return &apos;hello&apos;
-            }
-        }
-        Foo.methodName();    // hello
-
-        var foo = new Foo();
-        foo.methodName();    // 报错
-
-    2、静态属性
-
-        ES6中没有静态属性，只能声明静态方法，ES7中可以直接写到类内在进行转码
-
-        class Foo {
-            constructor(...arg){
-                this.args = args;
-            } 
-            outputUserName(){
-                console.log(this.username);    // 这里username未定义，除非在constructor中定义 this.username
-            }
-        }
-        Foo.username = &apos;siguang&apos;;       // 类的静态属性
-
-        var foo = new Foo();
-        console.log(foo.personName);  // undefined
-        foo.outputUserName();               // undefined 
-
-
-五、实例属性
-
-    注意: 一定要将实例属性和静态属性区分，实例属性写到constructor中this.username, new后的实例时候可以被实例方法调用，而静态属性只挂到了类下直接通过类来调取，Foo.username
-
-    class Foo{
-        constructor(){
-            this.username = &apos;siguang&apos;;
-        }
-        showName(){
-            console.log(this.username);     // siguang
-            console.log(Foo.username);      // lulu
-        }
-    }
-    Foo.username = &apos;lulu&apos;;
-
-    var foo = new Foo();
-    foo.showName();
-
-    ****** ES7 中静态属性和实例属性的定义 ******
-    class MyClass{
-        usernameA = &apos;siguang&apos;;        // 实例属性
-
-        showName(){
-            console.log(this.usernameA);
-        }
-    }
-
-
-六、super()方法
-
-    继承时必须调用super方法，否则constructor中的this为undefined，调用父类的构造器进行初始化, 子类调用父类的构造函数
-
-    class BaseModel {
-        constructor(options, data) { // class constructor，node.js 5.6暂时不支持options = {}, data = []这样传参
-            this.name = &apos;Base&apos;;
-            this.url = &apos;http://azat.co/api&apos;;
-            this.data = data;
-            this.options = options;
-        }
-        getName() { // class method
-            console.log(`Class name: ${this.name}`);
-        }
-    }
-
-    class AccountModel extends BaseModel {
-        constructor(options, data) {
-            super({private: true}, [&apos;3333&apos;, &apos;4444&apos;]); 
-            this.name = &apos;Account Model&apos;;
-            this.url +=&apos;/accounts/&apos;;
-        }
-        getAccountsData() {
-            return this.data;
-        }
-    }
-
-    let accounts = new AccountModel(5);
-    accounts.getName();         // Account Model
-    console.log(&apos;Data is %s&apos;, accounts.getAccountsData);        // {private: true}
-
-    let base = new BaseModel({public: true}, [&apos;111&apos;, &apos;2222&apos;]);
-    console.log(base.getName());        // Base
-
-
-七、class中的Generator方法
-
-    方法前面加&quot; * &quot; 号表示该方法是Generator函数
-
-    class MyClass = {
-        constructor(){
-            ...
-        }
-
-        * getName(){
-            ...
-        }
-    }
-</code></pre><h4 id="Promise-异步编程"><a href="#Promise-异步编程" class="headerlink" title="Promise 异步编程"></a>Promise 异步编程</h4><pre><code>// resolve: 成功、reject: 失败
-
-var pro = new Promise(function(resolve, reject){        // resolve成功, reject失败
-    // 将一个耗时长的任务放到执行器里
-    setTimeout(function(){
-        resolve();            // 4毫秒后执行成功
-    }, 400)
-})
-
-pro.then(
-    function(){                        // reslove回调
-        console.log(&apos;成功执行&apos;);
-    },
-    function(){                        // reject回调
-        console.log(&apos;失败执行&apos;);
-    }
-)
-.catch(function(e){                // 捕获异常，如果then中的两个方法成功失败有报错就会走catch
-    console.log(e)
-})
-
-
-方法: 
-
-一、Promise.all([实例1，实例2，实例3]): 用于多个promise实例，当三个实例都为真的时候all这个结果为真
-
-    var p1 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-            resolve();
-            console.log(&quot;p1完成&quot;);
-        }, 400);
-    })
-
-    var p2 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-            resolve();
-            console.log(&quot;p2完成&quot;);
-        }, 1000);
-    })
-
-    var p3 = new Promise(function(resolve, reject){
-        setTimeout(function(){
-            resolve();
-            console.log(&quot;p3完成&quot;);
-        }, 4000);
-    })
-
-    var p4 = Promise.all([p1, p2, p3]);
-    p4.then(function(){
-        console.log(&apos;三个全部执行成功&apos;)
-    }, function(){
-        console.log(&apos;失败&apos;)
-    })
-
-二、Promise.race([实例1，实例2，实例3]): 只要有一个为成功，p4为成功，与all()方法正反
-
-https://www.jianshu.com/p/c98eb98bd00c
-</code></pre><h4 id="Module-模块"><a href="#Module-模块" class="headerlink" title="Module 模块"></a>Module 模块</h4><pre><code>一、export: 模块输出
-
-    1、使用对象简写方式
-
-        var name1 = &apos;aaa&apos;;
-        var name2 = &apos;bbb&apos;;
-        var name3 = &apos;ccc&apos;;
-
-        // 对象的简写 相当于{ name1: name1, name2: name2, name3: name3 }
-        export {name1, name2, name3} 
-
-        // 也可以写成    
-        export var name1 = &apos;aaa&apos;;
-        export var name2 = &apos;bbb&apos;;
-        export var name3 = &apos;ccc&apos;;
-
-
-    2、可以直接输出变量、函数或类
-
-        export function person(){ ... }
-
-        // 不能直接输出变量名
-        var name = &apos;siguang&apos;;
-        export name;            // 报错
-
-        写成: export var name = &apos;siguang&apos;;        
-        写成: var name = &apos;siguang&apos;;   export {name};    
-
-
-    3、跨模块常量
-
-        const常量只能在当前代码下使用，通过export可以进行跨模块常量，多个文件都可以使用
-
-        export const name = &apos;siguang&apos;;
-        export const age = 33;
-
-        import * as info from &apos;userinfo&apos;;        // 或 import { name, age } from &apos;userinfo&apos;
-
-
-二、as 关键字来修改名字
-
-    meat.js
-
-        export function beef(){
-            return &apos;牛肉&apos;;
-        }
-
-        export function pork(){
-            return &apos;猪肉&apos;;
-        }
-
-    main.js
-
-        // * 代表meat.js下所有的对外接口，转换成meat对象下，这样就可以通过meat来调用meat下的
-        import * as meat from &apos;./meat.js&apos;;        
-        console.log(meat.beef());        // 牛肉
-        console.log(meat.pork());        // 猪肉
-
-
-三、* 将somModule内的所有导出接口
-
-    import * as newSome from &apos;./someModule&apos;        // 将someModule类的所有接口更改到newSome下
-
-
-四、export default 指定匿名
-
-    不使用default在import加载定义名与导出名必须相同，否则无法加载，如果指定默认输出使用export default，在import导入的时候不用在关心命名的问题
-
-    1、meat.js
-
-        // 倒出匿名函数
-        export default function() {
-            console.log(&apos;foo&apos;);
-        }
-
-        简写
-        export default(){        // export default {}  写成默认对象
-
-        }
-
-    main.js
-
-        // 导入时可以任意起名
-        import beef from &apos;./meat.js&apos;
-
-
-    2、default与不写default输出的区别
-
-        // 使用default来输出，import不需要使用 {}
-        export default function crc32() {
-            // ...
-        }
-        import crc32 from &apos;crc32&apos;;
-
-        // 不使用default来输出，import需要使用 {}
-        export function crc32() { // 输出
-            // ...
-        };
-        import {crc32} from &apos;crc32&apos;; // 输入
-
-
-五、import: 模块加载
-
-    // 取整个对象
-    import $ from &apos;jquery&apos;;
-
-    // 通过解构取对象
-    import {name1, name2, nam3} from &apos;./user.js&apos;;
-
-    // 通过逗号分两整体和解构分别来取
-    import React, { Component, PropTypes } from &apos;react&apos;;
-
-    // 重命名
-    import * as React from &apos;react&apos;;        // * 对整体模块加载，并通过as转换一个名
-
-    // 按需加载
-    button.addEventListener(&apos;click&apos;, event =&gt; {
-        imoprt(&apos;dialog.js&apos;)
-            .then(dialog =&gt; {
-                dialog.show();
-            }).
-            catch(err =&gt;{
-                // error
-            })
-    }, false)
-
-
-六、不同写法
-
-    1、普通写法
-
-        meat.js
-            export function beef(){
-                return &apos;牛肉&apos;;
-            }
-            export function pork(){
-                return &apos;猪肉&apos;;
-            }
-
-        main.js
-
-            import { beef, pork } from &apos;meat.js&apos;;
-            console.log(beef());        // 牛肉
-            console.log(pork());        // 猪肉
-
-
-    2、key的简写
-
-        var fn1 = function(){
-            console.log(&apos;fn1&apos;);
-        }
-
-        var fn2 = function(){
-            console.log(&apos;fn2&apos;);
-        }
-
-        export {fn1, fn2}         // 对象名与key相同可以写成一个
-</code></pre><h4 id="数据结构-Set-、Map"><a href="#数据结构-Set-、Map" class="headerlink" title="数据结构 Set()、Map()"></a>数据结构 Set()、Map()</h4><pre><code>一、Set(): 类似数组的一种新结构，成员都是唯一的值没有重复值，相当于数组去重
-
-    # 数组去重的新方法
-    let setValue = new Set([1,2,33,1,22,2,2,4,2,1,2])
-    console.log(setValue, Object.prototype.toString.call(setValue));        // {size: 5, [1, 2, 33, 22, 4]}, &apos;[Object Set]&apos;
-    let arr = [...setValue];        // [1, 2, 33, 22, 4] 需要进行解构
-
-    特性: 
-        1、不允许数组里有重复数据
-
-    方法: 
-        1、set.size(): 获取数据的长度
-
-        2、set.add(value): 添加值
-
-        3、set.delete(value): 删除set的实例值
-
-        4、set.has(value): 传入的参数是否为set的成员
-
-        5、set.clear(): 删除set的所有成员
-
-
-二、Map(): 将二维数组转成对象
-
-    var map = new Map([[&apos;username&apos;, &apos;siguang&apos;], [&apos;password&apos;, &apos;ssssss&apos;]]);
-    map.get(&apos;username&apos;);        // siguang
-
-    /* new Map([[&apos;usernmae&apos;, &apos;aaa&apos;, &apos;password&apos;, &apos;ssssss&apos;], [&apos;aaaa&apos;, 1111]]);  注意一个数组中只有两个下标的值，这里只能get到username, password不会取到 */
-
-    特性: 不允许有重复的key值
-
-    方法: 
-        1、map.size: 成员总数
-
-        2、map.set(&apos;key&apos;, &apos;value&apos;): 添加成员
-
-        3、map.get(): 获取
-
-        4、map.clear(): 清除所有
-</code></pre><h4 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h4><pre><code>一、repeat(): 复制字符串 
+</code></pre><h4 id="字符串对象扩展"><a href="#字符串对象扩展" class="headerlink" title="字符串对象扩展"></a>字符串对象扩展</h4><pre><code>1、repeat(): 复制字符串 
 
     var str = &apos;哈哈哈！&apos;.repeat(3);        // str输出 &apos;哈哈哈！哈哈哈！哈哈哈！&apos;
 
-二、includes()、startsWith()、endsWith(): 查找三个方法
+2、includes()、startsWith()、endsWith(): 查找三个方法
 
     var str = &apos;siguang 1983&apos;;
     str.includes(&apos;o&apos;);        // 查找字符串中是否包含值，包含返回true否则返回false
     str.startsWith(&apos;s&apos;);    // 第一个字符是不是s，如果是返回true
     str.endsWith(&apos;d&apos;);        // 最后一个字符是不是 d，返回布尔值
-</code></pre><h4 id="数值"><a href="#数值" class="headerlink" title="数值"></a>数值</h4><pre><code>一、trunc(): 去除小数部分
 
-    Math.trunc(123.123123);    // 123
+3、padStart(): 补全长度从开头, &apos;x&apos;.padStart(4, &apos;ab&apos;) // &apos;abax&apos;
 
-二、sign(): 判断是正数还是负数，如果是正数返回1，负数返回-1，0返回0
+4、padEnd(): 补全长度从结尾, &apos;x&apos;.padEnd(4, &apos;ab&apos;) // &apos;xaba&apos;
+</code></pre><h4 id="Number、Math对象扩展"><a href="#Number、Math对象扩展" class="headerlink" title="Number、Math对象扩展"></a>Number、Math对象扩展</h4><pre><code>一、Math扩展
 
-    Math.sign(-234);    // -1
+    1、trunc(): 去除小数部分 Math.trunc(123.123123);    // 123
 
-三、hypot(): 返回所有参数的平方和的平方根
+    2、sign(): 判断是正数还是负数，如果是正数返回1，负数返回-1，0返回0
 
-    Math.hypot(3,4);    // 5 勾股定理
+    3、Math.sign(-234);    // -1
 
-四、Number.isFinite(): 是否是无穷数
+    4、hypot(): 返回所有参数的平方和的平方根，Math.hypot(3,4);    // 5 勾股定理
 
-        Number.isNaN(): 是否是NaN
+二、Number对象扩展
 
-        parseInt(&apos;12.34&apos;): es5的写法   Number.parseInt(&apos;12.34&apos;): es6的写法，为了减少全局方法
+    1、isFinite(): 是否是无穷数
 
-        Number.isInteger(num): 判断是否是一个整数
+    2、Number.isNaN(): 是否是NaN
+
+    3、parseInt(&apos;12.34&apos;): es5的写法   Number.parseInt(&apos;12.34&apos;): es6的写法，为了减少全局方法
+
+    4、Number.isInteger(num): 判断是否是一个整数
 </code></pre><h4 id="数组扩展-Array"><a href="#数组扩展-Array" class="headerlink" title="数组扩展 Array"></a>数组扩展 Array</h4><pre><code>一、form(): 将对象转成数组
 
     var obj = {&apos;0&apos;: &apos;a&apos;, &apos;1&apos;: &apos;b&apos;, &apos;2&apos;: &apos;c&apos;};
@@ -1060,9 +1007,8 @@ https://www.jianshu.com/p/c98eb98bd00c
 二、of(): 将一组值转成数组
 
     var arrA = new Array(1, 2, 3);    // 生成一个[1,2,3]
-    var arrB = new Array(3);        // arrB.length  等于3 如果传一个参数这样会生成一个3个空值
-
-    var arrC = Array.of(3);            // [3] 解决了new Array的问题
+    var arrB = new Array(3);                // arrB.length  等于3 如果传一个参数这样会生成一个3个空值
+    var arrC = Array.of(3);                    // [3] 解决了new Array的问题
 
 
 三、find(): 找出第一个符合条件的数据元素
@@ -1169,7 +1115,7 @@ https://www.jianshu.com/p/c98eb98bd00c
 二、TypedArray 视图
 
     TypedArray数组只提供9种固定的构造函数
-</code></pre><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><pre><code>新的数据类型，独一无二的值，凡是属性名属于Symbol类型，就是独一无二的
+</code></pre><h4 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h4><pre><code>JS新的数据类型，独一无二的值，凡是属性名属于Symbol类型，就是独一无二的
 
 # 没有参数的情况
 var s1 = Symbol();
@@ -1193,7 +1139,7 @@ s1 === s2         // false
 
     let sym = Symbol(&apos;my symbol&apos;);
     sym.toString()    // &quot;Symbol(my symbol)&quot;
-</code></pre><h4 id="Proxy-拦截器"><a href="#Proxy-拦截器" class="headerlink" title="Proxy 拦截器"></a>Proxy 拦截器</h4><pre><code>可以监听对象身上发生变化，对操作对象属性读取时做一个拦截器
+</code></pre><h4 id="Proxy对象拦截器"><a href="#Proxy对象拦截器" class="headerlink" title="Proxy对象拦截器"></a>Proxy对象拦截器</h4><pre><code>可以监听对象身上发生变化，对操作对象属性读取时做一个拦截器
 
 &lt;script&gt;
     let obj = {
@@ -1202,28 +1148,87 @@ s1 === s2         // false
     }
 
     // 相当于操作对象属性时的一个拦截器
-    let p1 = new Proxy(obj, {
-        get(obj, key) { // 获取值操作
+    let oProxy = new Proxy(obj, {
+        get(obj, key) {
             return obj[key];
         },
-        set(obj, attr, value) { // 赋值操作
-
+        set(obj, key, value) {
             // 这里来做拦截，如果修改的key=a 并且 value值小于10不会就将值修改
-            if (attr == &apos;a&apos; &amp;&amp; value &lt; 10) {
-                obj[attr] = value;
+            if (key == &apos;a&apos; &amp;&amp; value &lt; 10) {
+                obj[key] = value;
             }
         }
     })
 
     // 设置属性
-    p1.a = 9; // {a: 9, b: 2}
-    p1.a = 20; // {a: 9, b: 2}
-    p1.b = 10; // {a: 9, b: 20}
+    oProxy.a = 9; // {a: 9, b: 2}
+    oProxy.a = 20; // {a: 9, b: 2}
+    oProxy.b = 10; // {a: 9, b: 20}
 
     // 获取属性值
-    console.log(p1.a, p1.b);    
+    console.log(oProxy.a, oProxy.b);    
 &lt;/script&gt;
-</code></pre><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><pre><code>Generator是ES6提供的异步函数，Generator可以通过yield表达式来定义步骤，通过next()来获取结果 
+</code></pre><h4 id="Promise异步"><a href="#Promise异步" class="headerlink" title="Promise异步"></a>Promise异步</h4><pre><code>// resolve: 成功、reject: 失败
+var pro = new Promise(function(resolve, reject){        // resolve成功, reject失败
+    // 将一个耗时长的任务放到执行器里
+    setTimeout(function(){
+        resolve();            // 4毫秒后执行成功
+    }, 400)
+})
+
+pro.then(
+    function(){                        // reslove回调
+        console.log(&apos;成功执行&apos;);
+    },
+    function(){                        // reject回调
+        console.log(&apos;失败执行&apos;);
+    }
+)
+.catch(function(e){            // 捕获异常，如果then中的两个方法成功失败有报错就会走catch
+    console.log(e)
+})
+
+// 如果不需要reslove的回调可以设置为null
+por.then(null, functino(){
+    console.log(&apos;失败执行&apos;)
+})
+
+
+方法: 
+一、Promise.all([实例1，实例2，实例3]): 用于多个promise实例，当三个实例都为真的时候all这个结果为真
+
+    var p1 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            resolve();
+            console.log(&quot;p1完成&quot;);
+        }, 400);
+    })
+
+    var p2 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            resolve();
+            console.log(&quot;p2完成&quot;);
+        }, 1000);
+    })
+
+    var p3 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+            resolve();
+            console.log(&quot;p3完成&quot;);
+        }, 4000);
+    })
+
+    var p4 = Promise.all([p1, p2, p3]);
+    p4.then(function(){
+        console.log(&apos;三个全部执行成功&apos;)
+    }, function(){
+        console.log(&apos;失败&apos;)
+    })
+
+二、Promise.race([实例1，实例2，实例3]): 只要有一个为成功，p4为成功，与all()方法正反
+
+https://www.jianshu.com/p/c98eb98bd00c
+</code></pre><h4 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h4><pre><code>Generator是一个状态机，封装了多个内部状态, 也是一个遍历对象生成函数，返回遍历器对象
 
 Example: 
 
@@ -1232,7 +1237,6 @@ Example:
         yield &apos;world&apos;;
         return &apos;ending&apos;;
     }
-
     let gen = ouputGenerator();
 
     console.log(gen.next());     // {value: &quot;hello&quot;, done: false}  value就是返回值
@@ -1322,24 +1326,48 @@ Example:
                 })
             })
         })
-
-
-Example:
-
-    function* ouputGenerator() {
-        console.log(&apos;调用了&apos;)        // ** 如果没执行next不会执行 ** 
-    }
-
-    var gen = ouputGenerator();
-
-    setTimeout(()=&gt;{
-        gen.next()
-    }, 3000)
 </code></pre><h4 id="async、await"><a href="#async、await" class="headerlink" title="async、await"></a>async、await</h4><pre><code>async 是ES7引入的函数，使的异步变得更加方便
+
+await: 命令后面是一个Promise对象
 
 Generator函数执行必须靠执行器，也就是需要调next()，async函数有自带的执行器，async返回的是Promise对象
 
-await: 命令后面是一个Promise对象
+一、async的多种声明
+
+    // 函数声明
+    async function foo() {}
+
+    // 函数表达式
+    const foo = async function () {};
+
+    // 对象的方法
+    let obj = { async foo() {} };
+    obj.foo().then(...)
+
+    // Class 的方法
+    class Storage {
+        constructor() {
+            this.cachePromise = caches.open(&apos;avatars&apos;);
+        }
+
+        async getAvatar(name) {
+            const cache = await this.cachePromise;
+            return cache.match(`/avatars/${name}.jpg`);
+        }
+    }
+
+    // 箭头函数
+    const foo = async () =&gt; {};
+
+二、async函数返回一个Promise对象，函数内部有return返回值，可以通过then方法来接收
+
+    async function f(){
+        return &apos;hello world&apos;
+    }
+
+    f().then( v =&gt; {
+        console.log(v);
+    })
 
 Example:
 
@@ -1352,7 +1380,7 @@ Example:
     getStockPriceByName(&apos;goog&apos;).then(function (result) {
         console.log(result);
     });
-</code></pre><p>| 参考资料<br>| <a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/01/babel.html</a><br>| <a href="http://es6.ruanyifeng.com/#docs/style" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/style</a><br>| <a href="http://babeljs.cn/" target="_blank" rel="noopener">http://babeljs.cn/</a></p>
+</code></pre><p>| <a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/01/babel.html</a><br>| <a href="http://es6.ruanyifeng.com/#docs/style" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/style</a><br>| <a href="http://babeljs.cn/" target="_blank" rel="noopener">http://babeljs.cn/</a></p>
 
         
     </section>
