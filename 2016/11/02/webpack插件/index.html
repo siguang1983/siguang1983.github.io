@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>webpack插件类 | 大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="插件类详解
+webpack-dev-server - webpack自带服务
+webpack自带的插件
+
+CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin - 提取公用部分
+
+外部加载插件
+
+HotModuleReplacementPlugin() - 热替换
+html-webpack-plugin - 解析html模板
+UglifyjsWebpackPlugin - js压缩
+web-webpack-plugin - 与html-" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Labels</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#插件类详解"><span class="toc-number">1.</span> <span class="toc-text">插件类详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HotModuleReplacementPlugin-热替换"><span class="toc-number">2.</span> <span class="toc-text">HotModuleReplacementPlugin() 热替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#html-webpack-plugin"><span class="toc-number">3.</span> <span class="toc-text">html-webpack-plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#open-browser-webpack-plugin"><span class="toc-number">4.</span> <span class="toc-text">open-browser-webpack-plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CleanWebpackPlugin"><span class="toc-number">5.</span> <span class="toc-text">CleanWebpackPlugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UglifyjsWebpackPlugin"><span class="toc-number">6.</span> <span class="toc-text">UglifyjsWebpackPlugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extract-text-webpack-plugin"><span class="toc-number">7.</span> <span class="toc-text">extract-text-webpack-plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#clean-webpack-plugin-清除文件夹"><span class="toc-number">8.</span> <span class="toc-text">clean-webpack-plugin 清除文件夹</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react的热替换"><span class="toc-number">9.</span> <span class="toc-text">react的热替换</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            webpack插件类
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2016/11/02/webpack插件/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2016-11-02T03:06:16.000Z" itemprop="datePublished">2016-11-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/前端构建工具/">前端构建工具</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="插件类详解"><a href="#插件类详解" class="headerlink" title="插件类详解"></a>插件类详解</h4><ul>
+<li><p>webpack-dev-server - webpack自带服务</p>
+<p>webpack自带的插件</p>
+<ul>
+<li>CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin - 提取公用部分</li>
+</ul>
+<p>外部加载插件</p>
+<ul>
+<li>HotModuleReplacementPlugin() - 热替换</li>
+<li>html-webpack-plugin - 解析html模板</li>
+<li>UglifyjsWebpackPlugin - js压缩</li>
+<li>web-webpack-plugin - 与html-webpack-plugin类型国内人写的<a href="https://github.com/gwuhaolin/web-webpack-plugin/blob/master/readme_zh.md" target="_blank" rel="noopener">https://github.com/gwuhaolin/web-webpack-plugin/blob/master/readme_zh.md</a></li>
+<li>extract-text-webpack-plugin - 单独打包css文件</li>
+<li>open-browser-webpack-plugin - 资源构建成功后自动打开浏览器 </li>
+<li><p>clean-webpack-plugin - 清除文件夹,添加hash后，会导致改变文件内容重新打包时文件名不同越来越多，使用clean-webpack-plugin</p>
+</li>
+<li><p>babel-plugin-react-transform react-transform-hmr - react的热更新, 需要在配置bable.rc</p>
+</li>
+<li>ExtractTextPlugin - 将js中引用的css文件抽取出一个单独的css文件</li>
+<li>webpack-merge - 合并数组、函数</li>
+<li>webpack-dev-middleware - devServer就是基于webpack-dev-middleware和ExpressJS来实现的</li>
+<li>imagemin-webpacl-plugin - 压缩图片</li>
+<li>webpack-spritesmith - 制作雪碧图</li>
+<li>HotModuleReplacementPlugin - devServer热更新</li>
+</ul>
+</li>
+</ul>
+<h4 id="HotModuleReplacementPlugin-热替换"><a href="#HotModuleReplacementPlugin-热替换" class="headerlink" title="HotModuleReplacementPlugin() 热替换"></a>HotModuleReplacementPlugin() 热替换</h4><p>  webpac-dev-server支持模块热替换，在前端代码变动的时候无需整个刷新页面，只把变化的部分替换掉。使用HMR功能也有两种方式: 命令行方式和Node.js API。</p>
+<p>  1、script: {<br>      “start”: “webpack –config webpack.config.js”,<br>      “dev”: “webpack-dev-server –inline –hot”<br>    }</p>
+<p>  2、webpack.config</p>
+<pre><code>entry: [
+  &apos;webpack/hot/dev-server&apos;,
+  path.resolve(__dirname, &apos;src/index.js&apos;)
+],
+devServer: {
+  hot: true       // 这里需要配置与HotModuleReplacementPlugin配合使用
+},
+plugins: [
+  new webpack.HotModuleReplacementPlugin(),
+]
+</code></pre><p>  注意，devServer开启不会自动编译，解决就在启动一个执行webpack的侦听</p>
+<h4 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h4><p>  创建HTML文件，或将以有的HTML文件移动目录</p>
+<p>  $ npm i –save-dev html-webpack-plugin      // 安装</p>
+<p>  const HtmlWebpackPlugin = require(‘html-webpack-plugin’);   // 引用插件</p>
+<p>  option 选项</p>
+<p>  plugins: [<br>    new HtmlWebpackPlugin({</p>
+<pre><code>  // 改变页面的&lt;title&gt;标签的内容 
+  title: &apos;首页&apos;,                   // 页面调用&lt;%= htmlWebpackPlugin.options.title %|
+
+  // 模版地址
+  template: path.resolve(basePath, &apos;main.html&apos;),
+
+  // 构建后的文件名和目录
+  filename: path.resolve(buildPath, &apos;main.html&apos;),
+
+  // chunks这个参数告诉插件要引用entry里面的哪几个入口
+  chunks:[&apos;main&apos;],
+
+  // 不引用的模块
+  excludeChunks: [],
+
+  // 要把script插入标签里 head or body
+  inject:&apos;body&apos;,
+
+  // 设置meta标签
+  meta: {viewport: &apos;width=device-width, initial-scale=1, shrink-to-fit=no&apos;},
+
+  // 基础路径
+  base: &apos;https://example.com/path&apos;,
+
+  // js或css文件是否加时间缀
+  hash: true,
+
+  // 缓存
+  cache: true,
+
+  // xhtml
+  xhtml: true, 
+
+  minify: {
+    collapseWhitespace: true,           // 去掉空格
+    removeComments: true,               // 移除注释
+    removeRedundantAttributes: true,    
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true
+  }
+}),
+</code></pre><p>  ],</p>
+<h4 id="open-browser-webpack-plugin"><a href="#open-browser-webpack-plugin" class="headerlink" title="open-browser-webpack-plugin"></a>open-browser-webpack-plugin</h4><p>  devServer下资源构建成功后自动打开浏览器 — 已可以在命令中配置</p>
+<p>  $ npm install open-browser-webpack-plugin –save-dev</p>
+<p>  var OpenBrowserPlugin = require(‘open-browser-webpack-plugin’);</p>
+<p>  plugin: [<br>    new OpenBrowserPlugin({ url: ‘<a href="http://localhost:3000&#39;" target="_blank" rel="noopener">http://localhost:3000&#39;</a> })<br>  ]</p>
+<p>  也可以使用在package.json中加 –open</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;webpack-dev-server --hot --inline --open&quot;,
+}
+</code></pre><p>  <a href="https://github.com/baldore/open-browser-webpack-plugin" target="_blank" rel="noopener">https://github.com/baldore/open-browser-webpack-plugin</a></p>
+<h4 id="CleanWebpackPlugin"><a href="#CleanWebpackPlugin" class="headerlink" title="CleanWebpackPlugin"></a>CleanWebpackPlugin</h4><p>  用于删除目录、文件</p>
+<p>  $ npm install –save-dev clean-webpack-plugi</p>
+<p>  const CleanWebpackPlugin = require(‘clean-webpack-plugin’);</p>
+<p>  plugins: [<br>    new CleanWebpackPlugin(),<br>  ],</p>
+<p>  <a href="https://github.com/johnagan/clean-webpack-plugin" target="_blank" rel="noopener">https://github.com/johnagan/clean-webpack-plugin</a></p>
+<h4 id="UglifyjsWebpackPlugin"><a href="#UglifyjsWebpackPlugin" class="headerlink" title="UglifyjsWebpackPlugin"></a>UglifyjsWebpackPlugin</h4><p>  压缩文件</p>
+<p>  $ npm i -D uglifyjs-webpack-plugin</p>
+<p>  const UglifyJsPlugin = require(‘uglifyjs-webpack-plugin’)<br>  module.exports = {<br>    plugins: [<br>      new UglifyJsPlugin()<br>    ]<br>  }</p>
+<h4 id="extract-text-webpack-plugin"><a href="#extract-text-webpack-plugin" class="headerlink" title="extract-text-webpack-plugin"></a>extract-text-webpack-plugin</h4><p>  单独打包css文件</p>
+<p>  $ npm i -D extract-text-webpack-plugin </p>
+<h4 id="clean-webpack-plugin-清除文件夹"><a href="#clean-webpack-plugin-清除文件夹" class="headerlink" title="clean-webpack-plugin 清除文件夹"></a>clean-webpack-plugin 清除文件夹</h4><p>  $ npm install clean-webpack-plugin –save-dev</p>
+<p>  const CleanWebpackPlugin = require(‘clean-webpack-plugin’);<br>  plugins: [<br>    new CleanWebpackPlugin([‘dist’]),<br>    new HtmlWebpackPlugin({<br>      title: ‘Output Management’<br>    })<br>  ]</p>
+<h4 id="react的热替换"><a href="#react的热替换" class="headerlink" title="react的热替换"></a>react的热替换</h4><p>  $ npm install –save-dev babel-plugin-react-transform react-transform-hmr</p>
+<p>  .babelrc配置<br>    {<br>      “presets”: [“react”, “env”],<br>      “env”: {<br>        “development”: {<br>        “plugins”: [[“react-transform”, {<br>          “transforms”: [{<br>            “transform”: “react-transform-hmr”,<br>            “imports”: [“react”],<br>            “locals”: [“module”]<br>          }]<br>        }]]<br>        }<br>      }<br>    }</p>
+<p>| <a href="https://zhuanlan.zhihu.com/p/43778591" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43778591</a><br>| <a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener">https://www.webpackjs.com/concepts/</a>    中文文档</p>
+
+        
+    </section>
+</article>
+
+
+
+<div class="comments">
+    <div id="disqus_thread">
+        <p class="comment-tips">国内查看评论需要代理~</p>
+    </div>
+    <script>
+    window.disqus_config = function () {
+        this.language = 'zh';
+        this.page.url = 'http://siguang1983.github.io/2016/11/02/webpack插件/';
+        this.page.title = 'webpack插件类';
+        this.page.identifier = '2016/11/02/webpack插件/';
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://name.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+            $(document.body).scrollspy({target: '#aside-inner'});
+            
+        });
+    </script>
+
+</body>
+</html>

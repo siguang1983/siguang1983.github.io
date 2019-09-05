@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>Label: TypeScript | 大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Labels</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+
+        
+        <div class="author-meta">
+            
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="siguang" style="box-shadow: 3px 3px 4px rgba(0,0,0, .2);">
+                </a>
+            </div>
+            
+            <div class="author-name">Siguang(厨子)</div>
+            <div class="author-work">Front-end development</div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">BeiJing, China</span>
+            </div>
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-github"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-circle-more"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2019/06/14/TypeScript/">TypeScript</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2019/06/14/TypeScript/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2019-06-14T02:44:28.000Z" itemprop="datePublished">2019-06-14</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/TypeScript/">TypeScript</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="typeScript"><a href="#typeScript" class="headerlink" title="typeScript"></a>typeScript</h4><p>  typeScript由微软研发的编程语言，是 JavaScript 语言的超集，代码又最终会编译成 JavaScript 来执行</p>
+<p>  一、安装</p>
+<pre><code>$ npm install -g typescript
+</code></pre><p>  二、编译</p>
+<pre><code>$ tsc greeter.ts
+</code></pre><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><p>  1、布尔</p>
+<pre><code>let createDone: boolean = false;    
+</code></pre><p>  2、数字</p>
+<pre><code>let createNumber: number = 10;
+</code></pre><p>  3、字符串</p>
+<pre><code>let createString: string = &apos;aaa&apos;;
+let showString: stinrg = `hello ${createNumber}`
+</code></pre><p>  4、数组</p>
+<pre><code>let list: number[] = [1,2,3]
+let listString: string[] = [&apos;1&apos;,&apos;2&apos;,&apos;3&apos;]
+let numandString: (number | string)[] = [&apos;1&apos;,2,3]
+</code></pre><p>  5、元组 Tuple</p>
+<pre><code>允许一个已知的元素数量和类型的数据
+let x: [string, number];
+x = [&apos;hello&apos;, 10]
+</code></pre><p>  6、枚举</p>
+<pre><code>enum Color { Red, Green, Blue }; 
+let c: Color = Color.Green
+</code></pre><p>  7、任意类型 any</p>
+<pre><code>let notSure: any = 4;   // any 可以对不同类型的值
+notSure = &apos;a string instead&apos;;
+
+let list: any[] = [1, true, &apos;free&apos;];
+list[1] = 100
+</code></pre><p>  8、空值 void</p>
+<pre><code>void 表示没有任何类型，一个函数无返回值时返回类型是void;
+function warnUser(): void(){
+  console.log(&apos;...&apos;);
+}
+
+let unusable: void = undefined;
+</code></pre><p>  9、Object</p>
+<pre><code>function create(o: object | null):void;
+create({ prop: 0});
+</code></pre><p>  10、Null 和 Undefined</p>
+<pre><code>let u: undefined = undefined;
+let n: null = null;
+</code></pre><p>  11、Never 永不存在值的类型</p>
+<pre><code>function infiniteLoop(): never {
+  while (true) {
+  }
+}
+</code></pre><p>  12、类型断言 &lt;&gt;、as</p>
+<pre><code>断言有两种写法&lt;&gt;和as，用来指定一个值的类型
+
+let someValue: any = &quot;this is a string&quot;;
+let strLength: number = (&lt;string&gt;someValue).length;
+let strLength: number = (someValue as string).length;
+</code></pre><h4 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h4><p>  1、解构数组</p>
+<pre><code>let input = [1, 2];
+function f([first, second]: [number, number]){
+  console.log(first);
+  console.log(second);
+}
+f(input);
+</code></pre><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>  1、interface来做成定义的接口</p>
+<pre><code>interface SuperConfug { 
+  color: string;  
+  width: number;
+}
+
+function printLabel(super: SuperConfug) {
+  console.log(super.color);
+}
+let myObj = {color: &apos;blud&apos;, width: 100};
+printLabel(myObj);
+</code></pre><p>  2、readonly 表示只读，不能对其属性进行重新赋值</p>
+<pre><code>interface Point {  
+  readonly x: number;  
+  readonly y: number;
+}
+</code></pre><p>  3、?表示属性是可选的</p>
+<pre><code>// [propName: string]: any 表示允许 obj[xxx] 这样的动态属性
+interface SquareConfig {  
+  color?: string;  
+  width?: number;  
+  [propName: string]: any;
+}
+</code></pre><p>  4、函数接口</p>
+<pre><code>interface SearchFunc {  
+  (source: string, subString: string): boolean;
+}
+</code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p>  1、参数</p>
+<pre><code>function fn(source: string, subString: string){
+  let result = source.search(subString);
+  return result &gt; -1;
+}
+fn(&apos;aaa&apos;, &apos;bbbbb&apos;);
+</code></pre><p>  2、为函数定义类型</p>
+<pre><code>function add(x: nubmer, y: number): number {
+  return x + y;
+}
+</code></pre><p>  2、索引类型</p>
+<pre><code>interface StringArray {
+  [index: number]: string;
+}
+let myArray: StringArray;
+myArray = [&quot;Bob&quot;, &quot;Fred&quot;];
+
+let myStr: string = myArray[0];
+</code></pre><h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>  泛型允许延迟编写类或方法中元素的数据类型</p>
+<pre><code>function identity&lt;T&gt;(arg: T): T{
+  return arg;
+}
+
+function main() {
+  const result = identity&lt;number&gt;(1);
+}
+</code></pre><h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>  1、创建类</p>
+<pre><code>class Greeter {
+  greeting: string;
+  constructor(message: string){     // 定义message为字符串类型
+    this.greeting = message;
+  }
+  greet(){
+    return `Hello, ${this.greeting}`;
+  }
+}
+
+let oGreeter = new Greeter(&apos;111&apos;);
+</code></pre><p>  2、继承</p>
+<pre><code>class Animal {
+  move(distance: number = 0) {
+    console.log(`Animal moved ${distance}.`);
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log(&apos;Woof! Woof!&apos;);
+  }
+}
+
+const dog = new Dog();
+dog.bark();
+dog.move(10);
+dog.bark();
+</code></pre><p>  3、增加了public, private(不能被外部访问), protected（不能被外部访问，只能被内部和继承访问）, readonly 等访问控制修饰符</p>
+<pre><code>class Person {  
+  protected name: string;  
+  constructor(name: string) {    
+    this.name = name;  
+  }
+}
+class Employee extends Person {  
+  private department: string;  
+  constructor(name: string, department: string) {    
+    super(name);    
+    this.department = department;  
+  }  
+  public getElevatorPitch() {    
+    return `Hello, my name is ${this.name} and I work in ${this.department}.`;  
+  }
+}
+
+readonly属性：
+class Person {
+  readonly name: string = &apos;john&apos;; // 我只读
+  constructor(theName: string) {
+    this.name = theName; // 可以
+  }
+
+  setName() {
+    this.name = &apos;lili&apos;; // 报错
+  }
+}
+</code></pre><p>  4、静态属性static</p>
+<pre><code>static成了所有实例共有的成员
+
+class Person {
+  static globalPeopleCount: number = &apos;7000000000&apos;;
+}
+const john = new Person();
+john.globalPeopleCount += 1;
+
+const lili = new Person();
+lili.globalPeopleCount // 7000000001
+</code></pre><p>  5、抽象类</p>
+<pre><code>不能被实例化的类型，目的就是用来继承
+
+abstract class Animal {
+  abstract makeSound(): void;
+  move(): void {
+    console.log(&apos;roaming the earch...&apos;);
+  }
+}
+</code></pre><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>  1、node</p>
+<pre><code>$ npm install -g ts-node  // 安装ts-node来执行ts文件
+
+$ ts-node server.ts       // 执行
+</code></pre><p>  2、react配置</p>
+<pre><code>$ npm install @types/react
+</code></pre><p>  2、tsconfig.json</p>
+<pre><code>{  
+  &quot;compilerOptions&quot;: {   
+    &quot;module&quot;: &quot;commonjs&quot;,          // 表示这是一个 Node.js 项目，使用 CommonJS 模块机制。
+    &quot;moduleResolution&quot;: &quot;node&quot;, 
+    &quot;target&quot;: &quot;es6&quot;,             // 指定将代码编译到 ES6
+    &quot;rootDir&quot;: &quot;src&quot;,            // 指定源码输入目录和编译后的代码输出目录
+    &quot;outDir&quot;: &quot;dist&quot;, 
+    &quot;sourceMap&quot;: true, 
+    &quot;noImplicitAny&quot;: true,       // 开头的几个选项指定一些更严格的检查
+    &quot;noImplicitReturns&quot;: true, 
+    &quot;noImplicitThis&quot;: true 
+  }
+}
+</code></pre><p>  3、TSlint</p>
+<pre><code>$ npm install tslint -g
+
+根目录创建tslint.json:
+{  
+  &quot;extends&quot;: [ &quot;tslint:recommended&quot; ],  
+  &quot;rules&quot;: {    
+    &quot;no-console&quot;: [ false],    
+    &quot;only-arrow-functions&quot;: [ false ] 
+  }
+}
+
+$ tslint --fix src/**/*.ts      // 执行
+</code></pre><p>  4、webpack中使用</p>
+<pre><code>$ npm install ts-loader typescript --save-dev
+
+webpack.config.js
+
+module.exports = {
+  entry: &apos;./app.ts&apos;,
+    output: {
+    filename: &apos;bundle.js&apos;
+    },
+    resolve: {
+      extensions: [ &apos;.ts&apos;, &apos;.tsx&apos;, &apos;.js&apos; ]
+    },
+    module: {
+      loaders: [     
+        {
+          test: /.tsx?$/
+          loader: &apos;ts-loader&apos;
+        }    
+      ]
+    },
+  };
+
+tsconfig.json中配置
+
+{  
+  &quot;compilerOptions&quot;: {    
+    &quot;module&quot;: &quot;commonjs&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;target&quot;: &quot;es6&quot;,
+    &quot;noImplicitAny&quot;: true,
+    &quot;noImplicitReturns&quot;: true,
+    &quot;noImplicitThis&quot;: true  
+  }
+}
+</code></pre><p>  5、小程序</p>
+<pre><code>https://segmentfault.com/a/1190000008175944
+</code></pre><p>| <a href="https://github.com/semlinker/awesome-typescript" target="_blank" rel="noopener">https://github.com/semlinker/awesome-typescript</a>       // 合集<br>| <a href="https://zhongsp.gitbooks.io/typescript-handbook/doc/handbook/Basic%20Types.html" target="_blank" rel="noopener">https://zhongsp.gitbooks.io/typescript-handbook/doc/handbook/Basic%20Types.html</a><br>| <a href="https://mp.weixin.qq.com/s/Oyawvb5BD-OKvMuF2tQ0pw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Oyawvb5BD-OKvMuF2tQ0pw</a>?<br>| <a href="https://www.jianshu.com/p/f317a3c01b58" target="_blank" rel="noopener">https://www.jianshu.com/p/f317a3c01b58</a></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+        });
+    </script>
+
+</body>
+</html>

@@ -11,7 +11,18 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="| AMD、CMD、CommonJS模式| Source Map代码调试| require()、define()、export()| requires.ensure(): 用来按需加载，将文件使用时在进行加载| Vendor: 将库、框架文件与业务分离分别打包| Entry: 入口| Chunk: 出输的名| Output: 打包输出| Loader: 模块转换器| Module: 模块| Reslove: 依赖文件| Plugins: 扩展插件| webpack-dev-server: 本地服" />
+    <meta name="description" content="模块化模块化分为AMD、CMD、CommonJS、ES6四类
+
+一、CommonJS 
+
+    Node、webpack使用的CommonJS规范, require加载是同步的
+
+    // 导入
+    const moduleA = require(&amp;apos;./moduleA&amp;apos;);
+    moduleA.someFun(1,2);            // 需要等moduleA加载后在执行，这里是同步
+
+    // 导出
+    module.exports = mo" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -48,10 +59,10 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Mot-clés</span>
+        <span class="vm">Labels</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -94,7 +105,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#模块化"><span class="toc-number">1.</span> <span class="toc-text">模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构建工具的什么用"><span class="toc-number">2.</span> <span class="toc-text">构建工具的什么用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack安装和命令"><span class="toc-number">3.</span> <span class="toc-text">webpack安装和命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Source-Map"><span class="toc-number">4.</span> <span class="toc-text">Source Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Entry"><span class="toc-number">5.</span> <span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Output"><span class="toc-number">6.</span> <span class="toc-text">Output</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Module"><span class="toc-number">7.</span> <span class="toc-text">Module</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resolve"><span class="toc-number">8.</span> <span class="toc-text">resolve</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#plugins"><span class="toc-number">9.</span> <span class="toc-text">plugins</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#devServer"><span class="toc-number">10.</span> <span class="toc-text">devServer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack-dev-server-参数"><span class="toc-number">11.</span> <span class="toc-text">webpack-dev-server 参数</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#模块化"><span class="toc-number">1.</span> <span class="toc-text">模块化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构建工具的什么用"><span class="toc-number">2.</span> <span class="toc-text">构建工具的什么用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack安装和命令"><span class="toc-number">3.</span> <span class="toc-text">webpack安装和命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Entry"><span class="toc-number">4.</span> <span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Output"><span class="toc-number">5.</span> <span class="toc-text">Output</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loader"><span class="toc-number">6.</span> <span class="toc-text">Loader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resolve"><span class="toc-number">7.</span> <span class="toc-text">resolve</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#plugins"><span class="toc-number">8.</span> <span class="toc-text">plugins</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#devServer"><span class="toc-number">9.</span> <span class="toc-text">devServer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#devServer的执行命令"><span class="toc-number">10.</span> <span class="toc-text">devServer的执行命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack与gulp"><span class="toc-number">11.</span> <span class="toc-text">webpack与gulp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Source-Map"><span class="toc-number">12.</span> <span class="toc-text">Source Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用的处理g"><span class="toc-number">13.</span> <span class="toc-text">常用的处理g</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决问题"><span class="toc-number">14.</span> <span class="toc-text">解决问题</span></a></li></ol>
         
     </div>
 </aside>
@@ -129,8 +140,7 @@
     
     <section class="article-body markdown-body">
         
-        <p>| AMD、CMD、CommonJS模式<br>| Source Map代码调试<br>| require()、define()、export()<br>| requires.ensure(): 用来按需加载，将文件使用时在进行加载<br>| Vendor: 将库、框架文件与业务分离分别打包<br>| Entry: 入口<br>| Chunk: 出输的名<br>| Output: 打包输出<br>| Loader: 模块转换器<br>| Module: 模块<br>| Reslove: 依赖文件<br>| Plugins: 扩展插件<br>| webpack-dev-server: 本地服务器，可以设置代理，用来前后端分离跨域</p>
-<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><pre><code>模块化分为AMD、CMD、CommonJS、ES6四类
+        <h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><pre><code>模块化分为AMD、CMD、CommonJS、ES6四类
 
 一、CommonJS 
 
@@ -203,16 +213,28 @@
 6、代码校验 - 校验代码是否符合规范
 
 7、自动发布 - 自动构建出线上发布代码并传输给发布系统
-</code></pre><h4 id="webpack安装和命令"><a href="#webpack安装和命令" class="headerlink" title="webpack安装和命令"></a>webpack安装和命令</h4><pre><code>$ npm i -D webpack webpack-cli             // 安装稳定版本，4版本以上需要装webpack-cli, -D是--save-dev的缩写
+</code></pre><h4 id="webpack安装和命令"><a href="#webpack安装和命令" class="headerlink" title="webpack安装和命令"></a>webpack安装和命令</h4><pre><code>$ npm i -D webpack webpack-cli         // 安装稳定版本，4版本以上需要装webpack-cli, -D是--save-dev的缩写
 
-    npm i -D webpack@3.10.0                        // 安装指定版本
+    npm i -D webpack@3.10.0                  // 安装指定版本
+</code></pre><p>  $ touch webpack.config.js            // 创建配置文件</p>
+<pre><code>一、配置npm运行命令
+
+    &quot;scripts&quot;: {
+        &quot;start&quot;: &quot;webpack --config webpack.config.js&quot;
+    }
+    $ npm start         // 执行
 
 
-命令
+二、webpack命令
 
     1、webpack            // 最基本的启动webpack命令
 
-    2、webpack --config XXX.js   //使用另一份配置文件（比如webpack.config2.js）来打包
+    2、webpack --config XXX.js   // 如果默认的配置文件不叫webpack.config.js，就需要在这指定配置文件的名称
+
+        script: {
+            &quot;build&quot;: &quot;webpack --config production.config.js&quot;,
+            &quot;dev&quot;: &quot;webpack --config development.config.js&quot;
+        }
 
     3、webpack -w         // watch方法，时实预览进行打包 相当于 --watch 
 
@@ -229,8 +251,7 @@
     9、webpack --progress --colors   // 展示一些进度条，同时增加颜色
 
     10、webpack --display-error-details    // 打印出错在哪个文件和行
-</code></pre><h4 id="Source-Map"><a href="#Source-Map" class="headerlink" title="Source Map"></a>Source Map</h4><pre><code>启动时需要加 --devtool source-map 参数重启DevServer后刷新页面，在chrome开发者工具就可以调试源码
-</code></pre><h4 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h4><pre><code>entry是配置模块的入口，执行构建最开始就递归解析所有的入口依赖，可以是 string | object | array
+</code></pre><h4 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h4><pre><code>entry是配置模块的入口，执行构建开始时递归解析所有的入口依赖，配置值: string | object | array
 
 // 单入口
 module.exports = {
@@ -249,33 +270,24 @@ module.exports = {
     entry: {
         main: &apos;./src/main.js&apos;,
         list: &apos;./src/list.js&apos;,
-        vendors: &apos;./src/jquery.js&apos;
+        vendors: &apos;./src/jquery.js&apos;                // 加载第三方模块
     }
 }
-
-一、chunk 名称
-
-    如果入口是字符串或数组，output打包出来的都被合并成一个文件，如上（1、2），
-
-    如果入口配置的是对象，打包出来的是以对象每个入口为一个文件，如上（3），打包会出来 main.min.js, list.min.js
-
-    output: {
-        path: path.resolve(__dirname, &apos;build/js&apos;),
-        filename: &apos;[name].min.js?[hash]&apos;
-    }
 </code></pre><h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><pre><code>配置 output 选项可以控制 webpack 如何向硬盘写入编译文件
+
+output的配置属性:
 
 1、path: 输出的目录，绝对路径
 
 2、filename: 用于输出文件的文件名
 
-    变量: 1) id chunk的唯一标识从0开始      2）name chunk的名称        3）hash 输出hash值        4）chunkhash 内容的hash值
+    变量: 1) id chunk 的唯一标识从0开始      2）name chunk 的名称        3）hash 输出hash值        4）chunkhash 内容的hash值
 
     filename: &apos;bundle.js&apos;
 
-    filename: &apos;[name].js&apos;    // 用于多入口
+    filename: &apos;[name].js&apos;            // 用于多入口
 
-    filename: &apos;[chunkhash].js&apos;    // 用于长效缓存，入口为entry chunk
+    filename: &apos;[chunkhash].js&apos;    // 一个随机数，入口为entry chunk
 
     filename: &apos;[name].js[hash]&apos;    // 带hash值 [hash:8] 代表8位的hash,默认20位
 
@@ -283,24 +295,13 @@ module.exports = {
 
     output: {
         filename: &apos;[name]_[chunkhash:8].js&apos;,
-        publicPath: &apos;https://cdn.example.com/assets/&apos;
+        publicPath: &apos;https://cdn.example.com/assets/&apos;            // 发布到线上的HTML &lt;script src=&quot;https://cdn.example.com/assets/main.12345678.js&quot;&lt;/script&gt;
     }
+</code></pre><h4 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h4><pre><code>它的基本工作流是将一个文件以字符串的形式读入，对其进行语法分析及转换, 预处理 CoffeeScript、    TypeScript、ESNext (Babel)、Sass、Less、Stylus
 
-    发布到线上的HTML &lt;script src=&quot;https://cdn.example.com/assets/main.12345678.js&quot;&lt;/script&gt;
+1、rules: 配置模块的读取和解析，将所有引用资源(.css、.html、.scss、.jpg)作为模块处理
 
-4、chunkFilename: 配置无入口的Chunk在输出时文件名称
-
-    const path = require(&apos;path&apos;);
-    module.exports = {
-        output: {
-            path: path.resolve(__dirname, &apos;./dist&apos;),
-            publicPath: &apos;/dist/&apos;,
-            filename: &apos;my-first-bundle.js&apos; 
-        }
-    }
-</code></pre><h4 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h4><pre><code>rules配置模块的读取和解析，将所有引用资源(.css、.html、.scss、.jpg)作为模块处理
-
-1、条件匹配: 通过test、include、exclude三个配置项来选中loader规则文件
+2、条件匹配: 通过test、include、exclude三个配置项来选中loader规则文件
 
     test: 匹配哪些文件
 
@@ -308,30 +309,28 @@ module.exports = {
 
     exclude: 排除某个目录，不在这个目录搜索文件
 
-2、应用规则: 对选中的文件通过usr配置来应用loader
+3、应用规则: 对选中的文件通过usr配置来应用loader
 
-3、重置顺序: 默认从右向左执行, 通过enforce选项将其中一个loader的顺序放到最前或最后
+4、重置顺序: 默认从右向左执行, 通过enforce选项将其中一个loader的顺序放到最前或最后
 
 module: {
 rules: [
         {
     test: /(\.jsx|\.js)$/,
     use: {
-      loader: &quot;babel-loader&quot;,        
-                options: {
-                    cacheDirectory: true,        // cacheDirectory用于缓存babel的编译结果，加快重新编译速度
-                }
+      loader: &quot;babel-loader&quot;,
     },
             include: [path.resolve(__dirname, &apos;src)],        // 只在src目录下搜索js文件
   }
   {
     test: /\.css$/,
-    use: [ &quot;style-loader&quot;, &quot;css-loader?minimize&quot;, &quot;sass-loader&quot; ],        // minimize 压缩css
+    use: [&quot;style-loader&quot;, &quot;css-loader?minimize&quot;, &quot;sass-loader&quot;],        // minimize 压缩css
             exclude: [/node_modules/]                // 除了node_modules目录不搜索
   }
 ]
 </code></pre><p>  }</p>
-<h4 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h4><pre><code>webpack启动后会从入口找出所有的依赖模块，resolve配置如何寻找模块对应的文件
+<pre><code>插件: npm install --save-dev css-loader
+</code></pre><h4 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h4><pre><code>webpack启动后会从入口找出所有的依赖模块，resolve配置如何寻找模块对应的文件
 
 1、alias 让模块引入变得简单
 
@@ -342,24 +341,24 @@ rules: [
         alias: {
             jquery: path.resolve(__dirname, &quot;/js/lib/jquery.min.js&quot;),
         },
-         extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;, &apos;.scss&apos;, &apos;.css&apos;]             //设置require或import的时候可以不需要带后缀
+        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;, &apos;.scss&apos;, &apos;.css&apos;]             //设置require或import的时候可以不需要带后缀
     }
 
     引用
     import $ from &apos;jquery&apos;;        // jquery就会被替换成依赖的路径
-</code></pre><h4 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h4><pre><code>plugins扩展webpack功能，在构建流程里演讲稿钩子
+</code></pre><h4 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h4><pre><code>plugins扩展webpack功能
 
 一、webpack自带插件，可以直接使用
 
     pulgins: [
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.CommonsChunkPlugin({    // webpack自带插件在webpack.optimize内
             name: &apos;vendor&apos;,                                // 上面入口定义的节点组
             filename: &apos;jquery.vendor.js?[hash]&apos;     // 最后生成的文件名
         })
     ]
 
-
-二、非webpack插件，需要先调用插件
+二、非自身插件，需要先调用插件
 
     例: main.js
 
@@ -377,67 +376,44 @@ rules: [
             allChunks: true,
         })
     ]
+
+webpack插件列表: https://www.webpackjs.com/plugins/
 </code></pre><h4 id="devServer"><a href="#devServer" class="headerlink" title="devServer"></a>devServer</h4><pre><code>webpack-dev-server - 创建一个本地服务，并能设置代理服务，并且能够实时重新加载
+</code></pre><p>  一、安装webpack-dev-server</p>
+<pre><code>$ npm i --save-dev webpack-dev-server
+</code></pre><p>  二、创建文件</p>
+<pre><code>// 创建项目目录
+$ mkdir webpack_base_demo &amp;&amp; cd webpack_base_demo      
 
-一、创建文件
+// 创建配置文件
+$ touch README.md  .gitignore  .babelrc  webpack.config.js
 
-    // 创建项目目录
-    $ mkdir webpack_base_demo &amp;&amp; cd webpack_base_demo      
+// 创建package.json
+$ npm init 
 
-    // 创建配置文件
-    $ touch README.md  .gitignore  .babelrc  webpack.config.js
-
-    // 创建package.json
-    $ npm init 
-
-    // 配置.babelrc文件
-    {
-        &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;],
-        &quot;env&quot;: {
-            &quot;development&quot;: {
-            &lt;!-- &quot;plugins&quot;: [[&quot;react-transform&quot;, {
-                &quot;transforms&quot;: [{
-                    &quot;transform&quot;: &quot;react-transform-hmr&quot;,
-                    &quot;imports&quot;: [&quot;react&quot;],
-                    &quot;locals&quot;: [&quot;module&quot;]
-                }]
-            }]] --&gt;
-            }
+// 配置.babelrc文件
+{
+    &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;],
+    &quot;env&quot;: {
+        &quot;development&quot;: {
+        &lt;!-- &quot;plugins&quot;: [[&quot;react-transform&quot;, {
+            &quot;transforms&quot;: [{
+                &quot;transform&quot;: &quot;react-transform-hmr&quot;,
+                &quot;imports&quot;: [&quot;react&quot;],
+                &quot;locals&quot;: [&quot;module&quot;]
+            }]
+        }]] --&gt;
         }
     }
-
-二、安装webpack、webpack-dev-server
-
-    $ npm i --save-dev webpack@3.10.0 webpack-dev-server            // webpack4.0 需要安装cli
-
-三、安装loader
-
-    // 如果使用react框架来做项目，先下载包
+}
+</code></pre><p>  三、安装需要的loader插件</p>
+<pre><code>// 如果使用react框架来做项目，先下载包
     $ npm i --save react react-dom
 
-    $ npm i --save babel-plugin-react-transform react-transform-hmr   // babel的插件，在react热更新
+// babel的插件，在react热更新
+    $ npm i --save babel-plugin-react-transform react-transform-hmr   
 
-        // .babelrc
-        {
-            &quot;presets&quot;: [&quot;react&quot;, &quot;env&quot;],
-            &quot;env&quot;: {
-                &quot;development&quot;: {
-                    &quot;plugins&quot;: [
-                        [
-                            &quot;react-transform&quot;, {
-                                &quot;transforms&quot;: [{
-                                    &quot;transform&quot;: &quot;react-transform-hmr&quot;,
-                                    &quot;imports&quot;: [&quot;react&quot;],
-                                    &quot;locals&quot;: [&quot;module&quot;]
-                                }]
-                            }
-                        ]
-                    ]
-                }
-            }
-        }
-
-    // 使用Babel-loader来解析es6和react
+// 使用Babel-loader来解析es6和react
     $ npm i --save babel-core babel-loader babel-preset-env babel-preset-react
 
     // vue-load - 解析和转换.vue文件，vue-template-compiler - 将vue-load提取出的HTML模板编译成可执行的JS代码，vue项目可直接安装vue-cli
@@ -460,301 +436,225 @@ rules: [
 
     // CSS预处理器  autoprefixer 自动加载前缀
     $ npm i --save less-loader sass-loader
+</code></pre><p>  五、package.json配置</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --hot --inline --progress&quot;,
+    &quot;start&quot;: &quot;webpack --progress --profile --colors --config webpack.config.js&quot;,
+},
+$ npm run start        // 启动开发环境
+</code></pre><p>  六、创建生成和开发配置文件</p>
+<pre><code>webpack.config.js 开发环境所用配置文件
+webpack.pub.config.js  生产环境所用配置文件
+</code></pre><p>  七、注意</p>
+<pre><code>1、启动两个侦听一个是webpack，一个是devServer，单独启devServer热更新不执行编译，暂没找到解决方法
+
+  $ npm run build
+
+  $ npm run dev
+</code></pre><h4 id="devServer的执行命令"><a href="#devServer的执行命令" class="headerlink" title="devServer的执行命令"></a>devServer的执行命令</h4><p>  webpack-dev-server - 在 localhost:8080 建立一个 Web 服务器</p>
+<p>  webpack-dev-server –devtool eval - 为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号</p>
+<p>  webpack-dev-server –progress - 显示合并代码进度</p>
+<p>  webpack-dev-server –colors - 命令行中显示颜色</p>
+<p>  webpack-dev-server –content-base build  // webpack-dev-server服务会默认以当前目录伺服文件，如果设置了content-base的话，服务的根路径则为build目录</p>
+<p>  webpack-dev-server –inline  可以自动加上dev-server的管理代码，实现热更新</p>
+<p>  webpack-dev-server –hot  开启代码热替换，可以加上HotModuleReplacementPlugin</p>
+<p>  webpack-dev-server –port 3000 设置服务端口</p>
+<h4 id="webpack与gulp"><a href="#webpack与gulp" class="headerlink" title="webpack与gulp"></a>webpack与gulp</h4><pre><code>gulp 是 task runner，Webpack 是 module bundler
+
+webpack对多入口支持的不太好
+
+gulp没有模块化的支持，需要与webpack结合
+</code></pre><h4 id="Source-Map"><a href="#Source-Map" class="headerlink" title="Source Map"></a>Source Map</h4><pre><code>启动时需要加 --devtool source-map 参数重启DevServer后刷新页面，在chrome开发者工具就可以调试源码
+</code></pre><h4 id="常用的处理g"><a href="#常用的处理g" class="headerlink" title="常用的处理g"></a>常用的处理g</h4><pre><code>一、css处理
+
+    基本问题包括：
+
+        预编译语言转换
+        样式文件挂载方式选择
+        代码优化（合并及压缩）
+        去除或保留指定格式的注释
+        资源定位路径的转换
+        响应式布局单位转换【可选】
+        模块化【可选】
+        处理浏览器兼容【可选】
+
+    1、style-loader - 将处理结束的CSS代码存储在js中，运行时嵌入&amp;lt;style&amp;gt;后挂载至html页面上
+
+    2、css-loader - 加载器，使webpack可以识别css模块
+
+    3、postcss-loader - 加载器，下一篇将详细描述
+
+    4、sass-loader - 加载器，使webpack可以识别scss/sass文件，默认使用node-sass进行编译
+
+    5、mini-css-extract-plugin - 提取单独的css文件插件，4.0版本启用的插件，替代原extract-text-webpack-plugin插件，将处理后的CSS代码提取为独立的CSS文件
+
+    6、optimize-css-assets-webpack-plugin - 插件，实现CSS代码压缩
+
+    7、autoprefixer - 自动化添加跨浏览器兼容前缀
 
 
-四、安装插件
+二、Assets 资源（图片、json、xml）
 
-    1、html-webpack-plugin 解析html模板
+    * 体积压缩
+    * 雪碧图合并及引用修正
+    * 资源的引用路径自动替换
 
-        将入口js文件直接构建到指定的html中，并构建到build目录，这样不用手动在html引用js文件，和将html手动放到build目录下
+    1、file-loader - 处理资源文件打包
 
-        $ npm i --save html-webpack-plugin
+    2、url-loader - 优化项目中对于资源的引用路径，并设定大小限制
 
-    2、extract-text-webpack-plugin 单独打包css文件
+    3、html-loader - html中的静态资源替换
 
-        $ npm i --save extract-text-webpack-plugin
-
-    3、open-browser-webpack-plugin   自动打开浏览器
-
-        $ npm i --save open-browser-webpack-plugin
-
-        var OpenBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
-        plugin: [
-          new OpenBrowserWebpackPlugin({ url: &apos;http://localhost:8080&apos; })
-        ]
-
-    4、webpack-spritesmith   雪碧图
-
-        $ npm i --save webpack-spritesmith
-
-        https://www.cnblogs.com/weiweisuo/p/6912740.html
-
-    『 更多插件见 webpack插件类.md 』
-
-
-五、package.json配置
-
-    &quot;scripts&quot;: {
-        &quot;start&quot;: &quot;webpack-dev-server --hot --inline --progress&quot;,
-        &quot;build&quot;: &quot;webpack --progress --profile --colors --config&quot;
-    },
-
-    $ npm run start        // 启动开发环境
-
-
-六、webpack.config.js、webpack.production.config 配置文件
-
-    webpack.config.js 开发环境所用配置文件
-    webpack.pub.config.js  生产环境所用配置文件
-
-    /**
-     * User: siguang
-     * Date: 2016/12/28
-     * Time: 15:04
-     */
-    const webpack = require(&apos;webpack&apos;);
-    const path = require(&apos;path&apos;);
-    const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;)
-    // const ExtractTextPlugin = require(&quot;extract-text-webpack-plugin&quot;); // 单独打包CSS
-    const OpenBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
-    // 清除目录
-    const CleanWebpackPlugin = require(&apos;clean-webpack-plugin&apos;);
-    // 提取公用
-    const CommonsChunkPlugin = require(&apos;webpack/lib/optimize/CommonsChunkPlugin&apos;);
-
-    /*  文件路径配置 */
-    const basePath = __dirname;
-    const appPath = path.resolve(basePath, &apos;src&apos;);
-    const buildPath = path.resolve(basePath, &apos;build&apos;);
-
-    /* libs 目录下的库文件 */
-    const libsPath = path.resolve(basePath, &apos;src/libs&apos;);
-    const jquery = path.resolve(libsPath, &apos;jquery.min&apos;)
-
-    // webpack配置对象
-    module.exports = {
-
-        // 入口文件
-        entry: {
-                app: path.resolve(appPath, &apos;js/index.js&apos;),
-                list: path.resolve(appPath, &apos;js/list.js&apos;)
-        },
-
-        // 出口文件
-        output: {
-                path: buildPath,
-                filename: &apos;/js/[name].min.js?[hash]&apos;,
-                chunkFilename: &quot;[name].min.js?[hash]&quot;
-        },
-
-        // 加载器配置
-        module: {
-            loaders: [
-
-                // 处理require()引入的css文件，并将代码显示到页面的&lt;style|中
-                { test: /\.css$/, loader: &quot;style-loader!css-loader&quot; },
-
-                // 将jsx文件转成js文件
-                { test: /\.js$/, loader: &apos;jsx-loader?harmony&apos;},
-
-                // 将scss文件转成css文件
-                { test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;},
-
-                // ?limit=8192  limit设置小于8k的图片转成64位编码，大小8于不会被转码
-                { test: /\.(png|jpg|woff|eot|ttf|svg|gif)$/, loader: &apos;url-loader?limit=8192&apos;},
-
-                // ES6 转 ES5
-                {    
-                    test: /\.js?$/,
-                    loader: &apos;babel-loader&apos;,
-                    query: {
-                        presets: [&apos;es2015&apos;]
+    module: {
+        rules: [
+            {    
+                test:/\.(jpg|png|svg|gif)/,    
+                use:[{      
+                    loader:&apos;file-loader&apos;,      
+                    options:{        
+                        outputPath:&apos;imgs/&apos;
                     }
-                }   
-            ]
-        },
-
-        // 插件
-        plugins: [
-            // 清空build目录
-            new CleanWebpackPlugin(buildPath), 
-
-            // 热启动
-            new webpack.HotModuleReplacementPlugin(),
-
-            // 自动开启浏览器
-            new OpenBrowserWebpackPlugin({ url: &apos;http://localhost:5000&apos; })
-
-            // 压缩打包的文件
-            // new webpack.optimize.UglifyJsPlugin({
-            //     compress: {
-            //         //supresses warnings, usually from module minification
-            //         warnings: false
-            //     }
-            // }),
-
-            // 将vendor中的库合并到一起
-            new CommonsChunkPlugin({
-                // 从哪些Chunk 中提取
-                chunks: [&apos;main&apos;, &apos;list&apos;],
-                // 提取的公共部分形成一个chunk
-                name: &apos;common&apos;
-            }),     
-
-            // html
-            new HtmlWebpackPlugin({
-                // 改变页面的&lt;title|标签的内容 
-                title: &apos;Hello World app&apos;,                   // 页面调用&lt;%= htmlWebpackPlugin.options.title %|
-                // 模版地址
-                template: path.resolve(appPath, &apos;index.html&apos;),
-                // 构建后的文件名和目录
-                filename: &apos;index.html&apos;,
-                //chunks这个参数告诉插件要引用entry里面的哪几个入口
-                chunks:[&apos;app&apos;,&apos;vendor&apos;],
-                //要把script插入标签里
-                inject:&apos;body&apos;
-            }),
-
-            new HtmlWebpackPlugin({
-                // 改变页面的&lt;title|标签的内容 
-                title: &apos;Hello World appList&apos;, 
-                // 模版地址
-                template: path.resolve(appPath, &apos;list.html&apos;),
-                // 构建后的文件名和目录
-                filename: &apos;list.html&apos;,
-                //chunks这个参数告诉插件要引用entry里面的哪几个入口
-                chunks:[&apos;list&apos;,&apos;vendor&apos;],
-                //要把script插入标签里
-                inject:&apos;body&apos;
-            }),                
-        ],
-
-        // 查找依赖
-        resolve:{
-            jquery: path.resolve(__dirname, &apos;src/utils/jquery.min.js&apos;), 
-            // require或alias时不需要写后缀
-            // extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.css&quot;, &quot;.json&quot;],
-        },
-
-        // 启动文件侦听
-        watch: true,      // 这里配置watch与在package.json中的script中设置 webpack --watch一样
-        watchOptions: {
-            // 不侦听的文件夹
-            ignored: &apos;/node_modules/&apos;,  
-            // 文件变化后300ms后在编译，防止更新太快导致重新编译太快
-            aggregateTimeout: 300,
-            // 判断文件变化 
-            poll: 1000
-        },
-
-        devtool: &apos;source-map&apos;,
-
-        // webpack-dev-server 配置
-        devServer: {
-        port: 8090,               // 端口
-            contentBase: &apos;build&apos;,     // 内容目录
-            hot: true,                    // 启用webpack热替换
-            inline: true,
-            compress: true,                  // 一切服务都启用gzip 压缩
-            proxy: {
-                &apos;/api/*&apos;: {                // 以api开头的走代理接口
-                    target: &apos;http://wwww.we.com&apos;,
-                    pathRewrite: {
-                        &apos;^/api/&apos;: &apos;/&apos;    // api指向target的根目录
-                    },
-                    changeOrigin: true,
-                    secure: false
-                }
+                }]
             },
-            historyApiFallback:{
-                rewrites:[        // 不存在的路由跳到404页面
-                    {
-                        from: /./,
-                        to: &apos;404.html&apos;
+            {    
+                test:/\.(jpg|png|svg|gif)/,    
+                use:[{      
+                    loader:&apos;url-loader&apos;,      
+                    options:{        
+                        limit: 8129,            // 限制图片转base64引用大小
+                        fallback: &apos;file-loader&apos;,        // 大小limit的交给file-loader处理
+                        ouputpath: &apos;imgs/&apos;        // 指定输出路径
+                    }
+                }]
+            }
+        ]
+    }
+
+
+三、处理JS和splitChunk
+
+    Js文件打包需求
+
+    * 代码编译（TS或ES6代码的编译）
+    * 脚本合并
+    * 公共模块识别
+    * 代码分割
+    * 代码压缩混淆
+
+    1、Babel转换ES6+
+
+        webpack.config.js: 
+            module: {    
+                rules: [
+                    {        
+                        test: /\.js$/,        
+                        exclude: /node_modules/,        
+                        use: [
+                            {             
+                                loader: &apos;babel-loader&apos;
+                            }
+                        ]
                     }
                 ]
+            },
+
+        .bablerc: 
+            {    
+                &quot;presets&quot;:[
+                    [
+                        &quot;env&quot;,
+                        {            
+                            &quot;targets&quot;:{                
+                                &quot;browsers&quot;:&quot;last 2 versions&quot;
+                            }
+                        }
+                    ]
+                ],    
+                &quot;plugins&quot;: [         
+                    &quot;babel-plugin-transform-runtime&quot; 
+                ]
             }
-        }
-    }
+
+    2、脚本合并
 
 
-两套配置:
+    3、脚本分割
 
-    webpack.development.config.js            // 开发配置
-    webpack.production.config.js            // 生产配置
+        为什么要分割，如果遇到比如使用Echarts第三方库或公用文件，这个时候我们不希望把它与业务一起合并到一个文件中，会使这个文件变得非常打，不利于加载
 
-    script: {
-        &quot;build&quot;: &quot;webpack --config production.config.js&quot;,
-        &quot;dev&quot;: &quot;webpack --config development.config.js&quot;
-    }
-</code></pre><h4 id="webpack-dev-server-参数"><a href="#webpack-dev-server-参数" class="headerlink" title="webpack-dev-server 参数"></a>webpack-dev-server 参数</h4><pre><code>一、在webpack.config.js中配置
 
-    // 生成Source Map
-    devtool: &apos;source-map&apos;,
+    4、代码混淆压缩
 
-    devServer: {
-        // 端口
-        port: 8090,               
+        UglifyJs
 
-        // 默认目录
-        contentBase: &apos;build&apos;,
 
-        // 启用webpack热替换
-        hot: true,                // 必须要有HotModuleReplacementPlugin插件才能完全启用HMR
+    5、splitChunks
 
-        //           
-        inline: true,
+        用于提取公用文件或第三方组件，4.0废弃了CommonsChunkPlugin插件，使用optimization.splitChunks和optimization.runtimeChunk来代替
 
-        // 启用gzip压缩
-        compress: true,                  
+        vendor 加载公用文件或第三方组件
 
-        // 配置代理
-        proxy: {
-            &apos;/api/*&apos;: {                // 以api开头的走代理接口
-                target: &apos;http://goucai.diyicai.com&apos;,
-                pathRewrite: {
-                    &apos;^/api/&apos;: &apos;/&apos;    // api指向target的根目录
-                },
-                changeOrigin: true,
-                secure: false
+        entry: {
+            index: path.resolve(basePath, &apos;js/index.js&apos;),
+            list: path.resolve(basePath, &apos;js/list.js&apos;),
+            vendors:  path.resolve(basePath, &apos;js/common.js&apos;),
+        },
+
+        // 使用optimization，与entry同级，不需要放到plugins内
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        name: &quot;vendors&quot;,
+                        chunks: &quot;initial&quot;,
+                        minChunks: 2
+                    }
+                }
             }
         },
 
-        // 配置路由的跳转，404跳转
-        historyApiFallback:{
-            rewrites:[        // 不存在的路由跳到404页面
-                {
-                    from: /./,
-                    to: &apos;404.html&apos;
+        plugins: [
+            new HtmlWebpackPlugin({
+                title: &apos;首页&apos;, 
+                template: path.resolve(basePath, &apos;index.html&apos;),
+                filename: path.resolve(buildPath, &apos;index.html&apos;),
+                chunks:[&apos;index&apos;, &apos;vendors&apos;],            // 这里加vendors
+                inject:&apos;body&apos;,
+            })
+        ]
+
+        &lt;!-- module.exports = { 
+            optimization: {    
+                splitChunks: {      
+                    chunks: &apos;async&apos;,                        // 默认只作用于异步模块，为`all`时对所有模块生效,`initial`对同步模块有效
+                    minSize: 30000,                            // 合并前模块文件的体积
+                    minChunks: 1,                                // 最少被引用次数
+                    maxAsyncRequests: 5,      
+                    maxInitialRequests: 3,      
+                    automaticNameDelimiter: &apos;~&apos;,        // 自动命名连接符
+                    cacheGroups: {        
+                        vendors: {          
+                            test: /[\\/]node_modules[\\/]/,          
+                            minChunks:1,                        // 敲黑板
+                            priority: -10                        // 优先级更高
+                        },        
+                        default: {          
+                            test: /[\\/]src[\\/]js[\\/]/
+                            minChunks: 2,                        // 一般为非第三方公共模块
+                            priority: -20,          
+                            reuseExistingChunk: true
+                        }
+                    },      
+                    runtimeChunk:{         
+                         name:&apos;manifest&apos;
+                    }
                 }
-            ]
-        }
+            } --&gt;
+</code></pre><h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><pre><code>1、devServer启动时不编译，分别侦听
 
-        // 设置响应头
-        headers: { &apos;X-Token&apos;: &apos;bar&apos; }
+2、js文件引用动态生成到html文档内
 
-        // 设置https
-        https: true    使用https，也可以配置证书，见资料第2章
-    }
-
-
-二、参数是加到package.json的script中的  &quot;start&quot;: &quot;webpack-dev-server --hot --inline --progress&quot;,
-
-    webpack-dev-server - 在 localhost:8080 建立一个 Web 服务器
-
-    webpack-dev-server --devtool eval - 为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号
-
-    webpack-dev-server --progress - 显示合并代码进度
-
-    webpack-dev-server --colors - 命令行中显示颜色
-
-    webpack-dev-server --content-base build  // webpack-dev-server服务会默认以当前目录伺服文件，如果设置了content-base的话，服务的根路径则为build目录
-
-    webpack-dev-server --inline  可以自动加上dev-server的管理代码，实现热更新
-
-    webpack-dev-server --hot  开启代码热替换，可以加上HotModuleReplacementPlugin
-
-    webpack-dev-server --port 3000 设置服务端口
+3、第三方插件或公用组件splitChunk
 </code></pre><p>| <a href="https://doc.webpack-china.org/concepts/" target="_blank" rel="noopener">https://doc.webpack-china.org/concepts/</a>        webpack中文网 v3.10.0<br>| <a href="https://www.jianshu.com/p/42e11515c10f" target="_blank" rel="noopener">https://www.jianshu.com/p/42e11515c10f</a><br>| <a href="http://webpack.wuhaolin.cn/" target="_blank" rel="noopener">http://webpack.wuhaolin.cn/</a>                            // book<br>| <a href="https://webpack.js.org/plugins/" target="_blank" rel="noopener">https://webpack.js.org/plugins/</a>                // 自带插件<br>| <a href="https://zhuanlan.zhihu.com/p/32148338" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32148338</a><br>| <a href="https://blog.csdn.net/keliyxyz/article/details/51571386" target="_blank" rel="noopener">https://blog.csdn.net/keliyxyz/article/details/51571386</a><br>| <a href="http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2" target="_blank" rel="noopener">http://react-china.org/t/webpack-output-filename-output-chunkfilename/2256/2</a>   // output.filename 和output.chunkFilename<br>| <a href="http://www.alloyteam.com/2016/02/code-split-by-routes/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/02/code-split-by-routes/</a>  按需加载<br>|<br>| 插件<br>| <a href="http://www.cnblogs.com/haogj/p/5160821.html" target="_blank" rel="noopener">http://www.cnblogs.com/haogj/p/5160821.html</a>     // html-webpack-plugin html多页面构建<br>|<br>| 热更新<br>| <a href="https://github.com/gaearon/react-hot-loader" target="_blank" rel="noopener">https://github.com/gaearon/react-hot-loader</a>    // react<br>| <a href="https://github.com/vuejs/vue-loader" target="_blank" rel="noopener">https://github.com/vuejs/vue-loader</a>            // vue</p>
 
         
@@ -786,7 +686,7 @@ rules: [
 
 </div>
         <footer class="footer">
-    Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
 </footer>
 
 <script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
