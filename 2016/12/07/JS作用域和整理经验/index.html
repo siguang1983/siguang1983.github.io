@@ -108,7 +108,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数"><span class="toc-number">2.</span> <span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将对象拷贝并不引用指针"><span class="toc-number">3.</span> <span class="toc-text">将对象拷贝并不引用指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象的深拷贝和浅拷贝"><span class="toc-number">4.</span> <span class="toc-text">对象的深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组的深拷贝"><span class="toc-number">5.</span> <span class="toc-text">数组的深拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象处理"><span class="toc-number">6.</span> <span class="toc-text">对象处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断数据类型"><span class="toc-number">7.</span> <span class="toc-text">判断数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组处理"><span class="toc-number">8.</span> <span class="toc-text">数组处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编写组件并兼容AMD、ES6写法"><span class="toc-number">9.</span> <span class="toc-text">编写组件并兼容AMD、ES6写法</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造函数"><span class="toc-number">2.</span> <span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象拷贝并不引用指针"><span class="toc-number">3.</span> <span class="toc-text">对象拷贝并不引用指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象的深拷贝和浅拷贝"><span class="toc-number">4.</span> <span class="toc-text">对象的深拷贝和浅拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组的深拷贝"><span class="toc-number">5.</span> <span class="toc-text">数组的深拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对象处理"><span class="toc-number">6.</span> <span class="toc-text">对象处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#判断数据类型"><span class="toc-number">7.</span> <span class="toc-text">判断数据类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数组处理"><span class="toc-number">8.</span> <span class="toc-text">数组处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编写组件并兼容AMD、ES6写法"><span class="toc-number">9.</span> <span class="toc-text">编写组件并兼容AMD、ES6写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#千分位函数"><span class="toc-number">10.</span> <span class="toc-text">千分位函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小技巧"><span class="toc-number">11.</span> <span class="toc-text">小技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#兼容不支持的方法"><span class="toc-number">12.</span> <span class="toc-text">兼容不支持的方法</span></a></li></ol>
         
     </div>
 </aside>
@@ -158,7 +158,7 @@
     }
 
     预解析会保存a = undefinded，和 a = function a(){alert(&quot;2&quot;)}，
-    因为函数与变量重名，函数后最执行所以保留函数，结果输出的就是函数
+    在变量与函数名相同时，输出的结果函数优先级高于变量名
 
 
 三、示例3
@@ -204,14 +204,12 @@
 六、示例6
 
     var  myname = &quot;global&quot;; // 全局变量
-    function func() {
-
-        // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined
-        alert(myname);                 
+    function fun() {
+        alert(myname);             // &quot;undefined&quot;，如果函数内不在定义myname就会找全局的变量，但函数本身已经定义了，预编译会先将变量定义成undefined        
         var myname = &quot;local&quot;;
-        alert(myname);                 // &quot;local&quot;
+        alert(myname);             // &quot;local&quot;
     }
-    func();
+    fun();
 
 
 七、示例7
@@ -233,20 +231,19 @@
         window.id = &apos;window&apos;;
 
         document.getElementById(&apos;divA&apos;).onclick = function(){
-            alert(this.id);
+            alert(this.id);            // output &quot;divA&quot;
 
             var callback = function(){
-                return this.id;        // divA
+                return this.id;        // output &quot;window&quot;
             }
-            callback();            // window
+            callback();            // 指针指向window
         }
     &lt;/script&gt;
 
 
  九、示例9
 
-    1、Example
-        var getName;
+    1、var getName;
         console.log(getName)    // undefined
 
         getName()                // Uncaught TypeError: getName is not a function
@@ -255,8 +252,7 @@
             console.log(&apos;wscat&apos;)
         }
 
-    2、Example
-        var getName;
+    2、var getName;
         console.log(getName)    // function getName() {console.log(&apos;oaoafly&apos;)}
 
         getName()                // oaoafly
@@ -289,9 +285,8 @@
 十一、严格模式下的this
 
     &lt;script&gt;
-        &apos;use strict&apos;
-
         function fun(){
+            &apos;use strict&apos;
             alert(this);        // 返回 &apos;undefined&apos;, strict模式下this不会指向全局
         }
 
@@ -307,7 +302,7 @@
 
             document.querySelector(&quot;#showThis&quot;).onclick = () =&gt;{
                 // 如果非箭头函数this应该指向 #showThis
-                // 这里箭头函数不是指向调用者，所以指向了 Template
+                // 箭头函数不是指向调用者，所以指向了Template
                 console.log(this);    
             }
         }
@@ -373,13 +368,13 @@
     new Foo().getName();         // 1  先执行new Foo()构造函数，然后在构造函数下去找getName方法，Foo构造函数方法没有getName()所以到prototype下去找
     new new Foo().getName();     // 1  与上面相同
 &lt;/script&gt;
-</code></pre><h4 id="将对象拷贝并不引用指针"><a href="#将对象拷贝并不引用指针" class="headerlink" title="将对象拷贝并不引用指针"></a>将对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
+</code></pre><h4 id="对象拷贝并不引用指针"><a href="#对象拷贝并不引用指针" class="headerlink" title="对象拷贝并不引用指针"></a>对象拷贝并不引用指针</h4><pre><code>有两种方法，一是使用for...in将一个对象拷贝到另一个对象
 
 另一种方法是使用Object.assign()
 
 let objA = {
-    name: &apos;siguang&apos;,
-    age: 30
+        name: &apos;siguang&apos;,
+        age: 30
 }
 let objB = Object.assign({}, objA);
 objB.name = &apos;lulu&apos;;         // lulu
@@ -450,6 +445,15 @@ console.log(objA.name);     // siguang
     console.log(arrB);  // [1,2,3,5,6,7]
 
 两种方法都是回返一个不带指向的新数组
+
+三、使用扩展运算符...
+
+    let a1 = [1, 2, 3];
+    let a2 = [...a1];
+    a2.push(4);
+
+    console.log(a1);        // [1, 2, 3]
+    console.log(a2);        // [1, 2, 3, 4]
 </code></pre><h4 id="对象处理"><a href="#对象处理" class="headerlink" title="对象处理"></a>对象处理</h4><pre><code>一、查看是否是一个空对象
 
     // 使用keys来查看对象中所有的kyes并返回一个数组，如果数组为度为0则对象为空
@@ -464,9 +468,10 @@ console.log(objA.name);     // siguang
         b: 2
     }
     console.log(obj.c);        // undefined
-</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isDataType(data){
-
+</code></pre><h4 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h4><pre><code>function isType(data, name){ 
+    return Object.prototype.toString.call(data) === `[object ${name}]` 
 }
+isType({}, &apos;Object&apos;);            // true;
 </code></pre><h4 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h4><pre><code>一、数据去重
 
     1、普通方法
@@ -526,6 +531,56 @@ console.log(objA.name);     // siguang
 })(this, function(){
     console.log(`输出内容`);
 })
+</code></pre><h4 id="千分位函数"><a href="#千分位函数" class="headerlink" title="千分位函数"></a>千分位函数</h4><pre><code>Vue.filter(&apos;thousand&apos;, function (num, fixed) {
+    let n = Number(num)
+    if (isNaN(n)) return 0;
+    if (fixed &amp;&amp; String(n).split(&apos;.&apos;).length === 2 &amp;&amp; String(n).split(&apos;.&apos;)[1].length &gt; fixed) {
+        n = num.toFixed(fixed)
+    }
+    const str = (n || 0).toString()
+    return str.indexOf(&apos;.&apos;) &gt; -1 ? str.replace(/(\d)(?=(?:\d{3})+\.)/g, &apos;$1,&apos;) : str.replace(/(\d)(?=(?:\d{3})+$)/g, &apos;$1,&apos;);
+});
+</code></pre><h4 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h4><pre><code>1、获取arguments参数中的不同
+
+    function execute(name){
+        return [].slice.call(arguments, 1);
+    }
+    execute(1,2,3,4);        // 返回 [2, 3, 4];
+
+2、case语句
+
+    function showTest(type) { 
+        switch(type) { 
+            case &quot;a&quot;:                    // type为a/b/c都执行console.log(&apos;ok&apos;)
+            case &quot;b&quot;:
+            case &quot;c&quot;:
+                console.log(&apos;ok&apos;);
+                break;
+
+            default:
+                console.log(&apos;error&apos;);
+                break;
+        }
+    }
+</code></pre><h4 id="兼容不支持的方法"><a href="#兼容不支持的方法" class="headerlink" title="兼容不支持的方法"></a>兼容不支持的方法</h4><pre><code>1、 Object.create不支持的处理
+
+    Object.create = Object.create || function(obj){
+        var F = function(){};
+        F.prototype = obj;
+        return new F();
+    }
+
+2、bind()
+
+    Function.prototype.bind = Function.prototype.bind || function(){
+        var self = this,
+                context = [].shift.call(arguments),
+                args = [].slice.call(arguments);
+
+        return function(){
+            return self.apply(context, [].concat.call(args, [].slice.call(arguments)))
+        }
+    }
 </code></pre><p>| <a href="https://juejin.im/entry/58db95eaac502e0058f8472e" target="_blank" rel="noopener">https://juejin.im/entry/58db95eaac502e0058f8472e</a><br>| <a href="http://www.iamaddy.net/2015/04/front-end-engineering/" target="_blank" rel="noopener">http://www.iamaddy.net/2015/04/front-end-engineering/</a>       // 前端的发展</p>
 
         

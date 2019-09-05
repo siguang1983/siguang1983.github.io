@@ -1925,22 +1925,24 @@ js中事件模型来替代传统的发布订阅模式
 6、type: 脚本类型
 
 &apos;use strict&apos; 严格模式
-</code></pre><h4 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h4><pre><code>作用域: 变量和函数可访问的范围，作用域分为局部和全局，函数中声明的变量叫局部变量，在window对象下定义的变量为全局变量
+</code></pre><h4 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h4><pre><code>作用域: 变量的有效范围，函数从内往外搜索变量，如果内部没有变量就去外部搜索直接全局对象
 
 作用域链: 决定哪些变量能够被当前函数访问及访问顺序
 
     函数对象有一个[[Scope]]属性，包含了函数被创建作用域中对象的集合，集合被称为函数的作用域链scope chain，它决定了哪些数据能被函数访问
 
     function doSomething(){
-        var blogName=&quot;Jessica&quot;;
-        function innerSay(){
-            alert(blogName);
-        }
-        innerSay();
+            var blogName=&quot;Jessica&quot;;
+            function innerSay(){
+                    alert(blogName);
+            }
+            innerSay();
     }
     alert(blogName);        //脚本错误
     innerSay();             //脚本错误
-</code></pre><h4 id="js预解析"><a href="#js预解析" class="headerlink" title="js预解析"></a>js预解析</h4><pre><code>JS执行时先将代码中所有 var定义变量和function(){} 进行提取，函数内部变量除外。
+
+变量生命周期：全局的变量是永久的，函数内的局部变量当退出函数时，局部变量即消毁，
+</code></pre><h4 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h4><pre><code>JS执行时先将代码中所有 var定义变量和function(){} 进行提取，函数内部变量除外。
 
 将var的变量赋为undefined
 
@@ -1949,7 +1951,6 @@ js中事件模型来替代传统的发布订阅模式
 Example:
     var add = &apos;bbb&apos;; 
     function add(){console.log(&apos;aaa&apos;)} 
-
     add();      报错
 </code></pre><h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><pre><code>闭包: 函数嵌套，内部函数调用外部函数的局部变量，内部函数执行完后自动消毁，外部函数的变量不会被回收一直保存在内存中.
 
@@ -1967,6 +1968,63 @@ Example:
     f();    // 3
     f();    // 4
 &lt;/script&gt;
+</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><pre><code>JS的七种数据类型: Number、String、Boolean、Undefined、Object、Function、Symbol
+
+一、 获取数据类型
+
+    获取数据的类型: 返回的值（number、string、boolean、array、object、function、undefined、symbol）
+
+    Object.prototype.toString.call(val) - 获取JS私有的 Class 属性, 这个隐藏的属性是不能被改的
+
+    // 判断类型
+    function returnType(val) {
+        let typeName;
+        if (typeof val === &apos;object&apos;) {
+            let typeName = Object.prototype.toString.call(val);
+
+            if (typeName == &apos;[object Array]&apos;) {
+                return &apos;array&apos;
+            } 
+            else if (typeName == &apos;[object Object]&apos;) {
+                return &apos;object&apos;
+            }
+            else if(typeName == &apos;[object Null]&apos;){
+                return &apos;null&apos;
+            }
+        } 
+        else {
+            return typeof val;
+        }
+    }
+
+
+二、NaN 非数值
+
+    isNaN() 是否是一个NaN非数值， 如果是数字返回false, 否则返回true
+
+        isNaN(NaN);     // true
+        isNaN(10);      // false
+        isNaN(&apos;10&apos;);    // false 转换后是一个数字
+        isNaN(&apos;blue&apos;);  // true 转换后不会是一个数字
+        isNaN(true);    // false true转换后为1是一个数字      
+
+
+三、类型转换
+
+    String to Number: 类型转换只支持十进制（30）、二进制（0b111）、八进制（0o13）、十六进制（0xFF）
+
+    Number比parseInt和parseFloat更好的选择，一些古老的浏览器parseInt还支持0开头数字的八进制前缀，这是错误的，在任何环境下都建议传入parseInt第二个参数
+
+    1、Number() 布尔转换成1或0，null返回0，undefined返回NaN
+
+    2、parseiInt(num, 10): 第二个参数来规则用哪个进制来转换
+
+    3、parseFloat(): 直接将字符串以十进制来转换
+</code></pre><h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><pre><code>var str = &apos;1234567&apos;;
+str.length;        // 返回7
+
+str原始值只是一个字符串，为什么会有属性和方法，它经历了一个过程叫『包装类』
+JS在执行些方法的时候会隐式的转成 new String(str)，执行完后在乐逍毁掉
 </code></pre><h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre><code>一、函数没有重载: 当两个函数名相同，后面的函数会覆盖掉之前的函数
 
     function getUserName(){
@@ -1980,7 +2038,7 @@ Example:
     getUserName();      // &apos;b&apos;
 
 
-二、声明函数和匿名函数: 
+二、声明函数和匿名函数
 
     function person() {  ...  };          // 声明
     var person = function() {  ...  }     // 匿名
@@ -2039,9 +2097,9 @@ Example:
 
     var fn = function(){ }; 
     fn();       // undefined
-</code></pre><h4 id="call-、apply"><a href="#call-、apply" class="headerlink" title="call()、apply()"></a>call()、apply()</h4><pre><code>Function.prototype.call() 和 Function.prototype.apply() 用于改变函数的this指向
+</code></pre><h4 id="call-、apply-、bind"><a href="#call-、apply-、bind" class="headerlink" title="call()、apply()、bind()"></a>call()、apply()、bind()</h4><pre><code>Function.prototype.call() 和 Function.prototype.apply() 用于改变函数的this指向
 
-一、无参
+一、call无参
 
     var obj1 = {
         name: &apos;siguang&apos;,
@@ -2049,18 +2107,17 @@ Example:
             return this.name;
         }
     }
-
     var obj2 = {
         name: &apos;lulu&apos;
     }
-
     console.log(obj1.getName());  // siguang
 
     // 注意这里是将getName中的this指定指向了obj2，并且执行了getName()函数
     var n1 = obj1.getName.call(obj2);
     console.log(n1);        // lulu
 
-二、有参
+
+二、apply有参
 
     var objA = {
         num: 10,
@@ -2077,63 +2134,45 @@ Example:
 
     var n2 = objA.add.call(objB, 1, 2);     // 如果objA.add.apply(objB, [1,2]);
     console.log(n2)     // 23
+
+
+三、bind(): 一个函数绑定之后，可以保持传递this的上下文
+
+    bind与call、apply的用法不同，但作用是一样的.
+
+    var obj = {
+        nameStr: 20,
+        getName: function(){
+            setTimeout(function(){
+                console.log(this.nameStr);
+            }.bind(obj), 10)
+        }
+    }
+
+    // 输出20，如果不加bind()，this指向window所以输出的是undeined
+    obj.getName();
 </code></pre><h4 id="void-0"><a href="#void-0" class="headerlink" title="void(0)"></a>void(0)</h4><pre><code>这个操作符允许插入一个计算结果等效于undefined的表达式。
 
 void操作符经常仅仅是用来获得undefined值，比如经常使用到的“void(0)”(这等效于“void 0”)
 
 当浏览器遇到一个javascript:URI，它会运算带有URI的代码，然后将计算结果替换当前页面的内容，除非它的返回值是undefined。void操作符可以被用于返回undefined
 
-&lt;a href=&quot;javascript:void(0);&quot;&gt;
-    Click here to do nothing
-&lt;/a&gt;
-</code></pre><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><pre><code>一、 数据类型包括
+&lt;a href=&quot;javascript:void(0);&quot;&gt;Click here to do nothing&lt;/a&gt;
+</code></pre><h4 id="装箱、拆箱转换"><a href="#装箱、拆箱转换" class="headerlink" title="装箱、拆箱转换"></a>装箱、拆箱转换</h4><pre><code>一、装箱: 把基本类型转换为对应的对象
 
-    Number、String、Boolean、null、undefined
-
-    获取数据的类型: 返回的值（number、string、boolean、array、object、function、undefined、null）
-
-    Object.prototype.toString.call(val)
-
-    // 判断类型
-    function returnType(val) {
-        let typeName;
-        if (typeof val === &apos;object&apos;) {
-            let typeName = Object.prototype.toString.call(val);
-
-            if (typeName == &apos;[object Array]&apos;) {
-                return &apos;array&apos;
-            } else if (typeName == &apos;[object Object]&apos;) {
-                return &apos;object&apos;
-            }
-            else if(typeName == &apos;[object Null]&apos;){
-                return &apos;null&apos;
-            }
-        } else {
-            return typeof val;
-        }
-    }
+    var symbolObject = Object(Symbol(&quot;a&quot;));
+    console.log(typeof symbolObject);                   // object
+    console.log(symbolObject instanceof Symbol);        // true 是Symbol的实例
+    console.log(symbolObject.constructor == Symbol);    // true
 
 
-二、NaN 非数值
+二、拆箱
 
-    isNaN() 是否是一个NaN非数值， 如果是数字返回false, 否则返回true
+    对象到String和Number转换同都遵循『先拆箱在转换』的规则，通过拆箱把对象变成基本类型，在从基本类型转为string或number
 
-        isNaN(NaN);     // true
-        isNaN(10);      // false
-        isNaN(&apos;10&apos;);    // false 转换后是一个数字
-        isNaN(&apos;blue&apos;);  // true 转换后不会是一个数字
-        isNaN(true);    // false true转换后为1是一个数字
+    toString(): 将该对象的原型始以字符串形式返回   xx.toString();       // &apos;xx&apos;
 
-
-    数值转换:
-        Number() 布尔转换成1或0，null返回0，undefined返回NaN，
-        parseiInt()
-        parseFloat()
-
-
-toString(): 将该对象的原型始以字符串形式返回   xx.toString();       // &apos;xx&apos;
-
-valueOf(): 返回最适合该对象的类型的原始值
+    valueOf(): 返回最适合该对象的类型的原始值
 </code></pre><h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><pre><code>var testA = 3 &amp;&amp; 2;             // 返回 2，如果左侧为真返回右侧，否则返回左侧
 
 var testB = 0 || 3;             // 返回3，如果左侧为假返回右侧
@@ -2152,23 +2191,56 @@ for( in ){}
 break 退出整个循环        continue 跳出当前循环，继续执行下一个循环
 
 switch case default
-</code></pre><h4 id="定时器的运行机制"><a href="#定时器的运行机制" class="headerlink" title="定时器的运行机制"></a>定时器的运行机制</h4><pre><code>JS的执行机制: 
+</code></pre><h4 id="定时器的运行机制"><a href="#定时器的运行机制" class="headerlink" title="定时器的运行机制"></a>定时器的运行机制</h4><pre><code>JavaScript是通过事件循环（event loop）来实现的，事件循环机制也就是今天要说的JavaScript运行机制。
 
-    JS引擎执行JS的机制是基于事件循环，JS是单线程，同一时间只能执行一个任务，其它任务就得排队，后续任务需要前一个任务结束才能执行
+第一，判断JS是同步还是异步，同步进入主线程，异步则进入event table。
 
-    为了避免一些长时间任务造成的无意义等待，JS引入了异步，用另一个线程来管理异步任务
+第二，异步任务在event table中注册函数，当满足触发条件后，被推入event queue(事件队列)。
 
-    同步任务在主线程队列中顺序执行，而异步任务会进入另一个任务队列，不会阻塞主线程，等主线程队列执行完后，在去异步队列查询是否有可执行的异步任务
+第三，同步任务进入主线程后一直执行，直到主线程空闲，才会去event queue中查看是否有可执行的异步任务，如果有就推入主线程
 
-异步 - ajax、定时器、Promise
+异步为了避免一些长时间任务造成的无意义等待，和假死状态 - ajax、定时器、Promise
 
 Example:
 
     // HTML5规范规定最小时间不能小于4ms(毫秒)，如果小于4会被当4来处理，Chrome可以设置1ms
+    console.log(1);
     setTimeout(function(){
-        console.log(1);
+        console.log(2);
     }, 0);
-    console.log(2);         // 先log出2，在log出1
+    console.log(3);         // 1、3、2
+</code></pre><h4 id="JS异步有哪些方式"><a href="#JS异步有哪些方式" class="headerlink" title="JS异步有哪些方式"></a>JS异步有哪些方式</h4><pre><code>1、setTimeOut()
+
+2、Promise
+
+3、Generator
+
+4、async、await
+
+5、ajax
+</code></pre><h4 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h4><pre><code>JS的运行机制。也就是事件循环。解释一下：
+
+    第一，执行一个宏任务（主线程的同步script代码），过程中如果遇到微任务，就将其放到微任务的事件队列里。
+
+    第二，当前宏任务执行完成后，会查微任务的事件队列，将全部的微任务依次执行完，再去依次执行宏任务事件队列。
+
+    宏任务：包括整体script代码，setTimeout，setInterval
+
+    微任务：Promise，process.nextTick。
+
+setTimeout(() =&gt; {
+    console.log(1) 
+}, 3000); 
+
+new Promise((resolve, reject) =&gt; { 
+    console.log(2); 
+    resolve(&apos;2&apos;) 
+})
+.then(function(){  
+    console.log(3) 
+});
+
+console.log(4);                // output 2、4、3、1
 </code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>一、事件机制: 事件捕获 和 事件冒泡, IE11之前没有捕获
 
 二、事件委托
@@ -2215,11 +2287,11 @@ Example:
     var oSendBtn = document.querySelector(&apos;#sendBtn&apos;);      // 点击会输出&apos;aa&apos;, &apos;bb&apos;
 
     oSendBtn.addEventListener(&apos;click&apos;, function(){
-        console.log(&apos;aa&apos;);
+            console.log(&apos;aa&apos;);
     }, false);
 
     oSendBtn.addEventListener(&apos;click&apos;, function(){
-        console.log(&apos;bb&apos;);
+            console.log(&apos;bb&apos;);
     }, false);
 </code></pre><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>一、加载非阻塞脚本:  
 
@@ -2264,7 +2336,7 @@ Example:
 
     // 处理回调函数数据的函数
     function doSomething(data) {
-        // 对data处理
+            // 对data处理
     }
     var script = document.createElement(&quot;script&quot;);
     script.src = &quot;http://www.b.com/b.html?callback=doSomething&quot;;
@@ -2280,14 +2352,14 @@ Example:
     a.html: 
         document.domain = &quot;www.we.com&quot;;
         var iframe = document.createElement(&quot;iframe&quot;);
-            iframe.src = &quot;http://a.we.com/b.html&quot;;
-            document.body.appendChild(iframe);
-            iframe.onload = function() {
-                console.log(iframe.contentWindow....); // 在这里操作b.html里的元素数据
+        iframe.src = &quot;http://a.we.com/b.html&quot;;
+        document.body.appendChild(iframe);
+        iframe.onload = function() {
+            console.log(iframe.contentWindow....); // 在这里操作b.html里的元素数据
         }
 
     b.html:
-       document.domain = &quot;www.we.com&quot;;       // b页面必须要设置a.html
+        document.domain = &quot;www.we.com&quot;;       // b页面必须要设置a.html
 
 
 三、HTML5 postMessage() 处理iframe跨域问题
@@ -2332,8 +2404,7 @@ Example:
         iframe.onload = function() {
             if (flag) {
                 iframe.src = &quot;c.html&quot;;          // 这里在去加载c.html
-
-                  // 判断是第一次载入的话，设置代理c.html使和a.html在同目录同源，这样才能在下面的else取到data
+                // 判断是第一次载入的话，设置代理c.html使和a.html在同目录同源，这样才能在下面的else取到data
                 flag = false;
             } 
             else { 
@@ -2380,159 +2451,166 @@ Example:
     //c.html
     // 获取自身的hash再传到a.html的hash里，数据传输完毕
     parent.parent.location.hash = self.location.hash.substring(1);
-</code></pre><h4 id="CORS跨域资源共享"><a href="#CORS跨域资源共享" class="headerlink" title="CORS跨域资源共享"></a>CORS跨域资源共享</h4><pre><code>一、CORS概念: 是指跨域资源共享, 用于解决前端跨域问题, 使用自定义头部让浏览器与服务器进行沟通, 来进行请求成功或失败
-
-    原理: 服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。
-
-    *表示接受所有域名的请求。也可以指定特定的域名 Access-Control-Allow-Origin: http://www.client.com。
 
 
-二、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
+六、CORS跨域资源共享
 
-    1、post请求跨域
+    1、CORS概念: 是指跨域资源共享, 用于解决前端跨域问题, 使用自定义头部让浏览器与服务器进行沟通, 来进行请求成功或失败
 
-    2、&quot;script error&quot; 的脚本错误提示
+        原理: 服务器对header设置一个Access-Control-Allow-Origin: *, 开启跨域请求。
 
-    3、canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
-</code></pre><p>   三、CORS缺点: </p>
-<pre><code>1、cookie不会随请求发送，也不会响应
+        *表示接受所有域名的请求。也可以指定特定的域名 Access-Control-Allow-Origin: http://www.client.com。
 
-2、不能设置请求头的Content-Type字段
 
-3、不能访问响应头信息
-</code></pre><h4 id="Promise异步编程"><a href="#Promise异步编程" class="headerlink" title="Promise异步编程"></a>Promise异步编程</h4><h4 id="同步、异步"><a href="#同步、异步" class="headerlink" title="同步、异步"></a>同步、异步</h4><pre><code>同步: 就是代码逐行执行
+    2、CORS优点: 跨域最常用的是JSONP但这种方式是通过Get的方式请求src完成的，很多跨域问题JSONP无法解决，比如: 
 
-异步: Promins、Ajax、setTimeout 来实现，执行到异步的代码时不会等待返回结果后在执行之后的代码，会直接往下执行。
+        1）post请求跨域
 
-同步和异步是针对单线程来讲的象JS，象Java一般不会说同步和异步，而是阻塞和非阻塞。
+        2）&quot;script error&quot; 的脚本错误提示
+
+        3）canvas中无法获取跨域图片的信息，如果使用CORS上面几个问题就可以解决
+
+
+    3、CORS缺点: 
+
+        1）cookie不会随请求发送，也不会响应
+
+        2）不能设置请求头的Content-Type字段
+
+        3）不能访问响应头信息
 </code></pre><h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><pre><code>面向对象的特点: 封装、继承、多态
 
 对象组件: 私有、公有属性、方法和特权方法
 
-一、constructor属性: 指向这个原型的构造函数，如果是类式继承需要修改子类的constructor的指向，如果不改子类会指向父类.
+一、对象的数据属性和访问器属性（getter、setter）
 
-二、原型和原型链: 
+    var o = { a: 1 };
+o.b = 2;
+console.log(o.a, o.b); //1 2
+
+二、constructor属性: 指向这个原型的构造函数，如果是类式继承需要修改子类的constructor的指向，如果不改子类会指向父类.
+
+三、原型和原型链: 
 
     prototype原型: 在创建函数的时候JS会为这个函数自动加上prototype属性
 
     原型链: 每一个构造函数都有一个prototype, prototype包含一个指向构造函数的指针, 而实例包含指向原型的对象的指针, 都是通过 __proto__ 属性来指向
 
-    1）构造函数实例化后，prototype下的所有属性和方法都为公用的一套, 这样为了节省资源提高性能
+    1、构造函数实例化后，prototype下的所有属性和方法都为公用的一套, 这样为了节省资源提高性能
 
-    2）优先级: 如果同时在构造函数内或prototype中定义相同的属性或方法名, 会先找到执行构造函数内的属性或方法, 如果没有在到prototype中查找。
+    2、优先级: 如果同时在构造函数内或prototype中定义相同的属性或方法名, 会先找到执行构造函数内的属性或方法, 如果没有在到prototype中查找。
 
-        __proto__属性: __proto__是实例与prototype之间的链接，实例的__proto__指向构造函数的prototype.function F(){}; 
+            __proto__属性: __proto__是实例与prototype之间的链接，实例的__proto__指向构造函数的prototype.function F(){}; 
 
-        var f = new F(); 
-        console.log(f.__proto__ === F.prototype);           // true
-        Object.prototype是顶级对象，所有对象都继承它
+            var f = new F(); 
+            console.log(f.__proto__ === F.prototype);           // true
+            Object.prototype是顶级对象，所有对象都继承它
 
-三、继承
+四、继承
 
     每个对象都是由Object.prototype对象继承的
 
-    继承分为: 类式继承、原型链继承、拷贝继承。
+        继承分为: 类式继承、原型链继承、拷贝继承。
 
-    1、类式继承: 
+        1、类式继承: 
 
-        function Parent(){}
-        Parent.prototype.say = function(){ 
-            console.log(&apos;haha&apos;)
-        }
-
-        function Childer(){}
-
-        /* 将第一个类的实例赋给第二个类的原形，类式继承的原因
-        *  类的原型对象作用就是为类的原型添加公有方法，但不能直接访问这些属性和方法，必须通过原型prototype来访问
-        */
-        Childer.prototype = new Parent();   
-
-        // 上一步执行后prototype的constructor会指向Parent，所以需要修正回来
-        Childer.prototype.constructor = Childer;    
-        Childer.prototype.getAuthor = function(){ console.log(&apos;siguang&apos;) }
-
-
-    2、原型链继承: 
-
-        // 原型链式继承
-        /*
-        * 流程:
-        * 1、clonePlan调用blood属性会在clonePlan查找所有属性，
-        * 2、如果没有找到在看clonePlan的__proto__指象哪里，这里指向了F，到F对象下的prototype下查找
-        * 3、plane将prototype赋给了F的prototype所以最终找到了blood属性
-        */
-
-        function extend(obj){
-            var F = function(){};
-            F.prototype = obj;
-            return new F();
-        }
-
-        // 定义一个类
-        var Plane = function(){
-            this.blood = 100;
-            this.attackLevel = 1;
-            this.defenseLevel = 1;
-        }
-        Plane.prototype = {
-            getBlood: function(){
-                console.log(this.blood);
-            },
-            getAttackLevel: function(){
-                console.log(this.attackLevel)
+            function Parent(){}
+            Parent.prototype.say = function(){ 
+                console.log(&apos;haha&apos;)
             }
-        }
-        var plane = new Plane();
 
-        // 将类通过extend函数继承过来
-        var clonePlan = extend(plane);
-        clonePlan.blood = 1234;
-        clonePlan.attackLevel = 4567;
+            function Childer(){}
 
-        clonePlan.getBlood();               // 1234
-        clonePlan.getAttackLevel();         // 4567
+            /* 将第一个类的实例赋给第二个类的原形，类式继承的原因
+            *  类的原型对象作用就是为类的原型添加公有方法，但不能直接访问这些属性和方法，必须通过原型prototype来访问
+            */
+            Childer.prototype = new Parent();   
+
+            // 上一步执行后prototype的constructor会指向Parent，所以需要修正回来
+            Childer.prototype.constructor = Childer;    
+            Childer.prototype.getAuthor = function(){ console.log(&apos;siguang&apos;) }
 
 
-    3、拷贝继承
+        2、原型链继承: 
 
-        function extend(parent, childer){
-            for(var key in parent){
-                childer[key] = parent[key];
+            // 原型链式继承
+            /*
+            * 流程:
+            * 1、clonePlan调用blood属性会在clonePlan查找所有属性，
+            * 2、如果没有找到在看clonePlan的__proto__指象哪里，这里指向了F，到F对象下的prototype下查找
+            * 3、plane将prototype赋给了F的prototype所以最终找到了blood属性
+            */
+
+            function extend(obj){
+                    var F = function(){};
+                    F.prototype = obj;
+                    return new F();
             }
-        }
 
-        extend(a.prototype, b.prototype);
-
-
-    4、Object.create()继承
-
-        function Car(desc){
-            this.desc = desc;
-            this.color = &apos;red&apos;
-        }
-
-        Car.prototype = {
-            getInfo: function(){
-                return `color: ${this.color}, desc: ${this.desc}`
+            // 定义一个类
+            var Plane = function(){
+                    this.blood = 100;
+                    this.attackLevel = 1;
+                    this.defenseLevel = 1;
             }
-        }
+            Plane.prototype = {
+                    getBlood: function(){
+                            console.log(this.blood);
+                    },
+                    getAttackLevel: function(){
+                            console.log(this.attackLevel)
+                    }
+            }
+            var plane = new Plane();
 
-        // 注意这里的name : {value: &apos;lulu&apos;} 必须是对象，必须是value在根一个值，要不报错
-        var child = Object.create(Car.prototype);
-        child.desc = &apos;aaa&apos;;
-        child.color = &apos;bbb&apos;;
+            // 将类通过extend函数继承过来
+            var clonePlan = extend(plane);
+            clonePlan.blood = 1234;
+            clonePlan.attackLevel = 4567;
 
-        // 改变子类不会影响到父类
-        console.log(child);
-        var childCar = child.getInfo();
-        console.log(childCar)       // color: bbb, desc: aaa
+            clonePlan.getBlood();               // 1234
+            clonePlan.getAttackLevel();         // 4567
 
 
-        var oCar = new Car(&apos;ccc&apos;);
-        console.log(oCar.getInfo());    /// color: red, desc: ccc
+        3、拷贝继承
+
+            function extend(parent, childer){
+                for(var key in parent){
+                    childer[key] = parent[key];
+                }
+            }
+
+            extend(a.prototype, b.prototype);
 
 
-四、SuperClass.prototype = {} 与 SuperClass.prototype.getName = function(){} 区别
+        4、Object.create()继承
+
+            function Car(desc){
+                this.desc = desc;
+                this.color = &apos;red&apos;
+            }
+
+            Car.prototype = {
+                getInfo: function(){
+                    return `color: ${this.color}, desc: ${this.desc}`
+                }
+            }
+
+            // 注意这里的name : {value: &apos;lulu&apos;} 必须是对象，必须是value在根一个值，要不报错
+            var child = Object.create(Car.prototype);
+            child.desc = &apos;aaa&apos;;
+            child.color = &apos;bbb&apos;;
+
+            // 改变子类不会影响到父类
+            console.log(child);
+            var childCar = child.getInfo();
+            console.log(childCar)       // color: bbb, desc: aaa
+
+            var oCar = new Car(&apos;ccc&apos;);
+            console.log(oCar.getInfo());    /// color: red, desc: ccc
+
+
+五、SuperClass.prototype = {} 与 SuperClass.prototype.getName = function(){} 区别
 
     一个是将对象覆盖prototype, 一个是将方法添加到prototype中
 
@@ -2565,7 +2643,7 @@ var xhr = window.XMLHttpRequrest ? new XMLHttpRequrest() : new ActiveXObject(&qu
 
     4、responseType: 设置返回数据类型
 
-        1、text: 字符串      2、document: Document对象       3、json: json数据       4、blob: 二进制对象       5、arrayBuffer: 二进制
+            1、text: 字符串      2、document: Document对象       3、json: json数据       4、blob: 二进制对象       5、arrayBuffer: 二进制
 
 方法: 
 
@@ -2678,16 +2756,16 @@ Content-Type:
 
     ** Request Payload
 
-        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
-        Content-Disposition: form-data; name=&quot;text&quot; 
+            ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+            Content-Disposition: form-data; name=&quot;text&quot; 
 
-        title 
-        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
-        Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;chromepng&quot; 
-        Content-Type: image/png 
+            title 
+            ------WebKitFormBoundaryrGKCBY7qhFd3TrwA 
+            Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;chromepng&quot; 
+            Content-Type: image/png 
 
-        PNG  content of chromepng  
-        ------WebKitFormBoundaryrGKCBY7qhFd3TrwA-- 
+            PNG  content of chromepng  
+            ------WebKitFormBoundaryrGKCBY7qhFd3TrwA-- 
 
 
 三、application/json: 告诉服务端消息主体是序列化后的 JSON 字符串
@@ -2741,7 +2819,6 @@ Content-Type:
             success:function(data){
                 alert(data);
                 return false;
-
             }
         });
     }
@@ -2761,7 +2838,7 @@ Content-Type:
 
     &lt;script&gt;
         var myIframe = document.querySelector(&apos;#child&apos;), 
-            childDocument;
+                childDocument;
 
         if(myIframe.document){
             childDocument = myIframe.docuemnt;
@@ -2824,11 +2901,11 @@ Content-Type:
 
 5、concat(): 两个数组进行合并, 也可以拷贝成为一个新数组，而不是带指向
 
-        var arrA = [1,2,3];
-        var arrB = arrA.concat();
-        arrB.push(5,6,7);
-        console.log(arrA);  // [1,2,3]
-        console.log(arrB);  // [1,2,3,5,6,7]
+    var arrA = [1,2,3];
+    var arrB = arrA.concat();
+    arrB.push(5,6,7);
+    console.log(arrA);  // [1,2,3]
+    console.log(arrB);  // [1,2,3,5,6,7]
 
 6、slice(开始，结束): 返回一个子数组,  如果结束参数不传为从开始取到最后的值
 
@@ -2908,7 +2985,7 @@ Content-Type:
         return prev + cur;   
     })
     console.log(sum);   // 15
-</code></pre><h4 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h4><pre><code>1、__proto__: 对象实例与prototype之间的连接，原型链
+</code></pre><h4 id="对象属性和方法"><a href="#对象属性和方法" class="headerlink" title="对象属性和方法"></a>对象属性和方法</h4><pre><code>1、__proto__: 对象实例与prototype之间的连接，原型链
 
 2、prototype: 原型，公用的，节省内存开支，查找先去对象本身找属性和方法，如果没有到prototype下查找
 
@@ -2918,30 +2995,31 @@ Content-Type:
 
 5、delete: 删除对象属性
 
-6、hasOwnProperty(propertyName): 用来判断属性是否在对象中（而不是原型中） var obj = {name: &apos;aaa&apos;}; obj.hasOwnProperty(&apos;name&apos;)
+6、hasOwnProperty(propertyName): 判断对象属性是否在对象中（而不是prototype原型中） var obj = {name: &apos;aaa&apos;}; obj.hasOwnProperty(&apos;name&apos;)
 
-    var o = { name: &apos;siguang&apos;, getName: function(){ console.log(this.name) } };
-    o.hasOwnProperty(&apos;name&apos;);       // true
+    function Persion(){
+        this.name = &apos;siguang&apos;;
+    }
+    Persion.protoType = {
+        age: 35,
+        getName: function(){
+            return this.name;
+        }
+    }
+    let oPer = new Persion();
+    oPer.hasOwnProperty(&apos;name&apos;);        // true
+    oPer.hasOwnProperty(&apos;age&apos;);            // false
 
-    判断对象的属性或方法是否存在
-    var obj = {};
-
-    判断属性
-        obj.name    // 如果属性不存在返回 undefined，也就是false
-
-    判断方法
-        typeof obj.getName == &apos;function&apos;      // 如果存在返回true
-
-
-7、isPrototypeOf(object): 判断一个对象的原型是否是在指定对象的原型链中
+7、isPrototypeOf(object): 判断传入的对象是否是传入对象的原型
 
     var o = new Object();
     Object.prototype.isPrototypeOf(o)
 
-
 8、instanceof: 用来判断一个构造函数的prototype属性是否在另一个检测对象的原型链上
 
-    A instanceof B   // 检测B的prototype是否存在于A的原型链上
+    class A {};
+    let oA = new A():
+    console.log(oA instancof A);        // true
 
 9、in: 属性是否在对象中能访问，返回true或false
 
@@ -3051,7 +3129,6 @@ Content-Type:
         &lt;/div&gt;
 
         &lt;script type=&quot;text/javascript&quot;&gt;
-
             // 视图控制器
             var userInfo = {};
             Object.defineProperty(userInfo, &quot;nickName&quot;, {
@@ -3074,7 +3151,6 @@ Content-Type:
 
             userInfo.nickName = &quot;siguang&quot;;
             userInfo.introduce = &quot;我是&quot;+ userInfo.nickName +&quot;，我来自黑龙江，...&quot;
-
         &lt;/script&gt;
 
     https://segmentfault.com/a/1190000004346467
@@ -3129,20 +3205,7 @@ Content-Type:
 
     Object.keys(obj).length 是否等于0
 
-15、Object.getOwnPropertyDescriptor(): 
-</code></pre><h4 id="Function扩展"><a href="#Function扩展" class="headerlink" title="Function扩展"></a>Function扩展</h4><pre><code>1、bind(): 一个函数绑定之后，可以保持传递this的上下文
-
-    var obj = {
-        nameStr: 20,
-        getName: function(){
-            setTimeout(function(){
-                console.log(this.nameStr);
-            }.bind(obj), 10)
-        }
-    }
-
-    // 输出20，如果不加bind()，this指向window所以输出的是undeined
-    obj.getName();
+15、Object.getOwnPropertyDescriptor():     
 </code></pre><h4 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h4><pre><code>var od = new Date();    // 创建当前中国标准时间 Thu Apr 27 2017 18:39:17 GMT+0800 (CST)
 var od = new Date(&apos;2017-04-27 18:40:00&apos;);   // 指定时间 返回当前标准时间 Thu Apr 27 2017 18:40:00 GMT+0800 (CST)
 
@@ -3226,11 +3289,30 @@ var od = new Date(&apos;2017-04-27 18:40:00&apos;);   // 指定时间 返回当�
 
 7、sin()、cos()
 </code></pre><h4 id="Global对象"><a href="#Global对象" class="headerlink" title="Global对象"></a>Global对象</h4><pre><code>encodeURI()、encodeURIComponent()
-</code></pre><h4 id="前端动画实现种类"><a href="#前端动画实现种类" class="headerlink" title="前端动画实现种类"></a>前端动画实现种类</h4><pre><code>1、纯粹的CSS3: transition/animation+transform（大名鼎鼎的animate.css）
+</code></pre><h4 id="前端动画实现种类"><a href="#前端动画实现种类" class="headerlink" title="前端动画实现种类"></a>前端动画实现种类</h4><pre><code>1、纯粹的CSS3: transition/animation+transform（animate.css）
 
 2、JS+CSS3 transition或者animation: 这里第一种一样，只是通过js里add class和remove class去增加或者移除对应的动画
 
 3、纯粹JS控制时间轴: 第一和第二种都是自带时间轴，使用 setInterval / setTimeout / requestAnimationFrame 不断地修改 DOM 的 style 属性产生动画
+</code></pre><h4 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h4><pre><code>1、==、===
+
+    &apos;100&apos; == 100;     // true;    undefined == null; 因为JS会将两个值转换为相同类型
+    &apos;100&apos; === 100;     // false
+
+    == 是先将数值转换后在进行比较，JS的一个设计缺陷、 === 不转换数值进行比较
+
+
+2、 while和do...while 
+
+    do...while 不管条件是否成立都会执行一次
+    var cont = 0;
+    do{
+        cont++;
+        console.log(cont);                // 1;
+    }while(cont &gt; 10);
+
+
+3、break 退出循环、continue 退出当前循环开始下一循环
 </code></pre><p>| <a href="http://kangax.github.io/compat-table/es5/" target="_blank" rel="noopener">http://kangax.github.io/compat-table/es5/</a>    ES5兼容表<br>| <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className</a>        API<br>| <a href="https://segmentfault.com/a/1190000000515151" target="_blank" rel="noopener">https://segmentfault.com/a/1190000000515151</a><br>| <a href="https://segmentfault.com/a/1190000005653355" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005653355</a><br>| <a href="https://msdn.microsoft.com/zh-cn/library/dn342818(v=vs.94).aspx" target="_blank" rel="noopener">https://msdn.microsoft.com/zh-cn/library/dn342818(v=vs.94).aspx</a><br>| <a href="http://www.alloyteam.com/2016/05/javascript-timer/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/05/javascript-timer/</a>        js运行机制</p>
 
         
