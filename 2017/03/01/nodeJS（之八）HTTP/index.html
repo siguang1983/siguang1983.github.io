@@ -13,14 +13,11 @@
     <meta name="keywords" content="" />
     <meta name="description" content="HTTP超文本传输协议let http = require(&amp;apos;http&amp;apos;);        // 导入http模块
 
-HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。
-http.server类是一个创建服务的类 ServerRequest()
+HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的
 
-方法:
-
-    1、close([callback]): 停止服务器连接
-
-    2、listen(path, [callback]): 侦听, 与TC" />
+http.createServer(function(req, res){
+    if(req.url === &amp;apos;/login&amp;apos;){
+        res.writeHead(200, {&amp;apos;Conte" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -57,10 +54,10 @@ http.server类是一个创建服务的类 ServerRequest()
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -140,7 +137,18 @@ http.server类是一个创建服务的类 ServerRequest()
         
         <h4 id="HTTP超文本传输协议"><a href="#HTTP超文本传输协议" class="headerlink" title="HTTP超文本传输协议"></a>HTTP超文本传输协议</h4><pre><code>let http = require(&apos;http&apos;);        // 导入http模块
 
-HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的。
+HTTP协议构建就是在请求和响应上，由http.ServerRequest和http.ServerResponse构造出来的
+
+http.createServer(function(req, res){
+    if(req.url === &apos;/login&apos;){
+        res.writeHead(200, {&apos;Content-Type&apos;: &apos;text/html&apos; });
+        res.end(&apos;&lt;div&gt;login&lt;/div&gt;&apos;);
+    }
+    else if(req.url === &apos;main&apos; &amp;&amp; req.method === &apos;POST&apos;){
+        res.writeHead(200, {&apos;Content-Type&apos;: &apos;text/html&apos; });
+        res.end(&apos;Hello &lt;b&gt;post&lt;/b&gt;&apos;);
+    }
+}).listen(3030)
 </code></pre><h4 id="http-server类"><a href="#http-server类" class="headerlink" title="http.server类"></a>http.server类</h4><pre><code>是一个创建服务的类 ServerRequest()
 
 方法:
@@ -171,7 +179,7 @@ Example:
 
     // 创建服务器
     let server = http.createServer((req, res) =&gt; {
-        console.log(&apos;请求方法:&apos;, request.method);       // 请求方法
+        console.log(&apos;请求方式:&apos;, request.method);       // 请求方式
         console.log(&apos;请求url:&apos;, request.url);          // 请求url
         console.log(&apos;请求头:&apos;, request.headers);       // 请求头
 
@@ -186,47 +194,49 @@ Example:
 </code></pre><h4 id="Request类"><a href="#Request类" class="headerlink" title="Request类"></a>Request类</h4><pre><code>url - 返回url地址
 
 method - 返回请求方法
+
+headers - 请求头
 </code></pre><h4 id="Response类"><a href="#Response类" class="headerlink" title="Response类"></a>Response类</h4><pre><code>// 这里res返回的就是ServerResponse类
 const server = http.createServer((req, res) =&gt; { ..... });   
 
 方法:
 
-    1、addTrailers(headers)
+1、addTrailers(headers)
 
-    2、end([data],[encoding],[callback]) - 告诉服务器所有响应头和主体都已被发送，等同于response.write()
+2、end([data],[encoding],[callback]) - 告诉服务器所有响应头和主体都已被发送，等同于response.write()
 
-    3、finished: 
+3、finished: 
 
-    4、getHeader(name): 
+4、getHeader(name): 
 
-    5、headersSent: 返回消息头是否被发送，发送为true否则false
+5、headersSent: 返回消息头是否被发送，发送为true否则false
 
-    6、removeHeader(name): 移出一个头消息 response.removeHeader(&apos;Content-Encoding&apos;);
+6、removeHeader(name): 移出一个头消息 response.removeHeader(&apos;Content-Encoding&apos;);
 
-    7、sendDate: 如果设置为true消息头存在日期消息头则自动生成并且响应在发送
+7、sendDate: 如果设置为true消息头存在日期消息头则自动生成并且响应在发送
 
-    8、setHeader(name, value): 设置头信息
+8、setHeader(name, value): 设置头信息
 
-        response.setHeader(&apos;Content-Type&apos;, &apos;text/html&apos;);
-        response.setHeader(&apos;Set-Cookie&apos;, [&apos;type=ninja&apos;, &apos;language=javascript&apos;]);
+    response.setHeader(&apos;Content-Type&apos;, &apos;text/html&apos;);
+    response.setHeader(&apos;Set-Cookie&apos;, [&apos;type=ninja&apos;, &apos;language=javascript&apos;]);
 
-    9、setTimeout(msecs, callback): 设置 socket 的超时时间
+9、setTimeout(msecs, callback): 设置 socket 的超时时间
 
-    10、statusCode: 设置向客户端响应的状态码  res.statusCode = 200;
+10、statusCode: 设置向客户端响应的状态码  res.statusCode = 200;
 
-    11、statusMessage
+11、statusMessage
 
-    12、write(chunk[, encoding][, callback])
+12、write(chunk[, encoding][, callback])
 
-    13、writeContinue()
+13、writeContinue()
 
-    14、writeHead(statusCode[, statusMessage][, headers]): 发送一个响应头给请求
+14、writeHead(statusCode[, statusMessage][, headers]): 发送一个响应头给请求
 
-        writeHead(状态码, [状态消息], {响应头信息})
+    writeHead(状态码, [状态消息], {响应头信息})
 
-        Example: res.writeHead(200, { content-Type: &apos;text/html&apos;, Connection: &apos;keep-alive&apos;})
+    Example: res.writeHead(200, { content-Type: &apos;text/html&apos;, Connection: &apos;keep-alive&apos;})
 
-    15、setEncoding(编码): 设置编码格式 res.setEncoding(&apos;utf8&apos;);
+15、setEncoding(编码): 设置编码格式 res.setEncoding(&apos;utf8&apos;);
 
 
 res.connection
@@ -271,11 +281,9 @@ http.get(&apos;http://nodejs.org/dist/index.json&apos;, (res) =&gt; {
 
     let error;
     if (statusCode !== 200) {
-        error = new Error(`请求失败。\n` +
-            `状态码: ${statusCode}`);
+        error = new Error(`请求失败。\n` + `状态码: ${statusCode}`);
     } else if (!/^application\/json/.test(contentType)) {
-        error = new Error(`无效的 content-type.\n` +
-            `期望 application/json 但获取的是 ${contentType}`);
+        error = new Error(`无效的 content-type.\n` + `期望 application/json 但获取的是 ${contentType}`);
     }
     if (error) {
         console.log(error.message);
@@ -338,8 +346,8 @@ http.get(&apos;http://nodejs.org/dist/index.json&apos;, (res) =&gt; {
 Example:
 
     var postData = querystring.stringify({
-            &apos;msg&apos; : &apos;Hello World!&apos;
-        });
+        &apos;msg&apos; : &apos;Hello World!&apos;
+    });
 
     var options = {
         hostname: &apos;www.google.com&apos;,
@@ -411,18 +419,15 @@ Example:
 
     exports.createServer2 = function(){
         var server = http.createServer(function(request, response){
-
-            var url = request.url;
+        var url = request.url;
 
             // 获取 index.html 文件内容返回给客户端
             fs.readFile(&apos;./index.html&apos;, &apos;utf-8&apos;, function(err, data){
                 console.log(err, data);
-
                 response.write(data);
                 response.end();
             })
         });
-
         server.listen(8081, &apos;localhost&apos;);
     }
 
@@ -430,20 +435,20 @@ Example:
 # 处理Get请求的参数
 
     var server = http.createServer(function(request, response){
-        var oUrl = url.parse(request.url, true);
+            var oUrl = url.parse(request.url, true);
 
-        console.log(oUrl.query);        // { username: &apos;siguang&apos;, age: &apos;30&apos; }
+            console.log(oUrl.query);        // { username: &apos;siguang&apos;, age: &apos;30&apos; }
 
-        var urlQuery = oUrl.query;
-        if(urlQuery){
-            response.write(&apos;服务器接收GET请求参数成功\n&apos;)
-            response.write(&apos;用户名:&apos;+ urlQuery.username +&apos;\n&apos;);
-            response.write(&apos;年级:&apos;+ urlQuery.age +&apos;\n&apos;);
-        }
-        else{
-            response.write(&apos;服务器接收参数失败&apos;);
-        }
-        response.end();
+            var urlQuery = oUrl.query;
+            if(urlQuery){
+                    response.write(&apos;服务器接收GET请求参数成功\n&apos;)
+                    response.write(&apos;用户名:&apos;+ urlQuery.username +&apos;\n&apos;);
+                    response.write(&apos;年级:&apos;+ urlQuery.age +&apos;\n&apos;);
+            }
+            else{
+                    response.write(&apos;服务器接收参数失败&apos;);
+            }
+            response.end();
     });
 
     server.listen(8081, &apos;localhost&apos;);
@@ -467,7 +472,7 @@ Example:
 
             response.writeHead(&apos;200&apos;, {&apos;Content-Type&apos;: &apos;text/html;charset=utf-8&apos;});
             if(userList.username == &apos;aaa&apos; &amp;&amp; userList.password == &apos;ssssss&apos;){
-                 response.end(JSON.stringify({&quot;res&quot;:true,&quot;message&quot;:&quot;注册成功&quot;}));        // 这里一定要用JSON.stringify来转成串
+                    response.end(JSON.stringify({&quot;res&quot;:true,&quot;message&quot;:&quot;注册成功&quot;}));        // 这里一定要用JSON.stringify来转成串
             }
             else{
                 response.end(JSON.stringify({&apos;res&apos;:false,&apos;message&apos;:&apos;注册失败&apos;}));
@@ -478,11 +483,11 @@ Example:
 
     注意：
 
-        1、客户端发送ajax请求时
+    1、客户端发送ajax请求时
 
-            如果data是字符串，接收过来就是 &apos;{&apos;username&apos;: &apos;aaa&apos;, &apos;password&apos;: &apos;ssssss&apos;}&apos; 字符串可以直接转成json,
+        如果data是字符串，接收过来就是 &apos;{&apos;username&apos;: &apos;aaa&apos;, &apos;password&apos;: &apos;ssssss&apos;}&apos; 字符串可以直接转成json,
 
-            如果data传的是一个对象，jquery会转成&quot;{&apos;username&apos;=&apos;aaa&apos;&amp;&apos;password&apos;=&apos;ssssss&apos;}&quot;, 还需要node重组
+        如果data传的是一个对象，jquery会转成&quot;{&apos;username&apos;=&apos;aaa&apos;&amp;&apos;password&apos;=&apos;ssssss&apos;}&quot;, 还需要node重组
 </code></pre><h4 id="http概念-1"><a href="#http概念-1" class="headerlink" title="http概念"></a>http概念</h4><pre><code>1、up 工具 通过nodeAPI来监听文件或目录下所有文件，如果有文件改变不需要重启服务器
 
     $ sudo npm i up -g   

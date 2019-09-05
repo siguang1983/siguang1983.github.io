@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>React（之四）其它框架状态管理及框架 | 大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="| dva| redux| redux-saga| redux-thunk| Ant Design Pro
+状态管理框架https://cn.mobx.js.org/
+
+// redux-saga 中间件
+https://redux-saga-in-chinese.js.org/    
+
+// dva
+https://dvajs.com/guide/#%E7%89%B9%E6%80%A7        dva
+redux-sagaredux-saga 是一个用于管理 Redux 应用异步操作的" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Tags</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+        
+        
+
+        
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#状态管理框架"><span class="toc-number">1.</span> <span class="toc-text">状态管理框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redux-saga"><span class="toc-number">2.</span> <span class="toc-text">redux-saga</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dva-js"><span class="toc-number">3.</span> <span class="toc-text">dva.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ant-Design-Pro"><span class="toc-number">4.</span> <span class="toc-text">Ant Design Pro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录"><span class="toc-number">5.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Umi-js"><span class="toc-number">6.</span> <span class="toc-text">Umi.js</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#antdPro-流程"><span class="toc-number"></span> <span class="toc-text">antdPro 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#react使用typescript"><span class="toc-number">1.</span> <span class="toc-text">react使用typescript</span></a></li></ol>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content"><article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            React（之四）其它框架状态管理及框架
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2018/12/14/React(之四)其它状态管理及框架/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2018-12-14T03:06:16.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/React/">React</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| dva<br>| redux<br>| redux-saga<br>| redux-thunk<br>| Ant Design Pro</p>
+<h4 id="状态管理框架"><a href="#状态管理框架" class="headerlink" title="状态管理框架"></a>状态管理框架</h4><pre><code>https://cn.mobx.js.org/
+
+// redux-saga 中间件
+https://redux-saga-in-chinese.js.org/    
+
+// dva
+https://dvajs.com/guide/#%E7%89%B9%E6%80%A7        dva
+</code></pre><h4 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a>redux-saga</h4><pre><code>redux-saga 是一个用于管理 Redux 应用异步操作的中间件（又称异步 action），Sagas是通过Generator函数来创建
+
+Reducers 负责处理 action 的 state 更新
+Sagas 负责协调那些复杂或异步的操作
+
+一、安装
+
+    $ npm install --save redux-saga
+
+
+二、使用
+
+    sagas.js   // 创建一saga.js文件
+
+    main.js
+
+        import { createStore, applyMiddleware } from &apos;redux&apos;
+        import createSagaMiddleware from &apos;redux-saga&apos;
+
+        import reducer from &apos;./reducers&apos;
+        import mySaga from &apos;./sagas&apos;
+
+        // 创建saga中间件
+        const sagaMiddleware = createSagaMiddleware()
+
+        // 加到createStore中
+        const store = createStore(
+            reducer,
+            applyMiddleware(sagaMiddleware)
+        )
+
+        // 运行 saga
+        sagaMiddleware.run(mySaga)
+
+
+三、核心函数
+
+    1、takeEveny(&apos;actionName&apos;, 执行的saga函数) - type的action触发，就执行goAge()函数
+
+    2、takeLatest()
+
+    3、createSagaMiddleware()：创建一个Reudx中间件，将Sagas与Redux Store链接起来
+
+    4、middleware.run()：运行sagas，
+
+
+四、Effect 
+
+    import { call, put, takeEveny } from &apos;redux-saga/effects&apos;
+
+    1、take()：监听未来的action
+
+        function* watchFetchData() {
+            while(true) {
+                // 监听一个type为 &apos;FETCH_REQUESTED&apos; 的action的执行，直到等到这个Action被触发，才会接着执行下面的 yield fork(fetchData)  语句
+                yield take(&apos;FETCH_REQUESTED&apos;);
+                yield fork(fetchData);
+            }
+        }
+
+    2、takeEveny(): 
+
+        function* rootSaga() {     // 在store.js中，执行了 sagaMiddleware.run(rootSaga)
+            yield takeEvery(&quot;ADD_SAGA&quot;, addSagas)   // 如果有对应type的action触发，就执行goAge()函数
+        }
+
+    3、put()：发送action的effect，简单把它理解为dispatch
+
+        export function* toggleItemFlow() {
+            let list = []
+            // 发送一个type为 &apos;UPDATE_DATA&apos; 的Action，用来更新数据，参数为 `data：list`
+            yield put({
+                type: actionTypes.UPDATE_DATA,
+                data: list
+            })
+        }
+
+    4、call()：简单的理解为就是可以调用其他函数的函数
+
+        export const delay = ms =&gt; new Promise(resolve =&gt; setTimeout(resolve, ms))
+
+        export function* removeItem() {
+            try {
+                // 这里call 函数就调用了 delay 函数，delay 函数为一个返回promise 的函数
+                return yield call(delay, 500)
+            } catch (err) {
+                yield put({type: actionTypes.ERROR})
+            }
+        }
+
+    5、fork()：用来调用其它函数，是一个非阻塞函数，
+
+        export default function* rootSaga() {
+            // 下面的四个 Generator 函数会一次执行，不会阻塞执行
+            yield fork(addItemFlow)
+            yield fork(removeItemFlow)
+            yield fork(toggleItemFlow)
+            yield fork(modifyItem)
+        }
+
+    6、select()：获取Store中的state值
+
+        let tempList = yield select(state =&gt; {
+            debugger;
+        })
+
+
+https://www.jianshu.com/p/7cac18e8d870
+https://github.com/redux-saga/redux-saga/ 官网
+https://redux-saga-in-chinese.js.org/ 中文在线文档
+https://segmentfault.com/a/1190000007248878 Redux异步方案选型
+https://www.jianshu.com/p/f3c7594c4fb4 redux-saga 初级学习教程
+https://github.com/Pines-Cheng/blog/issues/9 从redux-thunk到redux-saga实践
+http://yanqiw.github.io/react/2017/03/05/redux-saga.html Redux Saga实践
+</code></pre><h4 id="dva-js"><a href="#dva-js" class="headerlink" title="dva.js"></a>dva.js</h4><pre><code>dva是redux和redux-saga的数据流文案，还内置了react-router和fetch的一个应用框架
+
+一、安装
+
+    $ sudo npm i dva-cli -g
+
+    $ sudo dva new dva-quickstart
+
+
+二、定义Model
+
+    把一个领域的模型管理起来，包含同步更新state的reducers，处理异步逻辑
+
+    export default {
+        namespace: &apos;products&apos;,  // 表示在全局 state 上的 key，最好与组件名相同保持统一
+        state: {},                            // 初始值
+        reducers: {                            // 等同于 redux 里的 reducer，接收 action，同步更新 state
+            save(state, action) {
+                return {
+                    ...state,
+                    data: action.payload,
+                };
+            },
+        }
+    }
+
+
+三、connect 起来
+
+    通过connect将model和component联接起来
+
+    class products extends Componet {
+        ... 
+
+        render {
+            const { dispatch, products } = this.props
+
+            return (
+                &lt;div&gt;&lt;/div&gt;
+            )
+        }
+    }
+
+    export default connect(({ products }) =&gt; ({
+        products,
+    }))(Products);
+
+
+四、models
+
+    dispatch
+
+    Reducer(state, action): 
+
+    effects: 异步操作，底层引入redux-sagas，采用了generator
+
+    Subscription: 
+
+    Router: 
+
+
+五、整理
+
+    1、调用同步和异步
+
+        调用reducers内的方法是同步，直接改变指定state的值
+
+        调用effects内的方法是异步的调用，调取成功后在调用reducers中的方法来改变state
+
+
+安装后目录结构:
+|- mock                        // mock
+|- node_modules        // 包
+|- package.json        
+|- public
+|- src
+        |- asserts            // 静态资源，打包会经过webpack处理
+        |- components        // 存放React组件，公用的无状态组件
+        |- models                // 模型文件
+        |- routes                // 存放需要connect model的路由组件
+        |- services            // 存放服务文件，一般是网络请求
+        |- utils                // 工具库
+        |- router.js        // 路由文件
+        |- index.js            // 项目入口
+        |- index.css
+|- .editorconfig        // 编辑器配置文件
+|- .eslintrc
+|- .gitignore
+|- .roadhogrc.mock.js    // Mock配置文件
+|- .webpackrc                //  自定义的webpack配置文件
+
+
+https://dvajs.com/        // dva
+</code></pre><h4 id="Ant-Design-Pro"><a href="#Ant-Design-Pro" class="headerlink" title="Ant Design Pro"></a>Ant Design Pro</h4><pre><code>安装:
+$ git clone --depth=1 https://github.com/ant-design/ant-design-pro.git my-project
+$ cd my-project
+$ npm install
+
+启动服务:
+$ npm start                            // mock数据
+$ npm start:no-mock         // 不走mock数据
+$ npm run prettier            // 格式化代码
+$ npm run lint-staged        // 检测
+
+构建:
+$ npm run build
+
+
+一、路由
+
+    脚手架默认提供了两种布局模板：基础布局 - BasicLayout 以及 账户相关布局 - UserLayout
+
+    router.config.js
+
+    1、name、icon - 菜单项和图标
+
+    2、hideChildrenInMenu - 菜单子路由是否展示
+
+    3、hideInMenu - 菜单中不展示这个路由
+
+    4、authority - 指写可以看当前菜单的用户 Array
+
+    // app
+    {
+        path: &apos;/&apos;,
+        component: &apos;../layouts/BasicLayout&apos;,
+        Routes: [&apos;src/pages/Authorized&apos;],
+        authority: [&apos;admin&apos;, &apos;user&apos;],
+        routes: [
+            {
+                path: &apos;/dashboard&apos;,
+                name: &apos;dashboard&apos;,
+                icon: &apos;dashboard&apos;,
+                hideChildrenInMenu: true,                    // 隐藏所有子菜单，但这块需要加一个对应dashboard路由的component: &apos;./Dashboard/Analysis&apos;
+                routes: [
+                    {
+                        path: &apos;/dashboard/analysis&apos;,
+                        name: &apos;analysis&apos;,
+                        component: &apos;./Dashboard/Analysis&apos;,
+                    },
+                    ...
+                ],
+            }
+        ]
+    }
+    // new 这里是新增布局
+    {
+        path: &apos;/new&apos;,
+        component: &apos;../layouts/new_page&apos;,
+        routes:[...]
+    },
+
+
+二、config.js 配置代理到后端服务器
+
+    {
+        proxy:{
+            &apos;/server/api/&apos;: {
+                target: &apos;https://preview.pro.ant.design/&apos;,
+                changeOrigin: true,
+                pathRewrite: { &apos;^/server&apos;: &apos;&apos; }, // /server/api/currentUser -&gt; /api/currentUser
+            },
+        }
+    }
+
+三、支持SASS
+
+    $ npm i node-sass sass-loader --save            // 安装依赖
+
+
+四、页面添加 dva
+
+    modle - 分两种: 1、全局models（存在/src/models/）   2、页面models （存在于每个业务下/models 不能被其他页面所引用）
+
+    service - 请求数据
+
+
+五、请求的过程
+
+    1、UI 组件交互操作
+
+    2、调用 model 的 effect
+
+    3、调用统一管理的 service 请求函数
+
+    4、使用封装的 request.js 发送请求
+
+    5、获取服务端返回
+
+    6、然后调用 reducer 改变 state
+
+    7、更新 model
+
+
+六、Mock
+
+    export default {
+        // 支持值为 Object 和 Array
+        &apos;GET /api/users&apos;: { users: [1, 2] },
+
+        // GET POST 可省略
+        &apos;/api/users/1&apos;: { id: 1 },
+
+        // 支持自定义函数，API 参考 express@4
+        &apos;POST /api/users/create&apos;: (req, res) =&gt; { res.end(&apos;OK&apos;); },
+    };
+
+    1、可以引用Mock.js第三方库
+
+        import mockjs from &apos;mockjs&apos;;
+
+        export default {
+            // 使用 mockjs 等三方库
+            &apos;GET /api/tags&apos;: mockjs.mock({
+                &apos;list|100&apos;: [{ name: &apos;@city&apos;, &apos;value|1-100&apos;: 50, &apos;type|0-2&apos;: 1 }],
+            }),
+        };
+
+七、自定义主题
+
+    config/config.js文件
+
+    theme: {
+        &apos;font-size-base&apos;: &apos;14px&apos;,
+        &apos;badge-font-size&apos;: &apos;12px&apos;,
+        &apos;btn-font-size-lg&apos;: &apos;@font-size-base&apos;,
+        &apos;menu-dark-bg&apos;: &apos;#00182E&apos;,
+        &apos;menu-dark-submenu-bg&apos;: &apos;#000B14&apos;,
+        &apos;layout-sider-background&apos;: &apos;#00182E&apos;,
+        &apos;layout-body-background&apos;: &apos;#f0f2f5&apos;,
+    };
+
+
+八、项目总结
+
+    1、Mock数据不能在生产环境使用，只能在开发环境
+
+    2、使用动态路由时切换时取不到参数，见下面UMI动态路由解决方法
+</code></pre><h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><pre><code>├── config              # umi 配置，包含路由，构建等配置
+│   ├── config.js                        #    构建
+│   ├── plugin.config.js
+│   ├── router.config.js      # 路由配置文件
+├── mock                # 本地模拟数据
+├── public
+│   └── favicon.png         # Favicon
+├── layouts                            # 框架页面
+├──     ├── BasicLayout                # Basic框架页
+├──     ├── Header                        # 头  
+├──   ├── Footer                        # 尾
+├── locales
+|          ├── zh-CN
+|            |            ├── menu.js            # 配置显示在菜单对应路由的中文名
+├── src                                    # 重要
+│   ├── assets              # 本地静态资源
+│   ├── components          # 业务通用组件
+│   │       ├── GlobalHeader        # 顶部右侧部分内容
+│   ├── e2e                 # 集成测试用例
+│   ├── layouts             # 通用布局
+│   │            ├── BasicLayouts      # 基础布局
+│   ├── models              # 全局 dva model
+│   |            ├── menu.js                    # 菜单处理过滤
+│   |            ├── login.js                # 登录请求
+│   ├── pages               # 业务页面入口和常用模板
+│   │            ├── document.ejs        # 首页模板
+│   │            ├── User                        # Login/Register  登录和注册组件
+│   ├── services            # 后台接口服务
+│   ├── utils               # 工具库
+│   ├── locales             # 国际化资源
+│   ├── global.less         # 全局样式
+│   ├── defaultSettings.js    # 配置菜单样式等
+│   └── global.js           # 全局 JS
+├── utils                                # 工具
+├──     ├── request.js                # 封装Ajax请求
+├──     ├── Authorized                # 授权
+├── models                            # 全局
+├──     ├── menu                            # 菜单的配置和过滤
+├──   ├── 
+├── tests               # 测试工具
+├── README.md
+└── package.json
+</code></pre><h4 id="Umi-js"><a href="#Umi-js" class="headerlink" title="Umi.js"></a>Umi.js</h4><pre><code>umi，中文可发音为乌米, 内置了react、react-router，以路由为基础，支持next.js的约定式路由
+
+一、安装
+
+    $ yarn global add umi     // 安装 umi -v 来查看版本
+
+    $ mkdir myumi &amp;&amp; cd myumi
+
+    1、脚手架创建
+
+        $ yarn creat umi                 // 通过creat-umi脚手架创建，其实就安装了 Ant Design Pro 的简版没有components
+
+
+    2、普通创建
+
+        $ umi g page index            // 简单创建页面
+
+            umi g page users
+
+        $ umi dev            // 启动服务
+
+        $ umi build        // 构建
+
+
+二、路由
+
+    约定式路由 - 启动服务后在pages下产生一个.umi临时目录里面有router.js，umi 会根据 pages 目录自动生成路由配置
+
+    配置式路由 - 如果使用配置可以在，config/router.config.js
+
+    1、路由跳转: 
+
+        import Link from &apos;umi/link&apos;            // 加载link
+
+        export default function(){
+            return (
+                &lt;div&gt;
+                    &lt;Link to=&quot;/user&quot;&gt;跳转到用户&lt;/Link&gt;
+                &lt;/div&gt;
+            )
+        }
+
+        命令式:
+            function goToListPage() {
+                router.push(&apos;/list&apos;);
+            }
+
+    2、动态路由
+
+        umi约定 带 $ 前缀的目录或文件为动态路由
+
+        + pages/
+            + $post/
+                - index.js
+                - comments.js
+            + users/
+                $id.js
+            - index.js
+
+        [
+            { path: &apos;/&apos;, component: &apos;./pages/index.js&apos; },
+            { path: &apos;/users/:id&apos;, component: &apos;./pages/users/$id.js&apos; },
+            { path: &apos;/:post/&apos;, component: &apos;./pages/$post/index.js&apos; },
+            { path: &apos;/:post/comments&apos;, component: &apos;./pages/$post/comments.js&apos; },
+        ]
+
+        注意: 动态路由切换时不会在调用componentWillMount，需要在componentDidUpdate来侦听
+
+             state = {
+                chartId: &apos;&apos;
+            };
+
+            componentDidUpdate(){
+                const { computedMatch } = this.props;
+                const { chartId } = this.state;
+
+                if(chartId !== computedMatch.params.id){
+                    this.initChartList();
+                }
+            }
+
+            initChartList(){
+                const { dispatch, computedMatch } = this.props;
+                console.log(computedMatch.params.id)
+
+                this.setState({
+                    chartId: computedMatch.params.id
+                })
+
+                dispatch({
+                    type: &apos;chartData/getChartsData&apos;,
+                    payload: {
+                        pageId: computedMatch.params.id
+                    }
+                });
+            }
+
+
+    3、路由嵌套
+
+        配置routers
+
+        export default {
+            routes: [
+                { path: &apos;/users&apos;, component: &apos;./users/_layout&apos;,
+                    routes: [
+                        { path: &apos;/users/detail&apos;, component: &apos;./users/detail&apos; },
+                        { path: &apos;/users/:id&apos;, component: &apos;./users/id&apos; }
+                    ]
+                },
+            ],
+        };
+
+    4、权限
+
+        PrivateRoute.js来渲染/list
+
+    https://umijs.org/zh/guide/router.html#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1
+
+
+三、Mock 数据
+
+    let agentDataList = [...]
+    function getAgents(req, res) {
+        const dataSource = agentDataList;
+        const result = {
+            list: dataSource,
+            total: dataSource.length,
+        };
+        return res.json(result);
+    }
+
+    export default {
+        &apos;POST /api/arbitration/agent/query&apos;: getAgents,
+    }
+
+    --- 可以引入mock.js ---
+    import mockjs from &apos;mockjs&apos;;
+    export default {
+        // 使用 mockjs 等三方库
+        &apos;GET /api/tags&apos;: mockjs.mock({
+            &apos;list|100&apos;: [{ name: &apos;@city&apos;, &apos;value|1-100&apos;: 50, &apos;type|0-2&apos;: 1 }],
+        }),
+    };
+</code></pre><h2 id="antdPro-流程"><a href="#antdPro-流程" class="headerlink" title="antdPro 流程"></a>antdPro 流程</h2><pre><code>一、app.js入口
+
+    // 获取权限路由，也可以在这添加路由
+    fetch(&apos;/api/auth_routes&apos;)
+  .then(res =&gt; res.json())
+  .then(ret =&gt; {
+    authRoutes = ret;
+    oldRender();
+  });
+
+
+二、login 登录接口
+
+    request: /api/login/account
+    response: {status: &quot;ok&quot;, type: &quot;account&quot;, currentAuthority: &quot;admin&quot;}
+
+
+三、设置和获取权限 
+
+    router.config.js 配置Routes每个页面都调用Authorized.js来判断权限
+    {
+        path: &apos;/&apos;,
+        component: &apos;../layouts/BasicLayout&apos;,
+        Routes: [&apos;src/pages/Authorized&apos;],                // 设置
+        authority: [&apos;admin&apos;, &apos;user&apos;, &apos;ROLE_RDDPL4WSV0&apos;],
+        routes: [
+            { path: &apos;/&apos;, redirect: &apos;/dashboard/workplace&apos;, authority: [&apos;admin&apos;, &apos;user&apos;, &apos;ROLE_RDDPL4WSV0&apos;] },
+        ]
+    }
+
+
+    utils/authority   getAuthority、setAuthority
+
+    存储到localStrage中的antd-pro-authority
+
+
+四、菜单
+
+    modules/menu        getMenuData()获取菜单的方法
+
+    layouts/BasicLayouts        页面布局，SiderMenu组件menuData菜单数据
+
+    menuData格式
+    [{
+        &quot;path&quot;: &quot;/dictionary&quot;,
+        &quot;icon&quot;: &quot;book&quot;,
+        &quot;name&quot;: &quot;数据字典&quot;,
+        &quot;locale&quot;: &quot;menu.dictionary&quot;,
+        &quot;authority&quot;: [&quot;admin&quot;, &quot;user&quot;],
+        &quot;children&quot;: [{
+            &quot;path&quot;: &quot;/dictionary/list&quot;,
+            &quot;name&quot;: &quot;字典列表&quot;,
+            &quot;exact&quot;: true,
+            &quot;locale&quot;: &quot;menu.dictionary.list&quot;
+        }, {
+            &quot;path&quot;: &quot;/dictionary/create&quot;,
+            &quot;name&quot;: &quot;新建字典&quot;,
+            &quot;exact&quot;: true,
+            &quot;locale&quot;: &quot;menu.dictionary.create&quot;
+        }]
+    }]
+</code></pre><h4 id="react使用typescript"><a href="#react使用typescript" class="headerlink" title="react使用typescript"></a>react使用typescript</h4><pre><code>1、state和props定义
+
+    interface IProps {
+        aProps: string;
+        bProps: string;
+    }
+    interface IState {
+        aState: string;
+        bState: string;
+    }
+
+    class App extends React.PureComponent&lt;IProps, IState&gt; {
+        state = {
+            aState: &apos;&apos;,
+            bState: &apos;&apos;,
+        };
+
+        render(){
+            this.props.aProps;
+            this.state.aState;
+            return null;
+        }
+    }
+
+    const mapStateToProps = () =&gt; {
+        return {
+            aProps: &apos;a&apos;,
+            bProps: &apos;b&apos;
+        }
+    }
+    const mapDispatchToProps = {};
+    export default connect(mapStateToProps, mapStateToProps)(App)
+</code></pre><p>| <a href="https://www.jianshu.com/p/c7b3b9c98d04" target="_blank" rel="noopener">https://www.jianshu.com/p/c7b3b9c98d04</a><br>| <a href="https://umijs.org/zh/plugin/umi-plugin-react.html#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://umijs.org/zh/plugin/umi-plugin-react.html#%E5%AE%89%E8%A3%85</a>            // umiJS</p>
+
+        
+    </section>
+</article>
+
+
+
+<div class="comments">
+    <div id="disqus_thread">
+        <p class="comment-tips">国内查看评论需要代理~</p>
+    </div>
+    <script>
+    window.disqus_config = function () {
+        this.language = 'zh';
+        this.page.url = 'http://siguang1983.github.io/2018/12/14/React(之四)其它状态管理及框架/';
+        this.page.title = 'React（之四）其它框架状态管理及框架';
+        this.page.identifier = '2018/12/14/React(之四)其它状态管理及框架/';
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://name.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+            $(document.body).scrollspy({target: '#aside-inner'});
+            
+        });
+    </script>
+
+</body>
+</html>

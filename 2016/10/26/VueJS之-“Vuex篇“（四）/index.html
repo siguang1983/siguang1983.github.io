@@ -14,9 +14,11 @@
     <meta name="description" content="VuexVuex借鉴了Flux和Redux设计思想.
 
 优点:
+
     Vue组件父子之间通过$on、$emit自定义事件来进行通信
+
     Vuex可以解决同级组件之间无法传递消息
-执行步骤Store: 定义仓库，包含state对象，组件通过getter从store读取数据，通过Getter
+执行步骤Store: 数据仓库，包含state对象，组件通过getter从store读取数据，通过Getter
 
 核心模块:
 
@@ -24,7 +26,7 @@
 
     2、getter: 对数据进行过滤，获取state数据，在计算属性中获取state的值
 
-    3、mutation: 更改 Vuex " />
+    3、mutation: 同步操作，更" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -61,10 +63,10 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -107,7 +109,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex"><span class="toc-number">1.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行步骤"><span class="toc-number">2.</span> <span class="toc-text">执行步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">3.</span> <span class="toc-text">Example</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Vuex"><span class="toc-number">1.</span> <span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#执行步骤"><span class="toc-number">2.</span> <span class="toc-text">执行步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#State"><span class="toc-number">3.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getter"><span class="toc-number">4.</span> <span class="toc-text">getter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mutations"><span class="toc-number">5.</span> <span class="toc-text">Mutations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Actions"><span class="toc-number">6.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Modules"><span class="toc-number">7.</span> <span class="toc-text">Modules</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">8.</span> <span class="toc-text">示例</span></a></li></ol>
         
     </div>
 </aside>
@@ -145,9 +147,11 @@
         <h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><pre><code>Vuex借鉴了Flux和Redux设计思想.
 
 优点:
+
     Vue组件父子之间通过$on、$emit自定义事件来进行通信
+
     Vuex可以解决同级组件之间无法传递消息
-</code></pre><h4 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h4><pre><code>Store: 定义仓库，包含state对象，组件通过getter从store读取数据，通过Getter
+</code></pre><h4 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h4><pre><code>Store: 数据仓库，包含state对象，组件通过getter从store读取数据，通过Getter
 
 核心模块:
 
@@ -155,314 +159,191 @@
 
     2、getter: 对数据进行过滤，获取state数据，在计算属性中获取state的值
 
-    3、mutation: 更改 Vuex 的 store 中的state值的唯一方法是提交 mutation
+    3、mutation: 同步操作，更改 Vuex 的 store 中的state值的唯一方法是提交 mutation
 
-    4、action: 类似于 mutation，不同在于可以包含任意异步操作，Action通过commit()方法来调用mutation中的方法在改变来改变state的值，而不是直接改变state中的值
+    4、action: 异步操作，Action通过commit()方法来调用mutation中的方法在改变来改变state的值，而不是直接改变state中的值
 
             分发Action: store.dispatch()方法触发
 
     5、modules: 如果应用过大，便可以使用 modules 来分割管理，不至于 store 变得非常臃肿
 
 
-模块示例详解:
+    调用同步的mutation  this.$store.commit(&apos;mutationName&apos;)
 
-一、state: 
-
-    用来存储数据，如果在组件中获取state中的数据，可以通过两种方法来获取: 计算属性computed 和 Getters
-
-    在组件中显示state值可以通过computed来获取:
-
-        &lt;template&gt;
-            &lt;div class=&quot;box&quot;&gt;
-                {{getSideData}}
-            &lt;/div&gt;
-        &lt;/template&gt;
-
-        方法1: 计算属性中获取
-
-        computed: {
-            getSideData () {
-                return this.$store.state.sideData;            // 当getSideData的值改变就会显示出来
-            }
-        }
-
-
-        方法2: mapState函数获取
-
-        import { mapState } from &apos;vuex&apos;;        // 引用mapState()
+    调用异步的Action    this.$store.dispatch(&apos;mutationName&apos;)
 
         export default {
-            name: &apos;side&apos;,
-            computed: {
-                ...mapState({    // 对象展开运算符
-                    getSideData: (state) =&gt; {
-                        return state.sideData
-                    }
+            insertMessage({commit}, insertData){
+                fetch(&apos;/login&apos;,{
+                    username,
+                    password
+                })
+                .then((res)=&gt;{
+                    return res.json();
+                })
+                .then((res) =&gt; {
+                    // 调用mutation
+                    commit(&apos;insertMessage&apos;, res.data);
                 })
             }
         }
+</code></pre><h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><pre><code>用来存储数据，如果在组件中获取state中的数据，可以通过两种方法来获取: 计算属性computed 和 Getters
+</code></pre><h4 id="getter"><a href="#getter" class="headerlink" title="getter"></a>getter</h4><pre><code>在组件中用来获取Store中state，通过getter获取，组件中在通过computed来调用getter
 
-        getters.js
-            export const sideData = (state) =&gt; {
-                return state.sideData;
-            } 
+getters.js
+export const sideData = (state) =&gt; {
+    return state.sideData;
+} 
 
+&lt;template&gt;
+    &lt;div class=&quot;box&quot;&gt;
+        {{ getSideData }}
+    &lt;/div&gt;
+&lt;/template&gt;
 
-2、Getter
-
-    获取state中数据的第二种方法
-
-    getters.js中定义获取state的方法: 
-
-        export const sideData = (state) =&gt; {
-            return state.sideData;
-        }
-
-    组件中调用
-
-        1）computed方式
-
-            computed: {
-                getSideData(){
-                    return this.$store.getters.sideData;        // $store.getters下找到定义的sideDap
-                }
-            }
-
-        2）通过mapGetters获取
-
-            &lt;template&gt;
-                &lt;div&gt;{{ getSideData }}&lt;/div&gt;
-            &lt;/tempate&gt;
-
-            import { mapState, mapGetters } from &apos;vuex&apos;;
-
-            computed: {
-                ...mapGetters({
-                    getSideData: &quot;sideData&quot;            // 映射到getters.js中定义的sideData, 并将数据返回给getSideData
-                })
-            }
-
-3、Mutations
-
-    用来更改Vuex中state的数据，它是同步的
-
-    1、commit()触发Action, Action触发mutation
-
-        定义mutations 
-
-            export default {
-                changeSideData(state, sideJson){
-                    state.sideData.push(sideJson)
-                }
-            }
-
-        触发
-            methods:{
-                addSideData(){
-                    let side = {
-                        id: 1,
-                        name: this.name,
-                        introduce: this.introduce
-                    }
-                    this.$store.commit(&apos;changeSideData&apos;, side);
-                }
-            }
-
-
-    2、使用mapMutations() 来定义改变
-
-
-4、Actions
-
-    Actions提交到 Mutations中，而不能直接改变state的值
-
-    Actions可以包含异步操作，Mutations是同步的
-
-    1）Example
-
-        定义actions
-
-            export const holderSilde = ({commit}, {name, introduce}) =&gt; {    
-                // {name, introduce} 这里注意一定对象传过来，这里为解析赋值写法，函数不接收第三个参数
-                var side = {
-                    id: 1,
-                    name: name,
-                    introduce: introduce
-                }
-                commit(&apos;changeSideData&apos;, side)
-            }
-
-
-        调用 分发dispatch
-
-            methods:{
-                addSideData(){
-                    // 第二个为传过去的参数
-                    this.$store.dispatch(&apos;holderSilde&apos;, {name: this.name, introduce: this.introduce});
-                }
-            }
-
-
-5、Modules
-
-    Vuex可以将Store分割到各模块，每个模块都有自己的store、mutations、actions、getters
-
-    const moduleA = {
-        state: { ... },
-        mutations: { ... },
-        actions: { ... },
-        getters: { ... }
+// 方法1: computed
+computed: {
+    getSideData () {
+        return this.$store.state.sideData;            // 当getSideData的值改变就会显示出来
     }
-
-    const moduleB = {
-        state: { ... },
-        mutations: { ... },
-        actions: { ... }
-    }
-
-    const store = new Vuex.Store({
-        modules: {
-            a: moduleA,
-            b: moduleB
-        }
-    })
-
-    store.state.a // -&gt; moduleA 的状态
-    store.state.b // -&gt; moduleB 的状态
-</code></pre><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><pre><code>1、App.vue:
-
-    &lt;template&gt;
-        &lt;div&gt;
-            &lt;Display&gt;&lt;/Display&gt;
-            &lt;Increment&gt;&lt;/Increment&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-    &lt;script&gt;
-        import Display from &apos;./components/Display.vue&apos;
-        import Increment from &apos;./components/Increment.vue&apos;
-        import store from &apos;./vuex/store&apos;
-
-        export default {
-            components: {
-                Display,
-                Increment
-            },
-            store           // 在根组件加入store
-        }
-    &lt;/script&gt;
-
-    &lt;style&gt;
-    body {
-        font-family: Helvetica, sans-serif;
-    }
-    &lt;/style&gt;
+}
 
 
-2、Display.vue:
-
-    &lt;template&gt;
-        &lt;div&gt;
-            &lt;h3&gt;Count is {{ counterValue }}&lt;/h3&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-    &lt;script&gt;
-        import { getCount } from &apos;../vuex/getters&apos;
-
-        export default {
-            vuex: {
-                getters: {
-                    counterValue: getCount
-                }
+// 方法2: mapState函数获取
+import { mapState } from &apos;vuex&apos;;        // 引用mapState()
+export default {
+    name: &apos;side&apos;,
+    computed: {
+        ...mapState({    // 对象展开运算符
+            getSideData: (state) =&gt; {
+                return state.sideData
             }
-        }
-    &lt;/script&gt;
-
-
-3、Increment.vue
-
-    &lt;template&gt;
-        &lt;div&gt;
-        &lt;button @click=&quot;increment&quot;&gt;Increment +1&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/template&gt;
-
-    &lt;script&gt;
-        import { incrementCounter } from &apos;../vuex/action&apos;
-
-        export default {
-
-            vuex: {
-                actions: {
-                    increment: incrementCounter
-                }
-            }
-
-        }
-    &lt;/script&gt;
-
-
-4、main.js
-
-    import Vue from &apos;vue&apos; 
-    import App from &apos;./App.vue&apos;
-
-    new Vue({
-        el: &apos;body&apos;,
-        components: { 
-            App
-        }
-    })
-
-
-5、store.js
-
-    import Vue from &apos;vue&apos;
-    import Vuex from &apos;vuex&apos;
-
-    // 引用vuex
-    Vue.use(Vuex);
-
-    // 启动时的初始状态
-    const state = {
-        // 放置初始化状态
-        count: 0
+        })
     }
+}
+</code></pre><h4 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h4><pre><code>用来更改Store中state的数据，它是同步的
 
-    const mutations = {
-        // 放置要变更的函数
-        INCREMENT(state, amount){
-            state.count = state.count + amount;
+1、commit()触发Action, 之后Action触发mutation来改变state的值
+
+    // 定义mutations 
+    export default {
+        changeSideData(state, sideJson){
+            state.sideData.push(sideJson)
         }
     }
 
-    export default new Vuex.Store({
-        state,
-        mutations
-    })
-
-
-6、action.js
-
-    // action 会收到 store 作为它的第一个参数
-    // 既然我们只对事件的分发（dispatch 对象）感兴趣。（state 也可以作为可选项放入）
-    // 我们可以利用 ES6 的解构（destructuring）功能来简化对参数的导入
-    export const incrementCounter = function ({ dispatch, state }) {
-        console.log(dispatch, state)
-        dispatch(&apos;INCREMENT&apos;, 1)
+    // 触发
+    methods:{
+        addSideData(){
+            let side = {
+                id: 1,
+                name: this.name,
+                introduce: this.introduce
+            }
+            this.$store.commit(&apos;changeSideData&apos;, side);
+        }
     }
 
+2、使用mapMutations() 来定义改变
+</code></pre><h4 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h4><pre><code>actions提交到 Mutations中，action而不能直接改变state的值
 
-7、getter.js
+actions可以包含异步操作，mutations是同步的
 
-    // 这个 getter 函数会返回 count 的值
-    // 在 ES6 里你可以写成: 
-    // export const getCount = state =&gt; state.count
-    export function getCount(state){
-        return state.count;
+// 定义action
+export const holderSilde = ({commit}, {name, introduce}) =&gt; {    
+    // {name, introduce} 这里注意一定对象传过来，这里为解析赋值写法，函数不接收第三个参数
+    var side = {
+        id: 1,
+        name: name,
+        introduce: introduce
     }
-</code></pre>
+    commit(&apos;changeSideData&apos;, side)
+}
+
+
+// 调用 分发dispatch
+methods:{
+    addSideData(){
+        // 第二个为传过去的参数
+        this.$store.dispatch(&apos;holderSilde&apos;, {name: this.name, introduce: this.introduce});
+    }
+}
+</code></pre><h4 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h4><pre><code>Vuex可以将Store分割到各模块，每个模块都有自己的store、mutations、actions、getters
+
+const moduleA = {
+    state: { ... },
+    mutations: { ... },
+    actions: { ... },
+    getters: { ... }
+}
+
+const moduleB = {
+    state: { ... },
+    mutations: { ... },
+    actions: { ... }
+}
+
+const store = new Vuex.Store({
+    modules: {
+        a: moduleA,
+        b: moduleB
+    }
+})
+
+store.state.a // -&gt; moduleA 的状态
+store.state.b // -&gt; moduleB 的状态
+</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code>// store.js
+import Vue from &apos;vue&apos;
+import Vuex from &apos;vuex&apos;
+import mutations from &apos;./mutations.js&apos;;
+import actions from &apos;./actions.js&apos;;
+import getters from &apos;./getters.js&apos;;
+Vue.use(Vuex);
+
+// 初始化数据
+const state = {
+    currentId: 0,
+    currentUsername: &apos;&apos;,
+    sideData: [
+        {
+            id: &apos;1&apos;,
+            username: &apos;siguang&apos;,
+            introduce: &apos;用户描述&apos;
+        },
+        {
+            id: &apos;2&apos;,
+            username: &apos;lulu&apos;,
+            introduce: &apos;用户描述&apos;
+        }
+    ]
+}
+
+export default new Vuex.Store({
+    state,
+    getters,
+    actions,
+    mutations,
+})
+
+
+// main.js
+import Vue from &apos;vue&apos;
+import App from &apos;./App&apos;
+import router from &apos;./router&apos;
+import store from &apos;./store.js&apos;
+Vue.config.productionTip = false;
+
+let vm = new Vue({
+    el: &apos;#app&apos;,
+    router,
+    store,
+    components: { App },
+    template: &apos;&lt;App/&gt;&apos;
+})
+
+window.vm = vm;
+</code></pre><p>| <a href="https://vuex.vuejs.org/zh" target="_blank" rel="noopener">https://vuex.vuejs.org/zh</a></p>
+
         
     </section>
 </article>

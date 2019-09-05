@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>Tag: MongoDB | 大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Tags</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+
+        
+        <div class="author-meta">
+            
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="siguang" style="box-shadow: 3px 3px 4px rgba(0,0,0, .2);">
+                </a>
+            </div>
+            
+            <div class="author-name">Siguang(厨子)</div>
+            <div class="author-work">Front-end development</div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">BeiJing, China</span>
+            </div>
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-github"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-circle-more"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/02/mongoDB/">MongoDB</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/02/mongoDB/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">2017-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/MongoDB/">MongoDB</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <p>| 创建用户权限<br>| 数据类型 - null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object<br>| 库操作 - show dbs、show collections、use db、db、db.dropDatabase()<br>| 创建和删除集合 -  db.createCollection、db.myColl.insert({})、db.myColl.drop()<br>| 删除行 -<br>| 插入值 - db.myColl.insert({name: ‘haha’})<br>| 更新值 - db.myColl.update({name: ‘haha}, {$set: {age: 20}}, false, true)<br>|      $set、$unset、$inc、$push、$pushAll、$pop、$pull、$pullAll、$rename<br>| 删除值 -  db.myColl.remove({name: ‘’})、remove({})<br>| 查询值 - db.myColl.find({})<br>|        .sort()、count()、limite()、skip()<br>|        查询条件 $gt、$gte、$lt、$lte、!= 、=、and、or、in、notIn<br>|        数组查询 $all、$size、$sclie<br>|        $where 子句<br>| 索引 db.myColl.ensureIndex({key:1})、getIndexes()、dropIndexes()、background:true修改索引<br>|        索引类型: _id索引、单键索引、多键索引、复合索引、过期索引、全文索引、唯一索引<br>| 复制集<br>| 分片<br>| 数据均衡<br>| 性能分析</p>
+<h4 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB"></a>什么是MongoDB</h4><pre><code>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。
+
+在高负载的情况下，添加更多的节点，可以保证服务器性能。
+
+MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。
+
+MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
+
+一、MongoDB优点
+
+    1、无数据结构限制（没有表结构概念，每条记录可以有完全不同的结构）
+
+    2、完全的索引支持（单键索引、数组索引、全文索引、地理位置索引）
+
+    3、数据安全性和分片扩展数据规模
+
+    1、简单的单机服务    2、搭建具有冗余容错功能的复制集    3、搭建大规模数据集群        4、完成集群的自动部署
+
+    MongoDB逻辑结构是一种层次结构，文档(document)、集合(collection)、数据库(database)这三部分组成的。 
+
+二、数据库分类
+
+    1、SQL数据库，支持SQL语言的数据库，如 Oracle，Mysql
+
+    2、NoSQL数据库，不支持SQL语言的数据库，Redis, MongoDB
+
+三、mongo与sql概念
+
+    SQL术语/概念    MongoDB术语/概念    解释/说明
+
+    database         database                 数据库
+    table               collection             数据库表/集合
+    row                   document                 数据记录行/文档
+    column             field                     数据字段/域
+    index               index                     索引
+    table              joins                      表连接/MongoDB不支持
+    primary key     primary key        主键/MongoDB自动将_id字段设置为主键
+</code></pre><h4 id="mongo的基本数据类型"><a href="#mongo的基本数据类型" class="headerlink" title="mongo的基本数据类型"></a>mongo的基本数据类型</h4><pre><code>null、boolean、Number、Float、String、Date、表达式、二进制、undefined、Array、Object
+</code></pre><h4 id="启动Mongodb"><a href="#启动Mongodb" class="headerlink" title="启动Mongodb"></a>启动Mongodb</h4><pre><code>$ 启动Mongod服务 
+
+    $ cd /usr/local/Cellar/mongodb/4.0.0/bin 
+
+    $ mongod &amp;
+
+    $ 或者sudo ./mongod -f /usr/local/etc/mongod.conf &amp;        // &amp; 为后台运行
+
+$ 停止服务 - 进入 use admin  =&gt; $ db.shutdownServer()
+
+查看服务进程 -  ps -rf | grep mongod   ps -rf | grep mongo    kill -9 xxxx
+
+1、命令启动Mongo服务
+
+    // 指定配置文件启动mongod 服务
+    mongod --dbpath=/usr/local/var/mongodb       // --logpath=/Users/thatway/mongodata/logs/mongodb.log
+
+2、配置文件方式启动 
+
+    mongod --config /usr/local/etc/mongod.conf
+</code></pre><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>$ db.getMongo() - 查看当前mongo的ip和端口
+
+------------------ 库操作 ------------------
+
+db.copyDatabase(&apos;旧数据库名&apos;, &apos;新数据库名&apos;) - 克隆数据库
+
+use myDataBase - 创建并切换库，如果没有就创建这个库，创建库时在内存中，只有对库插入集合操作才会真正存在硬盘上
+
+db - 查看当前选择的库
+
+db.dropDataBase() - 删除数据库，先切到要删除的库下在执行删除命令
+
+db.copyDatabase(&apos;ibg_ndoe_sms&apos;, &apos;ibg_node_sms&apos;)
+
+show dbs - 查询所有数据库
+
+
+------------------ 集合 ------------------
+
+show collections 或者 show tables - 查询当前数据库下所有的文档
+
+db.createCollection(表名，指定大小和索引选项) - 创建集合
+
+db.myColl.drop() - 删除当前库下指定集合
+
+db.myColl.insert({_id: ObjectId(&quot;5a4b5f29cca1d978501c9c52&quot;), name: &apos;aa&apos;, age: 30}) - 插入指定主键不能相同
+
+db.myColl.save({_id: ObjectId(&quot;5a4b5f29cca1d978501c9c52&quot;), name: &apos;aa&apos;, age: 30}) - 插入允许主键相同的数据
+
+
+db.myColl.find(query) - 取数据
+
+db.myColl.findOne() - 取第一条记录
+
+db.myColl.update({}) - 更新文档
+
+db.myColl.update({name: &apos;siguang&apos;}, {$unset: {name: 1}}) - 删除一个字段
+
+db.myColl.remove(query, {justOne}) - 删除一条文档
+
+
+db.myColl.ensureIndex() - 创建索引
+
+db.myColl.getIndexes() - 查看当前集合索引
+
+db.myColl.dropIndexes() - 删除索引 
+
+db.myColl.ensureIndex({id: 1}, {background: true}) - 修改索引
+
+
+db.createUser() - 创建用户角色
+</code></pre><h4 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h4><pre><code>一、查询库、查询集合
+
+    1、show dbs — 查询所有的数据库列表
+
+    2、show collections — 显示当前库下所有集合
+
+
+二、创建库和删库
+
+    1、use testDatabase — 创建一个数据库，如果库存在则使用当前库，创建时只在内存中，只有对这个库有操作后这个数据库才能真正创建
+
+    2、db - 查看当前所在的库库
+
+    3、db.dropDatabase() - 删除这个数据库
+
+        use tsetDatabase     // 先进入要操作的数据库
+        db.dropDatabase()     // 删除库
+</code></pre><h4 id="文档的创建和删除"><a href="#文档的创建和删除" class="headerlink" title="文档的创建和删除"></a>文档的创建和删除</h4><pre><code>查看常用的方法  db.myColl.help()
+
+一、建两种方法
+
+    1、db.createCollection(名称, 指定有关内存大小和索引选项);    -    创建集合
+
+        options:
+            capped - Boolean    （可选）如果为true，则启用封顶集合。封顶集合是固定大小的集合，会自动覆盖最早的条目，当它达到其最大大小。如果指定true，则需要也指定尺寸参数。
+            autoIndexID - Boolean    （可选）如果为true，自动创建索引_id字段的默认值是false。
+            size - number    （可选）指定最大大小字节封顶集合。如果封顶如果是 true，那么你还需要指定这个字段。
+            max - number
+
+    2、db.myColl.insert({name:’hf’,age:20}) — 在mongodb中在插入数据时即创建文档，此时创建的是名为myColl的文档
+
+        for(i=0; i&lt;100; i++) db.myTabel.insert({&apos;age&apos;, i})        循环插入
+
+
+二、删除集合、文档
+
+    db.myColl.remove({type: &apos;马尔代夫&apos;}) - 删除myColl集合中 type=&apos;马尔代夫&apos; 这条文档
+
+    db.myColl.drop(); — 删除myColl这个集合
+</code></pre><h4 id="insert-插入文档"><a href="#insert-插入文档" class="headerlink" title="insert 插入文档"></a>insert 插入文档</h4><pre><code>1、insert() - 插入主键不能相同，自动生成_id    db.myColl.insert({name:’hahaha’, age:12});
+
+2、save() - 允许插入重复数据，直接添加一个文档
+
+    db.myColl.save({        // 直接向集合中插入文档
+        data: {},
+        message: &quot;操作成功&quot;,
+        status: 0
+    })
+
+二者的区别
+
+    insert()在主键相同时会报错
+
+    save()在主键存在的为更新，如果不存在为插入
+
+    // { &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang&quot; }
+
+    $ db.user.insert({ &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang&quot; })        // 报错
+
+    $ db.user.save({ &quot;_id&quot; : ObjectId(&quot;5a4b5df1cca1d978501c9c50&quot;), &quot;username&quot; : &quot;siguang123&quot; })    // 执行成功，并将username的值改了
+</code></pre><h4 id="remove-删除文档"><a href="#remove-删除文档" class="headerlink" title="remove() 删除文档"></a>remove() 删除文档</h4><pre><code>1、db.myColl.remove({name: &apos;hf&apos;}) - 删除name字段值为空的行, 此处相当于关系数据库中的 delete myColl where name = ‘hf’
+
+2、db.myColl.remove({_id: ObjectId(&quot;593526143793ca468ceb963c&quot;)}) - 通过id来删除文档
+
+3、db.myColl.remove({}) - 删除集合中所有文档
+</code></pre><h4 id="find-文档查询"><a href="#find-文档查询" class="headerlink" title="find 文档查询"></a>find 文档查询</h4><pre><code>http://www.cnmyColls.com/egger/p/3135847.html
+
+1、findOne() - 查询第一条记录，然后闭关游标
+
+2、find() - 返回所有记录
+
+    // 返回满足字段值的文档
+    db.role.find({age:30}) 
+
+    // 指定返回的列，第一个参数为where语句，第二个参数为不显示列，0为不显示，1为显示
+    db.cars.find({}, { user: 0 });
+
+3、sort() - db.myColl.find().sort({age:1})      // age=1为升序，-1为降序  sort()
+
+4、count() - db.myColl.count();          // 返回表中记录的个数 count()        
+
+5、limit() - db.myColl.find().limit(5)          // 返回前5条数据 limit()
+
+        db.myColl.find().skip(10).limit(20);        返回11-30条数据， 用于分页
+
+6、skip() - db.myColl.find().skip(50)          // 跳过前50条数据
+
+7、pretty() - 将查询出的内容进行格式显示        
+
+8、查询条件
+
+    1）条件查询  &gt; $gt、 &gt;= $gte、 &lt; $lt、 &lt;= $lte、 != $ne
+
+        db.cars.find({carMoney: {$lt:100}})        // 查询carMoney小于100的值
+
+        db.cars.find({carMoney: {$lt:100, $gt:20}})        // 查询carMoney 大于20小于100的值
+
+    2）$and、$or、$in、$notIn
+
+        $and  db.cars.find({name: &apos;卡宴&apos;, price: 200})        // name=卡宴 并且 price=200    
+
+        $or     db.cars.find({ $or: [ {id: 9}, {carType: 735}] })        // 查询出id=9 或者 carType=735
+
+            // 查询 isDeleted: false 并且id带有&apos;huang&apos;字符 或者 carType等于735
+            db.cars.find({ isDeleted: false, $or: [ {id: /huang/i}, {carType: 735}] });    
+
+        $in      db.myColl.find({price: {$in: [100, 300, 500]});        // 查询出price 值为100、300、500值的字段
+
+        $not    不包括的数据
+
+9、$type 类型操作符查询
+
+    例如: 将name字段中的所有为数字的查询出来， db.tourism.find({&apos;name&apos;: {$type: 1}})
+
+    对应表:
+        类型                        数字            备注
+
+        Double                            1                数字
+        String                            2     
+        Object                            3     
+        Array                                4     
+        Binary data                    5     
+        Undefined                        6               已废弃。
+        Object id                        7     
+        Boolean                            8     
+        Date                                9     
+        Null                                10
+        Regular Expression    11
+        JavaScript                    13     
+        Symbol                            14     
+        JavaScript (with scope)    15     
+        32-bit integer            16     
+        Timestamp                        17     
+        64-bit integer            18     
+        Min key                            255            Query with -1.
+        Max key                            127     
+
+
+10、数组查询
+
+    1）$all - 用来查询数组中是否包含指定的值
+
+        // 内容列值为数组
+        db.myColl.find({content: {$all: [1, 8]})        返回content中包含1或8的数组
+
+    2）$size - 查询数组的长度
+
+        db.myColl.find({content: {$size: 3}});        返回content数组字段长度为3个
+
+    3）$slice - 控制指定字段中返回数组的个数
+
+        db.myColl.find({}, {content: {$slice: 3}} )    返回所有记录 content数组只取前三个
+
+        db.myColl.find({}, {content: {$slice: -3}} )    从后取3个
+
+        db.myColl.find({}, {content: {$slice: [1, 3]}} )    取1-3的范围
+
+
+11、$where 子句
+
+    相当于用一个js查询一部分，如果为true则返回数据，则否不返回
+
+    字符串形式
+    db.myColl.find({$where: &quot;this.title.length &gt; 23&quot;}, {title: 1})    对title field中的字符长度大于23的返回
+
+    函数形式
+    db.myColl.find({$where: function(){ return this.title.length &gt; 23 }})
+
+
+12、Example
+
+    db.myColl.find()  —  查询myColl中的所有数据， 带条件 .fin({x: 1}) x=1的记录
+
+    db.myColl.find({}, {id: 1, price: 1}) — 查询其中两个字段的值
+
+    db.myColl.find({id: 5}, {username: 1}) - 只返回id=5 的 username的字段，其余的不返回
+
+        { &quot;_id&quot; : ObjectId(&quot;58e85c84784a18c26f9a1fa5&quot;), &quot;username&quot; : &quot;siguang5&quot; }
+
+    db.myColl.update({}, {$unset:{&apos;name&apos;:&apos;&apos;}}, false, true)        // 删除一个字段
+
+    db.myColl.find({title: /美舰/}, {title: 1})    -    查找出title中带有&quot;美舰&quot;的字符，并只返回title字段
+</code></pre><h4 id="update-更新文档"><a href="#update-更新文档" class="headerlink" title="update 更新文档"></a>update 更新文档</h4><pre><code>update(更新条件, 更新的值，[如果不存在是否创建 - 默认false]，[是否更新全部 - 默认false])
+
+1、$set - 更新值
+
+    update() 第四个参数为true更所有匹配的值，false只更新一个
+
+    // 只更匹配的第一条 如果type=&apos;123&apos;不存在, 则插入一条只有name=&apos;456&apos;的数据
+    db.myColl.update({type: &apos;123&apos;}, {name: &apos;456&apos;});        // 注意如果不使用$set那么type=123这行记录只剩name=456
+
+    // 更新全部匹配
+    db.myColl.update({name:’hf’}, {$set:{age:25}}, false, true)
+
+    // {multi:true} 更新多条
+    db.myColl.update({&apos;title&apos;:&apos;MongoDB 教程&apos;}, {$set:{&apos;title&apos;:&apos;MongoDB&apos;}}, {multi:true})
+
+    // 为集合中所有文档添加一个字段
+    db.user.update({}, {$set: {password: &apos;******&apos;}}, {multi: 1})
+
+
+2、$unset - 删除字段列
+
+    db.myColl.update({id: 1}, {$unset: {content: 1}});        // 删除id=1，content字段
+
+
+3、$inc - 只能对一个数字字段的值的进行累加，key不存在或者非数字都报错
+
+    db.myColl.find({id: 1});        // result: { username: &apos;siguang&apos;, password: 100 }
+
+    // 如果password的值存在则 +1000
+    db.myColl.update({id: 1}, {$inc: {password: 1000}})    
+    db.myColl.find({id: 1});        // result: { username: &apos;siguang&apos;, password: 1100 }
+
+
+4、$push、$pushAll - 对一个数组字段在插入值
+
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3 ] }
+
+    db.myColl.update({id: 3}, {$push: {content: 4}})
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3, 4] }
+
+
+5、$addToSet - 向一个数组中添加数据，如果数组中存在这个值则不添加，如果不存在则添到数组中
+
+    db.myColl.find({id: 3});            Result: { &quot;id&quot; : 3, &quot;username&quot; : &quot;siguang3&quot;,  &quot;content&quot; : [ 1, 2, 3 ] }
+
+    db.myColl.update({id: 3}, {$addToSet: {content: 3}});        // 数组中存在不添加
+    db.myColl.update({id: 3}, {$addToSet: {content: 4}});        // &quot;content&quot; : [ 1, 2, 3, 4 ]
+
+
+6、$pop - 删除数组中第一个或最后一个值 
+
+    db.myColl.update({id: 3}, {$pop: {content: -1}});        // content为1 删除数组第一个值，-1删除数组最后一个值
+
+
+7、$pull、$pullAll - 删除数组中指定相同的值
+
+    db.myColl.update({id: 4}, {$set: {content: [1,2,34,4,1,2,3,1,1,6,1,34]}});    将content field为数组
+
+    db.myColl.update({id: 4}, {$pull: {contentn: 1}});
+    db.myColl.find({id: 4});        Result  {content: [2,34,4,2,3,6,34]}}  将数组中的1全部删除
+
+
+8、$rename - 对某个字段进行更名
+
+    db.myColl.update({id: 4}, {$rename: {content: &apos;title&apos;}});        // 将id=4的 content field 名更改为title
+
+
+http://chenzhou123520.iteye.com/myColl/1637629
+</code></pre><h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><pre><code>索引就是用来加速查询
+
+索引的优缺点:
+
+    优点: 索引加快查询的速度
+
+    缺点: 增加磁盘空间消耗，降低写入性能
+
+一、命令
+
+    1、查看索引 - getIndexes()    db.myColl.getIndexes()
+
+    2、创建、修改索引 - ensureIndex()    
+
+        创建: db.myColl.ensureIndex({userId: 1})        // 1升序  -1降序
+
+        上修改: db.myColl.ensureIndex({id: 1}, {background: true});        // {background: true}
+
+    3、删除索引 - dropIndexes()
+
+        db.myColl.dropIndexes(name);        // getIndexes()中查出来所索name的值
+
+
+二、ensureIndex()参数
+
+    1、background - Boolean 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 &quot;background&quot; 可选参数。 &quot;background&quot; 默认值为false。
+
+    2、unique - Boolean 建立的索引是否唯一。指定为true创建唯一索引。默认值为false.
+
+    3、name - string 索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。
+
+    4、dropDups - Boolean 在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 false.
+
+    5、sparse - Boolean 对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.
+
+    6、expireAfterSeconds - nteger    指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。
+
+    7、v - index version 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。
+
+    8、weights - document索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。
+
+    9、default_language - string 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
+
+    10、language_override - string 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
+
+http://blog.51cto.com/chenql/2071267
+
+
+三、索引类型
+
+    创建索引的两种不同:
+
+        非全文索引 ensureIndex({key: value}): key为字段名，值为1或-1代表索引的排序方向
+        全文索引     ensureIndex({key: &apos;text&apos;}): key为字段名，value为固定的&apos;text&apos;字符串
+
+    1、_id索引 - 是绝大多数集合默认建立的索引, 插入一条数据自动创建一个索引
+
+    2、单键索引 - 最普通的索引 与_id不同的是，单键索引不会自动创建
+
+            {x: 1, y: 2, z: 3}        // 当前表
+
+            db.myColl.ensureIndex({x: 1})        // 使用 x 作为索引
+            for(var i=0, i&lt;10; i++) db.myColl.insert({x: 2, y: i+&apos;y&apos;; z: i+&apos;z&apos;});
+            for(var i=0, i&lt;10; i++) db.myColl.insert({x: 1, y: i+&apos;y&apos;; z: i+&apos;z&apos;});        // 插入10条数据，x为1
+            db.myColl.find({x:1});            // 用索引查出数据
+
+
+    3、多键索引 - 多键索引与单键索引创建形势相同
+
+            单键索引: 值是一个单一的值，如字符串、数字或日期
+
+            多键索引: 值有多个记录，如数组
+
+            db.myColl.insert({x: [1,2,3,4,5]});
+
+
+    4、复合索引 - 查询条件不只有一个，需要建立复合索引            
+
+        db.myColl.ensureIndex({x: 1, y: 1})        // 定义复合索引
+        db.myColl.find({x:1, y: 1})        // 通过复合索引查询
+
+        设置后的索引:
+        [
+            {
+                &quot;v&quot; : 2,
+                &quot;key&quot; : {
+                    &quot;_id&quot; : 1
+                },
+                &quot;name&quot; : &quot;_id_&quot;,
+                &quot;ns&quot; : &quot;tuniu.gt&quot;
+            },
+            {
+                &quot;v&quot; : 2,
+                &quot;key&quot; : {
+                    &quot;x&quot; : 1,        // 这里
+                    &quot;y&quot; : 1
+                },
+                &quot;name&quot; : &quot;id_1_money_1&quot;,
+                &quot;ns&quot; : &quot;tuniu.gt&quot;
+            }
+        ]
+
+
+    5、过期索引 - 在一段时间后会过期的索引, expireAfterSeconds
+
+        索引过期后数据会被删除, 插入的数据会在30秒后删除, 如用户登录信息, 存储日志
+
+        db.myColl.ensureIndex({time: 1}, {expireAfterSeconds: 30})        // expireAfterSeconds 定义30秒后 time值的索引删除
+
+        db.myColl.insert({username: &apos;siguang&apos;, password: &apos;xxxx&apos;, time: new Date()});        // new Date() 当前时间, 30秒后会自动删除当前这条记录
+
+        ** 注意 当数据量不大的时候最小间隔为60秒, 就算设置30秒也会按60秒来完成 ** 
+        ** 创建time的值必须是时间类型ISODate **
+
+
+    6、全文索引
+
+        *** 注意：mongo中不支持中文的全文索引 ***
+
+        全文索引每次只能使用一个$text查询
+
+        db.myColl.ensureIndex({key: &quot;text&quot;})
+
+        db.myColl.ensureIndex({&quot;$**&quot;: &quot;text&quot;})        对所有字段作全文索引，而不是某一个字段
+
+
+        查询全文索引：
+
+            db.myTabel.find({$test: {$search: &apos;aa&apos;}})   只有值为aa时不包含其它字符时返回
+
+            db.myTabel.find({$test: {$search: &apos;aa bb cc&apos;}})   如果是 aa 或 bb 或 cc 时返回  相当于 ||
+
+            db.myTabel.find({$test: {$search: &apos;aa bb -cc&apos;}})  包含 aa 或 bb ，但不包含 cc 时返回
+
+            db.myTabel.find({$test: {$search: &apos;\&apos;aa\&apos; \&apos;bb\&apos; \&apos;cc\&apos;&apos;}})  aa bb cc 都包含  相当于 &amp;&amp;
+
+
+        相适度: $meta
+
+            {score: {$meta: &apos;textscore&apos;}}  写在查询条件后面可以返回相似度的结果，与sort一起使用可以达到实用的效果
+
+            Example:
+
+            db.app.find({$text: {$search: &apos;新京报&apos;}}, {score: {$meta: &apos;textScore&apos;}})
+
+            // db.app.find({$text: {$search: &apos;新京报&apos;}}, {score: {$meta: &apos;textScore&apos;}}).sort({scope: {$meta: &apos;textScore&apos;}})       // scope值来排序
+
+            { &quot;_id&quot; : ObjectId(&quot;58e31b4c47e9f10d47bd55ec&quot;), &quot;title&quot; : &quot;共享单车相随总理出国门&quot;, &quot;article&quot; : &quot;今年1月，摩拜单车创始人&quot;, &quot;author&quot; : &quot;新京报(北京)&quot;, &quot;dateTime&quot; : ISODate(&quot;2017-04-04T04:04:28.585Z&quot;), &quot;score&quot; : 0.75 }
+            { &quot;_id&quot; : ObjectId(&quot;58e31b4c47e9f10d47bd55ed&quot;), &quot;title&quot; : &quot;李克强赞这家企业一分钟穿越了两个时代&quot;, &quot;article&quot; : &quot;当时，来这里考察的。&quot;, &quot;author&quot; : &quot;新京报123(北京)&quot;, &quot;dateTime&quot; : ISODate(&quot;2017-04-04T04:04:28.624Z&quot;), &quot;score&quot; : 0.75 }
+
+            这里结果返回 scope 的值是就相适度的情况
+
+
+四、索引属性
+
+    1、name 为索引指定name值
+
+        例如定义一个复合索引，可以统一给他们一个名这样，在删除索引的时候也可以通过名字来删除
+
+        db.myColl.ensureIndex({id: 1, type: 1, money: 1}, {name: &apos;idx&apos;});        // 定义索引name, 如果不加mongo会自动生成一个name值 为key_1
+
+        db.myColl.dropIndexes(&apos;idx&apos;);
+
+
+    2、unique 唯一索引
+
+        唯一索引：不能在一个字段插入相同的值，如id如果有1，在插入id=1不允许
+
+        db.myColl.ensureIndex({id: 1}, {unique: true/false});        // 设置了id字段为唯一索引
+
+        db.myColl.insert({id:1, title:&apos;xxx&apos;});        如果id=1存在则不会被插入
+
+
+    3、sparse 稀疏性
+
+
+五、地理位置索引
+
+    将一些点的位置存储在mongo中，创建索引后可以按照位置来查找其点
+
+    子分类： 2d索引，用于存储和查找平面上的点        2dsphere索引，用于存储和查找球面上的点
+
+    查找方式: 查找某个点一定距离内的点（打车软件）    查找包含在某个区域内的点
+
+    1、创建 2D索引 平面地理位置索引
+
+        db.location.ensureIndex({w: &apos;2d&apos;})        // 创建索引
+
+        db.location.insert({w: [1, 1]});        // 插入经、纬度， 经度值在-180 至 180 之间， 纬度值在 -90 至 90 之间
+        db.location.insert({w: [132, 112]});
+        db.location.insert({w: [22, 14]});
+        db.location.insert({w: [165, 13]});
+
+        db.location.find({w: {$near: [1,1]}})        // $near 查找近的
+        db.location.find({w: {$near: [1,140], $maxDistance: 150}})    // 查找经度 1-150之间， 或者纬度140-150之间   $maxDistrance 最大距离
+</code></pre><h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><pre><code>aggregate() 主要用于处理数据，返回计算后的数据结果
+
+一、$group: 将集合中的文档分组，用于统计结果
+
+    1、sum - 计算个数    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$sum : &quot;$currentCount&quot;}}}])
+
+    2、avg - 计算平均值    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$avg : &quot;$currentCount&quot;}}}])
+
+    3、min - 获取集合中所有文档对应值得最小值。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$min : &quot;$currentCount&quot;}}}])
+
+    4、max - 获取集合中所有文档对应值得最大值。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$max : &quot;$currentCount&quot;}}}])
+
+    5、push - 在结果文档中插入值到一个数组中。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$push: &quot;$currentCount&quot;}}}])
+
+    6、addToSet - 在结果文档中插入值到一个数组中，但不创建副本。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, total: {$addToSet : &quot;$currentCount&quot;}}}])
+
+    7、first - 根据资源文档的排序获取第一个文档数据。    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, firstDoc: {$first : &quot;$currentCount&quot;}}}])
+
+    8、last - 根据资源文档的排序获取最后一个文档数据    db.mycol.aggregate([{$group : { _id: &quot;$dimensionType&quot;, firstDoc: {$last : &quot;$currentCount&quot;}}}])
+
+    Example:
+
+        // 查出来的文档
+        db.col.find().pretty();        
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d0&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113029&quot;,
+            &quot;currentCount&quot; : 30000,
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d1&quot;),
+            &quot;dimensionType&quot; : &quot;OMG&quot;,
+            &quot;loanId&quot; : &quot;1129602&quot;,
+            &quot;currentCount&quot; : 30000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d2&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113031&quot;,
+            &quot;currentCount&quot; : 40000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d3&quot;),
+            &quot;dimensionType&quot; : &quot;AGE&quot;,
+            &quot;loanId&quot; : &quot;113016&quot;,
+            &quot;currentCount&quot; : 40000
+        },
+        {
+            &quot;_id&quot; : ObjectId(&quot;59ae6c665f1fe4de50cb54d4&quot;),
+            &quot;dimensionType&quot; : &quot;HSR&quot;,
+            &quot;loanId&quot; : &quot;112910&quot;,
+            &quot;currentCount&quot; : 30000
+        }
+
+        1）通过游标来计算 dimensionType计算出类别的个数
+
+            db.col.aggregate([
+                {
+                    $group:{
+                        _id: &quot;$dimensionType&quot;,
+                        count: {$sum: 1}
+                    }
+                }
+            ])        
+
+            // 结果 返回
+            { 
+                &quot;_id&quot; : &quot;HSR&quot;, 
+                &quot;count&quot; : 1.0
+            }
+            { 
+                &quot;_id&quot; : &quot;OMG&quot;, 
+                &quot;count&quot; : 1.0
+            }
+            { 
+                &quot;_id&quot; : &quot;AGE&quot;, 
+                &quot;count&quot; : 3.0
+            }
+
+        2) 通过dimensionType列 中不同类型来计算 currentCount列的总合
+
+            db.col.aggregate([
+                {
+                    $group:{
+                        _id: &quot;$dimensionType&quot;,
+                        total: {$sum: &quot;$currentCount&quot;}
+                    }
+                }
+            ])
+
+            // 返回结果
+            { 
+                &quot;_id&quot; : &quot;HSR&quot;, 
+                &quot;total&quot; : 30000.0
+            }
+            { 
+                &quot;_id&quot; : &quot;OMG&quot;, 
+                &quot;total&quot; : 30000.0
+            }
+            { 
+                &quot;_id&quot; : &quot;AGE&quot;, 
+                &quot;total&quot; : 110000.0
+            }
+
+
+二、管道符:
+
+    $project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
+
+    $match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。
+
+        db.col.aggregate([
+            {
+                $match: {
+                    currentCount: {$gt: 30000}
+                }
+            },
+            {
+                $group:{
+                    _id: &quot;$dimensionType&quot;,
+                    min: {$sum: &quot;$currentCount&quot;}
+                }
+            }
+        ])
+        先将currentCount字段大于30000的匹配出来，在通过分组取出currentCount的总和
+
+    $limit：用来限制MongoDB聚合管道返回的文档数。
+
+    $skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。
+
+    $unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
+
+    $group：将集合中的文档分组，可用于统计结果。
+
+    $sort：将输入文档排序后输出。
+
+    $geoNear：输出接近某一地理位置的有序文档。
+
+
+三、count()  返回个数
+
+    db.cars.count();        // 返回记录的个数
+
+    db.cars.count({price: 1000})    // 返回price=1000 记录的个数
+
+    db.cars.count({price: {$lt: 1000})    // 返回price &lt; 1000 记录的个数
+
+
+四、distinct()  指定某一个字段返回不重复的数据，如 age: &apos;a&apos;  age: &apos;b&apos;  age: &apos;a&apos;   
+
+    db.myColl.distinct(&quot;price&quot;);        // [&apos;a&apos;, &apos;b&apos;]    
+
+五、mapReduce(）
+</code></pre><h4 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h4><h4 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h4><pre><code>mongo默认是没有管理员账户，需要在admin数据库中使用db.addUser()来添加管理员账号，否则任何人都可以操作数据库，admin库中有system.user的collection这就是用户表，用来存放超级管理员
+
+用户分为两种: 一种是admin用户，另一种是在指定数据库的用户，admin用户是最高权限 
+
+1、createUser() 创建用户
+
+    $ use admin    // 先要切换到admin库
+
+    $ show users     // 显示当前库下设置的所有设置的用户权限
+
+    $ db.createUser(
+        {
+            user: &quot;root&quot;,        // 用户名
+            pwd: &quot;ssssss&quot;,        // 密码
+            roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ]
+        }
+    )
+
+    user - 段介绍： user字段，为新用户的名字；
+    pwd - 用户的密码；
+    cusomData - 为任意内容，例如可以为用户全名介绍；
+    roles - 指定用户的角色，可以用一个空数组给新用户设定空角色；可以指定内置角色和用户定义的角色。
+
+
+    内建的角色
+
+        数据库用户角色：read、readWrite;
+
+        数据库管理角色：dbAdmin、dbOwner、userAdmin；
+
+        集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager；
+
+        备份恢复角色：backup、restore；
+
+        所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase
+
+        超级用户角色：root // 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase）
+
+        内部角色：__system
+
+
+    Roles（内置角色）： 
+
+        Read：允许用户读取指定数据库
+
+        readWrite：允许用户读写指定数据库
+
+        dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile
+
+        userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户
+
+        clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。
+
+        readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限
+
+        readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限
+
+        userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限
+
+        dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。
+
+        root：只在admin数据库中可用。超级账号，超级权限
+
+
+2、设置完用户权限进行重启mongod服务
+
+    $ db.shtdownServer();        // 关闭mongod服务，或者kill掉
+
+    // 进入bin目录下启动mongod
+
+    $ mongod --auth                // 注意加权限就需要使用这个来启动服务,而不是单独的mongod &amp;
+
+
+3、mongo登录
+
+    $ mongo --port 27017 -u &quot;root&quot; -p &quot;ssssss&quot; --authenticationDatabase &quot;admin&quot;
+
+    $ use admin
+
+    $ db.auth(&quot;root&quot;, &quot;ssssss&quot;);        // 1表示登录成功，0表示登录失败。
+
+
+4、创建其它用户
+
+    use myCar
+    db.createUser(
+        {
+            user: &quot;car&quot;,
+            pwd: &quot;welcomeCar&quot;,
+            roles: [ 
+                { role: &quot;readWrite&quot;, db: &quot;myCar&quot; },
+                { role: &quot;dbAdmin&quot;, db: &quot;myCar&quot; },
+                { role: &quot;clusterMonitor&quot;, db:&quot;admin&quot;}
+            ]
+        }
+    )
+
+
+5、作为其它用户进行连接和验证身份
+
+    mongo --port 27017
+    use myCar
+    db.auth(&quot;car&quot;, &quot;welcomeCar&quot;)
+
+
+6、修改角色
+
+    db.grantRolesToUser(
+        &quot;sms&quot;,
+        [
+            { role: &quot;clusterMonitor&quot;, db:&quot;admin&quot;} 
+        ]
+    )
+</code></pre><h4 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h4><h4 id="MongoDB导入、导出及数据库备份与恢复"><a href="#MongoDB导入、导出及数据库备份与恢复" class="headerlink" title="MongoDB导入、导出及数据库备份与恢复"></a>MongoDB导入、导出及数据库备份与恢复</h4><pre><code>1、mongoexport - 将 collection 导出成JSON或CSV格式
+
+    mongoexport  -d 库名  -c collection名   -o 输出的文件名   --type 导出的格式json/csv  -f  输出的字段，如果type是CSV需要指定字段名
+
+    Example: sudo mongoexport -d tun -c gt -o gentuanyou --type json
+
+
+2、mongoimport - 将 collection 导入到
+
+    mongoimport  -d 库名  -c colection名  --file 导入的文件名   --type 导入的格式  -f 导入的字段名  --headerline 如果导入是csv则可以使用第一行标题 
+
+
+3、mongodump - 库备份
+
+    mongodump  -h 服务器地址   -d 数据库名   -o 备份的位置
+
+    Example: mongodump -h 127.0.0.1 -d tun -o /Users/apple/siguang.liu/mongoBackup
+
+
+4、mongorestore - 数据库恢复
+
+    mongorestore  -h 服务器地址  -d 需要恢复的数据库   --dir 备份数据的位置    [--drop 恢复先删除数据，然后恢复数据]
+
+    mongorestore -h 127.0.0.1 -d tun --dir /Users/apple/siguang.liu/mongoBackup
+</code></pre><h4 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h4><pre><code>对MongoDB服务的运行情况和性能进行监控
+
+1、mongostat、mongoStop      mongostat是mongdb自带的状态检测工具, 查看mongo运行状态的程序
+
+    使用: 先到bin目录 cd /usr/local/Cellar/mongodb/3.4.3/bin                进行 mongostat目录 $ mongostat --help   来查看文档
+
+            mongostat -h 127.0.0.1:123    -u用户名 -p密码        执行侦听
+
+    日志: 
+
+        http://www.cnmyColls.com/zhuque/archive/2013/03/29/2988577.html
+
+        insert    插入数量
+        query    查询数量
+        update  更新数量
+        delete     删除数量
+        getmore 
+        command 
+        flushes    虚拟映射
+        mapped     
+        vsize   占磁盘的空间
+        res     占内存大小
+        idx miss 如果值过高，说明索引创建的有问题
+        qrw     qr 读队列，qw 写队列 性能指标的一块，如果值比较高出现性能问题
+        arw 
+        net_in 
+        net_out 
+        conn    连接mongo的数量            
+        time
+
+2、profile 集合介绍
+
+    db.getProfilingStatus();        // 获取
+
+3、日志介绍
+
+4、explain(): 
+
+    db.users.find({id: 10000}).explain(&apos;executionStats&apos;)
+
+    explain()三个参数：&apos;queryPlanner&apos;, &apos;executionStats&apos;, 和&apos;allPlansExecution&apos;
+
+    result:
+    {
+        &quot;queryPlanner&quot; : {
+            &quot;plannerVersion&quot; : 1,
+            &quot;namespace&quot; : &quot;myCar.users&quot;,
+            &quot;indexFilterSet&quot; : false,
+            &quot;parsedQuery&quot; : {
+                &quot;name&quot; : {
+                    &quot;$eq&quot; : &quot;user99989&quot;
+                }
+            },
+            &quot;winningPlan&quot; : {
+                &quot;stage&quot; : &quot;COLLSCAN&quot;,
+                &quot;filter&quot; : {
+                    &quot;name&quot; : {
+                        &quot;$eq&quot; : &quot;user99989&quot;
+                    }
+                },
+                &quot;direction&quot; : &quot;forward&quot;
+            },
+            &quot;rejectedPlans&quot; : [ ]
+        },
+        &quot;executionStats&quot; : {
+            &quot;executionSuccess&quot; : true,        // 是否成功
+            &quot;nReturned&quot; : 1,                // 返回的数量
+            &quot;executionTimeMillis&quot; : 49,        // *** 重要的执行时间   
+            &quot;totalKeysExamined&quot; : 0,
+            &quot;totalDocsExamined&quot; : 100000,    // 总共检查了多少个文档
+            &quot;executionStages&quot; : {
+                &quot;stage&quot; : &quot;COLLSCAN&quot;,
+                &quot;filter&quot; : {
+                    &quot;name&quot; : {
+                        &quot;$eq&quot; : &quot;user99989&quot;
+                    }
+                },
+                &quot;nReturned&quot; : 1,
+                &quot;executionTimeMillisEstimate&quot; : 50,
+                &quot;works&quot; : 100002,
+                &quot;advanced&quot; : 1,
+                &quot;needTime&quot; : 100000,
+                &quot;needYield&quot; : 0,
+                &quot;saveState&quot; : 783,
+                &quot;restoreState&quot; : 783,
+                &quot;isEOF&quot; : 1,
+                &quot;invalidates&quot; : 0,
+                &quot;direction&quot; : &quot;forward&quot;,
+                &quot;docsExamined&quot; : 100000
+            }
+        },
+        &quot;serverInfo&quot; : {
+            &quot;host&quot; : &quot;appledeMacBook-Pro-2.local&quot;,
+            &quot;port&quot; : 27017,
+            &quot;version&quot; : &quot;3.4.3&quot;,
+            &quot;gitVersion&quot; : &quot;f07437fb5a6cca07c10bafa78365456eb1d6d5e1&quot;
+        },
+        &quot;ok&quot; : 1
+    }
+</code></pre><h4 id="MongoDB安装、连接、启动服务"><a href="#MongoDB安装、连接、启动服务" class="headerlink" title="MongoDB安装、连接、启动服务"></a>MongoDB安装、连接、启动服务</h4><pre><code>$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;    // 安装brew
+
+$ brew update                // 更新brew
+
+$ brew install mongodb         // 安装的目录 /usr/local/Cellar/mongodb/   
+
+    brew uninstall mongodb  // 卸载mongo
+
+$ brew list                    // 查看brew安装的列表中是否存在brew
+
+$ sudo mkdir -p /data/db       // 用来存放mongo创建的数据文件
+
+    注意这里如果启动服务时报/data权限问题需要执行
+
+    $ sudo chmod -R 777 /data
+
+$ 连接本地和远端服务器的mongoDB
+
+    本地mongo: $ mongo             // 无密码
+
+                        // 用户名admin、密码123456，登录本地端口为27017的test数据库
+                        $ mongo mongodb://admin:123456@localhost:27017/test                    
+
+    远端mongo: $ mongo 192.168.1.200:27017/test -u user -p password        // test为数据库名
+
+        mongodb://10.10.13.123:27017,10.10.13.341:27017/ibg_node_core
+
+$ 启动和关闭服务
+
+    启动服务: 
+
+        $ cd /usr/local/Cellar/mongodb/4.0.0/bin        // 进入到目录
+        $ mongod &amp;            // &amp; 关闭终端mongod服务不会被kill掉  如果启用权限使用 mongod --auth
+
+    关闭服务:
+
+        $ use admin         // 需要先进入到admin库
+        $ db.shutdownServer()
+
+$ mongo --version            // 查看版本
+
+https://www.imooc.com/article/23046
+</code></pre><h4 id="conf配置文件"><a href="#conf配置文件" class="headerlink" title=".conf配置文件"></a>.conf配置文件</h4><pre><code>$ brew info mongodb    // 查看安装conf文件位置: mongod --config /usr/local/etc/mongod.conf
+
+mongodb.conf:
+
+    systemLog:                                // log目录                    
+        destination: file
+    path: /usr/local/var/log/mongodb/mongo.log
+        logAppend: true
+    storage:                                    // db目录
+        dbPath: /usr/local/var/mongodb        // 数据存储的目录
+    net:
+        bindIp: 128.0.0.1
+    security:
+        authorization:enabled   // 开启权限
+
+http://blog.csdn.net/sun491922556/article/details/74973191            // 3.4版本配置
+</code></pre><h4 id="收集"><a href="#收集" class="headerlink" title="收集"></a>收集</h4><pre><code>1、使用mongoShell语句来通过_id查询更新时需要加ObjectId(&quot;&quot;), 如果程序处理不需要加
+
+    db.col.update({_id: ObjectId(&quot;59acc404bef510c028190630&quot;)},{$set: {&apos;by&apos;: &apos;mongodb&apos;}})
+</code></pre><h4 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h4><pre><code>1、首次安装 创建存放数据的目录时 
+
+    $ sudo mkdir -p /data/db  如果这两个文件夹的权限是root那启动mongod就会报错，需要修改一下这两个目录的权限
+
+    $ sudo chown apple:admin /data        // apple为我当前用户的名称
+
+    $ sudo chown apple:admin /data/db
+
+2、启动时如果提示 Failed to unlink socket file /tmp/mongodb-27017.sock errno:1 Operation not permitted
+
+    因为/tmp/mongodb-27017.sock这个文件没有操作权限, 是root用户启动没成功后创建了这个文件
+    需要到tmp目录下删除这个文件在重启
+
+    $ cd /tmp &amp;&amp; sodu rm -rf mongodb-27017.sock
+
+3、Navicat Premium导出和导入集合
+
+    导出：集合 -&gt; 右键（导出向导）—&gt; 选择导出文件类型json  
+            注意：导出的json文件会在josn中自动创建一个RECORDSkey来存放数据，用于导出时的指定映射
+
+    导入：集合 -&gt; 右键（导入向导）—&gt; 按步骤
+            注意 第3步的时候 （表示一个集合行的标签 ， 选择 &quot;RECORDS&quot;(Parent(Root))) ），勾选下面将标签属性视为集合字段
+                    第7步，选择复制:删除目录全部记录，并从源重新导入
+</code></pre><p>| <a href="http://www.mongoing.com" target="_blank" rel="noopener">http://www.mongoing.com</a>            // 中文网站<br>| <a href="http://www.jianshu.com/p/dd0c39bf7be4" target="_blank" rel="noopener">http://www.jianshu.com/p/dd0c39bf7be4</a>                      // mongo安装<br>| <a href="http://www.runoob.com/mongodb/mongodb-objectid.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-objectid.html</a>      // 文档<br>| <a href="http://www.yiibai.com/mongodb/mongodb_drop_database.html" target="_blank" rel="noopener">http://www.yiibai.com/mongodb/mongodb_drop_database.html</a><br>| <a href="http://blog.csdn.net/jaylong35/article/details/7219410" target="_blank" rel="noopener">http://blog.csdn.net/jaylong35/article/details/7219410</a>  // 服务的开启与关闭<br>| <a href="http://blog.csdn.net/dbabruce/article/details/50963956" target="_blank" rel="noopener">http://blog.csdn.net/dbabruce/article/details/50963956</a>  // 用户权限<br>| <a href="http://www.cnblogs.com/qingtianyu2015/p/5968400.html" target="_blank" rel="noopener">http://www.cnblogs.com/qingtianyu2015/p/5968400.html</a>    // 库的导入、导出<br>| <a href="https://robomongo.org" target="_blank" rel="noopener">https://robomongo.org</a>     // mongoDB可视化工具<br>|<br>| <a href="http://blog.csdn.net/u013457382/article/category/6114612" target="_blank" rel="noopener">http://blog.csdn.net/u013457382/article/category/6114612</a><br>| <a href="http://www.cnblogs.com/zhongweiv/p/node_mongodb.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhongweiv/p/node_mongodb.html</a></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+        });
+    </script>
+
+</body>
+</html>

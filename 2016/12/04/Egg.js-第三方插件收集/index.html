@@ -12,13 +12,13 @@
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
     <meta name="description" content="| egg-validate POST参数规则校验  https://github.com/eggjs/egg-validate| egg-mongoose Mongoose        https://github.com/eggjs/egg-mongoose
-egg-validate验证 Request Body的参数
+egg-validatevalidate只用于post请求的参数校验，get请求取出的都是字符串
 
-$ npm i egg-validate --save  安装
+$ npm i egg-validate --save
 
-// {app_root}/config/plugin.js
-exports.validate = {
-" />
+一、在config/plugin.js配置中添加
+
+    exports." />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -55,10 +55,10 @@ exports.validate = {
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -101,7 +101,7 @@ exports.validate = {
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#egg-validate"><span class="toc-number">1.</span> <span class="toc-text">egg-validate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ejs-后端模板"><span class="toc-number">2.</span> <span class="toc-text">ejs 后端模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nunjucks-后端模板"><span class="toc-number">3.</span> <span class="toc-text">nunjucks 后端模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它收集插件"><span class="toc-number">4.</span> <span class="toc-text">其它收集插件</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#egg-validate"><span class="toc-number">1.</span> <span class="toc-text">egg-validate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#egg-mongoose"><span class="toc-number">2.</span> <span class="toc-text">egg-mongoose</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#egg-mysql"><span class="toc-number">3.</span> <span class="toc-text">egg-mysql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ejs-后端模板"><span class="toc-number">4.</span> <span class="toc-text">ejs 后端模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染模板nunjucks-后端模板"><span class="toc-number">5.</span> <span class="toc-text">渲染模板nunjucks 后端模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它收集插件"><span class="toc-number">6.</span> <span class="toc-text">其它收集插件</span></a></li></ol>
         
     </div>
 </aside>
@@ -137,40 +137,214 @@ exports.validate = {
     <section class="article-body markdown-body">
         
         <p>| egg-validate POST参数规则校验  <a href="https://github.com/eggjs/egg-validate" target="_blank" rel="noopener">https://github.com/eggjs/egg-validate</a><br>| egg-mongoose Mongoose        <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a></p>
-<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>验证 Request Body的参数
+<h4 id="egg-validate"><a href="#egg-validate" class="headerlink" title="egg-validate"></a>egg-validate</h4><pre><code>validate只用于post请求的参数校验，get请求取出的都是字符串
 
-$ npm i egg-validate --save  安装
+$ npm i egg-validate --save
 
-// {app_root}/config/plugin.js
-exports.validate = {
-    package: &apos;egg-validate&apos;,
-};
+一、在config/plugin.js配置中添加
 
-// 校验规则 post
-async fromRule(){
-    const {ctx, app} = this;
-
-    // Request 参数规则
-    const paramRule = {
-        username: {type: &apos;string&apos;},
-        password: {type: &apos;string&apos;},
-        rememberMe: {type: &apos;boolean&apos;, required: false},
+    exports.validate = {
+        enable: true,
+        package: &apos;egg-validate&apos;,
     };
-    const paramErrors = app.validator.validate(paramRule, ctx.request.body);
 
-    if(paramErrors){    // 如果为真说明校验不通过
-        ctx.body = `校验失败`;
-    }   
-    else{
-        ctx.body = `校验成功, ${ctx.request.body.username}`;
+二、Exmaple
+
+    async refundApply() {
+        const { ctx, app, service } = this;
+        const paramRule = {
+            partnerUserId: { type: &apos;string&apos; },
+            applyUserName: { type: &apos;string&apos; },
+            amount: { type: &apos;string&apos; }, 
+            sourceAccount: { type: &apos;string&apos; }, 
+        };
+
+        const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+        if (paramErrors) {
+            ctx.body = app.renderBody({
+                statusType: app.statusType.paramsError,
+                error: paramErrors,
+            });
+            return;
+        }
+
+        const response = await service.payTool.billquery.refundApply(ctx.request.body);
+        ctx.body = response;
     }
+
+
+三、验证规则  
+
+    1、required - 是否当前字段必须有，required: false 可以为空
+
+    2、allowEmpty - 允许为空
+
+    2、int - 只能为整数
+
+    3、number - 可以是整数和浮点数
+
+    4、date - 日期 &apos;YYYY-MM-DD&apos;     birthoday: &apos;date&apos;
+
+    5、dateTime - 日期 YYYY-MM-DD HH:mm:ss
+
+    6、boolean - 是否是布尔值        working: &apos;boolean&apos;
+
+    7、string - 是否是字符串, 字符串的四个规则:            
+
+        allowEmpty - 允许为空字符串
+
+        format - 使用正则来验证字符串的格式
+
+        max - 字符串最大长度
+
+        min - 字符串最小长度
+
+        const rule = {
+                username: { allowEmpty: true, min: 10, max: 100, format: /^\d+$/ }
+        }
+
+    8、email - 是否是email格式
+
+    9、password - 密码验证规则 max最大、min最小、compare比较  pass: {type: password, max: 32, min: 6}
+
+    10、url - 是否是url
+
+    11、enum - 如果是枚举需要加一个规则
+
+        // operateType的值必须是values数组中的一项，values必须为数组
+        const paramRule = {
+                operateType: { type: &apos;enum&apos;, values: [&apos;REPAYMENT&apos;, &apos;CHARGE&apos;] },        
+        }
+        const paramErrors = app.validator.validate(paramRule, ctx.request.body);
+
+    12、object - 如果是对象，需要加一个规则 
+
+    13、array - 如果是数组，需要加一个规则
+
+            itemType 数组中每一个元素的规则 
+            rule - An object that validate the items of the array. Only work with itemType.
+            max - 数组最大长度
+            min - 数组最小长度
+
+    https://github.com/node-modules/parameter#rule
+    https://github.com/node-modules/parameter/blob/master/benchmark.js
+    https://github.com/node-modules/parameter/blob/master/example.js
+
+https://github.com/node-modules/parameter
+</code></pre><h4 id="egg-mongoose"><a href="#egg-mongoose" class="headerlink" title="egg-mongoose"></a>egg-mongoose</h4><pre><code>$ npm i egg-mongoose --save
+
+$ plugin.js
+
+    exports.mongoose = {
+        enable: true,
+        package: &apos;egg-mongoose&apos;,
+    };
+
+$ config.default.js
+
+    mongoose: {
+  url: &apos;mongodb://127.0.0.1:27017/ibg_node_core&apos;,
+  options: {},
 }
+
+$ 可以多数据库配置
+</code></pre><h4 id="egg-mysql"><a href="#egg-mysql" class="headerlink" title="egg-mysql"></a>egg-mysql</h4><pre><code>$ npm i egg-mysql --save
+
+$ plugin.js
+
+    exports.mysql = {
+        enable: true,
+        package: &apos;egg-mysql&apos;,
+    };
+
+$ config.default.js
+
+    mysql: {
+        // database configuration
+        client: {
+            // host
+            host: &apos;mysql.com&apos;,
+            // port
+            port: &apos;3306&apos;,
+            // username
+            user: &apos;test_user&apos;,
+            // password
+            password: &apos;test_password&apos;,
+            // database
+            database: &apos;test&apos;,    
+        },
+        // load into app, default is open
+        app: true,
+        // load into agent, default is close
+        agent: false,
+    }
+
+$ app.mysql.query(sql, values)              获取sql
+
+$ 可以多数据库配置
 </code></pre><h4 id="ejs-后端模板"><a href="#ejs-后端模板" class="headerlink" title="ejs 后端模板"></a>ejs 后端模板</h4><pre><code>$ npm install ejs
 
 https://segmentfault.com/a/1190000004286562
 http://www.360doc.com/content/16/0115/10/597197_528136785.shtml
 https://github.com/tj/ejs
-</code></pre><h4 id="nunjucks-后端模板"><a href="#nunjucks-后端模板" class="headerlink" title="nunjucks 后端模板"></a>nunjucks 后端模板</h4><pre><code>http://mozilla.github.io/nunjucks/cn/templating.html
+</code></pre><h4 id="渲染模板nunjucks-后端模板"><a href="#渲染模板nunjucks-后端模板" class="headerlink" title="渲染模板nunjucks 后端模板"></a>渲染模板nunjucks 后端模板</h4><pre><code>$ npm i egg-view-nunjucks --save
+
+一、tpl文件要放到view目录里
+
+二、配置
+// config/plugin.js
+exports.nunjucks = {
+    enable: true,
+    package: &apos;egg-view-nunjucks&apos;
+};
+
+// config/config.default.js
+exports.keys = &lt;此处改为你自己的 Cookie 安全字符串&gt;;
+
+// 添加 view 配置
+exports.view = {
+    defaultViewEngine: &apos;nunjucks&apos;,
+    mapping: {
+        &apos;.tpl&apos;: &apos;nunjucks&apos;,
+    },
+};
+
+三、Controller
+module.exports = app =&gt; {
+    class NewsController extends app.Controller {
+        async newsList(){
+            const { ctx } = this;
+            const dataList = {
+                list: [
+                    { id: 1, title: &apos;this is news 1&apos;, url: &apos;/news/1&apos; },
+                    { id: 2, title: &apos;this is news 2&apos;, url: &apos;/news/2&apos; }
+                ]
+            }
+            await ctx.render(&apos;news/newsList.tpl&apos;, dataList);                // 注意这里dataList必须是一个对象
+        }
+    }
+
+    return NewsController;
+}
+
+四、newsList.tpl
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Hacker News&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul class=&quot;news-view view&quot;&gt;
+            {% for item in list %}
+					<li class="item">
+						<a href="{{ item.url }}">{{ item.title }}</a>
+					</li>
+				{% endfor %}
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+http://mozilla.github.io/nunjucks/cn/templating.html
 https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
 </code></pre><h4 id="其它收集插件"><a href="#其它收集插件" class="headerlink" title="其它收集插件"></a>其它收集插件</h4><pre><code>1、ms返回时间 - https://github.com/zeit/ms       // ms用来返回一个时间  ms(&apos;2h&apos;) 返回 7200000  
 
@@ -181,7 +355,7 @@ https://github.com/eggjs/examples/tree/master/hackernews/app/view/news
 4、JSON串和对象互转 - https://github.com/ljharb/qs  // 可以根据key来进行排序 
 
 5、验证码 - https://github.com/lemonce/svg-captcha/blob/master/README_CN.md
-</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a><br>|</p>
+</code></pre><p>| 参考资料<br>| <a href="https://github.com/eggjs" target="_blank" rel="noopener">https://github.com/eggjs</a>        eggjs官方插件<br>|</p>
 
         
     </section>

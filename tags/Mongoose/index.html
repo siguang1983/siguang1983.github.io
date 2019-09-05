@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+
+    
+
+    
+
+    <title>Tag: Mongoose | 大排档</title>
+    <meta name="author" content="siguang(厨子)" />
+    <meta name="version" content="1.0.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
+
+    
+    
+    <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header clearfix">
+    <div id="nav" class="nav">
+    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
+
+    <nav class="nav-inner">
+
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+        </li>
+        
+        
+        
+        <li class="nav-item nav-item-tag">
+            <a id="nav-tag" class="nav-link" href="#">标签</a>
+            <div id="nav-tags" class="nav-tag-wrap">
+                <i class="nav-tag-arrow"></i>
+                
+  <div class="widget-wrap">
+    <h3 class="widget-title">
+        <i class="icon-tag vm"></i>
+        <span class="vm">Tags</span>
+    </h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+    </div>
+  </div>
+
+
+            </div>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">归档</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/atom.xml">订阅</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about">关于</a>
+        </li>
+        
+        
+        
+
+    </nav>
+</div>
+
+    <aside id="aside" class="aside">
+    <div id="aside-mask" class="aside-mask"></div>
+    <div id="aside-inner" class="aside-inner">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://siguang1983.github.io"></form>
+
+        
+        
+
+        
+        <div class="author-meta">
+            
+            <div class="author-avatar">
+                <a href="/">
+                    <img src="/images/avatar.jpg" title="siguang" style="box-shadow: 3px 3px 4px rgba(0,0,0, .2);">
+                </a>
+            </div>
+            
+            <div class="author-name">Siguang(厨子)</div>
+            <div class="author-work">Front-end development</div>
+            <div class="author-location">
+                <i class="icon-location vm"></i>
+                <span class="vm">BeiJing, China</span>
+            </div>
+            <div class="author-thread-wrap">
+                <div class="author-threads clearfix">
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-github"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-circle-more"></i></a>
+                    <a class="thread-item" href="https://github.com/siguang1983" target="_blank"><i class="icon-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+</header>
+
+        <div id="content" class="content">
+    <article class="article" itemscope itemprop="blogPost">
+    
+    <header class="article-header">
+        
+        <h1 itemprop="name">
+            <a href="/2017/04/02/mongoose/">Mongoose</a>
+        </h1>
+        
+        <div class="article-meta clearfix">
+            <a class="article-date" href="/2017/04/02/mongoose/">
+    
+    <i class="icon-calendar"></i>
+    
+    <time datetime="2017-04-02T11:15:23.000Z" itemprop="datePublished">2017-04-02</time>
+</a>
+
+            
+<div class="article-tag-list">
+    <i class="icon-tag"></i>
+    <a class="article-tag-link" href="/tags/Mongoose/">Mongoose</a>
+</div>
+
+
+        </div>
+    </header>
+    
+    <section class="article-body markdown-body">
+        
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><pre><code>Schema - 数据库存储格式的约定协议，可以理解为数据表的字段类型声明
+
+Model -  由Schema转化的数据模型，具有抽象属性和行为的数据库操作，可以进行查询操作
+
+Entity - 由Model创建的实体，可以对数据库表进行完整的CRUD操作
+</code></pre><h4 id="Mongoose使用"><a href="#Mongoose使用" class="headerlink" title="Mongoose使用"></a>Mongoose使用</h4><pre><code>一、安装
+
+    $ npm install mongoose
+
+二、示例
+
+    const mongoose = require(&apos;mongoose&apos;);
+    const Schema = mongoose.Schema;
+
+    // 连接mongodb
+    mongoose.connect(&apos;mongodb://car:welcomeCar@localhost/myCar&apos;);       // mongodb://用户名:密码@数据库IP/库名
+
+    // 连接成功
+    mongoose.connection(&apos;connected&apos;, ()=&gt;{
+        console.log(&apos;connect success&apos;);
+    })
+
+    // 连接失败
+    mongoose.connection(&apos;error&apos;, ()=&gt;{
+        console.log(&apos;connect error&apos; + err);
+    })
+
+    // 连接断开
+    mongoose.connection(&apos;disconnected&apos;, ()=&gt;{
+        console.log(&apos;connect disconnected&apos;);
+    })
+
+    // 创建Schema
+    const UserSchema = new Schema({
+        username: String,
+        password: String,
+        age: Number,
+        LoginAt: Date
+    })
+
+    // 定义Model
+    const UserModel = mongoose.model(&apos;User&apos;, UserSchema);
+
+    // 插入数据
+    let userData = new UserModel({
+        username: &apos;siguang&apos;,
+        password: &apos;ssssss&apos;,
+        age: 20,
+        loginAt: new Date()
+    })
+
+    // 保存
+    userData.save((err, res)=&gt;{
+        if(err){
+            return console.log(err)
+        }
+        console.log(res);
+    })
+
+    // 删除
+    userData.remove({age: 30}, (err, doc) =&gt; {
+        if(err){
+            return console.log(err)
+        }
+        console.log(doc);
+    })
+
+    // 查询
+    userData.find({username: &apos;siguang&apos;, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
+        }
+        console.log(doc);
+    })
+
+    // 数量
+    userData.count({age: 20}, (err, doc)=&gt;{
+        if(err){
+            return console.log(err)
+        }
+        console.log(doc);
+    })
+</code></pre><h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><pre><code>mongoose两种连接： connect连单个db并打开，createConnect连接多个db
+
+一、mongoose.connect()方法连接
+
+    写法1:
+        connect(&apos;mongodb://[username]:[password]@host:port/database?options...&apos;);   // 用户名、密码、主机、端口、库名、参数
+        let db = mongoose.connect(&apos;mongodb://[username]:[password]@127.0.0.1:27017/myDB&apos;);
+
+    写法2:
+        -- conect(uri, options) --
+        var options = {
+                db: { native_parser: true },
+                server: { poolSize: 5 },
+                replset: { rs_name: &apos;myReplicaSetName&apos; },
+                user: &apos;myUserName&apos;,
+                pass: &apos;myPassword&apos;
+        }
+        var uri = &apos;mongodb://localhost/dbName?poolSize=4&apos;;
+        mongoose.connect(uri, options);
+        -- mongoose.createConnection() --
+
+二、多个连接
+
+    let mongoose = require(&apos;mongoose&apos;);
+    let db = mongoose.connect(&apos;mongodb://127.0.0.1:27017/myDB&apos;);        // mongodb://IP:端口号/数据库名
+
+    // 侦听打开的回调
+    db.connection.on(&apos;error&apos;, function(error){
+        console.log(&apos;数据库连接失败&apos;+error);
+    })
+
+    // 侦听连接成功
+    db.connection.on(&apos;open&apos;, function(){
+        console.log(&apos;连接成功&apos;)
+    })
+
+三、两者的区别
+
+    var mongoose = require(&apos;mongoose&apos;);
+    db = mongoose.createConnection(&apos;localhost&apos;, &apos;test&apos;);
+    var schema = new mongoose.Schema({ name: String });
+    var collectionName = &apos;kittens&apos;;
+    var M = db.model(&apos;Kitten&apos;, schema, collectionName);
+
+    var mongoose = require(&apos;mongoose&apos;);
+    mongoose.connect(&apos;mongodb://localhost/test&apos;);
+    db = mongoose.connection;
+    db.once(&apos;open&apos;, function callback () {
+            // yay!
+    });    
+
+    createConnection，可以open，但完全不会查询。第二种方法就可以
+</code></pre><h4 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h4><pre><code>Schema: 一种文件形式存储数据库模型的骨架，无法直接连接数据端，不具备操作数据库的能力，叫数据属性模型或集合
+
+一、定义表的文档结构
+
+    let personSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
+
+二、实例方法、静态方法
+
+    let PersonSchema = new mongoose.Schema({        
+        name: String,
+        age: Number,
+        email: { type: String, max: 20 }
+    })
+
+    var Person = mongoose.model(&apos;person&apos;, PersonSchema);
+    var silence = new Person({ name: &apos;Silence&apos; });
+
+    PersonSchema.methods.speak = function(){ }
+
+三、index 索引
+
+    let Schema = mongoose.Schema;
+    let carSchema = new Schema({
+        name: String,
+        title: { type: String, index: true },   // index 索引
+        uid: { type: Number, unique: true },    // unique 独一无二的
+        date: { type: Date, default: Date.now } // default 默认值
+    })
+
+    // 文档索引和字段索引
+    let carSchema = new Schema({
+        name: String,
+        title: { type: [String], index: true },   // 字段索引
+    })
+
+    carSchema.index({ name: 1, type: -1});  // 
+</code></pre><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="Schema Type"></a>Schema Type</h4><pre><code>https://xiaoxiami.gitbook.io/mongoose/guide/schemas/typesmd
+
+一、类型
+
+    1、String：字符串
+
+    2、Number：数值
+
+    3、Date：日期
+
+    4、Buffer： 二进制
+
+    5、Boolean：布尔
+
+    6、Mixed： 混合
+
+    7、ObjectId： ObjectId
+
+    8、Array：数组
+
+二、其它参数
+
+    default: 默认       // updated: { type: Date, default: Date.now }
+
+    min/max: 最小或最大  // age: { type: Number, min: 18, max: 65 }
+
+    trim: 去掉两端空格
+
+    lowercase: true     // 保存前将字符转成小写
+
+    uppercase: true     // 保存前将字符转成大写
+
+    required: true      // 必填
+
+    match：RegExp       // 创建一个正则验证器
+
+    enum：Array         // 检查值是否在给定的数组中
+
+    index: true         // 索引
+
+    unique: true        // 索引，指定字段为独一无二
+
+三、Example
+
+    var schema = new Schema({
+        idCard: { type: String, unique: true, trim: true },     // 用户id 字段独一无二、去掉两端空格
+        name:    String,            // 可以直接写成String，也可以写成 {type: String}
+        binary:  Buffer,
+        living:  Boolean,
+        updated: { type: Date, default: Date.now }
+        age:     { type: Number, min: 18, max: 65 }
+        mixed:   Schema.Types.Mixed,
+        _someId: Schema.Types.ObjectId,
+        array:      [],
+        ofString:   [String],
+        ofNumber:   [Number],
+        ofDates:    [Date],
+        ofBuffer:   [Buffer],
+        ofBoolean:  [Boolean],
+        ofMixed:    [Schema.Types.Mixed],
+        ofObjectId: [Schema.Types.ObjectId],
+        nested: {
+            stuff: { type: String, lowercase: true, trim: true }
+        }
+    })
+</code></pre><h4 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h4><pre><code>具有操作数据库的能力，类似管理数据库的属性和行的类
+
+创建model  mongoose.model(&apos;集合名&apos;, schema);
+
+    let personScheam = new Scheam({
+        name: &apos;String&apos;,
+        password: &apos;String&apos;
+    }, {
+        timestamps: true,             // 设置timestamps，多加两个字段createdTime、updatedTime，来记录插入时间和更新时间
+        collection: &apos;report_warning_config&apos;,
+    })
+
+    let personModel = mongoose.model(&apos;person&apos;, personSchema);
+</code></pre><h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><pre><code>一、find, findById, findOne, or where 
+
+    let TankScheam = new Scheam({
+        name: &apos;String&apos;,
+        password: &apos;String&apos;
+    })
+
+    let Tank = mongoose.model(&apos;Tank&apos;, personSchema);
+
+    Tank.find({size: &apos;samll&apos;}).where(&apos;createDate&apos;).gt(oneYear).exec(callback);
+
+二、条件查询中常用属性
+
+    $or　　　　或关系
+    $nor　　　　或关系取反
+    $gt　　　　大于
+    $gte　　　　大于等于
+    $lt　　　　小于
+    $lte　　　　小于等于
+    $ne　　　　不等于
+    $in　　　　在多个值范围内
+    $nin　　　　不在多个值范围内
+    $all　　　　匹配数组中多个值
+    $regex　　　　正则，用于模糊查询
+    $size　　　　匹配数组大小
+    $maxDistance　　　　范围查询，距离（基于LBS）
+    $mod　　　　取模运算
+    $near　　　　邻域查询，查询附近的位置（基于LBS）
+    $exists　　　　字段是否存在
+    $elemMatch　　　　匹配内数组内的元素
+    $within　　　　范围查询（基于LBS）
+    $box　　　　范围查询，矩形范围（基于LBS）
+    $center　　　　范围醒询，圆形范围（基于LBS）
+    $centerSphere　　　　范围查询，球形范围（基于LBS）
+    $slice　　　　查询字段集合中的元素（比如从第几个之后，第N到第M个元素
+
+
+三、方法
+
+    1、where(&apos;price&apos;) - 查询的字段  Tank.find().where(&apos;price&apos;)
+
+    2、find() - 查询所有，返回的是数组
+
+    3、findOne({name: &apos;siguang&apos;}) - 只把第一条name为siguang的数据，如果find会将所有都返回
+
+    4、findById(id) - 根据一条id来查找，返回的是一条记录的对象，而不是一个数组，与find({_id: &apos;59bf7ee03f55167fb6cdd75c&apos;})相同
+
+    5、findByIdAndRemove(id) - 根据id查找，并删除这个条数据，如果查找不到返回 null
+
+    6、findByIdAndUpdate(id, update) - 
+
+    7、lean() - Tank.find().lean()      // 默认参数为true, 可以设置 lean(false)
+</code></pre><h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><pre><code>Tank.remove({size: &apos;large&apos;})
+
+// 查找并删除
+Tank.findByAndRemove()
+</code></pre><h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><pre><code>Tank.update({_id: id}, {$set: {size: &apos;large&apos;}, callback);
+
+// 查找并更新
+Tank.findByIdAndUpdate(id, [update]);
+</code></pre><h4 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h4><h4 id="save"><a href="#save" class="headerlink" title="save()"></a>save()</h4><pre><code>insert和update都需要save(),
+</code></pre><h4 id="egg-mongose-总结"><a href="#egg-mongose-总结" class="headerlink" title="egg-mongose 总结"></a>egg-mongose 总结</h4><pre><code>1、问题描述：连接mongoose的过程中遇到mongodb collection自动加s，比如mongo库中有一个userTest集合，如果使用inser会新创建一个userTests
+
+    解决：在创建mode的时候要指定集合名
+
+    module.exports = app =&gt; {
+        const mongoose = app.mongoose;
+
+        const UserTestSchema = new mongoose.Schema({
+            idx: { type: Number },
+            password: { type: String }
+        });
+        return mongoose.model(&apos;userTest&apos;, UserTestSchema, &apos;userTest&apos;);            // 这里第三个参数要加
+    }
+
+1、Model中创建模型
+
+    module.exports = app =&gt; {
+        const mongoose = app.mongoose;
+
+        const NewsSchema = new mongoose.Schema({
+            newsId: { type: Number },
+            newsTitle: {type: String, max: 32},
+            newsContent: {type: String},
+        },{
+            timestamps: true,               // 插入记录时会自动创建一个createAt和updateAt时间字段
+            collection: &apos;news&apos;,             // mongo中存的collection名
+        });
+
+        NewsSchema.index({ &apos;newsId&apos;: 1 });    // newsId为索引
+
+        return mongoose.model(&apos;News&apos;, NewsSchema);      // News调用时的名
+    }
+
+2、在service中调用
+
+    let doc = await app.model.News.find();
+
+3、创建和查询
+
+    const doc = await new app.model.User(user).save();          // 创建时需要new
+    const user = await app.model.User.findOne({_id: user._id});     // 查询时不需要new
+
+4、使用find()查询
+
+    如果使用find().lean()返回的是纯javascript对象，而不是mongoose文档，他们没有保存方法
+
+    const resourceTree = await app.model.Resource.find({});
+
+    const resourceTree = await app.model.Resource.find({}).lean();
+
+    返回
+    [
+        { _id: 5a535142fe6d170e82135e89,
+            displayName: &apos;欢欢&apos;,
+            username: &apos;huanhuan&apos;,
+            mobile: 13012309874,
+            email: &apos;huan@126.com&apos; 
+        },
+        { _id: 5a5357d2bd53b40f791362aa,
+            username: &apos;maolv&apos;,
+            displayName: &apos;毛驴&apos;,
+            mobile: 13290984585,
+            email: &apos;maolv@126.com&apos; 
+        }
+    ]
+
+5、查询条件写法lt
+
+    const password = app.model.UserTest.find().where(&apos;idx&apos;).lt(5);        // 返回idx字段中小于5的条数
+
+6、更新
+
+    async addChannel(params) {
+  const channel = await app.model.ConfigBusinessChannel.findOne({ businessType: params.businessType });
+  if (channel) {
+    return app.renderBody({
+      statusType: app.statusType.recordAlreadyExisted,
+    });
+  }
+
+  const channelModel = new app.model.ConfigBusinessChannel({
+    businessType: params.businessType, // 业务渠道ID
+    businessName: params.businessName, // 业务渠道名
+    isEnabled: params.isEnabled, // 是否启用
+    paySignedCompanys: [], // 签约的结算主体
+  });
+  await channelModel.save();
+
+  const response = app.renderBody({
+    statusType: app.statusType.success,
+    data: {},
+  });
+
+  return response;
+}
+</code></pre><p>| <a href="https://mongoose.shujuwajue.com/guide/schemas.html" target="_blank" rel="noopener">https://mongoose.shujuwajue.com/guide/schemas.html</a>        // 中文API<br>| <a href="http://www.nodeclass.com/api/mongoose.html" target="_blank" rel="noopener">http://www.nodeclass.com/api/mongoose.html</a><br>| <a href="https://github.com/eggjs/egg-mongoose" target="_blank" rel="noopener">https://github.com/eggjs/egg-mongoose</a>                 egg-mongoose<br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br>| <a href="http://www.cnblogs.com/xuange306/p/4603551.html" target="_blank" rel="noopener">http://www.cnblogs.com/xuange306/p/4603551.html</a><br>| <a href="http://www.cnblogs.com/winyh/p/6682039.html" target="_blank" rel="noopener">http://www.cnblogs.com/winyh/p/6682039.html</a><br>| <a href="http://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="noopener">http://cnodejs.org/topic/504b4924e2b84515770103dd</a><br>| <a href="http://www.hubwiz.com/class/543b2e7788dba02718b5a4bd" target="_blank" rel="noopener">http://www.hubwiz.com/class/543b2e7788dba02718b5a4bd</a></p>
+
+        
+    </section>
+</article>
+
+
+
+
+
+</div>
+        <footer class="footer">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
+</footer>
+
+<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+
+
+    </div>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            var nodes = {
+                nav: $('#nav'),
+                aside: $('#aside'),
+                navTags: $('#nav-tags')
+            };
+
+            $('#open-panel, #aside-mask').on('click', function() {
+                nodes.aside.toggleClass('panel-show');
+            });
+            $('#nav-tag').on('click', function(event) {
+                event.preventDefault();console.log(nodes.navTags.attr('class'))
+                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
+            })/*.hover(function() {
+                nodes.navTags.addClass('tag-show');
+            }, function() {
+                nodes.navTags.removeClass('tag-show');
+            });*/
+
+            
+        });
+    </script>
+
+</body>
+</html>

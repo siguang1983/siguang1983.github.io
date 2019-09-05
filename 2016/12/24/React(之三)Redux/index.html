@@ -11,7 +11,7 @@
     <meta name="author" content="siguang(厨子)" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="| createStroe - 创建一个store| reducer 用来改变state的值，结合了action的动作来分别处理| action - 要执行的事件| combineReducers - 将多个reducer合到一起,赋给createStroe| subscribe - 是接收state和action，并返回新的state| store.getState - 获取state值| store.dispatch - 触发action，改变state的值|| React-redux - " />
+    <meta name="description" content="| createStroe - 创建一个store| reducer - 用来改变state的值，结合了action的动作来分别处理| action - 要执行的事件| combineReducers - 将多个reducer合到一起,赋给createStroe| replaceReducer - 替换reducer，改变state修改逻辑| subscribe - 侦听Store的变化| store.getState - 获取Store中的state值| store.dispatch - 触发" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -48,10 +48,10 @@
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -94,7 +94,7 @@
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux概述"><span class="toc-number">1.</span> <span class="toc-text">Redux概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Store"><span class="toc-number">5.</span> <span class="toc-text">Store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#State"><span class="toc-number">6.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react-redux"><span class="toc-number">7.</span> <span class="toc-text">react-redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#container组件"><span class="toc-number">8.</span> <span class="toc-text">container组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bindActionCreators"><span class="toc-number">9.</span> <span class="toc-text">bindActionCreators()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#redux-thunk-中间件"><span class="toc-number">10.</span> <span class="toc-text">redux-thunk 中间件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试工具"><span class="toc-number">11.</span> <span class="toc-text">调试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录"><span class="toc-number">12.</span> <span class="toc-text">项目目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其它状态管理框架"><span class="toc-number">13.</span> <span class="toc-text">其它状态管理框架</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redux"><span class="toc-number">1.</span> <span class="toc-text">Redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Action"><span class="toc-number">3.</span> <span class="toc-text">Action</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reducer"><span class="toc-number">4.</span> <span class="toc-text">Reducer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Store"><span class="toc-number">5.</span> <span class="toc-text">Store</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#State"><span class="toc-number">6.</span> <span class="toc-text">State</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react-redux"><span class="toc-number">7.</span> <span class="toc-text">react-redux</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#container组件"><span class="toc-number">8.</span> <span class="toc-text">container组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bindActionCreators"><span class="toc-number">9.</span> <span class="toc-text">bindActionCreators()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调试工具"><span class="toc-number">10.</span> <span class="toc-text">调试工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目目录"><span class="toc-number">11.</span> <span class="toc-text">项目目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react-router-redux路由"><span class="toc-number">12.</span> <span class="toc-text">react-router-redux路由</span></a></li></ol>
         
     </div>
 </aside>
@@ -129,11 +129,12 @@
     
     <section class="article-body markdown-body">
         
-        <p>| createStroe - 创建一个store<br>| reducer 用来改变state的值，结合了action的动作来分别处理<br>| action - 要执行的事件<br>| combineReducers - 将多个reducer合到一起,赋给createStroe<br>| subscribe - 是接收state和action，并返回新的state<br>| store.getState - 获取state值<br>| store.dispatch - 触发action，改变state的值<br>|<br>| React-redux - 让react与redux结合<br>| provider - 将redux的Store传到内部的其它组件，内部都可以对state更新<br>| connect - react与redux连接<br>|<br>| applyMiddleware - 加载中间件<br>| bindActionCreators - 直接调用dispatch(action)()<br>| compose</p>
-<h4 id="Redux概述"><a href="#Redux概述" class="headerlink" title="Redux概述"></a>Redux概述</h4><pre><code>react是纯View层的框架，需要数据流进行支撑, 单一的状态树,主流数据流框架: Flux、Redux
+        <p>| createStroe - 创建一个store<br>| reducer - 用来改变state的值，结合了action的动作来分别处理<br>| action - 要执行的事件<br>| combineReducers - 将多个reducer合到一起,赋给createStroe<br>| replaceReducer - 替换reducer，改变state修改逻辑<br>| subscribe - 侦听Store的变化<br>| store.getState - 获取Store中的state值<br>| store.dispatch - 触发action，改变state的值<br>| provider - 将Store传递给内部组件<br>| connect - 将组件与redux的状态、事件关联起来<br>| applyMiddleware - 加载中间件<br>| bindActionCreators - 直接调用dispatch(action)()<br>| react-redux - react与redux结合</p>
+<h4 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h4><pre><code>react是纯View层的框架，需要数据流进行支撑, 单一的状态树,主流数据流框架: Flux、Redux
 
 UI -&gt; action -&gt; reducer -&gt; store -&gt; state -&gt; UI
 
+Redux是非异步的流程，如果需要使用异步操作使用 Redux-saga
 
 一、Flux四部分
 
@@ -165,7 +166,11 @@ $ npm i react-redux --save            // redux与react结合
 
 $ npm i react-router-redux --save     // redux-router
 
-$ npm i redux-devtools --save        // 查看调试
+$ npm i redux-devtools-extension --save        // 安装可视化工具
+
+    引用：import { composeWithDevTools } from &apos;redux-devtools-extension&apos;
+
+    在chrome中下载redux-devtools插件
 
     https://github.com/zalmoxisus/redux-devtools-extension#usage
 
@@ -235,12 +240,10 @@ let todo = (state, action) =&gt; {
     import {combineReducers} from &quot;redux&quot;;
     import reducerA from &quot;./reducerA&quot;;
     import reducerB from &quot;./reducerB&quot;;
-    import reducerC from &quot;./reducerC&quot;;
 
     export default combineReducers({
         reducerA,
         reducerB,
-        reducerC,
     });
 
     // createStore调用reducer
@@ -308,7 +311,9 @@ store.dispatch();
 </code></pre><h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><pre><code>state用于存储数据，state是只读的，改变需要触发action
 
 state树就是一个对象，所有的reducer的都会加到state中，取state值，store.getState().
-</code></pre><h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><pre><code>一、provider(store, children) - 将Store传到子组件中，一般用在入口文件
+</code></pre><h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><pre><code>$ npm i react-reudx --save        // 安装
+
+一、provider(store, children) - 将Store传到子组件中，一般用在入口文件
 
     import React from &apos;react&apos;;
     import ReactDOM from &apos;react-dom&apos;;
@@ -408,9 +413,6 @@ container - 组件中使用redux获取数据，状态更新，从Redux获取stat
 import * as oldActionCreator from &apos;./action.js&apos;
 
 let newAction = bindActionCreators(oldActionCreator,dispatch)
-</code></pre><h4 id="redux-thunk-中间件"><a href="#redux-thunk-中间件" class="headerlink" title="redux-thunk 中间件"></a>redux-thunk 中间件</h4><pre><code>可以action创建子函数先不返回active对象，
-
-http://blog.csdn.net/kuangshp128/article/details/67632683
 </code></pre><h4 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h4><pre><code>两种方法 1、下载redux-devtools包      2、chrome or Firfix 下载 Redux DevTools插件
 
 1、使用Redux DevTools插件 代码中需要加配置
@@ -432,11 +434,17 @@ http://blog.csdn.net/kuangshp128/article/details/67632683
 |------ reducers
 |-- router    // 路由
 |-- util    // 工具
-</code></pre><h4 id="其它状态管理框架"><a href="#其它状态管理框架" class="headerlink" title="其它状态管理框架"></a>其它状态管理框架</h4><pre><code>https://cn.mobx.js.org/
+</code></pre><h4 id="react-router-redux路由"><a href="#react-router-redux路由" class="headerlink" title="react-router-redux路由"></a>react-router-redux路由</h4><pre><code>redux管理的是应用状态（state），router管理的是路由，react-router-redux是保持路由与应用状态（state）同步
 
-https://redux-saga-in-chinese.js.org/    redux-saga
+$ npm install --save react-router-redux        // 安装
 
-https://dvajs.com/guide/#%E7%89%B9%E6%80%A7        dva
+原理：允许使用react router库中的api，使用redux一样去管理应用状态state
+
+https://www.jianshu.com/p/bccca5bb6338
+http://blog.csdn.net/isaisai/article/details/78086913
+https://segmentfault.com/a/1190000007862103
+
+http://blog.csdn.net/sinat_17775997/article/details/69218382
 </code></pre><p>| <a href="http://cn.redux.js.org/index.html" target="_blank" rel="noopener">http://cn.redux.js.org/index.html</a>                // Redux中文文档<br>| <a href="http://www.liuyiqi.cn/2016/01/19/r2-counter/" target="_blank" rel="noopener">http://www.liuyiqi.cn/2016/01/19/r2-counter/</a><br>| <a href="https://github.com/lewis617/react-redux-tutorial" target="_blank" rel="noopener">https://github.com/lewis617/react-redux-tutorial</a><br>| <a href="https://github.com/xgrommx/awesome-redux" target="_blank" rel="noopener">https://github.com/xgrommx/awesome-redux</a><br>| <a href="https://www.jianshu.com/p/bccca5bb6338" target="_blank" rel="noopener">https://www.jianshu.com/p/bccca5bb6338</a>        // react－router－redux 保持路由与应用状态（state）同步<br>| <a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a>                        // react-redux<br>| <a href="https://www.jianshu.com/p/1a2f3db4af61" target="_blank" rel="noopener">https://www.jianshu.com/p/1a2f3db4af61</a>        // react-redux<br>| <a href="https://www.jianshu.com/p/9873d4ccb891" target="_blank" rel="noopener">https://www.jianshu.com/p/9873d4ccb891</a>        // connect 原理<br>| <a href="https://github.com/GuoYongfeng/redux-complete-sample" target="_blank" rel="noopener">https://github.com/GuoYongfeng/redux-complete-sample</a><br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a><br>| <a href="http://www.aliued.com/?p=3204" target="_blank" rel="noopener">http://www.aliued.com/?p=3204</a><br>| <a href="http://blog.csdn.net/liwusen/article/details/54138854" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/details/54138854</a>         // bindActionCreators<br>| <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html</a><br>| <a href="https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js" target="_blank" rel="noopener">https://github.com/allan2coder/React-SPA/blob/master/src/store/configureStore.dev.js</a>            // 示例 router3.0</p>
 
         

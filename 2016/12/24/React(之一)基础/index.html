@@ -12,11 +12,9 @@
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
     <meta name="description" content="| 创建组件| render| props、propType、state、setState()、replaceState()| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)| React.Children 获取父组件传的DOM| mixin
-ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定
+ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定        5、受控组件
 
-1、核心是封装组件，只关注UI，状态变更重新渲染整个组件
-
-2、J" />
+1、核心是封装组件，只关注UI，状态变" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -53,10 +51,10 @@ ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4�
   <div class="widget-wrap">
     <h3 class="widget-title">
         <i class="icon-tag vm"></i>
-        <span class="vm">Labels</span>
+        <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Egg-js/">Egg.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML-CSS/">HTML/CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP详解/">HTTP详解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Less/">Less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongoose/">Mongoose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/">React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/">Sass</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Weex/">Weex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock数据/">mock数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端优化/">前端优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件/">前端插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端插件类/">前端插件类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端构建工具/">前端构建工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务端开发/">服务端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板引擎/">模板引擎</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器内核/">浏览器内核</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端积累/">移动端积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经济学/">经济学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/金融/">金融</a></li></ul>
     </div>
   </div>
 
@@ -99,7 +97,7 @@ ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4�
         
 
         
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#React"><span class="toc-number">1.</span> <span class="toc-text">React</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react引用方式"><span class="toc-number">2.</span> <span class="toc-text">react引用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生命周期"><span class="toc-number">3.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSX语法"><span class="toc-number">4.</span> <span class="toc-text">JSX语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class和style"><span class="toc-number">5.</span> <span class="toc-text">class和style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件"><span class="toc-number">6.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件嵌套"><span class="toc-number">7.</span> <span class="toc-text">组件嵌套</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件间通信"><span class="toc-number">8.</span> <span class="toc-text">组件间通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Context对象"><span class="toc-number">9.</span> <span class="toc-text">Context对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据流"><span class="toc-number">10.</span> <span class="toc-text">数据流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#props"><span class="toc-number">11.</span> <span class="toc-text">props</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#state"><span class="toc-number">12.</span> <span class="toc-text">state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#refs操作真实DOM"><span class="toc-number">13.</span> <span class="toc-text">refs操作真实DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mixin"><span class="toc-number">14.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#API"><span class="toc-number">15.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表单"><span class="toc-number">16.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React脚手架搭建"><span class="toc-number">17.</span> <span class="toc-text">React脚手架搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diff算法"><span class="toc-number">18.</span> <span class="toc-text">Diff算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用插件"><span class="toc-number">19.</span> <span class="toc-text">常用插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#积累问题"><span class="toc-number">20.</span> <span class="toc-text">积累问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Antd-UI组件问题收集"><span class="toc-number">21.</span> <span class="toc-text">Antd UI组件问题收集</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#React"><span class="toc-number">1.</span> <span class="toc-text">React</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react引用方式"><span class="toc-number">2.</span> <span class="toc-text">react引用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生命周期"><span class="toc-number">3.</span> <span class="toc-text">生命周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSX语法"><span class="toc-number">4.</span> <span class="toc-text">JSX语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class和style"><span class="toc-number">5.</span> <span class="toc-text">class和style</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件"><span class="toc-number">6.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件嵌套"><span class="toc-number">7.</span> <span class="toc-text">组件嵌套</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组件间通信"><span class="toc-number">8.</span> <span class="toc-text">组件间通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Context对象"><span class="toc-number">9.</span> <span class="toc-text">Context对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据流"><span class="toc-number">10.</span> <span class="toc-text">数据流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#props"><span class="toc-number">11.</span> <span class="toc-text">props</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#state"><span class="toc-number">12.</span> <span class="toc-text">state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#refs操作真实DOM"><span class="toc-number">13.</span> <span class="toc-text">refs操作真实DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mixin"><span class="toc-number">14.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表单"><span class="toc-number">15.</span> <span class="toc-text">表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#受控组件"><span class="toc-number">16.</span> <span class="toc-text">受控组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#碎片"><span class="toc-number">17.</span> <span class="toc-text">碎片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#React脚手架搭建"><span class="toc-number">18.</span> <span class="toc-text">React脚手架搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Diff算法"><span class="toc-number">19.</span> <span class="toc-text">Diff算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用插件"><span class="toc-number">20.</span> <span class="toc-text">常用插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#积累问题"><span class="toc-number">21.</span> <span class="toc-text">积累问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用插件-1"><span class="toc-number">22.</span> <span class="toc-text">常用插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Antd-UI组件问题收集"><span class="toc-number">23.</span> <span class="toc-text">Antd UI组件问题收集</span></a></li></ol>
         
     </div>
 </aside>
@@ -135,13 +133,13 @@ ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4�
     <section class="article-body markdown-body">
         
         <p>| 创建组件<br>| render<br>| props、propType、state、setState()、replaceState()<br>| 获取DOM this.refs.xxx 或 ReactDOM.findDOMNode(this.refs.xxx)<br>| React.Children 获取父组件传的DOM<br>| mixin</p>
-<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><pre><code>React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><pre><code>React包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4、单向数据绑定        5、受控组件
 
 1、核心是封装组件，只关注UI，状态变更重新渲染整个组件
 
 2、JSX: HTML代码可以直接嵌到JS代码中，这就是React提出的叫JSX的语法，原来前端以表现和逻辑层分离为主，但HTML是组件的一部分所以不能分割，JSX 将动态值放到 { ... }
 
-3、单向数据绑定: 当数据更新会渲染整个app
+3、单向数据流: 当数据更新会渲染整个app
 
     React的渲染方式: 用户输入 ~&gt; 从API获取数据 ~&gt; 将数据传给顶层组件 ~&gt; React将每个组件渲染出来, 不会象MVC一样的双向数据绑定、和数据模型的脏值检测、不会有确切的DOM操作
 
@@ -149,19 +147,12 @@ ReactReact包括几个概念: 1、组件       2、JSX     3、虚拟DOM     4�
 
     http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/      // 前沿技术解密——VirtualDOM
 
-5、工具: sublime或Atom
+5、IE浏览器要在8.0版本以上
 
-    sublime插件安装: 
-
-    ReactJS  https://packagecontrol.io/packages/ReactJS   用来提示编码还有快捷键
-
-    babel-sublime: https://github.com/babel/babel-sublime   用来语法颜色
-
-    javascriptNext: https://github.com/Benvie/JavaScriptNext.tmLanguage 
-
-6、.js与.jsx没什么区别都可以babel都编译，写.jsx扩展可以清晰的看出是Jsx的语法
-
-7、IE浏览器要在8.0版本以上
+rrc 创建带redux组件
+rcc 创建react组件
+rca 创建action
+reducer 创建reduer
 </code></pre><h4 id="react引用方式"><a href="#react引用方式" class="headerlink" title="react引用方式"></a>react引用方式</h4><pre><code>// Component作为所有组件的基类，提供很多组件共有的功能
 import React, { Component } from &apos;react&apos;;
 import { reactDom } from &apos;react-dom&apos;;
@@ -176,16 +167,16 @@ export default SimpleComponent;
 
 // 组件渲染
 reactDom.render(&lt;HelloMessage /&gt;, document.getElementById(&apos;app&apos;));
-</code></pre><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><pre><code>一、组件的生命周期三个过程
+</code></pre><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><pre><code>组件的生命周期三个过程
 
-    1、装载过程(Mount), 把组件第一次在DOM树中渲染的过程
+    装载过程(Mount) - 把组件第一次在DOM树中渲染的过程
 
-    2、更新过程(Update), 当组件被重新渲染的过程
+    更新过程(Update) - 当组件被重新渲染的过程
 
-    3、卸载过程(Unmount), 组件从DOM中删除的过程
+    卸载过程(Unmount) - 组件从DOM中删除的过程
 
 
-二、装载过程
+一、装载过程
 
     1、constructor - ES6每个类的构造函数，创建一个组件就会先调用对应的构造函数
 
@@ -193,16 +184,16 @@ reactDom.render(&lt;HelloMessage /&gt;, document.getElementById(&apos;app&apos;)
 
     3、getDefaultProps - 设置默认的props (ES6不起作用)
 
-    4、componentWillMount() - 组件挂载前（调用render方法之前），没有任何渲染，就算调用了this.setState()也不会引发绘制
+    4、componentWillMount() - 组件挂载前（调用render方法之前触发, 没有任何渲染，就算调用了this.setState()也不会引发绘制）
 
     5、render() - 创建虚拟dom，进行diff算法，更新dom树，如果不需要渲染可以将render函数返回一个null或false
 
     6、componentDidMount() - 组件渲染后已经装载到DOM树中，这时候可以refs操作获取或操作DOM节点
 
 
-三、更新过程(当props或state被修改时就会引发组件的更新过程)
+二、更新过程(当props或state被修改时就会引发组件的更新过程)
 
-    1、componentWillReceiveProps(nextProps) - 当父组件改变了传递给子组件props的值，这时候子组件此方法会被调用 receive[rɪˈsiv]
+    1、componentWillReceiveProps(nextProps) - 当父组件改变了传递给子组件props的值，这时候子组件此方法会被调用
 
     2、shouldComponentUpdate(nextProps, nextState) - react性能环节，父组件传给子组件的props值改变，子组件中的shouldComponentUpdata()方法会先调用，前后两个props相同返回false阻止更新，不需要在创建新的dom树在进行diff算法，默认为true
 
@@ -210,30 +201,17 @@ reactDom.render(&lt;HelloMessage /&gt;, document.getElementById(&apos;app&apos;)
             return nextProps.name === nextState.name        // 如果返回false就算父组件传递的props值改变，也不会执行render
         }
 
-    3、componentWillUpdata() - 与装载过程相同 
+    3、componentWillUpdate() - 与装载过程相同 
 
     4、render() - 与装载过程相同
 
     5、componentDidUpdate() - 与装载过程相同
 
 
-四、卸载组件
+三、卸载组件
 
     1、componentWillUnmount() - 卸载前调用
-</code></pre><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><pre><code>var HelloMessage = React.createClass({
-    render: function() {
-        return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
-    }
-});
-React.render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);
-
-如果不使用JSX，就需要使用createElement()来创建元素
-
-render: function() {
-    return React.createElement(&quot;div&quot;, null, &quot;Hello &quot;, this.props.name);
-}
-
-一、注释
+</code></pre><h4 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h4><pre><code>一、注释
 
     {/* 这里用于单多行注释 */}
 
@@ -245,9 +223,8 @@ render: function() {
             // 以下写法直接报错
             return (
                 &lt;div&gt;
-                hello
+                    hello
                 &lt;/div&gt;
-                &lt;h1&gt; hello h1 &lt;/h1&gt;
             );
         }
     }
@@ -268,24 +245,12 @@ render: function() {
 
     { ...spreadObj } 可以直接将spreadObj的对象传递过去
 
-    Spread Demo组件:
-
-        class SpreadDemo extends Component{
-            render(){
-                return &lt;div&gt;姓名: {this.props.name}  车型: {this.props.carType}&lt;/div&gt;
-            }
-        }
-        export default SpreadDemo;
-
-    main.js:
-
-        import SpreadDemo from &apos;./components/spread&apos;;
-        const spreadObj = {
-            name: &apos;siguang&apos;,
-            carType: &apos;卡宴&apos;
-        }
-        // render(&lt;SpreadDemo name={spreadObj.name} carType={spreadObj.carType} /&gt;, document.querySelector(&apos;#app&apos;));
-        render(&lt;SpreadDemo {...spreadObj} /&gt;, document.querySelector(&apos;#app&apos;));
+    import SpreadDemo from &apos;./components/spread&apos;;
+    const spreadObj = {
+        name: &apos;siguang&apos;,
+        carType: &apos;卡宴&apos;
+    }
+    render(&lt;SpreadDemo {...spreadObj} /&gt;, document.querySelector(&apos;#app&apos;));
 
 
 五、渲染HTML
@@ -293,14 +258,10 @@ render: function() {
     const elements = &apos;&lt;p&gt;aaa&lt;/p&gt;&lt;p&gt;bbb&lt;/p&gt;&lt;p&gt;ccc&lt;/p&gt;&apos;;
     &lt;p dangerouslySetInnerHTML={{ __html: elements }}&gt;&lt;/p&gt;
 
-
 http://lib.csdn.net/article/react/22655
 </code></pre><h4 id="class和style"><a href="#class和style" class="headerlink" title="class和style"></a>class和style</h4><pre><code>一、class
 
-    admin.css:
-        .container {.....}
-
-    方法一:
+    方法1:
         import &apos;./admin.css&apos;
         render() {
             return (
@@ -310,11 +271,11 @@ http://lib.csdn.net/article/react/22655
             );
         }
 
-    方法二:
+    方法2:
         import styles from &apos;./admin.css&apos;
         render() {
             return (
-                &lt;div className={styles.container}&gt;
+                &lt;div&gt;
                     &lt;div className={style.sild}&gt;xxxx&lt;/div&gt;
                 &lt;/div&gt;
             );
@@ -323,7 +284,7 @@ http://lib.csdn.net/article/react/22655
 
 二、style 行内样式
 
-    方法一:
+    方法1:
         const container = {
             display: flex;
             height: 100%;
@@ -331,27 +292,14 @@ http://lib.csdn.net/article/react/22655
 
         render() {
             return (
-                &lt;div style={container}&gt;
-                    xxxx
-                &lt;/div&gt;
+                &lt;div style={container}&gt; xxx &lt;/div&gt;
             );
         }
 
-    方法二:
-        render() {
-            return (
-                &lt;div style={{ width: '100px', float: 'left'}}&gt;       // 注意这里属性值要使用引号
-                    xxxx
-                &lt;/div&gt;
-            );
-        }
-</code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><pre><code>创建组件: ES5写法React.createClass() 或 ES6写法React.Component()
+    方法2: &lt;div style={{ width: '100px', float: 'left'}}&gt;       // 注意这里属性值要使用引号
+</code></pre><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><pre><code>一、组件创建
 
-渲染组件: ReactDOM.render(&lt;组件名/&gt;, 放到哪个位置, 渲染完成的回调);
-
-一、组件创建三种方法
-
-    1、ES6创建
+    1、类式组件
 
         import React, { Component } from &apos;react&apos;
         import ReactDom, { render } from &apos;react-dom&apos;
@@ -365,21 +313,22 @@ http://lib.csdn.net/article/react/22655
                 return &lt;div&gt;Hello name {this.props.name}&lt;/div&gt;
             }
         }
+        export default ShowMessage;
 
-        export default ShowMessage;        // ES6导出组件
-        // render(&lt;ShowMessage name=&quot;siguang.liu&quot; /&gt;, document.querySelector(&apos;#app&apos;));
 
     2、函数式组件
 
-        是组件没有状态的时候（相当不需要设置state, 不能使用this、可以写成函数式
-
-        const ShowMessage = () =&gt; &lt;div&gt;Hello name haha&lt;/div&gt;
-        render(&lt;ShowMessage /&gt;, document.querySelector(&apos;#app&apos;));
-
-        可以使用props
-        const ShowMessage = function(props){
-            return &lt;div&gt;Hello name {props.name}&lt;/div&gt;
+        const Welcome = (props) =&gt; {
+            return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
         }
+        &lt;Welcome username=&quot;this.state.username&quot; /&gt;
+
+
+    函数组件与类式组件的区别:
+
+        类组件有state, 函数组件没有state
+
+        类组件有生命周期函数
 
 
 二、组件注意的地方
@@ -444,7 +393,7 @@ index.js:
 
     import ParentComponent from &apos;./components/ParentComponent&apos;
     render(&lt;ParentComponent /&gt;, docuemnt.querySelector(&apos;#box&apos;));
-</code></pre><h4 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h4><pre><code>一、组件之间有几个通信有几种情况
+</code></pre><h4 id="组件间通信"><a href="#组件间通信" class="headerlink" title="组件间通信"></a>组件间通信</h4><pre><code>一、组件之间通信的几种情况
 
     1、父组件向子组件通信
 
@@ -467,10 +416,10 @@ index.js:
 三、子向父通信
 
     parent.jsx
+        &lt;child getMessage={this.getMessage.bind(this)} /&gt;
         getMessage(msg){
             this.setDate({message: msg})
         }
-        &lt;child getMessage={this.getMessage.bind(this)} /&gt;
 
     child.jsx
         this.props.getMessage(&apos;这里告诉父组件消息&apos;)
@@ -522,8 +471,9 @@ index.js:
         }
         &lt;input type=&quot;button&quot; value=&quot;向A子组件发消息&quot; onClick={this.sendBrotherMessage.bind(this)} /&gt;
 
-六、redux
-</code></pre><h4 id="Context对象"><a href="#Context对象" class="headerlink" title="Context对象"></a>Context对象</h4><pre><code>如果让一个父组件与孙子组件进行数据传递，可以通过props一层一层的传过去，也可以通过Context对象来跨级传递
+
+六、redux或其它状态管理库
+</code></pre><h4 id="Context对象"><a href="#Context对象" class="headerlink" title="Context对象"></a>Context对象</h4><pre><code>context对象来跨级传递
 
 context与react版本分两种写法，以下为react v16.3版本的示例
 
@@ -537,14 +487,11 @@ context与react版本分两种写法，以下为react v16.3版本的示例
 
 三、示例:
 
-    1、创建一个contextStor.js
-
+    创建一个contextStor.js:
         import React, { Component } from &apos;react&apos;
-        // 默认主题是Light
-        export const { Provider, Consumer } = React.createContext(&quot;Light&quot;);
+        export const { Provider, Consumer } = React.createContext(&quot;Light&quot;);        // 默认主题是Light
 
-    2、parentPage.jsx
-
+    parentPage.jsx:
         import Ca from &apos;./cA&apos;
         import { Provider } from &apos;./ccontextStor&apos;;
 
@@ -559,10 +506,8 @@ context与react版本分两种写法，以下为react v16.3版本的示例
             }
         }
 
-    3、cA.jsx
-
+    cA.jsx:
         import Cb from &apos;./cB&apos;
-
         export default class Ca extends Component {
             render () {
                 return (
@@ -574,10 +519,8 @@ context与react版本分两种写法，以下为react v16.3版本的示例
             }
         } 
 
-    4、cB.jsx
-
+    cB.jsx:
         import { Consumer } from &apos;./ccontextStor&apos;;
-
         export default class Cb extends Component {
             render () {
                 return (
@@ -599,13 +542,17 @@ context与react版本分两种写法，以下为react v16.3版本的示例
 </code></pre><h4 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h4><pre><code>React是单向数据流，数据从父组件传到子组件，子组件通过props获取数据，顶层组件改变了props，React会遍历整个组件树，重新渲染整个组件
 
 数据流包括: Props 和 State
-</code></pre><h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><pre><code>从最顶层逐级向下传递，从父组件将数据传到子组件，单向数据流
-
-{this.props.name} 读取props的值
+</code></pre><h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><pre><code>{ this.props.name } 读取props的值
 
 一、props API:
 
-    this.props.children - 所有子组件
+    this.props.children - 所有子组件的内容
+
+        &lt;ChildrenComponent&gt;
+            &lt;p&gt;aa&lt;/p&gt;
+            &lt;p&gt;bb&lt;/p&gt;
+            &lt;p&gt;cc&lt;/p&gt;
+        &lt;/ChildrenComponent&gt;
 
     this.props.map
 
@@ -775,60 +722,39 @@ context与react版本分两种写法，以下为react v16.3版本的示例
     }
 
 
-二、this的指向
+二、setState中this的指向
 
-    class StateDemo extends Component{
-        constructor(props){
-            super(props);
-            this.state = {
-                name: &apos;siguagn&apos;
-            }
+    1、&lt;Button type=&quot;primary&quot; onClick={ this.addCar.bind(this) }&gt;开始&lt;/Button&gt;
+         &lt;Button type=&quot;primary&quot; onClick={ (e) =&gt; this.addCar(e) }&gt;开始&lt;/Button&gt;        // 渲染中箭头函数
+
+    2、&lt;button onClick={(e) =&gt; this.deleteRow(id, e)}&gt;Delete Row&lt;/button&gt;
+
+    3、addCar = () =&gt; {
+            this.setState(function(state, porps){
+                return {
+                    car: state.car + 1
+                }
+            })
         }
+        &lt;Button type=&quot;primary&quot; onClick={ this.addCar }&gt;开始&lt;/Button&gt;
 
-        // 如果onClick=&quot;this.clickSelectBtn&quot; 这么写，this指向的是p, 所以this.setState()报错
-        clickSelectBtn(){
-            this.setState({name: &apos;lulu&apos;})
-        }
 
-        render(){
-            return &lt;div&gt;
-                &lt;p&gt;{this.state.name}&lt;/p&gt;
-                &lt;p&gt;&lt;input type=&quot;button&quot; value=&quot;修改&quot; onClick=&quot;this.clickSelectBtn.bind(this)&quot;&gt;&lt;/p&gt;
-            &lt;/div&gt;
-        }
-    }
+三、setState()异步的问题
 
-    解决方法:
+    setState()是异步导致如果直接在下面在取state值还没变过来，所以第二个回调是当state值设置成功后在执行的函数
 
-        1、使用bind() - onClick=&quot;this.clickSelectBtn.bind(this)&quot;
-
-        2、使用箭头函数 - onClick={ (e)=&gt;this.clickSelectBtn(e) }
-
-        3、传参数 - &lt;button onClick={ this.cb.bind(this, &apos;将消息发给父组件&apos;) }&gt;向父组件发消息&lt;/button&gt;
-
-            cb(msg) {
-                console.log(msg)
-            }
-</code></pre><h4 id="refs操作真实DOM"><a href="#refs操作真实DOM" class="headerlink" title="refs操作真实DOM"></a>refs操作真实DOM</h4><pre><code>两种获取方法
-
-    1、ReactDOM.findDOMNode(this.refs.xxxx);
-
-    2、this.refs.xxx
+    this.setState(
+        { username: uname }, 
+        () =&gt; {  console.log(this.state.username); }        // 这里还是为之前的值而不是「sg」
+    );
+</code></pre><h4 id="refs操作真实DOM"><a href="#refs操作真实DOM" class="headerlink" title="refs操作真实DOM"></a>refs操作真实DOM</h4><pre><code>获取ref: this.refs.xxx
 
 Example:
 
     class RefsDemo extends Component {
         componentDidMount(){
-
-            // findDOMNode()来获取DOM
-            let contentA = findDOMNode(this.refs.content);
-
             // refs直接获取
-            let contentB = this.refs.content;
-
-            // jQuery来操作DOM
-            console.log($(contentA).html());
-            console.log( contentA.innerHTML );
+            const contentB = this.refs.content;
             console.log( contentB.innerHTML );
         }
 
@@ -890,37 +816,6 @@ ES5写法
     });
 
     export default MixinDemo;
-</code></pre><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><pre><code>一、react.js
-
-    React.Children: Object
-    React.Component: ReactComponent(props, context, updater)
-    React.DOM: Object
-    React.PropTypes: Object
-    React.cloneElement: (element, props, children)
-    React.createClass: (spec)
-    React.createElement: (type, props, children)
-    React.createFactory: (type)
-    React.createMixin: (mixin)
-    React.isValidElement: (object)
-
-二、Component
-
-    this.context: Object              // DOM元素的内容
-    this.props: Object              // 获取props对象
-    this.refs: Object                // 通过ref获取指定的DOM
-    this.state: Object                // 获取state对象
-    this.setState: Object            // 设置state值
-
-三、react-dom.js
-
-    ReactDOM.findDOMNode: findDOMNode(componentOrElement)         // 获取DOM
-    ReactDOM.render: ()                                    // 返回组件树
-    ReactDOM.unmountComponentAtNode: (container)
-
-四、react-dom-server.js
-
-    ReactDOMServer.renderToString
-    ReactDOMServer.renderToStaticMarkup
 </code></pre><h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><pre><code>一、defaultValue 与 value 的区别
 
     &lt;input type=&quot;text&quot; value={this.state.inputValue} /&gt;
@@ -967,9 +862,87 @@ ES5写法
             &lt;option value=&quot;C&quot;&gt;Cranberry&lt;/option&gt;
         &lt;/select&gt;
 
-    4、input/textarea 的 onChange 用户每次输入都会触发（即使不失去焦点）
+    4、radio/checkbox/option 点击后触发 onChange
+</code></pre><h4 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h4><pre><code>受控组件就是为某个form表单组件添加value属性；非受控组件就是没有添加value属性的组件
 
-    5、radio/checkbox/option 点击后触发 onChange
+一、受控组件
+
+    &lt;input&gt;，&lt;textarea&gt;以及&lt;select&gt;通常保持自己的状态和基于用户输入更新它
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+    }
+    &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
+
+
+二、不受控制组件
+
+    this.input = React.createRef();                    // 创建不受控组件
+    &lt;input type=&quot;text&quot; ref={this.input} /&gt;    // 绑定
+    this.input.current.value                                // 调用不受控组件
+
+    class NameForm extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleSubmit = this.handleSubmit.bind(this);
+
+            // 创建不受控组件
+            this.input = React.createRef();
+        }
+
+        handleSubmit(event) {
+            alert(&apos;A name was submitted: &apos; + this.input.current.value);
+            event.preventDefault();
+        }
+
+        render() {
+            return (
+                &lt;form onSubmit={this.handleSubmit}&gt;
+                    &lt;label&gt;
+                        Name:
+                        &lt;input type=&quot;text&quot; ref={this.input} /&gt;
+                    &lt;/label&gt;
+                    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+                &lt;/form&gt;
+            );
+        }
+    }
+</code></pre><h4 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h4><pre><code>render的时候需要有一个父的元素，如果组件嵌套会多出来无用的元素，可以使用&lt;React.Fragment&gt; ... &lt;/React.Fragment&gt;
+
+class Columns extends React.Component {
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;td&gt;Hello&lt;/td&gt;
+                &lt;td&gt;World&lt;/td&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+class Table extends React.Component {
+    render() {
+        return (
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;Columns /&gt;                    // 输出&lt;div&gt; ... &lt;/div&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        );
+    }
+}
+
+可以写成
+
+class Columns extends React.Component {
+    render() {
+        return (
+            &lt;React.Fragment&gt;
+                &lt;td&gt;Hello&lt;/td&gt;
+                &lt;td&gt;World&lt;/td&gt;
+            &lt;/React.Fragment&gt;
+        );
+    }
+}
 </code></pre><h4 id="React脚手架搭建"><a href="#React脚手架搭建" class="headerlink" title="React脚手架搭建"></a>React脚手架搭建</h4><pre><code>一、可以使用官网的 create-react-app、ant或自己搭  https://github.com/facebook/create-react-app
 
 二、使用的JSX和ES6所以需要转换，使用版本:
@@ -980,130 +953,129 @@ ES5写法
 
 三、搭建
 
-$ npm init
+    $ npm init
 
-$ npm i react react-dom react-router --save
+    $ npm i react react-dom react-router --save
 
-$ npm i webpack webpack-dev-server --save
+    $ npm i webpack webpack-dev-server --save
 
-2、安装插件
+    2、安装插件
 
-$ npm i babel babel-loader babel-core babel-preset-es2015 babel-preset-react --save
+    $ npm i babel babel-loader babel-core babel-preset-es2015 babel-preset-react --save
 
-$ npm i node-sass file-loader url-loader css-loader sass-loader style-loader --save
+    $ npm i node-sass file-loader url-loader css-loader sass-loader style-loader --save
 
-$ npm i react-hot-loader prop-types events react-slot --save             // react组件，热更新、检测props类型、事件用来通信包、slot
+    $ npm i react-hot-loader prop-types events react-slot --save             // react组件，热更新、检测props类型、事件用来通信包、slot
 
-$ npm i html-webpack-plugin open-browser-webpack-plugin --save            // 自动引入静态资源到相应的html、自动打开浏览器
+    $ npm i html-webpack-plugin open-browser-webpack-plugin --save            // 自动引入静态资源到相应的html、自动打开浏览器
 
-$ touch .babelrc webpack.config.js
+    $ touch .babelrc webpack.config.js
 
-$ mkdir src &amp;&amp; cd src &amp;&amp; touch index.html app.js
+    $ mkdir src &amp;&amp; cd src &amp;&amp; touch index.html app.js
 
-$ .babelrc 加入
+    $ .babelrc 加入
 
-    {
-        &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;]
-    }
-
-$ webpack.config.js
-
-    /**
-    * User: siguang
-    * Date: 2016/12/28
-    * Time: 15:04
-    */
-    const webpack = require(&apos;webpack&apos;);
-    const path = require(&apos;path&apos;);
-    const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
-    const openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
-
-    const basePath = __dirname;
-    const appPath = path.resolve(basePath, &apos;src&apos;);
-    const buildPath = path.resolve(basePath, &apos;build&apos;);
-
-    module.exports = {
-        entry: {
-            app: path.resolve(appPath, &apos;app.js&apos;)
-        },
-
-        output: {
-            path: buildPath,
-            filename: &apos;[name].min.js?[hash]&apos;,
-            // chunkFilename: &quot;[name].min.js?[hash]&quot;
-        },
-
-        module: {
-            loaders: [
-
-                // 处理require()引入的css文件，并将代码显示到页面的&lt;style&gt;中
-                { test: /\.css$/, loader: &quot;style-loader!css-loader&quot; },
-
-                // 将scss文件转成css文件
-                { test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;},
-
-                // ?limit=8192  limit设置小于8k的图片转成64位编码，大小8于不会被转码
-                { test: /\.(png|jpg|woff|eot|ttf|svg|gif)$/, loader: &apos;url-loader?limit=8192&apos;},
-
-                // ES6 转 ES5
-                {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    loader: &apos;babel-loader&apos;,
-                    query: {
-                        presets: [&apos;es2015&apos;,&apos;react&apos;]
-                    }
-                }
-            ]
-        },
-
-
-        plugins: [
-
-            // 压缩打包的文件
-            new webpack.optimize.UglifyJsPlugin({
-                compress: {
-                    //supresses warnings, usually from module minification
-                    warnings: false
-                }
-            }),
-
-            // html
-            new HtmlWebpackPlugin({
-                // 改变页面的&lt;title&gt;标签的内容
-                title: &apos;Hello World app&apos;,
-                // 模版地址
-                template: path.resolve(appPath, &apos;index.html&apos;),
-                // 构建后的文件名和目录
-                filename: &apos;index.html&apos;,
-                //chunks这个参数告诉插件要引用entry里面的哪几个入口
-                // chunks:[&apos;app&apos;],
-                //要把script插入标签里
-                inject:&apos;body&apos;
-            }),
-
-            // 热启动
-            new webpack.HotModuleReplacementPlugin(),
-            // 自动打开浏览器
-            new openBrowserWebpackPlugin({ url: &apos;http://localhost:3000&apos; })
-        ],
-
-
-        // 查找依赖
-        resolve:{
-
-            // require或alias时不需要写后缀
-            extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.css&quot;, &quot;.json&quot;],
-        },
-
-        // webpack-dev-server 配置
-        devServer: {
-            port: 3000,                 // 端口
-            contentBase: &apos;build&apos;,       // 内容目录
-            hot: true,                    // 热刷新
-            inline: true
+        {
+            &quot;presets&quot;: [&quot;es2015&quot;, &quot;react&quot;]
         }
-    }
+
+    $ webpack.config.js
+
+        /**
+        * User: siguang
+        * Date: 2016/12/28
+        * Time: 15:04
+        */
+        const webpack = require(&apos;webpack&apos;);
+        const path = require(&apos;path&apos;);
+        const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+        const openBrowserWebpackPlugin = require(&apos;open-browser-webpack-plugin&apos;);
+
+        const basePath = __dirname;
+        const appPath = path.resolve(basePath, &apos;src&apos;);
+        const buildPath = path.resolve(basePath, &apos;build&apos;);
+
+        module.exports = {
+            entry: {
+                app: path.resolve(appPath, &apos;app.js&apos;)
+            },
+
+            output: {
+                path: buildPath,
+                filename: &apos;[name].min.js?[hash]&apos;,
+                // chunkFilename: &quot;[name].min.js?[hash]&quot;
+            },
+
+            module: {
+                loaders: [
+
+                    // 处理require()引入的css文件，并将代码显示到页面的&lt;style&gt;中
+                    { test: /\.css$/, loader: &quot;style-loader!css-loader&quot; },
+
+                    // 将scss文件转成css文件
+                    { test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;},
+
+                    // ?limit=8192  limit设置小于8k的图片转成64位编码，大小8于不会被转码
+                    { test: /\.(png|jpg|woff|eot|ttf|svg|gif)$/, loader: &apos;url-loader?limit=8192&apos;},
+
+                    // ES6 转 ES5
+                    {
+                        test: /\.jsx?$/,
+                        exclude: /node_modules/,
+                        loader: &apos;babel-loader&apos;,
+                        query: {
+                            presets: [&apos;es2015&apos;,&apos;react&apos;]
+                        }
+                    }
+                ]
+            },
+
+
+            plugins: [
+
+                // 压缩打包的文件
+                new webpack.optimize.UglifyJsPlugin({
+                    compress: {
+                        //supresses warnings, usually from module minification
+                        warnings: false
+                    }
+                }),
+
+                // html
+                new HtmlWebpackPlugin({
+                    // 改变页面的&lt;title&gt;标签的内容
+                    title: &apos;Hello World app&apos;,
+                    // 模版地址
+                    template: path.resolve(appPath, &apos;index.html&apos;),
+                    // 构建后的文件名和目录
+                    filename: &apos;index.html&apos;,
+                    //chunks这个参数告诉插件要引用entry里面的哪几个入口
+                    // chunks:[&apos;app&apos;],
+                    //要把script插入标签里
+                    inject:&apos;body&apos;
+                }),
+
+                // 热启动
+                new webpack.HotModuleReplacementPlugin(),
+                // 自动打开浏览器
+                new openBrowserWebpackPlugin({ url: &apos;http://localhost:3000&apos; })
+            ],
+
+            // 查找依赖
+            resolve:{
+
+                // require或alias时不需要写后缀
+                extensions: [&quot;.js&quot;, &quot;.jsx&quot;, &quot;.css&quot;, &quot;.json&quot;],
+            },
+
+            // webpack-dev-server 配置
+            devServer: {
+                port: 3000,                 // 端口
+                contentBase: &apos;build&apos;,       // 内容目录
+                hot: true,                    // 热刷新
+                inline: true
+            }
+        }`
 
 $ package.json
 
@@ -1156,7 +1128,7 @@ https://segmentfault.com/a/1190000005969488
     http://www.alloyteam.com/2016/12/react-animations-difficult-to-write-try-react-transformjs/
 
 react-slot - react中写solt    http://npm.taobao.org/package/react-slot
-</code></pre><h4 id="积累问题"><a href="#积累问题" class="headerlink" title="积累问题"></a>积累问题</h4><pre><code>一、jsx中for循环出标签并插入到render中
+</code></pre><h4 id="积累问题"><a href="#积累问题" class="headerlink" title="积累问题"></a>积累问题</h4><pre><code>1、jsx中for循环出标签并插入到render中, 或使用map
 
     class SideBar extends Component {
         constructor(props) {
@@ -1187,6 +1159,17 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
                 return homeHtml
             }
 
+            // 另一种写法map推荐
+            {/*
+                var renderMenuHtml = this.state.menu.map(function(c){
+                    return(
+                        &lt;li&gt;
+                            &lt;Link to={item.path}&gt;{item.name}&lt;/Link&gt;
+                        &lt;/li&gt;
+                    );
+                });
+            */}
+
             return (
                 &lt;div className=&quot;side-box&quot;&gt;
                     &lt;ul&gt;
@@ -1198,23 +1181,7 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
     }
 
 
-4、setState()异步的问题
-
-    setUser(uname){
-        this.setState({ username: uname });        // sg
-        console.log(this.state.username);            // 这里还是为之前的值而不是「sg」
-    }
-
-    正确写法
-    setUser(uname){
-        this.setState(
-            { username: uname }, 
-            () =&gt; {  console.log(this.state.username); }        // 这里还是为之前的值而不是「sg」
-        );
-    }
-
-
-5、使用redux子组件会取不到 this.props.history
+2、使用redux子组件会取不到 this.props.history
 
     因为redux会将值传给props，所以就需要通过context来获取
 
@@ -1226,13 +1193,102 @@ react-slot - react中写solt    http://npm.taobao.org/package/react-slot
     }
 
     console.log( this.context.router.history.push(&apos;/&apos;) );
+
+
+3、子组件调用父组件中的方法
+
+    class ComponentClider extends Component {
+        constructor(props){
+            super(props);
+        }
+
+        render(){
+            return(
+                &lt;div&gt;{ this.props.add(111,555) }&lt;/div&gt;
+            )
+        }
+    }
+
+    export default ComponentParent extends Component {
+        add(a, b){
+            return a + b;
+        }
+
+        sub(a, b) {
+            return a - b;
+        }
+
+        render(){
+            return (
+                &lt;div&gt;
+                    {/* 这里可以父组件中自己的方法直接调用 */}
+                    { this.add(100, 200) }
+                    { this.sub(200, 10) }
+
+                    &lt;ComponentClider add={(a, b) =&gt; this.add(a, b)} sub={(a, b) =&gt; this.sub(a, b)}&gt;&lt;/ComponentClider&gt;
+                &lt;/div&gt;
+            )
+        }
+    } 
+
+    &lt;!-- 父组件也可以写成 --&gt;
+    export default ComponentParent extends Component {
+        multiplicative(a, b) {
+            return a * b
+        }
+
+        add = (a, b) =&gt; {
+            return a + b;
+        }
+
+        sub = (a, b)  =&gt;  {
+            return a - b;
+        }
+
+        render(){
+            const propsFun = {
+                add: this.add,
+                sub: this.sub
+            }
+
+            return (
+                &lt;div&gt;
+                    {/* 这里可以父组件中自己的方法直接调用 */}
+                    { this.multiplicative(100, 200) }
+
+                    &lt;ComponentClider {...propsFun}&gt;&lt;/ComponentClider&gt;
+                &lt;/div&gt;
+            )
+        }
+    } 
+
+
+4、react原生动态添加多个className会报错
+
+    // 下面的引用会报错
+    import style from &apos;./style.css&apos;
+    &lt;div className={style.class1 style.class2}&lt;/div&gt;
+
+    // 解决 使用classnames
+    $ npm install classnames --save
+
+    import classnames from &apos;classnames&apos;
+    import styles from &apos;./index.less&apos;;
+
+    const clsString = classNames(styles.submit, className);
+    &lt;div className={clsString}&gt;&lt;/div&gt;
+</code></pre><h4 id="常用插件-1"><a href="#常用插件-1" class="headerlink" title="常用插件"></a>常用插件</h4><pre><code>1、react-document-title    根据不同的路由改变文档的title
+    https://www.jianshu.com/p/07ed93350483
+
+2、react-container-query   媒体查询 响应式组件
+
+3、classnames      react引用多个className会报错问题
 </code></pre><h4 id="Antd-UI组件问题收集"><a href="#Antd-UI组件问题收集" class="headerlink" title="Antd UI组件问题收集"></a>Antd UI组件问题收集</h4><pre><code>1、Table的每页条数  通过pagination属性来控制分页的内容
 
     &lt;Table pagination={{ pageSize: this.state.queryInfo.pageSize }} rowSelection={rowSelection} columns={columns} dataSource={data}  /&gt;
 
     https://www.cnblogs.com/jenifurs-blog/p/6020737.html
-</code></pre><p>| <a href="https://react.docschina.org/docs/hello-world.html" target="_blank" rel="noopener">https://react.docschina.org/docs/hello-world.html</a><br>| <a href="http://www.css88.com/react/docs/try-react.html" target="_blank" rel="noopener">http://www.css88.com/react/docs/try-react.html</a><br>| <a href="https://juejin.im/post/5a9410c25188257a61325eda" target="_blank" rel="noopener">https://juejin.im/post/5a9410c25188257a61325eda</a>          // react 新老context<br>| <a href="https://www.jianshu.com/p/fb915d9c99c4" target="_blank" rel="noopener">https://www.jianshu.com/p/fb915d9c99c4</a>          // 组件通信<br>| <a href="http://huziketang.com/books/react/" target="_blank" rel="noopener">http://huziketang.com/books/react/</a><br>| <a href="http://blog.csdn.net/liwusen/article/category/6522963" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/category/6522963</a><br>| <a href="http://react-china.org/" target="_blank" rel="noopener">http://react-china.org/</a>           中文社区<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>        // 全家桶<br>| <a href="http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/" target="_blank" rel="noopener">http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/</a>        // virturalDOM 虚拟DOM<br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a>        // redux-devtools<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>   babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a><br>| <a href="https://juejin.im/post/5a84682ef265da4e83266cc4" target="_blank" rel="noopener">https://juejin.im/post/5a84682ef265da4e83266cc4</a>        // 源码解析</p>
-<p>| <a href="https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation</a>      // vscode 调试react 通过debugger for chrome</p>
+</code></pre><p>| <a href="https://react.docschina.org/docs/hello-world.html" target="_blank" rel="noopener">https://react.docschina.org/docs/hello-world.html</a><br>| <a href="http://www.css88.com/react/docs/try-react.html" target="_blank" rel="noopener">http://www.css88.com/react/docs/try-react.html</a><br>| <a href="https://juejin.im/post/5a9410c25188257a61325eda" target="_blank" rel="noopener">https://juejin.im/post/5a9410c25188257a61325eda</a>          // react 新老context<br>| <a href="https://www.jianshu.com/p/fb915d9c99c4" target="_blank" rel="noopener">https://www.jianshu.com/p/fb915d9c99c4</a>                          // 组件通信<br>| <a href="http://huziketang.com/books/react/" target="_blank" rel="noopener">http://huziketang.com/books/react/</a><br>| <a href="http://blog.csdn.net/liwusen/article/category/6522963" target="_blank" rel="noopener">http://blog.csdn.net/liwusen/article/category/6522963</a><br>| <a href="http://react-china.org/" target="_blank" rel="noopener">http://react-china.org/</a>           中文社区<br>| <a href="https://github.com/BruceCham/react-cli" target="_blank" rel="noopener">https://github.com/BruceCham/react-cli</a>                            // 全家桶<br>| <a href="http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/" target="_blank" rel="noopener">http://www.alloyteam.com/2015/04/%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%AF%86-virtualdom/</a>        // virturalDOM 虚拟DOM<br>| <a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="noopener">https://github.com/gaearon/redux-devtools</a>                        // redux-devtools<br>| <a href="https://guoyongfeng.github.io/book/" target="_blank" rel="noopener">https://guoyongfeng.github.io/book/</a><br>| <a href="http://uprogrammer.cn/react-tutorial-cn/" target="_blank" rel="noopener">http://uprogrammer.cn/react-tutorial-cn/</a><br>| <a href="http://huziketang.com/books/react/lesson1" target="_blank" rel="noopener">http://huziketang.com/books/react/lesson1</a><br>| <a href="https://github.com/hyy1115/react-redux-webpack2" target="_blank" rel="noopener">https://github.com/hyy1115/react-redux-webpack2</a><br>| <a href="https://github.com/zhbhun/react-learning/tree/master/boilerplate" target="_blank" rel="noopener">https://github.com/zhbhun/react-learning/tree/master/boilerplate</a><br>| <a href="http://blog.csdn.net/u013063153/article/details/52497271" target="_blank" rel="noopener">http://blog.csdn.net/u013063153/article/details/52497271</a>      // 事件<br>| <a href="https://github.com/gaearon/babel-plugin-react-transform#transforms" target="_blank" rel="noopener">https://github.com/gaearon/babel-plugin-react-transform#transforms</a>       // babel-plugin-react-transform 相关插件<br>| <a href="http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/" target="_blank" rel="noopener">http://www.alloyteam.com/2016/03/using-react-to-write-a-simple-activity-pages-design-of-operating-system-article/</a><br>| <a href="https://juejin.im/post/5a84682ef265da4e83266cc4" target="_blank" rel="noopener">https://juejin.im/post/5a84682ef265da4e83266cc4</a>            // 源码解析<br>| <a href="https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/ec7c2bab16cc?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation</a>      // vscode 调试react 通过debugger for chrome</p>
 
         
     </section>
